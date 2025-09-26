@@ -5,6 +5,7 @@ Sui is a GUI application framework with an integrated visual designer, built usi
 ## highlight
 
 OrcLang completely resolves the challenge of automatic memory management in C. Based on the URGC (Unique Reference Garbage Collection) algorithm, OrcLang achieves automatic memory reclamation with minimal overhead, making your C development process as simple and effortless as working with high-level languages like Java or JavaScript. 
+
 So based on OrcLang, we can achieve our goal described below.
 
 ## Goal 
