@@ -15,6 +15,7 @@ set(CMAKE_C_STANDARD 11)
 # set(CMAKE_LINKER "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\Hostx64\\x64\\link.exe")
 
 include_directories("./build/assimp/include")
+include_directories("./assimp/build/include")
 include_directories("./assimp/include")
 include_directories(lib)
 include_directories(src)
