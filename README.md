@@ -102,7 +102,7 @@ cmake --build build
 
 ## Development
 
-When working with Orc files, the corresponding `_orc.c` and `_orc.h` files are automatically generated during build. External C/C++ functions can be called from Orc code by implementing them in `_extern.cpp` files.
+When working with Orc files, the corresponding `_orc.c` and `_orc.h` files are automatically generated during build. External C/C++ functions can be called from Orc code by implementing them in `.cpp` files.
 
 ## Dependencies
 
@@ -113,6 +113,20 @@ When working with Orc files, the corresponding `_orc.c` and `_orc.h` files are a
 
 - Assimp (3D model loading. [optional]) 
 
+## TODO
+
+- [o] threejs style Math/Matrix/Geometry util 
+- [-] dark thme
+- [-] build a demo 3d scene
+- [-] Unified Inspector
+- [-] 2D/3D Scene Editor
+- [-] Material Inspector
+
+- [-] Android Support
+- [-] iOS support 
+- [-] linux glfw support 
+- [-] macos glfw support 
+- [-] web support 
 
 ## License
 
