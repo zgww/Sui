@@ -12,6 +12,7 @@ So based on OrcLang, we can achieve our goal described below.
 - Best Performance (you are writing c, nobody can faster then you)
 - Simplest Gui Framework (gc free us)
 - Smallest Gui Framework <= 10MB (less dependencies, smaller size。 we are native app)
+- Fastest Compile Speed (then C++ 😁. I'm tired of C++'s compilation speed. The incremental compilation time for Project C is typically within 1 second.)
 
 
 ## Features
