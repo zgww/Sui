@@ -1,0 +1,15 @@
+{
+	"vsPath":	"./depth.vs",
+	"fsPath":	"./depth.fs",
+	"__class":	"Sgl$Material",
+	"depthWrite": true,
+	"depthTest":	true,
+	"alphaTest":	true,
+	"stencilTest":	true,
+	"scissorTest":	false,
+	"blend":	true,
+	"cullFace":	false,
+	"wireframe":false,
+	"uniforms":	[
+	]
+}

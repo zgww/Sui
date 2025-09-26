@@ -1,0 +1,46 @@
+{
+    "className" : "SuiLayout$LayoutLinear",
+    "children":[
+        {
+            "className" : "SuiView$DrawButton",
+            "width":100,
+            ":text":"user.name",
+            "text":"ok, done submit"
+        }
+        ,
+        {
+            "className" : "SuiView$DrawButton",
+            "width":200,
+            "text":"ok, done submit",
+            "attr": {
+                "width": "",
+                "text":"ok, done submit"
+            },
+            "attrs": [
+                {"name": "width", "value":10, "type":"plain"},
+                {"name": "width", "value":10, "type":"expression"}
+            ],
+
+            "exprs": [
+                {"name":"visible", "value":"user.name"}
+            ],
+
+            ":visible":"id.name",
+            "visible": {
+                "className":"expr", 
+                "expr":"id.name"
+            }
+        }
+        , 
+        {
+            "tag": "if",
+            ":expr": "true"
+        },
+        {
+            "tag": "for",
+            ":in": "item in data",
+            "let": "item"
+        }
+
+    ]
+}

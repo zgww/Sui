@@ -1,0 +1,157 @@
+#define NOMINMAX
+#include <Windows.h>
+#undef max
+
+#include "tgfx/gpu/opengl/wgl/WGLWindow.h"
+
+#include <stdio.h>
+#include <gl/GL.h>
+
+
+
+std::shared_ptr<tgfx::WGLWindow> tgfxWin;
+
+// // int WINAPI wWinMain(
+// //     HINSTANCE hInstance,
+// //     HINSTANCE hPrevInstance,
+// //     PWSTR pCmdLine, 
+// //     int nCmdShow
+
+// // ){
+// //     printf("hi\n");
+// //     return 0;
+// // }
+
+void draw(HWND win){
+    if (tgfxWin == nullptr){
+        tgfxWin = tgfx::WGLWindow::MakeFrom(win);
+    }
+    tgfxWin->invalidSize();
+    auto device = tgfxWin->getDevice();
+    auto context = device->lockContext();
+    auto surface = tgfxWin->getSurface(context);
+    auto canvas = surface->getCanvas();
+
+
+    auto versionStr = glGetString(GL_VERSION);
+    printf("versionStr:%s\n", versionStr);
+
+    canvas->clear();
+    canvas->save();
+
+
+    tgfx::Paint paint = {};
+    paint.setColor(tgfx::Color{0.8f, 0.8f, 0.0f, 1.f});
+    auto rect = tgfx::Rect::MakeXYWH(0, 0, 100, 100);
+    canvas->clear(tgfx::Color{1.f, 0.3f, 1.f, 1.f});
+    canvas->drawRect(rect, paint);
+
+
+
+    canvas->restore();
+    context->flushAndSubmit();
+    tgfxWin->present(context);
+    device->unlock();
+}
+
+LRESULT CALLBACK proc(HWND win, UINT msg, WPARAM wp, LPARAM lp){
+    switch (msg){
+        case WM_CLOSE:{
+            printf("WM_CLOES\n");
+            DestroyWindow(win);
+            PostQuitMessage(0);
+            break;
+        }
+        case WM_DESTROY:{
+            printf("WM_DESTROY\n");
+            // DestroyWindow(win);
+            PostQuitMessage(0);
+            break;
+        }
+        case WM_PAINT:{
+            printf("WM_PAINT\n");
+            PAINTSTRUCT ps={0};
+            BeginPaint(win, &ps);
+            draw(win);
+            printf("WM_PAINT end\n");
+            EndPaint(win, &ps);
+            break;
+        }
+        case WM_LBUTTONDOWN:{
+            break;
+        }
+
+    }
+
+    return DefWindowProc(win, msg, wp, lp);
+}
+HWND mkWindow(){
+    auto win = CreateWindowExA(
+        WS_EX_APPWINDOW,
+        "APP",
+        "Hi",
+        WS_OVERLAPPEDWINDOW,
+        0, 0, 800, 600, 
+        nullptr,
+        nullptr,
+        GetModuleHandle(NULL),
+        nullptr
+    );
+    return win;
+}
+void registerWindowClass(){
+    auto hInstance = GetModuleHandle(nullptr);
+    WNDCLASSA wc{};
+    wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wc.lpszClassName = "APP";
+    wc.style = CS_HREDRAW | CS_VREDRAW;
+    wc.cbClsExtra = 0;
+    wc.cbWndExtra = 0;
+    wc.hInstance = hInstance;
+    // wc.hIcon = LoadIcon
+    wc.hbrBackground = nullptr;
+    wc.lpszMenuName = nullptr;
+    wc.lpfnWndProc = proc;
+    RegisterClassA(&wc);
+}
+void centerAndShow(HWND win){
+    RECT rect = {0};
+    GetWindowRect(win, &rect);
+
+    auto w = GetSystemMetrics(SM_CXFULLSCREEN);
+    auto h = GetSystemMetrics(SM_CYFULLSCREEN);
+
+    int x = (w - (rect.right - rect.left))/2;
+    int y = (h - (rect.bottom - rect.top))/2;
+
+    SetWindowPos(win, nullptr, x, y, -1, -1, SWP_NOSIZE|SWP_NOZORDER|SWP_NOACTIVATE|SWP_SHOWWINDOW);
+
+    // ShowWindow(win, SW_NORMAL);
+}
+
+
+
+extern "C"
+void test_tgfx(){
+    printf("hi tgfx\n");
+
+    registerWindowClass();
+
+    printf("mkWindow\n");
+    auto win = mkWindow();
+    printf("centerAndShow\n");
+    centerAndShow(win);
+    printf("mkWGLWindow\n");
+
+    MSG msg = {};
+    while (GetMessage(&msg, NULL, 0, 0) > 0){
+        if (msg.message == WM_QUIT){
+            printf("WM_QUIT\n");
+            exit(0);
+            break;
+        }
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+    printf("done\n");
+}

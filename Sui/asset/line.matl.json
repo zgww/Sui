@@ -1,0 +1,15 @@
+{
+	"vsPath":	"./line.vs",
+	"fsPath":	"./line.fs",
+	"__class":	"Sgl$Material",
+	"depthWrite": true,
+	"depthTest":	false,
+	"alphaTest":	true,
+	"stencilTest":	true,
+	"scissorTest":	false,
+	"blend": true,
+	"cullFace":	 false,
+	"wireframe": false,
+	"uniforms":	[
+	]
+}

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.prefab": "json",
+        "scopedata_orc.h": "c"
+    }
+}

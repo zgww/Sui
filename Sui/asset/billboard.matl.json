@@ -1,0 +1,35 @@
+{
+	"vsPath":	"./billboard.vs",
+	"fsPath":	"./billboard.fs",
+	"__class":	"Sgl$Material",
+	"depthWrite": true,
+	"depthTest":	true,
+	"alphaTest":	true,
+	"stencilTest":	true,
+	"scissorTest":	false,
+	"blend":	true,
+	"cullFace":	false,
+	"wireframe":false,
+	"uniforms":	[{
+			"__class":	"Sgl$UniformInfo",
+			"count":	4,
+			"key":	"uColor",
+			"floatValues":	[0.03921570777893066, 0.12156862765550613, 0.63921570777893066, 1],
+			"kind":	3,
+			"texIndex":	0
+		}, {
+			"__class":	"Sgl$UniformInfo",
+			"count":	3,
+			"key":	"objColor",
+			"floatValues":	[0.000000023841858, 0.61176472902297974, 0.18431372940540314],
+			"kind":	3,
+			"texIndex":	0
+		}, {
+			"__class":	"Sgl$UniformInfo",
+			"count":	3,
+			"key":	"lightPos",
+			"floatValues":	[-5.1999998092651367, 6, -6],
+			"kind":	3,
+			"texIndex":	0
+		}]
+}

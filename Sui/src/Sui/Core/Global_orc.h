@@ -1,0 +1,58 @@
+
+
+
+#ifndef define_struct___SuiCore__Global_orc_h__
+#define define_struct___SuiCore__Global_orc_h__
+
+
+#ifdef INCLUDE_ONLY_TYPE
+#define INCLUDE_ONLY_TYPE___SuiCore__Global_orc_h__
+#endif
+
+#include "Orc/Orc.h"
+#include <stdlib.h>
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "../../nanovg/nanovg.h"
+
+
+
+
+#ifdef INCLUDE_ONLY_TYPE___SuiCore__Global_orc_h__
+#define INCLUDE_ONLY_TYPE
+#endif
+
+
+#endif
+
+#ifndef INCLUDE_ONLY_TYPE
+
+
+// include once e.g.__App_orc_h__
+#ifndef __SuiCore__Global_orc_h__
+#define __SuiCore__Global_orc_h__
+
+//include  importHeadCode
+#include "./Canvas_orc.h"
+
+
+#ifdef __cplusplus
+extern "C"{
+#endif
+
+//代码内容
+NVGcontext *  SuiCore$Global_getVg();
+SuiCore$Canvas *  SuiCore$Global_getCanvas();
+void  SuiCore$Global_setCanvas(SuiCore$Canvas *  c);
+void  SuiCore$testGlobal();
+
+
+
+#ifdef __cplusplus
+}
+#endif // ___cplusplus
+
+#endif // include once
+
+#endif // INCLUDE_ONLY_TYPE

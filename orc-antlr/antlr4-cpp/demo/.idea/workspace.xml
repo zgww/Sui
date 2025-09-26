@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="05a16c27-be3b-441b-b631-357b940bd5e4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.antlr/Orc.interp" beforeDir="false" afterPath="$PROJECT_DIR$/.antlr/Orc.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.antlr/Orc.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/.antlr/Orc.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.antlr/OrcLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/.antlr/OrcLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.antlr/OrcLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/.antlr/OrcLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.antlr/OrcLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/.antlr/OrcLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.antlr/OrcParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/.antlr/OrcParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Orc.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Orc.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Orc.interp" beforeDir="false" afterPath="$PROJECT_DIR$/generated/Orc.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Orc.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/generated/Orc.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcBaseListener.h" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcBaseListener.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcBaseVisitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcBaseVisitor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcLexer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcLexer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcLexer.h" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcLexer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcListener.h" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcListener.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcParser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/OrcVisitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/generated/OrcVisitor.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2wkKi5ZMobFjukVRvukxGuwtgPG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "light-theme",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05a16c27-be3b-441b-b631-357b940bd5e4" name="Changes" comment="" />
+      <created>1746580256632</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746580256632</updated>
+    </task>
+    <servers />
+  </component>
+</project>

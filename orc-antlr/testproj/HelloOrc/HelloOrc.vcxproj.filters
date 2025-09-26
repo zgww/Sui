@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="HelloOrc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\List_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\List_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Map_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Map_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Math_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Mutex_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Mutex_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Number_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Path_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Path_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\ScopeData_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\String_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\String_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Thread_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Thread_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Time_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc\Time_win32_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\FsUtil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\MathEx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\StrUtil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\TimeUtil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\Utf8Util.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\Win32Utf8Util.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Main_orc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Orc\List.orc" />
+    <None Include="Orc\Map.orc" />
+    <None Include="Orc\Math.orc" />
+    <None Include="Orc\Mutex.orc" />
+    <None Include="Orc\Number.orc" />
+    <None Include="Orc\Path.orc" />
+    <None Include="Orc\ScopeData.orc" />
+    <None Include="Orc\String.orc" />
+    <None Include="Orc\Thread.orc" />
+    <None Include="Orc\Time.orc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Orc\List_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Map_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Math_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Mutex_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Number_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Path_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\ScopeData_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\String_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Thread_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc\Time_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\FsUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\MathEx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\NagaPredef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\StrUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\TimeUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\Utf8Util.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\Win32Utf8Util.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Main_orc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,33 @@
+{
+    "className" : "SuiCore$View",
+    "id":1,
+    "name":"zgww",
+    "list":[
+        1,2,3,4
+    ],
+    "data":{
+        "data0":1,
+        "bool": true,
+        "doubl":103.23
+    },
+    "children":[
+        {
+            "className":"SuiCore$LinearLayout",
+            "direction":"column",
+            "children":[
+                {
+                    "className":"SuiCore$LinearLayout",
+                    "direction":"column-reverse"
+                },
+                {
+                    "className":"SuiCore$TextView",
+                    "text":"inner??"
+                }
+            ]
+        },
+        {
+            "className":"SuiCore$TextView",
+            "text":"hello sui"
+        }
+    ]
+}
