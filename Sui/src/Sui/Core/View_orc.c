@@ -643,10 +643,10 @@ void  SuiCore$View$drawSelfBorder(SuiCore$View *  self, SuiCore$Canvas *  canvas
 			SuiCore$Canvas$beginPath(canvas) ;
 			if (self->border->t->w <= 1.001f) {
 				SuiCore$Canvas$strokeWidth(canvas, 1.0f) ;
-				SuiCore$Canvas$roundRect(canvas, 0.5f, 0.5f, w, h, self->radius->tl) ;
+				SuiCore$Canvas$roundRect(canvas, 0.5f, 0.5f, w - 0.5, h - 0.5, self->radius->tl) ;
 			}
 			else {
-				SuiCore$Canvas$roundRect(canvas, 0.5f, 0.5f, w, h, self->radius->tl) ;
+				SuiCore$Canvas$roundRect(canvas, 0.5f, 0.5f, w - 0.5, h - 0.5, self->radius->tl) ;
 				SuiCore$Canvas$strokeWidth(canvas, self->border->t->w) ;
 			}
 			SuiCore$Canvas$strokeColorByInt32(canvas, (self->border->t->color)) ;

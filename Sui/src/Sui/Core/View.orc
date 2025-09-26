@@ -536,9 +536,9 @@ class View extends ViewBase {
                     canvas.strokeWidth( 1.0f)
                     // https://github.com/memononen/nanovg/issues/282
                     // 绘制一像素的线
-                    canvas.roundRect( 0.5f, 0.5f, w, h, self.radius.tl);
+                    canvas.roundRect( 0.5f, 0.5f, w - 0.5, h - 0.5, self.radius.tl);
                 } else {
-                    canvas.roundRect( 0.5f, 0.5f, w, h, self.radius.tl);
+                    canvas.roundRect( 0.5f, 0.5f, w - 0.5, h - 0.5, self.radius.tl);
                     canvas.strokeWidth( self.border.t.w)
                 }
                 canvas.strokeColorByInt32((self.border.t.color))
