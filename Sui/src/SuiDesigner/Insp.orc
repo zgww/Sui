@@ -440,27 +440,45 @@ class Insp {
         }
     }
 
-    //是否走默认的Insp流程
-    bool bInspDefault = true
-    //屏蔽默认的渲染
-    void preventDefault(){
-        self.bInspDefault = false
-    }
-    // 默认情况下， call insp会收集字段 信息。 如果call insp内部想完全自定义，就需要preventDefault
+    // //是否走默认的Insp流程
+    // bool bInspDefault = true
+    // //屏蔽默认的渲染
+    // void preventDefault(){
+    //     self.bInspDefault = false
+    // }
+    // // 默认情况下， call insp会收集字段 信息。 如果call insp内部想完全自定义，就需要preventDefault
+
+    ^void (Insp* insp, Node* o) beforeInsp
+    ^void (Insp* insp, Node* o) afterInsp
+    //如果有，就替换掉默认的insp流程
+    ^void (Insp* insp, Node* o) cbInsp
 
 
     void insp(Node* o, Object *obj){
-        self.bInspDefault = true
+        // self.bInspDefault = true
         self.obj = obj
         self.curNodeStack.clear()
 
         self.call_insp()
 
-        if !self.bInspDefault { //被屏蔽了
-            return;
+        // if !self.bInspDefault { //被屏蔽了
+        //     return;
+        // }
+
+        if self.beforeInsp {
+            self.beforeInsp(self, o)
         }
 
-        self.inspObj(o, obj)
+        if self.cbInsp {
+            self.cbInsp(self, o)
+        }
+        else {
+            self.inspObj(o, obj)
+        }
+
+        if self.afterInsp {
+            self.afterInsp(self, o)
+        }
     }
     void inspObj(Node* o, Object *obj){
         self.curNodeStack.push(o)
@@ -1120,6 +1138,38 @@ class TestObj extends TestObjSuper{
         new InspAttr().{o.bind(insp, "quat", "变换")}
 
         insp.excludes("age pos name quat ")
+
+        insp.beforeInsp = ^void(Insp*insp, Node* o){
+            mkDrawButton(o, 0).{
+                o.text = str("前置按钮")
+            }
+        }
+        insp.afterInsp = ^void(Insp*insp, Node* o){
+            layoutLinear(o, 0).{
+                o.asRow().jcse().aic()
+                o.padding.setVer(6)
+
+                mkDrawButton(o, 0).{
+                    o.width = 100
+                    o.text = str("提交")
+                    o.onClick = ^void(MouseEvent *me){
+                        Toast_make("提交")
+                    }
+                }
+                mkDrawButton(o, 0).{
+                    o.width = 100
+                    o.text = str("取消")
+                }
+                mkDrawButton(o, 0).{
+                    o.width = 100
+                    o.text = str("上传")
+                }
+                mkDrawButton(o, 0).{
+                    o.width = 100
+                    o.text = str("控制")
+                }
+            }
+        }
     }
 
     void insp1_say(){
@@ -1139,8 +1189,11 @@ void testInsp(){
     printf("hi insp\n")
     new Window().{ 
         Window* win = o
+        // o.borderless = true
+        o.setTransparent()
 
         new ScrollArea().{
+            o.backgroundColor = 0
             win.setRootView(o)
             o.aiStretch()
 
