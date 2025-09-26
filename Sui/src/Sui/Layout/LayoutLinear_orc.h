@@ -112,8 +112,8 @@ struct tagSuiLayout$LayoutLinear {
 	SuiLayout$LayoutLinear *  (*aie) (SuiLayout$LayoutLinear *  self);
 	SuiLayout$LayoutLinear *  (*aiStretch) (SuiLayout$LayoutLinear *  self);
 	SuiLayout$LayoutLinear *  (*aiMaxOrStretch) (SuiLayout$LayoutLinear *  self);
-	SuiLayout$LayoutLinear *  (*asColumn) (SuiLayout$LayoutLinear *  self);
-	SuiLayout$LayoutLinear *  (*asRow) (SuiLayout$LayoutLinear *  self);
+	SuiLayout$LayoutLinear *  (*column) (SuiLayout$LayoutLinear *  self);
+	SuiLayout$LayoutLinear *  (*row) (SuiLayout$LayoutLinear *  self);
 	float  maxCrossSize ;
 };
 Vtable_SuiLayout$LayoutLinear* Vtable_SuiLayout$LayoutLinear_init(Vtable_SuiLayout$LayoutLinear* pvt);
@@ -146,8 +146,8 @@ SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$aic(SuiLayout$LayoutLinear *  s
 SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$aie(SuiLayout$LayoutLinear *  self);
 SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$aiStretch(SuiLayout$LayoutLinear *  self);
 SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$aiMaxOrStretch(SuiLayout$LayoutLinear *  self);
-SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$asColumn(SuiLayout$LayoutLinear *  self);
-SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$asRow(SuiLayout$LayoutLinear *  self);
+SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$column(SuiLayout$LayoutLinear *  self);
+SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$row(SuiLayout$LayoutLinear *  self);
 void  SuiLayout$LayoutLinear$layout(SuiLayout$LayoutLinear *  self, SuiCore$Frame *  ctx);
 
 SuiLayout$LayoutLinear*  SuiLayout$layoutLinear(SuiLayout$LayoutLinear **  __outRef__, void *  parent, long long  key);

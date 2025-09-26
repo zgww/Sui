@@ -13,6 +13,29 @@ struct Rgbaf {
     float b
     float a
 }
+extension Rgbaf {
+    String@ toString(){
+        char buf[256];
+        sprintf(buf, "Rgbaf(%f,%f,%f,%f)", self.r, self.g, self.b, self.a)
+        String@ s = str(buf)
+        return s 
+    }
+    Vec3 toVec3(){
+        return mkVec3(self.r, self.g, self.b)
+    }
+    Rgba toRgba(){
+        Rgba ret;
+        ret.r = (unsigned char )(self.r * 255.0)
+        ret.g = (unsigned char )(self.g * 255.0)
+        ret.b = (unsigned char )(self.b * 255.0)
+        ret.a = (unsigned char )(self.a * 255.0)
+        return ret;
+    }
+    int toInt(){
+        int ret =  self.toRgba().toInt()
+        return ret;
+    }
+}
 struct Rgba {
     unsigned char  r
     unsigned char  g
@@ -32,6 +55,22 @@ struct Hsva {
     float v;
     unsigned char a;
 }
+Rgbaf mkRgbafByFloat4(float *f4){
+    return mkRgbaf(
+        f4[0],
+        f4[1],
+        f4[2],
+        f4[3],
+        )
+}
+Rgbaf mkRgbaf(float r, float g, float b, float a){
+    Rgbaf ret
+    ret.r = r;
+    ret.g = g;
+    ret.b = b;
+    ret.a = a;
+    return ret
+}
 Rgbaf mkRgbafByInt(int color){
     Rgbaf v;
     v.a = (((color) >> 24) & 0xFF) / 255.0
@@ -39,17 +78,6 @@ Rgbaf mkRgbafByInt(int color){
     v.g = (((color) >>  8) & 0xFF) / 255.0
     v.b = (((color) >>  0) & 0xFF) / 255.0
     return v
-}
-extension Rgbaf {
-    String@ toString(){
-        char buf[256];
-        sprintf(buf, "Rgbaf(%f,%f,%f,%f)", self.r, self.g, self.b, self.a)
-        String@ s = str(buf)
-        return s 
-    }
-    Vec3 toVec3(){
-        return mkVec3(self.r, self.g, self.b)
-    }
 }
 
 Rgba mkRgbaByFloat(

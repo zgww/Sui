@@ -37,7 +37,7 @@ class TableView extends LayoutLinear {
 	^void (Node *o, int row, int column) renderTd
 
 	int rowHeight = 20
-	int row = 0
+	int rowCount = 0
 
 	List@ columns = new List()
 	void react(){
@@ -51,7 +51,7 @@ class TableView extends LayoutLinear {
 		self.renderBody()
 		self.endInnerReact()
 
-		self.height= self.rowHeight * (self.row + 1)
+		self.height= self.rowHeight * (self.rowCount + 1)
 	}
 	void renderHead(){
 		Node* o = (Node*)self
@@ -79,7 +79,7 @@ class TableView extends LayoutLinear {
 	}
 	void renderBody(){
 		Node* o = (Node*)self
-		for (int r = 0; r < self.row; r++){
+		for (int r = 0; r < self.rowCount; r++){
 			layoutLinear(o, r).{
 				o.height = self.rowHeight
 				// o.width = 400
@@ -148,7 +148,7 @@ class TableView extends LayoutLinear {
 		}
 
 		int maxRow = ceil(h / self.rowHeight)
-		int rowToDraw = maxInt(maxRow, self.row)
+		int rowToDraw = maxInt(maxRow, self.rowCount)
 
 		//横线
 		for (int r = 0; r < rowToDraw + 1; r++){
@@ -202,7 +202,7 @@ class TableView extends LayoutLinear {
 			float dy = e.clientY - r.y
 			float dx = e.clientX - r.x
 			int row = floor(dy / self.rowHeight) //相对于头
-			if (self.hoverRow != row && row >= 0 && row <= self.row){
+			if (self.hoverRow != row && row >= 0 && row <= self.rowCount){
 				self.hoverRow = row
 				self.invalidDraw()
 			}

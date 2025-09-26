@@ -85,6 +85,10 @@ extern "C"{
 //结构体元数据获取即初始化
 MetaStruct* SuiCore$Rgbaf_getOrInitMetaStruct();
 
+Orc$String*  SuiCore$Rgbaf$toString(Orc$String **  __outRef__, SuiCore$Rgbaf *  self);
+SuiCore$Vec3 SuiCore$Rgbaf$toVec3(SuiCore$Rgbaf *  self);
+SuiCore$Rgba SuiCore$Rgbaf$toRgba(SuiCore$Rgbaf *  self);
+int  SuiCore$Rgbaf$toInt(SuiCore$Rgbaf *  self);
 
 
 //结构体元数据获取即初始化
@@ -100,9 +104,9 @@ MetaStruct* SuiCore$Hsla_getOrInitMetaStruct();
 //结构体元数据获取即初始化
 MetaStruct* SuiCore$Hsva_getOrInitMetaStruct();
 
+SuiCore$Rgbaf SuiCore$mkRgbafByFloat4(float *  f4);
+SuiCore$Rgbaf SuiCore$mkRgbaf(float  r, float  g, float  b, float  a);
 SuiCore$Rgbaf SuiCore$mkRgbafByInt(int  color);
-Orc$String*  SuiCore$Rgbaf$toString(Orc$String **  __outRef__, SuiCore$Rgbaf *  self);
-SuiCore$Vec3 SuiCore$Rgbaf$toVec3(SuiCore$Rgbaf *  self);
 SuiCore$Rgba SuiCore$mkRgbaByFloat(float  r, float  g, float  b, float  a);
 SuiCore$Rgba SuiCore$mkRgba(unsigned char  r, unsigned char  g, unsigned char  b, unsigned char  a);
 SuiCore$Hsla SuiCore$mkHsla(float  h, float  s, float  l, unsigned char  a);

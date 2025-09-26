@@ -743,7 +743,7 @@ Sgl$Mesh*  SuiDesigner$SglGizmo_box(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, lon
 			box->build(box) ;
 			urgc_set_field(o, (void * )offsetof(Sgl$Mesh, geometry) , box) ;
 		}
-		o->material->setUniform4fByInt32Color(o->material, "color", color) ;
+		o->material->setUniformColor4fByInt32Color(o->material, "color", color) ;
 		((Sgl$Obj3d * )o)->position = pos;
 		return urgc_set_var_for_return_class((void ** )__outRef__, o) ; 
 	}
@@ -765,7 +765,7 @@ Sgl$Mesh*  SuiDesigner$SglGizmo_cone(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, lo
 			((Sgl$GeometryCylinder * )cone)->build(cone) ;
 			urgc_set_field(o, (void * )offsetof(Sgl$Mesh, geometry) , cone) ;
 		}
-		o->material->setUniform4fByInt32Color(o->material, "color", color) ;
+		o->material->setUniformColor4fByInt32Color(o->material, "color", color) ;
 		((Sgl$Obj3d * )o)->position = pos;
 		return urgc_set_var_for_return_class((void ** )__outRef__, o) ; 
 	}
@@ -785,7 +785,7 @@ Sgl$Mesh*  SuiDesigner$SglGizmo_torus(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, l
 			cone->build(cone) ;
 			urgc_set_field(o, (void * )offsetof(Sgl$Mesh, geometry) , cone) ;
 		}
-		o->material->setUniform4fByInt32Color(o->material, "color", color) ;
+		o->material->setUniformColor4fByInt32Color(o->material, "color", color) ;
 		((Sgl$Obj3d * )o)->position = pos;
 		return urgc_set_var_for_return_class((void ** )__outRef__, o) ; 
 	}

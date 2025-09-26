@@ -94,7 +94,7 @@ struct tagSuiView$TableView {
 	void  (**renderTh)(void *  self);
 	void  (**renderTd)(void *  self, SuiCore$Node *  o, int  row, int  column);
 	int  rowHeight ;
-	int  row ;
+	int  rowCount ;
 	Orc$List*  columns ;
 	void  (*renderHead) (SuiView$TableView *  self);
 	void  (*renderBody) (SuiView$TableView *  self);

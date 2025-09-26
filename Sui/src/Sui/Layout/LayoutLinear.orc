@@ -473,11 +473,11 @@ class LayoutLinear extends View {
 		return self
 	}
 
-	LayoutLinear* asColumn(){
+	LayoutLinear* column(){
 		self.direction.set("column")
 		return self
 	}
-	LayoutLinear* asRow(){
+	LayoutLinear* row(){
 		self.direction.set("row")
 		return self
 	}

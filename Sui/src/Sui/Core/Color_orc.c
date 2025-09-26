@@ -31,6 +31,32 @@ MetaStruct* SuiCore$Rgbaf_getOrInitMetaStruct(){
     }
 	return meta;
 }
+Orc$String*  SuiCore$Rgbaf$toString(Orc$String **  __outRef__, SuiCore$Rgbaf *  self){
+	char  buf[256];
+	sprintf(buf, "Rgbaf(%f,%f,%f,%f)", self->r, self->g, self->b, self->a) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  s = Orc$str((s = NULL,&s), buf) ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, s) ; 
+}
+
+SuiCore$Vec3 SuiCore$Rgbaf$toVec3(SuiCore$Rgbaf *  self){
+	return SuiCore$mkVec3(self->r, self->g, self->b) ; 
+}
+
+SuiCore$Rgba SuiCore$Rgbaf$toRgba(SuiCore$Rgbaf *  self){
+	SuiCore$Rgba ret;
+	ret.r = (unsigned char )(self->r * 255.0);
+	ret.g = (unsigned char )(self->g * 255.0);
+	ret.b = (unsigned char )(self->b * 255.0);
+	ret.a = (unsigned char )(self->a * 255.0);
+	return ret; 
+}
+
+int  SuiCore$Rgbaf$toInt(SuiCore$Rgbaf *  self){
+	SuiCore$Rgba tmpStructThis1;
+	int  ret = SuiCore$Rgba$toInt((tmpStructThis1 = SuiCore$Rgbaf$toRgba(self) ,&tmpStructThis1)) ;
+	return ret; 
+}
+
 
 // get or init meta 
 MetaStruct* SuiCore$Rgba_getOrInitMetaStruct(){
@@ -79,6 +105,19 @@ MetaStruct* SuiCore$Hsva_getOrInitMetaStruct(){
     }
 	return meta;
 }
+SuiCore$Rgbaf SuiCore$mkRgbafByFloat4(float *  f4){
+	return SuiCore$mkRgbaf(f4[0], f4[1], f4[2], f4[3]) ; 
+}
+
+SuiCore$Rgbaf SuiCore$mkRgbaf(float  r, float  g, float  b, float  a){
+	SuiCore$Rgbaf ret;
+	ret.r = r;
+	ret.g = g;
+	ret.b = b;
+	ret.a = a;
+	return ret; 
+}
+
 SuiCore$Rgbaf SuiCore$mkRgbafByInt(int  color){
 	SuiCore$Rgbaf v;
 	v.a = (((color) >> 24) & 0xFF) / 255.0;
@@ -86,17 +125,6 @@ SuiCore$Rgbaf SuiCore$mkRgbafByInt(int  color){
 	v.g = (((color) >> 8) & 0xFF) / 255.0;
 	v.b = (((color) >> 0) & 0xFF) / 255.0;
 	return v; 
-}
-
-Orc$String*  SuiCore$Rgbaf$toString(Orc$String **  __outRef__, SuiCore$Rgbaf *  self){
-	char  buf[256];
-	sprintf(buf, "Rgbaf(%f,%f,%f,%f)", self->r, self->g, self->b, self->a) ;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  s = Orc$str((s = NULL,&s), buf) ;
-	return urgc_set_var_for_return_class((void ** )__outRef__, s) ; 
-}
-
-SuiCore$Vec3 SuiCore$Rgbaf$toVec3(SuiCore$Rgbaf *  self){
-	return SuiCore$mkVec3(self->r, self->g, self->b) ; 
 }
 
 SuiCore$Rgba SuiCore$mkRgbaByFloat(float  r, float  g, float  b, float  a){

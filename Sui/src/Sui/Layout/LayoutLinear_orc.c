@@ -165,8 +165,8 @@ void SuiLayout$LayoutLinear_initMeta(Vtable_SuiLayout$LayoutLinear *pvt){
 	orc_metaField_method(&pNext, "aie", offsetof(SuiLayout$LayoutLinear, aie));
 	orc_metaField_method(&pNext, "aiStretch", offsetof(SuiLayout$LayoutLinear, aiStretch));
 	orc_metaField_method(&pNext, "aiMaxOrStretch", offsetof(SuiLayout$LayoutLinear, aiMaxOrStretch));
-	orc_metaField_method(&pNext, "asColumn", offsetof(SuiLayout$LayoutLinear, asColumn));
-	orc_metaField_method(&pNext, "asRow", offsetof(SuiLayout$LayoutLinear, asRow));
+	orc_metaField_method(&pNext, "column", offsetof(SuiLayout$LayoutLinear, column));
+	orc_metaField_method(&pNext, "row", offsetof(SuiLayout$LayoutLinear, row));
 }
 
 
@@ -251,8 +251,8 @@ void SuiLayout$LayoutLinear_init_fields(SuiLayout$LayoutLinear *self){
 	((SuiLayout$LayoutLinear*)self)->aie = (void*)SuiLayout$LayoutLinear$aie;
 	((SuiLayout$LayoutLinear*)self)->aiStretch = (void*)SuiLayout$LayoutLinear$aiStretch;
 	((SuiLayout$LayoutLinear*)self)->aiMaxOrStretch = (void*)SuiLayout$LayoutLinear$aiMaxOrStretch;
-	((SuiLayout$LayoutLinear*)self)->asColumn = (void*)SuiLayout$LayoutLinear$asColumn;
-	((SuiLayout$LayoutLinear*)self)->asRow = (void*)SuiLayout$LayoutLinear$asRow;
+	((SuiLayout$LayoutLinear*)self)->column = (void*)SuiLayout$LayoutLinear$column;
+	((SuiLayout$LayoutLinear*)self)->row = (void*)SuiLayout$LayoutLinear$row;
 	((SuiCore$ViewBase*)self)->layout = (void*)SuiLayout$LayoutLinear$layout;
 }
 
@@ -699,13 +699,13 @@ SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$aiMaxOrStretch(SuiLayout$Layout
 }
 
 
-SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$asColumn(SuiLayout$LayoutLinear *  self){
+SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$column(SuiLayout$LayoutLinear *  self){
 	Orc$String$set(self->direction, "column") ;
 	return self; 
 }
 
 
-SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$asRow(SuiLayout$LayoutLinear *  self){
+SuiLayout$LayoutLinear *  SuiLayout$LayoutLinear$row(SuiLayout$LayoutLinear *  self){
 	Orc$String$set(self->direction, "row") ;
 	return self; 
 }

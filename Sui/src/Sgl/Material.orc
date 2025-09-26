@@ -47,6 +47,7 @@ import * from "./Draw.orc"
 import * from "./Geometry.orc"
 import * from "./Buffer.orc"
 import * from "./Mat.orc"
+import * from "../SuiDesigner/Insp.orc"
 
 
 class UniformInfo {
@@ -54,7 +55,7 @@ class UniformInfo {
 
     // int location;
 
-    //0:unknown 1:mat, 2:intValues, 3: floatValues, 4:tex, 5:matArray
+    //0:unknown 1:mat, 2:intValues, 3: floatValues, 4:tex, 5:matArray, 6:color4f
     int kind = -1;
 
     //intValues|floatValues的个数
@@ -69,6 +70,90 @@ class UniformInfo {
 
     MatArray@ matArray
 
+    // void insp(Insp* insp){
+        // insp.cbInsp = ^void(Insp*insp, Node* o){
+        //     if self.kind == 4 {
+        //     }
+        // }
+    // }
+    void inspAsValue(Insp* insp, Node*o){
+
+        layoutLinear(o, (long long)self).{
+            // const char *dir = self.queryAttrDirection(mf)
+            o.border.b.set(1, 0x13000000)
+            o.row()
+
+            insp.mkFieldName(o, self.key.str)
+            // if self.kind ==
+
+            // Rgabf *color = 
+            // insp.inspRgbaf(o, self, )
+            if self.kind == 6{
+                mkColorPicker(o, 0).{
+                    o.backgroundColor = mkRgbafByFloat4(self.floatValues).toInt()
+                    o.onChanged = ^void (int newcolor){
+                        Rgbaf nv = mkRgbafByInt(newcolor)
+                        // self.setAttr(mf, mkStructObj(metaStructOf(Rgbaf), &nv))
+                    }
+                }
+            }
+            else if self.kind == 3 {
+                // insp.mkFieldName(o, "floats")
+                if self.count == 2 {
+                    Vec2 v = mkVec2(
+                        self.floatValues[0], 
+                        self.floatValues[1], )
+                    Insp_mkVec2(o, 0, v, ^void(Vec2 nv){} );
+                }
+                else if self.count == 3 {
+                    Vec3 v = mkVec3(
+                        self.floatValues[0], 
+                        self.floatValues[1], 
+                        self.floatValues[2], 
+                    )
+                    Insp_mkVec3(o, 0, v, ^void(Vec3 nv){} );
+                }
+                else if self.count == 4 {
+                    Vec4 v = mkVec4(
+                        self.floatValues[0], 
+                        self.floatValues[1], 
+                        self.floatValues[2], 
+                        self.floatValues[3], 
+                    )
+                    Insp_mkVec4(o, 0, v, ^void(Vec4 nv){} );
+                }
+            }
+            else if self.kind == 4 {
+                mkImageView(o, 0).{
+                    o.width = 100
+                    o.height = 100
+                    o.setImageMode( WrapContent)
+                    o.border.setAll(1, 0xff999999)
+                    o.setSrc(self.texPath)
+                    o.cursor.set("pointer")
+                    o.cbOnEvent = ^ void(Event *e){
+                        // if e instanceof MouseEvent {
+                        //     MouseEvent *me = (MouseEvent*)e;
+                        //     if me.button == 1 && me.isClickInBubble(){
+                        //         // Toast_make(str("click image").addString(src).str)
+                        //         FileChooser@ fc = new FileChooser()
+                        //         fc.use_filterImage()
+                        //         fc.loadPaths()
+                        //         fc.onChoose = ^ void(String@ newpath){
+                        //             insp.setAttr(mf, newpath)
+                        //         }
+                        //         fc.showWindow()
+                        //     }
+                        // }
+                    }
+                }
+                mkTextView(o, 0).{
+                    o.setText(self.texPath)
+                }
+            }
+        }
+    }
+
 
     void fromJson(Json* jo){
         self.key = jo.getString("key")
@@ -82,8 +167,11 @@ class UniformInfo {
         if self.kind == 3 {
             jo.getToFloats("floatValues", self.floatValues, self.count)
         }
+        if self.kind == 6 {
+            jo.getToFloats("floatValues", self.floatValues, self.count)
+        }
 
-        jo.getToInt("texIndex", &self.texIndex)
+        // jo.getToInt("texIndex", &self.texIndex)
         self.texPath = jo.getString("texPath")
     }
     void toJson(Json* jo){
@@ -96,7 +184,10 @@ class UniformInfo {
         if self.kind == 3 {
             jo.put("floatValues", Json_toJsonNumberArrayByFloats(self.floatValues, self.count))
         }
-        jo.putNumber("texIndex", self.texIndex)
+        if self.kind == 6 {
+            jo.put("floatValues", Json_toJsonNumberArrayByFloats(self.floatValues, self.count))
+        }
+        // jo.putNumber("texIndex", self.texIndex)
         if self.texPath {
             jo.putString("texPath", self.texPath)
         }
@@ -174,6 +265,14 @@ class UniformInfo {
                     return false
                 }
             }
+            else if self.kind == 6 { // color4f
+                program.uniform4f(self.key.str, 
+                    self.floatValues[0],
+                    self.floatValues[1],
+                    self.floatValues[2],
+                    self.floatValues[3],
+                );
+            }
             return true
         }
         return false
@@ -212,6 +311,32 @@ class Material{
     String@ vsPath = str("a.vs")
     String@ fsPath = str("a.fs")
 
+
+    void insp(Insp* insp){
+        new InspAttrFilePath().{o.bind(insp, "path", null);}
+        new InspAttrFilePath().{o.bind(insp, "vsPath", null);}
+        new InspAttrFilePath().{o.bind(insp, "fsPath", null);}
+
+        insp.afterInsp = ^void(Insp*insp, Node* o){
+            mkPanel2(o, 0).{
+                o.title = str("uniforms")
+
+                for int i = 0; i < self.uniforms.size(); i++{
+                    UniformInfo* uinfo = (UniformInfo*)self.uniforms.get(i)
+                    // // // mkTextView(o, i).{
+                    // // //     o.setText(uinfo.key)
+                    // // // }
+                    // Insp@ curInsp = new Insp()
+                    // // curInsp.inspObj(o, uinfo)
+                    uinfo.inspAsValue(insp, o)
+                }
+
+            }
+        }
+    }
+    void insp_hi(){
+        Toast_make("hi")
+    }
 
 
     //预备绘制。。 需要切换开关
@@ -417,9 +542,18 @@ class Material{
         ui.floatValues[2] = z
         ui.floatValues[3] = w
     }
-    void setUniform4fByInt32Color(const char *key, int color){
+    void setUniformColor4f(const char *key, float x, float y, float z, float w){
+        UniformInfo@ ui = self.gocUniformInfo(key)
+        ui.kind = 6
+        ui.count = 4
+        ui.floatValues[0] = x
+        ui.floatValues[1] = y
+        ui.floatValues[2] = z
+        ui.floatValues[3] = w
+    }
+    void setUniformColor4fByInt32Color(const char *key, int color){
         Rgbaf c = mkRgbafByInt(color)
-        self.setUniform4f(
+        self.setUniformColor4f(
             key, 
             c.r, 
             c.g, 
@@ -530,10 +664,7 @@ class Material{
         return ok
     }
 
-
-
     ShaderMeta@ shaderMeta
-
 }
 
 
@@ -1280,4 +1411,49 @@ void testMaterialMeta(){
     ShaderMeta@ sm = new ShaderMeta()
     sm.parseVsByPathCstr("../asset/a.vs")
     sm.parseFsByPathCstr("../asset/a.fs")
+}
+void testInspMaterial(){
+
+    printf("hi insp material\n")
+    new Window().{ 
+        Window* win = o
+
+        new ScrollArea().{
+            // o.backgroundColor = 0xffdfdfdf
+            o.backgroundColor = 0xeeefefff
+            win.setRootView(o)
+
+            o.aiStretch()
+
+            layoutLinear(o, 0).{
+
+                o.column().jcs().aiStretch()
+                o.backgroundColor = 0x99efefff
+
+                // TestObj@ obj = new TestObj()
+
+                Material@ matl = new Material()
+                matl.load("../asset/basic.matl.json")
+
+                Insp@ insp = new Insp()
+                insp.insp(o, matl)
+
+
+                // useEbus().cbOnEvent = ^void(Event*e){
+                //     printf("收到事件:%s\n", orc_getVtableByObject(e).className)
+                //     printf("TestObj:%d %s. value:%f, isMale:%d\n", obj.age, obj.name.str, obj.value, obj.isMale)
+                //     printf("pos:%f,%f\n", obj.pos.x, obj.pos.y)
+                //     printf("rotation:%f,%f,%f\n", obj.rotation.x, obj.rotation.y, obj.rotation.z)
+                //     printf("quat:%f,%f,%f,%f\n", obj.quat.x, obj.quat.y, obj.quat.z, obj.quat.w)
+                // }
+            }
+        }
+
+        // o.borderless = true
+        // o.setTransparent()
+        o.setTitle("材质")
+        o.setSize(640, 480)
+        o.moveToCenter()
+        o.show()
+    }
 }

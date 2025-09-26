@@ -154,7 +154,7 @@ class TestPlaceView extends View {
 
         Node* o = self
         layoutLinear(o, 0).{
-            o.asColumn().aic()
+            o.column().aic()
 
             o.placeKid(self.outKids.get(2))
             mkView(o, 0).{

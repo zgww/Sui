@@ -100,12 +100,92 @@ class Panel extends LayoutLinear{
 
         self.endInnerReact()
     }
-
-
-
 }
+/// 布局上下文
+class Panel2 extends LayoutLinear{
+
+    ^void (Node* o) cbRenderTitle
+
+    String@ title
+    bool open = true
+
+
+    void ctor(){
+        self.hasInnerReact = true
+    }
+
+
+    void onEvent_forHead(Event *e){
+        if (e instanceof MouseEvent){
+            self.onClick_inHead((MouseEvent*)e)
+        }
+    }
+    void onClick_inHead(MouseEvent*e){
+        if (e.isClickInBubble()){
+            self.setOpen(!self.open)
+        }
+    }
+    void setOpen(bool v){
+        if (v == self.open){
+            return;
+        }
+        self.open = v
+        self.invalidReact()
+    }
+
+    void react(){
+        self.direction.set("column")
+        self.alignItems.set("stretch")
+
+
+        self.startInnerReact()
+
+        Node *o = self
+
+        //标题
+        layoutLinear(o, 0).{
+            o.cbOnEvent = ^void (Event *e){
+                self.onEvent_forHead(e)
+            }
+
+            o.backgroundColor = 0x0d000000
+            o.border.setAll(1, 0x33000000)
+
+            mkImageView(o, 0).{
+                // o.imageMode = HeightFix
+                o.width = 16
+                o.height = 16
+                o.setSrc(
+                    self.open 
+                    ? str("asset/icon/arrow-down.png")
+                    : str("asset/icon/arrow-right.png")
+                )
+                o.margin.right = 4
+            }
+
+            if self.title{
+                mkTextView(o, 0).{
+                    o.setText(self.title)
+                }
+            } else if (self.cbRenderTitle){
+                self.cbRenderTitle(o)
+            }
+        }
+
+        if self.open {
+            self.placeKids(self.outKids)
+        }
+
+        self.endInnerReact()
+    }
+}
+
 Panel@ mkPanel(void* parent, long long key){
     void *addr =  __builtin_return_address(0)
     void *sp = key ? (void*)key: addr
     return (Panel@)gocNode(sp, (Node*)parent, Panel)
+}
+Panel2@ mkPanel2(void* parent, long long key){
+    void *sp = key ? (void*)key: __builtin_return_address(0)
+    return (Panel2@)gocNode(sp, (Node*)parent, Panel2)
 }

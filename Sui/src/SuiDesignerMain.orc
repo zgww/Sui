@@ -1209,7 +1209,8 @@ int main(){
 
     // testPlaceKidsTo()
 
-    testInsp()
+    // testInsp()
+    testInspMaterial()
 
     // testTransparency()
 

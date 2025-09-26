@@ -384,7 +384,7 @@ Mesh@ SglGizmo_box(Obj3d* o, long long key,  float size, Vec3 pos, int color){
 
             o.geometry = box
         }
-        o.material.setUniform4fByInt32Color("color", color)
+        o.material.setUniformColor4fByInt32Color("color", color)
         o.position = pos
 
         return o
@@ -403,7 +403,7 @@ Mesh@ SglGizmo_cone(Obj3d* o, long long key,  float size, Vec3 pos, int color){
 
             o.geometry = cone
         }
-        o.material.setUniform4fByInt32Color("color", color)
+        o.material.setUniformColor4fByInt32Color("color", color)
         o.position = pos
 
         return o
@@ -423,7 +423,7 @@ Mesh@ SglGizmo_torus(Obj3d* o, long long key,  float size, Vec3 pos, int color){
 
             o.geometry = cone
         }
-        o.material.setUniform4fByInt32Color("color", color)
+        o.material.setUniformColor4fByInt32Color("color", color)
         o.position = pos
 
         return o

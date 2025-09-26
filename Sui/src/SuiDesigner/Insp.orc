@@ -483,7 +483,7 @@ class Insp {
     void inspObj(Node* o, Object *obj){
         self.curNodeStack.push(o)
 
-        Vtable_Object *vt = orc_getVtableByObject(self.obj)
+        Vtable_Object *vt = orc_getVtableByObject(obj)
         self.inspExtends(obj, vt)
 
         self.curNodeStack.pop()
@@ -538,7 +538,7 @@ class Insp {
             if tmp.isHboxStart {
                 Node* parent = self.peekParent()
                 ll = layoutLinear(parent, (long long)mf)
-                ll.asRow().jcsb()
+                ll.row().jcsb()
                 // ll.backgroundColor = 0xffff0000
                 // ll.height = 50
                 self.curNodeStack.push(ll)
@@ -561,9 +561,6 @@ class Insp {
         }
     }
     void inspField(Object *obj, OrcMetaField *mf){
-        if String_startsWith(mf.name, "_") {//以下划线开头的，不构建表单
-            return
-        }
         if self.isSkipAttr(obj, mf) { return }
 
         // String@ curKeyPath = str(keyPath.str).add(".").add(mf.name)
@@ -574,10 +571,10 @@ class Insp {
 
         //方法
         if mf.type == OrcMetaType_method {
-            if String_startsWith(mf.name, "insp"){
+            if String_startsWith(mf.name, "insp_"){
                 mkDrawButton(o, (long long)mf).{
                     // o.margin.setHor(8)
-                    o.text = str(mf.name)
+                    o.text = str(mf.name+5)
                     // layoutLinearCell(o, 0).{ o.grow = 1}
                     o.onClick = ^void(MouseEvent *me){
                         void **ptr = orc_getFieldPtr(self.obj, mf.name)
@@ -601,10 +598,11 @@ class Insp {
         //按类型
         layoutLinear(o, (long long)mf).{
             const char *dir = self.queryAttrDirection(mf)
+            o.border.b.set(1, 0x13000000)
 
             o.direction.set( dir)
 
-            self.mkFieldName(o, obj, mf)
+            self.mkFieldName(o, mf.name)
             //有元信息
             if attr {
                 attr.inspValue(o, obj, mf, self)
@@ -629,6 +627,10 @@ class Insp {
     }
     //是否要忽略的属性
     bool isSkipAttr(Object *obj, OrcMetaField *mf){
+        // 以下划线开头
+        if String_startsWith(mf.name, "_") { return true; }
+
+
         InspLibItem* libItem = useInspLib().getByObject(obj)
         if libItem {
             return false
@@ -641,6 +643,13 @@ class Insp {
         if mf.metaStruct == metaStructOf(Vec4) { return false } 
         if mf.metaStruct == metaStructOf(Rgba) { return false } 
         if mf.metaStruct == metaStructOf(Bezier) { return false } 
+
+        if mf.type == OrcMetaType_method {
+            // insp 功能按钮
+            if String_startsWith(mf.name, "insp"){
+                return false;
+            }
+        }
 
         return true
     }
@@ -665,6 +674,7 @@ class Insp {
         if self.inspVec3(o, obj, mf) { return}
         if self.inspVec4(o, obj, mf) { return}
         if self.inspRgba(o, obj, mf) { return}
+        if self.inspRgbaf(o, obj, mf) { return}
         if self.inspBezier(o, obj, mf) { return}
     }
 
@@ -962,6 +972,20 @@ class Insp {
         }
         return true
     }
+    bool inspRgbaf(Node*o, Object *obj, OrcMetaField *mf){
+        if mf.metaStruct != metaStructOf(Rgbaf) { return false } 
+
+        Rgbaf v = *((Rgbaf*)OrcMetaField_getPtr(mf, obj))
+
+        mkColorPicker(o, 0).{
+            o.backgroundColor = v.toInt()
+            o.onChanged = ^void (int newcolor){
+                Rgbaf nv = mkRgbafByInt(newcolor)
+                self.setAttr(mf, mkStructObj(metaStructOf(Rgbaf), &nv))
+            }
+        }
+        return true
+    }
     bool inspRgba(Node*o, Object *obj, OrcMetaField *mf){
         if mf.metaStruct != metaStructOf(Rgba) { return false } 
 
@@ -995,8 +1019,7 @@ class Insp {
         }
         return true
     }
-    void mkFieldName(Node*o, Object *obj, OrcMetaField *mf){
-        const char *name = OrcMetaField_getName(mf)
+    void mkFieldName(Node*o, const char *name){
         mkTextView(o, 0).{
             // String@ s = str(name)
             o.setText(str(name))
@@ -1005,6 +1028,8 @@ class Insp {
         }
     }
 
+    ^void (Object* obj, OrcMetaField*mf, Object* inspValue) cbSetAttr
+
     void setAttrDefault(OrcMetaField*mf, Object* inspValue){
         Orc_setField(self.obj, mf, inspValue)
     }
@@ -1012,14 +1037,18 @@ class Insp {
         // String@ tmp = keyPath.trimChars(".", true, true)
         // List@ segs = tmp.splitByRe("\\.")
         InspAttr* attr = self.getAttr(mf.name)
-
         if attr {
 
         }
         else {
         }
 
-        self.setAttrDefault(mf, inspValue)
+        if self.cbSetAttr {
+            self.cbSetAttr(self.obj, mf, inspValue)
+        }
+        else {
+            self.setAttrDefault(mf, inspValue)
+        }
 
 
         EventInspAttrChanged@ evt = new EventInspAttrChanged()
@@ -1146,7 +1175,7 @@ class TestObj extends TestObjSuper{
         }
         insp.afterInsp = ^void(Insp*insp, Node* o){
             layoutLinear(o, 0).{
-                o.asRow().jcse().aic()
+                o.row().jcse().aic()
                 o.padding.setVer(6)
 
                 mkDrawButton(o, 0).{
@@ -1185,12 +1214,188 @@ class TestObj extends TestObjSuper{
         Toast_make(str("hi3:").add(self.name.str).str)
     }
 }
+
+//构建Float3控件
+void Insp_mkVec2(Node*o, long long key, Vec2 v, ^void (Vec2 nv) set){
+    layoutLinear(o, (long long)key).{
+        // Vec3 v = *((Vec3*)OrcMetaField_getPtr(mf, obj))
+
+        mkEditText(o, 0).{
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+            o.setValue_notInFocus(str("").addf(v.x))
+            o.border.setAll(1, 0xffff0000)
+
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+
+                printf("set x:%f=>%f\n", v.x, nv)
+                v.x = nv;
+
+                set(v)
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        mkEditText(o, 0).{
+            o.border.setAll(1, 0xff00ff00)
+
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+
+            o.setValue_notInFocus(str("").addf(v.y))
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+                printf("set y:%f=>%f\n", v.y, nv)
+
+                v.y = nv;
+                set(v)
+
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+
+        layoutLinearCell(o, 0).{ o.grow = 1}
+    }
+}
+void Insp_mkVec3(Node*o, long long key, Vec3 v, ^void (Vec3 nv) set){
+    layoutLinear(o, (long long)key).{
+        // Vec3 v = *((Vec3*)OrcMetaField_getPtr(mf, obj))
+
+        mkEditText(o, 0).{
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+            o.setValue_notInFocus(str("").addf(v.x))
+            o.border.setAll(1, 0xffff0000)
+
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+
+                printf("set x:%f=>%f\n", v.x, nv)
+                v.x = nv;
+
+                set(v)
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        mkEditText(o, 0).{
+            o.border.setAll(1, 0xff00ff00)
+
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+
+            o.setValue_notInFocus(str("").addf(v.y))
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+                printf("set y:%f=>%f\n", v.y, nv)
+
+                v.y = nv;
+                set(v)
+
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        mkEditText(o, 0).{
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+            o.setValue_notInFocus(str("").addf(v.z))
+            o.border.setAll(1, 0xff0000ff)
+
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+
+                printf("set x:%f=>%f\n", v.z, nv)
+                v.z = nv;
+                set(v)
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        layoutLinearCell(o, 0).{ o.grow = 1}
+    }
+}
+void Insp_mkVec4(Node*o, long long key, Vec4 v, ^void (Vec4 nv) set){
+    layoutLinear(o, (long long)key).{
+        // Vec3 v = *((Vec3*)OrcMetaField_getPtr(mf, obj))
+
+        mkEditText(o, 0).{
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+            o.setValue_notInFocus(str("").addf(v.x))
+            o.border.setAll(1, 0xffff0000)
+
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+
+                printf("set x:%f=>%f\n", v.x, nv)
+                v.x = nv;
+
+                set(v)
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        mkEditText(o, 0).{
+            o.border.setAll(1, 0xff00ff00)
+
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+
+            o.setValue_notInFocus(str("").addf(v.y))
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+                printf("set y:%f=>%f\n", v.y, nv)
+
+                v.y = nv;
+                set(v)
+
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        mkEditText(o, 0).{
+            o.padding.left = 4
+            o.margin.right = 8
+            o.margin.bottom = 4
+            o.setValue_notInFocus(str("").addf(v.z))
+            o.border.setAll(1, 0xff0000ff)
+
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+
+                printf("set x:%f=>%f\n", v.z, nv)
+                v.z = nv;
+                set(v)
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        mkEditText(o, 0).{
+            o.padding.left = 4
+            o.margin.bottom = 4
+            o.setValue_notInFocus(str("").addf(v.w))
+            o.border.setAll(1, 0xffff00ff)
+
+            o.onValueChanged = ^void (EditText* et){
+                double nv = atof(et.value.str)
+
+                printf("set w:%f=>%f\n", v.x, nv)
+                v.w = nv;
+                set(v)
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        layoutLinearCell(o, 0).{ o.grow = 1}
+    }
+}
 void testInsp(){
     printf("hi insp\n")
     new Window().{ 
         Window* win = o
         // o.borderless = true
-        o.setTransparent()
+        // o.setTransparent()
 
         new ScrollArea().{
             o.backgroundColor = 0
@@ -1199,7 +1404,7 @@ void testInsp(){
 
             layoutLinear(o, 0).{
 
-                o.asColumn().jcs().aiStretch()
+                o.column().jcs().aiStretch()
                 o.backgroundColor = 0x99efefff
 
                 // mkTextView(o, 0).{
@@ -1236,6 +1441,7 @@ void testInsp(){
         // o.setTransparent()
         o.setTitle("检视器")
         o.setSize(640, 480)
+        o.moveToCenter()
         o.show()
     }
 }

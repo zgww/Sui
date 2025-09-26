@@ -211,7 +211,7 @@ void  SuiView$TestPlaceView$react(SuiView$TestPlaceView *  self){
 		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_156_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		SuiLayout$LayoutLinear *  tmpThis_1 = NULL;
-		(tmpThis_1 = o->asColumn(o) )->aic(tmpThis_1) ;
+		(tmpThis_1 = o->column(o) )->aic(tmpThis_1) ;
 		SuiCore$Node$placeKid((SuiCore$Node * )o, ((SuiCore$Node * )self)->outKids->get(((SuiCore$Node * )self)->outKids, 2) ) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmpReturn_2 = NULL;
 		{

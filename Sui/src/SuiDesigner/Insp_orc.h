@@ -436,9 +436,11 @@ struct tagSuiDesigner$Insp {
 	bool  (*inspVec3) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspVec4) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspIntColor) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
+	bool  (*inspRgbaf) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspRgba) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspBezier) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
-	void  (*mkFieldName) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
+	void  (*mkFieldName) (SuiDesigner$Insp *  self, SuiCore$Node *  o, const char *  name);
+	void  (**cbSetAttr)(void *  self, Object *  obj, OrcMetaField *  mf, Object *  inspValue);
 	void  (*setAttrDefault) (SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
 	void  (*setAttr) (SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
 };
@@ -469,9 +471,10 @@ bool  SuiDesigner$Insp$inspVec2(SuiDesigner$Insp *  self, SuiCore$Node *  o, Obj
 bool  SuiDesigner$Insp$inspVec3(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspVec4(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspIntColor(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
+bool  SuiDesigner$Insp$inspRgbaf(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspRgba(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspBezier(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
-void  SuiDesigner$Insp$mkFieldName(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
+void  SuiDesigner$Insp$mkFieldName(SuiDesigner$Insp *  self, SuiCore$Node *  o, const char *  name);
 void  SuiDesigner$Insp$setAttrDefault(SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
 void  SuiDesigner$Insp$setAttr(SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
 
@@ -582,6 +585,9 @@ void  SuiDesigner$TestObj$insp1_say(SuiDesigner$TestObj *  self);
 void  SuiDesigner$TestObj$insp1_say2(SuiDesigner$TestObj *  self);
 void  SuiDesigner$TestObj$insp0_say2(SuiDesigner$TestObj *  self);
 
+void  SuiDesigner$Insp_mkVec2(SuiCore$Node *  o, long long  key, SuiCore$Vec2 v, void  (**set)(void *  self, SuiCore$Vec2 nv));
+void  SuiDesigner$Insp_mkVec3(SuiCore$Node *  o, long long  key, SuiCore$Vec3 v, void  (**set)(void *  self, SuiCore$Vec3 nv));
+void  SuiDesigner$Insp_mkVec4(SuiCore$Node *  o, long long  key, SuiCore$Vec4 v, void  (**set)(void *  self, SuiCore$Vec4 nv));
 void  SuiDesigner$testInsp();
 
 

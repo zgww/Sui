@@ -86,6 +86,7 @@ typedef struct tagVtable_Sgl$MaterialPreviewView Vtable_Sgl$MaterialPreviewView;
 #include "./Geometry_orc.h"
 #include "./Buffer_orc.h"
 #include "./Mat_orc.h"
+#include "../SuiDesigner/Insp_orc.h"
 
 
 #ifdef __cplusplus
@@ -114,6 +115,7 @@ struct tagSgl$UniformInfo {
 	Sgl$Tex2d*  tex ;
 	Orc$String*  texPath ;
 	Sgl$MatArray*  matArray ;
+	void  (*inspAsValue) (Sgl$UniformInfo *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
 	void  (*fromJson) (Sgl$UniformInfo *  self, Json$Json *  jo);
 	void  (*toJson) (Sgl$UniformInfo *  self, Json$Json *  jo);
 	SuiCore$Rgba (*getColor) (Sgl$UniformInfo *  self);
@@ -125,6 +127,7 @@ void Sgl$UniformInfo_init(Sgl$UniformInfo *self, void *pOwner);
 Sgl$UniformInfo * Sgl$UniformInfo_new(void *pOwner);
 void Sgl$UniformInfo_fini(Sgl$UniformInfo *self);
 
+void  Sgl$UniformInfo$inspAsValue(Sgl$UniformInfo *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
 void  Sgl$UniformInfo$fromJson(Sgl$UniformInfo *  self, Json$Json *  jo);
 void  Sgl$UniformInfo$toJson(Sgl$UniformInfo *  self, Json$Json *  jo);
 SuiCore$Rgba Sgl$UniformInfo$getColor(Sgl$UniformInfo *  self);
@@ -159,6 +162,8 @@ struct tagSgl$Material {
 	Sgl$Mat projection ;
 	Orc$String*  vsPath ;
 	Orc$String*  fsPath ;
+	void  (*insp) (Sgl$Material *  self, SuiDesigner$Insp *  insp);
+	void  (*insp_hi) (Sgl$Material *  self);
 	void  (*prepareDraw) (Sgl$Material *  self);
 	void  (*endDraw) (Sgl$Material *  self);
 	bool  (*load) (Sgl$Material *  self, const char *  path);
@@ -179,7 +184,8 @@ struct tagSgl$Material {
 	void  (*setUniform2f) (Sgl$Material *  self, const char *  key, float  x, float  y);
 	void  (*setUniform3f) (Sgl$Material *  self, const char *  key, float  x, float  y, float  z);
 	void  (*setUniform4f) (Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
-	void  (*setUniform4fByInt32Color) (Sgl$Material *  self, const char *  key, int  color);
+	void  (*setUniformColor4f) (Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
+	void  (*setUniformColor4fByInt32Color) (Sgl$Material *  self, const char *  key, int  color);
 	void  (*setUniformVec2) (Sgl$Material *  self, const char *  key, SuiCore$Vec2 v);
 	void  (*setUniformVec3) (Sgl$Material *  self, const char *  key, SuiCore$Vec3 v3);
 	void  (*setUniformVec4) (Sgl$Material *  self, const char *  key, SuiCore$Vec4 v);
@@ -192,6 +198,8 @@ void Sgl$Material_init(Sgl$Material *self, void *pOwner);
 Sgl$Material * Sgl$Material_new(void *pOwner);
 void Sgl$Material_fini(Sgl$Material *self);
 
+void  Sgl$Material$insp(Sgl$Material *  self, SuiDesigner$Insp *  insp);
+void  Sgl$Material$insp_hi(Sgl$Material *  self);
 extern void  Sgl$Material$prepareDraw(Sgl$Material *  self);
 extern void  Sgl$Material$endDraw(Sgl$Material *  self);
 bool  Sgl$Material$load(Sgl$Material *  self, const char *  path);
@@ -212,7 +220,8 @@ void  Sgl$Material$setUniform1f(Sgl$Material *  self, const char *  key, float  
 void  Sgl$Material$setUniform2f(Sgl$Material *  self, const char *  key, float  x, float  y);
 void  Sgl$Material$setUniform3f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z);
 void  Sgl$Material$setUniform4f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
-void  Sgl$Material$setUniform4fByInt32Color(Sgl$Material *  self, const char *  key, int  color);
+void  Sgl$Material$setUniformColor4f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
+void  Sgl$Material$setUniformColor4fByInt32Color(Sgl$Material *  self, const char *  key, int  color);
 void  Sgl$Material$setUniformVec2(Sgl$Material *  self, const char *  key, SuiCore$Vec2 v);
 void  Sgl$Material$setUniformVec3(Sgl$Material *  self, const char *  key, SuiCore$Vec3 v3);
 void  Sgl$Material$setUniformVec4(Sgl$Material *  self, const char *  key, SuiCore$Vec4 v);
@@ -339,6 +348,7 @@ void  Sgl$MaterialPreviewView$applyModel(Sgl$MaterialPreviewView *  self);
 
 Sgl$MaterialPreviewView*  Sgl$mkMaterialPreviewView(Sgl$MaterialPreviewView **  __outRef__, void *  parent, long long  key);
 void  Sgl$testMaterialMeta();
+void  Sgl$testInspMaterial();
 
 
 

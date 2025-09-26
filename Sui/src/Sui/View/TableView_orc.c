@@ -151,7 +151,7 @@ void SuiView$TableView_initMeta(Vtable_SuiView$TableView *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
 	orc_metaField_primitive(&pNext, "rowHeight", OrcMetaType_int, offsetof(SuiView$TableView, rowHeight), 0, 0, 0, 0);//int
-	orc_metaField_primitive(&pNext, "row", OrcMetaType_int, offsetof(SuiView$TableView, row), 0, 0, 0, 0);//int
+	orc_metaField_primitive(&pNext, "rowCount", OrcMetaType_int, offsetof(SuiView$TableView, rowCount), 0, 0, 0, 0);//int
 	orc_metaField_class(&pNext, "columns", ((Vtable_Object*)Vtable_Orc$List_init(0)), offsetof(SuiView$TableView, columns), true, false, 1);
 	orc_metaField_primitive(&pNext, "hoverRow", OrcMetaType_int, offsetof(SuiView$TableView, hoverRow), 0, 0, 0, 0);//int
 	orc_metaField_primitive(&pNext, "hoverCol", OrcMetaType_int, offsetof(SuiView$TableView, hoverCol), 0, 0, 0, 0);//int
@@ -216,7 +216,7 @@ void SuiView$TableView_init_fields(SuiView$TableView *self){
 	urgc_set_field(self, (void**)&((SuiView$TableView*)self)->renderTh, NULL);
 	urgc_set_field(self, (void**)&((SuiView$TableView*)self)->renderTd, NULL);
 	((SuiView$TableView*)self)->rowHeight = 20;
-	((SuiView$TableView*)self)->row = 0;
+	((SuiView$TableView*)self)->rowCount = 0;
 	URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_1 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$TableView*)self)->columns, Orc$List_new(&tmpNewOwner_1) );
 	((SuiView$TableView*)self)->hoverRow = -1;
@@ -276,7 +276,7 @@ void  SuiView$TableView$react(SuiView$TableView *  self){
 	self->renderHead(self) ;
 	self->renderBody(self) ;
 	((SuiCore$Node * )self)->endInnerReact(self) ;
-	((SuiCore$View * )self)->height = self->rowHeight * (self->row + 1);
+	((SuiCore$View * )self)->height = self->rowHeight * (self->rowCount + 1);
 }
 
 
@@ -318,7 +318,7 @@ void  SuiView$TableView$renderHead(SuiView$TableView *  self){
 
 void  SuiView$TableView$renderBody(SuiView$TableView *  self){
 	SuiCore$Node *  o = (SuiCore$Node * )self;
-	for (int  r = 0; r < self->row; r++) {
+	for (int  r = 0; r < self->rowCount; r++) {
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 		{
 			SuiLayout$LayoutLinear*  __scopeVar_83_3 = SuiLayout$layoutLinear(&tmpReturn_1, o, r) , *o = __scopeVar_83_3;
@@ -381,7 +381,7 @@ void  SuiView$TableView$draw_self(SuiView$TableView *  self, SuiCore$Canvas *  c
 		SuiCore$Canvas$lineTo(canvas, colX, h) ;
 	}
 	int  maxRow = ceil(h / self->rowHeight) ;
-	int  rowToDraw = Orc$maxInt(maxRow, self->row) ;
+	int  rowToDraw = Orc$maxInt(maxRow, self->rowCount) ;
 	for (int  r = 0; r < rowToDraw + 1; r++) {
 		int  y = r * self->rowHeight;
 		SuiCore$Canvas$moveTo(canvas, 0, y) ;
@@ -428,7 +428,7 @@ void  SuiView$TableView$onMouseEvent(SuiView$TableView *  self, SuiCore$MouseEve
 		float  dy = e->clientY - r.y;
 		float  dx = e->clientX - r.x;
 		int  row = floor(dy / self->rowHeight) ;
-		if (self->hoverRow != row && row >= 0 && row <= self->row) {
+		if (self->hoverRow != row && row >= 0 && row <= self->rowCount) {
 			self->hoverRow = row;
 			((SuiCore$ViewBase * )self)->invalidDraw(self) ;
 		}
