@@ -65,6 +65,7 @@ typedef struct tagVtable_Sgl$MaterialPreviewView Vtable_Sgl$MaterialPreviewView;
 #include "../Sui/Core/Color_orc.h"
 #include "../Sui/Core/MouseEvent_orc.h"
 #include "../Sui/Dialog/Toast_orc.h"
+#include "../Sui/Dialog/FileDialog_orc.h"
 #include "../Sui/Core/Vec4_orc.h"
 #include "../Sui/Core/Window_orc.h"
 #include "../Sui/View/TextView_orc.h"
@@ -176,7 +177,8 @@ struct tagSgl$Material {
 	void  (*updateUniforms) (Sgl$Material *  self);
 	Sgl$UniformInfo*  (*getUniformInfo) (Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
 	Sgl$UniformInfo*  (*gocUniformInfo) (Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
-	void  (*setUniformTex2d) (Sgl$Material *  self, const char *  key, Sgl$Tex2d *  tex);
+	void  (*setUniformTex2dByPath) (Sgl$Material *  self, const char *  key, const char *  path);
+	Sgl$UniformInfo *  (*setUniformTex2d) (Sgl$Material *  self, const char *  key, Sgl$Tex2d *  tex);
 	void  (*setUniformMatArray) (Sgl$Material *  self, const char *  key, Sgl$MatArray*  matArray);
 	void  (*setUniformMat4) (Sgl$Material *  self, const char *  key, Sgl$Mat mat);
 	void  (*setUniform1i) (Sgl$Material *  self, const char *  key, int  v);
@@ -212,7 +214,8 @@ void  Sgl$Material$setMvp(Sgl$Material *  self, Sgl$Mat model, Sgl$Mat view, Sgl
 void  Sgl$Material$updateUniforms(Sgl$Material *  self);
 Sgl$UniformInfo*  Sgl$Material$getUniformInfo(Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
 Sgl$UniformInfo*  Sgl$Material$gocUniformInfo(Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
-void  Sgl$Material$setUniformTex2d(Sgl$Material *  self, const char *  key, Sgl$Tex2d *  tex);
+void  Sgl$Material$setUniformTex2dByPath(Sgl$Material *  self, const char *  key, const char *  path);
+Sgl$UniformInfo *  Sgl$Material$setUniformTex2d(Sgl$Material *  self, const char *  key, Sgl$Tex2d *  tex);
 void  Sgl$Material$setUniformMatArray(Sgl$Material *  self, const char *  key, Sgl$MatArray*  matArray);
 void  Sgl$Material$setUniformMat4(Sgl$Material *  self, const char *  key, Sgl$Mat mat);
 void  Sgl$Material$setUniform1i(Sgl$Material *  self, const char *  key, int  v);

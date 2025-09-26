@@ -125,6 +125,14 @@ Orc$List*  SuiDialog$FileDialog_getOpenFileName(Orc$List **  __outRef__, const c
 	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
 }
 
+Orc$String*  SuiDialog$FileDialog_getFirstOpenFileName(Orc$String **  __outRef__, const char *  dir, const char *  title){
+	URGC_VAR_CLEANUP_CLASS Orc$List*  list = SuiDialog$FileDialog_getOpenFileName((list = NULL,&list), dir, title) ;
+	if (list->size(list)  > 0) {
+		return urgc_set_var_for_return_class((void ** )__outRef__, (Orc$String* )list->get(list, 0) ) ; 
+	}
+	return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
+}
+
 void  SuiDialog$test(){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  saveFileName = SuiDialog$fileDialog_getSaveFileName((saveFileName = NULL,&saveFileName), ".", "title") ;
 	printf("save fileName:%s\n", saveFileName->str) ;

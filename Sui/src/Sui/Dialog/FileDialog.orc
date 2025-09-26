@@ -21,9 +21,17 @@ extern String@ fileDialog_getExistingDirectory(const char *dir, const char *titl
 
 List@ FileDialog_getOpenFileName(const char *dir, const char *title){
     String@ cwd = Path_getcwd()
+    //会修改cwd
     List@ ret = fileDialog_getOpenFileName(dir, title)
     Path_setcwd(cwd.str)
     return ret
+}
+String@ FileDialog_getFirstOpenFileName(const char *dir, const char *title){
+    List@ list = FileDialog_getOpenFileName(dir, title)
+    if list.size() > 0{
+        return (String@)list.get(0)
+    }
+    return null
 }
 
 

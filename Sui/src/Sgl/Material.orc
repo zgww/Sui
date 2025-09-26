@@ -25,6 +25,7 @@ import * from "../Sui/Core/Node.orc"
 import * from "../Sui/Core/Color.orc"
 import * from "../Sui/Core/MouseEvent.orc"
 import * from "../Sui/Dialog/Toast.orc"
+import * from "../Sui/Dialog/FileDialog.orc"
 import * from "../Sui/Core/Vec4.orc"
 import * from "../Sui/Core/Window.orc"
 import * from "../Sui/View/TextView.orc"
@@ -136,7 +137,15 @@ class UniformInfo {
                         if e instanceof MouseEvent {
                             MouseEvent *me = (MouseEvent*)e;
                             if me.button == 1 && me.isClickInBubble(){
-                                Toast_make(str("click image").addString(path).str)
+                                // Toast_make(str("click image").addString(path).str)
+                                String@ tmppath = FileDialog_getFirstOpenFileName(".", "选择图片")
+                                if tmppath {
+                                    String@ base = Path_toAbsolute(matl.path.str)
+                                    String@ rel = Path_relPathToFile(tmppath.str, base.str)
+                                    printf("path:%s. rel:%s\n", tmppath.str, rel.str)
+
+                                    matl.setUniformTex2dByPath(self.key.str, tmppath.str)
+                                }
                                 // FileChooser@ fc = new FileChooser()
                                 // fc.use_filterImage()
                                 // fc.loadPaths()
@@ -491,11 +500,21 @@ class Material{
     //     // do nothing
     // }
 
-    void setUniformTex2d(const char *key, Tex2d* tex ){
+    void setUniformTex2dByPath(const char *key, const char *path){
+        String@ base = Path_toAbsolute(self.path.str)
+        String@ rel = Path_relPathToFile(path, base.str)
+
+        Tex2d@ tex = new Tex2d()
+        tex.loadImageByPathCstr(path)
+        UniformInfo* ui = self.setUniformTex2d(key, tex)
+        ui.texPath = rel
+    }
+    UniformInfo* setUniformTex2d(const char *key, Tex2d* tex ){
         UniformInfo@ ui = self.gocUniformInfo(key)
         ui.kind = 4
         ui.tex = tex
         // ui.texIndex = activeIndex
+        return ui
     }
     void setUniformMatArray(const char *key, MatArray@ matArray){
         UniformInfo@ ui = self.gocUniformInfo(key)

@@ -69,6 +69,7 @@ extern Orc$List*  SuiDialog$fileDialog_getOpenFileName(Orc$List **  __outRef__, 
 extern Orc$String*  SuiDialog$fileDialog_getSaveFileName(Orc$String **  __outRef__, const char *  dir, const char *  title);
 extern Orc$String*  SuiDialog$fileDialog_getExistingDirectory(Orc$String **  __outRef__, const char *  dir, const char *  title);
 Orc$List*  SuiDialog$FileDialog_getOpenFileName(Orc$List **  __outRef__, const char *  dir, const char *  title);
+Orc$String*  SuiDialog$FileDialog_getFirstOpenFileName(Orc$String **  __outRef__, const char *  dir, const char *  title);
 void  SuiDialog$test();
 
 
