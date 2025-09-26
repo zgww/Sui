@@ -111,7 +111,9 @@ String@ Path_toAbsolute(const char *p){
 String@ Path_normal(const char *s){
     String@ ret = str(s)
     String@ newPath = ret.replaceAllByRe("\\\\+", "/")
-    return newPath
+    String@ newPath2 = newPath.replaceAllByRe("^\\./|/\\.$", "") //去掉前后的'.'
+    String@ newPath3 = newPath2.replaceAllByRe("/\\./", "/") // 替换中间的/./ 为 /
+    return newPath3
 }
 //替换basename
 String@ Path_withBasename(const char *path, const char *newbasename){
@@ -267,6 +269,15 @@ bool Path_isUsualImage(const char *path){
     || String_endsWith(path, ".jpeg")
 
 }
+String@ Path_resolveRelativeFromFile(const char *path, const char *basefilepath){
+    if path && basefilepath{
+        String@ tmp = Path_dirname(basefilepath)
+        tmp.add("/").add(path)
+        String@ ret = Path_normal(tmp.str)
+        return ret
+    }
+    return null
+}
 
 void testPath(){
     {
@@ -315,5 +326,9 @@ void testPath(){
     }
     {
         Path_mkdirs("/ws/a/b/c/d")
+    }
+    {
+        String@ p = Path_resolveRelativeFromFile("a.png", "./a/././../b/c.matl.json")
+        printf("p:%s\n", p.str)
     }
 }

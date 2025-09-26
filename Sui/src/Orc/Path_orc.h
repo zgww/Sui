@@ -83,6 +83,7 @@ extern Orc$String*  Orc$Path_getExecutionPath(Orc$String **  __outRef__);
 extern Orc$String*  Orc$Path_readText(Orc$String **  __outRef__, const char *  path);
 extern bool  Orc$Path_writeText(const char *  path, const char *  text);
 bool  Orc$Path_isUsualImage(const char *  path);
+Orc$String*  Orc$Path_resolveRelativeFromFile(Orc$String **  __outRef__, const char *  path, const char *  basefilepath);
 void  Orc$testPath();
 
 

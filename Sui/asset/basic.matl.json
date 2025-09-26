@@ -40,7 +40,7 @@
 			"key":	"texPath",
 			"floatValues":	[-5.1999998092651367, 6, -6],
 			"kind":	4,
-			"texPath":"../asset/terrain.png",
+			"texPath":"./terrain.png",
 			"texIndex":	0
 		}
 	]

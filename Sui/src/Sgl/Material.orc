@@ -76,7 +76,7 @@ class UniformInfo {
         //     }
         // }
     // }
-    void inspAsValue(Insp* insp, Node*o){
+    void inspAsValue(Insp* insp, Node*o, Material* matl){
 
         layoutLinear(o, (long long)self).{
             // const char *dir = self.queryAttrDirection(mf)
@@ -124,18 +124,19 @@ class UniformInfo {
                 }
             }
             else if self.kind == 4 {
+                String@ path = Path_resolveRelativeFromFile(self.texPath.str, matl.path.str)
                 mkImageView(o, 0).{
                     o.width = 100
                     o.height = 100
                     o.setImageMode( WrapContent)
                     o.border.setAll(1, 0xff999999)
-                    o.setSrc(self.texPath)
+                    o.setSrc(path)
                     o.cursor.set("pointer")
                     o.cbOnEvent = ^ void(Event *e){
                         if e instanceof MouseEvent {
                             MouseEvent *me = (MouseEvent*)e;
                             if me.button == 1 && me.isClickInBubble(){
-                                Toast_make(str("click image").addString(self.texPath).str)
+                                Toast_make(str("click image").addString(path).str)
                                 // FileChooser@ fc = new FileChooser()
                                 // fc.use_filterImage()
                                 // fc.loadPaths()
@@ -328,7 +329,7 @@ class Material{
                     // // // }
                     // Insp@ curInsp = new Insp()
                     // // curInsp.inspObj(o, uinfo)
-                    uinfo.inspAsValue(insp, o)
+                    uinfo.inspAsValue(insp, o, self)
                 }
 
             }

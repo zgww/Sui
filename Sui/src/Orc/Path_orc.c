@@ -107,7 +107,9 @@ Orc$String*  Orc$Path_toAbsolute(Orc$String **  __outRef__, const char *  p){
 Orc$String*  Orc$Path_normal(Orc$String **  __outRef__, const char *  s){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  ret = Orc$str((ret = NULL,&ret), s) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  newPath = Orc$String$replaceAllByRe((newPath = NULL,&newPath), ret, "\\\\+", "/") ;
-	return urgc_set_var_for_return_class((void ** )__outRef__, newPath) ; 
+	URGC_VAR_CLEANUP_CLASS Orc$String*  newPath2 = Orc$String$replaceAllByRe((newPath2 = NULL,&newPath2), newPath, "^\\./|/\\.$", "") ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  newPath3 = Orc$String$replaceAllByRe((newPath3 = NULL,&newPath3), newPath2, "/\\./", "/") ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, newPath3) ; 
 }
 
 Orc$String*  Orc$Path_withBasename(Orc$String **  __outRef__, const char *  path, const char *  newbasename){
@@ -222,6 +224,16 @@ bool  Orc$Path_isUsualImage(const char *  path){
 	return Orc$String_endsWith(path, ".jpg")  || Orc$String_endsWith(path, ".png")  || Orc$String_endsWith(path, ".jpeg") ; 
 }
 
+Orc$String*  Orc$Path_resolveRelativeFromFile(Orc$String **  __outRef__, const char *  path, const char *  basefilepath){
+	if (path && basefilepath) {
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmp = Orc$Path_dirname((tmp = NULL,&tmp), basefilepath) ;
+		Orc$String$add(Orc$String$add(tmp, "/") , path) ;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  ret = Orc$Path_normal((ret = NULL,&ret), tmp->str) ;
+		return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
+	}
+	return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
+}
+
 void  Orc$testPath(){
 	{
 		URGC_VAR_CLEANUP_CLASS Orc$String*  bname = Orc$Path_basename((bname = NULL,&bname), "/a/b/csdfjsie") ;
@@ -269,6 +281,10 @@ void  Orc$testPath(){
 	}
 	{
 		Orc$Path_mkdirs("/ws/a/b/c/d") ;
+	}
+	{
+		URGC_VAR_CLEANUP_CLASS Orc$String*  p = Orc$Path_resolveRelativeFromFile((p = NULL,&p), "a.png", "./a/././../b/c.matl.json") ;
+		printf("p:%s\n", p->str) ;
 	}
 }
 

@@ -115,7 +115,7 @@ struct tagSgl$UniformInfo {
 	Sgl$Tex2d*  tex ;
 	Orc$String*  texPath ;
 	Sgl$MatArray*  matArray ;
-	void  (*inspAsValue) (Sgl$UniformInfo *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
+	void  (*inspAsValue) (Sgl$UniformInfo *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o, Sgl$Material *  matl);
 	void  (*fromJson) (Sgl$UniformInfo *  self, Json$Json *  jo);
 	void  (*toJson) (Sgl$UniformInfo *  self, Json$Json *  jo);
 	SuiCore$Rgba (*getColor) (Sgl$UniformInfo *  self);
@@ -127,7 +127,7 @@ void Sgl$UniformInfo_init(Sgl$UniformInfo *self, void *pOwner);
 Sgl$UniformInfo * Sgl$UniformInfo_new(void *pOwner);
 void Sgl$UniformInfo_fini(Sgl$UniformInfo *self);
 
-void  Sgl$UniformInfo$inspAsValue(Sgl$UniformInfo *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
+void  Sgl$UniformInfo$inspAsValue(Sgl$UniformInfo *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o, Sgl$Material *  matl);
 void  Sgl$UniformInfo$fromJson(Sgl$UniformInfo *  self, Json$Json *  jo);
 void  Sgl$UniformInfo$toJson(Sgl$UniformInfo *  self, Json$Json *  jo);
 SuiCore$Rgba Sgl$UniformInfo$getColor(Sgl$UniformInfo *  self);

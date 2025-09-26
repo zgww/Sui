@@ -1211,6 +1211,7 @@ int main(){
 
     // testInsp()
     testInspMaterial()
+    // testPath()
 
     // testTransparency()
 
