@@ -14,6 +14,10 @@ So based on OrcLang, we can achieve our goal described below.
 - Smallest Gui Framework <= 10MB (less dependencies, smaller size。 we are native app)
 - Fastest Compile Speed (then C++ 😁. I'm tired of C++'s compilation speed. The incremental compilation time for Project C is typically within 1 second.)
 
+## URGC
+
+The Urgc algorithm is fundamentally different from existing GC algorithms. Developed based on reference counting, it is a garbage collection algorithm capable of handling cyclic references. It constructs a reference tree from complex reference graphs by marking one reference in each relationship as the sole reference. Through this reference tree, we can determine when and how to detect cyclic references, and when to reclaim memory.
+
 
 ## Features
 
@@ -112,6 +116,7 @@ When working with Orc files, the corresponding `_orc.c` and `_orc.h` files are a
 - nanovg (2D vector graphics)
 
 - Assimp (3D model loading. [optional]) 
+
 
 ## TODO
 
