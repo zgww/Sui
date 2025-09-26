@@ -413,9 +413,14 @@ struct tagSuiDesigner$Insp {
 	Orc$Map*  attrMap ;
 	SuiDesigner$InspLib*  lib ;
 	SuiDesigner$InspAttr *  (*getAttr) (SuiDesigner$Insp *  self, const char *  key);
+	void  (*excludes) (SuiDesigner$Insp *  self, const char *  keys);
+	void  (*exclude) (SuiDesigner$Insp *  self, const char *  key);
 	SuiCore$Node *  (*peekParent) (SuiDesigner$Insp *  self);
-	void  (*call_collectInsp) (SuiDesigner$Insp *  self);
+	void  (*call_insp) (SuiDesigner$Insp *  self);
+	bool  bInspDefault ;
+	void  (*preventDefault) (SuiDesigner$Insp *  self);
 	void  (*insp) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj);
+	void  (*inspObj) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj);
 	void  (*inspExtends) (SuiDesigner$Insp *  self, Object *  obj, Vtable_Object *  vt);
 	void  (*inspVt) (SuiDesigner$Insp *  self, Object *  obj, Vtable_Object *  vt);
 	void  (*inspField) (SuiDesigner$Insp *  self, Object *  obj, OrcMetaField *  mf);
@@ -443,9 +448,13 @@ SuiDesigner$Insp * SuiDesigner$Insp_new(void *pOwner);
 void SuiDesigner$Insp_fini(SuiDesigner$Insp *self);
 
 SuiDesigner$InspAttr *  SuiDesigner$Insp$getAttr(SuiDesigner$Insp *  self, const char *  key);
+void  SuiDesigner$Insp$excludes(SuiDesigner$Insp *  self, const char *  keys);
+void  SuiDesigner$Insp$exclude(SuiDesigner$Insp *  self, const char *  key);
 SuiCore$Node *  SuiDesigner$Insp$peekParent(SuiDesigner$Insp *  self);
-void  SuiDesigner$Insp$call_collectInsp(SuiDesigner$Insp *  self);
+void  SuiDesigner$Insp$call_insp(SuiDesigner$Insp *  self);
+void  SuiDesigner$Insp$preventDefault(SuiDesigner$Insp *  self);
 void  SuiDesigner$Insp$insp(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj);
+void  SuiDesigner$Insp$inspObj(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj);
 void  SuiDesigner$Insp$inspExtends(SuiDesigner$Insp *  self, Object *  obj, Vtable_Object *  vt);
 void  SuiDesigner$Insp$inspVt(SuiDesigner$Insp *  self, Object *  obj, Vtable_Object *  vt);
 void  SuiDesigner$Insp$inspField(SuiDesigner$Insp *  self, Object *  obj, OrcMetaField *  mf);
@@ -530,7 +539,7 @@ struct tagSuiDesigner$TestObjSuper {
 	int  yy ;
 	int  cc ;
 	int  kk ;
-	void  (*collectInsp) (SuiDesigner$TestObjSuper *  self, SuiDesigner$Insp *  insp);
+	void  (*insp) (SuiDesigner$TestObjSuper *  self, SuiDesigner$Insp *  insp);
 };
 Vtable_SuiDesigner$TestObjSuper* Vtable_SuiDesigner$TestObjSuper_init(Vtable_SuiDesigner$TestObjSuper* pvt);
 void SuiDesigner$TestObjSuper_init_fields(SuiDesigner$TestObjSuper *self);
@@ -538,7 +547,7 @@ void SuiDesigner$TestObjSuper_init(SuiDesigner$TestObjSuper *self, void *pOwner)
 SuiDesigner$TestObjSuper * SuiDesigner$TestObjSuper_new(void *pOwner);
 void SuiDesigner$TestObjSuper_fini(SuiDesigner$TestObjSuper *self);
 
-void  SuiDesigner$TestObjSuper$collectInsp(SuiDesigner$TestObjSuper *  self, SuiDesigner$Insp *  insp);
+void  SuiDesigner$TestObjSuper$insp(SuiDesigner$TestObjSuper *  self, SuiDesigner$Insp *  insp);
 
 
 // 虚表
@@ -568,7 +577,7 @@ void SuiDesigner$TestObj_init(SuiDesigner$TestObj *self, void *pOwner);
 SuiDesigner$TestObj * SuiDesigner$TestObj_new(void *pOwner);
 void SuiDesigner$TestObj_fini(SuiDesigner$TestObj *self);
 
-void  SuiDesigner$TestObj$collectInsp(SuiDesigner$TestObj *  self, SuiDesigner$Insp *  insp);
+void  SuiDesigner$TestObj$insp(SuiDesigner$TestObj *  self, SuiDesigner$Insp *  insp);
 void  SuiDesigner$TestObj$insp1_say(SuiDesigner$TestObj *  self);
 void  SuiDesigner$TestObj$insp1_say2(SuiDesigner$TestObj *  self);
 void  SuiDesigner$TestObj$insp0_say2(SuiDesigner$TestObj *  self);

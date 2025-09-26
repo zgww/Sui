@@ -1170,6 +1170,7 @@ int testAudio(){
         ma_engine_play_sound(&engine, path, NULL);
         getchar();
     }
+    return 0;
 }
 int main(){
     urgc_start_process_thread();
@@ -1198,9 +1199,9 @@ int main(){
     //     o.showWindow()
     // }
 
-    new SglEditor().{
-        o.showWindow()
-    }
+    // new SglEditor().{
+    //     o.showWindow()
+    // }
     // testAudio();
     // testMath();
 
@@ -1208,7 +1209,7 @@ int main(){
 
     // testPlaceKidsTo()
 
-    // testInsp()
+    testInsp()
 
     // testTransparency()
 

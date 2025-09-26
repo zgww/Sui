@@ -2050,21 +2050,16 @@ int  testAudio(){
 		ma_engine_play_sound(&engine, path, NULL) ;
 		getchar() ;
 	}
+	return 0; 
 }
 
 int  main(){
 	urgc_start_process_thread() ;
 	windowInit() ;
-	URGC_VAR_CLEANUP_CLASS SuiDesigner3d$SglEditor*  tmpNewOwner_1 = NULL;
-	{
-		SuiDesigner3d$SglEditor*  o = SuiDesigner3d$SglEditor_new(&tmpNewOwner_1) ;
-		
-	
-		o->showWindow(o) ;
-	}
+	SuiDesigner$testInsp() ;
 	SuiCore$App *  tmpThis_1 = NULL;
-	URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_2 = NULL;
-	(tmpThis_1 = SuiCore$App_use(&tmpReturn_2) )->runEventLoop(tmpThis_1) ;
+	URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_1 = NULL;
+	(tmpThis_1 = SuiCore$App_use(&tmpReturn_1) )->runEventLoop(tmpThis_1) ;
 	return 0; 
 }
 
@@ -2073,7 +2068,7 @@ void  testTransparency(){
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutAlign*  tmpNewOwner_1 = NULL;
 	{
 		SuiLayout$LayoutAlign*  o = SuiLayout$LayoutAlign_new(&tmpNewOwner_1) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1244_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1245_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = 0x33afafff;
 		SuiCore$Vec2$set(&o->anchor, 0.5, 0.5) ;
@@ -2081,8 +2076,8 @@ void  testTransparency(){
 		urgc_set_field_class(win, (void * )offsetof(Sui$Window, rootView) , o) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmpReturn_2 = NULL;
 		{
-			SuiCore$View*  __scopeVar_1251_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1251_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1251_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiCore$View*  __scopeVar_1252_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1252_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1252_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->backgroundColor = 0xffefefff;
 			o->width = 100;
@@ -2090,8 +2085,8 @@ void  testTransparency(){
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_3 = NULL;
 		{
-			SuiView$TextView*  __scopeVar_1256_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1256_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1256_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$TextView*  __scopeVar_1257_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1257_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1257_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 			o->setText(o, Orc$str(&tmpReturn_4, "你好呀， Sui") ) ;

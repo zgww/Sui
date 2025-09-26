@@ -67,7 +67,37 @@ import * from "./FileChooser.orc"
 // 不支持嵌套的对象的属性编辑。
 // insp就是用来insp  this object的属性的。
 // 嵌套的对象，嵌套起来就没有边了。没有必要
-// 如果是对象类型的属性，让其提供特定的insp, 或者走通过的对象属性 按钮?
+// 如果是对象类型的属性，让其提供特定的insp, 或者走通用的对象属性 按钮?
+
+// 都跟属性、反射有关。所以放在一起思考
+
+// 期望：
+
+// 尽可能自动化,尽可能简便，少提供信息或者写代码。
+
+// 所以必然要用反射自动处理。也必然要支持按类型处理
+
+// 只提供特例的信息。
+// 特例的信息有：
+// * 字段要不要忽略(序列化、insp)
+// * 类型要不要忽略
+// * 类型要不要自定义处理方法(序列化、insp)
+// * 对象可以提供自定义的处理？甚至完全覆盖insp的逻辑
+
+
+// 通例：
+// * 下划线开头的字段，不处理
+// * 默认按类型处理
+// * 匹配特定规则的， 如int xxColor 
+
+
+// 3d场景的保存，并不是序列化。  而是对场景描述文件的修改。
+// 场景描述文件是dsl。所以可以支持if/for。 可以支持只写入有修改的属性。
+
+
+// 2d/3d都统一场景描述方案
+
+// insp都统一为 对象检视方案, 无关场景
 
 
 class EventInspAttrChanged extends Event{
@@ -344,8 +374,33 @@ class Insp {
     // ^void (String@ chainKey, InspValue *data) onSetField
 
     InspAttr* getAttr(const char *key){
+        // List@ keys = self.attrMap.keys()
+        // int size = keys.size();
+        // for int i = 0; i < size; i++{
+        //     printf("key:%s\n", ((String*)keys.get(i)).str)
+        // }
         InspAttr* a = (InspAttr*)self.attrMap.get(key)
         return a
+    }
+
+    // ' ' 分隔
+    void excludes(const char *keys){
+        List@ parts = str(keys).trim().splitByRe("\\s+")
+        int size = parts.size();
+        for int i = 0; i < size; i++{
+            String* key = (String*)parts.get(i)
+            self.exclude(key.str)
+        }
+    }
+    void exclude(const char *key){
+        // printf("exclude key:%s\n", key)
+        InspAttr* a = self.getAttr(key)
+        if a {
+            a._ignore = true;
+        }
+        else {
+            new InspAttr().{ o.bind(self, key, null); o._ignore = true; }
+        }
     }
 
     // InspAttr* color(const char *name){ }
@@ -372,9 +427,10 @@ class Insp {
     //     }
     // }
 
+
     //收集Insp所需要的元数据
-    void call_collectInsp(){
-        void **ptr = orc_getFieldPtr(self.obj, "collectInsp")
+    void call_insp(){
+        void **ptr = orc_getFieldPtr(self.obj, "insp")
         if (ptr != null){ //有此属性
             void (*onInspect)(Object* _self, Insp* insp);
             onInspect = *ptr;
@@ -383,19 +439,36 @@ class Insp {
             }
         }
     }
+
+    //是否走默认的Insp流程
+    bool bInspDefault = true
+    //屏蔽默认的渲染
+    void preventDefault(){
+        self.bInspDefault = false
+    }
+    // 默认情况下， call insp会收集字段 信息。 如果call insp内部想完全自定义，就需要preventDefault
+
+
     void insp(Node* o, Object *obj){
-        // if keyPath == null {
-        //     keyPath = str("")
-        // }
+        self.bInspDefault = true
         self.obj = obj
-
         self.curNodeStack.clear()
-        self.curNodeStack.push(o)
 
-        self.call_collectInsp()
+        self.call_insp()
+
+        if !self.bInspDefault { //被屏蔽了
+            return;
+        }
+
+        self.inspObj(o, obj)
+    }
+    void inspObj(Node* o, Object *obj){
+        self.curNodeStack.push(o)
 
         Vtable_Object *vt = orc_getVtableByObject(self.obj)
         self.inspExtends(obj, vt)
+
+        self.curNodeStack.pop()
     }
     //从父到子
     void inspExtends(Object *obj, Vtable_Object* vt){
@@ -423,7 +496,10 @@ class Insp {
             //函数可以被组织成按钮
             InspAttr* attr = self.getAttr(mf.name)
 
-            if attr && attr._ignore { continue }
+            if attr && attr._ignore { 
+                mf = OrcMetaField_getNext(mf)
+                continue 
+            }
 
             tmp.proc(mf, attr, self)
 
@@ -1017,7 +1093,7 @@ class TestObjSuper{
     int yy = 29
     int cc = 29
     int kk = 29
-    void collectInsp(Insp* insp){
+    void insp(Insp* insp){
         new InspAttr().{o.bind(insp, "xx", "group")}
         new InspAttr().{o.bind(insp, "yy", "group")}
     }
@@ -1032,8 +1108,8 @@ class TestObj extends TestObjSuper{
     Vec3 rotation
     Vec4 quat
 
-    void collectInsp(Insp* insp){
-        super.collectInsp(insp)
+    void insp(Insp* insp){
+        super.insp(insp)
         new InspAttr().{o.bind(insp, "age", "group")}
         new InspAttr().{o.bind(insp, "name", "group")}
 
@@ -1042,6 +1118,8 @@ class TestObj extends TestObjSuper{
         new InspAttr().{o.bind(insp, "pos", "变换")}
         new InspAttr().{o.bind(insp, "rotation", "变换")}
         new InspAttr().{o.bind(insp, "quat", "变换")}
+
+        insp.excludes("age pos name quat ")
     }
 
     void insp1_say(){
