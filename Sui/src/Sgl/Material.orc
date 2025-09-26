@@ -132,19 +132,19 @@ class UniformInfo {
                     o.setSrc(self.texPath)
                     o.cursor.set("pointer")
                     o.cbOnEvent = ^ void(Event *e){
-                        // if e instanceof MouseEvent {
-                        //     MouseEvent *me = (MouseEvent*)e;
-                        //     if me.button == 1 && me.isClickInBubble(){
-                        //         // Toast_make(str("click image").addString(src).str)
-                        //         FileChooser@ fc = new FileChooser()
-                        //         fc.use_filterImage()
-                        //         fc.loadPaths()
-                        //         fc.onChoose = ^ void(String@ newpath){
-                        //             insp.setAttr(mf, newpath)
-                        //         }
-                        //         fc.showWindow()
-                        //     }
-                        // }
+                        if e instanceof MouseEvent {
+                            MouseEvent *me = (MouseEvent*)e;
+                            if me.button == 1 && me.isClickInBubble(){
+                                Toast_make(str("click image").addString(self.texPath).str)
+                                // FileChooser@ fc = new FileChooser()
+                                // fc.use_filterImage()
+                                // fc.loadPaths()
+                                // fc.onChoose = ^ void(String@ newpath){
+                                //     insp.setAttr(mf, newpath)
+                                // }
+                                // fc.showWindow()
+                            }
+                        }
                     }
                 }
                 mkTextView(o, 0).{

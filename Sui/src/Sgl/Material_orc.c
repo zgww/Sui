@@ -48,6 +48,8 @@
 
 
 // static struct 
+typedef struct tagSgl$__Block_79_40 Sgl$__Block_79_40;
+
 typedef struct tagSgl$__Block_315_25 Sgl$__Block_315_25;
 
 typedef struct tagSgl$__Block_677_23 Sgl$__Block_677_23;
@@ -117,6 +119,14 @@ typedef struct tagSgl$__Closure_1131_36 Sgl$__Closure_1131_36;
 typedef struct tagSgl$__Closure_1146_36 Sgl$__Closure_1146_36;
 
 typedef struct tagSgl$__Closure_1373_35 Sgl$__Closure_1373_35;
+
+
+
+struct tagSgl$__Block_79_40 {
+	Sgl$UniformInfo*  self ;
+};
+
+
 
 
 
@@ -209,6 +219,7 @@ struct tagSgl$__Closure_123_41 {
 struct tagSgl$__Closure_134_34 {
 	void  (*invoke)(Sgl$__Closure_134_34 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
+	Sgl$__Block_79_40*  __var___Block_79_40 ;
 };
 
 
@@ -464,6 +475,7 @@ struct tagSgl$__Closure_1373_35 {
 
 
 // static function declaration
+static void  __finiBlock___Block_79_40(Sgl$__Block_79_40 *  self);
 static void  __finiBlock___Block_315_25(Sgl$__Block_315_25 *  self);
 static void  __finiBlock___Block_677_23(Sgl$__Block_677_23 *  self);
 static void  __finiBlock___Block_698_41(Sgl$__Block_698_41 *  self);
@@ -484,7 +496,7 @@ static void  __fini___Closure_123_41(Sgl$__Closure_123_41 *  self);
 static Sgl$__Closure_123_41*  __make___Closure_123_41(Sgl$__Closure_123_41 **  __outRef__);
 static void  __fn___Closure_134_34(Sgl$__Closure_134_34 *  self, SuiCore$Event *  e);
 static void  __fini___Closure_134_34(Sgl$__Closure_134_34 *  self);
-static Sgl$__Closure_134_34*  __make___Closure_134_34(Sgl$__Closure_134_34 **  __outRef__);
+static Sgl$__Closure_134_34*  __make___Closure_134_34(Sgl$__Closure_134_34 **  __outRef__, Sgl$__Block_79_40 *  __var___Block_79_40);
 static void  __fn___Closure_320_25(Sgl$__Closure_320_25 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
 static void  __fini___Closure_320_25(Sgl$__Closure_320_25 *  self);
 static Sgl$__Closure_320_25*  __make___Closure_320_25(Sgl$__Closure_320_25 **  __outRef__, Sgl$__Block_315_25 *  __var___Block_315_25);
@@ -687,6 +699,8 @@ Sgl$UniformInfo * Sgl$UniformInfo_new(void *pOwner){
 
 // class members
 void  Sgl$UniformInfo$inspAsValue(Sgl$UniformInfo *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o){
+	URGC_VAR_CLEANUP Sgl$__Block_79_40*  __var___Block_79_40 = (__var___Block_79_40=NULL,urgc_init_var((void**)&__var___Block_79_40, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_79_40) , __finiBlock___Block_79_40) ));
+	urgc_set_field_class(__var___Block_79_40, (void * )offsetof(Sgl$__Block_79_40, self) , self) ;
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
 		SuiLayout$LayoutLinear*  __scopeVar_81_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )self) , *o = __scopeVar_81_8;
@@ -737,7 +751,7 @@ void  Sgl$UniformInfo$inspAsValue(Sgl$UniformInfo *  self, SuiDesigner$Insp *  i
 				o->setSrc(o, self->texPath) ;
 				Orc$String$set(((SuiCore$ViewBase * )o)->cursor, "pointer") ;
 				URGC_VAR_CLEANUP Sgl$__Closure_134_34*  tmpReturn_8 = NULL;
-				urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_134_34(&tmpReturn_8) ) ;
+				urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_134_34(&tmpReturn_8, __var___Block_79_40) ) ;
 			}
 			URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_9 = NULL;
 			{
@@ -2266,6 +2280,11 @@ void  Sgl$MaterialPreviewView$applyModel(Sgl$MaterialPreviewView *  self){
 
 
 
+static void  __finiBlock___Block_79_40(Sgl$__Block_79_40 *  self){
+	urgc_set_field_class(self, (void * )offsetof(Sgl$__Block_79_40, self) , NULL) ;
+	return urgc_free_later(self) ; 
+}
+
 static void  __finiBlock___Block_315_25(Sgl$__Block_315_25 *  self){
 	urgc_set_field_class(self, (void * )offsetof(Sgl$__Block_315_25, self) , NULL) ;
 	return urgc_free_later(self) ; 
@@ -2358,17 +2377,25 @@ static Sgl$__Closure_123_41*  __make___Closure_123_41(Sgl$__Closure_123_41 **  _
 }
 
 static void  __fn___Closure_134_34(Sgl$__Closure_134_34 *  self, SuiCore$Event *  e){
-	
+	if (Orc_instanceof((Object*)e, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
+		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
+		if (me->button == 1 && me->isClickInBubble(me) ) {
+			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+			SuiDialog$Toast_make(Orc$String$addString(Orc$str(&tmpReturn_1, "click image") , self->__var___Block_79_40->self->texPath) ->str) ;
+		}
+	}
 }
 
 static void  __fini___Closure_134_34(Sgl$__Closure_134_34 *  self){
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_134_34, __var___Block_79_40) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static Sgl$__Closure_134_34*  __make___Closure_134_34(Sgl$__Closure_134_34 **  __outRef__){
+static Sgl$__Closure_134_34*  __make___Closure_134_34(Sgl$__Closure_134_34 **  __outRef__, Sgl$__Block_79_40 *  __var___Block_79_40){
 	URGC_VAR_CLEANUP Sgl$__Closure_134_34*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_134_34) , __fini___Closure_134_34) ));
 	self->invoke = __fn___Closure_134_34;
 	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_134_34, __var___Block_79_40) , __var___Block_79_40) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
