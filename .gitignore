@@ -94,3 +94,4 @@
 /dll_decl/ConsoleApplication1/.vs
 /Sui/assimp/.cache
 /glfw-wasm/build
+/glfw-wasm/src/glfw-3.2.1
