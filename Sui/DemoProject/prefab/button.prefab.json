@@ -1,0 +1,66 @@
+{
+	"version":	"0.0.3",
+	"root":	{
+		"attrs":	{
+		},
+		"tag":	"SuiLayout$LayoutLinear",
+		"children":	[{
+				"attrs":	{
+					"width":	100,
+					"text":	"景行行止",
+					"normalBg":	-14367934
+				},
+				"tag":	"SuiView$DrawButton",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"width":	100,
+					"hoverBg":	-65536,
+					"text":	"不要啊",
+					"normalBg":	-3265492
+				},
+				"tag":	"SuiView$DrawButton",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"width":	104,
+					"hoverBg":	-783091,
+					"name":	"提交按钮",
+					"text":	"提交",
+					"height":	37
+				},
+				"tag":	"SuiView$DrawButton",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"pos":	{
+						"x":	10,
+						"y":	20
+					},
+					"src":	"./asset/SpongeBob.png",
+					"width":	142,
+					"height":	116,
+					"bezier":	{
+						"start":	{
+							"x":	0,
+							"y":	0
+						},
+						"c0":	{
+							"x":	0.04444444552063942,
+							"y":	0.600000023841858
+						},
+						"c1":	{
+							"x":	1,
+							"y":	0.050000011920928955
+						},
+						"end":	{
+							"x":	1,
+							"y":	1
+						}
+					}
+				},
+				"tag":	"SuiView$ImageView",
+				"children":	[]
+			}]
+	}
+}

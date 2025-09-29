@@ -258,6 +258,15 @@ extern void Path_setcwd(const char *path);
 //取得执行文件的路径
 extern String@ Path_getExecutionPath();
 
+String@ Path_resolveFromExecutionDir(const char *path){
+    static String@ exeDir = null
+    if exeDir == null{
+        exeDir = Path_dirname(Path_getExecutionPath().str)
+    }
+    String@ ret = str(exeDir.str).add("/").add(path)
+    return ret
+}
+
 extern String@ Path_readText(const char *path);
 extern bool Path_writeText(const char *path, const char *text);
 

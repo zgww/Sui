@@ -493,7 +493,6 @@ void  SuiView$TreeView$reactChildren(SuiView$TreeView *  self, SuiCore$Node *  p
 	if (items == NULL) {
 		return ; 
 	}
-	printf("reactChildren %d. open sized:%d\n", items->size(items) , self->state->opendIds->size(self->state->opendIds) ) ;
 	int  l = items->size(items) ;
 	for (int  i = 0; i < l; i++) {
 		URGC_VAR_CLEANUP SuiView$__Block_211_35*  __var___Block_211_35 = (__var___Block_211_35=NULL,urgc_init_var((void**)&__var___Block_211_35, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_211_35) , __finiBlock___Block_211_35) ));

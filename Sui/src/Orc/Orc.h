@@ -40,9 +40,9 @@ typedef struct tagMetaStruct MetaStruct;
 typedef struct tagVtable_Object Vtable_Object;
 struct tagVtable_Object {
     char flag[4];
+    const char* className;
     bool inited;
     bool refc; //是否使用引用计数
-    const char* className;
     Vtable_Object* super;//指向父虚表
 
 

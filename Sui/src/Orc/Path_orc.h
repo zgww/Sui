@@ -80,6 +80,7 @@ void  Orc$Path_listSubtree_toList(const char *  path, Orc$List *  outList);
 extern Orc$String*  Orc$Path_getcwd(Orc$String **  __outRef__);
 extern void  Orc$Path_setcwd(const char *  path);
 extern Orc$String*  Orc$Path_getExecutionPath(Orc$String **  __outRef__);
+Orc$String*  Orc$Path_resolveFromExecutionDir(Orc$String **  __outRef__, const char *  path);
 extern Orc$String*  Orc$Path_readText(Orc$String **  __outRef__, const char *  path);
 extern bool  Orc$Path_writeText(const char *  path, const char *  text);
 bool  Orc$Path_isUsualImage(const char *  path);

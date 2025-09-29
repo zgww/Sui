@@ -42,6 +42,8 @@ import * from "../SuiDesigner/RegisterNodes.orc"
 import * from "../SuiDesigner/DrawDegree.orc"
 import * from "../SuiDesigner/UiAction.orc"
 import * from "../SuiDesigner/EventFileItemChanged.orc"
+import * from "../SuiDesigner/Prefab.orc"
+import * from "../SuiDesigner/ANode.orc"
 
 import * from "../Sgl/SglSceneView.orc"
 import * from "../Sgl/Scene.orc"
@@ -59,6 +61,7 @@ class HoroEditCtx {
     SglSceneView@ sceneView
     List@ roots = new List()
     Node@ hoverNode 
+    Prefab@ prefab = null //当前编辑的预制体
 
     void setState(TreeState@ state){
         self.state = state
@@ -75,9 +78,9 @@ class HoroEditCtx {
     }
     void setSceneView(SglSceneView *sceneView){
         self.sceneView = sceneView
-        self.roots.clear()
         if sceneView{
-            self.roots.add(self.sceneView.scene)
+            // self.roots.clear()
+            // self.roots.add(self.sceneView.scene)
         }
     }
 
@@ -85,6 +88,43 @@ class HoroEditCtx {
     Scene* getScene(){
         if self.sceneView{
             return self.sceneView.scene
+        }
+        return null
+    }
+
+
+    void closeCurrentPrefab(){
+        if !self.prefab {
+            return
+        }
+        for int i = 0; i < self.roots.size(); i++{
+            ANode* root = (ANode*)self.roots.get(i)
+            root.removeSelf()
+        }
+        self.roots.clear()
+
+        self.prefab = null
+    }
+
+    void openPrefab(const char *path){
+        self.closeCurrentPrefab()
+        new Prefab().{
+            self.prefab = o
+            o.loadByPathCstr(path)
+
+            self.getRoot().printTree(0)
+            self.getRoot().updateSubTreeNodes()
+
+            self.roots.clear()
+            self.roots.add(self.prefab.root)
+            int size = self.roots.size()
+            printf("HoroEdit roots. size:%d\n", size )
+        }
+
+    }
+    ANode@ getRoot(){
+        if self.prefab {
+            return self.prefab.root
         }
         return null
     }

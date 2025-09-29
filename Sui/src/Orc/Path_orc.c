@@ -220,6 +220,18 @@ void  Orc$Path_listSubtree_toList(const char *  path, Orc$List *  outList){
 	}
 }
 
+Orc$String*  Orc$Path_resolveFromExecutionDir(Orc$String **  __outRef__, const char *  path){
+	static URGC_VAR_CLEANUP_CLASS Orc$String*  exeDir = NULL;
+	if (exeDir == NULL) {
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
+		urgc_set_var_class(&exeDir, Orc$Path_dirname(&tmpReturn_1, Orc$Path_getExecutionPath(&tmpReturn_2) ->str) ) ;
+	}
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  ret = (ret=NULL,urgc_init_var_class((void**)&ret, Orc$String$add(Orc$String$add(Orc$str(&tmpReturn_3, exeDir->str) , "/") , path) ));
+	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
+}
+
 bool  Orc$Path_isUsualImage(const char *  path){
 	return Orc$String_endsWith(path, ".jpg")  || Orc$String_endsWith(path, ".png")  || Orc$String_endsWith(path, ".jpeg") ; 
 }

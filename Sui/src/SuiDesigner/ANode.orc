@@ -228,6 +228,12 @@ class ANode {
     Node@ node = null
     ANode@ parent = null
 
+    String@ getName(){
+        String@ ret = self.getAttrStringValueByName("name")
+        return ret
+    }
+
+
     ANode@ clone(){
         Json@ jo = self.toJson()
         ANode@ n = new ANode()

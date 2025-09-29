@@ -1124,10 +1124,14 @@ class HoroEditor extends Listener{
     void openProject(const char *path){
         // String@ projectDirPath = Path_dirname(Path_getExecutionPath().str).add("/../asset/matl")
         // printf("projectDirPath:%s\n", projectDirPath.str)
+        Path_setcwd(path)
+
         String@ abspath = Path_toAbsolute(path)
-        printf("打开项目。 项目路径为:%s", abspath.str)
+        String@ cwd = Path_getcwd();
+        printf("打开项目。 项目路径为:%s. cwd:%s", abspath.str, cwd.str)
         Project_ins().init(abspath.str)
 
+        self.editCtx.openPrefab("prefab/button.prefab.json")
 
         self.showWindow()
     }

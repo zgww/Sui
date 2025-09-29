@@ -1598,11 +1598,14 @@ void  SuiDesigner3d$HoroEditor$showWindow(SuiDesigner3d$HoroEditor *  self){
 
 
 void  SuiDesigner3d$HoroEditor$openProject(SuiDesigner3d$HoroEditor *  self, const char *  path){
+	Orc$Path_setcwd(path) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  abspath = Orc$Path_toAbsolute((abspath = NULL,&abspath), path) ;
-	printf("打开项目。 项目路径为:%s", abspath->str) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  cwd = Orc$Path_getcwd((cwd = NULL,&cwd)) ;
+	printf("打开项目。 项目路径为:%s. cwd:%s", abspath->str, cwd->str) ;
 	SuiDesigner$Project *  tmpThis_1 = NULL;
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$Project*  tmpReturn_1 = NULL;
 	(tmpThis_1 = SuiDesigner$Project_ins(&tmpReturn_1) )->init(tmpThis_1, abspath->str) ;
+	self->editCtx->openPrefab(self->editCtx, "prefab/button.prefab.json") ;
 	self->showWindow(self) ;
 }
 

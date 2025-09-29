@@ -73,6 +73,8 @@ typedef struct tagVtable_SuiDesigner$HoroEditCtx Vtable_SuiDesigner$HoroEditCtx;
 #include "../SuiDesigner/DrawDegree_orc.h"
 #include "../SuiDesigner/UiAction_orc.h"
 #include "../SuiDesigner/EventFileItemChanged_orc.h"
+#include "../SuiDesigner/Prefab_orc.h"
+#include "../SuiDesigner/ANode_orc.h"
 #include "../Sgl/SglSceneView_orc.h"
 #include "../Sgl/Scene_orc.h"
 #include "../Sgl/Obj3d_orc.h"
@@ -138,10 +140,14 @@ struct tagSuiDesigner$HoroEditCtx {
 	Sgl$SglSceneView*  sceneView ;
 	Orc$List*  roots ;
 	SuiCore$Node*  hoverNode ;
+	SuiDesigner$Prefab*  prefab ;
 	void  (*setState) (SuiDesigner$HoroEditCtx *  self, SuiView$TreeState*  state);
 	void  (*onSelectedChanged) (SuiDesigner$HoroEditCtx *  self);
 	void  (*setSceneView) (SuiDesigner$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
 	Sgl$Scene *  (*getScene) (SuiDesigner$HoroEditCtx *  self);
+	void  (*closeCurrentPrefab) (SuiDesigner$HoroEditCtx *  self);
+	void  (*openPrefab) (SuiDesigner$HoroEditCtx *  self, const char *  path);
+	SuiDesigner$ANode*  (*getRoot) (SuiDesigner$ANode **  __outRef__, SuiDesigner$HoroEditCtx *  self);
 };
 Vtable_SuiDesigner$HoroEditCtx* Vtable_SuiDesigner$HoroEditCtx_init(Vtable_SuiDesigner$HoroEditCtx* pvt);
 void SuiDesigner$HoroEditCtx_init_fields(SuiDesigner$HoroEditCtx *self);
@@ -153,6 +159,9 @@ void  SuiDesigner$HoroEditCtx$setState(SuiDesigner$HoroEditCtx *  self, SuiView$
 void  SuiDesigner$HoroEditCtx$onSelectedChanged(SuiDesigner$HoroEditCtx *  self);
 void  SuiDesigner$HoroEditCtx$setSceneView(SuiDesigner$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
 Sgl$Scene *  SuiDesigner$HoroEditCtx$getScene(SuiDesigner$HoroEditCtx *  self);
+void  SuiDesigner$HoroEditCtx$closeCurrentPrefab(SuiDesigner$HoroEditCtx *  self);
+void  SuiDesigner$HoroEditCtx$openPrefab(SuiDesigner$HoroEditCtx *  self, const char *  path);
+SuiDesigner$ANode*  SuiDesigner$HoroEditCtx$getRoot(SuiDesigner$ANode **  __outRef__, SuiDesigner$HoroEditCtx *  self);
 
 
 

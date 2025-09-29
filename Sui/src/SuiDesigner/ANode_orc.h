@@ -98,6 +98,7 @@ struct tagSuiDesigner$ANode {
 	Orc$List*  children ;
 	SuiCore$Node*  node ;
 	SuiDesigner$ANode*  parent ;
+	Orc$String*  (*getName) (Orc$String **  __outRef__, SuiDesigner$ANode *  self);
 	SuiDesigner$ANode*  (*clone) (SuiDesigner$ANode **  __outRef__, SuiDesigner$ANode *  self);
 	void  (*setAttr) (SuiDesigner$ANode *  self, const char *  name, Json$Json*  value);
 	SuiDesigner$ANodeAttr*  (*getAttrByName) (SuiDesigner$ANodeAttr **  __outRef__, SuiDesigner$ANode *  self, const char *  name);
@@ -124,6 +125,7 @@ SuiDesigner$ANode * SuiDesigner$ANode_new(void *pOwner);
 void SuiDesigner$ANode_fini(SuiDesigner$ANode *self);
 
 Orc$String*  SuiDesigner$ANode$getId(Orc$String **  __outRef__, SuiDesigner$ANode *  self);
+Orc$String*  SuiDesigner$ANode$getName(Orc$String **  __outRef__, SuiDesigner$ANode *  self);
 SuiDesigner$ANode*  SuiDesigner$ANode$clone(SuiDesigner$ANode **  __outRef__, SuiDesigner$ANode *  self);
 void  SuiDesigner$ANode$setAttr(SuiDesigner$ANode *  self, const char *  name, Json$Json*  value);
 SuiDesigner$ANodeAttr*  SuiDesigner$ANode$getAttrByName(SuiDesigner$ANodeAttr **  __outRef__, SuiDesigner$ANode *  self, const char *  name);

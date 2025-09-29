@@ -46,6 +46,7 @@ import * from "../SuiDesigner/RegisterNodes.orc"
 import * from "../SuiDesigner/DrawDegree.orc"
 import * from "../SuiDesigner/UiAction.orc"
 import * from "../SuiDesigner/EditCtx.orc"
+import * from "../SuiDesigner/ANode.orc"
 import * from "../SuiDesigner/EventANodeChanged.orc"
 import * from "../SuiDesigner/EventFileItemChanged.orc"
 import * from "./HoroEditCtx.orc"
@@ -252,19 +253,11 @@ class HoroSceneHierView extends LayoutLinear {
                 self.editCtx.setState(o.state)
                 o.state.roots = self.editCtx.roots
                 o.state.getId = ^String@ (Object *item){
-                    Obj3d@ s = (Obj3d@)item
-                    return s.gocId()
-                    // return str("").addPtr(s)
-                    // return s.getId();
+                    ANode@ s = (ANode@)item
+                    return s.getId();
                 }
                 o.state.getItemChildren = ^List@ (Object *item){
-                    // printf("o:%p\n", o)
-                    Obj3d@ s = (Obj3d@)item
-                    // if (s.hasSubDirectory()){
-                    //     return s.children
-                    // }
-                    // return null
-                    // return s.getSubDirectoryChildren()
+                    ANode@ s = (ANode@)item
                     return s.children
                 }
                 o.alignItems.set("maxOrStretch")
@@ -274,7 +267,7 @@ class HoroSceneHierView extends LayoutLinear {
                 }
                 o.reactItem = ^void (Node *parentNode, Object *item, int deep){
                     Node* o = parentNode
-                    Obj3d@ s = (Obj3d@)item
+                    ANode@ s = (ANode@)item
 
                     int idx = -1
                     if (parentNode instanceof ViewBase){
@@ -314,8 +307,8 @@ class HoroSceneHierView extends LayoutLinear {
                             hasKids 
                             ?
                                 isOpend 
-                                ? str("asset/icon/arrow-down.png")
-                                : str("asset/icon/arrow-right.png")
+                                ? Path_resolveFromExecutionDir("asset/icon/arrow-down.png")
+                                : Path_resolveFromExecutionDir("asset/icon/arrow-right.png")
                             : null
                         )
                     }
@@ -333,8 +326,9 @@ class HoroSceneHierView extends LayoutLinear {
 
                     mkTextView(o, 0).{
                         Vtable_Object *vt = orc_getVtableByObject(s);
-                        if s.name && s.name.notEmpty() {
-                            o.setText(s.name)
+                        String@ name = s.getName()
+                        if name && name.notEmpty() {
+                            o.setText(name)
                         }
                         else {
                             o.setText(str(vt.className))

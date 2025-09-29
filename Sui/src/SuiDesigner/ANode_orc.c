@@ -318,6 +318,7 @@ void SuiDesigner$ANode_initMeta(Vtable_SuiDesigner$ANode *pvt){
 	orc_metaField_class(&pNext, "parent", ((Vtable_Object*)Vtable_SuiDesigner$ANode_init(0)), offsetof(SuiDesigner$ANode, parent), true, false, 1);
 
 	orc_metaField_method(&pNext, "getId", offsetof(SuiDesigner$ANode, getId));
+	orc_metaField_method(&pNext, "getName", offsetof(SuiDesigner$ANode, getName));
 	orc_metaField_method(&pNext, "clone", offsetof(SuiDesigner$ANode, clone));
 	orc_metaField_method(&pNext, "setAttr", offsetof(SuiDesigner$ANode, setAttr));
 	orc_metaField_method(&pNext, "getAttrByName", offsetof(SuiDesigner$ANode, getAttrByName));
@@ -399,6 +400,7 @@ void SuiDesigner$ANode_init_fields(SuiDesigner$ANode *self){
 	urgc_set_field_class(self, (void**)&((SuiDesigner$ANode*)self)->parent, NULL);
     }
 	((SuiDesigner$ANode*)self)->getId = (void*)SuiDesigner$ANode$getId;
+	((SuiDesigner$ANode*)self)->getName = (void*)SuiDesigner$ANode$getName;
 	((SuiDesigner$ANode*)self)->clone = (void*)SuiDesigner$ANode$clone;
 	((SuiDesigner$ANode*)self)->setAttr = (void*)SuiDesigner$ANode$setAttr;
 	((SuiDesigner$ANode*)self)->getAttrByName = (void*)SuiDesigner$ANode$getAttrByName;
@@ -460,6 +462,12 @@ Orc$String*  SuiDesigner$ANode$getId(Orc$String **  __outRef__, SuiDesigner$ANod
 		Orc$String$addll(self->id, (long long )self) ;
 	}
 	return urgc_set_var_for_return_class((void ** )__outRef__, self->id) ; 
+}
+
+
+Orc$String*  SuiDesigner$ANode$getName(Orc$String **  __outRef__, SuiDesigner$ANode *  self){
+	URGC_VAR_CLEANUP_CLASS Orc$String*  ret = self->getAttrStringValueByName((ret = NULL,&ret), self, "name") ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
 }
 
 
