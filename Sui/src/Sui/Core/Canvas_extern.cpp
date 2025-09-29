@@ -1,6 +1,7 @@
 #include "./Canvas_orc.h"
 #include "../../nanovg/nanovg.h"
 
+#include "../../nanovg/stb_image.h"
 
 #include <Windows.h>
 #include "GL/GL.h"
@@ -399,6 +400,7 @@ int  SuiCore$Canvas$_createImage(
     const char *path){
     auto vg = (NVGcontext*)self->data;
 
+    stbi_set_flip_vertically_on_load(false);
 	int id = nvgCreateImage(vg, path, NVG_IMAGE_REPEATX|NVG_IMAGE_REPEATY);
     return id;
 }
