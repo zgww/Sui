@@ -22,7 +22,7 @@ import * from "./ViewBuilder.orc"
 //import * from "../Core/Radius.orc"
 import * from "../Core/Inset.orc"   
 
-import * from "../../SuiDesigner/Inspector.orc"
+import type * from "../../SuiDesigner/Inspector.orc"
 
 /// 布局上下文
 class Button extends LayoutLinear {

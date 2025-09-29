@@ -18,7 +18,7 @@ import * from "../../Orc/String.orc"
 import * from "../../Orc/Map.orc"
 import * from "./ViewBuilder.orc"
 import * from "../Core/Image.orc"
-import * from "../../SuiDesigner/Inspector.orc"
+import type * from "../../SuiDesigner/Inspector.orc"
 
 
 

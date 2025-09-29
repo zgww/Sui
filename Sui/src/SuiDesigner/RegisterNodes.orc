@@ -26,6 +26,16 @@ import * from "../Sui/Layout/LayoutAlign.orc"
 import * from "../Sui/Layout/RowWrap.orc"
 import * from "../Sui/Core/NodeLib.orc"
 
+import * from "../Sgl/Scene.orc"
+import * from "../Sgl/Obj3d.orc"
+import * from "../Sgl/Mesh.orc"
+import * from "../Sgl/Camera.orc"
+import * from "../Sgl/PerspectiveCamera.orc"
+import * from "../Sgl/Light.orc"
+import * from "../Sgl/PointLight.orc"
+import * from "../Sgl/DirLight.orc"
+import * from "../Sgl/SpotLight.orc"
+
 
 void registerNodes(){
     // BiJson_registerClass(ViewBase)
@@ -77,6 +87,16 @@ void registerNodes(){
     lib.registerClass(LayoutGrid)
     lib.registerClass(LayoutAlign)
     lib.registerClass(RowWrap)
+
+    lib.registerClass(Scene)
+    lib.registerClass(Obj3d)
+    lib.registerClass(Mesh)
+    lib.registerClass(Camera)
+    lib.registerClass(PerspectiveCamera)
+    lib.registerClass(Light)
+    lib.registerClass(PointLight)
+    lib.registerClass(DirLight)
+    lib.registerClass(SpotLight)
 }
 
 

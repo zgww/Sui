@@ -251,6 +251,10 @@ SuiCore$NodeRegisterInfo*  SuiCore$NodeLib$findByClassName(SuiCore$NodeRegisterI
 void  SuiCore$NodeLib$registerClass(SuiCore$NodeLib *  self, Vtable_Object *  vt){
 	URGC_VAR_CLEANUP_CLASS SuiCore$NodeRegisterInfo*  info = (info=NULL,urgc_init_var_class((void**)&info, SuiCore$NodeRegisterInfo_new(&info) ));
 	info->init(info, vt) ;
+	if (self->map->has(self->map, vt->className) ) {
+		printf("重复注册节点类:%s\n", vt->className) ;
+		return ; 
+	}
 	self->map->put(self->map, vt->className, info) ;
 	self->list->add(self->list, info) ;
 }

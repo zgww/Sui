@@ -34,6 +34,10 @@ class NodeLib {
     void registerClass(Vtable_Object* vt){
         NodeRegisterInfo@ info = new NodeRegisterInfo()
         info.init(vt)
+        if self.map.has(vt.className){
+            printf("重复注册节点类:%s\n", vt.className)
+            return
+        }
         self.map.put(vt.className, info)
         self.list.add(info)
     }

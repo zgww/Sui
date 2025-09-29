@@ -51,6 +51,7 @@ import * from "../SuiDesigner/InvalidReact.orc"
 import * from "../SuiDesigner/MenuBarCtrl.orc"
 import * from "../SuiDesigner/ToolBase.orc"
 import * from "../SuiDesigner/SglGizmo.orc"
+import type * from "../SuiDesigner/RegisterNodes.orc"
 import * from "../Sgl/Material.orc"
 import * from "../Sgl/Draw.orc"
 import * from "../Sgl/Tex2d.orc"
@@ -1129,6 +1130,8 @@ class HoroEditor extends Listener{
         }
     }
     void openProject(const char *path){
+        registerNodes()
+
         // String@ projectDirPath = Path_dirname(Path_getExecutionPath().str).add("/../asset/matl")
         // printf("projectDirPath:%s\n", projectDirPath.str)
         Path_setcwd(path)
@@ -1138,8 +1141,12 @@ class HoroEditor extends Listener{
         printf("打开项目。 项目路径为:%s. cwd:%s", abspath.str, cwd.str)
         Project_ins().init(abspath.str)
 
+        //确保opengl环境有初始化了
+        Window@ win = new Window();
+
         self.editCtx.openPrefab("prefab/button.prefab.json")
 
         self.showWindow()
+        win.close()
     }
 }

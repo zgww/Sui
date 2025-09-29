@@ -53,6 +53,15 @@
 #include "../Sui/Layout/LayoutAlign_orc.h"
 #include "../Sui/Layout/RowWrap_orc.h"
 #include "../Sui/Core/NodeLib_orc.h"
+#include "../Sgl/Scene_orc.h"
+#include "../Sgl/Obj3d_orc.h"
+#include "../Sgl/Mesh_orc.h"
+#include "../Sgl/Camera_orc.h"
+#include "../Sgl/PerspectiveCamera_orc.h"
+#include "../Sgl/Light_orc.h"
+#include "../Sgl/PointLight_orc.h"
+#include "../Sgl/DirLight_orc.h"
+#include "../Sgl/SpotLight_orc.h"
 
 
 #ifdef __cplusplus

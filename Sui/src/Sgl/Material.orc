@@ -48,7 +48,7 @@ import * from "./Draw.orc"
 import * from "./Geometry.orc"
 import * from "./Buffer.orc"
 import * from "./Mat.orc"
-import * from "../SuiDesigner/Insp.orc"
+import type * from "../SuiDesigner/Insp.orc"
 
 
 class UniformInfo {

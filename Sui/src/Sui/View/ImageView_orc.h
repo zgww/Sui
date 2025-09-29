@@ -53,7 +53,9 @@ typedef struct tagVtable_SuiView$ImageView Vtable_SuiView$ImageView;
 #include "../../Orc/Map_orc.h"
 #include "./ViewBuilder_orc.h"
 #include "../Core/Image_orc.h"
+#define INCLUDE_ONLY_TYPE
 #include "../../SuiDesigner/Inspector_orc.h"
+#undef INCLUDE_ONLY_TYPE
 
 
 #ifdef __cplusplus

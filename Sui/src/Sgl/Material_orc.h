@@ -87,7 +87,9 @@ typedef struct tagVtable_Sgl$MaterialPreviewView Vtable_Sgl$MaterialPreviewView;
 #include "./Geometry_orc.h"
 #include "./Buffer_orc.h"
 #include "./Mat_orc.h"
+#define INCLUDE_ONLY_TYPE
 #include "../SuiDesigner/Insp_orc.h"
+#undef INCLUDE_ONLY_TYPE
 
 
 #ifdef __cplusplus

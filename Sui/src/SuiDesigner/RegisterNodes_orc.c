@@ -23,6 +23,15 @@
 #include "../Sui/Layout/LayoutAlign_orc.h"
 #include "../Sui/Layout/RowWrap_orc.h"
 #include "../Sui/Core/NodeLib_orc.h"
+#include "../Sgl/Scene_orc.h"
+#include "../Sgl/Obj3d_orc.h"
+#include "../Sgl/Mesh_orc.h"
+#include "../Sgl/Camera_orc.h"
+#include "../Sgl/PerspectiveCamera_orc.h"
+#include "../Sgl/Light_orc.h"
+#include "../Sgl/PointLight_orc.h"
+#include "../Sgl/DirLight_orc.h"
+#include "../Sgl/SpotLight_orc.h"
 
 
 // static struct 
@@ -53,6 +62,15 @@ void  SuiDesigner$registerNodes(){
 	lib->registerClass(lib, Vtable_SuiLayout$LayoutGrid_init(NULL)) ;
 	lib->registerClass(lib, Vtable_SuiLayout$LayoutAlign_init(NULL)) ;
 	lib->registerClass(lib, Vtable_SuiLayout$RowWrap_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$Scene_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$Obj3d_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$Mesh_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$Camera_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$PerspectiveCamera_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$Light_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$PointLight_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$DirLight_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$SpotLight_init(NULL)) ;
 }
 
 

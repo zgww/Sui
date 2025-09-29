@@ -85,6 +85,9 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "../SuiDesigner/MenuBarCtrl_orc.h"
 #include "../SuiDesigner/ToolBase_orc.h"
 #include "../SuiDesigner/SglGizmo_orc.h"
+#define INCLUDE_ONLY_TYPE
+#include "../SuiDesigner/RegisterNodes_orc.h"
+#undef INCLUDE_ONLY_TYPE
 #include "../Sgl/Material_orc.h"
 #include "../Sgl/Draw_orc.h"
 #include "../Sgl/Tex2d_orc.h"
