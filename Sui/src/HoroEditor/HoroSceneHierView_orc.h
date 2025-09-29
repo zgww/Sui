@@ -76,6 +76,8 @@ typedef struct tagVtable_HoroEditor$HoroSceneHierView Vtable_HoroEditor$HoroScen
 #include "../SuiDesigner/EventANodeChanged_orc.h"
 #include "../SuiDesigner/EventFileItemChanged_orc.h"
 #include "./HoroEditCtx_orc.h"
+#include "./HoroEditor_orc.h"
+#include "./UiAct_orc.h"
 #include "../Sgl/Obj3d_orc.h"
 #include "../Sgl/Camera_orc.h"
 
@@ -97,6 +99,7 @@ extern Vtable_HoroEditor$HoroSceneHierView _vtable_HoroEditor$HoroSceneHierView;
 struct tagHoroEditor$HoroSceneHierView {
 	SuiLayout$LayoutLinear super; 
 	HoroEditor$HoroEditCtx*  editCtx ;
+	HoroEditor$HoroEditor*  editor ;
 	void  (*onUnmouting) (HoroEditor$HoroSceneHierView *  self);
 	void  (*_routeRightMenu) (HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  node);
 	void  (*_onItemRightClick) (HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);

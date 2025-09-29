@@ -31,8 +31,16 @@
 #define __HoroEditor__UiAct_orc_h__
 
 //include  importHeadCode
+#include "../Orc/String_orc.h"
+#include "../Orc/List_orc.h"
+#include "../Orc/Map_orc.h"
+#include "../Orc/Path_orc.h"
 #include "./HoroEditCtx_orc.h"
 #include "./HoroEditor_orc.h"
+#include "../SuiDesigner/ANode_orc.h"
+#include "../SuiDesigner/EventANodeChanged_orc.h"
+#include "../Sui/Core/NodeLib_orc.h"
+#include "../Sui/Dialog/Toast_orc.h"
 
 
 #ifdef __cplusplus
@@ -41,6 +49,7 @@ extern "C"{
 
 //代码内容
 void  HoroEditor$UiAct_savePrefab(HoroEditor$HoroEditor *  editor);
+void  HoroEditor$UiAct_addView(HoroEditor$HoroEditor *  editor, SuiDesigner$ANode*  anode, Orc$String*  viewName);
 
 
 

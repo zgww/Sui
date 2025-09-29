@@ -50,6 +50,8 @@ import * from "../SuiDesigner/ANode.orc"
 import * from "../SuiDesigner/EventANodeChanged.orc"
 import * from "../SuiDesigner/EventFileItemChanged.orc"
 import * from "./HoroEditCtx.orc"
+import * from "./HoroEditor.orc"
+import * from "./UiAct.orc"
 import * from "../Sgl/Obj3d.orc"
 import * from "../Sgl/Camera.orc"
 
@@ -57,6 +59,7 @@ import * from "../Sgl/Camera.orc"
 class HoroSceneHierView extends LayoutLinear {
 
     HoroEditCtx@ editCtx
+    HoroEditor@ editor
 
 
     void ctor(){
@@ -85,9 +88,10 @@ class HoroSceneHierView extends LayoutLinear {
             UiAction_previewCamera(self.editCtx.sceneView.drawCtx,  (Camera*)node)
         }
         if item.cmd.startsWith("AddView/"){
-            // MessageDialog_alert(item.cmd.str, "tip")
+            MessageDialog_alert(item.cmd.str, "tip")
             String@ viewName = Path_basename(item.cmd.str)
             // UiAction_addView(anode, viewName)
+            UiAct_addView(self.editor, node, viewName)
             return
         }
         if item.cmd.equals("RenameView"){

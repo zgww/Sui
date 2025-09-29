@@ -47,6 +47,7 @@ import * from "../SuiDesigner/DrawDegree.orc"
 import * from "../SuiDesigner/ChessBgViewCallback.orc"
 import * from "../SuiDesigner/Theme.orc"
 import * from "../SuiDesigner/W3e.orc"
+import * from "../SuiDesigner/EventANodeChanged.orc"
 import * from "../SuiDesigner/InvalidReact.orc"
 import * from "../SuiDesigner/MenuBarCtrl.orc"
 import * from "../SuiDesigner/ToolBase.orc"
@@ -206,6 +207,11 @@ class HoroEditor extends Listener{
         if e instanceof EventHoroSelectedChanged{
             self.invalidReact.invalid()
         }
+        else if e instanceof EventANodeChanged{
+            EventANodeChanged* e = (EventANodeChanged*)e;
+            self.invalidReact.invalid()
+        }
+
     }
     
 
@@ -846,6 +852,7 @@ class HoroEditor extends Listener{
                             if (item.id.equals("hier")){
                                 mkHoroSceneHierView(o, (long long)item).{
                                     o.editCtx = self.editCtx
+                                    o.editor = self
                                     // o.backgroundColor = t.dock_content_bg
                                     o.backgroundColor = 0xffffffff
                                     return o

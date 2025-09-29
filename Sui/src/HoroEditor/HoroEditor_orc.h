@@ -81,6 +81,7 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "../SuiDesigner/ChessBgViewCallback_orc.h"
 #include "../SuiDesigner/Theme_orc.h"
 #include "../SuiDesigner/W3e_orc.h"
+#include "../SuiDesigner/EventANodeChanged_orc.h"
 #include "../SuiDesigner/InvalidReact_orc.h"
 #include "../SuiDesigner/MenuBarCtrl_orc.h"
 #include "../SuiDesigner/ToolBase_orc.h"
