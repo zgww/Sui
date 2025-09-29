@@ -86,7 +86,7 @@ class ChessBgViewCallback extends ViewCallback{
 
         return data
     }
-    int gocChessBgImage(Canvas *canvas){
+    Image* gocChessBgImage(Canvas *canvas){
         if (self.img == null){
             int w = self.width
             int h = self.height

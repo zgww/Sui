@@ -262,7 +262,7 @@ static void  renderProjectItemView(SuiCore$Node *  o, SuiDesigner$ProjectInfo*  
 			o->hoverBorder->setAll(o->hoverBorder, 0.0, 0x11000000) ;
 			o->hoverBorder->b->set(o->hoverBorder->b, 1.0, 0x11000000) ;
 			o->activeBorder->setAll(o->activeBorder, 0.0, 0x11000000) ;
-			o->activeBorder->b->set(o->activeBorder->b, 1.0, 0x11000000) ;
+			o->activeBorder->b->set(o->activeBorder->b, 1.0, 0x51ff0000) ;
 			o->backgroundColor = i % 2 == 0 ? 0x00000000 : 0x08000000;
 			o->activeBackgroundColor = 0x10000000;
 			o->isActive = __var___Block_106_71->project == curProject;
@@ -590,6 +590,7 @@ Sui$Window*  MainProject_showWindow(Sui$Window **  __outRef__){
 		
 			Orc$String$set(o->direction, "column") ;
 			Orc$String$set(o->alignItems, "maxOrStretch") ;
+			((SuiCore$View * )o)->backgroundColor = 0xffefefef;
 			win->setRootView(win, o) ;
 		}
 		renderWindow() ;

@@ -115,6 +115,7 @@ typedef struct tagVtable_Tmp2 Vtable_Tmp2;
 #include "./Sgl/Geometry_orc.h"
 #include "./Sgl/GeometryHeightMap_orc.h"
 #include "./Sui/Core/TestMath_orc.h"
+#include "./HoroEditor/HoroEditor_orc.h"
 
 
 #ifdef __cplusplus

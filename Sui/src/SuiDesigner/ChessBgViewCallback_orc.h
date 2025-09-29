@@ -66,7 +66,7 @@ struct tagSuiDesigner$ChessBgViewCallback {
 	SuiCore$Image*  img ;
 	Object*  obj ;
 	char *  (*new_createChessBg_inMemory) (SuiDesigner$ChessBgViewCallback *  self, int  w, int  h);
-	int  (*gocChessBgImage) (SuiDesigner$ChessBgViewCallback *  self, SuiCore$Canvas *  canvas);
+	SuiCore$Image *  (*gocChessBgImage) (SuiDesigner$ChessBgViewCallback *  self, SuiCore$Canvas *  canvas);
 };
 Vtable_SuiDesigner$ChessBgViewCallback* Vtable_SuiDesigner$ChessBgViewCallback_init(Vtable_SuiDesigner$ChessBgViewCallback* pvt);
 void SuiDesigner$ChessBgViewCallback_init_fields(SuiDesigner$ChessBgViewCallback *self);
@@ -78,7 +78,7 @@ void  SuiDesigner$ChessBgViewCallback$dtor(SuiDesigner$ChessBgViewCallback *  se
 bool  SuiDesigner$ChessBgViewCallback$cbLayout(SuiDesigner$ChessBgViewCallback *  self, SuiCore$View *  div, SuiCore$Frame *  ctx);
 bool  SuiDesigner$ChessBgViewCallback$cbDraw(SuiDesigner$ChessBgViewCallback *  self, SuiCore$View *  div, SuiCore$Canvas *  canvas);
 char *  SuiDesigner$ChessBgViewCallback$new_createChessBg_inMemory(SuiDesigner$ChessBgViewCallback *  self, int  w, int  h);
-int  SuiDesigner$ChessBgViewCallback$gocChessBgImage(SuiDesigner$ChessBgViewCallback *  self, SuiCore$Canvas *  canvas);
+SuiCore$Image *  SuiDesigner$ChessBgViewCallback$gocChessBgImage(SuiDesigner$ChessBgViewCallback *  self, SuiCore$Canvas *  canvas);
 
 
 

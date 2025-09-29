@@ -71,6 +71,8 @@ import * from "./Sgl/Geometry.orc"
 import * from "./Sgl/GeometryHeightMap.orc"
 import * from "./Sui/Core/TestMath.orc"
 
+import * from "./HoroEditor/HoroEditor.orc"
+
 DockLayout@ dockLayoutIns = null
 //菜单栏控制器
 class MenuBarCtrl {
@@ -1202,6 +1204,12 @@ int main(){
     // new SglEditor().{
     //     o.showWindow()
     // }
+
+    new HoroEditor().{
+        o.openProject("../DemoProject")
+        // o.showWindow()
+    }
+
     // testAudio();
     // testMath();
 
@@ -1210,7 +1218,7 @@ int main(){
     // testPlaceKidsTo()
 
     // testInsp()
-    testInspMaterial()
+    // testInspMaterial()
     // testPath()
 
     // testTransparency()

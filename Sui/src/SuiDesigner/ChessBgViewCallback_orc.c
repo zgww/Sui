@@ -190,7 +190,7 @@ char *  SuiDesigner$ChessBgViewCallback$new_createChessBg_inMemory(SuiDesigner$C
 }
 
 
-int  SuiDesigner$ChessBgViewCallback$gocChessBgImage(SuiDesigner$ChessBgViewCallback *  self, SuiCore$Canvas *  canvas){
+SuiCore$Image *  SuiDesigner$ChessBgViewCallback$gocChessBgImage(SuiDesigner$ChessBgViewCallback *  self, SuiCore$Canvas *  canvas){
 	if (self->img == NULL) {
 		int  w = self->width;
 		int  h = self->height;

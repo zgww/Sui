@@ -152,7 +152,7 @@ static void renderProjectItemView(Node* o, ProjectInfo@ project, int i){
             o.hoverBorder.b.set(1.0, 0x11000000)
 
             o.activeBorder.setAll(0.0, 0x11000000)
-            o.activeBorder.b.set(1.0, 0x11000000)
+            o.activeBorder.b.set(1.0, 0x51ff0000)
 
             o.backgroundColor = i % 2 == 0 
             ? 0x00000000 
@@ -388,6 +388,7 @@ Window@ MainProject_showWindow(){
         new LayoutLinear().{
             o.direction.set("column")
             o.alignItems.set("maxOrStretch")
+            o.backgroundColor = 0xffefefef
             win.setRootView(o)
         }
         renderWindow()
