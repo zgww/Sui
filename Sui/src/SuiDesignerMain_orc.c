@@ -2057,9 +2057,9 @@ int  testAudio(){
 int  main(){
 	urgc_start_process_thread() ;
 	windowInit() ;
-	URGC_VAR_CLEANUP_CLASS SuiDesigner3d$HoroEditor*  tmpNewOwner_1 = NULL;
+	URGC_VAR_CLEANUP_CLASS HoroEditor$HoroEditor*  tmpNewOwner_1 = NULL;
 	{
-		SuiDesigner3d$HoroEditor*  o = SuiDesigner3d$HoroEditor_new(&tmpNewOwner_1) ;
+		HoroEditor$HoroEditor*  o = HoroEditor$HoroEditor_new(&tmpNewOwner_1) ;
 		
 	
 		o->openProject(o, "../DemoProject") ;

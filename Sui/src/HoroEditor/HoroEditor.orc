@@ -1,4 +1,4 @@
-package SuiDesigner3d
+package HoroEditor
 
 #include "../Orc/Orc.h"
 #include <stdio.h>
@@ -89,6 +89,7 @@ import * from "../Sgl/SglSceneView.orc"
 
 import * from "./HoroSceneHierView.orc"
 import * from "./HoroEditCtx.orc"
+import * from "./UiAct.orc"
 
 static DockLayout@ dockLayoutIns = null
 
@@ -638,7 +639,13 @@ class HoroEditor extends Listener{
                             }
                             if item.label.equals("Outline"){
                                 self.showOutline()
+                                return
                             }
+                            if item.label.equals("保存场景"){
+                                UiAct_savePrefab(self)
+                                return
+                            }
+                            Toast_make(item.label.str)
                         }
                         mkMenuNativeItem(null, null, null).{
                             if mbutton.text.equals("文件"){

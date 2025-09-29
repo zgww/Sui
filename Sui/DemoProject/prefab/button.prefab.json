@@ -23,16 +23,6 @@
 				"children":	[]
 			}, {
 				"attrs":	{
-					"width":	104,
-					"hoverBg":	-783091,
-					"name":	"提交按钮",
-					"text":	"提交",
-					"height":	37
-				},
-				"tag":	"SuiView$DrawButton",
-				"children":	[]
-			}, {
-				"attrs":	{
 					"pos":	{
 						"x":	10,
 						"y":	20

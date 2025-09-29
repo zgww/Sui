@@ -1,18 +1,18 @@
 
-typedef struct tagSuiDesigner$EventHoroSceneChanged SuiDesigner$EventHoroSceneChanged;
-typedef struct tagVtable_SuiDesigner$EventHoroSceneChanged Vtable_SuiDesigner$EventHoroSceneChanged;
-typedef struct tagSuiDesigner$EventHoroSelectedChanged SuiDesigner$EventHoroSelectedChanged;
-typedef struct tagVtable_SuiDesigner$EventHoroSelectedChanged Vtable_SuiDesigner$EventHoroSelectedChanged;
-typedef struct tagSuiDesigner$HoroEditCtx SuiDesigner$HoroEditCtx;
-typedef struct tagVtable_SuiDesigner$HoroEditCtx Vtable_SuiDesigner$HoroEditCtx;
+typedef struct tagHoroEditor$EventHoroSceneChanged HoroEditor$EventHoroSceneChanged;
+typedef struct tagVtable_HoroEditor$EventHoroSceneChanged Vtable_HoroEditor$EventHoroSceneChanged;
+typedef struct tagHoroEditor$EventHoroSelectedChanged HoroEditor$EventHoroSelectedChanged;
+typedef struct tagVtable_HoroEditor$EventHoroSelectedChanged Vtable_HoroEditor$EventHoroSelectedChanged;
+typedef struct tagHoroEditor$HoroEditCtx HoroEditor$HoroEditCtx;
+typedef struct tagVtable_HoroEditor$HoroEditCtx Vtable_HoroEditor$HoroEditCtx;
 
 
-#ifndef define_struct___SuiDesigner__HoroEditCtx_orc_h__
-#define define_struct___SuiDesigner__HoroEditCtx_orc_h__
+#ifndef define_struct___HoroEditor__HoroEditCtx_orc_h__
+#define define_struct___HoroEditor__HoroEditCtx_orc_h__
 
 
 #ifdef INCLUDE_ONLY_TYPE
-#define INCLUDE_ONLY_TYPE___SuiDesigner__HoroEditCtx_orc_h__
+#define INCLUDE_ONLY_TYPE___HoroEditor__HoroEditCtx_orc_h__
 #endif
 
 #include "Orc/Orc.h"
@@ -24,7 +24,7 @@ typedef struct tagVtable_SuiDesigner$HoroEditCtx Vtable_SuiDesigner$HoroEditCtx;
 
 
 
-#ifdef INCLUDE_ONLY_TYPE___SuiDesigner__HoroEditCtx_orc_h__
+#ifdef INCLUDE_ONLY_TYPE___HoroEditor__HoroEditCtx_orc_h__
 #define INCLUDE_ONLY_TYPE
 #endif
 
@@ -35,8 +35,8 @@ typedef struct tagVtable_SuiDesigner$HoroEditCtx Vtable_SuiDesigner$HoroEditCtx;
 
 
 // include once e.g.__App_orc_h__
-#ifndef __SuiDesigner__HoroEditCtx_orc_h__
-#define __SuiDesigner__HoroEditCtx_orc_h__
+#ifndef __HoroEditor__HoroEditCtx_orc_h__
+#define __HoroEditor__HoroEditCtx_orc_h__
 
 //include  importHeadCode
 #include "../Orc/String_orc.h"
@@ -87,81 +87,81 @@ extern "C"{
 //代码内容
 
 // 虚表
-struct tagVtable_SuiDesigner$EventHoroSceneChanged {
+struct tagVtable_HoroEditor$EventHoroSceneChanged {
 	Vtable_SuiCore$Event super;
 };
 //虚表实例
-extern Vtable_SuiDesigner$EventHoroSceneChanged _vtable_SuiDesigner$EventHoroSceneChanged;
+extern Vtable_HoroEditor$EventHoroSceneChanged _vtable_HoroEditor$EventHoroSceneChanged;
 
 // class refc:0
-struct tagSuiDesigner$EventHoroSceneChanged {
+struct tagHoroEditor$EventHoroSceneChanged {
 	SuiCore$Event super; 
 	
 };
-Vtable_SuiDesigner$EventHoroSceneChanged* Vtable_SuiDesigner$EventHoroSceneChanged_init(Vtable_SuiDesigner$EventHoroSceneChanged* pvt);
-void SuiDesigner$EventHoroSceneChanged_init_fields(SuiDesigner$EventHoroSceneChanged *self);
-void SuiDesigner$EventHoroSceneChanged_init(SuiDesigner$EventHoroSceneChanged *self, void *pOwner);
-SuiDesigner$EventHoroSceneChanged * SuiDesigner$EventHoroSceneChanged_new(void *pOwner);
-void SuiDesigner$EventHoroSceneChanged_fini(SuiDesigner$EventHoroSceneChanged *self);
+Vtable_HoroEditor$EventHoroSceneChanged* Vtable_HoroEditor$EventHoroSceneChanged_init(Vtable_HoroEditor$EventHoroSceneChanged* pvt);
+void HoroEditor$EventHoroSceneChanged_init_fields(HoroEditor$EventHoroSceneChanged *self);
+void HoroEditor$EventHoroSceneChanged_init(HoroEditor$EventHoroSceneChanged *self, void *pOwner);
+HoroEditor$EventHoroSceneChanged * HoroEditor$EventHoroSceneChanged_new(void *pOwner);
+void HoroEditor$EventHoroSceneChanged_fini(HoroEditor$EventHoroSceneChanged *self);
 
 
 
 // 虚表
-struct tagVtable_SuiDesigner$EventHoroSelectedChanged {
+struct tagVtable_HoroEditor$EventHoroSelectedChanged {
 	Vtable_SuiCore$Event super;
 };
 //虚表实例
-extern Vtable_SuiDesigner$EventHoroSelectedChanged _vtable_SuiDesigner$EventHoroSelectedChanged;
+extern Vtable_HoroEditor$EventHoroSelectedChanged _vtable_HoroEditor$EventHoroSelectedChanged;
 
 // class refc:0
-struct tagSuiDesigner$EventHoroSelectedChanged {
+struct tagHoroEditor$EventHoroSelectedChanged {
 	SuiCore$Event super; 
 	
 };
-Vtable_SuiDesigner$EventHoroSelectedChanged* Vtable_SuiDesigner$EventHoroSelectedChanged_init(Vtable_SuiDesigner$EventHoroSelectedChanged* pvt);
-void SuiDesigner$EventHoroSelectedChanged_init_fields(SuiDesigner$EventHoroSelectedChanged *self);
-void SuiDesigner$EventHoroSelectedChanged_init(SuiDesigner$EventHoroSelectedChanged *self, void *pOwner);
-SuiDesigner$EventHoroSelectedChanged * SuiDesigner$EventHoroSelectedChanged_new(void *pOwner);
-void SuiDesigner$EventHoroSelectedChanged_fini(SuiDesigner$EventHoroSelectedChanged *self);
+Vtable_HoroEditor$EventHoroSelectedChanged* Vtable_HoroEditor$EventHoroSelectedChanged_init(Vtable_HoroEditor$EventHoroSelectedChanged* pvt);
+void HoroEditor$EventHoroSelectedChanged_init_fields(HoroEditor$EventHoroSelectedChanged *self);
+void HoroEditor$EventHoroSelectedChanged_init(HoroEditor$EventHoroSelectedChanged *self, void *pOwner);
+HoroEditor$EventHoroSelectedChanged * HoroEditor$EventHoroSelectedChanged_new(void *pOwner);
+void HoroEditor$EventHoroSelectedChanged_fini(HoroEditor$EventHoroSelectedChanged *self);
 
 
 
 // 虚表
-struct tagVtable_SuiDesigner$HoroEditCtx {
+struct tagVtable_HoroEditor$HoroEditCtx {
 	Vtable_Object super;
 };
 //虚表实例
-extern Vtable_SuiDesigner$HoroEditCtx _vtable_SuiDesigner$HoroEditCtx;
+extern Vtable_HoroEditor$HoroEditCtx _vtable_HoroEditor$HoroEditCtx;
 
 // class refc:0
-struct tagSuiDesigner$HoroEditCtx {
+struct tagHoroEditor$HoroEditCtx {
 	Object super; 
 	SuiView$TreeState*  state ;
 	Sgl$SglSceneView*  sceneView ;
 	Orc$List*  roots ;
 	SuiCore$Node*  hoverNode ;
 	SuiDesigner$Prefab*  prefab ;
-	void  (*setState) (SuiDesigner$HoroEditCtx *  self, SuiView$TreeState*  state);
-	void  (*onSelectedChanged) (SuiDesigner$HoroEditCtx *  self);
-	void  (*setSceneView) (SuiDesigner$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
-	Sgl$Scene *  (*getScene) (SuiDesigner$HoroEditCtx *  self);
-	void  (*closeCurrentPrefab) (SuiDesigner$HoroEditCtx *  self);
-	void  (*openPrefab) (SuiDesigner$HoroEditCtx *  self, const char *  path);
-	SuiDesigner$ANode*  (*getRoot) (SuiDesigner$ANode **  __outRef__, SuiDesigner$HoroEditCtx *  self);
+	void  (*setState) (HoroEditor$HoroEditCtx *  self, SuiView$TreeState*  state);
+	void  (*onSelectedChanged) (HoroEditor$HoroEditCtx *  self);
+	void  (*setSceneView) (HoroEditor$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
+	Sgl$Scene *  (*getScene) (HoroEditor$HoroEditCtx *  self);
+	void  (*closeCurrentPrefab) (HoroEditor$HoroEditCtx *  self);
+	void  (*openPrefab) (HoroEditor$HoroEditCtx *  self, const char *  path);
+	SuiDesigner$ANode*  (*getRoot) (SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditCtx *  self);
 };
-Vtable_SuiDesigner$HoroEditCtx* Vtable_SuiDesigner$HoroEditCtx_init(Vtable_SuiDesigner$HoroEditCtx* pvt);
-void SuiDesigner$HoroEditCtx_init_fields(SuiDesigner$HoroEditCtx *self);
-void SuiDesigner$HoroEditCtx_init(SuiDesigner$HoroEditCtx *self, void *pOwner);
-SuiDesigner$HoroEditCtx * SuiDesigner$HoroEditCtx_new(void *pOwner);
-void SuiDesigner$HoroEditCtx_fini(SuiDesigner$HoroEditCtx *self);
+Vtable_HoroEditor$HoroEditCtx* Vtable_HoroEditor$HoroEditCtx_init(Vtable_HoroEditor$HoroEditCtx* pvt);
+void HoroEditor$HoroEditCtx_init_fields(HoroEditor$HoroEditCtx *self);
+void HoroEditor$HoroEditCtx_init(HoroEditor$HoroEditCtx *self, void *pOwner);
+HoroEditor$HoroEditCtx * HoroEditor$HoroEditCtx_new(void *pOwner);
+void HoroEditor$HoroEditCtx_fini(HoroEditor$HoroEditCtx *self);
 
-void  SuiDesigner$HoroEditCtx$setState(SuiDesigner$HoroEditCtx *  self, SuiView$TreeState*  state);
-void  SuiDesigner$HoroEditCtx$onSelectedChanged(SuiDesigner$HoroEditCtx *  self);
-void  SuiDesigner$HoroEditCtx$setSceneView(SuiDesigner$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
-Sgl$Scene *  SuiDesigner$HoroEditCtx$getScene(SuiDesigner$HoroEditCtx *  self);
-void  SuiDesigner$HoroEditCtx$closeCurrentPrefab(SuiDesigner$HoroEditCtx *  self);
-void  SuiDesigner$HoroEditCtx$openPrefab(SuiDesigner$HoroEditCtx *  self, const char *  path);
-SuiDesigner$ANode*  SuiDesigner$HoroEditCtx$getRoot(SuiDesigner$ANode **  __outRef__, SuiDesigner$HoroEditCtx *  self);
+void  HoroEditor$HoroEditCtx$setState(HoroEditor$HoroEditCtx *  self, SuiView$TreeState*  state);
+void  HoroEditor$HoroEditCtx$onSelectedChanged(HoroEditor$HoroEditCtx *  self);
+void  HoroEditor$HoroEditCtx$setSceneView(HoroEditor$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
+Sgl$Scene *  HoroEditor$HoroEditCtx$getScene(HoroEditor$HoroEditCtx *  self);
+void  HoroEditor$HoroEditCtx$closeCurrentPrefab(HoroEditor$HoroEditCtx *  self);
+void  HoroEditor$HoroEditCtx$openPrefab(HoroEditor$HoroEditCtx *  self, const char *  path);
+SuiDesigner$ANode*  HoroEditor$HoroEditCtx$getRoot(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditCtx *  self);
 
 
 

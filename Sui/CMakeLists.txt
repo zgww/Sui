@@ -207,6 +207,7 @@ file(GLOB src
     src/HoroEditor/HoroEditor_orc.c
     src/HoroEditor/HoroEditCtx_orc.c
     src/HoroEditor/HoroSceneHierView_orc.c
+    src/HoroEditor/UiAct_orc.c
 
 
     src/Sgl/Sgl_orc.c

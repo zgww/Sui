@@ -1,16 +1,16 @@
 
-typedef struct tagSuiDesigner3d$HoroEditorSceneViewCallback SuiDesigner3d$HoroEditorSceneViewCallback;
-typedef struct tagVtable_SuiDesigner3d$HoroEditorSceneViewCallback Vtable_SuiDesigner3d$HoroEditorSceneViewCallback;
-typedef struct tagSuiDesigner3d$HoroEditor SuiDesigner3d$HoroEditor;
-typedef struct tagVtable_SuiDesigner3d$HoroEditor Vtable_SuiDesigner3d$HoroEditor;
+typedef struct tagHoroEditor$HoroEditorSceneViewCallback HoroEditor$HoroEditorSceneViewCallback;
+typedef struct tagVtable_HoroEditor$HoroEditorSceneViewCallback Vtable_HoroEditor$HoroEditorSceneViewCallback;
+typedef struct tagHoroEditor$HoroEditor HoroEditor$HoroEditor;
+typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 
 
-#ifndef define_struct___SuiDesigner3d__HoroEditor_orc_h__
-#define define_struct___SuiDesigner3d__HoroEditor_orc_h__
+#ifndef define_struct___HoroEditor__HoroEditor_orc_h__
+#define define_struct___HoroEditor__HoroEditor_orc_h__
 
 
 #ifdef INCLUDE_ONLY_TYPE
-#define INCLUDE_ONLY_TYPE___SuiDesigner3d__HoroEditor_orc_h__
+#define INCLUDE_ONLY_TYPE___HoroEditor__HoroEditor_orc_h__
 #endif
 
 #include "Orc/Orc.h"
@@ -23,7 +23,7 @@ typedef struct tagVtable_SuiDesigner3d$HoroEditor Vtable_SuiDesigner3d$HoroEdito
 
 
 
-#ifdef INCLUDE_ONLY_TYPE___SuiDesigner3d__HoroEditor_orc_h__
+#ifdef INCLUDE_ONLY_TYPE___HoroEditor__HoroEditor_orc_h__
 #define INCLUDE_ONLY_TYPE
 #endif
 
@@ -34,8 +34,8 @@ typedef struct tagVtable_SuiDesigner3d$HoroEditor Vtable_SuiDesigner3d$HoroEdito
 
 
 // include once e.g.__App_orc_h__
-#ifndef __SuiDesigner3d__HoroEditor_orc_h__
-#define __SuiDesigner3d__HoroEditor_orc_h__
+#ifndef __HoroEditor__HoroEditor_orc_h__
+#define __HoroEditor__HoroEditor_orc_h__
 
 //include  importHeadCode
 #include "../Orc/String_orc.h"
@@ -121,6 +121,7 @@ typedef struct tagVtable_SuiDesigner3d$HoroEditor Vtable_SuiDesigner3d$HoroEdito
 #include "../Sgl/SglSceneView_orc.h"
 #include "./HoroSceneHierView_orc.h"
 #include "./HoroEditCtx_orc.h"
+#include "./UiAct_orc.h"
 
 
 #ifdef __cplusplus
@@ -130,95 +131,95 @@ extern "C"{
 //代码内容
 
 // 虚表
-struct tagVtable_SuiDesigner3d$HoroEditorSceneViewCallback {
+struct tagVtable_HoroEditor$HoroEditorSceneViewCallback {
 	Vtable_SuiCore$ViewCallback super;
 };
 //虚表实例
-extern Vtable_SuiDesigner3d$HoroEditorSceneViewCallback _vtable_SuiDesigner3d$HoroEditorSceneViewCallback;
+extern Vtable_HoroEditor$HoroEditorSceneViewCallback _vtable_HoroEditor$HoroEditorSceneViewCallback;
 
 // class refc:0
-struct tagSuiDesigner3d$HoroEditorSceneViewCallback {
+struct tagHoroEditor$HoroEditorSceneViewCallback {
 	SuiCore$ViewCallback super; 
-	SuiDesigner3d$HoroEditor*  horoEditor ;
+	HoroEditor$HoroEditor*  horoEditor ;
 };
-Vtable_SuiDesigner3d$HoroEditorSceneViewCallback* Vtable_SuiDesigner3d$HoroEditorSceneViewCallback_init(Vtable_SuiDesigner3d$HoroEditorSceneViewCallback* pvt);
-void SuiDesigner3d$HoroEditorSceneViewCallback_init_fields(SuiDesigner3d$HoroEditorSceneViewCallback *self);
-void SuiDesigner3d$HoroEditorSceneViewCallback_init(SuiDesigner3d$HoroEditorSceneViewCallback *self, void *pOwner);
-SuiDesigner3d$HoroEditorSceneViewCallback * SuiDesigner3d$HoroEditorSceneViewCallback_new(void *pOwner);
-void SuiDesigner3d$HoroEditorSceneViewCallback_fini(SuiDesigner3d$HoroEditorSceneViewCallback *self);
+Vtable_HoroEditor$HoroEditorSceneViewCallback* Vtable_HoroEditor$HoroEditorSceneViewCallback_init(Vtable_HoroEditor$HoroEditorSceneViewCallback* pvt);
+void HoroEditor$HoroEditorSceneViewCallback_init_fields(HoroEditor$HoroEditorSceneViewCallback *self);
+void HoroEditor$HoroEditorSceneViewCallback_init(HoroEditor$HoroEditorSceneViewCallback *self, void *pOwner);
+HoroEditor$HoroEditorSceneViewCallback * HoroEditor$HoroEditorSceneViewCallback_new(void *pOwner);
+void HoroEditor$HoroEditorSceneViewCallback_fini(HoroEditor$HoroEditorSceneViewCallback *self);
 
-void  SuiDesigner3d$HoroEditorSceneViewCallback$afterDrawSelf(SuiDesigner3d$HoroEditorSceneViewCallback *  self, SuiCore$View *  div, SuiCore$Canvas *  canvas);
+void  HoroEditor$HoroEditorSceneViewCallback$afterDrawSelf(HoroEditor$HoroEditorSceneViewCallback *  self, SuiCore$View *  div, SuiCore$Canvas *  canvas);
 
 
 // 虚表
-struct tagVtable_SuiDesigner3d$HoroEditor {
+struct tagVtable_HoroEditor$HoroEditor {
 	Vtable_SuiCore$Listener super;
 };
 //虚表实例
-extern Vtable_SuiDesigner3d$HoroEditor _vtable_SuiDesigner3d$HoroEditor;
+extern Vtable_HoroEditor$HoroEditor _vtable_HoroEditor$HoroEditor;
 
 // class refc:0
-struct tagSuiDesigner3d$HoroEditor {
+struct tagHoroEditor$HoroEditor {
 	SuiCore$Listener super; 
-	SuiDesigner$HoroEditCtx*  editCtx ;
+	HoroEditor$HoroEditCtx*  editCtx ;
 	Sui$Window*  win ;
 	SuiLayout$LayoutAlignPositionCell*  imgCell ;
 	SuiLayout$LayoutAlignPositionCell*  previewCell ;
 	SuiDesigner$InvalidReact*  invalidReact ;
 	Orc$String*  path ;
 	SuiView$Drag*  drag ;
-	SuiDesigner3d$HoroEditorSceneViewCallback*  viewCb ;
-	void  (*printSceneTree) (SuiDesigner3d$HoroEditor *  self);
+	HoroEditor$HoroEditorSceneViewCallback*  viewCb ;
+	void  (*printSceneTree) (HoroEditor$HoroEditor *  self);
 	SuiDesigner$ToolMgr*  toolMgr ;
 	SuiDesigner$SglGizmo*  sglGizmo ;
-	void  (*onSceneEvent) (SuiDesigner3d$HoroEditor *  self, SuiCore$Event *  e);
-	void  (*_afterDrawScene) (SuiDesigner3d$HoroEditor *  self);
+	void  (*onSceneEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
+	void  (*_afterDrawScene) (HoroEditor$HoroEditor *  self);
 	SuiDesigner$ChessBgViewCallback*  chessBg ;
-	SuiCore$ViewBase *  (*reactPreview) (SuiDesigner3d$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
-	void  (*showDialog_renameLayer) (SuiDesigner3d$HoroEditor *  self);
+	SuiCore$ViewBase *  (*reactPreview) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
+	void  (*showDialog_renameLayer) (HoroEditor$HoroEditor *  self);
 	Sgl$MaterialPreviewView*  glPreviewView ;
 	Sgl$Material*  matl ;
-	SuiCore$ViewBase *  (*reactScene) (SuiDesigner3d$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
+	SuiCore$ViewBase *  (*reactScene) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
 	SuiCore$View*  gizmosView ;
-	void  (*reactGizmosView) (SuiDesigner3d$HoroEditor *  self);
+	void  (*reactGizmosView) (HoroEditor$HoroEditor *  self);
 	Sgl$Mesh*  mesh ;
 	Sgl$Mesh*  meshSphere ;
 	Sgl$SglSceneView*  sceneView ;
-	void  (*react) (SuiDesigner3d$HoroEditor *  self);
-	void  (*showWindow_mapSetting) (SuiDesigner3d$HoroEditor *  self);
+	void  (*react) (HoroEditor$HoroEditor *  self);
+	void  (*showWindow_mapSetting) (HoroEditor$HoroEditor *  self);
 	SuiDesigner3d_w3e$W3e*  w3e ;
 	Sgl$Geometry*  geom ;
-	void  (*onWindowEvent) (SuiDesigner3d$HoroEditor *  self, SuiCore$Event *  e);
+	void  (*onWindowEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 	Sgl$Mesh*  heightmap ;
 	Sgl$OutlineFx*  outlineFx ;
-	void  (*showOutline) (SuiDesigner3d$HoroEditor *  self);
-	void  (*testShowMatl) (SuiDesigner3d$HoroEditor *  self);
-	void  (*showWindow) (SuiDesigner3d$HoroEditor *  self);
-	void  (*openProject) (SuiDesigner3d$HoroEditor *  self, const char *  path);
+	void  (*showOutline) (HoroEditor$HoroEditor *  self);
+	void  (*testShowMatl) (HoroEditor$HoroEditor *  self);
+	void  (*showWindow) (HoroEditor$HoroEditor *  self);
+	void  (*openProject) (HoroEditor$HoroEditor *  self, const char *  path);
 };
-Vtable_SuiDesigner3d$HoroEditor* Vtable_SuiDesigner3d$HoroEditor_init(Vtable_SuiDesigner3d$HoroEditor* pvt);
-void SuiDesigner3d$HoroEditor_init_fields(SuiDesigner3d$HoroEditor *self);
-void SuiDesigner3d$HoroEditor_init(SuiDesigner3d$HoroEditor *self, void *pOwner);
-SuiDesigner3d$HoroEditor * SuiDesigner3d$HoroEditor_new(void *pOwner);
-void SuiDesigner3d$HoroEditor_fini(SuiDesigner3d$HoroEditor *self);
+Vtable_HoroEditor$HoroEditor* Vtable_HoroEditor$HoroEditor_init(Vtable_HoroEditor$HoroEditor* pvt);
+void HoroEditor$HoroEditor_init_fields(HoroEditor$HoroEditor *self);
+void HoroEditor$HoroEditor_init(HoroEditor$HoroEditor *self, void *pOwner);
+HoroEditor$HoroEditor * HoroEditor$HoroEditor_new(void *pOwner);
+void HoroEditor$HoroEditor_fini(HoroEditor$HoroEditor *self);
 
-void  SuiDesigner3d$HoroEditor$printSceneTree(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$onSceneEvent(SuiDesigner3d$HoroEditor *  self, SuiCore$Event *  e);
-void  SuiDesigner3d$HoroEditor$_afterDrawScene(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$ctor(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$dtor(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$onListenerEvent(SuiDesigner3d$HoroEditor *  self, SuiCore$Event *  e);
-SuiCore$ViewBase *  SuiDesigner3d$HoroEditor$reactPreview(SuiDesigner3d$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
-void  SuiDesigner3d$HoroEditor$showDialog_renameLayer(SuiDesigner3d$HoroEditor *  self);
-SuiCore$ViewBase *  SuiDesigner3d$HoroEditor$reactScene(SuiDesigner3d$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
-void  SuiDesigner3d$HoroEditor$reactGizmosView(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$react(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$showWindow_mapSetting(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$onWindowEvent(SuiDesigner3d$HoroEditor *  self, SuiCore$Event *  e);
-void  SuiDesigner3d$HoroEditor$showOutline(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$testShowMatl(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$showWindow(SuiDesigner3d$HoroEditor *  self);
-void  SuiDesigner3d$HoroEditor$openProject(SuiDesigner3d$HoroEditor *  self, const char *  path);
+void  HoroEditor$HoroEditor$printSceneTree(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$onSceneEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
+void  HoroEditor$HoroEditor$_afterDrawScene(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$ctor(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$dtor(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$onListenerEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
+SuiCore$ViewBase *  HoroEditor$HoroEditor$reactPreview(HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
+void  HoroEditor$HoroEditor$showDialog_renameLayer(HoroEditor$HoroEditor *  self);
+SuiCore$ViewBase *  HoroEditor$HoroEditor$reactScene(HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
+void  HoroEditor$HoroEditor$reactGizmosView(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$react(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$showWindow_mapSetting(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$onWindowEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
+void  HoroEditor$HoroEditor$showOutline(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$testShowMatl(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const char *  path);
 
 
 

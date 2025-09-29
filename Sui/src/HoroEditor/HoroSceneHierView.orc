@@ -1,4 +1,4 @@
-package SuiDesigner
+package HoroEditor
 
 #include <stdio.h>
 #include <string.h>
@@ -76,7 +76,7 @@ class HoroSceneHierView extends LayoutLinear {
         super.onUnmounting()
         useEbus().removeListener(self)
     }
-    void _routeRightMenu(MenuNativeItem* item, Node@ node){
+    void _routeRightMenu(MenuNativeItem* item, ANode@ node){
         if !item.cmd {
             return 
         }
@@ -126,8 +126,8 @@ class HoroSceneHierView extends LayoutLinear {
     }
     void _onItemRightClick(MouseEvent *me, Node *view, Object *item){
         me.stopPropagation()
-        if item instanceof Node {
-            Node@ node = (Node@)item
+        if item instanceof ANode {
+            ANode@ node = (ANode@)item
 
             mkMenuNativeItem(null, null, null).{
                 ^void onActive(MenuNativeItem*item){

@@ -1,14 +1,14 @@
 
-typedef struct tagSuiDesigner$HoroSceneHierView SuiDesigner$HoroSceneHierView;
-typedef struct tagVtable_SuiDesigner$HoroSceneHierView Vtable_SuiDesigner$HoroSceneHierView;
+typedef struct tagHoroEditor$HoroSceneHierView HoroEditor$HoroSceneHierView;
+typedef struct tagVtable_HoroEditor$HoroSceneHierView Vtable_HoroEditor$HoroSceneHierView;
 
 
-#ifndef define_struct___SuiDesigner__HoroSceneHierView_orc_h__
-#define define_struct___SuiDesigner__HoroSceneHierView_orc_h__
+#ifndef define_struct___HoroEditor__HoroSceneHierView_orc_h__
+#define define_struct___HoroEditor__HoroSceneHierView_orc_h__
 
 
 #ifdef INCLUDE_ONLY_TYPE
-#define INCLUDE_ONLY_TYPE___SuiDesigner__HoroSceneHierView_orc_h__
+#define INCLUDE_ONLY_TYPE___HoroEditor__HoroSceneHierView_orc_h__
 #endif
 
 #include "Orc/Orc.h"
@@ -23,7 +23,7 @@ typedef struct tagVtable_SuiDesigner$HoroSceneHierView Vtable_SuiDesigner$HoroSc
 
 
 
-#ifdef INCLUDE_ONLY_TYPE___SuiDesigner__HoroSceneHierView_orc_h__
+#ifdef INCLUDE_ONLY_TYPE___HoroEditor__HoroSceneHierView_orc_h__
 #define INCLUDE_ONLY_TYPE
 #endif
 
@@ -34,8 +34,8 @@ typedef struct tagVtable_SuiDesigner$HoroSceneHierView Vtable_SuiDesigner$HoroSc
 
 
 // include once e.g.__App_orc_h__
-#ifndef __SuiDesigner__HoroSceneHierView_orc_h__
-#define __SuiDesigner__HoroSceneHierView_orc_h__
+#ifndef __HoroEditor__HoroSceneHierView_orc_h__
+#define __HoroEditor__HoroSceneHierView_orc_h__
 
 //include  importHeadCode
 #include "../Orc/String_orc.h"
@@ -87,38 +87,38 @@ extern "C"{
 //代码内容
 
 // 虚表
-struct tagVtable_SuiDesigner$HoroSceneHierView {
+struct tagVtable_HoroEditor$HoroSceneHierView {
 	Vtable_SuiLayout$LayoutLinear super;
 };
 //虚表实例
-extern Vtable_SuiDesigner$HoroSceneHierView _vtable_SuiDesigner$HoroSceneHierView;
+extern Vtable_HoroEditor$HoroSceneHierView _vtable_HoroEditor$HoroSceneHierView;
 
 // class refc:0
-struct tagSuiDesigner$HoroSceneHierView {
+struct tagHoroEditor$HoroSceneHierView {
 	SuiLayout$LayoutLinear super; 
-	SuiDesigner$HoroEditCtx*  editCtx ;
-	void  (*onUnmouting) (SuiDesigner$HoroSceneHierView *  self);
-	void  (*_routeRightMenu) (SuiDesigner$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiCore$Node*  node);
-	void  (*_onItemRightClick) (SuiDesigner$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
-	void  (*_onEvent_forItemView) (SuiDesigner$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
+	HoroEditor$HoroEditCtx*  editCtx ;
+	void  (*onUnmouting) (HoroEditor$HoroSceneHierView *  self);
+	void  (*_routeRightMenu) (HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  node);
+	void  (*_onItemRightClick) (HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
+	void  (*_onEvent_forItemView) (HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
 };
-Vtable_SuiDesigner$HoroSceneHierView* Vtable_SuiDesigner$HoroSceneHierView_init(Vtable_SuiDesigner$HoroSceneHierView* pvt);
-void SuiDesigner$HoroSceneHierView_init_fields(SuiDesigner$HoroSceneHierView *self);
-void SuiDesigner$HoroSceneHierView_init(SuiDesigner$HoroSceneHierView *self, void *pOwner);
-SuiDesigner$HoroSceneHierView * SuiDesigner$HoroSceneHierView_new(void *pOwner);
-void SuiDesigner$HoroSceneHierView_fini(SuiDesigner$HoroSceneHierView *self);
+Vtable_HoroEditor$HoroSceneHierView* Vtable_HoroEditor$HoroSceneHierView_init(Vtable_HoroEditor$HoroSceneHierView* pvt);
+void HoroEditor$HoroSceneHierView_init_fields(HoroEditor$HoroSceneHierView *self);
+void HoroEditor$HoroSceneHierView_init(HoroEditor$HoroSceneHierView *self, void *pOwner);
+HoroEditor$HoroSceneHierView * HoroEditor$HoroSceneHierView_new(void *pOwner);
+void HoroEditor$HoroSceneHierView_fini(HoroEditor$HoroSceneHierView *self);
 
-void  SuiDesigner$HoroSceneHierView$ctor(SuiDesigner$HoroSceneHierView *  self);
-void  SuiDesigner$HoroSceneHierView$onListenerEvent(SuiDesigner$HoroSceneHierView *  self, SuiCore$Event *  event);
-void  SuiDesigner$HoroSceneHierView$onMounted(SuiDesigner$HoroSceneHierView *  self);
-void  SuiDesigner$HoroSceneHierView$onUnmouting(SuiDesigner$HoroSceneHierView *  self);
-void  SuiDesigner$HoroSceneHierView$_routeRightMenu(SuiDesigner$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiCore$Node*  node);
-void  SuiDesigner$HoroSceneHierView$_onItemRightClick(SuiDesigner$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
-void  SuiDesigner$HoroSceneHierView$_onEvent_forItemView(SuiDesigner$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
-void  SuiDesigner$HoroSceneHierView$react(SuiDesigner$HoroSceneHierView *  self, int  xxx);
+void  HoroEditor$HoroSceneHierView$ctor(HoroEditor$HoroSceneHierView *  self);
+void  HoroEditor$HoroSceneHierView$onListenerEvent(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  event);
+void  HoroEditor$HoroSceneHierView$onMounted(HoroEditor$HoroSceneHierView *  self);
+void  HoroEditor$HoroSceneHierView$onUnmouting(HoroEditor$HoroSceneHierView *  self);
+void  HoroEditor$HoroSceneHierView$_routeRightMenu(HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  node);
+void  HoroEditor$HoroSceneHierView$_onItemRightClick(HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
+void  HoroEditor$HoroSceneHierView$_onEvent_forItemView(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
+void  HoroEditor$HoroSceneHierView$react(HoroEditor$HoroSceneHierView *  self, int  xxx);
 
-SuiDesigner$HoroSceneHierView*  SuiDesigner$mkHoroSceneHierView(SuiDesigner$HoroSceneHierView **  __outRef__, void *  parent, long long  key);
-void  SuiDesigner$testHoroSceneHier();
+HoroEditor$HoroSceneHierView*  HoroEditor$mkHoroSceneHierView(HoroEditor$HoroSceneHierView **  __outRef__, void *  parent, long long  key);
+void  HoroEditor$testHoroSceneHier();
 
 
 
