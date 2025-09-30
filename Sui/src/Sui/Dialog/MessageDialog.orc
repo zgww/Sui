@@ -25,6 +25,8 @@ void MessageDialog_prompt(const char *value, const char *title, ^void (String@ n
             o.alignItems.set("stretch")
             o.justifyContent.set("center")
             o.padding.setAll(8)
+            o.backgroundColor = 0xffffffff
+
             win.setRootView(o)
         }
 

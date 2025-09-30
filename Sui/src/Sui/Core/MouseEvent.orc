@@ -31,6 +31,7 @@ struct ClickRecord {
     int clientX
     int clientY
     long long clickUnixMs
+    int button
 }
 //用来记录每次点击，用来跟踪双击
 static ClickRecord clickRecord
@@ -249,22 +250,27 @@ void preprocessMouseEvent(MouseEvent *ev){
         int threshold = 10 * 10
         long long msThreshold = 400 // ms
         long long msGap = nowMs - clickRecord.clickUnixMs 
-        printf("\n\n预处理鼠标事件. dx:%d, dy:%d, msGap:%lld",
+        printf("\n\n预处理鼠标事件. dx:%d, dy:%d, msGap:%lld\n",
             dx, dy, msGap
         );
         if (
-            msGap < msThreshold
+            clickRecord.button == ev.button
+            && msGap < msThreshold
             && dx * dx < threshold 
             && dy * dy < threshold){
             ev.isDblClick = true
         } else {
             ev.isDblClick = false
         }
+        if ev.isDblClick {
+            printf("触了了双击事件\n\n",);
+        }
 
         //记录上次的点击时间
         clickRecord.clientX = ev.clientX
         clickRecord.clientY = ev.clientY
         clickRecord.clickUnixMs = nowMs
+        clickRecord.button = ev.button
     }
 }
 

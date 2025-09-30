@@ -145,6 +145,7 @@ MetaStruct* SuiCore$ClickRecord_getOrInitMetaStruct(){
 		orc_metaField_primitive(&pNext, "clientX", OrcMetaType_int, offsetof(SuiCore$ClickRecord, clientX), 0, 0, 0, 0);//int
 		orc_metaField_primitive(&pNext, "clientY", OrcMetaType_int, offsetof(SuiCore$ClickRecord, clientY), 0, 0, 0, 0);//int
 		orc_metaField_primitive(&pNext, "clickUnixMs", OrcMetaType_long_long, offsetof(SuiCore$ClickRecord, clickUnixMs), 0, 0, 0, 0);//longlong
+		orc_metaField_primitive(&pNext, "button", OrcMetaType_int, offsetof(SuiCore$ClickRecord, button), 0, 0, 0, 0);//int
     }
 	return meta;
 }
@@ -958,16 +959,20 @@ void  SuiCore$preprocessMouseEvent(SuiCore$MouseEvent *  ev){
 		int  threshold = 10 * 10;
 		long long  msThreshold = 400;
 		long long  msGap = nowMs - clickRecord.clickUnixMs;
-		printf("\n\n预处理鼠标事件. dx:%d, dy:%d, msGap:%lld", dx, dy, msGap) ;
-		if (msGap < msThreshold && dx * dx < threshold && dy * dy < threshold) {
+		printf("\n\n预处理鼠标事件. dx:%d, dy:%d, msGap:%lld\n", dx, dy, msGap) ;
+		if (clickRecord.button == ev->button && msGap < msThreshold && dx * dx < threshold && dy * dy < threshold) {
 			ev->isDblClick = true;
 		}
 		else {
 			ev->isDblClick = false;
 		}
+		if (ev->isDblClick) {
+			printf("触了了双击事件\n\n") ;
+		}
 		clickRecord.clientX = ev->clientX;
 		clickRecord.clientY = ev->clientY;
 		clickRecord.clickUnixMs = nowMs;
+		clickRecord.button = ev->button;
 	}
 }
 

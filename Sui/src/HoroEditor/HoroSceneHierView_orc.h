@@ -54,6 +54,7 @@ typedef struct tagVtable_HoroEditor$HoroSceneHierView Vtable_HoroEditor$HoroScen
 #include "../Sui/Core/ViewBase_orc.h"
 #include "../Sui/Core/Canvas_orc.h"
 #include "../Sui/Dialog/MessageDialog_orc.h"
+#include "../Sui/Dialog/Toast_orc.h"
 #include "../Sui/View/ImageView_orc.h"
 #include "../Sui/View/HoverViewEffect_orc.h"
 #include "../Sui/View/TextView_orc.h"
@@ -101,7 +102,7 @@ struct tagHoroEditor$HoroSceneHierView {
 	HoroEditor$HoroEditCtx*  editCtx ;
 	HoroEditor$HoroEditor*  editor ;
 	void  (*onUnmouting) (HoroEditor$HoroSceneHierView *  self);
-	void  (*_routeRightMenu) (HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  node);
+	void  (*_routeRightMenu) (HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  anode);
 	void  (*_onItemRightClick) (HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 	void  (*_onEvent_forItemView) (HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
 };
@@ -115,7 +116,7 @@ void  HoroEditor$HoroSceneHierView$ctor(HoroEditor$HoroSceneHierView *  self);
 void  HoroEditor$HoroSceneHierView$onListenerEvent(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  event);
 void  HoroEditor$HoroSceneHierView$onMounted(HoroEditor$HoroSceneHierView *  self);
 void  HoroEditor$HoroSceneHierView$onUnmouting(HoroEditor$HoroSceneHierView *  self);
-void  HoroEditor$HoroSceneHierView$_routeRightMenu(HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  node);
+void  HoroEditor$HoroSceneHierView$_routeRightMenu(HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  anode);
 void  HoroEditor$HoroSceneHierView$_onItemRightClick(HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 void  HoroEditor$HoroSceneHierView$_onEvent_forItemView(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
 void  HoroEditor$HoroSceneHierView$react(HoroEditor$HoroSceneHierView *  self, int  xxx);

@@ -4,12 +4,19 @@ import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
 import * from "../Orc/Map.orc"
 import * from "../Orc/Path.orc"
+
 import * from "./HoroEditCtx.orc"
 import * from "./HoroEditor.orc"
+
 import * from "../SuiDesigner/ANode.orc"
 import * from "../SuiDesigner/EventANodeChanged.orc"
+import * from "../SuiDesigner/FileItem.orc"
+import * from "../SuiDesigner/EventFileItemChanged.orc"
+
 import * from "../Sui/Core/NodeLib.orc"
+
 import * from "../Sui/Dialog/Toast.orc"
+import * from "../Sui/Dialog/MessageDialog.orc"
 
 
 void UiAct_savePrefab(HoroEditor* editor){

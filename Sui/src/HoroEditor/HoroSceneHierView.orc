@@ -25,6 +25,7 @@ import * from "../Sui/Core/ViewBase.orc"
 import * from "../Sui/Core/Canvas.orc"
 
 import * from "../Sui/Dialog/MessageDialog.orc"
+import * from "../Sui/Dialog/Toast.orc"
 
 import * from "../Sui/View/ImageView.orc"
 import * from "../Sui/View/HoverViewEffect.orc"
@@ -69,40 +70,49 @@ class HoroSceneHierView extends LayoutLinear {
         if event instanceof EventHoroSceneChanged{
             self.trigger_react()
         }
+        else if event instanceof EventANodeAttrChanged {
+            self.trigger_react()
+        }
+        else if event instanceof EventANodeChanged {
+            self.trigger_react()
+        }
     }
     void onMounted(){
         super.onMounted()
         useEbus().addListener(self)
-        
     }
     void onUnmouting(){
         super.onUnmounting()
         useEbus().removeListener(self)
     }
-    void _routeRightMenu(MenuNativeItem* item, ANode@ node){
+    void _routeRightMenu(MenuNativeItem* item, ANode@ anode){
         if !item.cmd {
             return 
         }
 
         if item.cmd.startsWith("PreviewCamera"){
-            UiAction_previewCamera(self.editCtx.sceneView.drawCtx,  (Camera*)node)
+            // UiAction_previewCamera(self.editCtx.sceneView.drawCtx,  (Camera*)node)
+        }
+        if item.cmd.startsWith("RefreshHier"){
+            self.trigger_react()
         }
         if item.cmd.startsWith("AddView/"){
-            MessageDialog_alert(item.cmd.str, "tip")
             String@ viewName = Path_basename(item.cmd.str)
+            // MessageDialog_alert(item.cmd.str, "tip")
+            Toast_make(viewName.str)
             // UiAction_addView(anode, viewName)
-            UiAct_addView(self.editor, node, viewName)
+            UiAct_addView(self.editor, anode, viewName)
             return
         }
         if item.cmd.equals("RenameView"){
-            // UiAction_renameANode(anode)
+            UiAction_renameANode(anode)
             // MessageDialog_alert("重命名", "tip")
             return
         }
         if item.cmd.equals("DeleteView"){
             // MessageDialog_alert("删除", "tip")
             // UiAction_deleteANode(anode)
-            node.removeSelf()
+            anode.removeSelf()
             useEbus().emit(new EventHoroSceneChanged())
             return
         }
@@ -112,19 +122,19 @@ class HoroSceneHierView extends LayoutLinear {
         }
         else if item.cmd.equals("CopyView"){
             // MessageDialog_alert(item.cmd.str, "tip")
-            // List@ list = new List()
-            // list.add(anode)
-            // UiAction_copyANodes(list)
+            List@ list = new List()
+            list.add(anode)
+            UiAction_copyANodes(list)
         }
         else if item.cmd.equals("PasteView"){
             // MessageDialog_alert(item.cmd.str, "tip")
-            // UiAction_pasteANodes(anode)
+            UiAction_pasteANodes(anode)
         }
         else if item.cmd.equals("CutView"){
             // MessageDialog_alert(item.cmd.str, "tip")
-            // List@ list = new List()
-            // list.add(anode)
-            // UiAction_cutANodes(list)
+            List@ list = new List()
+            list.add(anode)
+            UiAction_cutANodes(list)
         }
         
     }
@@ -144,6 +154,7 @@ class HoroSceneHierView extends LayoutLinear {
                     // MessageDialog_alert("hi", "tip")
                 }
 
+                mkMenuNativeItem(o, str("刷新层级"), onActive). {o.cmd = str("RefreshHier")}
                 mkMenuNativeItem(o, str("重命名"), onActive). {o.cmd = str("RenameView")}
                 mkMenuNativeItem(o, str("添加"), onActive). {
                     o.cmd = str("RenameView")
@@ -248,7 +259,10 @@ class HoroSceneHierView extends LayoutLinear {
             // }
 
 
-            mkTreeView(o, 0)~{
+            mkTreeView(o, 0).{
+                if o.isNewForReact {
+                    printf("new scene hier tree view\n")
+                }
                 TreeView@ treeView = o
                 // o.border.setAll(2, 0xff000000)
                 // o.margin.setAll(20)
@@ -258,7 +272,9 @@ class HoroSceneHierView extends LayoutLinear {
                 o.state.roots = self.editCtx.roots
                 o.state.getId = ^String@ (Object *item){
                     ANode@ s = (ANode@)item
-                    return s.getId();
+                    String@ id = s.getId();
+                    // printf("tag:%s, id:%s\n", s.tag.str, id.str)
+                    return id;
                 }
                 o.state.getItemChildren = ^List@ (Object *item){
                     ANode@ s = (ANode@)item
@@ -332,10 +348,13 @@ class HoroSceneHierView extends LayoutLinear {
                         Vtable_Object *vt = orc_getVtableByObject(s);
                         String@ name = s.getName()
                         if name && name.notEmpty() {
+                            // String@ basename = Path_basename(name.str)
+                            // o.setText(basename)
                             o.setText(name)
                         }
                         else {
-                            o.setText(str(vt.className))
+                            // o.setText(str(vt.className))
+                            o.setText(s.tag)
                         }
                         // o.backgroundColor = 0x120033ff
                         // if s.node && s.node.name && s.node.name.notEmpty() {

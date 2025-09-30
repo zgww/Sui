@@ -41,6 +41,7 @@ struct tagSuiCore$ClickRecord {
 	int  clientX ;
 	int  clientY ;
 	long long  clickUnixMs ;
+	int  button ;
 };
 
 

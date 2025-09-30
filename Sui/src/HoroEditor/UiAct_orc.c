@@ -9,8 +9,11 @@
 #include "./HoroEditor_orc.h"
 #include "../SuiDesigner/ANode_orc.h"
 #include "../SuiDesigner/EventANodeChanged_orc.h"
+#include "../SuiDesigner/FileItem_orc.h"
+#include "../SuiDesigner/EventFileItemChanged_orc.h"
 #include "../Sui/Core/NodeLib_orc.h"
 #include "../Sui/Dialog/Toast_orc.h"
+#include "../Sui/Dialog/MessageDialog_orc.h"
 
 
 // static struct 
