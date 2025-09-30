@@ -51,6 +51,11 @@
 				},
 				"tag":	"SuiView$ImageView",
 				"children":	[]
+			}, {
+				"attrs":	{
+				},
+				"tag":	"Sgl$Light",
+				"children":	[]
 			}]
 	}
 }

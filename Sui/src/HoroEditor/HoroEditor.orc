@@ -567,6 +567,7 @@ class HoroEditor extends Listener{
         // printf("projectDirPath:%s\n", projectDirPath.str)
         Path_setcwd(path)
 
+
         String@ abspath = Path_toAbsolute(path)
         String@ cwd = Path_getcwd();
         printf("打开项目。 项目路径为:%s. cwd:%s", abspath.str, cwd.str)
@@ -575,7 +576,9 @@ class HoroEditor extends Listener{
         //确保opengl环境有初始化了
         Window@ win = new Window();
 
-        self.editCtx.openPrefab("prefab/button.prefab.json")
+        // self.editCtx.openPrefab("prefab/button.prefab.json")
+        self.editCtx.openPrefab("prefab/3d.prefab.json")
+
 
         self.showWindow()
         win.close()

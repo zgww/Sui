@@ -1,0 +1,14 @@
+{
+	"version": "0.0.3",
+	"root": {
+		"attrs": {},
+		"tag": "Sgl$Obj3d",
+		"children": [
+			{
+				"attrs": {},
+				"tag": "Sgl$Light",
+				"children": []
+			}
+		]
+	}
+}
