@@ -80,7 +80,7 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "../SuiDesigner/DrawDegree_orc.h"
 #include "../SuiDesigner/ChessBgViewCallback_orc.h"
 #include "../SuiDesigner/Theme_orc.h"
-#include "../SuiDesigner/W3e_orc.h"
+#include "../SuiDesigner/ANode_orc.h"
 #include "../SuiDesigner/EventANodeChanged_orc.h"
 #include "../SuiDesigner/InvalidReact_orc.h"
 #include "../SuiDesigner/MenuBarCtrl_orc.h"
@@ -92,6 +92,7 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "../Sgl/Material_orc.h"
 #include "../Sgl/Draw_orc.h"
 #include "../Sgl/Tex2d_orc.h"
+#include "../Sgl/Obj3d_orc.h"
 #include "../Sgl/Geometry_orc.h"
 #include "../Sgl/Mesh_orc.h"
 #include "../Sgl/SkinMesh_orc.h"
@@ -167,37 +168,23 @@ struct tagHoroEditor$HoroEditor {
 	SuiCore$Listener super; 
 	HoroEditor$HoroEditCtx*  editCtx ;
 	Sui$Window*  win ;
-	SuiLayout$LayoutAlignPositionCell*  imgCell ;
-	SuiLayout$LayoutAlignPositionCell*  previewCell ;
 	SuiDesigner$InvalidReact*  invalidReact ;
-	Orc$String*  path ;
 	SuiView$Drag*  drag ;
 	HoroEditor$HoroEditorSceneViewCallback*  viewCb ;
-	void  (*printSceneTree) (HoroEditor$HoroEditor *  self);
 	SuiDesigner$ToolMgr*  toolMgr ;
 	SuiDesigner$SglGizmo*  sglGizmo ;
+	Sgl$SglSceneView*  sceneView ;
+	SuiCore$View*  gizmosView ;
 	void  (*onSceneEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 	void  (*_afterDrawScene) (HoroEditor$HoroEditor *  self);
-	SuiDesigner$ChessBgViewCallback*  chessBg ;
-	SuiCore$ViewBase *  (*reactPreview) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
-	void  (*showDialog_renameLayer) (HoroEditor$HoroEditor *  self);
-	Sgl$MaterialPreviewView*  glPreviewView ;
-	Sgl$Material*  matl ;
+	void  (*reactScene_forViewBase) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiDesigner$ANode *  anode);
+	void  (*reactScene_forObj3d) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiDesigner$ANode *  anode);
 	SuiCore$ViewBase *  (*reactScene) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
-	SuiCore$View*  gizmosView ;
 	void  (*reactGizmosView) (HoroEditor$HoroEditor *  self);
-	Sgl$Mesh*  mesh ;
-	Sgl$Mesh*  meshSphere ;
-	Sgl$SglSceneView*  sceneView ;
+	void  (*reactMenubar) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
+	void  (*reactDocklayout) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 	void  (*react) (HoroEditor$HoroEditor *  self);
-	void  (*showWindow_mapSetting) (HoroEditor$HoroEditor *  self);
-	SuiDesigner3d_w3e$W3e*  w3e ;
-	Sgl$Geometry*  geom ;
 	void  (*onWindowEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
-	Sgl$Mesh*  heightmap ;
-	Sgl$OutlineFx*  outlineFx ;
-	void  (*showOutline) (HoroEditor$HoroEditor *  self);
-	void  (*testShowMatl) (HoroEditor$HoroEditor *  self);
 	void  (*showWindow) (HoroEditor$HoroEditor *  self);
 	void  (*openProject) (HoroEditor$HoroEditor *  self, const char *  path);
 };
@@ -207,21 +194,19 @@ void HoroEditor$HoroEditor_init(HoroEditor$HoroEditor *self, void *pOwner);
 HoroEditor$HoroEditor * HoroEditor$HoroEditor_new(void *pOwner);
 void HoroEditor$HoroEditor_fini(HoroEditor$HoroEditor *self);
 
-void  HoroEditor$HoroEditor$printSceneTree(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$onSceneEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroEditor$_afterDrawScene(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$ctor(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$dtor(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$onListenerEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
-SuiCore$ViewBase *  HoroEditor$HoroEditor$reactPreview(HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
-void  HoroEditor$HoroEditor$showDialog_renameLayer(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$reactScene_forViewBase(HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiDesigner$ANode *  anode);
+void  HoroEditor$HoroEditor$reactScene_forObj3d(HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiDesigner$ANode *  anode);
 SuiCore$ViewBase *  HoroEditor$HoroEditor$reactScene(HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiView$DockItem *  item);
 void  HoroEditor$HoroEditor$reactGizmosView(HoroEditor$HoroEditor *  self);
+void  HoroEditor$HoroEditor$reactMenubar(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
+void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 void  HoroEditor$HoroEditor$react(HoroEditor$HoroEditor *  self);
-void  HoroEditor$HoroEditor$showWindow_mapSetting(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$onWindowEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
-void  HoroEditor$HoroEditor$showOutline(HoroEditor$HoroEditor *  self);
-void  HoroEditor$HoroEditor$testShowMatl(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const char *  path);
 

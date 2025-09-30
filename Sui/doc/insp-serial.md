@@ -30,6 +30,8 @@
 
 insp都统一为 对象检视方案, 无关场景
 
+根据根结点的类型切换sceneview.  如果是ViewBase类型，就走2d场景。 如果是Obj3d类型，就渲染到SglSceneView中
+
 
 # dsl
 把属性理解成 set

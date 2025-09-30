@@ -129,7 +129,7 @@ class HoroSceneHierView extends LayoutLinear {
         if item.cmd.startsWith("AddView/"){
             String@ viewName = Path_basename(item.cmd.str)
             // MessageDialog_alert(item.cmd.str, "tip")
-            Toast_make(viewName.str)
+            // Toast_make(viewName.str)
             // UiAction_addView(anode, viewName)
             UiAct_addView(self.editor, anode, viewName)
             return

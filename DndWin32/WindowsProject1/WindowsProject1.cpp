@@ -789,7 +789,12 @@ void StartInternalDrag(POINT startPos)
     ClientToScreen(g_hMainWnd, &screenPos);
 
     // 开始在桌面上拖拽
-    ImageList_DragEnter(GetDesktopWindow(), screenPos.x, screenPos.y);
+    ImageList_DragEnter(
+        NULL
+        //GetDesktopWindow()
+        , 
+
+        screenPos.x, screenPos.y);
 
     // 创建拖拽数据对象
     CDataObject* pDataObject = new CDataObject(L"从窗口拖拽的数据");
@@ -802,7 +807,10 @@ void StartInternalDrag(POINT startPos)
     HRESULT hr = DoDragDrop(pDataObject, pDropSource, DROPEFFECT_COPY | DROPEFFECT_MOVE, &dwEffect);
 
     // 结束拖拽图像
-    ImageList_DragLeave(GetDesktopWindow());
+    ImageList_DragLeave(
+        NULL
+        //GetDesktopWindow()
+        );
     ImageList_EndDrag();
 
     isInternalDragActive = false;

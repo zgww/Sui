@@ -431,7 +431,6 @@ void  HoroEditor$HoroSceneHierView$_routeRightMenu(HoroEditor$HoroSceneHierView 
 	}
 	if (Orc$String$startsWith(item->cmd, "AddView/") ) {
 		URGC_VAR_CLEANUP_CLASS Orc$String*  viewName = Orc$Path_basename((viewName = NULL,&viewName), item->cmd->str) ;
-		SuiDialog$Toast_make(viewName->str) ;
 		HoroEditor$UiAct_addView(self->editor, anode, viewName) ;
 		return ; 
 	}
