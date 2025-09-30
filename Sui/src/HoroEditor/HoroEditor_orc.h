@@ -125,6 +125,7 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "../SuiDesigner/SglInspView_orc.h"
 #include "../Sgl/SglSceneView_orc.h"
 #include "./HoroSceneHierView_orc.h"
+#include "./Horo3dSceneView_orc.h"
 #include "./HoroEditCtx_orc.h"
 #include "./UiAct_orc.h"
 
@@ -173,7 +174,7 @@ struct tagHoroEditor$HoroEditor {
 	HoroEditor$HoroEditorSceneViewCallback*  viewCb ;
 	SuiDesigner$ToolMgr*  toolMgr ;
 	SuiDesigner$SglGizmo*  sglGizmo ;
-	Sgl$SglSceneView*  sceneView ;
+	HoroEditor$Horo3dSceneView*  sceneView ;
 	SuiCore$View*  gizmosView ;
 	void  (*onSceneEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 	void  (*_afterDrawScene) (HoroEditor$HoroEditor *  self);

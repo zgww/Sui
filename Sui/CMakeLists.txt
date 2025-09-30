@@ -204,11 +204,6 @@ file(GLOB src
     src/SuiDesigner/MdxReader_orc.c
     src/SuiDesigner/MenuBarCtrl_orc.c
 
-    src/HoroEditor/HoroEditor_orc.c
-    src/HoroEditor/HoroEditCtx_orc.c
-    src/HoroEditor/HoroSceneHierView_orc.c
-    src/HoroEditor/UiAct_orc.c
-
 
     src/Sgl/Sgl_orc.c
     src/Sgl/PixelsReader_orc.c
@@ -272,6 +267,12 @@ file(GLOB src
     src/Sgl/Ray_orc.c
     src/Sgl/Raycaster_orc.c
     src/Sgl/Sphere_orc.c
+
+    src/HoroEditor/Horo3dSceneView_orc.c
+    src/HoroEditor/HoroEditor_orc.c
+    src/HoroEditor/HoroEditCtx_orc.c
+    src/HoroEditor/HoroSceneHierView_orc.c
+    src/HoroEditor/UiAct_orc.c
 
     # src/testTgfx.cpp
 

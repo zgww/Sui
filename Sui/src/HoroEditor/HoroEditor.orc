@@ -91,6 +91,7 @@ import * from "../SuiDesigner/SglInspView.orc"
 import * from "../Sgl/SglSceneView.orc"
 
 import * from "./HoroSceneHierView.orc"
+import * from "./Horo3dSceneView.orc"
 import * from "./HoroEditCtx.orc"
 import * from "./UiAct.orc"
 
@@ -125,7 +126,7 @@ class HoroEditor extends Listener{
     ToolMgr@ toolMgr = new ToolMgr()
     SglGizmo@ sglGizmo = new SglGizmo()
 
-    SglSceneView@ sceneView
+    Horo3dSceneView@ sceneView
 
     View@ gizmosView
 
@@ -220,7 +221,7 @@ class HoroEditor extends Listener{
     }
     void reactScene_forObj3d(Node* o, ANode* anode){
         Obj3d* root = (Obj3d*)anode.node
-        mkSglSceneView(o, 0).{
+        mkHoro3dSceneView(o, 0).{
             o.cb = self.viewCb
             o.cbOnEvent = ^void(Event *e){
                 self.onSceneEvent(e)
@@ -235,11 +236,15 @@ class HoroEditor extends Listener{
             o.setImageMode(Cover)
             if o.isNewForReact {
                 o.mkBaseScene()
-                self.editCtx.setSceneView ( o)
+                self.editCtx.setSceneView( o)
 
                 useEbus().emit(new EventHoroSceneChanged())
+            }
 
-                o.buildDrawObj()
+            //将3d根结点加入到渲染场景中
+            o.scene.{
+                // root.position.set(100, 100, 0)
+                o.placeKid(root)
             }
 
             o.width = 500
