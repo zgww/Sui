@@ -2213,7 +2213,7 @@ void  Sui$DragCrossWindowIndicator$_dragMove(Sui$DragCrossWindowIndicator *  sel
     // 移动过程中
     // ImageList_DragLeave(GetDesktopWindow());  // 离开当前窗口
     // ImageList_DragMove(pt.x, pt.y);  // 移动到新位置
-    ImageList_DragShowNolock(true);
+    // ImageList_DragShowNolock(true);
     ImageList_DragMove(cursorPos.x, cursorPos.y);
     // ImageList_DragEnter(GetDesktopWindow(), cursorPos.x, cursorPos.y);  // 重新进入
 

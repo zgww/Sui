@@ -90,8 +90,10 @@ class HoroSceneHierView extends LayoutLinear {
             if me.button == 1 && me.isMouseDown {
                 printf("感知到按下\n")
                 self.drag.onMouseDown(me)
-
             }
+            // if me.isDblClick {
+                // self.indi.start()
+            // }
         }
     }
     void onListenerEvent(Event *event){
