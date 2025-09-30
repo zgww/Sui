@@ -1,5 +1,6 @@
 // WindowsProject1.cpp : 定义应用程序的入口点。
 //
+#define _CRT_SECURE_NO_WARNINGS
 
 #include "framework.h"
 #include "WindowsProject1.h"
@@ -160,7 +161,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
+    AllocConsole();
+    freopen("CONOUT$", "w", stdout);
     // 初始化 OLE
     if (FAILED(OleInitialize(nullptr)))
     {
@@ -636,6 +638,9 @@ public:
         POINT cursorPos;
         GetCursorPos(&cursorPos);
         ImageList_DragMove(cursorPos.x, cursorPos.y);
+        static int i = 0;
+        i++;
+        printf("GiveFeedback :%d\n", i);
 
         // 返回 S_OK 表示我们处理了反馈，不使用默认光标
         return S_OK;

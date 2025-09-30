@@ -864,6 +864,7 @@ static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM l
         }
         // case WM_ERASEBKGND:
         // {
+        //     printf("WM_ERASEBKGND\n");
         //     return 1;
         // }
         case WM_PAINT:
@@ -2074,10 +2075,10 @@ static void _CreateDragImageList()
     );
 
     ImageList_ReplaceIcon(g_hDragImageList, -1, hIcon);
+    DestroyIcon(hIcon);
     if (1){
         return;
     }
-// DestroyIcon(hIcon);
 
     if (g_hDragImageList)
     {
