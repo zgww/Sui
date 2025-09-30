@@ -11,6 +11,7 @@ import * from "../Core/Inset.orc"
 import * from "../Core/Rect.orc"
 import * from "../Core/Frame.orc"
 import * from "../Core/Screen.orc"
+import * from "../Core/Timer.orc"
 import * from "../../Orc/String.orc"
 import * from "../../Orc/List.orc"
 import * from "../../Orc/Math.orc"
@@ -255,3 +256,28 @@ void dispatchWindowFocusLostEvent(long long windowId){
     dispatchWindowFocusEvent(e)
 }
 
+
+//跨窗体的 拖拽指示器
+class DragCrossWindowIndicator {
+    extern void _start();
+    extern void _end();
+    extern void _dragMove();
+
+    bool dragging = false;
+
+    void start(){
+        self.dragging = true
+        self._start()
+        requestAnimationFrame(^bool (){
+            self.onDragMove(mkVec2(0, 0))
+            return !self.dragging
+        })
+    }
+    void end(){
+        self.dragging = false
+        self._end()
+    }
+    void onDragMove(Vec2 clientPos){
+        self._dragMove()
+    }
+}

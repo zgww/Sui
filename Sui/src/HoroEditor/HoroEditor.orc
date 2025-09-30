@@ -189,7 +189,6 @@ class HoroEditor extends Listener{
         self.drag.onDrag = ^ void (Drag *d){
             if d.isDragging {
                 printf("isDragging tileset\n")
-
             }
         }
 

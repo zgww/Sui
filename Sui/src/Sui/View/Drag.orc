@@ -96,7 +96,7 @@ class Drag extends Listener{
         if (!me.isMouseDown){//非MouseDown event
             return;
         }
-        if me.isCapture { // 只在捕获阶段处理
+        if me.isCapture { // 只在冒泡阶段处理
             return
         }
 

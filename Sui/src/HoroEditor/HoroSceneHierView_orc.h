@@ -81,6 +81,8 @@ typedef struct tagVtable_HoroEditor$HoroSceneHierView Vtable_HoroEditor$HoroScen
 #include "./UiAct_orc.h"
 #include "../Sgl/Obj3d_orc.h"
 #include "../Sgl/Camera_orc.h"
+#include "../Sui/Core/Window_orc.h"
+#include "../Sui/Core/Vec2_orc.h"
 
 
 #ifdef __cplusplus
@@ -101,6 +103,8 @@ struct tagHoroEditor$HoroSceneHierView {
 	SuiLayout$LayoutLinear super; 
 	HoroEditor$HoroEditCtx*  editCtx ;
 	HoroEditor$HoroEditor*  editor ;
+	SuiView$Drag*  drag ;
+	Sui$DragCrossWindowIndicator*  indi ;
 	void  (*onUnmouting) (HoroEditor$HoroSceneHierView *  self);
 	void  (*_routeRightMenu) (HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  anode);
 	void  (*_onItemRightClick) (HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
@@ -113,6 +117,7 @@ HoroEditor$HoroSceneHierView * HoroEditor$HoroSceneHierView_new(void *pOwner);
 void HoroEditor$HoroSceneHierView_fini(HoroEditor$HoroSceneHierView *self);
 
 void  HoroEditor$HoroSceneHierView$ctor(HoroEditor$HoroSceneHierView *  self);
+void  HoroEditor$HoroSceneHierView$onEvent(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  event);
 void  HoroEditor$HoroSceneHierView$onListenerEvent(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  event);
 void  HoroEditor$HoroSceneHierView$onMounted(HoroEditor$HoroSceneHierView *  self);
 void  HoroEditor$HoroSceneHierView$onUnmouting(HoroEditor$HoroSceneHierView *  self);

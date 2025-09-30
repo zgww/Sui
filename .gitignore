@@ -95,3 +95,6 @@
 /Sui/assimp/.cache
 /glfw-wasm/build
 /glfw-wasm/src/glfw-3.2.1
+/DndWin32/WindowsProject1/.vs
+/DndWin32/WindowsProject1/x64
+/DndWin32/WindowsProject1/WindowsProject1

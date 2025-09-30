@@ -11,6 +11,7 @@
 #include "../Core/Rect_orc.h"
 #include "../Core/Frame_orc.h"
 #include "../Core/Screen_orc.h"
+#include "../Core/Timer_orc.h"
 #include "../../Orc/String_orc.h"
 #include "../../Orc/List_orc.h"
 #include "../../Orc/Math_orc.h"
@@ -24,9 +25,35 @@
 
 
 // static struct 
+typedef struct tagSui$__Block_268_16 Sui$__Block_268_16;
+
+typedef struct tagSui$__Closure_271_30 Sui$__Closure_271_30;
+
+
+
+struct tagSui$__Block_268_16 {
+	Sui$DragCrossWindowIndicator*  self ;
+};
+
+
+
+
+
+struct tagSui$__Closure_271_30 {
+	bool  (*invoke)(Sui$__Closure_271_30 *  self);
+	Vtable_Object *  vtable ;
+	Sui$__Block_268_16*  __var___Block_268_16 ;
+};
+
+
+
 
 
 // static function declaration
+static void  __finiBlock___Block_268_16(Sui$__Block_268_16 *  self);
+static bool  __fn___Closure_271_30(Sui$__Closure_271_30 *  self);
+static void  __fini___Closure_271_30(Sui$__Closure_271_30 *  self);
+static Sui$__Closure_271_30*  __make___Closure_271_30(Sui$__Closure_271_30 **  __outRef__, Sui$__Block_268_16 *  __var___Block_268_16);
 
 
 
@@ -302,6 +329,164 @@ void  Sui$dispatchWindowFocusLostEvent(long long  windowId){
 	e->isBlur = true;
 	urgc_set_field_class(e, (void * )offsetof(SuiCore$WindowFocusEvent, window) , win) ;
 	SuiCore$dispatchWindowFocusEvent(e) ;
+}
+
+
+//vtable instance
+Vtable_Sui$DragCrossWindowIndicator _vtable_Sui$DragCrossWindowIndicator;
+
+// init meta
+
+void Sui$DragCrossWindowIndicator_initMeta(Vtable_Sui$DragCrossWindowIndicator *pvt){
+    OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
+	
+	orc_metaField_primitive(&pNext, "dragging", OrcMetaType_bool, offsetof(Sui$DragCrossWindowIndicator, dragging), 0, 0, 0, 0);//bool
+
+	orc_metaField_method(&pNext, "_start", offsetof(Sui$DragCrossWindowIndicator, _start));
+	orc_metaField_method(&pNext, "_end", offsetof(Sui$DragCrossWindowIndicator, _end));
+	orc_metaField_method(&pNext, "_dragMove", offsetof(Sui$DragCrossWindowIndicator, _dragMove));
+	orc_metaField_method(&pNext, "start", offsetof(Sui$DragCrossWindowIndicator, start));
+	orc_metaField_method(&pNext, "end", offsetof(Sui$DragCrossWindowIndicator, end));
+	orc_metaField_method(&pNext, "onDragMove", offsetof(Sui$DragCrossWindowIndicator, onDragMove));
+}
+
+
+// vtable init
+
+
+Vtable_Sui$DragCrossWindowIndicator* Vtable_Sui$DragCrossWindowIndicator_init(Vtable_Sui$DragCrossWindowIndicator* pvt){
+    if (pvt == NULL){
+        pvt = &_vtable_Sui$DragCrossWindowIndicator;
+    }
+    if (((Vtable_Object*)pvt)->inited){
+        return pvt;
+    }
+	// init super vtable
+    Vtable_Object_init(&_vtable_Object);
+
+	// init by super vtable init function
+    Vtable_Object_init((void*)pvt);
+
+    ((Vtable_Object*)pvt)->super = (void*)&_vtable_Object;
+    ((Vtable_Object*)pvt)->make = (void*)&Sui$DragCrossWindowIndicator_new;
+    ((Vtable_Object*)pvt)->className = "Sui$DragCrossWindowIndicator";
+
+    ((Vtable_Object*)pvt)->initMeta = (void*)Sui$DragCrossWindowIndicator_initMeta;
+
+    ((Vtable_Object*)pvt)->refc = 1;
+
+    return pvt;
+}
+
+
+// fini function
+
+void Sui$DragCrossWindowIndicator_fini(Sui$DragCrossWindowIndicator *self){
+	//super fini
+    Object_fini((Object *)self);
+
+    //字段释放
+
+
+}
+
+// init fields function
+
+
+void Sui$DragCrossWindowIndicator_init_fields(Sui$DragCrossWindowIndicator *self){
+	//super class
+    Object_init_fields((Object*)self);
+
+    ((Object*)self)->fini = (void*)Sui$DragCrossWindowIndicator_fini;
+	//fields
+    {
+	((Sui$DragCrossWindowIndicator*)self)->dragging = false;
+    }
+	((Sui$DragCrossWindowIndicator*)self)->_start = (void*)Sui$DragCrossWindowIndicator$_start;
+	((Sui$DragCrossWindowIndicator*)self)->_end = (void*)Sui$DragCrossWindowIndicator$_end;
+	((Sui$DragCrossWindowIndicator*)self)->_dragMove = (void*)Sui$DragCrossWindowIndicator$_dragMove;
+	((Sui$DragCrossWindowIndicator*)self)->start = (void*)Sui$DragCrossWindowIndicator$start;
+	((Sui$DragCrossWindowIndicator*)self)->end = (void*)Sui$DragCrossWindowIndicator$end;
+	((Sui$DragCrossWindowIndicator*)self)->onDragMove = (void*)Sui$DragCrossWindowIndicator$onDragMove;
+}
+
+// init function
+
+void Sui$DragCrossWindowIndicator_init(Sui$DragCrossWindowIndicator *self, void *pOwner){
+    Vtable_Sui$DragCrossWindowIndicator_init(&_vtable_Sui$DragCrossWindowIndicator);
+
+    ((Object*)self)->vtable = (void*)&_vtable_Sui$DragCrossWindowIndicator;
+	
+	//has old object
+	if (*((void**)pOwner) != NULL) urgc_deref_class(pOwner, *((void**)pOwner));
+	*((void**)pOwner) = self;
+	urgc_ref_class(pOwner, self, (void*)orc_delete);
+
+    //urgc_guard(self, (void*)orc_delete);
+
+    Sui$DragCrossWindowIndicator_init_fields(self);
+
+    if (((Object*)self)->ctor){
+        ((Object*)self)->ctor((void*)self);
+    }
+
+    //urgc_deguard(self);
+}
+
+// new function
+Sui$DragCrossWindowIndicator * Sui$DragCrossWindowIndicator_new(void *pOwner){
+	if (pOwner == NULL){ return NULL;}
+    Sui$DragCrossWindowIndicator *self = calloc(1, sizeof(Sui$DragCrossWindowIndicator));
+	
+    Sui$DragCrossWindowIndicator_init(self, pOwner);
+    return self;
+}
+
+
+// class members
+void  Sui$DragCrossWindowIndicator$start(Sui$DragCrossWindowIndicator *  self){
+	URGC_VAR_CLEANUP Sui$__Block_268_16*  __var___Block_268_16 = (__var___Block_268_16=NULL,urgc_init_var((void**)&__var___Block_268_16, orc_alloc_and_set_deleter(sizeof(Sui$__Block_268_16) , __finiBlock___Block_268_16) ));
+	urgc_set_field_class(__var___Block_268_16, (void * )offsetof(Sui$__Block_268_16, self) , self) ;
+	self->dragging = true;
+	self->_start(self) ;
+	URGC_VAR_CLEANUP Sui$__Closure_271_30*  tmpReturn_1 = NULL;
+	SuiCore$requestAnimationFrame(__make___Closure_271_30(&tmpReturn_1, __var___Block_268_16) ) ;
+}
+
+
+void  Sui$DragCrossWindowIndicator$end(Sui$DragCrossWindowIndicator *  self){
+	self->dragging = false;
+	self->_end(self) ;
+}
+
+
+void  Sui$DragCrossWindowIndicator$onDragMove(Sui$DragCrossWindowIndicator *  self, SuiCore$Vec2 clientPos){
+	self->_dragMove(self) ;
+}
+
+
+
+static void  __finiBlock___Block_268_16(Sui$__Block_268_16 *  self){
+	urgc_set_field_class(self, (void * )offsetof(Sui$__Block_268_16, self) , NULL) ;
+	return urgc_free_later(self) ; 
+}
+
+static bool  __fn___Closure_271_30(Sui$__Closure_271_30 *  self){
+	self->__var___Block_268_16->self->onDragMove(self->__var___Block_268_16->self, SuiCore$mkVec2(0, 0) ) ;
+	return !self->__var___Block_268_16->self->dragging; 
+}
+
+static void  __fini___Closure_271_30(Sui$__Closure_271_30 *  self){
+	urgc_set_field(self, (void * )offsetof(Sui$__Closure_271_30, __var___Block_268_16) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static Sui$__Closure_271_30*  __make___Closure_271_30(Sui$__Closure_271_30 **  __outRef__, Sui$__Block_268_16 *  __var___Block_268_16){
+	URGC_VAR_CLEANUP Sui$__Closure_271_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sui$__Closure_271_30) , __fini___Closure_271_30) ));
+	self->invoke = __fn___Closure_271_30;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(Sui$__Closure_271_30, __var___Block_268_16) , __var___Block_268_16) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
 

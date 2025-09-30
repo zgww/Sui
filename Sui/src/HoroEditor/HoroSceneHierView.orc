@@ -55,6 +55,8 @@ import * from "./HoroEditor.orc"
 import * from "./UiAct.orc"
 import * from "../Sgl/Obj3d.orc"
 import * from "../Sgl/Camera.orc"
+import * from "../Sui/Core/Window.orc"
+import * from "../Sui/Core/Vec2.orc"
 
 
 class HoroSceneHierView extends LayoutLinear {
@@ -62,9 +64,35 @@ class HoroSceneHierView extends LayoutLinear {
     HoroEditCtx@ editCtx
     HoroEditor@ editor
 
+    Drag@ drag = new Drag()
+    DragCrossWindowIndicator@ indi = new DragCrossWindowIndicator()
+
 
     void ctor(){
         super.ctor()
+        self.drag.onDrag = ^void(Drag*d){
+            printf("onDrag HoroSceneHierView\n")
+            if d.isDragStart{
+                self.indi.start()
+            }
+            else if d.isDragging {
+                self.indi.onDragMove(mkVec2(0, 0))
+            }
+            else if d.isDragEnd {
+                self.indi.end()
+            }
+        }
+    }
+    void onEvent(Event *event){
+        super.onEvent(event)
+        if event instanceof MouseEvent {
+            MouseEvent *me = (MouseEvent*)event
+            if me.button == 1 && me.isMouseDown {
+                printf("感知到按下\n")
+                self.drag.onMouseDown(me)
+
+            }
+        }
     }
     void onListenerEvent(Event *event){
         if event instanceof EventHoroSceneChanged{

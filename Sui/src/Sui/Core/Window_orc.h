@@ -1,6 +1,8 @@
 
 typedef struct tagSui$Window Sui$Window;
 typedef struct tagVtable_Sui$Window Vtable_Sui$Window;
+typedef struct tagSui$DragCrossWindowIndicator Sui$DragCrossWindowIndicator;
+typedef struct tagVtable_Sui$DragCrossWindowIndicator Vtable_Sui$DragCrossWindowIndicator;
 
 
 #ifndef define_struct___Sui__Window_orc_h__
@@ -45,6 +47,7 @@ typedef struct tagVtable_Sui$Window Vtable_Sui$Window;
 #include "../Core/Rect_orc.h"
 #include "../Core/Frame_orc.h"
 #include "../Core/Screen_orc.h"
+#include "../Core/Timer_orc.h"
 #include "../../Orc/String_orc.h"
 #include "../../Orc/List_orc.h"
 #include "../../Orc/Math_orc.h"
@@ -149,6 +152,38 @@ extern SuiCore$Inset Sui$Window$getNonClientInset(Sui$Window *  self);
 void  Sui$testWindow();
 void  Sui$dispatchWindowFocusGainedEvent(long long  windowId);
 void  Sui$dispatchWindowFocusLostEvent(long long  windowId);
+
+// 虚表
+struct tagVtable_Sui$DragCrossWindowIndicator {
+	Vtable_Object super;
+};
+//虚表实例
+extern Vtable_Sui$DragCrossWindowIndicator _vtable_Sui$DragCrossWindowIndicator;
+
+// class refc:1
+struct tagSui$DragCrossWindowIndicator {
+	Object super; 
+	void  (*_start) (Sui$DragCrossWindowIndicator *  self);
+	void  (*_end) (Sui$DragCrossWindowIndicator *  self);
+	void  (*_dragMove) (Sui$DragCrossWindowIndicator *  self);
+	bool  dragging ;
+	void  (*start) (Sui$DragCrossWindowIndicator *  self);
+	void  (*end) (Sui$DragCrossWindowIndicator *  self);
+	void  (*onDragMove) (Sui$DragCrossWindowIndicator *  self, SuiCore$Vec2 clientPos);
+};
+Vtable_Sui$DragCrossWindowIndicator* Vtable_Sui$DragCrossWindowIndicator_init(Vtable_Sui$DragCrossWindowIndicator* pvt);
+void Sui$DragCrossWindowIndicator_init_fields(Sui$DragCrossWindowIndicator *self);
+void Sui$DragCrossWindowIndicator_init(Sui$DragCrossWindowIndicator *self, void *pOwner);
+Sui$DragCrossWindowIndicator * Sui$DragCrossWindowIndicator_new(void *pOwner);
+void Sui$DragCrossWindowIndicator_fini(Sui$DragCrossWindowIndicator *self);
+
+extern void  Sui$DragCrossWindowIndicator$_start(Sui$DragCrossWindowIndicator *  self);
+extern void  Sui$DragCrossWindowIndicator$_end(Sui$DragCrossWindowIndicator *  self);
+extern void  Sui$DragCrossWindowIndicator$_dragMove(Sui$DragCrossWindowIndicator *  self);
+void  Sui$DragCrossWindowIndicator$start(Sui$DragCrossWindowIndicator *  self);
+void  Sui$DragCrossWindowIndicator$end(Sui$DragCrossWindowIndicator *  self);
+void  Sui$DragCrossWindowIndicator$onDragMove(Sui$DragCrossWindowIndicator *  self, SuiCore$Vec2 clientPos);
+
 
 
 

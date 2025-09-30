@@ -862,6 +862,10 @@ static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM l
             // SuiCore$App_repaintWindowById((long long)hwnd);
             return 0;
         }
+        // case WM_ERASEBKGND:
+        // {
+        //     return 1;
+        // }
         case WM_PAINT:
         {
             // draw(hwnd);
@@ -1615,6 +1619,7 @@ extern "C" void  Sgl$testDrawNvgImage(NVGcontext*vg){
 }
 void Sui$Window$draw(Sui$Window *self)
 {
+    // Sui$DragCrossWindowIndicator$_dragMove(NULL);
     // static bool inited = 0;
     // static GLuint vertex_buffer;
     // static GLuint program;
@@ -2036,4 +2041,180 @@ static void setWindowRegion(){
     HRGN region = CreateRectRgn(0, 0, 200, 200);
     //HRGN region = CreatePolygonRgn(points, num_points, WINDING);
     SetWindowRgn(hWnd, region, TRUE);
+}
+
+
+
+
+HIMAGELIST g_hDragImageList = nullptr;          // 拖拽图像列表
+
+
+//
+// 创建拖拽图像列表
+//
+static void _CreateDragImageList()
+{
+    if (g_hDragImageList)
+        return; // 已存在
+
+    // 创建图像列表，使用 32 位色深以支持 alpha 通道
+    g_hDragImageList = ImageList_Create(32, 32, 
+        ILC_COLOR32 
+        | ILC_MASK
+        , 
+        1, 1);
+    HINSTANCE hInstance = GetModuleHandle(NULL);
+    HICON hIcon = (HICON)LoadImage(
+        NULL,                   // hInstance: NULL 表示从文件加载
+        "cat.ico",            // 文件路径（宽字符字符串）
+        IMAGE_ICON,             // 图像类型：图标
+        32, 32,                 // 所需的宽高（系统会自动选最接近的）
+        LR_LOADFROMFILE |       // 从文件加载（关键！）
+        LR_DEFAULTCOLOR         // 使用彩色（非灰度）
+    );
+
+    ImageList_ReplaceIcon(g_hDragImageList, -1, hIcon);
+    if (1){
+        return;
+    }
+// DestroyIcon(hIcon);
+
+    if (g_hDragImageList)
+    {
+        // 创建内存 DC 和位图
+        HDC hdc = GetDC(nullptr);
+        HDC hdcMem = CreateCompatibleDC(hdc);
+
+        // 创建 32 位位图以支持透明度
+        BITMAPINFO bi = {0};
+        bi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+        bi.bmiHeader.biWidth = 32;
+        bi.bmiHeader.biHeight = -32; // 负值表示自上而下的位图
+        bi.bmiHeader.biPlanes = 1;
+        bi.bmiHeader.biBitCount = 32;
+        bi.bmiHeader.biCompression = BI_RGB;
+
+        void* pBits = nullptr;
+        HBITMAP hBitmap = CreateDIBSection(hdc, &bi, DIB_RGB_COLORS, &pBits, nullptr, 0);
+        HBITMAP hOldBitmap = (HBITMAP)SelectObject(hdcMem, hBitmap);
+
+        // 清空位图为完全透明
+        if (pBits)
+        {
+            memset(pBits, 0, 32 * 32 * 4); // 全部设为 0（透明）
+        }
+
+        // 设置透明背景模式
+        SetBkMode(hdcMem, TRANSPARENT);
+
+        // 绘制应用程序图标
+        HICON hIcon = LoadIcon(nullptr, IDI_APPLICATION);
+        if (hIcon)
+        {
+            //DrawIconEx(hdcMem, 8, 8, hIcon, 48, 48, 0, nullptr, DI_NORMAL);
+        }
+
+        // 手动绘制像素级的加号，避免任何背景色
+        if (pBits)
+        {
+            DWORD* pixels = (DWORD*)pBits;
+            DWORD greenColor = 0xFF00C800; // ARGB: Alpha=255, R=0, G=200, B=0
+
+            // 绘制水平线 (y=52, x=45到59)
+            for (int x = 13; x <= 27; x++)
+            {
+                for (int lineWidth = 0; lineWidth < 4; lineWidth++)
+                {
+                    int y = 17 + lineWidth - 2;
+                    if (y >= 0 && y < 32 && x >= 0 && x < 32)
+                    {
+                        pixels[y * 32 + x] = greenColor;
+                    }
+                }
+            }
+
+            // 绘制垂直线 (x=52, y=45到59)
+            for (int y = 13; y <= 27; y++)
+            {
+                for (int lineWidth = 0; lineWidth < 4; lineWidth++)
+                {
+                    int x = 17 + lineWidth - 2;
+                    if (y >= 0 && y < 32 && x >= 0 && x < 32)
+                    {
+                        pixels[y * 32 + x] = greenColor;
+                    }
+                }
+            }
+        }
+
+        SelectObject(hdcMem, hOldBitmap);
+
+        // 直接添加位图到图像列表（不使用掩码，保持 alpha 通道）
+        ImageList_Add(g_hDragImageList, hBitmap, nullptr);
+
+        DeleteObject(hBitmap);
+        DeleteDC(hdcMem);
+        ReleaseDC(nullptr, hdc);
+    }
+}
+
+
+//
+// 销毁拖拽图像列表
+//
+static void _DestroyDragImageList()
+{
+    if (g_hDragImageList)
+    {
+        ImageList_Destroy(g_hDragImageList);
+        g_hDragImageList = nullptr;
+    }
+}
+
+void  Sui$DragCrossWindowIndicator$_start(Sui$DragCrossWindowIndicator *  self){
+    _CreateDragImageList();
+
+    // 开始拖拽图像
+    ImageList_BeginDrag(g_hDragImageList, 0, 0, 0);
+
+    // 将起始位置转换为屏幕坐标
+    // POINT screenPos = startPos;
+    // ClientToScreen(g_hMainWnd, &screenPos);
+
+    POINT cursorPos;
+    GetCursorPos(&cursorPos);
+
+    // 开始在桌面上拖拽
+    // ImageList_DragEnter(GetDesktopWindow(), screenPos.x, screenPos.y);
+    ImageList_DragEnter(GetDesktopWindow(), cursorPos.x, cursorPos.y);
+
+}
+void  Sui$DragCrossWindowIndicator$_end(Sui$DragCrossWindowIndicator *  self){
+    printf("结束 拖拽。指示器。。\n");
+    // 结束拖拽图像
+    ImageList_DragLeave(GetDesktopWindow());
+    ImageList_EndDrag();
+
+    _DestroyDragImageList();
+
+}
+void  Sui$DragCrossWindowIndicator$_dragMove(Sui$DragCrossWindowIndicator *  self){
+    if (g_hDragImageList == NULL){
+        return;
+    }
+
+    
+    // 获取当前鼠标位置并更新拖拽图标位置
+    POINT cursorPos;
+    GetCursorPos(&cursorPos);
+    printf("DragMove:%ld,%ld\n", cursorPos.x, cursorPos.y);
+
+    // 移动过程中
+    // ImageList_DragLeave(GetDesktopWindow());  // 离开当前窗口
+    // ImageList_DragMove(pt.x, pt.y);  // 移动到新位置
+    ImageList_DragShowNolock(true);
+    ImageList_DragMove(cursorPos.x, cursorPos.y);
+    // ImageList_DragEnter(GetDesktopWindow(), cursorPos.x, cursorPos.y);  // 重新进入
+
+
 }
