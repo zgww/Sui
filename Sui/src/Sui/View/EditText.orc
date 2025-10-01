@@ -422,7 +422,7 @@ class EditText extends View {
 				+ self.get_x_of_position(range.start) 
 			canvas.fillColorByInt32( (self.caret_color))//nvgRGBA(255, 255, 255, 128));
 			canvas.beginPath()
-			canvas.rect( caretX + 1, caretY, 2, h - caretY * 2) // 2 )
+			canvas.rect( minFloat(0, caretX + 1), caretY, 2, h - caretY * 2) // 2 )
 			canvas.fill()
 		}
 

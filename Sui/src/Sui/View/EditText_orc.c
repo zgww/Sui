@@ -1004,7 +1004,7 @@ void  SuiView$EditText$draw_self(SuiView$EditText *  self, SuiCore$Canvas *  can
 		float  caretX = startOffset - 2 + self->draw_offset + self->get_x_of_position(self, range.start) ;
 		SuiCore$Canvas$fillColorByInt32(canvas, (self->caret_color)) ;
 		SuiCore$Canvas$beginPath(canvas) ;
-		SuiCore$Canvas$rect(canvas, caretX + 1, caretY, 2, h - caretY * 2) ;
+		SuiCore$Canvas$rect(canvas, Orc$minFloat(0, caretX + 1) , caretY, 2, h - caretY * 2) ;
 		SuiCore$Canvas$fill(canvas) ;
 	}
 	SuiCore$Canvas$intersectScissor(canvas, startOffset, 0.0f, scissorW, h) ;

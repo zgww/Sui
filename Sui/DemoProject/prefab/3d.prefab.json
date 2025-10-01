@@ -2,7 +2,13 @@
 	"version":	"0.0.3",
 	"root":	{
 		"attrs":	{
-			"name":	"根结点"
+			"name":	"根结点",
+			"rotation":	{
+				"__struct":	"SuiCore$Vec3",
+				"x":	0,
+				"y":	0,
+				"z":	0
+			}
 		},
 		"tag":	"Sgl$Obj3d",
 		"children":	[{
@@ -10,9 +16,15 @@
 					"name":	"灯光",
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	120,
-						"y":	0,
+						"x":	220,
+						"y":	100,
 						"z":	0
+					},
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2,
+						"y":	0,
+						"z":	1
 					}
 				},
 				"tag":	"Sgl$Light",
