@@ -3,10 +3,12 @@ package Orc
 #include "./Orc.h"
 // #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 import * from "./String.orc"
 
 //受urgc管理的列表
+
 
 class Number {
     String@ toString(){

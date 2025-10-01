@@ -52,8 +52,11 @@ typedef struct tagVtable_HoroEditor$HoroInspView Vtable_HoroEditor$HoroInspView;
 #include "../Sui/View/ViewBuilder_orc.h"
 #include "../Sui/Layout/LayoutLinear_orc.h"
 #include "../SuiDesigner/Insp_orc.h"
+#include "../SuiDesigner/ANode_orc.h"
 #include "../Sgl/Obj3d_orc.h"
+#include "../Json/Json_orc.h"
 #include "./HoroEditCtx_orc.h"
+#include "./HoroEditor_orc.h"
 
 
 #ifdef __cplusplus
@@ -74,6 +77,7 @@ struct tagHoroEditor$HoroInspView {
 	SuiLayout$LayoutLinear super; 
 	SuiDesigner$Insp*  insp ;
 	HoroEditor$HoroEditCtx*  editCtx ;
+	HoroEditor$HoroEditor*  editor ;
 };
 Vtable_HoroEditor$HoroInspView* Vtable_HoroEditor$HoroInspView_init(Vtable_HoroEditor$HoroInspView* pvt);
 void HoroEditor$HoroInspView_init_fields(HoroEditor$HoroInspView *self);
@@ -81,6 +85,7 @@ void HoroEditor$HoroInspView_init(HoroEditor$HoroInspView *self, void *pOwner);
 HoroEditor$HoroInspView * HoroEditor$HoroInspView_new(void *pOwner);
 void HoroEditor$HoroInspView_fini(HoroEditor$HoroInspView *self);
 
+void  HoroEditor$HoroInspView$ctor(HoroEditor$HoroInspView *  self);
 void  HoroEditor$HoroInspView$onListenerEvent(HoroEditor$HoroInspView *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroInspView$onMounted(HoroEditor$HoroInspView *  self);
 void  HoroEditor$HoroInspView$onUnmounting(HoroEditor$HoroInspView *  self);

@@ -10,6 +10,7 @@ import * from "../Orc/List.orc"
 import * from "../Orc/Map.orc"
 import * from "../Orc/Map.orc"
 import * from "../Orc/Path.orc"
+import * from "../Orc/Number.orc"
 
 
 class Json {
@@ -480,6 +481,46 @@ Json@ Json_toJsonNumberArrayByFloats(float *ints, int count){
 Json@ Json_toJson(Object* obj){
     if obj == null {
         return Json_mkNull()
+    }
+    if obj instanceof String {
+        String *sobj = (String*)obj;
+        return Json_mkString(sobj)
+    }
+    if obj instanceof Boolean {
+        Boolean *bobj = (Boolean*)obj;
+        return Json_mkBool(bobj.value)
+    }
+    if obj instanceof Number {
+        Number *nobj = (Number*)obj;
+        return Json_mkNumber(nobj.toDouble())
+    }
+    if obj instanceof StructObj {//只处理简单的结构体...
+        StructObj* so = (StructObj*)obj
+        OrcMetaField *mf = so.metaStruct.headMetaField;
+        Json@ jo = Json_mkObject()
+        while mf {
+            jo.putCstr("__struct", so.metaStruct.structName)
+            if mf.type == OrcMetaType_float {
+                float* pv = (float*)OrcMetaField_getPtr(mf, so.pStruct);
+                jo.putNumber(mf.name, *pv)
+            }
+            else if mf.type == OrcMetaType_double {
+                double* pv = (double*)OrcMetaField_getPtr(mf, so.pStruct);
+                jo.putNumber(mf.name, *pv)
+            }
+            else if mf.type == OrcMetaType_int {
+                int* pv = (int*)OrcMetaField_getPtr(mf, so.pStruct);
+                jo.putNumber(mf.name, *pv)
+            }
+            else if mf.type == OrcMetaType_bool {
+                bool* pv = (bool*)OrcMetaField_getPtr(mf, so.pStruct);
+                jo.putBool(mf.name, *pv)
+            }
+
+            mf = mf.next
+        }
+        return jo;
+
     }
     if obj instanceof List {
         return Json_toJsonArray((List*)obj)

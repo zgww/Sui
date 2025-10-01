@@ -24,24 +24,47 @@ import * from "../Sui/View/ViewBuilder.orc"
 import * from "../Sui/Layout/LayoutLinear.orc"
 
 import * from "../SuiDesigner/Insp.orc"
+import * from "../SuiDesigner/ANode.orc"
 
 import * from "../Sgl/Obj3d.orc"
 
+import * from "../Json/Json.orc"
+
+
+
 import * from "./HoroEditCtx.orc"
+import * from "./HoroEditor.orc"
 
 
 class HoroInspView extends LayoutLinear{
 
     Insp@ insp = new Insp()
     HoroEditCtx@ editCtx
+    HoroEditor@ editor
+    void ctor(){
+        self.insp.cbSetAttr = ^void(Object *obj, OrcMetaField*mf, Object*inspValue){
+            printf("设置属性:%s value:%s\n",
+                mf.name,
+                inspValue.toString().str
+            )
+            Node* sel = self.editCtx.state.getFirstSelected()
+            if sel instanceof ANode {
+                ANode* anode = (ANode*)sel
+                printf("给anode设置属性:%s\n", 
+                    anode.toJson().dump().str
+                )
+                anode.setAttrValueObject(mf.name, inspValue)
+            }
+        }
+    }
 
     void onListenerEvent(Event* e){
         if e instanceof EventHoroSceneChanged{
             self.invalidReact()
         }
-        // if e instanceof EventSglSelectedChanged {
-        //     self.invalidReact()
-        // }
+        if e instanceof EventHoroSelectedChanged {
+            self.invalidReact()
+        }
 
 
         //选中的节点有变更
@@ -78,36 +101,38 @@ class HoroInspView extends LayoutLinear{
 
         HoroEditCtx@ ctx = self.editCtx;
         if ctx && ctx.state {
-            Node@ node = (Node@)ctx.state.getFirstSelected()
+            ANode@ anode = (ANode@)ctx.state.getFirstSelected()
+            if anode {
+                Node* node = anode.node
                 // Obj3d@ obj = ctx.getScene()
-
-            if !(node instanceof Obj3d) {
-                mkTextView(o, 0).{
-                    o.setText(str("no anode"))
+                if !(node instanceof Obj3d) {
+                    mkTextView(o, 0).{
+                        o.setText(str("no anode??"))
+                    }
                 }
-            }
-            else {
-                Obj3d@ obj = (Obj3d@)node
-                // ANode@ anode = (ANode@)ctx.state.getFirstSelected()
+                else {
+                    Obj3d@ obj = (Obj3d@)node
+                    // ANode@ anode = (ANode@)ctx.state.getFirstSelected()
 
-                mkScrollArea(o, 0)~{
-                    // o.backgroundColor = 0xff00ff0f
-                    // o.width = 300
-                    // o.height = 200
-                    o.alignItems = str("stretch")
-                    // o.useWidthContraint = true
-                    o.useMinWidthConstraint = true
+                    mkScrollArea(o, 0)~{
+                        // o.backgroundColor = 0xff00ff0f
+                        // o.width = 300
+                        // o.height = 200
+                        o.alignItems = str("stretch")
+                        // o.useWidthContraint = true
+                        o.useMinWidthConstraint = true
 
-                    layoutLinearCell(o, 0).{
-                        // o.grow = 1
-                    }
+                        layoutLinearCell(o, 0).{
+                            // o.grow = 1
+                        }
 
-                    if obj {
-                        self.insp.insp(o, obj)
-                    }
-                    else {
-                        mkTextView(o, 0)~{
-                            o.setText(str("no data"))//anode ? anode.className: str("attr"))
+                        if obj {
+                            self.insp.insp(o, obj)
+                        }
+                        else {
+                            mkTextView(o, 0)~{
+                                o.setText(str("no data"))//anode ? anode.className: str("attr"))
+                            }
                         }
                     }
                 }

@@ -86,13 +86,13 @@ import * from "../SuiDesigner/Asset/AssetDirView.orc"
 import * from "../SuiDesigner/Asset/AssetDirTreeView.orc"
 import * from "../SuiDesigner/Project.orc"
 import * from "../SuiDesigner/SglInspectorView.orc"
-import * from "../SuiDesigner/SglInspView.orc"
 
 import * from "../Sgl/SglSceneView.orc"
 
 import * from "./HoroSceneHierView.orc"
 import * from "./Horo3dSceneView.orc"
 import * from "./HoroEditCtx.orc"
+import * from "./HoroInspView.orc"
 import * from "./UiAct.orc"
 
 static DockLayout@ dockLayoutIns = null
@@ -431,8 +431,9 @@ class HoroEditor extends Listener{
                         }
                     }
                     if (item.id.equals("inspector")){
-                        mkSglInspView(o, (long long)item)~{
+                        mkHoroInspView(o, (long long)item)~{
                             o.editCtx = self.editCtx
+                            o.editor = self
                             o.backgroundColor = t.dock_content_bg
                             return o
                         }

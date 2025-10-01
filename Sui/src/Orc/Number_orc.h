@@ -26,6 +26,7 @@ typedef struct tagVtable_Orc$StructObj Vtable_Orc$StructObj;
 
 #include "./Orc.h"
 #include <string.h>
+#include <stdio.h>
 
 
 

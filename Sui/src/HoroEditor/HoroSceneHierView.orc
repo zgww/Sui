@@ -376,7 +376,7 @@ class HoroSceneHierView extends LayoutLinear {
 
                     mkTextView(o, 0).{
                         Vtable_Object *vt = orc_getVtableByObject(s);
-                        String@ name = s.getName()
+                        String@ name = s.node ? s.node.name: null//s.getName()
                         if name && name.notEmpty() {
                             // String@ basename = Path_basename(name.str)
                             // o.setText(basename)

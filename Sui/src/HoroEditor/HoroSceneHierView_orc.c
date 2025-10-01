@@ -818,7 +818,7 @@ static void  __fn___Closure_318_30(HoroEditor$__Closure_318_30 *  self, SuiCore$
 		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_377_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		Vtable_Object *  vt = orc_getVtableByObject(__var___Block_318_78->s) ;
-		URGC_VAR_CLEANUP_CLASS Orc$String*  name = __var___Block_318_78->s->getName((name = NULL,&name), __var___Block_318_78->s) ;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  name = (name=NULL,urgc_init_var_class((void**)&name, __var___Block_318_78->s->node ? __var___Block_318_78->s->node->name : NULL));
 		if (name && Orc$String$notEmpty(name) ) {
 			o->setText(o, name) ;
 		}

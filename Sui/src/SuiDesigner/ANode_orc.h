@@ -48,6 +48,7 @@ typedef struct tagVtable_SuiDesigner$ANode Vtable_SuiDesigner$ANode;
 #include "../Sui/Core/ViewBase_orc.h"
 #include "../Sui/Core/NodeLib_orc.h"
 #include "../Json/Json_orc.h"
+#include "../SuiDesigner/EventANodeChanged_orc.h"
 
 
 #ifdef __cplusplus
@@ -100,6 +101,7 @@ struct tagSuiDesigner$ANode {
 	SuiDesigner$ANode*  parent ;
 	Orc$String*  (*getName) (Orc$String **  __outRef__, SuiDesigner$ANode *  self);
 	SuiDesigner$ANode*  (*clone) (SuiDesigner$ANode **  __outRef__, SuiDesigner$ANode *  self);
+	void  (*setAttrValueObject) (SuiDesigner$ANode *  self, const char *  name, Object *  value);
 	void  (*setAttr) (SuiDesigner$ANode *  self, const char *  name, Json$Json*  value);
 	SuiDesigner$ANodeAttr*  (*getAttrByName) (SuiDesigner$ANodeAttr **  __outRef__, SuiDesigner$ANode *  self, const char *  name);
 	Json$Json*  (*getAttrValueByName) (Json$Json **  __outRef__, SuiDesigner$ANode *  self, const char *  name);
@@ -127,6 +129,7 @@ void SuiDesigner$ANode_fini(SuiDesigner$ANode *self);
 Orc$String*  SuiDesigner$ANode$getId(Orc$String **  __outRef__, SuiDesigner$ANode *  self);
 Orc$String*  SuiDesigner$ANode$getName(Orc$String **  __outRef__, SuiDesigner$ANode *  self);
 SuiDesigner$ANode*  SuiDesigner$ANode$clone(SuiDesigner$ANode **  __outRef__, SuiDesigner$ANode *  self);
+void  SuiDesigner$ANode$setAttrValueObject(SuiDesigner$ANode *  self, const char *  name, Object *  value);
 void  SuiDesigner$ANode$setAttr(SuiDesigner$ANode *  self, const char *  name, Json$Json*  value);
 SuiDesigner$ANodeAttr*  SuiDesigner$ANode$getAttrByName(SuiDesigner$ANodeAttr **  __outRef__, SuiDesigner$ANode *  self, const char *  name);
 Json$Json*  SuiDesigner$ANode$getAttrValueByName(Json$Json **  __outRef__, SuiDesigner$ANode *  self, const char *  name);

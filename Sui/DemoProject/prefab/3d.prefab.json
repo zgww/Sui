@@ -1,14 +1,22 @@
 {
-	"version": "0.0.3",
-	"root": {
-		"attrs": {},
-		"tag": "Sgl$Obj3d",
-		"children": [
-			{
-				"attrs": {},
-				"tag": "Sgl$Light",
-				"children": []
-			}
-		]
+	"version":	"0.0.3",
+	"root":	{
+		"attrs":	{
+			"name":	"根结点"
+		},
+		"tag":	"Sgl$Obj3d",
+		"children":	[{
+				"attrs":	{
+					"name":	"灯光",
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	120,
+						"y":	0,
+						"z":	0
+					}
+				},
+				"tag":	"Sgl$Light",
+				"children":	[]
+			}]
 	}
 }

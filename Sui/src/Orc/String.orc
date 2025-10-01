@@ -1,5 +1,6 @@
 package Orc
 
+#include "./Orc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,6 +9,7 @@ import * from "./List.orc"
 import * from "./Map.orc"
 import * from "./Math.orc"
 import * from "./ScopeData.orc"
+import type * from "./Number.orc"
 
 //字符串需要用对象管理起来
 //直接用char@ xx = ""  会导致内存异常释放
@@ -645,6 +647,33 @@ PrintStyle mkPrintStyle(){
 }
 void PrintStyle_exit(ScopeData  *scopeData){
     printf("\033[0m\n");
+}
+
+extension Object {
+    String@ toString(){
+        if self instanceof Number {
+            Number* n = (Number*)self
+            return n.toString()
+        }
+        // void **ptr = orc_getFieldPtr(self, "toString")
+        // if (ptr != null){ //有此属性
+            // String@ (*toString)(Object* _self);
+            // toString = *ptr;
+            // if (toString){
+            //     String@ ret = toString(self)
+            //     return ret
+            // }
+        // }
+        if self instanceof String {
+            return (String@)self
+        }
+
+
+        Vtable_Object* vt = orc_getVtableByObject(self)
+        char tmp[100];
+        sprintf(tmp, "%s(%p)", vt.className, self);
+        return str(tmp)
+    }
 }
 
 void testOk(bool ok, const char *msg){

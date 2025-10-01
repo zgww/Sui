@@ -15,6 +15,7 @@ typedef struct tagOrc$PrintStyle Orc$PrintStyle;
 #include "Orc/Orc.h"
 #include <stdlib.h>
 
+#include "./Orc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -52,6 +53,9 @@ struct tagOrc$PrintStyle {
 #include "./Map_orc.h"
 #include "./Math_orc.h"
 #include "./ScopeData_orc.h"
+#define INCLUDE_ONLY_TYPE
+#include "./Number_orc.h"
+#undef INCLUDE_ONLY_TYPE
 
 
 #ifdef __cplusplus
@@ -164,6 +168,7 @@ Orc$PrintStyle *  Orc$PrintStyle$bgcyan(Orc$PrintStyle *  self);
 Orc$PrintStyle *  Orc$PrintStyle$bgwhite(Orc$PrintStyle *  self);
 Orc$PrintStyle Orc$mkPrintStyle();
 void  Orc$PrintStyle_exit(Orc$ScopeData *  scopeData);
+Orc$String*  Orc$Object$toString(Orc$String **  __outRef__, Object *  self);
 void  Orc$testOk(bool  ok, const char *  msg);
 void  Orc$testStr();
 

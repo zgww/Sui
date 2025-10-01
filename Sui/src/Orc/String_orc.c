@@ -1,6 +1,7 @@
 
 #include "String_orc.h" 
 
+#include "./Orc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,6 +9,7 @@
 #include "./Map_orc.h"
 #include "./Math_orc.h"
 #include "./ScopeData_orc.h"
+#include "./Number_orc.h"
 
 
 // static struct 
@@ -668,6 +670,22 @@ void  Orc$PrintStyle_exit(Orc$ScopeData *  scopeData){
 	printf("\033[0m\n") ;
 }
 
+Orc$String*  Orc$Object$toString(Orc$String **  __outRef__, Object *  self){
+	if (Orc_instanceof((Object*)self, (Vtable_Object*)Vtable_Orc$Number_init(NULL))) {
+		Orc$Number *  n = (Orc$Number * )self;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+		return urgc_set_var_for_return_class((void ** )__outRef__, n->toString(&tmpReturn_1, n) ) ; 
+	}
+	if (Orc_instanceof((Object*)self, (Vtable_Object*)Vtable_Orc$String_init(NULL))) {
+		return urgc_set_var_for_return_class((void ** )__outRef__, (Orc$String* )self) ; 
+	}
+	Vtable_Object *  vt = orc_getVtableByObject(self) ;
+	char  tmp[100];
+	sprintf(tmp, "%s(%p)", vt->className, self) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
+	return urgc_set_var_for_return_class((void ** )__outRef__, Orc$str(&tmpReturn_2, tmp) ) ; 
+}
+
 void  Orc$testOk(bool  ok, const char *  msg){
 	if (!ok) {
 		printf("\033[1;31mtest fail: %s\033[0m\n", msg) ;
@@ -715,7 +733,7 @@ void  Orc$testStr(){
 		Orc$PrintStyle tmpStructThis1;
 		{
 			Orc$PrintStyle *  o = Orc$PrintStyle$red((tmpStructThis1 = Orc$mkPrintStyle() ,&tmpStructThis1)) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_706_8 = o->__exit__(o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_735_8 = o->__exit__(o);
 		
 			printf("hi") ;
 		}

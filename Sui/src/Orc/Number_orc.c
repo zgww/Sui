@@ -3,6 +3,7 @@
 
 #include "./Orc.h"
 #include <string.h>
+#include <stdio.h>
 #include "./String_orc.h"
 
 

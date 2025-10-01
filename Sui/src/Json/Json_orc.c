@@ -10,6 +10,7 @@
 #include "../Orc/Map_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Orc/Path_orc.h"
+#include "../Orc/Number_orc.h"
 
 
 // static struct 
@@ -832,9 +833,50 @@ Json$Json*  Json$Json_toJson(Json$Json **  __outRef__, Object *  obj){
 		URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_1 = NULL;
 		return urgc_set_var_for_return_class((void ** )__outRef__, Json$Json_mkNull(&tmpReturn_1) ) ; 
 	}
-	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$List_init(NULL))) {
+	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$String_init(NULL))) {
+		Orc$String *  sobj = (Orc$String * )obj;
 		URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_2 = NULL;
-		return urgc_set_var_for_return_class((void ** )__outRef__, Json$Json_toJsonArray(&tmpReturn_2, (Orc$List * )obj) ) ; 
+		return urgc_set_var_for_return_class((void ** )__outRef__, Json$Json_mkString(&tmpReturn_2, sobj) ) ; 
+	}
+	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$Boolean_init(NULL))) {
+		Orc$Boolean *  bobj = (Orc$Boolean * )obj;
+		URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_3 = NULL;
+		return urgc_set_var_for_return_class((void ** )__outRef__, Json$Json_mkBool(&tmpReturn_3, bobj->value) ) ; 
+	}
+	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$Number_init(NULL))) {
+		Orc$Number *  nobj = (Orc$Number * )obj;
+		URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_4 = NULL;
+		return urgc_set_var_for_return_class((void ** )__outRef__, Json$Json_mkNumber(&tmpReturn_4, nobj->toDouble(nobj) ) ) ; 
+	}
+	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$StructObj_init(NULL))) {
+		Orc$StructObj *  so = (Orc$StructObj * )obj;
+		OrcMetaField *  mf = so->metaStruct->headMetaField;
+		URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_mkObject((jo = NULL,&jo)) ;
+		while (mf) {
+			jo->putCstr(jo, "__struct", so->metaStruct->structName) ;
+			if (mf->type == OrcMetaType_float) {
+				float *  pv = (float * )OrcMetaField_getPtr(mf, so->pStruct) ;
+				jo->putNumber(jo, mf->name, *pv) ;
+			}
+			else if (mf->type == OrcMetaType_double) {
+				double *  pv = (double * )OrcMetaField_getPtr(mf, so->pStruct) ;
+				jo->putNumber(jo, mf->name, *pv) ;
+			}
+			else if (mf->type == OrcMetaType_int) {
+				int *  pv = (int * )OrcMetaField_getPtr(mf, so->pStruct) ;
+				jo->putNumber(jo, mf->name, *pv) ;
+			}
+			else if (mf->type == OrcMetaType_bool) {
+				bool *  pv = (bool * )OrcMetaField_getPtr(mf, so->pStruct) ;
+				jo->putBool(jo, mf->name, *pv) ;
+			}
+			mf = mf->next;
+		}
+		return urgc_set_var_for_return_class((void ** )__outRef__, jo) ; 
+	}
+	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$List_init(NULL))) {
+		URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_5 = NULL;
+		return urgc_set_var_for_return_class((void ** )__outRef__, Json$Json_toJsonArray(&tmpReturn_5, (Orc$List * )obj) ) ; 
 	}
 	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$Map_init(NULL))) {
 		URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_mkObject((jo = NULL,&jo)) ;

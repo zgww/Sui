@@ -42,6 +42,7 @@ typedef struct tagVtable_Json$Json Vtable_Json$Json;
 #include "../Orc/Map_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Orc/Path_orc.h"
+#include "../Orc/Number_orc.h"
 
 
 #ifdef __cplusplus

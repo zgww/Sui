@@ -14,6 +14,8 @@ import * from "../Sui/Core/Node.orc"
 import * from "../Sui/Core/ViewBase.orc"
 import * from "../Sui/Core/NodeLib.orc"
 import * from "../Json/Json.orc"
+
+import * from "../SuiDesigner/EventANodeChanged.orc"
 // import * from "./Serial/BiJson.orc"
 
 
@@ -240,6 +242,10 @@ class ANode {
         n.fromJson(jo)
         return n
     }
+    void setAttrValueObject(const char *name, Object* value){
+        Json@ jo = Json_toJson(value)
+        self.setAttr(name, jo)
+    }
 
     void setAttr(const char *name, Json@ value){
         ANodeAttr@ a = self.getAttrByName(name)
@@ -252,6 +258,13 @@ class ANode {
             a.name.set(name)
             a.value = value
             self.attrs.add(a)
+        }
+        printf("\tanode 收到属性设置请求。 name:%s, value:%s\n", 
+            name, 
+            value.dump().str,
+        );
+        new EventANodeAttrChanged().{
+            o.emitToEbus()
         }
         a.updateNodeAttr(self.node)
     }

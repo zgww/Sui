@@ -14,6 +14,7 @@
 #include "../Sui/Core/ViewBase_orc.h"
 #include "../Sui/Core/NodeLib_orc.h"
 #include "../Json/Json_orc.h"
+#include "../SuiDesigner/EventANodeChanged_orc.h"
 
 
 // static struct 
@@ -320,6 +321,7 @@ void SuiDesigner$ANode_initMeta(Vtable_SuiDesigner$ANode *pvt){
 	orc_metaField_method(&pNext, "getId", offsetof(SuiDesigner$ANode, getId));
 	orc_metaField_method(&pNext, "getName", offsetof(SuiDesigner$ANode, getName));
 	orc_metaField_method(&pNext, "clone", offsetof(SuiDesigner$ANode, clone));
+	orc_metaField_method(&pNext, "setAttrValueObject", offsetof(SuiDesigner$ANode, setAttrValueObject));
 	orc_metaField_method(&pNext, "setAttr", offsetof(SuiDesigner$ANode, setAttr));
 	orc_metaField_method(&pNext, "getAttrByName", offsetof(SuiDesigner$ANode, getAttrByName));
 	orc_metaField_method(&pNext, "getAttrValueByName", offsetof(SuiDesigner$ANode, getAttrValueByName));
@@ -402,6 +404,7 @@ void SuiDesigner$ANode_init_fields(SuiDesigner$ANode *self){
 	((SuiDesigner$ANode*)self)->getId = (void*)SuiDesigner$ANode$getId;
 	((SuiDesigner$ANode*)self)->getName = (void*)SuiDesigner$ANode$getName;
 	((SuiDesigner$ANode*)self)->clone = (void*)SuiDesigner$ANode$clone;
+	((SuiDesigner$ANode*)self)->setAttrValueObject = (void*)SuiDesigner$ANode$setAttrValueObject;
 	((SuiDesigner$ANode*)self)->setAttr = (void*)SuiDesigner$ANode$setAttr;
 	((SuiDesigner$ANode*)self)->getAttrByName = (void*)SuiDesigner$ANode$getAttrByName;
 	((SuiDesigner$ANode*)self)->getAttrValueByName = (void*)SuiDesigner$ANode$getAttrValueByName;
@@ -479,6 +482,12 @@ SuiDesigner$ANode*  SuiDesigner$ANode$clone(SuiDesigner$ANode **  __outRef__, Su
 }
 
 
+void  SuiDesigner$ANode$setAttrValueObject(SuiDesigner$ANode *  self, const char *  name, Object *  value){
+	URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_toJson((jo = NULL,&jo), value) ;
+	self->setAttr(self, name, jo) ;
+}
+
+
 void  SuiDesigner$ANode$setAttr(SuiDesigner$ANode *  self, const char *  name, Json$Json*  value){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(value);
 
@@ -492,6 +501,15 @@ void  SuiDesigner$ANode$setAttr(SuiDesigner$ANode *  self, const char *  name, J
 		Orc$String$set(a->name, name) ;
 		urgc_set_field_class(a, (void * )offsetof(SuiDesigner$ANodeAttr, value) , value) ;
 		self->attrs->add(self->attrs, a) ;
+	}
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
+	printf("\tanode 收到属性设置请求。 name:%s, value:%s\n", name, value->dump(&tmpReturn_2, value) ->str) ;
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$EventANodeAttrChanged*  tmpNewOwner_3 = NULL;
+	{
+		SuiDesigner$EventANodeAttrChanged*  o = SuiDesigner$EventANodeAttrChanged_new(&tmpNewOwner_3) ;
+		
+	
+		((SuiDesigner$EventToEbus * )o)->emitToEbus(o) ;
 	}
 	a->updateNodeAttr(a, self->node) ;
 }

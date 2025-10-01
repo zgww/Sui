@@ -122,11 +122,11 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "../SuiDesigner/Asset/AssetDirTreeView_orc.h"
 #include "../SuiDesigner/Project_orc.h"
 #include "../SuiDesigner/SglInspectorView_orc.h"
-#include "../SuiDesigner/SglInspView_orc.h"
 #include "../Sgl/SglSceneView_orc.h"
 #include "./HoroSceneHierView_orc.h"
 #include "./Horo3dSceneView_orc.h"
 #include "./HoroEditCtx_orc.h"
+#include "./HoroInspView_orc.h"
 #include "./UiAct_orc.h"
 
 
