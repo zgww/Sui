@@ -19,26 +19,27 @@
 #include "../../Orc/Math_orc.h"
 #include "./ViewBuilder_orc.h"
 #include "./Drag_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 // static struct 
-typedef struct tagSuiView$__Block_180_12 SuiView$__Block_180_12;
+typedef struct tagSuiView$__Block_182_12 SuiView$__Block_182_12;
 
-typedef struct tagSuiView$__Block_365_12 SuiView$__Block_365_12;
+typedef struct tagSuiView$__Block_367_12 SuiView$__Block_367_12;
 
-typedef struct tagSuiView$__Block_407_38 SuiView$__Block_407_38;
+typedef struct tagSuiView$__Block_409_38 SuiView$__Block_409_38;
 
-typedef struct tagSuiView$__Closure_185_38 SuiView$__Closure_185_38;
+typedef struct tagSuiView$__Closure_187_38 SuiView$__Closure_187_38;
 
-typedef struct tagSuiView$__Closure_188_38 SuiView$__Closure_188_38;
+typedef struct tagSuiView$__Closure_190_38 SuiView$__Closure_190_38;
 
-typedef struct tagSuiView$__Closure_369_21 SuiView$__Closure_369_21;
+typedef struct tagSuiView$__Closure_371_21 SuiView$__Closure_371_21;
 
-typedef struct tagSuiView$__Closure_414_25 SuiView$__Closure_414_25;
+typedef struct tagSuiView$__Closure_416_25 SuiView$__Closure_416_25;
 
 
 
-struct tagSuiView$__Block_180_12 {
+struct tagSuiView$__Block_182_12 {
 	SuiView$ScrollArea*  self ;
 };
 
@@ -46,7 +47,7 @@ struct tagSuiView$__Block_180_12 {
 
 
 
-struct tagSuiView$__Block_365_12 {
+struct tagSuiView$__Block_367_12 {
 	SuiView$ScrollBar*  self ;
 };
 
@@ -54,7 +55,7 @@ struct tagSuiView$__Block_365_12 {
 
 
 
-struct tagSuiView$__Block_407_38 {
+struct tagSuiView$__Block_409_38 {
 	SuiView$ScrollBar*  self ;
 };
 
@@ -62,40 +63,40 @@ struct tagSuiView$__Block_407_38 {
 
 
 
-struct tagSuiView$__Closure_185_38 {
-	SuiCore$Vec2 (*invoke)(SuiView$__Closure_185_38 *  self);
+struct tagSuiView$__Closure_187_38 {
+	SuiCore$Vec2 (*invoke)(SuiView$__Closure_187_38 *  self);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_180_12*  __var___Block_180_12 ;
+	SuiView$__Block_182_12*  __var___Block_182_12 ;
 };
 
 
 
 
 
-struct tagSuiView$__Closure_188_38 {
-	SuiCore$Vec2 (*invoke)(SuiView$__Closure_188_38 *  self);
+struct tagSuiView$__Closure_190_38 {
+	SuiCore$Vec2 (*invoke)(SuiView$__Closure_190_38 *  self);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_180_12*  __var___Block_180_12 ;
+	SuiView$__Block_182_12*  __var___Block_182_12 ;
 };
 
 
 
 
 
-struct tagSuiView$__Closure_369_21 {
-	void  (*invoke)(SuiView$__Closure_369_21 *  self, SuiView$Drag *  d);
+struct tagSuiView$__Closure_371_21 {
+	void  (*invoke)(SuiView$__Closure_371_21 *  self, SuiView$Drag *  d);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_365_12*  __var___Block_365_12 ;
+	SuiView$__Block_367_12*  __var___Block_367_12 ;
 };
 
 
 
 
 
-struct tagSuiView$__Closure_414_25 {
-	void  (*invoke)(SuiView$__Closure_414_25 *  self, SuiView$ScrollArea *  area);
+struct tagSuiView$__Closure_416_25 {
+	void  (*invoke)(SuiView$__Closure_416_25 *  self, SuiView$ScrollArea *  area);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_407_38*  __var___Block_407_38 ;
+	SuiView$__Block_409_38*  __var___Block_409_38 ;
 };
 
 
@@ -103,21 +104,21 @@ struct tagSuiView$__Closure_414_25 {
 
 
 // static function declaration
-static void  __finiBlock___Block_180_12(SuiView$__Block_180_12 *  self);
-static void  __finiBlock___Block_365_12(SuiView$__Block_365_12 *  self);
-static void  __finiBlock___Block_407_38(SuiView$__Block_407_38 *  self);
-static SuiCore$Vec2 __fn___Closure_185_38(SuiView$__Closure_185_38 *  self);
-static void  __fini___Closure_185_38(SuiView$__Closure_185_38 *  self);
-static SuiView$__Closure_185_38*  __make___Closure_185_38(SuiView$__Closure_185_38 **  __outRef__, SuiView$__Block_180_12 *  __var___Block_180_12);
-static SuiCore$Vec2 __fn___Closure_188_38(SuiView$__Closure_188_38 *  self);
-static void  __fini___Closure_188_38(SuiView$__Closure_188_38 *  self);
-static SuiView$__Closure_188_38*  __make___Closure_188_38(SuiView$__Closure_188_38 **  __outRef__, SuiView$__Block_180_12 *  __var___Block_180_12);
-static void  __fn___Closure_369_21(SuiView$__Closure_369_21 *  self, SuiView$Drag *  d);
-static void  __fini___Closure_369_21(SuiView$__Closure_369_21 *  self);
-static SuiView$__Closure_369_21*  __make___Closure_369_21(SuiView$__Closure_369_21 **  __outRef__, SuiView$__Block_365_12 *  __var___Block_365_12);
-static void  __fn___Closure_414_25(SuiView$__Closure_414_25 *  self, SuiView$ScrollArea *  area);
-static void  __fini___Closure_414_25(SuiView$__Closure_414_25 *  self);
-static SuiView$__Closure_414_25*  __make___Closure_414_25(SuiView$__Closure_414_25 **  __outRef__, SuiView$__Block_407_38 *  __var___Block_407_38);
+static void  __finiBlock___Block_182_12(SuiView$__Block_182_12 *  self);
+static void  __finiBlock___Block_367_12(SuiView$__Block_367_12 *  self);
+static void  __finiBlock___Block_409_38(SuiView$__Block_409_38 *  self);
+static SuiCore$Vec2 __fn___Closure_187_38(SuiView$__Closure_187_38 *  self);
+static void  __fini___Closure_187_38(SuiView$__Closure_187_38 *  self);
+static SuiView$__Closure_187_38*  __make___Closure_187_38(SuiView$__Closure_187_38 **  __outRef__, SuiView$__Block_182_12 *  __var___Block_182_12);
+static SuiCore$Vec2 __fn___Closure_190_38(SuiView$__Closure_190_38 *  self);
+static void  __fini___Closure_190_38(SuiView$__Closure_190_38 *  self);
+static SuiView$__Closure_190_38*  __make___Closure_190_38(SuiView$__Closure_190_38 **  __outRef__, SuiView$__Block_182_12 *  __var___Block_182_12);
+static void  __fn___Closure_371_21(SuiView$__Closure_371_21 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_371_21(SuiView$__Closure_371_21 *  self);
+static SuiView$__Closure_371_21*  __make___Closure_371_21(SuiView$__Closure_371_21 **  __outRef__, SuiView$__Block_367_12 *  __var___Block_367_12);
+static void  __fn___Closure_416_25(SuiView$__Closure_416_25 *  self, SuiView$ScrollArea *  area);
+static void  __fini___Closure_416_25(SuiView$__Closure_416_25 *  self);
+static SuiView$__Closure_416_25*  __make___Closure_416_25(SuiView$__Closure_416_25 **  __outRef__, SuiView$__Block_409_38 *  __var___Block_409_38);
 
 
 static float  ScrollView_delta_factor = 0.5;
@@ -478,15 +479,15 @@ SuiCore$Vec2 SuiView$ScrollArea$calc_scroll_size(SuiView$ScrollArea *  self){
 
 
 void  SuiView$ScrollArea$ctor(SuiView$ScrollArea *  self){
-	URGC_VAR_CLEANUP SuiView$__Block_180_12*  __var___Block_180_12 = (__var___Block_180_12=NULL,urgc_init_var((void**)&__var___Block_180_12, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_180_12) , __finiBlock___Block_180_12) ));
-	urgc_set_field_class(__var___Block_180_12, (void * )offsetof(SuiView$__Block_180_12, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Block_182_12*  __var___Block_182_12 = (__var___Block_182_12=NULL,urgc_init_var((void**)&__var___Block_182_12, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_182_12) , __finiBlock___Block_182_12) ));
+	urgc_set_field_class(__var___Block_182_12, (void * )offsetof(SuiView$__Block_182_12, self) , self) ;
 	((SuiCore$Node * )self)->hasInnerReact = true;
 	Orc$String$set(((SuiLayout$LayoutLinear * )self)->direction, "column") ;
 	Orc$String$set(((SuiLayout$LayoutLinear * )self)->alignItems, "start") ;
-	URGC_VAR_CLEANUP SuiView$__Closure_185_38*  tmpReturn_1 = NULL;
-	urgc_set_field(self->scroll_model, (void * )offsetof(SuiView$ScrollModel, get_scroll_size) , __make___Closure_185_38(&tmpReturn_1, __var___Block_180_12) ) ;
-	URGC_VAR_CLEANUP SuiView$__Closure_188_38*  tmpReturn_2 = NULL;
-	urgc_set_field(self->scroll_model, (void * )offsetof(SuiView$ScrollModel, get_client_size) , __make___Closure_188_38(&tmpReturn_2, __var___Block_180_12) ) ;
+	URGC_VAR_CLEANUP SuiView$__Closure_187_38*  tmpReturn_1 = NULL;
+	urgc_set_field(self->scroll_model, (void * )offsetof(SuiView$ScrollModel, get_scroll_size) , __make___Closure_187_38(&tmpReturn_1, __var___Block_182_12) ) ;
+	URGC_VAR_CLEANUP SuiView$__Closure_190_38*  tmpReturn_2 = NULL;
+	urgc_set_field(self->scroll_model, (void * )offsetof(SuiView$ScrollModel, get_client_size) , __make___Closure_190_38(&tmpReturn_2, __var___Block_182_12) ) ;
 }
 
 
@@ -496,8 +497,8 @@ void  SuiView$ScrollArea$react(SuiView$ScrollArea *  self){
 	SuiCore$Node$placeKids((SuiCore$Node * )self, ((SuiCore$Node * )self)->outKids) ;
 	URGC_VAR_CLEANUP_CLASS SuiView$ScrollBar*  tmpReturn_1 = NULL;
 	{
-		SuiView$ScrollBar*  __scopeVar_202_2 = SuiView$mkScrollBar(&tmpReturn_1, o, 0) , *o = __scopeVar_202_2;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_202_2 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$ScrollBar*  __scopeVar_204_2 = SuiView$mkScrollBar(&tmpReturn_1, o, 0) , *o = __scopeVar_204_2;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_204_2 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		o->bindScrollArea(o, self) ;
 		o->isVer = false;
@@ -505,8 +506,8 @@ void  SuiView$ScrollArea$react(SuiView$ScrollArea *  self){
 	}
 	URGC_VAR_CLEANUP_CLASS SuiView$ScrollBar*  tmpReturn_2 = NULL;
 	{
-		SuiView$ScrollBar*  __scopeVar_208_2 = SuiView$mkScrollBar(&tmpReturn_2, o, 0) , *o = __scopeVar_208_2;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_208_2 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$ScrollBar*  __scopeVar_210_2 = SuiView$mkScrollBar(&tmpReturn_2, o, 0) , *o = __scopeVar_210_2;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_210_2 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		o->bindScrollArea(o, self) ;
 		urgc_set_field_class(self, (void * )offsetof(SuiView$ScrollArea, verScrollBar) , o) ;
@@ -563,7 +564,7 @@ void  SuiView$ScrollArea$onWheelEvent(SuiView$ScrollArea *  self, SuiCore$WheelE
 
 void  SuiView$ScrollArea$draw_children(SuiView$ScrollArea *  self, SuiCore$Canvas *  canvas){
 	{
-		float  w = 8;
+		float  w = SuiDesigner$themeIns() ->scrollbar_size;
 		bool  hasV = self->scroll_model->get_v_rate(self->scroll_model)  < 1.0;
 		float  horDeltaW = hasV ? -w : 0;
 		((SuiCore$ViewBase * )self->verScrollBar)->frame.x = ((SuiCore$ViewBase * )self)->frame.width - SuiCore$Inset$hor(&((SuiCore$View * )self)->margin)  - w + self->scroll_model->scroll_left;
@@ -722,12 +723,12 @@ SuiView$ScrollBar * SuiView$ScrollBar_new(void *pOwner){
 
 // class members
 void  SuiView$ScrollBar$ctor(SuiView$ScrollBar *  self){
-	URGC_VAR_CLEANUP SuiView$__Block_365_12*  __var___Block_365_12 = (__var___Block_365_12=NULL,urgc_init_var((void**)&__var___Block_365_12, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_365_12) , __finiBlock___Block_365_12) ));
-	urgc_set_field_class(__var___Block_365_12, (void * )offsetof(SuiView$__Block_365_12, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Block_367_12*  __var___Block_367_12 = (__var___Block_367_12=NULL,urgc_init_var((void**)&__var___Block_367_12, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_367_12) , __finiBlock___Block_367_12) ));
+	urgc_set_field_class(__var___Block_367_12, (void * )offsetof(SuiView$__Block_367_12, self) , self) ;
 	((SuiCore$View * )self)->width = 10;
 	((SuiCore$View * )self)->height = 204;
-	URGC_VAR_CLEANUP SuiView$__Closure_369_21*  tmpReturn_1 = NULL;
-	urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_369_21(&tmpReturn_1, __var___Block_365_12) ) ;
+	URGC_VAR_CLEANUP SuiView$__Closure_371_21*  tmpReturn_1 = NULL;
+	urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_371_21(&tmpReturn_1, __var___Block_367_12) ) ;
 }
 
 
@@ -748,15 +749,15 @@ bool  SuiView$ScrollBar$canLayoutByParent(SuiView$ScrollBar *  self){
 
 
 void  SuiView$ScrollBar$bindScrollArea(SuiView$ScrollBar *  self, SuiView$ScrollArea *  area){
-	URGC_VAR_CLEANUP SuiView$__Block_407_38*  __var___Block_407_38 = (__var___Block_407_38=NULL,urgc_init_var((void**)&__var___Block_407_38, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_407_38) , __finiBlock___Block_407_38) ));
-	urgc_set_field_class(__var___Block_407_38, (void * )offsetof(SuiView$__Block_407_38, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Block_409_38*  __var___Block_409_38 = (__var___Block_409_38=NULL,urgc_init_var((void**)&__var___Block_409_38, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_409_38) , __finiBlock___Block_409_38) ));
+	urgc_set_field_class(__var___Block_409_38, (void * )offsetof(SuiView$__Block_409_38, self) , self) ;
 	if (area == self->scrollArea) {
 		return ; 
 	}
 	printf("\n\n========================================绑定ScrollArea\n\n") ;
 	urgc_set_field_class(self, (void * )offsetof(SuiView$ScrollBar, scrollArea) , area) ;
-	URGC_VAR_CLEANUP SuiView$__Closure_414_25*  tmpReturn_1 = NULL;
-	urgc_set_field(area, (void * )offsetof(SuiView$ScrollArea, onScrollChanged) , __make___Closure_414_25(&tmpReturn_1, __var___Block_407_38) ) ;
+	URGC_VAR_CLEANUP SuiView$__Closure_416_25*  tmpReturn_1 = NULL;
+	urgc_set_field(area, (void * )offsetof(SuiView$ScrollArea, onScrollChanged) , __make___Closure_416_25(&tmpReturn_1, __var___Block_409_38) ) ;
 }
 
 
@@ -771,13 +772,16 @@ void  SuiView$ScrollBar$draw_self(SuiView$ScrollBar *  self, SuiCore$Canvas *  c
 	SuiView$ScrollModel *  model = self->scrollArea->scroll_model;
 	float  d = 0;
 	float  r = Orc$minFloat(w, h)  / 2.0;
+	SuiDesigner$Theme *  t = SuiDesigner$themeIns() ;
+	int  bg = t->scrollbar_bg;
+	int  barBg = t->scrollbar_barBg;
 	if (self->isVer) {
 		if (model->get_v_rate(model)  >= 0.9999999) {
 			return ; 
 		}
 		SuiCore$Canvas$beginPath(canvas) ;
 		SuiCore$Canvas$roundRect(canvas, x, y, w, h, 3) ;
-		SuiCore$Canvas$fillColorByInt32(canvas, 0x13ff0000) ;
+		SuiCore$Canvas$fillColorByInt32(canvas, bg) ;
 		SuiCore$Canvas$fill(canvas) ;
 		float  fullSize = h - 0;
 		float  barLen = model->get_v_length(model, fullSize) ;
@@ -785,7 +789,7 @@ void  SuiView$ScrollBar$draw_self(SuiView$ScrollBar *  self, SuiCore$Canvas *  c
 		float  barX = x + d;
 		float  barW = w - d * 2;
 		SuiCore$Canvas$beginPath(canvas) ;
-		SuiCore$Canvas$fillColorByInt32(canvas, 0x44ff0000) ;
+		SuiCore$Canvas$fillColorByInt32(canvas, barBg) ;
 		SuiCore$Canvas$roundRect(canvas, barX, barPos, barW, barLen, r) ;
 		SuiCore$Canvas$fill(canvas) ;
 	}
@@ -795,7 +799,7 @@ void  SuiView$ScrollBar$draw_self(SuiView$ScrollBar *  self, SuiCore$Canvas *  c
 		}
 		SuiCore$Canvas$beginPath(canvas) ;
 		SuiCore$Canvas$roundRect(canvas, x, y, w, h, 3) ;
-		SuiCore$Canvas$fillColorByInt32(canvas, 0x13ff0000) ;
+		SuiCore$Canvas$fillColorByInt32(canvas, bg) ;
 		SuiCore$Canvas$fill(canvas) ;
 		float  fullSize = w;
 		float  barLen = model->get_h_length(model, fullSize) ;
@@ -803,7 +807,7 @@ void  SuiView$ScrollBar$draw_self(SuiView$ScrollBar *  self, SuiCore$Canvas *  c
 		float  barY = y + d;
 		float  barH = h - d * 2;
 		SuiCore$Canvas$beginPath(canvas) ;
-		SuiCore$Canvas$fillColorByInt32(canvas, 0x44ff0000) ;
+		SuiCore$Canvas$fillColorByInt32(canvas, barBg) ;
 		SuiCore$Canvas$roundRect(canvas, barPos, barY, barLen, barH, r) ;
 		SuiCore$Canvas$fill(canvas) ;
 	}
@@ -811,70 +815,70 @@ void  SuiView$ScrollBar$draw_self(SuiView$ScrollBar *  self, SuiCore$Canvas *  c
 
 
 
-static void  __finiBlock___Block_180_12(SuiView$__Block_180_12 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_180_12, self) , NULL) ;
+static void  __finiBlock___Block_182_12(SuiView$__Block_182_12 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_182_12, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_365_12(SuiView$__Block_365_12 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_365_12, self) , NULL) ;
+static void  __finiBlock___Block_367_12(SuiView$__Block_367_12 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_367_12, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_407_38(SuiView$__Block_407_38 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_407_38, self) , NULL) ;
+static void  __finiBlock___Block_409_38(SuiView$__Block_409_38 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_409_38, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static SuiCore$Vec2 __fn___Closure_185_38(SuiView$__Closure_185_38 *  self){
-	return self->__var___Block_180_12->self->calc_scroll_size(self->__var___Block_180_12->self) ; 
+static SuiCore$Vec2 __fn___Closure_187_38(SuiView$__Closure_187_38 *  self){
+	return self->__var___Block_182_12->self->calc_scroll_size(self->__var___Block_182_12->self) ; 
 }
 
-static void  __fini___Closure_185_38(SuiView$__Closure_185_38 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_185_38, __var___Block_180_12) , NULL) ;
+static void  __fini___Closure_187_38(SuiView$__Closure_187_38 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_187_38, __var___Block_182_12) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_185_38*  __make___Closure_185_38(SuiView$__Closure_185_38 **  __outRef__, SuiView$__Block_180_12 *  __var___Block_180_12){
-	URGC_VAR_CLEANUP SuiView$__Closure_185_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_185_38) , __fini___Closure_185_38) ));
-	self->invoke = __fn___Closure_185_38;
+static SuiView$__Closure_187_38*  __make___Closure_187_38(SuiView$__Closure_187_38 **  __outRef__, SuiView$__Block_182_12 *  __var___Block_182_12){
+	URGC_VAR_CLEANUP SuiView$__Closure_187_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_187_38) , __fini___Closure_187_38) ));
+	self->invoke = __fn___Closure_187_38;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_185_38, __var___Block_180_12) , __var___Block_180_12) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_187_38, __var___Block_182_12) , __var___Block_182_12) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static SuiCore$Vec2 __fn___Closure_188_38(SuiView$__Closure_188_38 *  self){
-	SuiCore$Rect r = ((SuiCore$View * )self->__var___Block_180_12->self)->getContentLocalRect(self->__var___Block_180_12->self) ;
+static SuiCore$Vec2 __fn___Closure_190_38(SuiView$__Closure_190_38 *  self){
+	SuiCore$Rect r = ((SuiCore$View * )self->__var___Block_182_12->self)->getContentLocalRect(self->__var___Block_182_12->self) ;
 	return SuiCore$mkVec2(r.w, r.h) ; 
 }
 
-static void  __fini___Closure_188_38(SuiView$__Closure_188_38 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_188_38, __var___Block_180_12) , NULL) ;
+static void  __fini___Closure_190_38(SuiView$__Closure_190_38 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_190_38, __var___Block_182_12) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_188_38*  __make___Closure_188_38(SuiView$__Closure_188_38 **  __outRef__, SuiView$__Block_180_12 *  __var___Block_180_12){
-	URGC_VAR_CLEANUP SuiView$__Closure_188_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_188_38) , __fini___Closure_188_38) ));
-	self->invoke = __fn___Closure_188_38;
+static SuiView$__Closure_190_38*  __make___Closure_190_38(SuiView$__Closure_190_38 **  __outRef__, SuiView$__Block_182_12 *  __var___Block_182_12){
+	URGC_VAR_CLEANUP SuiView$__Closure_190_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_190_38) , __fini___Closure_190_38) ));
+	self->invoke = __fn___Closure_190_38;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_188_38, __var___Block_180_12) , __var___Block_180_12) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_190_38, __var___Block_182_12) , __var___Block_182_12) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_369_21(SuiView$__Closure_369_21 *  self, SuiView$Drag *  d){
+static void  __fn___Closure_371_21(SuiView$__Closure_371_21 *  self, SuiView$Drag *  d){
 	printf("drag scrollbar\n") ;
-	if (self->__var___Block_365_12->self->scrollArea == NULL) {
+	if (self->__var___Block_367_12->self->scrollArea == NULL) {
 		return ; 
 	}
-	SuiView$ScrollModel *  model = self->__var___Block_365_12->self->scrollArea->scroll_model;
-	if (self->__var___Block_365_12->self->isVer) {
-		float  fullSize = ((SuiCore$ViewBase * )self->__var___Block_365_12->self)->frame.height;
+	SuiView$ScrollModel *  model = self->__var___Block_367_12->self->scrollArea->scroll_model;
+	if (self->__var___Block_367_12->self->isVer) {
+		float  fullSize = ((SuiCore$ViewBase * )self->__var___Block_367_12->self)->frame.height;
 		float  barPos = model->get_v_pos(model, fullSize) ;
 		float  newBarPos = barPos + d->deltaPos.y;
 		model->scroll_top = model->calc_scroll_top_by_bar_pos(model, fullSize, newBarPos) ;
 	}
 	else {
-		float  fullSize = ((SuiCore$ViewBase * )self->__var___Block_365_12->self)->frame.width;
+		float  fullSize = ((SuiCore$ViewBase * )self->__var___Block_367_12->self)->frame.width;
 		float  barPos = model->get_h_pos(model, fullSize) ;
 		float  newBarPos = barPos + d->deltaPos.x;
 		printf("newBarPos:%f. delta:%f left:%d\n", newBarPos, d->deltaPos.x, model->scroll_left) ;
@@ -882,36 +886,36 @@ static void  __fn___Closure_369_21(SuiView$__Closure_369_21 *  self, SuiView$Dra
 		printf("\tnew left:%d\n", model->scroll_left) ;
 	}
 	model->clampScrollOffsetValid(model) ;
-	self->__var___Block_365_12->self->scrollArea->fireScrollChanged(self->__var___Block_365_12->self->scrollArea) ;
+	self->__var___Block_367_12->self->scrollArea->fireScrollChanged(self->__var___Block_367_12->self->scrollArea) ;
 }
 
-static void  __fini___Closure_369_21(SuiView$__Closure_369_21 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_369_21, __var___Block_365_12) , NULL) ;
+static void  __fini___Closure_371_21(SuiView$__Closure_371_21 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_371_21, __var___Block_367_12) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_369_21*  __make___Closure_369_21(SuiView$__Closure_369_21 **  __outRef__, SuiView$__Block_365_12 *  __var___Block_365_12){
-	URGC_VAR_CLEANUP SuiView$__Closure_369_21*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_369_21) , __fini___Closure_369_21) ));
-	self->invoke = __fn___Closure_369_21;
+static SuiView$__Closure_371_21*  __make___Closure_371_21(SuiView$__Closure_371_21 **  __outRef__, SuiView$__Block_367_12 *  __var___Block_367_12){
+	URGC_VAR_CLEANUP SuiView$__Closure_371_21*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_371_21) , __fini___Closure_371_21) ));
+	self->invoke = __fn___Closure_371_21;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_369_21, __var___Block_365_12) , __var___Block_365_12) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_371_21, __var___Block_367_12) , __var___Block_367_12) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_414_25(SuiView$__Closure_414_25 *  self, SuiView$ScrollArea *  area){
-	((SuiCore$ViewBase * )self->__var___Block_407_38->self)->invalidDraw(self->__var___Block_407_38->self) ;
+static void  __fn___Closure_416_25(SuiView$__Closure_416_25 *  self, SuiView$ScrollArea *  area){
+	((SuiCore$ViewBase * )self->__var___Block_409_38->self)->invalidDraw(self->__var___Block_409_38->self) ;
 }
 
-static void  __fini___Closure_414_25(SuiView$__Closure_414_25 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_414_25, __var___Block_407_38) , NULL) ;
+static void  __fini___Closure_416_25(SuiView$__Closure_416_25 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_416_25, __var___Block_409_38) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_414_25*  __make___Closure_414_25(SuiView$__Closure_414_25 **  __outRef__, SuiView$__Block_407_38 *  __var___Block_407_38){
-	URGC_VAR_CLEANUP SuiView$__Closure_414_25*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_414_25) , __fini___Closure_414_25) ));
-	self->invoke = __fn___Closure_414_25;
+static SuiView$__Closure_416_25*  __make___Closure_416_25(SuiView$__Closure_416_25 **  __outRef__, SuiView$__Block_409_38 *  __var___Block_409_38){
+	URGC_VAR_CLEANUP SuiView$__Closure_416_25*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_416_25) , __fini___Closure_416_25) ));
+	self->invoke = __fn___Closure_416_25;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_414_25, __var___Block_407_38) , __var___Block_407_38) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_416_25, __var___Block_409_38) , __var___Block_409_38) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

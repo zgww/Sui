@@ -59,6 +59,7 @@ typedef struct tagVtable_SuiDesigner$AssetDirView Vtable_SuiDesigner$AssetDirVie
 #include "../../Sui/Layout/LayoutAlign_orc.h"
 #include "../FileItem_orc.h"
 #include "../UiAction_orc.h"
+#include "../Theme_orc.h"
 #include "../Project_orc.h"
 #include "../EventANodeChanged_orc.h"
 #include "../EventFileItemChanged_orc.h"

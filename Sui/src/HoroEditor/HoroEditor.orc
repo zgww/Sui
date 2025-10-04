@@ -376,36 +376,61 @@ class HoroEditor extends Listener{
             o.width = 100
             o.height = 20
 
-            o.backgroundColor = 0x30000033
+            // o.backgroundColor = 0x30000033
             if(o.isNewForReact){
                 o.cbRenderItemHeadView = ^void (
                     DockItem *item, ViewBase *o, int kidIndex
                 ){
                     DockItem@ tmpItem = item
                     DockLayout@ tmpDock = dockLayoutIns
-                    mkTextView(o, (long long)item).{
-                        o.cursor = str("pointer")
-                        o.setText(item.id)
-                        // o.color = 0xff00ff00
-                        o.color = t.dock_head_c
-                        o.padding.top = 4
-                        o.padding.setHor(8)
-                        // o.margin.right = 4
-                        // o.margin.top = 8
+                    layoutLinear(o, (long long)item).{
                         o.border.setAll(0.0f, 0xffaeaeb2)
-
                         bool active =  item.parent.tabActiveIndex == kidIndex 
                         if active {
-                            o.border.t.w = 2.f;
+                            o.border.t.w = 1.f;
                             o.border.t.color = t.c_main
                         }
+                        // o.padding.top = 4
+                        o.padding.setHor(6)
+                        o.padding.setVer(2)
 
-                        if kidIndex < item.parent.children.size() - 1{
-                            o.border.r.w = 1.f;
-                        }
                         o.backgroundColor = 
                             active ? t.dock_head_bg_active
                             : t.dock_head_bg
+
+                        mkImageView(o, ((long long)item)+1).{
+                            o.width = 14
+                            o.height = 14
+                            o.setImageMode(Fill)
+                            o.margin.right = 4
+                            if (item.id.equals("hier")){
+                                o.setSrc(Path_resolveFromExecutionDir("../asset/icon-light/hierarchy.png"))
+                            }
+                            else if (item.id.equals("scene")){
+                                o.setSrc(Path_resolveFromExecutionDir("../asset/icon-light/scene.png"))
+                            }
+                            else if (item.id.equals("inspector")){
+                                o.setSrc(Path_resolveFromExecutionDir("../asset/icon-light/inspector.png"))
+                            }
+                            else {
+                                o.setSrc(Path_resolveFromExecutionDir("../asset/icon-light/directory.png"))
+                            }
+                        }
+                        mkTextView(o, (long long)item).{
+                            o.cursor = str("pointer")
+                            o.setText(item.id)
+                            // o.color = 0xff00ff00
+                            o.color = t.dock_head_c
+                            o.setFont_size(11)
+                            // o.margin.right = 4
+                            // o.margin.top = 8
+
+
+
+                            if kidIndex < item.parent.children.size() - 1{
+                                // o.border.r.w = 1.f;
+                            }
+                        }
                     }
                 }
                 o.cbRenderItemContentView = ^ViewBase* (DockItem *item, ViewBase *o){
@@ -426,7 +451,7 @@ class HoroEditor extends Listener{
                             o.editCtx = self.editCtx
                             o.editor = self
                             // o.backgroundColor = t.dock_content_bg
-                            o.backgroundColor = 0xffffffff
+                            // o.backgroundColor = 0xffffffff
                             return o
                         }
                     }
@@ -498,11 +523,76 @@ class HoroEditor extends Listener{
         }
     }
 
+    void reactToolbar(Node*o){
+        layoutLinear(o, 0).{
+            mkDrawButton(o, 0).{
+                o.typePrimary()
+                o.text = str("Download")
+                o.onClick = ^void(MouseEvent *me){
+                    // self.addTileLayer()
+                }
+            }
+            mkDrawButton(o, 0).{
+                o.text = str("添加tilelayer")
+                o.onClick = ^void(MouseEvent *me){
+                    // self.addTileLayer()
+                }
+            }
+            mkDrawButton(o, 0).{ o.isActive = true; o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/setting.png"); }
+
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/project.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/open-door.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/collapse.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/expand.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/add.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/delete.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/bezier.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/user.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/shortcut.png"); }
+
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/file-open.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/save.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/print.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/play.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/pause.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/apps.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-left.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-center.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-right.png"); }
+
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-top.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-middle.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-bottom.png"); }
+
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/download.png"); }
+
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/sort-a-to-z.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/sort-z-to-a.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/filter.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/search.png"); }
+
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/node.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/cube.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/text-view.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/edit-text.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/image-view.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/button.png"); }
+
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/directory.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/camera.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/light.png"); }
+            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/path.png"); }
+
+
+        }
+    }
+
     void react(){
         // printf("react SpriteSheetEditor\n")
         Theme* t = themeIns()
         self.win.rootView.{
             self.reactMenubar(o)
+            self.reactToolbar(o)
             self.reactDocklayout(o)
         }
     }
@@ -547,7 +637,7 @@ class HoroEditor extends Listener{
             }
 
             new LayoutLinear().{
-                o.backgroundColor = 0xffffffff
+                o.backgroundColor = themeIns().bg1 //0xffffffff
                 o.direction.set("column")
                 o.alignItems.set("stretch")
 

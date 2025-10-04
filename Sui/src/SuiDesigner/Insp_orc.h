@@ -133,6 +133,7 @@ struct tagSuiDesigner$MethodInfo {
 #include "./EditCtx_orc.h"
 #include "./EventANodeChanged_orc.h"
 #include "./FileChooser_orc.h"
+#include "./Theme_orc.h"
 
 
 #ifdef __cplusplus

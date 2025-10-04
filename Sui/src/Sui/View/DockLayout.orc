@@ -22,6 +22,7 @@ import * from "../../Orc/Math.orc"
 import * from "./ViewBuilder.orc"
 import * from "./Drag.orc"
 import * from "../../Json/Json.orc"
+import * from "../../SuiDesigner/Theme.orc"
 
 static const char *SPLITTER = "splitter"
 static const char *TAB = "tab"
@@ -267,7 +268,7 @@ class DockLayout extends View {
     int splitterSize = 1
     float minItemSize = 10
 
-    int tabHeadBg = 0x33ff0000
+    int tabHeadBg = themeIns().dock_headbar_bg//0x33ff0000
 
     DockItem@ root = mkDockItemSplitter(null, str(""), true) //new DockItem()
     // List<DockSplitterInfo>
@@ -278,6 +279,9 @@ class DockLayout extends View {
 
     // Drag@ dragSplitter = new Drag()
     Drag@ dragTab = new Drag()
+
+    ^void () _afterDrawChildren 
+
     void ctor(){
         // self.dragSplitter.onDrag =^ void(Drag *d){
         //     printf("drag....\n");
@@ -507,7 +511,7 @@ class DockLayout extends View {
     void _reactTabHeads(DockItem *tab, ViewBase *parent){
         layoutLinear(parent, 0).{
             o.direction = str("row")
-            // o.backgroundColor = 0x33000000
+            // o.backgroundColor = 0xff0000ff
             o.backgroundColor = self.tabHeadBg
             int l = tab.children.size()
             for (int i = 0; i < l; i++){
@@ -658,8 +662,12 @@ class DockLayout extends View {
 
     }
 
-    void draw_self(Canvas *canvas){
-        super.draw_self(canvas)
+    // void draw_self(Canvas *canvas){
+    //     super.draw_self(canvas)
+    //     self.drawDndIndicator(canvas)
+    // }
+    void drawSelfBorder(Canvas *canvas){
+        super.drawSelfBorder(canvas)
         self.drawDndIndicator(canvas)
     }
     void drawDndIndicator(Canvas *canvas){
@@ -855,8 +863,8 @@ class DockLayout extends View {
 class DockSplitterView extends View{
     Drag@ drag = new Drag()
 
-    int hoverBg = 0xff007aff//0xff00ff00
-    int normalBg = 0xffcdcdcf
+    int hoverBg = themeIns().dock_splitterBgHover//0xff007aff//0xff00ff00
+    int normalBg = themeIns().dock_splitterBg //0xffcdcdcf
 
     void ctor(){
         self.cursor = str("pointer")
@@ -873,6 +881,17 @@ class DockSplitterView extends View{
             }
         }
     }
+    // void draw_self(Canvas *canvas){
+    //     if self.hover {
+    //         canvas.save()
+    //         self.frame.width += 4
+    //         canvas.translate(-2, 0)
+    //     }
+    //     super.draw_self(canvas)
+    //     if self.hover {
+    //         canvas.restore()
+    //     }
+    // }
     
     void onHoverChanged(){
         self.invalidReact()

@@ -26,6 +26,7 @@ import * from "../../Sui/Layout/LayoutAlign.orc"
 
 import * from "../FileItem.orc"
 import * from "../UiAction.orc"
+import * from "../Theme.orc"
 import * from "../Project.orc"
 import * from "../EventANodeChanged.orc"
 import * from "../EventFileItemChanged.orc"
@@ -131,6 +132,8 @@ class AssetDirView extends LayoutLinear {
         useEbus().removeListener(self)
     }
     void react(){
+        Theme* t = themeIns()
+
         self.direction = str("column")
         self.alignItems = str("stretch")
 
@@ -145,7 +148,7 @@ class AssetDirView extends LayoutLinear {
         
         AssetDirView* o = (AssetDirView*)self
 
-        o.backgroundColor = 0x33ffffff
+        o.backgroundColor = t.dir_bg //0x33ffffff
         layoutLinearCell(o, 0)~{
             o.grow = 1
         }
@@ -357,6 +360,8 @@ class AssetDirView extends LayoutLinear {
         }
     }
     void reactFileItem(Node*o, FileItem@ fi){
+        Theme* t = themeIns()
+
         FileItem@ tmpFi = fi
         layoutLinear(o, (long long)fi)~{
             o.width = 80
@@ -378,12 +383,15 @@ class AssetDirView extends LayoutLinear {
                 if fi.path.endsWith(".png"){
                     o.setSrc(fi.path)
                 }
+                else if fi.path.endsWith(".prefab.json"){
+                    o.setSrc(Path_resolveFromExecutionDir("../asset/icon/prefab.png"))
+                }
                 else {
-                    o.setSrc(str(
+                    o.setSrc(
                         fi.isDirectory
-                        ? "./asset/icon/dir.png"
-                        : "./asset/icon/file.png"
-                    ))
+                        ? Path_resolveFromExecutionDir("../asset/icon/dir.png")
+                        : Path_resolveFromExecutionDir("../asset/icon/file.png")
+                    )
                 }
                 o.width = 60
                 o.height = 60
@@ -391,6 +399,8 @@ class AssetDirView extends LayoutLinear {
             mkTextView(o, 0)~{
                 o.margin.setVer(6)
                 o.setText(fi.filename)
+                o.setFont_size(t.dir_fontSize)
+                o.color = t.dir_color
             }
         }
     }

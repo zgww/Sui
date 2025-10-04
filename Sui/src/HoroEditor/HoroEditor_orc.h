@@ -184,6 +184,7 @@ struct tagHoroEditor$HoroEditor {
 	void  (*reactGizmosView) (HoroEditor$HoroEditor *  self);
 	void  (*reactMenubar) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 	void  (*reactDocklayout) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
+	void  (*reactToolbar) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 	void  (*react) (HoroEditor$HoroEditor *  self);
 	void  (*onWindowEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 	void  (*showWindow) (HoroEditor$HoroEditor *  self);
@@ -206,6 +207,7 @@ SuiCore$ViewBase *  HoroEditor$HoroEditor$reactScene(HoroEditor$HoroEditor *  se
 void  HoroEditor$HoroEditor$reactGizmosView(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$reactMenubar(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
+void  HoroEditor$HoroEditor$reactToolbar(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 void  HoroEditor$HoroEditor$react(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$onWindowEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self);

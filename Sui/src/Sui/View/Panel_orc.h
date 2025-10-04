@@ -46,6 +46,7 @@ typedef struct tagVtable_SuiView$Panel2 Vtable_SuiView$Panel2;
 #include "../View/TextView_orc.h"
 #include "../View/ViewBuilder_orc.h"
 #include "../Layout/LayoutLinear_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 #ifdef __cplusplus
@@ -69,6 +70,8 @@ struct tagSuiView$Panel {
 	Orc$String*  title ;
 	bool  open ;
 	SuiCore$View*  body ;
+	int  titleColor ;
+	int  titleFontSize ;
 	void  (*onEvent_forHead) (SuiView$Panel *  self, SuiCore$Event *  e);
 	void  (*onClick_inHead) (SuiView$Panel *  self, SuiCore$MouseEvent *  e);
 	void  (*setOpen) (SuiView$Panel *  self, bool  v);

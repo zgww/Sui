@@ -53,6 +53,7 @@ import * from "./BezierEditView.orc"
 import * from "./EditCtx.orc"
 import * from "./EventANodeChanged.orc"
 import * from "./FileChooser.orc"
+import * from "./Theme.orc"
 
 
 
@@ -821,7 +822,7 @@ class Insp {
                 o.margin.right = 8
                 o.margin.bottom = 4
                 o.setValue_notInFocus(str("").addf(v.x))
-                o.border.setAll(1, 0xffff0000)
+                o.border.setAll(1, 0x99ff0000)
 
                 o.onValueChanged = ^void (EditText* et){
                     double nv = atof(et.value.str)
@@ -834,7 +835,7 @@ class Insp {
                 layoutLinearCell(o, 0).{ o.grow = 1}
             }
             mkEditText(o, 0).{
-                o.border.setAll(1, 0xff00ff00)
+                o.border.setAll(1, 0x9900ff00)
 
                 o.padding.left = 4
                 o.margin.right = 8
@@ -857,7 +858,7 @@ class Insp {
                 o.margin.right = 8
                 o.margin.bottom = 4
                 o.setValue_notInFocus(str("").addf(v.z))
-                o.border.setAll(1, 0xff0000ff)
+                o.border.setAll(1, 0xbb0000ff)
 
                 o.onValueChanged = ^void (EditText* et){
                     double nv = atof(et.value.str)
@@ -1020,11 +1021,14 @@ class Insp {
         return true
     }
     void mkFieldName(Node*o, const char *name){
+        Theme* t = themeIns()
         mkTextView(o, 0).{
             // String@ s = str(name)
             o.setText(str(name))
-            o.width = 120
+            o.width = 80
             o.margin.right = 10
+            o.color = t.insp_color
+            o.setFont_size(t.insp_fontSize)
         }
     }
 
@@ -1225,7 +1229,7 @@ void Insp_mkVec2(Node*o, long long key, Vec2 v, ^void (Vec2 nv) set){
             o.margin.right = 8
             o.margin.bottom = 4
             o.setValue_notInFocus(str("").addf(v.x))
-            o.border.setAll(1, 0xffff0000)
+            o.border.setAll(1, 0x99ff0000)
 
             o.onValueChanged = ^void (EditText* et){
                 double nv = atof(et.value.str)
@@ -1238,7 +1242,7 @@ void Insp_mkVec2(Node*o, long long key, Vec2 v, ^void (Vec2 nv) set){
             layoutLinearCell(o, 0).{ o.grow = 1}
         }
         mkEditText(o, 0).{
-            o.border.setAll(1, 0xff00ff00)
+            o.border.setAll(1, 0xbb00ff00)
 
             o.padding.left = 4
             o.margin.right = 8
@@ -1268,7 +1272,7 @@ void Insp_mkVec3(Node*o, long long key, Vec3 v, ^void (Vec3 nv) set){
             o.margin.right = 8
             o.margin.bottom = 4
             o.setValue_notInFocus(str("").addf(v.x))
-            o.border.setAll(1, 0xffff0000)
+            o.border.setAll(1, 0x99ff0000)
 
             o.onValueChanged = ^void (EditText* et){
                 double nv = atof(et.value.str)
@@ -1281,7 +1285,7 @@ void Insp_mkVec3(Node*o, long long key, Vec3 v, ^void (Vec3 nv) set){
             layoutLinearCell(o, 0).{ o.grow = 1}
         }
         mkEditText(o, 0).{
-            o.border.setAll(1, 0xff00ff00)
+            o.border.setAll(1, 0xbb00ff00)
 
             o.padding.left = 4
             o.margin.right = 8

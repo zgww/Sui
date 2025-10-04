@@ -23,6 +23,7 @@ import * from "./ViewBuilder.orc"
 import * from "../Core/Inset.orc"   
 
 import type * from "../../SuiDesigner/Inspector.orc"
+import type * from "../../SuiDesigner/Theme.orc"
 
 /// 布局上下文
 class Button extends LayoutLinear {
@@ -148,8 +149,24 @@ class DrawButton extends LayoutLinear{
 	String@ text = null;
 	String@ src = null;
 
-	int hoverBg = 0x8f9c9c9c//nvgRGBA(156,156,156,100)
-	int normalBg = 0xef9c9c9c //nvgRGBA(156,156,156,200)
+	int normalBg = themeIns().button_bg//0xef9c9c9c //nvgRGBA(156,156,156,200)
+	int hoverBg = themeIns().button_bgHover//0x8f9c9c9c//nvgRGBA(156,156,156,100)
+	int activeBg = themeIns().button_bgActive
+
+	int color = themeIns().button_color
+	int activeColor = themeIns().button_colorActive
+	int hoverColor = themeIns().button_colorHover
+
+	bool isActive = false
+
+
+	void typePrimary(){
+		Theme* t = themeIns()
+		self.normalBg = t.button_primary_bg
+		self.hoverBg = t.button_primary_bgHover
+		self.color = t.button_primary_color
+		self.hoverColor = t.button_primary_color
+	}
 
 
 	// void onInspect(Inspector *insp){
@@ -210,6 +227,7 @@ class DrawButton extends LayoutLinear{
 		self.invalidDraw()
 	}
 	void react(){
+		Theme* t = themeIns()
 		self.startInnerReact()
 		if (self.src){
 			mkImageView(self, 0).{
@@ -220,8 +238,13 @@ class DrawButton extends LayoutLinear{
 		}
 		if (self.text){
 			mkTextView(self, 0).{
+				o.setFont_size(t.button_fontSize)
 				o.setText(self.text)
-				o.color = self.hover ? 0xffffffff: 0x99ffffff
+				// o.color = self.hover ? 0xffffffff: 0x99ffffff
+				o.color = 
+					self.isActive ? self.activeColor
+					:
+					self.hover ? self.hoverColor: self.color
 			}
 		}
 		self.endInnerReact()
@@ -243,6 +266,8 @@ class DrawButton extends LayoutLinear{
 		// 	self.hover ? nvgRGBA(r,g,b,160) : nvgRGBA(r,g,b,200),
 		// );
 		canvas.fillColorByInt32(
+			self.isActive ? self.activeBg
+			:
 			(self.hover? self.hoverBg : self.normalBg));
 		canvas.beginPath();
 		canvas.roundRect(x+1,y+1, w-2,h-2, cornerRadius-1);

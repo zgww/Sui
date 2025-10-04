@@ -58,6 +58,7 @@ typedef struct tagVtable_SuiView$DockSplitterView Vtable_SuiView$DockSplitterVie
 #include "./ViewBuilder_orc.h"
 #include "./Drag_orc.h"
 #include "../../Json/Json_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 #ifdef __cplusplus
@@ -152,6 +153,7 @@ struct tagSuiView$DockLayout {
 	SuiCore$ViewBase *  (**cbRenderItemContentView)(void *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  parent);
 	void  (**cbRenderItemHeadView)(void *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  parent, int  kidIndex);
 	SuiView$Drag*  dragTab ;
+	void  (**_afterDrawChildren)(void *  self);
 	void  (*doDrop) (SuiView$DockLayout *  self);
 	void  (*onDragSplitter) (SuiView$DockLayout *  self, SuiView$Drag *  drag, SuiView$DockItem *  parentDockItem, SuiView$DockItem *  prevDockItem, SuiView$DockItem *  nextDockItem);
 	void  (*_reactDockItem) (SuiView$DockLayout *  self, SuiView$DockItem *  item);
@@ -185,7 +187,7 @@ void  SuiView$DockLayout$_reactTabHeads(SuiView$DockLayout *  self, SuiView$Dock
 void  SuiView$DockLayout$_reactTabContent(SuiView$DockLayout *  self, SuiView$DockItem *  tab, SuiCore$ViewBase *  parent);
 void  SuiView$DockLayout$layoutContent(SuiView$DockLayout *  self, SuiCore$Frame *  frame);
 void  SuiView$DockLayout$layoutContentDockItem(SuiView$DockLayout *  self, SuiCore$Frame *  frame, SuiView$DockItem *  item, int  px, int  py);
-void  SuiView$DockLayout$draw_self(SuiView$DockLayout *  self, SuiCore$Canvas *  canvas);
+void  SuiView$DockLayout$drawSelfBorder(SuiView$DockLayout *  self, SuiCore$Canvas *  canvas);
 void  SuiView$DockLayout$drawDndIndicator(SuiView$DockLayout *  self, SuiCore$Canvas *  canvas);
 SuiView$DockItem *  SuiView$DockLayout$findDockItem_containsVec2(SuiView$DockLayout *  self, SuiView$DockItem *  item, int  clientX, int  clientY);
 SuiView$DockItem*  SuiView$DockLayout$upto_findMostAncestorInDockItemSplitter(SuiView$DockItem **  __outRef__, SuiView$DockLayout *  self, SuiView$DockItem*  item);

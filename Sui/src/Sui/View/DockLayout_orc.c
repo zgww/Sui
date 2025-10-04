@@ -22,30 +22,31 @@
 #include "./ViewBuilder_orc.h"
 #include "./Drag_orc.h"
 #include "../../Json/Json_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 // static struct 
-typedef struct tagSuiView$__Block_281_15 SuiView$__Block_281_15;
+typedef struct tagSuiView$__Block_285_15 SuiView$__Block_285_15;
 
-typedef struct tagSuiView$__Block_427_39 SuiView$__Block_427_39;
+typedef struct tagSuiView$__Block_431_39 SuiView$__Block_431_39;
 
-typedef struct tagSuiView$__Block_432_39 SuiView$__Block_432_39;
+typedef struct tagSuiView$__Block_436_39 SuiView$__Block_436_39;
 
-typedef struct tagSuiView$__Block_439_30 SuiView$__Block_439_30;
+typedef struct tagSuiView$__Block_443_30 SuiView$__Block_443_30;
 
-typedef struct tagSuiView$__Block_507_56 SuiView$__Block_507_56;
+typedef struct tagSuiView$__Block_511_56 SuiView$__Block_511_56;
 
-typedef struct tagSuiView$__Block_513_39 SuiView$__Block_513_39;
+typedef struct tagSuiView$__Block_517_39 SuiView$__Block_517_39;
 
-typedef struct tagSuiView$__Closure_285_30 SuiView$__Closure_285_30;
+typedef struct tagSuiView$__Closure_289_30 SuiView$__Closure_289_30;
 
-typedef struct tagSuiView$__Closure_447_40 SuiView$__Closure_447_40;
+typedef struct tagSuiView$__Closure_451_40 SuiView$__Closure_451_40;
 
-typedef struct tagSuiView$__Closure_518_38 SuiView$__Closure_518_38;
+typedef struct tagSuiView$__Closure_522_38 SuiView$__Closure_522_38;
 
 
 
-struct tagSuiView$__Block_281_15 {
+struct tagSuiView$__Block_285_15 {
 	SuiView$DockLayout*  self ;
 };
 
@@ -53,7 +54,7 @@ struct tagSuiView$__Block_281_15 {
 
 
 
-struct tagSuiView$__Block_427_39 {
+struct tagSuiView$__Block_431_39 {
 	SuiView$DockLayout*  self ;
 	SuiView$DockItem*  parentItem ;
 };
@@ -62,7 +63,7 @@ struct tagSuiView$__Block_427_39 {
 
 
 
-struct tagSuiView$__Block_432_39 {
+struct tagSuiView$__Block_436_39 {
 	SuiView$DockItem *  kid ;
 };
 
@@ -70,7 +71,7 @@ struct tagSuiView$__Block_432_39 {
 
 
 
-struct tagSuiView$__Block_439_30 {
+struct tagSuiView$__Block_443_30 {
 	SuiView$DockItem *  nextKid ;
 };
 
@@ -78,7 +79,7 @@ struct tagSuiView$__Block_439_30 {
 
 
 
-struct tagSuiView$__Block_507_56 {
+struct tagSuiView$__Block_511_56 {
 	SuiView$DockLayout*  self ;
 };
 
@@ -86,7 +87,7 @@ struct tagSuiView$__Block_507_56 {
 
 
 
-struct tagSuiView$__Block_513_39 {
+struct tagSuiView$__Block_517_39 {
 	SuiView$DockItem*  kid ;
 };
 
@@ -94,33 +95,33 @@ struct tagSuiView$__Block_513_39 {
 
 
 
-struct tagSuiView$__Closure_285_30 {
-	void  (*invoke)(SuiView$__Closure_285_30 *  self, SuiView$Drag *  d);
+struct tagSuiView$__Closure_289_30 {
+	void  (*invoke)(SuiView$__Closure_289_30 *  self, SuiView$Drag *  d);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_281_15*  __var___Block_281_15 ;
+	SuiView$__Block_285_15*  __var___Block_285_15 ;
 };
 
 
 
 
 
-struct tagSuiView$__Closure_447_40 {
-	void  (*invoke)(SuiView$__Closure_447_40 *  self, SuiView$Drag *  d);
+struct tagSuiView$__Closure_451_40 {
+	void  (*invoke)(SuiView$__Closure_451_40 *  self, SuiView$Drag *  d);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_427_39*  __var___Block_427_39 ;
-	SuiView$__Block_432_39*  __var___Block_432_39 ;
-	SuiView$__Block_439_30*  __var___Block_439_30 ;
+	SuiView$__Block_431_39*  __var___Block_431_39 ;
+	SuiView$__Block_436_39*  __var___Block_436_39 ;
+	SuiView$__Block_443_30*  __var___Block_443_30 ;
 };
 
 
 
 
 
-struct tagSuiView$__Closure_518_38 {
-	void  (*invoke)(SuiView$__Closure_518_38 *  self, SuiCore$Event *  e);
+struct tagSuiView$__Closure_522_38 {
+	void  (*invoke)(SuiView$__Closure_522_38 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_507_56*  __var___Block_507_56 ;
-	SuiView$__Block_513_39*  __var___Block_513_39 ;
+	SuiView$__Block_511_56*  __var___Block_511_56 ;
+	SuiView$__Block_517_39*  __var___Block_517_39 ;
 };
 
 
@@ -128,21 +129,21 @@ struct tagSuiView$__Closure_518_38 {
 
 
 // static function declaration
-static void  __finiBlock___Block_281_15(SuiView$__Block_281_15 *  self);
-static void  __finiBlock___Block_427_39(SuiView$__Block_427_39 *  self);
-static void  __finiBlock___Block_432_39(SuiView$__Block_432_39 *  self);
-static void  __finiBlock___Block_439_30(SuiView$__Block_439_30 *  self);
-static void  __finiBlock___Block_507_56(SuiView$__Block_507_56 *  self);
-static void  __finiBlock___Block_513_39(SuiView$__Block_513_39 *  self);
-static void  __fn___Closure_285_30(SuiView$__Closure_285_30 *  self, SuiView$Drag *  d);
-static void  __fini___Closure_285_30(SuiView$__Closure_285_30 *  self);
-static SuiView$__Closure_285_30*  __make___Closure_285_30(SuiView$__Closure_285_30 **  __outRef__, SuiView$__Block_281_15 *  __var___Block_281_15);
-static void  __fn___Closure_447_40(SuiView$__Closure_447_40 *  self, SuiView$Drag *  d);
-static void  __fini___Closure_447_40(SuiView$__Closure_447_40 *  self);
-static SuiView$__Closure_447_40*  __make___Closure_447_40(SuiView$__Closure_447_40 **  __outRef__, SuiView$__Block_427_39 *  __var___Block_427_39, SuiView$__Block_432_39 *  __var___Block_432_39, SuiView$__Block_439_30 *  __var___Block_439_30);
-static void  __fn___Closure_518_38(SuiView$__Closure_518_38 *  self, SuiCore$Event *  e);
-static void  __fini___Closure_518_38(SuiView$__Closure_518_38 *  self);
-static SuiView$__Closure_518_38*  __make___Closure_518_38(SuiView$__Closure_518_38 **  __outRef__, SuiView$__Block_507_56 *  __var___Block_507_56, SuiView$__Block_513_39 *  __var___Block_513_39);
+static void  __finiBlock___Block_285_15(SuiView$__Block_285_15 *  self);
+static void  __finiBlock___Block_431_39(SuiView$__Block_431_39 *  self);
+static void  __finiBlock___Block_436_39(SuiView$__Block_436_39 *  self);
+static void  __finiBlock___Block_443_30(SuiView$__Block_443_30 *  self);
+static void  __finiBlock___Block_511_56(SuiView$__Block_511_56 *  self);
+static void  __finiBlock___Block_517_39(SuiView$__Block_517_39 *  self);
+static void  __fn___Closure_289_30(SuiView$__Closure_289_30 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_289_30(SuiView$__Closure_289_30 *  self);
+static SuiView$__Closure_289_30*  __make___Closure_289_30(SuiView$__Closure_289_30 **  __outRef__, SuiView$__Block_285_15 *  __var___Block_285_15);
+static void  __fn___Closure_451_40(SuiView$__Closure_451_40 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_451_40(SuiView$__Closure_451_40 *  self);
+static SuiView$__Closure_451_40*  __make___Closure_451_40(SuiView$__Closure_451_40 **  __outRef__, SuiView$__Block_431_39 *  __var___Block_431_39, SuiView$__Block_436_39 *  __var___Block_436_39, SuiView$__Block_443_30 *  __var___Block_443_30);
+static void  __fn___Closure_522_38(SuiView$__Closure_522_38 *  self, SuiCore$Event *  e);
+static void  __fini___Closure_522_38(SuiView$__Closure_522_38 *  self);
+static SuiView$__Closure_522_38*  __make___Closure_522_38(SuiView$__Closure_522_38 **  __outRef__, SuiView$__Block_511_56 *  __var___Block_511_56, SuiView$__Block_517_39 *  __var___Block_517_39);
 
 
 static const char *  SPLITTER = "splitter";
@@ -598,7 +599,7 @@ void SuiView$DockLayout_init_fields(SuiView$DockLayout *self){
     {
 	((SuiView$DockLayout*)self)->splitterSize = 1;
 	((SuiView$DockLayout*)self)->minItemSize = 10;
-	((SuiView$DockLayout*)self)->tabHeadBg = 0x33ff0000;
+	((SuiView$DockLayout*)self)->tabHeadBg = SuiDesigner$themeIns() ->dock_headbar_bg;
 	URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_1 = NULL;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$DockLayout*)self)->root, SuiView$mkDockItemSplitter(&tmpReturn_1, NULL, Orc$str(&tmpReturn_2, "") , true) );
@@ -606,6 +607,7 @@ void SuiView$DockLayout_init_fields(SuiView$DockLayout *self){
 	urgc_set_field(self, (void**)&((SuiView$DockLayout*)self)->cbRenderItemHeadView, NULL);
 	URGC_VAR_CLEANUP_CLASS SuiView$Drag*  tmpNewOwner_3 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$DockLayout*)self)->dragTab, SuiView$Drag_new(&tmpNewOwner_3) );
+	urgc_set_field(self, (void**)&((SuiView$DockLayout*)self)->_afterDrawChildren, NULL);
     }
 	((Object*)self)->ctor = (void*)SuiView$DockLayout$ctor;
 	((SuiView$DockLayout*)self)->doDrop = (void*)SuiView$DockLayout$doDrop;
@@ -618,7 +620,7 @@ void SuiView$DockLayout_init_fields(SuiView$DockLayout *self){
 	((SuiView$DockLayout*)self)->_reactTabContent = (void*)SuiView$DockLayout$_reactTabContent;
 	((SuiCore$ViewBase*)self)->layoutContent = (void*)SuiView$DockLayout$layoutContent;
 	((SuiView$DockLayout*)self)->layoutContentDockItem = (void*)SuiView$DockLayout$layoutContentDockItem;
-	((SuiCore$ViewBase*)self)->draw_self = (void*)SuiView$DockLayout$draw_self;
+	((SuiCore$View*)self)->drawSelfBorder = (void*)SuiView$DockLayout$drawSelfBorder;
 	((SuiView$DockLayout*)self)->drawDndIndicator = (void*)SuiView$DockLayout$drawDndIndicator;
 	((SuiView$DockLayout*)self)->findDockItem_containsVec2 = (void*)SuiView$DockLayout$findDockItem_containsVec2;
 	((SuiView$DockLayout*)self)->upto_findMostAncestorInDockItemSplitter = (void*)SuiView$DockLayout$upto_findMostAncestorInDockItemSplitter;
@@ -664,10 +666,10 @@ SuiView$DockLayout * SuiView$DockLayout_new(void *pOwner){
 
 // class members
 void  SuiView$DockLayout$ctor(SuiView$DockLayout *  self){
-	URGC_VAR_CLEANUP SuiView$__Block_281_15*  __var___Block_281_15 = (__var___Block_281_15=NULL,urgc_init_var((void**)&__var___Block_281_15, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_281_15) , __finiBlock___Block_281_15) ));
-	urgc_set_field_class(__var___Block_281_15, (void * )offsetof(SuiView$__Block_281_15, self) , self) ;
-	URGC_VAR_CLEANUP SuiView$__Closure_285_30*  tmpReturn_1 = NULL;
-	urgc_set_field(self->dragTab, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_285_30(&tmpReturn_1, __var___Block_281_15) ) ;
+	URGC_VAR_CLEANUP SuiView$__Block_285_15*  __var___Block_285_15 = (__var___Block_285_15=NULL,urgc_init_var((void**)&__var___Block_285_15, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_285_15) , __finiBlock___Block_285_15) ));
+	urgc_set_field_class(__var___Block_285_15, (void * )offsetof(SuiView$__Block_285_15, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Closure_289_30*  tmpReturn_1 = NULL;
+	urgc_set_field(self->dragTab, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_289_30(&tmpReturn_1, __var___Block_285_15) ) ;
 }
 
 
@@ -756,33 +758,33 @@ void  SuiView$DockLayout$onDragSplitter(SuiView$DockLayout *  self, SuiView$Drag
 
 
 void  SuiView$DockLayout$_reactDockItem(SuiView$DockLayout *  self, SuiView$DockItem *  item){
-	URGC_VAR_CLEANUP SuiView$__Block_427_39*  __var___Block_427_39 = (__var___Block_427_39=NULL,urgc_init_var((void**)&__var___Block_427_39, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_427_39) , __finiBlock___Block_427_39) ));
-	urgc_set_field_class(__var___Block_427_39, (void * )offsetof(SuiView$__Block_427_39, self) , self) ;
-	urgc_set_field_class(__var___Block_427_39, (void * )offsetof(SuiView$__Block_427_39, parentItem) , item) ;
+	URGC_VAR_CLEANUP SuiView$__Block_431_39*  __var___Block_431_39 = (__var___Block_431_39=NULL,urgc_init_var((void**)&__var___Block_431_39, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_431_39) , __finiBlock___Block_431_39) ));
+	urgc_set_field_class(__var___Block_431_39, (void * )offsetof(SuiView$__Block_431_39, self) , self) ;
+	urgc_set_field_class(__var___Block_431_39, (void * )offsetof(SuiView$__Block_431_39, parentItem) , item) ;
 	if (Orc$String$equals(item->type, SPLITTER) ) {
 		SuiCore$View *  splitterView = NULL;
 		int  l = item->children->size(item->children) ;
 		for (int  i = 0; i < l; i++) {
-			URGC_VAR_CLEANUP SuiView$__Block_432_39*  __var___Block_432_39 = (__var___Block_432_39=NULL,urgc_init_var((void**)&__var___Block_432_39, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_432_39) , __finiBlock___Block_432_39) ));
+			URGC_VAR_CLEANUP SuiView$__Block_436_39*  __var___Block_436_39 = (__var___Block_436_39=NULL,urgc_init_var((void**)&__var___Block_436_39, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_436_39) , __finiBlock___Block_436_39) ));
 			int  index = i;
-			__var___Block_432_39->kid = (SuiView$DockItem * )item->children->get(item->children, i) ;
-			urgc_set_field_class(__var___Block_432_39->kid, (void * )offsetof(SuiView$DockItem, prevSplitterView) , splitterView) ;
-			self->_reactDockItem(self, __var___Block_432_39->kid) ;
+			__var___Block_436_39->kid = (SuiView$DockItem * )item->children->get(item->children, i) ;
+			urgc_set_field_class(__var___Block_436_39->kid, (void * )offsetof(SuiView$DockItem, prevSplitterView) , splitterView) ;
+			self->_reactDockItem(self, __var___Block_436_39->kid) ;
 			if (i < l - 1) {
-				URGC_VAR_CLEANUP SuiView$__Block_439_30*  __var___Block_439_30 = (__var___Block_439_30=NULL,urgc_init_var((void**)&__var___Block_439_30, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_439_30) , __finiBlock___Block_439_30) ));
-				__var___Block_439_30->nextKid = (SuiView$DockItem * )item->children->get(item->children, i + 1) ;
+				URGC_VAR_CLEANUP SuiView$__Block_443_30*  __var___Block_443_30 = (__var___Block_443_30=NULL,urgc_init_var((void**)&__var___Block_443_30, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_443_30) , __finiBlock___Block_443_30) ));
+				__var___Block_443_30->nextKid = (SuiView$DockItem * )item->children->get(item->children, i + 1) ;
 				URGC_VAR_CLEANUP_CLASS SuiView$DockSplitterView*  tmpReturn_1 = NULL;
 				{
 					SuiView$DockSplitterView*  o = SuiView$dockSplitterView(&tmpReturn_1, self, ((long long )item) + 2000 + i) ;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_445_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_449_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					((SuiCore$ViewBase * )o)->z = 10;
-					URGC_VAR_CLEANUP SuiView$__Closure_447_40*  tmpReturn_2 = NULL;
-					urgc_set_field(o->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_447_40(&tmpReturn_2, __var___Block_427_39, __var___Block_432_39, __var___Block_439_30) ) ;
+					URGC_VAR_CLEANUP SuiView$__Closure_451_40*  tmpReturn_2 = NULL;
+					urgc_set_field(o->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_451_40(&tmpReturn_2, __var___Block_431_39, __var___Block_436_39, __var___Block_443_30) ) ;
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 					urgc_set_field_class(o, (void * )offsetof(SuiCore$ViewBase, cursor) , item->isHorizontal ? Orc$str(&tmpReturn_3, "sizewe")  : Orc$str(&tmpReturn_4, "sizens") ) ;
-					urgc_set_field_class(__var___Block_432_39->kid, (void * )offsetof(SuiView$DockItem, nextSplitterView) , o) ;
+					urgc_set_field_class(__var___Block_436_39->kid, (void * )offsetof(SuiView$DockItem, nextSplitterView) , o) ;
 					splitterView = o;
 				}
 			}
@@ -792,7 +794,7 @@ void  SuiView$DockLayout$_reactDockItem(SuiView$DockLayout *  self, SuiView$Dock
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_5 = NULL;
 		{
 			SuiLayout$LayoutLinear*  o = SuiLayout$layoutLinear(&tmpReturn_5, self, (long long )item) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_464_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_468_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->needClip = true;
 			urgc_set_field_class(item, (void * )offsetof(SuiView$DockItem, view) , o) ;
@@ -832,30 +834,30 @@ void  SuiView$DockLayout$_onEvent_tabItemHead(SuiView$DockLayout *  self, SuiCor
 
 
 void  SuiView$DockLayout$_reactTabHeads(SuiView$DockLayout *  self, SuiView$DockItem *  tab, SuiCore$ViewBase *  parent){
-	URGC_VAR_CLEANUP SuiView$__Block_507_56*  __var___Block_507_56 = (__var___Block_507_56=NULL,urgc_init_var((void**)&__var___Block_507_56, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_507_56) , __finiBlock___Block_507_56) ));
-	urgc_set_field_class(__var___Block_507_56, (void * )offsetof(SuiView$__Block_507_56, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Block_511_56*  __var___Block_511_56 = (__var___Block_511_56=NULL,urgc_init_var((void**)&__var___Block_511_56, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_511_56) , __finiBlock___Block_511_56) ));
+	urgc_set_field_class(__var___Block_511_56, (void * )offsetof(SuiView$__Block_511_56, self) , self) ;
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
 		SuiLayout$LayoutLinear*  o = SuiLayout$layoutLinear(&tmpReturn_1, parent, 0) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_508_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_512_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 		urgc_set_field_class(o, (void * )offsetof(SuiLayout$LayoutLinear, direction) , Orc$str(&tmpReturn_2, "row") ) ;
 		((SuiCore$View * )o)->backgroundColor = self->tabHeadBg;
 		int  l = tab->children->size(tab->children) ;
 		for (int  i = 0; i < l; i++) {
-			URGC_VAR_CLEANUP SuiView$__Block_513_39*  __var___Block_513_39 = (__var___Block_513_39=NULL,urgc_init_var((void**)&__var___Block_513_39, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_513_39) , __finiBlock___Block_513_39) ));
-			urgc_set_field_class(__var___Block_513_39, (void * )offsetof(SuiView$__Block_513_39, kid) , (SuiView$DockItem* )tab->children->get(tab->children, i) ) ;
-			if (Orc$String$equals(__var___Block_513_39->kid->type, ITEM) ) {
+			URGC_VAR_CLEANUP SuiView$__Block_517_39*  __var___Block_517_39 = (__var___Block_517_39=NULL,urgc_init_var((void**)&__var___Block_517_39, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_517_39) , __finiBlock___Block_517_39) ));
+			urgc_set_field_class(__var___Block_517_39, (void * )offsetof(SuiView$__Block_517_39, kid) , (SuiView$DockItem* )tab->children->get(tab->children, i) ) ;
+			if (Orc$String$equals(__var___Block_517_39->kid->type, ITEM) ) {
 				URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_3 = NULL;
 				{
-					SuiLayout$LayoutLinear*  __scopeVar_516_20 = SuiLayout$layoutLinear(&tmpReturn_3, o, (long long )__var___Block_513_39->kid) , *o = __scopeVar_516_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_516_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiLayout$LayoutLinear*  __scopeVar_520_20 = SuiLayout$layoutLinear(&tmpReturn_3, o, (long long )__var___Block_517_39->kid) , *o = __scopeVar_520_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_520_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
-					URGC_VAR_CLEANUP SuiView$__Closure_518_38*  tmpReturn_4 = NULL;
-					urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_518_38(&tmpReturn_4, __var___Block_507_56, __var___Block_513_39) ) ;
+					URGC_VAR_CLEANUP SuiView$__Closure_522_38*  tmpReturn_4 = NULL;
+					urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_522_38(&tmpReturn_4, __var___Block_511_56, __var___Block_517_39) ) ;
 					if (self->cbRenderItemHeadView) {
-						(*(self->cbRenderItemHeadView))((void * )(self->cbRenderItemHeadView), __var___Block_513_39->kid, o, i) ;
+						(*(self->cbRenderItemHeadView))((void * )(self->cbRenderItemHeadView), __var___Block_517_39->kid, o, i) ;
 					}
 				}
 			}
@@ -868,7 +870,7 @@ void  SuiView$DockLayout$_reactTabContent(SuiView$DockLayout *  self, SuiView$Do
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
 		SuiLayout$LayoutLinear*  o = SuiLayout$layoutLinear(&tmpReturn_1, parent, 0) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_530_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_534_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 		urgc_set_field_class(o, (void * )offsetof(SuiLayout$LayoutLinear, direction) , Orc$str(&tmpReturn_2, "column") ) ;
@@ -876,8 +878,8 @@ void  SuiView$DockLayout$_reactTabContent(SuiView$DockLayout *  self, SuiView$Do
 		urgc_set_field_class(o, (void * )offsetof(SuiLayout$LayoutLinear, alignItems) , Orc$str(&tmpReturn_3, "stretch") ) ;
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_4 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_536_12 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_536_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_536_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_540_12 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_540_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_540_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -975,8 +977,8 @@ void  SuiView$DockLayout$layoutContentDockItem(SuiView$DockLayout *  self, SuiCo
 }
 
 
-void  SuiView$DockLayout$draw_self(SuiView$DockLayout *  self, SuiCore$Canvas *  canvas){
-	SuiCore$View$draw_self(self, canvas) ;
+void  SuiView$DockLayout$drawSelfBorder(SuiView$DockLayout *  self, SuiCore$Canvas *  canvas){
+	SuiCore$View$drawSelfBorder(self, canvas) ;
 	self->drawDndIndicator(self, canvas) ;
 }
 
@@ -1149,95 +1151,95 @@ SuiCore$ViewBase *  SuiView$DockLayout$hitTestChildren(SuiView$DockLayout *  sel
 
 
 
-static void  __finiBlock___Block_281_15(SuiView$__Block_281_15 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_281_15, self) , NULL) ;
+static void  __finiBlock___Block_285_15(SuiView$__Block_285_15 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_285_15, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_427_39(SuiView$__Block_427_39 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_427_39, self) , NULL) ;
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_427_39, parentItem) , NULL) ;
+static void  __finiBlock___Block_431_39(SuiView$__Block_431_39 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_431_39, self) , NULL) ;
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_431_39, parentItem) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_432_39(SuiView$__Block_432_39 *  self){
+static void  __finiBlock___Block_436_39(SuiView$__Block_436_39 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_439_30(SuiView$__Block_439_30 *  self){
+static void  __finiBlock___Block_443_30(SuiView$__Block_443_30 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_507_56(SuiView$__Block_507_56 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_507_56, self) , NULL) ;
+static void  __finiBlock___Block_511_56(SuiView$__Block_511_56 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_511_56, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_513_39(SuiView$__Block_513_39 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_513_39, kid) , NULL) ;
+static void  __finiBlock___Block_517_39(SuiView$__Block_517_39 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_517_39, kid) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_285_30(SuiView$__Closure_285_30 *  self, SuiView$Drag *  d){
+static void  __fn___Closure_289_30(SuiView$__Closure_289_30 *  self, SuiView$Drag *  d){
 	if (d->isDragging || d->isDragEnd) {
 		printf("\n\n\t drag tab\n") ;
-		((SuiCore$ViewBase * )self->__var___Block_281_15->self)->invalidDraw(self->__var___Block_281_15->self) ;
+		((SuiCore$ViewBase * )self->__var___Block_285_15->self)->invalidDraw(self->__var___Block_285_15->self) ;
 	}
 	if (d->isDragEnd) {
-		self->__var___Block_281_15->self->doDrop(self->__var___Block_281_15->self) ;
+		self->__var___Block_285_15->self->doDrop(self->__var___Block_285_15->self) ;
 	}
 }
 
-static void  __fini___Closure_285_30(SuiView$__Closure_285_30 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_285_30, __var___Block_281_15) , NULL) ;
+static void  __fini___Closure_289_30(SuiView$__Closure_289_30 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_289_30, __var___Block_285_15) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_285_30*  __make___Closure_285_30(SuiView$__Closure_285_30 **  __outRef__, SuiView$__Block_281_15 *  __var___Block_281_15){
-	URGC_VAR_CLEANUP SuiView$__Closure_285_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_285_30) , __fini___Closure_285_30) ));
-	self->invoke = __fn___Closure_285_30;
+static SuiView$__Closure_289_30*  __make___Closure_289_30(SuiView$__Closure_289_30 **  __outRef__, SuiView$__Block_285_15 *  __var___Block_285_15){
+	URGC_VAR_CLEANUP SuiView$__Closure_289_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_289_30) , __fini___Closure_289_30) ));
+	self->invoke = __fn___Closure_289_30;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_285_30, __var___Block_281_15) , __var___Block_281_15) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_289_30, __var___Block_285_15) , __var___Block_285_15) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_447_40(SuiView$__Closure_447_40 *  self, SuiView$Drag *  d){
-	self->__var___Block_427_39->self->onDragSplitter(self->__var___Block_427_39->self, d, self->__var___Block_427_39->parentItem, self->__var___Block_432_39->kid, self->__var___Block_439_30->nextKid) ;
+static void  __fn___Closure_451_40(SuiView$__Closure_451_40 *  self, SuiView$Drag *  d){
+	self->__var___Block_431_39->self->onDragSplitter(self->__var___Block_431_39->self, d, self->__var___Block_431_39->parentItem, self->__var___Block_436_39->kid, self->__var___Block_443_30->nextKid) ;
 }
 
-static void  __fini___Closure_447_40(SuiView$__Closure_447_40 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_447_40, __var___Block_427_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_447_40, __var___Block_432_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_447_40, __var___Block_439_30) , NULL) ;
+static void  __fini___Closure_451_40(SuiView$__Closure_451_40 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_451_40, __var___Block_431_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_451_40, __var___Block_436_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_451_40, __var___Block_443_30) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_447_40*  __make___Closure_447_40(SuiView$__Closure_447_40 **  __outRef__, SuiView$__Block_427_39 *  __var___Block_427_39, SuiView$__Block_432_39 *  __var___Block_432_39, SuiView$__Block_439_30 *  __var___Block_439_30){
-	URGC_VAR_CLEANUP SuiView$__Closure_447_40*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_447_40) , __fini___Closure_447_40) ));
-	self->invoke = __fn___Closure_447_40;
+static SuiView$__Closure_451_40*  __make___Closure_451_40(SuiView$__Closure_451_40 **  __outRef__, SuiView$__Block_431_39 *  __var___Block_431_39, SuiView$__Block_436_39 *  __var___Block_436_39, SuiView$__Block_443_30 *  __var___Block_443_30){
+	URGC_VAR_CLEANUP SuiView$__Closure_451_40*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_451_40) , __fini___Closure_451_40) ));
+	self->invoke = __fn___Closure_451_40;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_447_40, __var___Block_427_39) , __var___Block_427_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_447_40, __var___Block_432_39) , __var___Block_432_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_447_40, __var___Block_439_30) , __var___Block_439_30) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_451_40, __var___Block_431_39) , __var___Block_431_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_451_40, __var___Block_436_39) , __var___Block_436_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_451_40, __var___Block_443_30) , __var___Block_443_30) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_518_38(SuiView$__Closure_518_38 *  self, SuiCore$Event *  e){
-	self->__var___Block_507_56->self->_onEvent_tabItemHead(self->__var___Block_507_56->self, e, self->__var___Block_513_39->kid) ;
+static void  __fn___Closure_522_38(SuiView$__Closure_522_38 *  self, SuiCore$Event *  e){
+	self->__var___Block_511_56->self->_onEvent_tabItemHead(self->__var___Block_511_56->self, e, self->__var___Block_517_39->kid) ;
 }
 
-static void  __fini___Closure_518_38(SuiView$__Closure_518_38 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_518_38, __var___Block_507_56) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_518_38, __var___Block_513_39) , NULL) ;
+static void  __fini___Closure_522_38(SuiView$__Closure_522_38 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_522_38, __var___Block_511_56) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_522_38, __var___Block_517_39) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_518_38*  __make___Closure_518_38(SuiView$__Closure_518_38 **  __outRef__, SuiView$__Block_507_56 *  __var___Block_507_56, SuiView$__Block_513_39 *  __var___Block_513_39){
-	URGC_VAR_CLEANUP SuiView$__Closure_518_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_518_38) , __fini___Closure_518_38) ));
-	self->invoke = __fn___Closure_518_38;
+static SuiView$__Closure_522_38*  __make___Closure_522_38(SuiView$__Closure_522_38 **  __outRef__, SuiView$__Block_511_56 *  __var___Block_511_56, SuiView$__Block_517_39 *  __var___Block_517_39){
+	URGC_VAR_CLEANUP SuiView$__Closure_522_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_522_38) , __fini___Closure_522_38) ));
+	self->invoke = __fn___Closure_522_38;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_518_38, __var___Block_507_56) , __var___Block_507_56) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_518_38, __var___Block_513_39) , __var___Block_513_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_522_38, __var___Block_511_56) , __var___Block_511_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_522_38, __var___Block_517_39) , __var___Block_517_39) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
@@ -1309,8 +1311,8 @@ void SuiView$DockSplitterView_init_fields(SuiView$DockSplitterView *self){
     {
 	URGC_VAR_CLEANUP_CLASS SuiView$Drag*  tmpNewOwner_1 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$DockSplitterView*)self)->drag, SuiView$Drag_new(&tmpNewOwner_1) );
-	((SuiView$DockSplitterView*)self)->hoverBg = 0xff007aff;
-	((SuiView$DockSplitterView*)self)->normalBg = 0xffcdcdcf;
+	((SuiView$DockSplitterView*)self)->hoverBg = SuiDesigner$themeIns() ->dock_splitterBgHover;
+	((SuiView$DockSplitterView*)self)->normalBg = SuiDesigner$themeIns() ->dock_splitterBg;
     }
 	((Object*)self)->ctor = (void*)SuiView$DockSplitterView$ctor;
 	((SuiCore$Node*)self)->react = (void*)SuiView$DockSplitterView$react;

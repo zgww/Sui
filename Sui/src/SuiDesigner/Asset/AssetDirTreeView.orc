@@ -28,6 +28,7 @@ import * from "../UiAction.orc"
 import * from "../Project.orc"
 import * from "../EventANodeChanged.orc"
 import * from "../EventFileItemChanged.orc"
+import * from "../Theme.orc"
 import * from "./AssetDirView.orc"
 
 
@@ -141,6 +142,7 @@ class AssetDirTreeView extends LayoutLinear {
         }
     }
     void react(){
+        Theme* t = themeIns()
         self.direction = str("column")
         self.alignItems = str("stretch")
 
@@ -154,7 +156,7 @@ class AssetDirTreeView extends LayoutLinear {
         
         AssetDirTreeView* o = (AssetDirTreeView*)self
 
-        o.backgroundColor = 0x33ffffff
+        o.backgroundColor = t.dirTree_bg //0x33ffffff
         layoutLinearCell(o, 0)~{
             o.grow = 1
         }
@@ -249,8 +251,8 @@ class AssetDirTreeView extends LayoutLinear {
                             hasKids 
                             ?
                                 isOpend 
-                                ? str("asset/icon/arrow-down.png")
-                                : str("asset/icon/arrow-right.png")
+                                ? str("../asset/icon/light-arrow-down.png")
+                                : str("../asset/icon/light-arrow-right.png")
                             : null
                         )
                     }
@@ -269,6 +271,8 @@ class AssetDirTreeView extends LayoutLinear {
 
                     mkTextView(o, 0)~{
                         // o.backgroundColor = 0x120033ff
+                        o.color = t.dirTree_color
+                        o.setFont_size(t.dirTree_fontSize)
                         o.setText(s.filename)
                     }
                 }

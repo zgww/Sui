@@ -16,6 +16,7 @@ import * from "../../Orc/String.orc"
 import * from "../../Orc/List.orc"
 import * from "../View/ViewBuilder.orc"
 import * from "../../Orc/Math.orc"
+import * from "../../SuiDesigner/Theme.orc"
 import * from "../Core/Global.orc"
 import * from "../Core/Canvas.orc"
 
@@ -420,9 +421,9 @@ class TextView extends View {
 			// 	ctx.isConstraintsNotChanged(),
 			// )
 	}
-	// void ctor(){
-
-	// }
+	void ctor(){
+		self.backgroundColor = themeIns().textview_bg
+	}
 	bool layoutDirty = true;
 
 	void invalidLayout(){
@@ -442,7 +443,7 @@ class TextView extends View {
 		self->text = text;
 		self.invalidLayout();
 	}
-	int font_size = 14;
+	int font_size = themeIns().textview_fontSize//14;
     void setFont_size(int v){ 
         if (v != self->font_size){
             self->font_size = v; 
@@ -458,7 +459,7 @@ class TextView extends View {
         }
     }
 
-	int color = 0xff000000;
+	int color = themeIns().textview_color // 0xff000000;
     void setColor(int v){ 
         if (v != self->color){
             self->color = v; 

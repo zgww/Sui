@@ -24,6 +24,7 @@ import * from "../Core/Clipboard.orc"
 import * from "../../Orc/String.orc"
 import * from "../../Orc/Math.orc"
 import * from "./ViewBuilder.orc"
+import * from "../../SuiDesigner/Theme.orc"
 
 // TODO: 拖选 draw editing 
 struct Range {
@@ -217,10 +218,10 @@ class Caret{
 /// 布局上下文
 class EditText extends View {
 	String@ value = str("")
-	int font_size = 17;
+	int font_size = themeIns().edittext_fontSize//17;
 	String@ font_face = str("");
-	int color = 0xff000000;
-	int caret_color = 0xff000000;
+	int color = themeIns().edittext_color // 0xff000000;
+	int caret_color = themeIns().edittext_caretColor//0xff000000;
 	int font_weight = 400;
 	String@ placeholder = str("please input");
 	int placeholder_color = 0xff999999;
@@ -235,6 +236,7 @@ class EditText extends View {
 
 	//输入法合成状态
 	TextEditingEvent@ text_editing = null
+
 
 
 	void layoutContent(Frame *ctx){
@@ -344,6 +346,8 @@ class EditText extends View {
 	}
 
 	void ctor(){
+		self.backgroundColor = themeIns().edittext_bg
+
 		self.selection.get_value = ^String@ () {
 			return self.value;
 		}
@@ -422,7 +426,7 @@ class EditText extends View {
 				+ self.get_x_of_position(range.start) 
 			canvas.fillColorByInt32( (self.caret_color))//nvgRGBA(255, 255, 255, 128));
 			canvas.beginPath()
-			canvas.rect( minFloat(0, caretX + 1), caretY, 2, h - caretY * 2) // 2 )
+			canvas.rect( maxFloat(0, caretX + 1), caretY, 2, h - caretY * 2) // 2 )
 			canvas.fill()
 		}
 

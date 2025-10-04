@@ -20,6 +20,8 @@ import * from "../../Orc/Math.orc"
 import * from "./ViewBuilder.orc"
 import * from "./Drag.orc"
 
+import * from "../../SuiDesigner/Theme.orc"
+
 static float ScrollView_delta_factor = 0.5
 
 // class ScrollValue {
@@ -277,7 +279,7 @@ class ScrollArea extends LayoutLinear {
 
 	void draw_children(Canvas *canvas){
 		{
-			float w = 8
+			float w = themeIns().scrollbar_size
 			bool hasV = self.scroll_model.get_v_rate() < 1.0
 			float horDeltaW = hasV ? -w : 0 //如果有垂直滚动条，让水平滚动条宽小一点,防止交叉
 
@@ -429,6 +431,10 @@ class ScrollBar extends View{
 		float d = 0
 		float r = minFloat(w, h) / 2.0
 
+		Theme* t = themeIns()
+		int bg = t.scrollbar_bg
+		int barBg = t.scrollbar_barBg
+
 		if self.isVer {
 			if model.get_v_rate() >= 0.9999999{ //不用滚动
 				return
@@ -446,7 +452,7 @@ class ScrollBar extends View{
 			// 	);
 			canvas.beginPath();
 			canvas.roundRect( x, y, w, h, 3);
-			canvas.fillColorByInt32(0x13ff0000)
+			canvas.fillColorByInt32(bg)//0x13ff0000)
 			canvas.fill();
 
 			float fullSize = h - 0
@@ -463,7 +469,7 @@ class ScrollBar extends View{
 			// 	mkIntByRgba(128,128,128,128),
 			// 	);
 			canvas.beginPath();
-			canvas.fillColorByInt32(0x44ff0000)
+			canvas.fillColorByInt32(barBg)//0x44ff0000)
 			canvas.roundRect( barX, barPos, barW, barLen, r);
 			canvas.fill();
 		} 
@@ -482,7 +488,7 @@ class ScrollBar extends View{
 			// 	);
 			canvas.beginPath();
 			canvas.roundRect( x, y, w, h, 3);
-			canvas.fillColorByInt32(0x13ff0000)
+			canvas.fillColorByInt32(bg)//0x13ff0000)
 			canvas.fill();
 
 
@@ -502,7 +508,7 @@ class ScrollBar extends View{
 				// 	mkIntByRgba(128,128,128,128),
 				// 	);
 			canvas.beginPath();
-			canvas.fillColorByInt32(0x44ff0000)
+			canvas.fillColorByInt32(barBg)//0x44ff0000)
 			canvas.roundRect( barPos, barY, barLen, barH, r);
 			canvas.fill();
 		}

@@ -20,6 +20,7 @@
 #include "./ViewBuilder_orc.h"
 #include "../Core/Inset_orc.h"
 #include "../../SuiDesigner/Inspector_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 // static struct 
@@ -168,8 +169,8 @@ void  SuiView$Button$react(SuiView$Button *  self){
 	if (self->src != NULL) {
 		URGC_VAR_CLEANUP_CLASS SuiView$ImageView*  tmpReturn_1 = NULL;
 		{
-			SuiView$ImageView*  __scopeVar_47_3 = SuiView$mkImageView(&tmpReturn_1, o, 0) , *o = __scopeVar_47_3;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_47_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$ImageView*  __scopeVar_48_3 = SuiView$mkImageView(&tmpReturn_1, o, 0) , *o = __scopeVar_48_3;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_48_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->setSrc(o, self->src) ;
 		}
@@ -177,8 +178,8 @@ void  SuiView$Button$react(SuiView$Button *  self){
 	if (self->label != NULL) {
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_2 = NULL;
 		{
-			SuiView$TextView*  __scopeVar_54_3 = SuiView$mkTextView(&tmpReturn_2, o, 0) , *o = __scopeVar_54_3;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_54_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$TextView*  __scopeVar_55_3 = SuiView$mkTextView(&tmpReturn_2, o, 0) , *o = __scopeVar_55_3;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_55_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->color = self->labelColor;
 			o->setText(o, self->label) ;
@@ -263,10 +264,15 @@ void SuiView$DrawButton_initMeta(Vtable_SuiView$DrawButton *pvt){
 	
 	orc_metaField_class(&pNext, "text", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(SuiView$DrawButton, text), true, false, 1);
 	orc_metaField_class(&pNext, "src", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(SuiView$DrawButton, src), true, false, 1);
-	orc_metaField_primitive(&pNext, "hoverBg", OrcMetaType_int, offsetof(SuiView$DrawButton, hoverBg), 0, 0, 0, 0);//int
 	orc_metaField_primitive(&pNext, "normalBg", OrcMetaType_int, offsetof(SuiView$DrawButton, normalBg), 0, 0, 0, 0);//int
+	orc_metaField_primitive(&pNext, "hoverBg", OrcMetaType_int, offsetof(SuiView$DrawButton, hoverBg), 0, 0, 0, 0);//int
+	orc_metaField_primitive(&pNext, "activeBg", OrcMetaType_int, offsetof(SuiView$DrawButton, activeBg), 0, 0, 0, 0);//int
+	orc_metaField_primitive(&pNext, "color", OrcMetaType_int, offsetof(SuiView$DrawButton, color), 0, 0, 0, 0);//int
+	orc_metaField_primitive(&pNext, "activeColor", OrcMetaType_int, offsetof(SuiView$DrawButton, activeColor), 0, 0, 0, 0);//int
+	orc_metaField_primitive(&pNext, "hoverColor", OrcMetaType_int, offsetof(SuiView$DrawButton, hoverColor), 0, 0, 0, 0);//int
+	orc_metaField_primitive(&pNext, "isActive", OrcMetaType_bool, offsetof(SuiView$DrawButton, isActive), 0, 0, 0, 0);//bool
 
-	
+	orc_metaField_method(&pNext, "typePrimary", offsetof(SuiView$DrawButton, typePrimary));
 }
 
 
@@ -321,10 +327,16 @@ void SuiView$DrawButton_init_fields(SuiView$DrawButton *self){
     {
 	urgc_set_field_class(self, (void**)&((SuiView$DrawButton*)self)->text, NULL);
 	urgc_set_field_class(self, (void**)&((SuiView$DrawButton*)self)->src, NULL);
-	((SuiView$DrawButton*)self)->hoverBg = 0x8f9c9c9c;
-	((SuiView$DrawButton*)self)->normalBg = 0xef9c9c9c;
+	((SuiView$DrawButton*)self)->normalBg = SuiDesigner$themeIns() ->button_bg;
+	((SuiView$DrawButton*)self)->hoverBg = SuiDesigner$themeIns() ->button_bgHover;
+	((SuiView$DrawButton*)self)->activeBg = SuiDesigner$themeIns() ->button_bgActive;
+	((SuiView$DrawButton*)self)->color = SuiDesigner$themeIns() ->button_color;
+	((SuiView$DrawButton*)self)->activeColor = SuiDesigner$themeIns() ->button_colorActive;
+	((SuiView$DrawButton*)self)->hoverColor = SuiDesigner$themeIns() ->button_colorHover;
+	((SuiView$DrawButton*)self)->isActive = false;
 	urgc_set_field(self, (void**)&((SuiView$DrawButton*)self)->onClick, NULL);
     }
+	((SuiView$DrawButton*)self)->typePrimary = (void*)SuiView$DrawButton$typePrimary;
 	((Object*)self)->ctor = (void*)SuiView$DrawButton$ctor;
 	((SuiCore$ViewBase*)self)->onHoverChanged = (void*)SuiView$DrawButton$onHoverChanged;
 	((SuiCore$Node*)self)->react = (void*)SuiView$DrawButton$react;
@@ -366,6 +378,15 @@ SuiView$DrawButton * SuiView$DrawButton_new(void *pOwner){
 
 
 // class members
+void  SuiView$DrawButton$typePrimary(SuiView$DrawButton *  self){
+	SuiDesigner$Theme *  t = SuiDesigner$themeIns() ;
+	self->normalBg = t->button_primary_bg;
+	self->hoverBg = t->button_primary_bgHover;
+	self->color = t->button_primary_color;
+	self->hoverColor = t->button_primary_color;
+}
+
+
 void  SuiView$DrawButton$ctor(SuiView$DrawButton *  self){
 	SuiCore$Inset$setHor(&((SuiCore$View * )self)->padding, 8) ;
 	((SuiCore$View * )self)->height = 30;
@@ -382,12 +403,13 @@ void  SuiView$DrawButton$onHoverChanged(SuiView$DrawButton *  self){
 
 
 void  SuiView$DrawButton$react(SuiView$DrawButton *  self){
+	SuiDesigner$Theme *  t = SuiDesigner$themeIns() ;
 	((SuiCore$Node * )self)->startInnerReact(self) ;
 	if (self->src) {
 		URGC_VAR_CLEANUP_CLASS SuiView$ImageView*  tmpReturn_1 = NULL;
 		{
 			SuiView$ImageView*  o = SuiView$mkImageView(&tmpReturn_1, self, 0) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_215_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_233_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->width = 20;
 			((SuiCore$View * )o)->height = 20;
@@ -398,10 +420,11 @@ void  SuiView$DrawButton$react(SuiView$DrawButton *  self){
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_2 = NULL;
 		{
 			SuiView$TextView*  o = SuiView$mkTextView(&tmpReturn_2, self, 0) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_222_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_240_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
+			o->setFont_size(o, t->button_fontSize) ;
 			o->setText(o, self->text) ;
-			o->color = ((SuiCore$ViewBase * )self)->hover ? 0xffffffff : 0x99ffffff;
+			o->color = self->isActive ? self->activeColor : ((SuiCore$ViewBase * )self)->hover ? self->hoverColor : self->color;
 		}
 	}
 	((SuiCore$Node * )self)->endInnerReact(self) ;
@@ -418,7 +441,7 @@ void  SuiView$DrawButton$draw_self(SuiView$DrawButton *  self, SuiCore$Canvas * 
 	int  r = 156;
 	int  g = 156;
 	int  b = 156;
-	SuiCore$Canvas$fillColorByInt32(canvas, (((SuiCore$ViewBase * )self)->hover ? self->hoverBg : self->normalBg)) ;
+	SuiCore$Canvas$fillColorByInt32(canvas, self->isActive ? self->activeBg : (((SuiCore$ViewBase * )self)->hover ? self->hoverBg : self->normalBg)) ;
 	SuiCore$Canvas$beginPath(canvas) ;
 	SuiCore$Canvas$roundRect(canvas, x + 1, y + 1, w - 2, h - 2, cornerRadius - 1) ;
 	SuiCore$Canvas$fill(canvas) ;
@@ -586,7 +609,7 @@ void  SuiView$MenuButton$react(SuiView$MenuButton *  self){
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_1 = NULL;
 		{
 			SuiView$TextView*  o = SuiView$mkTextView(&tmpReturn_1, self, 0) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_311_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_336_3 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->setFont_size(o, 12) ;
 			o->setText(o, self->text) ;

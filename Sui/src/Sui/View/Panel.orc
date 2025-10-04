@@ -13,6 +13,8 @@ import * from "../View/TextView.orc"
 import * from "../View/ViewBuilder.orc"
 import * from "../Layout/LayoutLinear.orc"
 
+import * from "../../SuiDesigner/Theme.orc"
+
 /// 布局上下文
 class Panel extends LayoutLinear{
 
@@ -23,6 +25,9 @@ class Panel extends LayoutLinear{
     bool open = true
 
     View@ body
+
+    int titleColor = themeIns().panel_titleColor
+    int titleFontSize = themeIns().panel_titleFontSize
 
     void onEvent_forHead(Event *e){
         if (e instanceof MouseEvent){
@@ -75,6 +80,8 @@ class Panel extends LayoutLinear{
             if self.title{
                 mkTextView(o, 0).{
                     o.setText(self.title)
+                    o.color = self.titleColor
+                    o.setFont_size(self.titleFontSize)
                 }
             } else if (self.cbRenderTitle){
                 self.cbRenderTitle(o)

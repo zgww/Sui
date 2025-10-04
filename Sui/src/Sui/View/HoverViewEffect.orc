@@ -18,8 +18,8 @@ class HoverViewEffect extends Node{
     int hoverBackgroundColor = 0x22666666 // 0x33ff0000
     Border@ hoverBorder = mkBorder(1, 0x00007aff) //new Border()
 
-    int activeBackgroundColor = 0x33007aff//0x22ff0000
-    Border@ activeBorder = mkBorder(1, 0x66007aff )//0x44ff0000)
+    int activeBackgroundColor = 0x53007aff//0x22ff0000
+    Border@ activeBorder = mkBorder(1, 0x76007aff )//0x44ff0000)
 
     bool isActive = false
 

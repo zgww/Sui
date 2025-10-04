@@ -74,6 +74,7 @@ typedef struct tagVtable_HoroEditor$HoroSceneHierView Vtable_HoroEditor$HoroScen
 #include "../SuiDesigner/UiAction_orc.h"
 #include "../SuiDesigner/EditCtx_orc.h"
 #include "../SuiDesigner/ANode_orc.h"
+#include "../SuiDesigner/Theme_orc.h"
 #include "../SuiDesigner/EventANodeChanged_orc.h"
 #include "../SuiDesigner/EventFileItemChanged_orc.h"
 #include "./HoroEditCtx_orc.h"

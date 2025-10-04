@@ -16,6 +16,7 @@
 #include "../../Orc/List_orc.h"
 #include "../View/ViewBuilder_orc.h"
 #include "../../Orc/Math_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 #include "../Core/Global_orc.h"
 #include "../Core/Canvas_orc.h"
 
@@ -644,10 +645,10 @@ void SuiView$TextView_init_fields(SuiView$TextView *self){
 	((SuiView$TextView*)self)->layoutDirty = true;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$TextView*)self)->text, Orc$str(&tmpReturn_1, "") );
-	((SuiView$TextView*)self)->font_size = 14;
+	((SuiView$TextView*)self)->font_size = SuiDesigner$themeIns() ->textview_fontSize;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$TextView*)self)->font_face, Orc$str(&tmpReturn_2, "") );
-	((SuiView$TextView*)self)->color = 0xff000000;
+	((SuiView$TextView*)self)->color = SuiDesigner$themeIns() ->textview_color;
 	((SuiView$TextView*)self)->font_weight = 0;
 	((SuiView$TextView*)self)->underline = false;
 	((SuiView$TextView*)self)->line_through = false;
@@ -664,6 +665,7 @@ void SuiView$TextView_init_fields(SuiView$TextView *self){
     }
 	((SuiView$TextView*)self)->get_pos_by_rune_cnt = (void*)SuiView$TextView$get_pos_by_rune_cnt;
 	((SuiCore$ViewBase*)self)->layout = (void*)SuiView$TextView$layout;
+	((Object*)self)->ctor = (void*)SuiView$TextView$ctor;
 	((SuiCore$ViewBase*)self)->invalidLayout = (void*)SuiView$TextView$invalidLayout;
 	((SuiView$TextView*)self)->setText = (void*)SuiView$TextView$setText;
 	((SuiView$TextView*)self)->setFont_size = (void*)SuiView$TextView$setFont_size;
@@ -767,6 +769,11 @@ void  SuiView$TextView$layout(SuiView$TextView *  self, SuiCore$Frame *  ctx){
 	SuiCore$Frame$setSize(&contentCtx, self->_text_layout->use_max_w, self->_text_layout->use_max_h) ;
 	((SuiCore$View * )self)->updateFrame_byContentCtx(self, ctx, &contentCtx) ;
 	self->cacheFrame = SuiCore$Frame$copy(ctx) ;
+}
+
+
+void  SuiView$TextView$ctor(SuiView$TextView *  self){
+	((SuiCore$View * )self)->backgroundColor = SuiDesigner$themeIns() ->textview_bg;
 }
 
 

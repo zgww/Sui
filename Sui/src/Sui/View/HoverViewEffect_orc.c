@@ -147,9 +147,9 @@ void SuiView$HoverViewEffect_init_fields(SuiView$HoverViewEffect *self){
 	((SuiView$HoverViewEffect*)self)->hoverBackgroundColor = 0x22666666;
 	URGC_VAR_CLEANUP_CLASS SuiCore$Border*  tmpReturn_2 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->hoverBorder, SuiCore$mkBorder(&tmpReturn_2, 1, 0x00007aff) );
-	((SuiView$HoverViewEffect*)self)->activeBackgroundColor = 0x33007aff;
+	((SuiView$HoverViewEffect*)self)->activeBackgroundColor = 0x53007aff;
 	URGC_VAR_CLEANUP_CLASS SuiCore$Border*  tmpReturn_3 = NULL;
-	urgc_set_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->activeBorder, SuiCore$mkBorder(&tmpReturn_3, 1, 0x66007aff) );
+	urgc_set_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->activeBorder, SuiCore$mkBorder(&tmpReturn_3, 1, 0x76007aff) );
 	((SuiView$HoverViewEffect*)self)->isActive = false;
 	urgc_set_field(self, (void**)&((SuiView$HoverViewEffect*)self)->onClick, NULL);
 	urgc_set_field(self, (void**)&((SuiView$HoverViewEffect*)self)->onHostEvent, NULL);

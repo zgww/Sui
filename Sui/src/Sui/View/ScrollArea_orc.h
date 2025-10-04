@@ -55,6 +55,7 @@ typedef struct tagVtable_SuiView$ScrollBar Vtable_SuiView$ScrollBar;
 #include "../../Orc/Math_orc.h"
 #include "./ViewBuilder_orc.h"
 #include "./Drag_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 #ifdef __cplusplus

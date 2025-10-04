@@ -66,6 +66,7 @@ struct tagSuiView$Range {
 #include "../../Orc/String_orc.h"
 #include "../../Orc/Math_orc.h"
 #include "./ViewBuilder_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 #ifdef __cplusplus

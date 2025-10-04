@@ -60,6 +60,7 @@ struct tagSuiView$RuneInfo {
 #include "../../Orc/List_orc.h"
 #include "../View/ViewBuilder_orc.h"
 #include "../../Orc/Math_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 #include "../Core/Global_orc.h"
 #include "../Core/Canvas_orc.h"
 
@@ -214,6 +215,7 @@ void SuiView$TextView_fini(SuiView$TextView *self);
 
 SuiCore$Vec2 SuiView$TextView$get_pos_by_rune_cnt(SuiView$TextView *  self, int  rune_cnt);
 void  SuiView$TextView$layout(SuiView$TextView *  self, SuiCore$Frame *  ctx);
+void  SuiView$TextView$ctor(SuiView$TextView *  self);
 void  SuiView$TextView$invalidLayout(SuiView$TextView *  self);
 void  SuiView$TextView$setText(SuiView$TextView *  self, Orc$String*  text);
 void  SuiView$TextView$setFont_size(SuiView$TextView *  self, int  v);

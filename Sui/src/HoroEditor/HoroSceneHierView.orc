@@ -48,6 +48,7 @@ import * from "../SuiDesigner/DrawDegree.orc"
 import * from "../SuiDesigner/UiAction.orc"
 import * from "../SuiDesigner/EditCtx.orc"
 import * from "../SuiDesigner/ANode.orc"
+import * from "../SuiDesigner/Theme.orc"
 import * from "../SuiDesigner/EventANodeChanged.orc"
 import * from "../SuiDesigner/EventFileItemChanged.orc"
 import * from "./HoroEditCtx.orc"
@@ -243,6 +244,7 @@ class HoroSceneHierView extends LayoutLinear {
         }
     }
     void react(int xxx){
+        Theme* t = themeIns()
         self.direction = str("column")
         self.alignItems = str("stretch")
 
@@ -256,6 +258,7 @@ class HoroSceneHierView extends LayoutLinear {
         // EditCtx@ ctx = EditCtx_ins();
         
         HoroSceneHierView* o = (HoroSceneHierView*)self
+        o.backgroundColor = 0x212225;
 
         // o.backgroundColor = 0x33ffffff
         // o.backgroundColor = 0x33ffffff
@@ -357,8 +360,8 @@ class HoroSceneHierView extends LayoutLinear {
                             hasKids 
                             ?
                                 isOpend 
-                                ? Path_resolveFromExecutionDir("asset/icon/arrow-down.png")
-                                : Path_resolveFromExecutionDir("asset/icon/arrow-right.png")
+                                ? Path_resolveFromExecutionDir("../asset/icon/light-arrow-down.png")
+                                : Path_resolveFromExecutionDir("../asset/icon/light-arrow-right.png")
                             : null
                         )
                     }
@@ -375,6 +378,9 @@ class HoroSceneHierView extends LayoutLinear {
                         // }
 
                     mkTextView(o, 0).{
+                        o.color = t.hier_color
+                        o.setFont_size(t.hier_fontSize)
+
                         Vtable_Object *vt = orc_getVtableByObject(s);
                         String@ name = s.node ? s.node.name: null//s.getName()
                         if name && name.notEmpty() {

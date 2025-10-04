@@ -58,6 +58,9 @@ typedef struct tagVtable_SuiView$MenuButton Vtable_SuiView$MenuButton;
 #define INCLUDE_ONLY_TYPE
 #include "../../SuiDesigner/Inspector_orc.h"
 #undef INCLUDE_ONLY_TYPE
+#define INCLUDE_ONLY_TYPE
+#include "../../SuiDesigner/Theme_orc.h"
+#undef INCLUDE_ONLY_TYPE
 
 
 #ifdef __cplusplus
@@ -114,8 +117,14 @@ struct tagSuiView$DrawButton {
 	SuiLayout$LayoutLinear super; 
 	Orc$String*  text ;
 	Orc$String*  src ;
-	int  hoverBg ;
 	int  normalBg ;
+	int  hoverBg ;
+	int  activeBg ;
+	int  color ;
+	int  activeColor ;
+	int  hoverColor ;
+	bool  isActive ;
+	void  (*typePrimary) (SuiView$DrawButton *  self);
 	void  (**onClick)(void *  self, SuiCore$MouseEvent *  me);
 };
 Vtable_SuiView$DrawButton* Vtable_SuiView$DrawButton_init(Vtable_SuiView$DrawButton* pvt);
@@ -124,6 +133,7 @@ void SuiView$DrawButton_init(SuiView$DrawButton *self, void *pOwner);
 SuiView$DrawButton * SuiView$DrawButton_new(void *pOwner);
 void SuiView$DrawButton_fini(SuiView$DrawButton *self);
 
+void  SuiView$DrawButton$typePrimary(SuiView$DrawButton *  self);
 void  SuiView$DrawButton$ctor(SuiView$DrawButton *  self);
 void  SuiView$DrawButton$onHoverChanged(SuiView$DrawButton *  self);
 void  SuiView$DrawButton$react(SuiView$DrawButton *  self);
