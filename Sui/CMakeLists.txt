@@ -274,6 +274,9 @@ file(GLOB src
     src/HoroEditor/HoroSceneHierView_orc.c
     src/HoroEditor/HoroInspView_orc.c
     src/HoroEditor/UiAct_orc.c
+    src/HoroEditor/Horo2dSceneView_orc.c
+    src/HoroEditor/ImageChessBg_orc.c
+    src/HoroEditor/SceneTransform_orc.c
 
     # src/testTgfx.cpp
 

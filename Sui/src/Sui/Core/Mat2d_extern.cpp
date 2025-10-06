@@ -43,7 +43,7 @@ void SuiCore$Mat2d$premultiply(SuiCore$Mat2d* self, SuiCore$Mat2d* b) {
 void SuiCore$Mat2d$inverse(SuiCore$Mat2d* self) {
 	float data[16];
 	nvgTransformInverse(data, self->data);
-	memcpy(self->data, data, sizeof(float) * 16);
+	memcpy(self->data, data, sizeof(*self));
 }
 SuiCore$Vec3 SuiCore$Mat2d$transformPoint(SuiCore$Mat2d* self, float x, float y, float z) {
 	float dstx = 0.f;

@@ -94,6 +94,8 @@ import * from "./Horo3dSceneView.orc"
 import * from "./HoroEditCtx.orc"
 import * from "./HoroInspView.orc"
 import * from "./UiAct.orc"
+import * from "./Horo2dSceneView.orc"
+
 
 static DockLayout@ dockLayoutIns = null
 
@@ -215,8 +217,22 @@ class HoroEditor extends Listener{
         // mkTextView(o, 0).{
         //     o.setText(str("这是ViewBase"))
         // }
-        if root {
-            o.placeKid(root)
+        Theme*t = themeIns()
+
+        mkHoro2dSceneView(o, (long long)anode)~{
+            o.root = anode
+            o.backgroundColor = t.dock_content_bg
+
+            layoutAlignPositionCell(o, 0).{
+                o.left = 0
+                o.top = 0
+                o.right = 0
+                o.bottom  = 0
+            }
+
+            // if root {
+            //     o.placeKid(root)
+            // }
         }
     }
     void reactScene_forObj3d(Node* o, ANode* anode){
@@ -672,8 +688,8 @@ class HoroEditor extends Listener{
         //确保opengl环境有初始化了
         Window@ win = new Window();
 
-        // self.editCtx.openPrefab("prefab/button.prefab.json")
-        self.editCtx.openPrefab("prefab/3d.prefab.json")
+        self.editCtx.openPrefab("prefab/button.prefab.json")
+        // self.editCtx.openPrefab("prefab/3d.prefab.json")
 
 
         self.showWindow()
