@@ -26,6 +26,7 @@ void  HoroEditor$UiAct_savePrefab(HoroEditor$HoroEditor *  editor){
 	URGC_VAR_CLEANUP_CLASS HoroEditor$HoroEditCtx*  ctx = (ctx=NULL,urgc_init_var_class((void**)&ctx, editor->editCtx));
 	if (ctx->prefab) {
 		ctx->prefab->save(ctx->prefab) ;
+		SuiDialog$Toast_make("保存成功") ;
 	}
 }
 

@@ -15,7 +15,7 @@
 // static struct 
 typedef struct tagSuiView$__Block_32_13 SuiView$__Block_32_13;
 
-typedef struct tagSuiView$__Closure_48_19 SuiView$__Closure_48_19;
+typedef struct tagSuiView$__Closure_52_19 SuiView$__Closure_52_19;
 
 
 
@@ -27,8 +27,8 @@ struct tagSuiView$__Block_32_13 {
 
 
 
-struct tagSuiView$__Closure_48_19 {
-	void  (*invoke)(SuiView$__Closure_48_19 *  self);
+struct tagSuiView$__Closure_52_19 {
+	void  (*invoke)(SuiView$__Closure_52_19 *  self);
 	Vtable_Object *  vtable ;
 	SuiView$__Block_32_13*  __var___Block_32_13 ;
 };
@@ -39,9 +39,9 @@ struct tagSuiView$__Closure_48_19 {
 
 // static function declaration
 static void  __finiBlock___Block_32_13(SuiView$__Block_32_13 *  self);
-static void  __fn___Closure_48_19(SuiView$__Closure_48_19 *  self);
-static void  __fini___Closure_48_19(SuiView$__Closure_48_19 *  self);
-static SuiView$__Closure_48_19*  __make___Closure_48_19(SuiView$__Closure_48_19 **  __outRef__, SuiView$__Block_32_13 *  __var___Block_32_13);
+static void  __fn___Closure_52_19(SuiView$__Closure_52_19 *  self);
+static void  __fini___Closure_52_19(SuiView$__Closure_52_19 *  self);
+static SuiView$__Closure_52_19*  __make___Closure_52_19(SuiView$__Closure_52_19 **  __outRef__, SuiView$__Block_32_13 *  __var___Block_32_13);
 
 
 
@@ -175,7 +175,7 @@ void  SuiView$Switch$react(SuiView$Switch *  self){
 	URGC_VAR_CLEANUP SuiView$__Block_32_13*  __var___Block_32_13 = (__var___Block_32_13=NULL,urgc_init_var((void**)&__var___Block_32_13, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_32_13) , __finiBlock___Block_32_13) ));
 	urgc_set_field_class(__var___Block_32_13, (void * )offsetof(SuiView$__Block_32_13, self) , self) ;
 	((SuiCore$View * )self)->radius->setAll(((SuiCore$View * )self)->radius, 10) ;
-	((SuiCore$View * )self)->backgroundColor = self->checked ? 0xff1677ff : 0x40000000;
+	((SuiCore$View * )self)->backgroundColor = self->checked ? 0xff1677ff : 0x40ffffff;
 	int  d = (((SuiCore$View * )self)->height - self->circle->height) / 2;
 	((SuiCore$ViewBase * )self->circle)->frame.y = d;
 	self->circle->backgroundColor = 0xffffffff;
@@ -185,8 +185,8 @@ void  SuiView$Switch$react(SuiView$Switch *  self){
 		((SuiCore$Node * )self)->isNewForReact = false;
 	}
 	else {
-		URGC_VAR_CLEANUP SuiView$__Closure_48_19*  tmpReturn_1 = NULL;
-		self->anim->start(self->anim, __make___Closure_48_19(&tmpReturn_1, __var___Block_32_13) ) ;
+		URGC_VAR_CLEANUP SuiView$__Closure_52_19*  tmpReturn_1 = NULL;
+		self->anim->start(self->anim, __make___Closure_52_19(&tmpReturn_1, __var___Block_32_13) ) ;
 	}
 }
 
@@ -228,22 +228,22 @@ static void  __finiBlock___Block_32_13(SuiView$__Block_32_13 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_48_19(SuiView$__Closure_48_19 *  self){
+static void  __fn___Closure_52_19(SuiView$__Closure_52_19 *  self){
 	float  toX = self->__var___Block_32_13->self->calcToX(self->__var___Block_32_13->self) ;
 	((SuiCore$ViewBase * )self->__var___Block_32_13->self->circle)->frame.x = self->__var___Block_32_13->self->anim->nextByMs(self->__var___Block_32_13->self->anim, ((SuiCore$ViewBase * )self->__var___Block_32_13->self->circle)->frame.x, toX, 140) ;
 	((SuiCore$ViewBase * )self->__var___Block_32_13->self)->invalidDraw(self->__var___Block_32_13->self) ;
 }
 
-static void  __fini___Closure_48_19(SuiView$__Closure_48_19 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_48_19, __var___Block_32_13) , NULL) ;
+static void  __fini___Closure_52_19(SuiView$__Closure_52_19 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_52_19, __var___Block_32_13) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_48_19*  __make___Closure_48_19(SuiView$__Closure_48_19 **  __outRef__, SuiView$__Block_32_13 *  __var___Block_32_13){
-	URGC_VAR_CLEANUP SuiView$__Closure_48_19*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_48_19) , __fini___Closure_48_19) ));
-	self->invoke = __fn___Closure_48_19;
+static SuiView$__Closure_52_19*  __make___Closure_52_19(SuiView$__Closure_52_19 **  __outRef__, SuiView$__Block_32_13 *  __var___Block_32_13){
+	URGC_VAR_CLEANUP SuiView$__Closure_52_19*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_52_19) , __fini___Closure_52_19) ));
+	self->invoke = __fn___Closure_52_19;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_48_19, __var___Block_32_13) , __var___Block_32_13) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_52_19, __var___Block_32_13) , __var___Block_32_13) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

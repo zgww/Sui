@@ -105,9 +105,9 @@ class HoroInspView extends LayoutLinear{
             if anode {
                 Node* node = anode.node
                 // Obj3d@ obj = ctx.getScene()
-                if !(node instanceof Obj3d) {
+                if !(node instanceof Node) {
                     mkTextView(o, 0).{
-                        o.setText(str("no anode??"))
+                        o.setText(str("no node??"))
                     }
                 }
                 else {
@@ -121,6 +121,7 @@ class HoroInspView extends LayoutLinear{
                         o.alignItems = str("stretch")
                         // o.useWidthContraint = true
                         o.useMinWidthConstraint = true
+                        // o.padding.setHor(8)
 
                         layoutLinearCell(o, 0).{
                             // o.grow = 1

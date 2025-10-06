@@ -957,7 +957,8 @@ class Insp {
         if !(
             OrcMetaField_isPrimitive(mf) 
             && ( OrcMetaField_getType(mf) == OrcMetaType_int)
-            && String_endsWithIgnoreCase(mf.name, "color")
+            && (String_endsWithIgnoreCase(mf.name, "color")
+            || String_endsWithIgnoreCase(mf.name, "Bg"))
         )  
         {
             return false;
@@ -1025,8 +1026,9 @@ class Insp {
         mkTextView(o, 0).{
             // String@ s = str(name)
             o.setText(str(name))
-            o.width = 80
-            o.margin.right = 10
+            o.width = 100
+            o.padding.setHor(8)
+            // o.padding.left = 8
             o.color = t.insp_color
             o.setFont_size(t.insp_fontSize)
         }

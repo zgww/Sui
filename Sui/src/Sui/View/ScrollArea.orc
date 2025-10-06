@@ -336,8 +336,15 @@ class ScrollArea extends LayoutLinear {
 
 		//绘制自己
 		self.draw_self(canvas)
+		canvas.save();
+		canvas.translate(
+			// vg,
+			self.padding.left + self.border.l.w, 
+			self.padding.top + self.border.t.w
+		);
 		//绘制内容
 		self.draw_children(canvas)
+		canvas.restore();
 
 		canvas.restore()
 	}

@@ -32,7 +32,11 @@ class Switch extends View {
 	void react(){
 		self.radius.setAll(10)
 		
-		self.backgroundColor = self.checked ? 0xff1677ff : 0x40000000;
+		self.backgroundColor = self.checked ? 
+		0xff1677ff 
+		: 
+		0x40ffffff
+		// 0x40000000;
 
 		int d = (self.height - self.circle.height) / 2
 		self.circle.frame.y = d

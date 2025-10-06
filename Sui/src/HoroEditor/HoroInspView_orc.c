@@ -220,14 +220,14 @@ void  HoroEditor$HoroInspView$react(HoroEditor$HoroInspView *  self){
 		URGC_VAR_CLEANUP_CLASS SuiDesigner$ANode*  anode = (anode=NULL,urgc_init_var_class((void**)&anode, (SuiDesigner$ANode* )ctx->state->getFirstSelected(ctx->state) ));
 		if (anode) {
 			SuiCore$Node *  node = anode->node;
-			if (!(Orc_instanceof((Object*)node, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL)))) {
+			if (!(Orc_instanceof((Object*)node, (Vtable_Object*)Vtable_SuiCore$Node_init(NULL)))) {
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_4 = NULL;
 				{
 					SuiView$TextView*  __scopeVar_109_20 = SuiView$mkTextView(&tmpReturn_4, o, 0) , *o = __scopeVar_109_20;
 					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_109_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_5 = NULL;
-					o->setText(o, Orc$str(&tmpReturn_5, "no anode??") ) ;
+					o->setText(o, Orc$str(&tmpReturn_5, "no node??") ) ;
 				}
 			}
 			else {
@@ -242,8 +242,8 @@ void  HoroEditor$HoroInspView$react(HoroEditor$HoroInspView *  self){
 					o->useMinWidthConstraint = true;
 					URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_8 = NULL;
 					{
-						SuiLayout$LayoutLinearCell*  __scopeVar_125_24 = SuiLayout$layoutLinearCell(&tmpReturn_8, o, 0) , *o = __scopeVar_125_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_125_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiLayout$LayoutLinearCell*  __scopeVar_126_24 = SuiLayout$layoutLinearCell(&tmpReturn_8, o, 0) , *o = __scopeVar_126_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_126_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
 						
 					}
@@ -253,8 +253,8 @@ void  HoroEditor$HoroInspView$react(HoroEditor$HoroInspView *  self){
 					else {
 						URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_9 = NULL;
 						{
-							SuiView$TextView*  __scopeVar_133_28 = SuiView$mkTextView(&tmpReturn_9, o, 0) , *o = __scopeVar_133_28;
-							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_133_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
+							SuiView$TextView*  __scopeVar_134_28 = SuiView$mkTextView(&tmpReturn_9, o, 0) , *o = __scopeVar_134_28;
+							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_134_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
 						
 							URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_10 = NULL;
 							o->setText(o, Orc$str(&tmpReturn_10, "no data") ) ;

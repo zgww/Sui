@@ -23,6 +23,8 @@ void UiAct_savePrefab(HoroEditor* editor){
     HoroEditCtx@  ctx = editor.editCtx
     if ctx.prefab {
         ctx.prefab.save()
+
+        Toast_make("保存成功")
     }
 }
 void UiAct_addView(HoroEditor* editor, ANode@ anode, String@ viewName){

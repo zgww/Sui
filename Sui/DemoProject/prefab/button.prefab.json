@@ -2,13 +2,16 @@
 	"version":	"0.0.3",
 	"root":	{
 		"attrs":	{
+			"backgroundColor":	-587202561
 		},
 		"tag":	"SuiLayout$LayoutLinear",
 		"children":	[{
 				"attrs":	{
 					"width":	100,
-					"text":	"景行行止",
-					"normalBg":	-14367934
+					"hoverBg":	-11691075,
+					"text":	"取消",
+					"normalBg":	-10836763,
+					"color":	-1241513985
 				},
 				"tag":	"SuiView$DrawButton",
 				"children":	[]
@@ -16,7 +19,7 @@
 				"attrs":	{
 					"width":	100,
 					"hoverBg":	-65536,
-					"text":	"不要啊",
+					"text":	"提交",
 					"normalBg":	-3265492
 				},
 				"tag":	"SuiView$DrawButton",
