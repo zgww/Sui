@@ -61,6 +61,7 @@ import * from "../SuiDesigner/EventANodeChanged.orc"
 import * from "../SuiDesigner/EventFileItemChanged.orc"
 import * from "./ImageChessBg.orc"
 import * from "./SceneTransform.orc"
+import * from "./HoroEditor.orc"
 
 
 class Horo2dSceneView extends View {
@@ -71,6 +72,7 @@ class Horo2dSceneView extends View {
     SceneTransform@ sceneTransform = new SceneTransform()
 
     DrawDegree@ degree = new DrawDegree()
+    HoroEditor@ editor
 
 
     ANode@ root
@@ -135,10 +137,11 @@ class Horo2dSceneView extends View {
         if e instanceof MouseEvent {
             MouseEvent *me = (MouseEvent *)e;
 
+            self.drag.onMouseDown_byPrefer(me, 3, false, true);
+
             if me.isBubble() && me.button == 3 {
                 if me.isMouseDown{
                     printf("mouse down scene\n");
-                    self.drag.onMouseDown(me);
                 }
                 if me.isMouseUp {
                     printf("mouse up scene\n")
@@ -234,6 +237,8 @@ class Horo2dSceneView extends View {
             // self.appendChild(vn.node)
         // }
 
+        Node* o = self
+        self.startInnerReact()
         ANode@ root = self.root
         if root && root.node {
             self.placeKid(root.node)
@@ -251,16 +256,10 @@ class Horo2dSceneView extends View {
         // }
 
         // gizmo root
-        if !self.gizmoRoot {
-            View@ o = new View()
+        mkView(o, 0).{
             self.gizmoRoot = o
-            self.appendChild(o)
-
             o.hitTestType.set("onlychildren")
-            // o.width = 100
-            // o.height = 200
-            // o.width = infinity
-            // o.height = infinity
+
             o.backgroundColor = 0x0000ff00
             o.cbOnEvent = ^void(Event *e){
                 if e instanceof MouseEvent {
@@ -273,11 +272,10 @@ class Horo2dSceneView extends View {
         }
         self.reactGizmos()
 
-        // self.startInnerReact()
 
         self.backgroundColor = 0xcc000000
 
-        // self.endInnerReact()
+        self.endInnerReact()
     }
 
 
@@ -285,8 +283,6 @@ class Horo2dSceneView extends View {
 
     bool _reactGizmosDirty = false
     void triggerReactGizmos(){
-        if 1 {return;}
-
         if (self._reactGizmosDirty){
             return
         }
@@ -302,6 +298,11 @@ class Horo2dSceneView extends View {
     }
 
     void reactGizmos(){
+        if !self.editor {
+            return
+        }
+        ANode* sel = self.editor.editCtx.state.getFirstSelected()
+
         self.gizmoDrag.onDrag = ^void (Drag *d){
             // printf("========================================move:%f,%f\n", d.deltaPos.x, d.deltaPos.y)
             // x += d.deltaPos.x
@@ -309,38 +310,39 @@ class Horo2dSceneView extends View {
             // self.triggerReactGizmos()
         }
         self.gizmoRoot.{
+            ANode* sel = self.editor.editCtx.state.getFirstSelected()
 
             // EditCtx@ ctx = EditCtx_ins()
             // if (ctx.state){
             //     ANode* sel = (ANode*)ctx.state.getFirstSelected()
-            //     if sel && sel.node && sel.node instanceof View{
-            //         View* selView = (View*) sel.node
-            //         Frame* f = &selView.frame
+            if sel && sel.node && sel.node instanceof View{
+                View* selView = (View*) sel.node
+                Frame* f = &selView.frame
 
-            //         //将视图的坐标转到scene下
-            //         Mat2d invMat = self._sceneWorldMat.inverseNew()
-                    
-            //         mkGizmoRectView(o, 0).{
-            //             Vec3 lt = selView._world_transform.localToLocal(&invMat, 0, 0, 0)
-            //             Vec3 rb = selView._world_transform.localToLocal(&invMat, f.width, f.height, 0)
-            //             o.targetRect.set_ltrb(lt.x, lt.y, rb.x, rb.y)
-            //             o.onRectChanged = ^ void(Rect newr){
-            //                 sel.setAttr("width", Json_mkNumber(newr.w))
-            //                 sel.setAttr("height", Json_mkNumber(newr.h))
-            //                 selView.width = newr.w
-            //                 selView.height = newr.h
+                //将视图的坐标转到scene下
+                Mat2d invMat = self._sceneWorldMat.inverseNew()
+                
+                mkGizmoRectView(o, 0).{
+                    Vec3 lt = selView._world_transform.localToLocal(&invMat, 0, 0, 0)
+                    Vec3 rb = selView._world_transform.localToLocal(&invMat, f.width, f.height, 0)
+                    o.targetRect.set_ltrb(lt.x, lt.y, rb.x, rb.y)
+                    o.onRectChanged = ^ void(Rect newr){
+                        sel.setAttr("width", Json_mkNumber(newr.w))
+                        sel.setAttr("height", Json_mkNumber(newr.h))
+                        selView.width = newr.w
+                        selView.height = newr.h
 
-            //                 selView.frame.x = newr.x
-            //                 selView.frame.y = newr.y
-            //                 selView.invalidLayout()
+                        selView.frame.x = newr.x
+                        selView.frame.y = newr.y
+                        selView.invalidLayout()
 
-            //                 new EventANodeAttrChanged().{
-            //                     o.anode = sel
-            //                     o.emitToEbus()
-            //                 }
-            //             }
-            //         }
-            //     }
+                        new EventANodeAttrChanged().{
+                            o.anode = sel
+                            o.emitToEbus()
+                        }
+                    }
+                }
+            }
             // }
         }
     }
@@ -360,9 +362,7 @@ class Horo2dSceneView extends View {
     void draw_self(Canvas *canvas){
         self.triggerReactGizmos()
 
-
         // super.draw_self(canvas)
-
 
 		Image* bg = self.chessBg.gocChessBgImage(canvas)
 		//绘制背景
@@ -376,29 +376,24 @@ class Horo2dSceneView extends View {
             true, 
             0, 0, self.chessBg.width, self.chessBg.height, 0, bg, 1
 		)
-		// nvgFillPaint(vg, bp)	
 		canvas.fill()
 
         //绘制刻度尺
         self.degree.draw(canvas, self.sceneTransform.mat, r.w, r.h, 0, 0)
-
-        // canvas.save()
-        // canvas.transform(self.sceneTransform.mat)
-        // canvas.restore()
     }
     void drawSelfBorder(Canvas *canvas){
+        if !self.editor {
+            return;
+        }
         super.drawSelfBorder(canvas)
         //绘制gizmo
 
-        // EditCtx@ ctx = EditCtx_ins()
-
         //绘制hover
         self.drawRect_forANode(canvas, null)//ctx.hoverNode)
-
-        // if (ctx.state){
-            // ANode* sel = (ANode*)ctx.state.getFirstSelected()
-            // self.drawRect_forANode(vg, sel)
-        // }
+        ANode* sel = self.editor.editCtx.state.getFirstSelected()
+        if sel{
+            self.drawRect_forANode(canvas, sel)
+        }
     }
     void drawRect_forANode(Canvas*canvas, ANode* sel){
         if (!sel){
@@ -418,10 +413,10 @@ class Horo2dSceneView extends View {
             canvas.beginPath()
             canvas.rect( x, y, rect.w, rect.h)
 
-            canvas.fillColorByInt32( (0, 255, 0, 64))
+            canvas.fillColorByInt32( mkIntByRgba(0, 128, 255, 64))
             canvas.fill()
             canvas.strokeWidth( 1)
-            canvas.strokeColorByInt32( (0, 255, 0, 192))
+            canvas.strokeColorByInt32(mkIntByRgba(0, 128, 255, 192))
             canvas.stroke()
         }
     }

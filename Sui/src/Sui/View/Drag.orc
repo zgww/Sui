@@ -67,6 +67,11 @@ class Drag extends Listener{
     MouseEvent *mouseEvent = null
     int mouseDownButton = 1
 
+    //期望在什么状态下触发
+    // int preferButton = 1
+    // bool preferBubble = true
+    // bool preferCapture = false
+
     void dtor(){
         printf("~Drag\n")
     }
@@ -88,6 +93,31 @@ class Drag extends Listener{
         }
     }
 
+    void onMouseDown_byPrefer(Event *e, int button, bool cap, bool bubble){
+        MouseEvent* me = (MouseEvent*)e;
+        if me == null || !(me instanceof MouseEvent) {
+            return
+        }
+        if (!me.isMouseDown){//非MouseDown event
+            return;
+        }
+
+        if me.button != button {
+            return;
+        }
+
+        if me.isCapture && !cap{ // 只在冒泡阶段处理
+            return
+        }
+        if me.isBubble() && !bubble { // 只在冒泡阶段处理
+            return
+        }
+
+        self.onMouseDown(e)
+    }
+
+    void onMouseDownIf(Event *e){
+    }
     void onMouseDown(Event *e){
         MouseEvent* me = (MouseEvent*)e;
         if me == null || !(me instanceof MouseEvent) {
@@ -96,10 +126,6 @@ class Drag extends Listener{
         if (!me.isMouseDown){//非MouseDown event
             return;
         }
-        if me.isCapture { // 只在冒泡阶段处理
-            return
-        }
-
         self.mouseDownButton = me.button
         self.mouseEvent = me;
 

@@ -87,6 +87,7 @@ typedef struct tagVtable_HoroEditor$Horo2dSceneView Vtable_HoroEditor$Horo2dScen
 #include "../SuiDesigner/EventFileItemChanged_orc.h"
 #include "./ImageChessBg_orc.h"
 #include "./SceneTransform_orc.h"
+#include "./HoroEditor_orc.h"
 
 
 #ifdef __cplusplus
@@ -109,6 +110,7 @@ struct tagHoroEditor$Horo2dSceneView {
 	SuiView$Drag*  drag ;
 	HoroEditor$SceneTransform*  sceneTransform ;
 	SuiDesigner$DrawDegree*  degree ;
+	HoroEditor$HoroEditor*  editor ;
 	SuiDesigner$ANode*  root ;
 	SuiCore$Node*  rootNode ;
 	SuiCore$Node*  gizmoRoot ;

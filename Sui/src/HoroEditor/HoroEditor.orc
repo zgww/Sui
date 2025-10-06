@@ -221,6 +221,7 @@ class HoroEditor extends Listener{
 
         mkHoro2dSceneView(o, (long long)anode)~{
             o.root = anode
+            o.editor = self
             o.backgroundColor = t.dock_content_bg
 
             layoutAlignPositionCell(o, 0).{

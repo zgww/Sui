@@ -332,10 +332,8 @@ static SuiDesigner$__Closure_82_27*  __make___Closure_82_27(SuiDesigner$__Closur
 static void  __fn___Closure_152_22(SuiDesigner$__Closure_152_22 *  self, SuiCore$Event *  e){
 	if (Orc_instanceof((Object*)e, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
 		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
-		if (me->button == 1 && ((SuiCore$ViewEvent * )me)->isCapture && me->isMouseDown) {
-			urgc_set_field_class(self->__var___Block_151_27->self->drag, (void * )offsetof(SuiView$Drag, data) , self->__var___Block_151_27->v) ;
-			self->__var___Block_151_27->self->drag->onMouseDown(self->__var___Block_151_27->self->drag, me) ;
-		}
+		urgc_set_field_class(self->__var___Block_151_27->self->drag, (void * )offsetof(SuiView$Drag, data) , self->__var___Block_151_27->v) ;
+		self->__var___Block_151_27->self->drag->onMouseDown_byPrefer(self->__var___Block_151_27->self->drag, me, 1, true, false) ;
 	}
 }
 
@@ -364,7 +362,7 @@ SuiCore$View *  SuiDesigner$Gizmo_reactRect(SuiCore$Node *  o, float  x, float  
 		((SuiCore$ViewBase * )o)->frame.height = 8;
 		((SuiCore$ViewBase * )o)->frame.x = x - o->width / 2 - 1;
 		((SuiCore$ViewBase * )o)->frame.y = y - o->height / 2 - 1;
-		o->backgroundColor = 0xaaeeeeff;
+		o->backgroundColor = 0xff007aff;
 		Orc$String$set(((SuiCore$ViewBase * )o)->cursor, "pointer") ;
 		o->border->setAll(o->border, 1, 0xffffffff) ;
 		return o; 

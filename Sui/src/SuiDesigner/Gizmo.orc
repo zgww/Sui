@@ -153,10 +153,10 @@ class GizmoRectView extends View{
             if e instanceof MouseEvent {
                 MouseEvent *me = (MouseEvent*) e;
 
-                if me.button == 1 && me.isCapture && me.isMouseDown {
-                    self.drag.data = v
-                    self.drag.onMouseDown(me)
-                }
+                // if me.button == 1 && me.isCapture && me.isMouseDown {
+                self.drag.data = v
+                self.drag.onMouseDown_byPrefer(me, 1, true, false)
+                // }
             }
         }
 
@@ -178,7 +178,7 @@ View * Gizmo_reactRect(
         o.frame.height  = 8
         o.frame.x = x - o.width / 2 - 1
         o.frame.y = y - o.height / 2 - 1
-        o.backgroundColor = 0xaaeeeeff
+        o.backgroundColor = 0xff007aff//0xaaeeeeff
         o.cursor.set("pointer")
         o.border.setAll(1, 0xffffffff)
 

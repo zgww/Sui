@@ -40,6 +40,8 @@ void SuiView$Drag_initMeta(Vtable_SuiView$Drag *pvt){
 	orc_metaField_primitive(&pNext, "mouseDownButton", OrcMetaType_int, offsetof(SuiView$Drag, mouseDownButton), 0, 0, 0, 0);//int
 
 	orc_metaField_method(&pNext, "setStatus", offsetof(SuiView$Drag, setStatus));
+	orc_metaField_method(&pNext, "onMouseDown_byPrefer", offsetof(SuiView$Drag, onMouseDown_byPrefer));
+	orc_metaField_method(&pNext, "onMouseDownIf", offsetof(SuiView$Drag, onMouseDownIf));
 	orc_metaField_method(&pNext, "onMouseDown", offsetof(SuiView$Drag, onMouseDown));
 }
 
@@ -106,6 +108,8 @@ void SuiView$Drag_init_fields(SuiView$Drag *self){
     }
 	((Object*)self)->dtor = (void*)SuiView$Drag$dtor;
 	((SuiView$Drag*)self)->setStatus = (void*)SuiView$Drag$setStatus;
+	((SuiView$Drag*)self)->onMouseDown_byPrefer = (void*)SuiView$Drag$onMouseDown_byPrefer;
+	((SuiView$Drag*)self)->onMouseDownIf = (void*)SuiView$Drag$onMouseDownIf;
 	((SuiView$Drag*)self)->onMouseDown = (void*)SuiView$Drag$onMouseDown;
 	((SuiCore$Listener*)self)->onListenerEvent = (void*)SuiView$Drag$onListenerEvent;
 }
@@ -175,7 +179,7 @@ void  SuiView$Drag$setStatus(SuiView$Drag *  self, const char *  status){
 }
 
 
-void  SuiView$Drag$onMouseDown(SuiView$Drag *  self, SuiCore$Event *  e){
+void  SuiView$Drag$onMouseDown_byPrefer(SuiView$Drag *  self, SuiCore$Event *  e, int  button, bool  cap, bool  bubble){
 	SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
 	if (me == NULL || !(Orc_instanceof((Object*)me, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL)))) {
 		return ; 
@@ -183,7 +187,30 @@ void  SuiView$Drag$onMouseDown(SuiView$Drag *  self, SuiCore$Event *  e){
 	if (!me->isMouseDown) {
 		return ; 
 	}
-	if (((SuiCore$ViewEvent * )me)->isCapture) {
+	if (me->button != button) {
+		return ; 
+	}
+	if (((SuiCore$ViewEvent * )me)->isCapture && !cap) {
+		return ; 
+	}
+	if (((SuiCore$ViewEvent * )me)->isBubble(me)  && !bubble) {
+		return ; 
+	}
+	self->onMouseDown(self, e) ;
+}
+
+
+void  SuiView$Drag$onMouseDownIf(SuiView$Drag *  self, SuiCore$Event *  e){
+	
+}
+
+
+void  SuiView$Drag$onMouseDown(SuiView$Drag *  self, SuiCore$Event *  e){
+	SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
+	if (me == NULL || !(Orc_instanceof((Object*)me, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL)))) {
+		return ; 
+	}
+	if (!me->isMouseDown) {
 		return ; 
 	}
 	self->mouseDownButton = me->button;
