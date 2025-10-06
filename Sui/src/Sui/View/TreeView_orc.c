@@ -18,17 +18,17 @@
 
 
 // static struct 
-typedef struct tagSuiView$__Block_202_59 SuiView$__Block_202_59;
+typedef struct tagSuiView$__Block_213_59 SuiView$__Block_213_59;
 
-typedef struct tagSuiView$__Block_211_35 SuiView$__Block_211_35;
+typedef struct tagSuiView$__Block_222_35 SuiView$__Block_222_35;
 
-typedef struct tagSuiView$__Block_216_69 SuiView$__Block_216_69;
+typedef struct tagSuiView$__Block_227_69 SuiView$__Block_227_69;
 
-typedef struct tagSuiView$__Closure_217_30 SuiView$__Closure_217_30;
+typedef struct tagSuiView$__Closure_228_30 SuiView$__Closure_228_30;
 
 
 
-struct tagSuiView$__Block_202_59 {
+struct tagSuiView$__Block_213_59 {
 	SuiView$TreeView*  self ;
 };
 
@@ -36,7 +36,7 @@ struct tagSuiView$__Block_202_59 {
 
 
 
-struct tagSuiView$__Block_211_35 {
+struct tagSuiView$__Block_222_35 {
 	Object *  item ;
 };
 
@@ -44,7 +44,7 @@ struct tagSuiView$__Block_211_35 {
 
 
 
-struct tagSuiView$__Block_216_69 {
+struct tagSuiView$__Block_227_69 {
 	SuiLayout$LayoutLinear*  o ;
 };
 
@@ -52,12 +52,12 @@ struct tagSuiView$__Block_216_69 {
 
 
 
-struct tagSuiView$__Closure_217_30 {
-	void  (*invoke)(SuiView$__Closure_217_30 *  self, SuiCore$Event *  e);
+struct tagSuiView$__Closure_228_30 {
+	void  (*invoke)(SuiView$__Closure_228_30 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_202_59*  __var___Block_202_59 ;
-	SuiView$__Block_211_35*  __var___Block_211_35 ;
-	SuiView$__Block_216_69*  __var___Block_216_69 ;
+	SuiView$__Block_213_59*  __var___Block_213_59 ;
+	SuiView$__Block_222_35*  __var___Block_222_35 ;
+	SuiView$__Block_227_69*  __var___Block_227_69 ;
 };
 
 
@@ -65,12 +65,12 @@ struct tagSuiView$__Closure_217_30 {
 
 
 // static function declaration
-static void  __finiBlock___Block_202_59(SuiView$__Block_202_59 *  self);
-static void  __finiBlock___Block_211_35(SuiView$__Block_211_35 *  self);
-static void  __finiBlock___Block_216_69(SuiView$__Block_216_69 *  self);
-static void  __fn___Closure_217_30(SuiView$__Closure_217_30 *  self, SuiCore$Event *  e);
-static void  __fini___Closure_217_30(SuiView$__Closure_217_30 *  self);
-static SuiView$__Closure_217_30*  __make___Closure_217_30(SuiView$__Closure_217_30 **  __outRef__, SuiView$__Block_202_59 *  __var___Block_202_59, SuiView$__Block_211_35 *  __var___Block_211_35, SuiView$__Block_216_69 *  __var___Block_216_69);
+static void  __finiBlock___Block_213_59(SuiView$__Block_213_59 *  self);
+static void  __finiBlock___Block_222_35(SuiView$__Block_222_35 *  self);
+static void  __finiBlock___Block_227_69(SuiView$__Block_227_69 *  self);
+static void  __fn___Closure_228_30(SuiView$__Closure_228_30 *  self, SuiCore$Event *  e);
+static void  __fini___Closure_228_30(SuiView$__Closure_228_30 *  self);
+static SuiView$__Closure_228_30*  __make___Closure_228_30(SuiView$__Closure_228_30 **  __outRef__, SuiView$__Block_213_59 *  __var___Block_213_59, SuiView$__Block_222_35 *  __var___Block_222_35, SuiView$__Block_227_69 *  __var___Block_227_69);
 
 
 
@@ -95,6 +95,7 @@ void SuiView$TreeState_initMeta(Vtable_SuiView$TreeState *pvt){
 	orc_metaField_method(&pNext, "isOpend", offsetof(SuiView$TreeState, isOpend));
 	orc_metaField_method(&pNext, "setSelectedWithShiftAndCtrl", offsetof(SuiView$TreeState, setSelectedWithShiftAndCtrl));
 	orc_metaField_method(&pNext, "fire_cbSelectedIdChanged", offsetof(SuiView$TreeState, fire_cbSelectedIdChanged));
+	orc_metaField_method(&pNext, "setAncestorsOpen", offsetof(SuiView$TreeState, setAncestorsOpen));
 	orc_metaField_method(&pNext, "setSelected", offsetof(SuiView$TreeState, setSelected));
 	orc_metaField_method(&pNext, "setOpen", offsetof(SuiView$TreeState, setOpen));
 }
@@ -153,6 +154,7 @@ void SuiView$TreeState_init_fields(SuiView$TreeState *self){
 	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->getId, NULL);
 	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->getItemChildren, NULL);
 	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->cbSelectedIdChanged, NULL);
+	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->getParent, NULL);
 	URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_1 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$TreeState*)self)->selectedIds, Orc$List_new(&tmpNewOwner_1) );
 	URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_2 = NULL;
@@ -167,6 +169,7 @@ void SuiView$TreeState_init_fields(SuiView$TreeState *self){
 	((SuiView$TreeState*)self)->isOpend = (void*)SuiView$TreeState$isOpend;
 	((SuiView$TreeState*)self)->setSelectedWithShiftAndCtrl = (void*)SuiView$TreeState$setSelectedWithShiftAndCtrl;
 	((SuiView$TreeState*)self)->fire_cbSelectedIdChanged = (void*)SuiView$TreeState$fire_cbSelectedIdChanged;
+	((SuiView$TreeState*)self)->setAncestorsOpen = (void*)SuiView$TreeState$setAncestorsOpen;
 	((SuiView$TreeState*)self)->setSelected = (void*)SuiView$TreeState$setSelected;
 	((SuiView$TreeState*)self)->setOpen = (void*)SuiView$TreeState$setOpen;
 }
@@ -341,6 +344,17 @@ void  SuiView$TreeState$fire_cbSelectedIdChanged(SuiView$TreeState *  self){
 }
 
 
+void  SuiView$TreeState$setAncestorsOpen(SuiView$TreeState *  self, Object *  item){
+	if (self->getParent) {
+		item = (*(self->getParent))((void * )(self->getParent), item) ;
+		while (item) {
+			self->setOpen(self, item, true) ;
+			item = (*(self->getParent))((void * )(self->getParent), item) ;
+		}
+	}
+}
+
+
 void  SuiView$TreeState$setSelected(SuiView$TreeState *  self, Object *  item){
 	self->selectedIds->clear(self->selectedIds) ;
 	if (item != NULL) {
@@ -488,47 +502,47 @@ void  SuiView$TreeView$react(SuiView$TreeView *  self){
 
 
 void  SuiView$TreeView$reactChildren(SuiView$TreeView *  self, SuiCore$Node *  parent, Orc$List *  items, int  deep){
-	URGC_VAR_CLEANUP SuiView$__Block_202_59*  __var___Block_202_59 = (__var___Block_202_59=NULL,urgc_init_var((void**)&__var___Block_202_59, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_202_59) , __finiBlock___Block_202_59) ));
-	urgc_set_field_class(__var___Block_202_59, (void * )offsetof(SuiView$__Block_202_59, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Block_213_59*  __var___Block_213_59 = (__var___Block_213_59=NULL,urgc_init_var((void**)&__var___Block_213_59, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_213_59) , __finiBlock___Block_213_59) ));
+	urgc_set_field_class(__var___Block_213_59, (void * )offsetof(SuiView$__Block_213_59, self) , self) ;
 	if (items == NULL) {
 		return ; 
 	}
 	int  l = items->size(items) ;
 	for (int  i = 0; i < l; i++) {
-		URGC_VAR_CLEANUP SuiView$__Block_211_35*  __var___Block_211_35 = (__var___Block_211_35=NULL,urgc_init_var((void**)&__var___Block_211_35, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_211_35) , __finiBlock___Block_211_35) ));
-		__var___Block_211_35->item = items->get(items, i) ;
-		bool  isOpend = self->state->isOpend(self->state, __var___Block_211_35->item) ;
+		URGC_VAR_CLEANUP SuiView$__Block_222_35*  __var___Block_222_35 = (__var___Block_222_35=NULL,urgc_init_var((void**)&__var___Block_222_35, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_222_35) , __finiBlock___Block_222_35) ));
+		__var___Block_222_35->item = items->get(items, i) ;
+		bool  isOpend = self->state->isOpend(self->state, __var___Block_222_35->item) ;
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 		{
-			SuiLayout$LayoutLinear*  o = SuiLayout$layoutLinear(&tmpReturn_1, parent, ((long long )__var___Block_211_35->item) + deep * 1000 + i) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_216_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinear*  o = SuiLayout$layoutLinear(&tmpReturn_1, parent, ((long long )__var___Block_222_35->item) + deep * 1000 + i) ;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_227_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
-			URGC_VAR_CLEANUP SuiView$__Block_216_69*  __var___Block_216_69 = (__var___Block_216_69=NULL,urgc_init_var((void**)&__var___Block_216_69, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_216_69) , __finiBlock___Block_216_69) ));
-			urgc_set_field_class(__var___Block_216_69, (void * )offsetof(SuiView$__Block_216_69, o) , o) ;
-			URGC_VAR_CLEANUP SuiView$__Closure_217_30*  tmpReturn_2 = NULL;
-			urgc_set_field(__var___Block_216_69->o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_217_30(&tmpReturn_2, __var___Block_202_59, __var___Block_211_35, __var___Block_216_69) ) ;
-			((SuiCore$View * )__var___Block_216_69->o)->padding.left = deep * 20;
-			bool  isSelected = self->state->isSelected(self->state, __var___Block_211_35->item) ;
-			((SuiCore$View * )__var___Block_216_69->o)->backgroundColor = isSelected ? 0x330088ff : 0x00000000;
-			((SuiCore$View * )__var___Block_216_69->o)->height = 20;
-			Orc$String$set(__var___Block_216_69->o->alignItems, "center") ;
-			Orc$String$set(__var___Block_216_69->o->justifyContent, "start") ;
+			URGC_VAR_CLEANUP SuiView$__Block_227_69*  __var___Block_227_69 = (__var___Block_227_69=NULL,urgc_init_var((void**)&__var___Block_227_69, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_227_69) , __finiBlock___Block_227_69) ));
+			urgc_set_field_class(__var___Block_227_69, (void * )offsetof(SuiView$__Block_227_69, o) , o) ;
+			URGC_VAR_CLEANUP SuiView$__Closure_228_30*  tmpReturn_2 = NULL;
+			urgc_set_field(__var___Block_227_69->o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_228_30(&tmpReturn_2, __var___Block_213_59, __var___Block_222_35, __var___Block_227_69) ) ;
+			((SuiCore$View * )__var___Block_227_69->o)->padding.left = deep * 20;
+			bool  isSelected = self->state->isSelected(self->state, __var___Block_222_35->item) ;
+			((SuiCore$View * )__var___Block_227_69->o)->backgroundColor = isSelected ? 0x330088ff : 0x00000000;
+			((SuiCore$View * )__var___Block_227_69->o)->height = 20;
+			Orc$String$set(__var___Block_227_69->o->alignItems, "center") ;
+			Orc$String$set(__var___Block_227_69->o->justifyContent, "start") ;
 			if (self->reactItem != NULL) {
-				(*(self->reactItem))((void * )(self->reactItem), __var___Block_216_69->o, __var___Block_211_35->item, deep) ;
+				(*(self->reactItem))((void * )(self->reactItem), __var___Block_227_69->o, __var___Block_222_35->item, deep) ;
 			}
 			else {
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_3 = NULL;
 				{
-					SuiView$TextView*  o = SuiView$mkTextView(&tmpReturn_3, __var___Block_216_69->o, 0) ;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_249_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  o = SuiView$mkTextView(&tmpReturn_3, __var___Block_227_69->o, 0) ;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_260_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_4, "item-") , i) ) ;
 				}
 			}
 		}
-		if (self->state->isOpend(self->state, __var___Block_211_35->item) ) {
-			URGC_VAR_CLEANUP_CLASS Orc$List*  kids = (*(self->state->getItemChildren))((kids = NULL,&kids), (void * )(self->state->getItemChildren), __var___Block_211_35->item) ;
+		if (self->state->isOpend(self->state, __var___Block_222_35->item) ) {
+			URGC_VAR_CLEANUP_CLASS Orc$List*  kids = (*(self->state->getItemChildren))((kids = NULL,&kids), (void * )(self->state->getItemChildren), __var___Block_222_35->item) ;
 			self->reactChildren(self, parent, kids, deep + 1) ;
 		}
 	}
@@ -536,51 +550,51 @@ void  SuiView$TreeView$reactChildren(SuiView$TreeView *  self, SuiCore$Node *  p
 
 
 
-static void  __finiBlock___Block_202_59(SuiView$__Block_202_59 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_202_59, self) , NULL) ;
+static void  __finiBlock___Block_213_59(SuiView$__Block_213_59 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_213_59, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_211_35(SuiView$__Block_211_35 *  self){
+static void  __finiBlock___Block_222_35(SuiView$__Block_222_35 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_216_69(SuiView$__Block_216_69 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_216_69, o) , NULL) ;
+static void  __finiBlock___Block_227_69(SuiView$__Block_227_69 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_227_69, o) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_217_30(SuiView$__Closure_217_30 *  self, SuiCore$Event *  e){
+static void  __fn___Closure_228_30(SuiView$__Closure_228_30 *  self, SuiCore$Event *  e){
 	if (Orc_instanceof((Object*)e, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
 		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
 		if (me->isClickInBubble(me)  && me->button == 1) {
-			self->__var___Block_202_59->self->state->setSelectedWithShiftAndCtrl(self->__var___Block_202_59->self->state, self->__var___Block_211_35->item, me->shift, me->ctrl) ;
-			((SuiCore$Node * )self->__var___Block_202_59->self)->invalidReact(self->__var___Block_202_59->self) ;
+			self->__var___Block_213_59->self->state->setSelectedWithShiftAndCtrl(self->__var___Block_213_59->self->state, self->__var___Block_222_35->item, me->shift, me->ctrl) ;
+			((SuiCore$Node * )self->__var___Block_213_59->self)->invalidReact(self->__var___Block_213_59->self) ;
 		}
 		if (me->isDblClickInBubble(me) ) {
-			self->__var___Block_202_59->self->state->setOpen(self->__var___Block_202_59->self->state, self->__var___Block_211_35->item, !self->__var___Block_202_59->self->state->isOpend(self->__var___Block_202_59->self->state, self->__var___Block_211_35->item) ) ;
-			((SuiCore$Node * )self->__var___Block_202_59->self)->invalidReact(self->__var___Block_202_59->self) ;
+			self->__var___Block_213_59->self->state->setOpen(self->__var___Block_213_59->self->state, self->__var___Block_222_35->item, !self->__var___Block_213_59->self->state->isOpend(self->__var___Block_213_59->self->state, self->__var___Block_222_35->item) ) ;
+			((SuiCore$Node * )self->__var___Block_213_59->self)->invalidReact(self->__var___Block_213_59->self) ;
 		}
 	}
-	if (self->__var___Block_202_59->self->cbOnEvent_forItemView) {
-		(*(self->__var___Block_202_59->self->cbOnEvent_forItemView))((void * )(self->__var___Block_202_59->self->cbOnEvent_forItemView), e, self->__var___Block_216_69->o, self->__var___Block_211_35->item) ;
+	if (self->__var___Block_213_59->self->cbOnEvent_forItemView) {
+		(*(self->__var___Block_213_59->self->cbOnEvent_forItemView))((void * )(self->__var___Block_213_59->self->cbOnEvent_forItemView), e, self->__var___Block_227_69->o, self->__var___Block_222_35->item) ;
 	}
 }
 
-static void  __fini___Closure_217_30(SuiView$__Closure_217_30 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_217_30, __var___Block_202_59) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_217_30, __var___Block_211_35) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_217_30, __var___Block_216_69) , NULL) ;
+static void  __fini___Closure_228_30(SuiView$__Closure_228_30 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_228_30, __var___Block_213_59) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_228_30, __var___Block_222_35) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_228_30, __var___Block_227_69) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_217_30*  __make___Closure_217_30(SuiView$__Closure_217_30 **  __outRef__, SuiView$__Block_202_59 *  __var___Block_202_59, SuiView$__Block_211_35 *  __var___Block_211_35, SuiView$__Block_216_69 *  __var___Block_216_69){
-	URGC_VAR_CLEANUP SuiView$__Closure_217_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_217_30) , __fini___Closure_217_30) ));
-	self->invoke = __fn___Closure_217_30;
+static SuiView$__Closure_228_30*  __make___Closure_228_30(SuiView$__Closure_228_30 **  __outRef__, SuiView$__Block_213_59 *  __var___Block_213_59, SuiView$__Block_222_35 *  __var___Block_222_35, SuiView$__Block_227_69 *  __var___Block_227_69){
+	URGC_VAR_CLEANUP SuiView$__Closure_228_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_228_30) , __fini___Closure_228_30) ));
+	self->invoke = __fn___Closure_228_30;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_217_30, __var___Block_202_59) , __var___Block_202_59) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_217_30, __var___Block_211_35) , __var___Block_211_35) ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_217_30, __var___Block_216_69) , __var___Block_216_69) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_228_30, __var___Block_213_59) , __var___Block_213_59) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_228_30, __var___Block_222_35) , __var___Block_222_35) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_228_30, __var___Block_227_69) , __var___Block_227_69) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

@@ -69,6 +69,25 @@ class HoroEditCtx {
             self.onSelectedChanged()
         }
     }
+    ANode@ findANodeByNode(Node* node){
+        ANode* root = self.getRoot()
+        if root && root.node {
+            // 场景视图所在节点
+            Node* scene = root.node.parent
+            //因为vnode可能不含子节点,所以向上找找
+            Node *n = node
+            while n && n != scene {
+                ANode@ found = root.findANodeByNode(n)
+                if found {
+                    return found
+                }
+                // if !found {
+                n = n.parent
+                // }
+            }
+        }
+        return null
+    }
 
     void onSelectedChanged(){
         //广播事件

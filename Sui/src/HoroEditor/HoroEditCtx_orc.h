@@ -142,6 +142,7 @@ struct tagHoroEditor$HoroEditCtx {
 	SuiCore$Node*  hoverNode ;
 	SuiDesigner$Prefab*  prefab ;
 	void  (*setState) (HoroEditor$HoroEditCtx *  self, SuiView$TreeState*  state);
+	SuiDesigner$ANode*  (*findANodeByNode) (SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditCtx *  self, SuiCore$Node *  node);
 	void  (*onSelectedChanged) (HoroEditor$HoroEditCtx *  self);
 	void  (*setSceneView) (HoroEditor$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
 	Sgl$Scene *  (*getScene) (HoroEditor$HoroEditCtx *  self);
@@ -156,6 +157,7 @@ HoroEditor$HoroEditCtx * HoroEditor$HoroEditCtx_new(void *pOwner);
 void HoroEditor$HoroEditCtx_fini(HoroEditor$HoroEditCtx *self);
 
 void  HoroEditor$HoroEditCtx$setState(HoroEditor$HoroEditCtx *  self, SuiView$TreeState*  state);
+SuiDesigner$ANode*  HoroEditor$HoroEditCtx$findANodeByNode(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditCtx *  self, SuiCore$Node *  node);
 void  HoroEditor$HoroEditCtx$onSelectedChanged(HoroEditor$HoroEditCtx *  self);
 void  HoroEditor$HoroEditCtx$setSceneView(HoroEditor$HoroEditCtx *  self, Sgl$SglSceneView *  sceneView);
 Sgl$Scene *  HoroEditor$HoroEditCtx$getScene(HoroEditor$HoroEditCtx *  self);

@@ -300,6 +300,7 @@ void HoroEditor$HoroEditCtx_initMeta(Vtable_HoroEditor$HoroEditCtx *pvt){
 	orc_metaField_class(&pNext, "prefab", ((Vtable_Object*)Vtable_SuiDesigner$Prefab_init(0)), offsetof(HoroEditor$HoroEditCtx, prefab), true, false, 1);
 
 	orc_metaField_method(&pNext, "setState", offsetof(HoroEditor$HoroEditCtx, setState));
+	orc_metaField_method(&pNext, "findANodeByNode", offsetof(HoroEditor$HoroEditCtx, findANodeByNode));
 	orc_metaField_method(&pNext, "onSelectedChanged", offsetof(HoroEditor$HoroEditCtx, onSelectedChanged));
 	orc_metaField_method(&pNext, "setSceneView", offsetof(HoroEditor$HoroEditCtx, setSceneView));
 	orc_metaField_method(&pNext, "getScene", offsetof(HoroEditor$HoroEditCtx, getScene));
@@ -366,6 +367,7 @@ void HoroEditor$HoroEditCtx_init_fields(HoroEditor$HoroEditCtx *self){
 	urgc_set_field_class(self, (void**)&((HoroEditor$HoroEditCtx*)self)->prefab, NULL);
     }
 	((HoroEditor$HoroEditCtx*)self)->setState = (void*)HoroEditor$HoroEditCtx$setState;
+	((HoroEditor$HoroEditCtx*)self)->findANodeByNode = (void*)HoroEditor$HoroEditCtx$findANodeByNode;
 	((HoroEditor$HoroEditCtx*)self)->onSelectedChanged = (void*)HoroEditor$HoroEditCtx$onSelectedChanged;
 	((HoroEditor$HoroEditCtx*)self)->setSceneView = (void*)HoroEditor$HoroEditCtx$setSceneView;
 	((HoroEditor$HoroEditCtx*)self)->getScene = (void*)HoroEditor$HoroEditCtx$getScene;
@@ -416,6 +418,24 @@ void  HoroEditor$HoroEditCtx$setState(HoroEditor$HoroEditCtx *  self, SuiView$Tr
 	urgc_set_field_class(self, (void * )offsetof(HoroEditor$HoroEditCtx, state) , state) ;
 	URGC_VAR_CLEANUP HoroEditor$__Closure_68_36*  tmpReturn_1 = NULL;
 	urgc_set_field(state, (void * )offsetof(SuiView$TreeState, cbSelectedIdChanged) , __make___Closure_68_36(&tmpReturn_1, __var___Block_66_35) ) ;
+}
+
+
+SuiDesigner$ANode*  HoroEditor$HoroEditCtx$findANodeByNode(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditCtx *  self, SuiCore$Node *  node){
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$ANode*  tmpReturn_1 = NULL;
+	SuiDesigner$ANode *  root = self->getRoot(&tmpReturn_1, self) ;
+	if (root && root->node) {
+		SuiCore$Node *  scene = root->node->parent;
+		SuiCore$Node *  n = node;
+		while (n && n != scene) {
+			URGC_VAR_CLEANUP_CLASS SuiDesigner$ANode*  found = root->findANodeByNode((found = NULL,&found), root, n) ;
+			if (found) {
+				return urgc_set_var_for_return_class((void ** )__outRef__, found) ; 
+			}
+			n = n->parent;
+		}
+	}
+	return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
 }
 
 

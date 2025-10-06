@@ -309,8 +309,12 @@ class HoroSceneHierView extends LayoutLinear {
                     // printf("tag:%s, id:%s\n", s.tag.str, id.str)
                     return id;
                 }
+                o.state.getParent = ^Object* (Object* item){
+                    ANode* s = (ANode*)item
+                    return s.parent
+                }
                 o.state.getItemChildren = ^List@ (Object *item){
-                    ANode@ s = (ANode@)item
+                    ANode* s = (ANode*)item
                     return s.children
                 }
                 o.alignItems.set("maxOrStretch")

@@ -71,6 +71,7 @@ struct tagSuiView$TreeState {
 	Orc$String*  (**getId)(Orc$String **  __outRef__, void *  self, Object *  item);
 	Orc$List*  (**getItemChildren)(Orc$List **  __outRef__, void *  self, Object *  item);
 	void  (**cbSelectedIdChanged)(void *  self, SuiView$TreeState *  state);
+	Object *  (**getParent)(void *  self, Object *  item);
 	Orc$List*  selectedIds ;
 	Orc$List*  opendIds ;
 	Object *  (*getById) (SuiView$TreeState *  self, Orc$String*  id);
@@ -82,6 +83,7 @@ struct tagSuiView$TreeState {
 	bool  (*isOpend) (SuiView$TreeState *  self, Object *  item);
 	void  (*setSelectedWithShiftAndCtrl) (SuiView$TreeState *  self, Object *  item, bool  shift, bool  ctrl);
 	void  (*fire_cbSelectedIdChanged) (SuiView$TreeState *  self);
+	void  (*setAncestorsOpen) (SuiView$TreeState *  self, Object *  item);
 	void  (*setSelected) (SuiView$TreeState *  self, Object *  item);
 	void  (*setOpen) (SuiView$TreeState *  self, Object *  item, bool  open);
 };
@@ -100,6 +102,7 @@ bool  SuiView$TreeState$isSelected(SuiView$TreeState *  self, Object *  item);
 bool  SuiView$TreeState$isOpend(SuiView$TreeState *  self, Object *  item);
 void  SuiView$TreeState$setSelectedWithShiftAndCtrl(SuiView$TreeState *  self, Object *  item, bool  shift, bool  ctrl);
 void  SuiView$TreeState$fire_cbSelectedIdChanged(SuiView$TreeState *  self);
+void  SuiView$TreeState$setAncestorsOpen(SuiView$TreeState *  self, Object *  item);
 void  SuiView$TreeState$setSelected(SuiView$TreeState *  self, Object *  item);
 void  SuiView$TreeState$setOpen(SuiView$TreeState *  self, Object *  item, bool  open);
 

@@ -158,16 +158,18 @@ class Horo2dSceneView extends View {
     void onLeftClickInCapture(MouseEvent *me){
         //点选元素
         // MessageDialog_alert("left click ", "tip")
-        if self.rootNode && self.rootNode instanceof ViewBase {
-            ViewBase* rootView = (ViewBase*)self.rootNode
+        if self.root && self.root.node instanceof ViewBase {
+            ViewBase* rootView = (ViewBase*)self.root.node
             ViewBase* found = rootView.hitTestChildren(me.clientX, me.clientY);
             if found {
-                // ANode@ vnode = EditCtx_ins().findANodeByNode(found)
+                
+                ANode@ vnode = self.editor.editCtx.findANodeByNode(found)
                 // printf("findANode:%p, %p\n", vnode, found)
-                // if vnode {
-                //     me.stopPropagation()
-                //     EditCtx_ins().state.setSelected(vnode)
-                // }
+                if vnode {
+                    me.stopPropagation()
+                    self.editor.editCtx.state.setAncestorsOpen(vnode)
+                    self.editor.editCtx.state.setSelected(vnode)
+                }
 
                 // MessageDialog_alert("hit", "tip")
             }

@@ -61,25 +61,25 @@
 // static struct 
 typedef struct tagHoroEditor$__Block_86_15 HoroEditor$__Block_86_15;
 
-typedef struct tagHoroEditor$__Block_200_37 HoroEditor$__Block_200_37;
+typedef struct tagHoroEditor$__Block_202_37 HoroEditor$__Block_202_37;
 
-typedef struct tagHoroEditor$__Block_285_29 HoroEditor$__Block_285_29;
+typedef struct tagHoroEditor$__Block_287_29 HoroEditor$__Block_287_29;
 
-typedef struct tagHoroEditor$__Block_312_23 HoroEditor$__Block_312_23;
+typedef struct tagHoroEditor$__Block_314_23 HoroEditor$__Block_314_23;
 
-typedef struct tagHoroEditor$__Block_318_58 HoroEditor$__Block_318_58;
+typedef struct tagHoroEditor$__Block_320_58 HoroEditor$__Block_320_58;
 
 typedef struct tagHoroEditor$__Closure_89_27 HoroEditor$__Closure_89_27;
 
-typedef struct tagHoroEditor$__Closure_onActive_203 HoroEditor$__Closure_onActive_203;
+typedef struct tagHoroEditor$__Closure_onActive_205 HoroEditor$__Closure_onActive_205;
 
-typedef struct tagHoroEditor$__Closure_264_26 HoroEditor$__Closure_264_26;
+typedef struct tagHoroEditor$__Closure_266_26 HoroEditor$__Closure_266_26;
 
-typedef struct tagHoroEditor$__Closure_292_30 HoroEditor$__Closure_292_30;
+typedef struct tagHoroEditor$__Closure_294_30 HoroEditor$__Closure_294_30;
 
-typedef struct tagHoroEditor$__Closure_306_32 HoroEditor$__Closure_306_32;
+typedef struct tagHoroEditor$__Closure_308_32 HoroEditor$__Closure_308_32;
 
-typedef struct tagHoroEditor$__Closure_329_38 HoroEditor$__Closure_329_38;
+typedef struct tagHoroEditor$__Closure_331_38 HoroEditor$__Closure_331_38;
 
 
 
@@ -91,7 +91,7 @@ struct tagHoroEditor$__Block_86_15 {
 
 
 
-struct tagHoroEditor$__Block_200_37 {
+struct tagHoroEditor$__Block_202_37 {
 	HoroEditor$Horo2dSceneView*  self ;
 };
 
@@ -99,7 +99,7 @@ struct tagHoroEditor$__Block_200_37 {
 
 
 
-struct tagHoroEditor$__Block_285_29 {
+struct tagHoroEditor$__Block_287_29 {
 	HoroEditor$Horo2dSceneView*  self ;
 };
 
@@ -107,7 +107,7 @@ struct tagHoroEditor$__Block_285_29 {
 
 
 
-struct tagHoroEditor$__Block_312_23 {
+struct tagHoroEditor$__Block_314_23 {
 	SuiDesigner$ANode *  sel ;
 };
 
@@ -115,7 +115,7 @@ struct tagHoroEditor$__Block_312_23 {
 
 
 
-struct tagHoroEditor$__Block_318_58 {
+struct tagHoroEditor$__Block_320_58 {
 	SuiCore$View *  selView ;
 };
 
@@ -133,37 +133,18 @@ struct tagHoroEditor$__Closure_89_27 {
 
 
 
-struct tagHoroEditor$__Closure_onActive_203 {
-	void  (*invoke)(HoroEditor$__Closure_onActive_203 *  self, SuiView$MenuNativeItem *  item);
+struct tagHoroEditor$__Closure_onActive_205 {
+	void  (*invoke)(HoroEditor$__Closure_onActive_205 *  self, SuiView$MenuNativeItem *  item);
 	Vtable_Object *  vtable ;
-	HoroEditor$__Block_200_37*  __var___Block_200_37 ;
+	HoroEditor$__Block_202_37*  __var___Block_202_37 ;
 };
 
 
 
 
 
-struct tagHoroEditor$__Closure_264_26 {
-	void  (*invoke)(HoroEditor$__Closure_264_26 *  self, SuiCore$Event *  e);
-	Vtable_Object *  vtable ;
-};
-
-
-
-
-
-struct tagHoroEditor$__Closure_292_30 {
-	bool  (*invoke)(HoroEditor$__Closure_292_30 *  self);
-	Vtable_Object *  vtable ;
-	HoroEditor$__Block_285_29*  __var___Block_285_29 ;
-};
-
-
-
-
-
-struct tagHoroEditor$__Closure_306_32 {
-	void  (*invoke)(HoroEditor$__Closure_306_32 *  self, SuiView$Drag *  d);
+struct tagHoroEditor$__Closure_266_26 {
+	void  (*invoke)(HoroEditor$__Closure_266_26 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
 };
 
@@ -171,11 +152,30 @@ struct tagHoroEditor$__Closure_306_32 {
 
 
 
-struct tagHoroEditor$__Closure_329_38 {
-	void  (*invoke)(HoroEditor$__Closure_329_38 *  self, SuiCore$Rect newr);
+struct tagHoroEditor$__Closure_294_30 {
+	bool  (*invoke)(HoroEditor$__Closure_294_30 *  self);
 	Vtable_Object *  vtable ;
-	HoroEditor$__Block_312_23*  __var___Block_312_23 ;
-	HoroEditor$__Block_318_58*  __var___Block_318_58 ;
+	HoroEditor$__Block_287_29*  __var___Block_287_29 ;
+};
+
+
+
+
+
+struct tagHoroEditor$__Closure_308_32 {
+	void  (*invoke)(HoroEditor$__Closure_308_32 *  self, SuiView$Drag *  d);
+	Vtable_Object *  vtable ;
+};
+
+
+
+
+
+struct tagHoroEditor$__Closure_331_38 {
+	void  (*invoke)(HoroEditor$__Closure_331_38 *  self, SuiCore$Rect newr);
+	Vtable_Object *  vtable ;
+	HoroEditor$__Block_314_23*  __var___Block_314_23 ;
+	HoroEditor$__Block_320_58*  __var___Block_320_58 ;
 };
 
 
@@ -184,28 +184,28 @@ struct tagHoroEditor$__Closure_329_38 {
 
 // static function declaration
 static void  __finiBlock___Block_86_15(HoroEditor$__Block_86_15 *  self);
-static void  __finiBlock___Block_200_37(HoroEditor$__Block_200_37 *  self);
-static void  __finiBlock___Block_285_29(HoroEditor$__Block_285_29 *  self);
-static void  __finiBlock___Block_312_23(HoroEditor$__Block_312_23 *  self);
-static void  __finiBlock___Block_318_58(HoroEditor$__Block_318_58 *  self);
+static void  __finiBlock___Block_202_37(HoroEditor$__Block_202_37 *  self);
+static void  __finiBlock___Block_287_29(HoroEditor$__Block_287_29 *  self);
+static void  __finiBlock___Block_314_23(HoroEditor$__Block_314_23 *  self);
+static void  __finiBlock___Block_320_58(HoroEditor$__Block_320_58 *  self);
 static void  __fn___Closure_89_27(HoroEditor$__Closure_89_27 *  self, SuiView$Drag *  d);
 static void  __fini___Closure_89_27(HoroEditor$__Closure_89_27 *  self);
 static HoroEditor$__Closure_89_27*  __make___Closure_89_27(HoroEditor$__Closure_89_27 **  __outRef__, HoroEditor$__Block_86_15 *  __var___Block_86_15);
-static void  __fn___Closure_onActive_203(HoroEditor$__Closure_onActive_203 *  self, SuiView$MenuNativeItem *  item);
-static void  __fini___Closure_onActive_203(HoroEditor$__Closure_onActive_203 *  self);
-static HoroEditor$__Closure_onActive_203*  __make___Closure_onActive_203(HoroEditor$__Closure_onActive_203 **  __outRef__, HoroEditor$__Block_200_37 *  __var___Block_200_37);
-static void  __fn___Closure_264_26(HoroEditor$__Closure_264_26 *  self, SuiCore$Event *  e);
-static void  __fini___Closure_264_26(HoroEditor$__Closure_264_26 *  self);
-static HoroEditor$__Closure_264_26*  __make___Closure_264_26(HoroEditor$__Closure_264_26 **  __outRef__);
-static bool  __fn___Closure_292_30(HoroEditor$__Closure_292_30 *  self);
-static void  __fini___Closure_292_30(HoroEditor$__Closure_292_30 *  self);
-static HoroEditor$__Closure_292_30*  __make___Closure_292_30(HoroEditor$__Closure_292_30 **  __outRef__, HoroEditor$__Block_285_29 *  __var___Block_285_29);
-static void  __fn___Closure_306_32(HoroEditor$__Closure_306_32 *  self, SuiView$Drag *  d);
-static void  __fini___Closure_306_32(HoroEditor$__Closure_306_32 *  self);
-static HoroEditor$__Closure_306_32*  __make___Closure_306_32(HoroEditor$__Closure_306_32 **  __outRef__);
-static void  __fn___Closure_329_38(HoroEditor$__Closure_329_38 *  self, SuiCore$Rect newr);
-static void  __fini___Closure_329_38(HoroEditor$__Closure_329_38 *  self);
-static HoroEditor$__Closure_329_38*  __make___Closure_329_38(HoroEditor$__Closure_329_38 **  __outRef__, HoroEditor$__Block_312_23 *  __var___Block_312_23, HoroEditor$__Block_318_58 *  __var___Block_318_58);
+static void  __fn___Closure_onActive_205(HoroEditor$__Closure_onActive_205 *  self, SuiView$MenuNativeItem *  item);
+static void  __fini___Closure_onActive_205(HoroEditor$__Closure_onActive_205 *  self);
+static HoroEditor$__Closure_onActive_205*  __make___Closure_onActive_205(HoroEditor$__Closure_onActive_205 **  __outRef__, HoroEditor$__Block_202_37 *  __var___Block_202_37);
+static void  __fn___Closure_266_26(HoroEditor$__Closure_266_26 *  self, SuiCore$Event *  e);
+static void  __fini___Closure_266_26(HoroEditor$__Closure_266_26 *  self);
+static HoroEditor$__Closure_266_26*  __make___Closure_266_26(HoroEditor$__Closure_266_26 **  __outRef__);
+static bool  __fn___Closure_294_30(HoroEditor$__Closure_294_30 *  self);
+static void  __fini___Closure_294_30(HoroEditor$__Closure_294_30 *  self);
+static HoroEditor$__Closure_294_30*  __make___Closure_294_30(HoroEditor$__Closure_294_30 **  __outRef__, HoroEditor$__Block_287_29 *  __var___Block_287_29);
+static void  __fn___Closure_308_32(HoroEditor$__Closure_308_32 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_308_32(HoroEditor$__Closure_308_32 *  self);
+static HoroEditor$__Closure_308_32*  __make___Closure_308_32(HoroEditor$__Closure_308_32 **  __outRef__);
+static void  __fn___Closure_331_38(HoroEditor$__Closure_331_38 *  self, SuiCore$Rect newr);
+static void  __fini___Closure_331_38(HoroEditor$__Closure_331_38 *  self);
+static HoroEditor$__Closure_331_38*  __make___Closure_331_38(HoroEditor$__Closure_331_38 **  __outRef__, HoroEditor$__Block_314_23 *  __var___Block_314_23, HoroEditor$__Block_320_58 *  __var___Block_320_58);
 
 
 
@@ -427,11 +427,16 @@ void  HoroEditor$Horo2dSceneView$onEvent(HoroEditor$Horo2dSceneView *  self, Sui
 
 
 void  HoroEditor$Horo2dSceneView$onLeftClickInCapture(HoroEditor$Horo2dSceneView *  self, SuiCore$MouseEvent *  me){
-	if (self->rootNode && Orc_instanceof((Object*)self->rootNode, (Vtable_Object*)Vtable_SuiCore$ViewBase_init(NULL))) {
-		SuiCore$ViewBase *  rootView = (SuiCore$ViewBase * )self->rootNode;
+	if (self->root && Orc_instanceof((Object*)self->root->node, (Vtable_Object*)Vtable_SuiCore$ViewBase_init(NULL))) {
+		SuiCore$ViewBase *  rootView = (SuiCore$ViewBase * )self->root->node;
 		SuiCore$ViewBase *  found = rootView->hitTestChildren(rootView, me->clientX, me->clientY) ;
 		if (found) {
-			
+			URGC_VAR_CLEANUP_CLASS SuiDesigner$ANode*  vnode = self->editor->editCtx->findANodeByNode((vnode = NULL,&vnode), self->editor->editCtx, found) ;
+			if (vnode) {
+				((SuiCore$Event * )me)->stopPropagation(me) ;
+				self->editor->editCtx->state->setAncestorsOpen(self->editor->editCtx->state, vnode) ;
+				self->editor->editCtx->state->setSelected(self->editor->editCtx->state, vnode) ;
+			}
 		}
 		else {
 			SuiCore$Vec2 viewPos = ((SuiCore$ViewBase * )self)->worldToLocal(self, me->clientX, me->clientY) ;
@@ -457,8 +462,8 @@ void  HoroEditor$Horo2dSceneView$_routeRightMenu(HoroEditor$Horo2dSceneView *  s
 
 
 void  HoroEditor$Horo2dSceneView$onRightClick(HoroEditor$Horo2dSceneView *  self, SuiCore$MouseEvent *  me){
-	URGC_VAR_CLEANUP HoroEditor$__Block_200_37*  __var___Block_200_37 = (__var___Block_200_37=NULL,urgc_init_var((void**)&__var___Block_200_37, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_200_37) , __finiBlock___Block_200_37) ));
-	urgc_set_field_class(__var___Block_200_37, (void * )offsetof(HoroEditor$__Block_200_37, self) , self) ;
+	URGC_VAR_CLEANUP HoroEditor$__Block_202_37*  __var___Block_202_37 = (__var___Block_202_37=NULL,urgc_init_var((void**)&__var___Block_202_37, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_202_37) , __finiBlock___Block_202_37) ));
+	urgc_set_field_class(__var___Block_202_37, (void * )offsetof(HoroEditor$__Block_202_37, self) , self) ;
 	printf("on right click scene\n") ;
 	URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_1 = NULL;
 	{
@@ -466,12 +471,12 @@ void  HoroEditor$Horo2dSceneView$onRightClick(HoroEditor$Horo2dSceneView *  self
 		
 	
 		URGC_VAR_CLEANUP void  (**onActive)(void *  self, SuiView$MenuNativeItem *  item) = NULL;
-		URGC_VAR_CLEANUP HoroEditor$__Closure_onActive_203*  tmpReturn_2 = NULL;
-		(urgc_set_var(&onActive, __make___Closure_onActive_203(&tmpReturn_2, __var___Block_200_37) ) );
+		URGC_VAR_CLEANUP HoroEditor$__Closure_onActive_205*  tmpReturn_2 = NULL;
+		(urgc_set_var(&onActive, __make___Closure_onActive_205(&tmpReturn_2, __var___Block_202_37) ) );
 		URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_3 = NULL;
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 		{
-			SuiView$MenuNativeItem*  __scopeVar_212_12 = SuiView$mkMenuNativeItem(&tmpReturn_3, o, Orc$str(&tmpReturn_4, "重置场景坐标") , onActive) , *o = __scopeVar_212_12;
+			SuiView$MenuNativeItem*  __scopeVar_214_12 = SuiView$mkMenuNativeItem(&tmpReturn_3, o, Orc$str(&tmpReturn_4, "重置场景坐标") , onActive) , *o = __scopeVar_214_12;
 			
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_5 = NULL;
@@ -480,7 +485,7 @@ void  HoroEditor$Horo2dSceneView$onRightClick(HoroEditor$Horo2dSceneView *  self
 		URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_6 = NULL;
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
 		{
-			SuiView$MenuNativeItem*  __scopeVar_213_12 = SuiView$mkMenuNativeItem(&tmpReturn_6, o, Orc$str(&tmpReturn_7, "hi") , onActive) , *o = __scopeVar_213_12;
+			SuiView$MenuNativeItem*  __scopeVar_215_12 = SuiView$mkMenuNativeItem(&tmpReturn_6, o, Orc$str(&tmpReturn_7, "hi") , onActive) , *o = __scopeVar_215_12;
 			
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
@@ -510,14 +515,14 @@ void  HoroEditor$Horo2dSceneView$react(HoroEditor$Horo2dSceneView *  self){
 	}
 	URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmpReturn_1 = NULL;
 	{
-		SuiCore$View*  __scopeVar_259_8 = SuiView$mkView(&tmpReturn_1, o, 0) , *o = __scopeVar_259_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_259_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiCore$View*  __scopeVar_261_8 = SuiView$mkView(&tmpReturn_1, o, 0) , *o = __scopeVar_261_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_261_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		urgc_set_field_class(self, (void * )offsetof(HoroEditor$Horo2dSceneView, gizmoRoot) , o) ;
 		Orc$String$set(((SuiCore$ViewBase * )o)->hitTestType, "onlychildren") ;
 		o->backgroundColor = 0x0000ff00;
-		URGC_VAR_CLEANUP HoroEditor$__Closure_264_26*  tmpReturn_2 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_264_26(&tmpReturn_2) ) ;
+		URGC_VAR_CLEANUP HoroEditor$__Closure_266_26*  tmpReturn_2 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_266_26(&tmpReturn_2) ) ;
 	}
 	self->reactGizmos(self) ;
 	((SuiCore$View * )self)->backgroundColor = 0xcc000000;
@@ -526,14 +531,14 @@ void  HoroEditor$Horo2dSceneView$react(HoroEditor$Horo2dSceneView *  self){
 
 
 void  HoroEditor$Horo2dSceneView$triggerReactGizmos(HoroEditor$Horo2dSceneView *  self){
-	URGC_VAR_CLEANUP HoroEditor$__Block_285_29*  __var___Block_285_29 = (__var___Block_285_29=NULL,urgc_init_var((void**)&__var___Block_285_29, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_285_29) , __finiBlock___Block_285_29) ));
-	urgc_set_field_class(__var___Block_285_29, (void * )offsetof(HoroEditor$__Block_285_29, self) , self) ;
+	URGC_VAR_CLEANUP HoroEditor$__Block_287_29*  __var___Block_287_29 = (__var___Block_287_29=NULL,urgc_init_var((void**)&__var___Block_287_29, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_287_29) , __finiBlock___Block_287_29) ));
+	urgc_set_field_class(__var___Block_287_29, (void * )offsetof(HoroEditor$__Block_287_29, self) , self) ;
 	if (self->_reactGizmosDirty) {
 		return ; 
 	}
 	self->_reactGizmosDirty = true;
-	URGC_VAR_CLEANUP HoroEditor$__Closure_292_30*  tmpReturn_1 = NULL;
-	SuiCore$requestAnimationFrame(__make___Closure_292_30(&tmpReturn_1, __var___Block_285_29) ) ;
+	URGC_VAR_CLEANUP HoroEditor$__Closure_294_30*  tmpReturn_1 = NULL;
+	SuiCore$requestAnimationFrame(__make___Closure_294_30(&tmpReturn_1, __var___Block_287_29) ) ;
 }
 
 
@@ -542,29 +547,29 @@ void  HoroEditor$Horo2dSceneView$reactGizmos(HoroEditor$Horo2dSceneView *  self)
 		return ; 
 	}
 	SuiDesigner$ANode *  sel = self->editor->editCtx->state->getFirstSelected(self->editor->editCtx->state) ;
-	URGC_VAR_CLEANUP HoroEditor$__Closure_306_32*  tmpReturn_1 = NULL;
-	urgc_set_field(self->gizmoDrag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_306_32(&tmpReturn_1) ) ;
+	URGC_VAR_CLEANUP HoroEditor$__Closure_308_32*  tmpReturn_1 = NULL;
+	urgc_set_field(self->gizmoDrag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_308_32(&tmpReturn_1) ) ;
 	{
 		SuiCore$Node*  o = self->gizmoRoot;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_312_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_314_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
-		URGC_VAR_CLEANUP HoroEditor$__Block_312_23*  __var___Block_312_23 = (__var___Block_312_23=NULL,urgc_init_var((void**)&__var___Block_312_23, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_312_23) , __finiBlock___Block_312_23) ));
-		__var___Block_312_23->sel = self->editor->editCtx->state->getFirstSelected(self->editor->editCtx->state) ;
-		if (__var___Block_312_23->sel && __var___Block_312_23->sel->node && Orc_instanceof((Object*)__var___Block_312_23->sel->node, (Vtable_Object*)Vtable_SuiCore$View_init(NULL))) {
-			URGC_VAR_CLEANUP HoroEditor$__Block_318_58*  __var___Block_318_58 = (__var___Block_318_58=NULL,urgc_init_var((void**)&__var___Block_318_58, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_318_58) , __finiBlock___Block_318_58) ));
-			__var___Block_318_58->selView = (SuiCore$View * )__var___Block_312_23->sel->node;
-			SuiCore$Frame *  f = &((SuiCore$ViewBase * )__var___Block_318_58->selView)->frame;
+		URGC_VAR_CLEANUP HoroEditor$__Block_314_23*  __var___Block_314_23 = (__var___Block_314_23=NULL,urgc_init_var((void**)&__var___Block_314_23, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_314_23) , __finiBlock___Block_314_23) ));
+		__var___Block_314_23->sel = self->editor->editCtx->state->getFirstSelected(self->editor->editCtx->state) ;
+		if (__var___Block_314_23->sel && __var___Block_314_23->sel->node && Orc_instanceof((Object*)__var___Block_314_23->sel->node, (Vtable_Object*)Vtable_SuiCore$View_init(NULL))) {
+			URGC_VAR_CLEANUP HoroEditor$__Block_320_58*  __var___Block_320_58 = (__var___Block_320_58=NULL,urgc_init_var((void**)&__var___Block_320_58, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_320_58) , __finiBlock___Block_320_58) ));
+			__var___Block_320_58->selView = (SuiCore$View * )__var___Block_314_23->sel->node;
+			SuiCore$Frame *  f = &((SuiCore$ViewBase * )__var___Block_320_58->selView)->frame;
 			SuiCore$Mat2d invMat = SuiCore$Mat2d$inverseNew(&self->_sceneWorldMat) ;
 			URGC_VAR_CLEANUP_CLASS SuiDesigner$GizmoRectView*  tmpReturn_2 = NULL;
 			{
-				SuiDesigner$GizmoRectView*  __scopeVar_325_16 = SuiDesigner$mkGizmoRectView(&tmpReturn_2, o, 0) , *o = __scopeVar_325_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_325_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiDesigner$GizmoRectView*  __scopeVar_327_16 = SuiDesigner$mkGizmoRectView(&tmpReturn_2, o, 0) , *o = __scopeVar_327_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_327_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
-				SuiCore$Vec3 lt = SuiCore$Mat2d$localToLocal(&((SuiCore$ViewBase * )__var___Block_318_58->selView)->_world_transform, &invMat, 0, 0, 0) ;
-				SuiCore$Vec3 rb = SuiCore$Mat2d$localToLocal(&((SuiCore$ViewBase * )__var___Block_318_58->selView)->_world_transform, &invMat, f->width, f->height, 0) ;
+				SuiCore$Vec3 lt = SuiCore$Mat2d$localToLocal(&((SuiCore$ViewBase * )__var___Block_320_58->selView)->_world_transform, &invMat, 0, 0, 0) ;
+				SuiCore$Vec3 rb = SuiCore$Mat2d$localToLocal(&((SuiCore$ViewBase * )__var___Block_320_58->selView)->_world_transform, &invMat, f->width, f->height, 0) ;
 				SuiCore$Rect$set_ltrb(&o->targetRect, lt.x, lt.y, rb.x, rb.y) ;
-				URGC_VAR_CLEANUP HoroEditor$__Closure_329_38*  tmpReturn_3 = NULL;
-				urgc_set_field(o, (void * )offsetof(SuiDesigner$GizmoRectView, onRectChanged) , __make___Closure_329_38(&tmpReturn_3, __var___Block_312_23, __var___Block_318_58) ) ;
+				URGC_VAR_CLEANUP HoroEditor$__Closure_331_38*  tmpReturn_3 = NULL;
+				urgc_set_field(o, (void * )offsetof(SuiDesigner$GizmoRectView, onRectChanged) , __make___Closure_331_38(&tmpReturn_3, __var___Block_314_23, __var___Block_320_58) ) ;
 			}
 		}
 	}
@@ -633,21 +638,21 @@ static void  __finiBlock___Block_86_15(HoroEditor$__Block_86_15 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_200_37(HoroEditor$__Block_200_37 *  self){
-	urgc_set_field_class(self, (void * )offsetof(HoroEditor$__Block_200_37, self) , NULL) ;
+static void  __finiBlock___Block_202_37(HoroEditor$__Block_202_37 *  self){
+	urgc_set_field_class(self, (void * )offsetof(HoroEditor$__Block_202_37, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_285_29(HoroEditor$__Block_285_29 *  self){
-	urgc_set_field_class(self, (void * )offsetof(HoroEditor$__Block_285_29, self) , NULL) ;
+static void  __finiBlock___Block_287_29(HoroEditor$__Block_287_29 *  self){
+	urgc_set_field_class(self, (void * )offsetof(HoroEditor$__Block_287_29, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_312_23(HoroEditor$__Block_312_23 *  self){
+static void  __finiBlock___Block_314_23(HoroEditor$__Block_314_23 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_318_58(HoroEditor$__Block_318_58 *  self){
+static void  __finiBlock___Block_320_58(HoroEditor$__Block_320_58 *  self){
 	return urgc_free_later(self) ; 
 }
 
@@ -669,25 +674,25 @@ static HoroEditor$__Closure_89_27*  __make___Closure_89_27(HoroEditor$__Closure_
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_onActive_203(HoroEditor$__Closure_onActive_203 *  self, SuiView$MenuNativeItem *  item){
+static void  __fn___Closure_onActive_205(HoroEditor$__Closure_onActive_205 *  self, SuiView$MenuNativeItem *  item){
 	printf("\n\n========================================onActive menu on AssetDirView cmd:%s item:%s\n", item->cmd->str, item->label->str) ;
-	self->__var___Block_200_37->self->_routeRightMenu(self->__var___Block_200_37->self, item) ;
+	self->__var___Block_202_37->self->_routeRightMenu(self->__var___Block_202_37->self, item) ;
 }
 
-static void  __fini___Closure_onActive_203(HoroEditor$__Closure_onActive_203 *  self){
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_onActive_203, __var___Block_200_37) , NULL) ;
+static void  __fini___Closure_onActive_205(HoroEditor$__Closure_onActive_205 *  self){
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_onActive_205, __var___Block_202_37) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static HoroEditor$__Closure_onActive_203*  __make___Closure_onActive_203(HoroEditor$__Closure_onActive_203 **  __outRef__, HoroEditor$__Block_200_37 *  __var___Block_200_37){
-	URGC_VAR_CLEANUP HoroEditor$__Closure_onActive_203*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_onActive_203) , __fini___Closure_onActive_203) ));
-	self->invoke = __fn___Closure_onActive_203;
+static HoroEditor$__Closure_onActive_205*  __make___Closure_onActive_205(HoroEditor$__Closure_onActive_205 **  __outRef__, HoroEditor$__Block_202_37 *  __var___Block_202_37){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_onActive_205*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_onActive_205) , __fini___Closure_onActive_205) ));
+	self->invoke = __fn___Closure_onActive_205;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_onActive_203, __var___Block_200_37) , __var___Block_200_37) ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_onActive_205, __var___Block_202_37) , __var___Block_202_37) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_264_26(HoroEditor$__Closure_264_26 *  self, SuiCore$Event *  e){
+static void  __fn___Closure_266_26(HoroEditor$__Closure_266_26 *  self, SuiCore$Event *  e){
 	if (Orc_instanceof((Object*)e, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
 		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
 		if (me->isClickInBubble(me) ) {
@@ -696,83 +701,83 @@ static void  __fn___Closure_264_26(HoroEditor$__Closure_264_26 *  self, SuiCore$
 	}
 }
 
-static void  __fini___Closure_264_26(HoroEditor$__Closure_264_26 *  self){
+static void  __fini___Closure_266_26(HoroEditor$__Closure_266_26 *  self){
 	urgc_free_later(self) ;
 }
 
-static HoroEditor$__Closure_264_26*  __make___Closure_264_26(HoroEditor$__Closure_264_26 **  __outRef__){
-	URGC_VAR_CLEANUP HoroEditor$__Closure_264_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_264_26) , __fini___Closure_264_26) ));
-	self->invoke = __fn___Closure_264_26;
+static HoroEditor$__Closure_266_26*  __make___Closure_266_26(HoroEditor$__Closure_266_26 **  __outRef__){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_266_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_266_26) , __fini___Closure_266_26) ));
+	self->invoke = __fn___Closure_266_26;
 	self->vtable = orc_Vtable_Closure_init() ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static bool  __fn___Closure_292_30(HoroEditor$__Closure_292_30 *  self){
-	self->__var___Block_285_29->self->_reactGizmosDirty = false;
-	self->__var___Block_285_29->self->reactGizmos(self->__var___Block_285_29->self) ;
+static bool  __fn___Closure_294_30(HoroEditor$__Closure_294_30 *  self){
+	self->__var___Block_287_29->self->_reactGizmosDirty = false;
+	self->__var___Block_287_29->self->reactGizmos(self->__var___Block_287_29->self) ;
 	return true; 
 }
 
-static void  __fini___Closure_292_30(HoroEditor$__Closure_292_30 *  self){
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_292_30, __var___Block_285_29) , NULL) ;
+static void  __fini___Closure_294_30(HoroEditor$__Closure_294_30 *  self){
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_294_30, __var___Block_287_29) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static HoroEditor$__Closure_292_30*  __make___Closure_292_30(HoroEditor$__Closure_292_30 **  __outRef__, HoroEditor$__Block_285_29 *  __var___Block_285_29){
-	URGC_VAR_CLEANUP HoroEditor$__Closure_292_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_292_30) , __fini___Closure_292_30) ));
-	self->invoke = __fn___Closure_292_30;
+static HoroEditor$__Closure_294_30*  __make___Closure_294_30(HoroEditor$__Closure_294_30 **  __outRef__, HoroEditor$__Block_287_29 *  __var___Block_287_29){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_294_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_294_30) , __fini___Closure_294_30) ));
+	self->invoke = __fn___Closure_294_30;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_292_30, __var___Block_285_29) , __var___Block_285_29) ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_294_30, __var___Block_287_29) , __var___Block_287_29) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_306_32(HoroEditor$__Closure_306_32 *  self, SuiView$Drag *  d){
+static void  __fn___Closure_308_32(HoroEditor$__Closure_308_32 *  self, SuiView$Drag *  d){
 	
 }
 
-static void  __fini___Closure_306_32(HoroEditor$__Closure_306_32 *  self){
+static void  __fini___Closure_308_32(HoroEditor$__Closure_308_32 *  self){
 	urgc_free_later(self) ;
 }
 
-static HoroEditor$__Closure_306_32*  __make___Closure_306_32(HoroEditor$__Closure_306_32 **  __outRef__){
-	URGC_VAR_CLEANUP HoroEditor$__Closure_306_32*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_306_32) , __fini___Closure_306_32) ));
-	self->invoke = __fn___Closure_306_32;
+static HoroEditor$__Closure_308_32*  __make___Closure_308_32(HoroEditor$__Closure_308_32 **  __outRef__){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_308_32*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_308_32) , __fini___Closure_308_32) ));
+	self->invoke = __fn___Closure_308_32;
 	self->vtable = orc_Vtable_Closure_init() ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_329_38(HoroEditor$__Closure_329_38 *  self, SuiCore$Rect newr){
+static void  __fn___Closure_331_38(HoroEditor$__Closure_331_38 *  self, SuiCore$Rect newr){
 	URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_1 = NULL;
-	self->__var___Block_312_23->sel->setAttr(self->__var___Block_312_23->sel, "width", Json$Json_mkNumber(&tmpReturn_1, newr.w) ) ;
+	self->__var___Block_314_23->sel->setAttr(self->__var___Block_314_23->sel, "width", Json$Json_mkNumber(&tmpReturn_1, newr.w) ) ;
 	URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_2 = NULL;
-	self->__var___Block_312_23->sel->setAttr(self->__var___Block_312_23->sel, "height", Json$Json_mkNumber(&tmpReturn_2, newr.h) ) ;
-	self->__var___Block_318_58->selView->width = newr.w;
-	self->__var___Block_318_58->selView->height = newr.h;
-	((SuiCore$ViewBase * )self->__var___Block_318_58->selView)->frame.x = newr.x;
-	((SuiCore$ViewBase * )self->__var___Block_318_58->selView)->frame.y = newr.y;
-	((SuiCore$ViewBase * )self->__var___Block_318_58->selView)->invalidLayout(self->__var___Block_318_58->selView) ;
+	self->__var___Block_314_23->sel->setAttr(self->__var___Block_314_23->sel, "height", Json$Json_mkNumber(&tmpReturn_2, newr.h) ) ;
+	self->__var___Block_320_58->selView->width = newr.w;
+	self->__var___Block_320_58->selView->height = newr.h;
+	((SuiCore$ViewBase * )self->__var___Block_320_58->selView)->frame.x = newr.x;
+	((SuiCore$ViewBase * )self->__var___Block_320_58->selView)->frame.y = newr.y;
+	((SuiCore$ViewBase * )self->__var___Block_320_58->selView)->invalidLayout(self->__var___Block_320_58->selView) ;
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$EventANodeAttrChanged*  tmpNewOwner_3 = NULL;
 	{
 		SuiDesigner$EventANodeAttrChanged*  o = SuiDesigner$EventANodeAttrChanged_new(&tmpNewOwner_3) ;
 		
 	
-		urgc_set_field_class(o, (void * )offsetof(SuiDesigner$EventANodeAttrChanged, anode) , self->__var___Block_312_23->sel) ;
+		urgc_set_field_class(o, (void * )offsetof(SuiDesigner$EventANodeAttrChanged, anode) , self->__var___Block_314_23->sel) ;
 		((SuiDesigner$EventToEbus * )o)->emitToEbus(o) ;
 	}
 }
 
-static void  __fini___Closure_329_38(HoroEditor$__Closure_329_38 *  self){
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_329_38, __var___Block_312_23) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_329_38, __var___Block_318_58) , NULL) ;
+static void  __fini___Closure_331_38(HoroEditor$__Closure_331_38 *  self){
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_331_38, __var___Block_314_23) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_331_38, __var___Block_320_58) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static HoroEditor$__Closure_329_38*  __make___Closure_329_38(HoroEditor$__Closure_329_38 **  __outRef__, HoroEditor$__Block_312_23 *  __var___Block_312_23, HoroEditor$__Block_318_58 *  __var___Block_318_58){
-	URGC_VAR_CLEANUP HoroEditor$__Closure_329_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_329_38) , __fini___Closure_329_38) ));
-	self->invoke = __fn___Closure_329_38;
+static HoroEditor$__Closure_331_38*  __make___Closure_331_38(HoroEditor$__Closure_331_38 **  __outRef__, HoroEditor$__Block_314_23 *  __var___Block_314_23, HoroEditor$__Block_320_58 *  __var___Block_320_58){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_331_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_331_38) , __fini___Closure_331_38) ));
+	self->invoke = __fn___Closure_331_38;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_329_38, __var___Block_312_23) , __var___Block_312_23) ;
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_329_38, __var___Block_318_58) , __var___Block_318_58) ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_331_38, __var___Block_314_23) , __var___Block_314_23) ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_331_38, __var___Block_320_58) , __var___Block_320_58) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

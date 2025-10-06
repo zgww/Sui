@@ -24,6 +24,7 @@ class TreeState {
     ^String@ (Object *item) getId
     ^List@ (Object *item) getItemChildren
     ^void (TreeState *state) cbSelectedIdChanged
+    ^Object* (Object *item) getParent
 
     //选中状态
     List@ selectedIds = new List()
@@ -154,6 +155,16 @@ class TreeState {
         if (self.cbSelectedIdChanged){
             self.cbSelectedIdChanged(self)
         }
+    }
+    void setAncestorsOpen(Object *item){
+        if self.getParent {
+            item = self.getParent(item)
+            while item {
+                self.setOpen(item, true)
+                item = self.getParent(item)
+            }
+        }
+
     }
 
     void setSelected(Object *item){
