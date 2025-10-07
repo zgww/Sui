@@ -19,6 +19,7 @@
 #include "./ViewBuilder_orc.h"
 #include "../Core/Image_orc.h"
 #include "../../SuiDesigner/Inspector_orc.h"
+#include "../../SuiDesigner/Insp_orc.h"
 
 
 // static struct 
@@ -233,6 +234,7 @@ void SuiView$ImageView_initMeta(Vtable_SuiView$ImageView *pvt){
 	orc_metaField_class(&pNext, "_img", ((Vtable_Object*)Vtable_SuiCore$Image_init(0)), offsetof(SuiView$ImageView, _img), true, false, 1);
 
 	orc_metaField_method(&pNext, "setRatio", offsetof(SuiView$ImageView, setRatio));
+	orc_metaField_method(&pNext, "insp", offsetof(SuiView$ImageView, insp));
 	orc_metaField_method(&pNext, "onInspect", offsetof(SuiView$ImageView, onInspect));
 	orc_metaField_method(&pNext, "setSrc", offsetof(SuiView$ImageView, setSrc));
 	orc_metaField_method(&pNext, "setImageMode", offsetof(SuiView$ImageView, setImageMode));
@@ -299,6 +301,7 @@ void SuiView$ImageView_init_fields(SuiView$ImageView *self){
 	urgc_set_field_class(self, (void**)&((SuiView$ImageView*)self)->_img, NULL);
     }
 	((SuiView$ImageView*)self)->setRatio = (void*)SuiView$ImageView$setRatio;
+	((SuiView$ImageView*)self)->insp = (void*)SuiView$ImageView$insp;
 	((SuiView$ImageView*)self)->onInspect = (void*)SuiView$ImageView$onInspect;
 	((SuiCore$ViewBase*)self)->layout = (void*)SuiView$ImageView$layout;
 	((SuiView$ImageView*)self)->setSrc = (void*)SuiView$ImageView$setSrc;
@@ -344,6 +347,17 @@ SuiView$ImageView * SuiView$ImageView_new(void *pOwner){
 void  SuiView$ImageView$setRatio(SuiView$ImageView *  self, float  v){
 	self->ratio = v;
 	printf("set ratio:%f\n", self->ratio) ;
+}
+
+
+void  SuiView$ImageView$insp(SuiView$ImageView *  self, SuiDesigner$Insp *  insp){
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$InspAttrImageSrc*  tmpNewOwner_1 = NULL;
+	{
+		SuiDesigner$InspAttrImageSrc*  o = SuiDesigner$InspAttrImageSrc_new(&tmpNewOwner_1) ;
+		
+	
+		((SuiDesigner$InspAttr * )o)->bind(o, insp, "src", "图片") ;
+	}
 }
 
 

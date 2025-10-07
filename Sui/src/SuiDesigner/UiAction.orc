@@ -38,6 +38,8 @@ import * from "./ChessBgViewCallback.orc"
 import type * from "../Sgl/Material.orc"
 import type * from "../Sgl/DrawCtx.orc"
 import type * from "../Sgl/SglSceneView.orc"
+import type * from "../HoroEditor/HoroEditor.orc"
+import type * from "../HoroEditor/HoroEditCtx.orc"
 
 
 
@@ -338,7 +340,8 @@ void UiAction_openFile(FileItem@ fi){
 
     // 打开预制
     if fi.path.endsWith(".prefab.json") {
-        EditCtx_ins().openPrefab(fi.path.str)
+        horoEditorIns().editCtx.openPrefab(fi.path.str)
+        // EditCtx_ins().openPrefab(fi.path.str)
         new EventANodeChanged().{
             o.anode = EditCtx_ins().root
             o.emitToEbus()

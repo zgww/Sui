@@ -3,6 +3,8 @@ package SuiView
 #include <stdio.h>
 #include "../../Orc/Orc.h"
 
+import * from "../../Orc/Path.orc"
+
 import * from "../../Orc/String.orc"
 import * from "../Core/ViewBase.orc"
 import * from "../Core/Node.orc"
@@ -71,8 +73,8 @@ class Panel extends LayoutLinear{
                 o.height = 16
                 o.setSrc(
                     self.open 
-                    ? str("asset/icon/arrow-down.png")
-                    : str("asset/icon/arrow-right.png")
+                    ? Path_resolveFromExecutionDir("../asset/icon/light-arrow-down.png")
+                    : Path_resolveFromExecutionDir("../asset/icon/light-arrow-right.png")
                 )
                 o.margin.right = 4
             }
@@ -164,8 +166,8 @@ class Panel2 extends LayoutLinear{
                 o.height = 16
                 o.setSrc(
                     self.open 
-                    ? str("asset/icon/arrow-down.png")
-                    : str("asset/icon/arrow-right.png")
+                    ? Path_resolveFromExecutionDir("../asset/icon/light-arrow-down.png")
+                    : Path_resolveFromExecutionDir("../asset/icon/light-arrow-right.png")
                 )
                 o.margin.right = 4
             }

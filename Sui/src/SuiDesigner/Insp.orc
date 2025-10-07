@@ -511,6 +511,7 @@ class Insp {
         LayoutLinear* ll = null
 
         while mf {
+            printf("inspVt. vt:%s, mf.name:%s@%p\n", vt.className, mf.name, mf);
             //识别method
             //函数可以被组织成按钮
             InspAttr* attr = self.getAttr(mf.name)
@@ -532,6 +533,7 @@ class Insp {
                 panel.title = tmp.panelName
                 panel.react()
                 // panel.body.padding.setHor(12)
+                printf("panel start count:%d\n", panel.body.getChildrenCount())
 
                 self.curNodeStack.push(panel.body)
             }
@@ -549,7 +551,7 @@ class Insp {
 
             // 结束panel
             if tmp.isPanelEnd && panel {
-                panel.end()
+                panel.body.end()
                 self.curNodeStack.pop()
             }
             // 结束行
@@ -596,6 +598,7 @@ class Insp {
             return
         }
 
+        // printf("haha inspField mkFieldName:%s. %p. o:%p\n", mf.name, mf, o);
         //按类型
         layoutLinear(o, (long long)mf).{
             const char *dir = self.queryAttrDirection(mf)
@@ -606,6 +609,7 @@ class Insp {
             self.mkFieldName(o, mf.name)
             //有元信息
             if attr {
+                // printf("inspField mkFieldName:%s. %p\n", mf.name, mf);
                 attr.inspValue(o, obj, mf, self)
             }
             else {
@@ -666,6 +670,7 @@ class Insp {
         // if self.inspColor(o, obj, mf) { return}
         // if self.inspImageSrc(o, obj, mf) { return}
         // if self.inspFilePath(o, obj, mf) { return}
+        if self.inspStringPath(o, obj, mf) { return}
         if self.inspString(o, obj, mf) { return}
         if self.inspIntColor(o, obj, mf) { return}
         if self.inspInt(o, obj, mf) { return}
@@ -691,6 +696,41 @@ class Insp {
             }
 
             layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        return true
+    }
+    //int类型且以color结尾,不区分大小写
+    bool inspStringPath(Node*o, Object *obj, OrcMetaField *mf){
+        if !(
+            OrcMetaField_isStringRef(mf) 
+            && (
+                String_endsWithIgnoreCase(mf.name, "src")
+                || String_endsWithIgnoreCase(mf.name, "path")
+            )
+        )  
+        {
+            return false;
+        }
+
+        String* src = *((String**)OrcMetaField_getPtr(mf, obj))
+        mkDrawButton(o, 0).{
+            if src && src.notEmpty(){
+                o.text = src
+            }
+            else {
+                o.text = str("null")
+            }
+            o.onClick = ^void(MouseEvent *me){
+                // Toast_make("HI click")
+                FileChooser@ fc = new FileChooser()
+                fc.dir.set("./asset")
+                // fc.use_filterImage()
+                fc.loadPaths()
+                fc.onChoose = ^ void(String@ newpath){
+                    self.setAttr(mf, newpath)
+                }
+                fc.showWindow()
+            }
         }
         return true
     }

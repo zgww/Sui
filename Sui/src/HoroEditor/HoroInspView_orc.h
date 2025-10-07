@@ -57,6 +57,7 @@ typedef struct tagVtable_HoroEditor$HoroInspView Vtable_HoroEditor$HoroInspView;
 #include "../Json/Json_orc.h"
 #include "./HoroEditCtx_orc.h"
 #include "./HoroEditor_orc.h"
+#include "../SuiDesigner/EventANodeChanged_orc.h"
 
 
 #ifdef __cplusplus

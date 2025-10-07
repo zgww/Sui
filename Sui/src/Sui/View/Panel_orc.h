@@ -37,6 +37,7 @@ typedef struct tagVtable_SuiView$Panel2 Vtable_SuiView$Panel2;
 #define __SuiView__Panel_orc_h__
 
 //include  importHeadCode
+#include "../../Orc/Path_orc.h"
 #include "../../Orc/String_orc.h"
 #include "../Core/ViewBase_orc.h"
 #include "../Core/Node_orc.h"

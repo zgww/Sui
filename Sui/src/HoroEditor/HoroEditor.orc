@@ -113,6 +113,10 @@ class HoroEditorSceneViewCallback extends ViewCallback {
         self.horoEditor.toolMgr.draw2d(canvas)
     }
 }
+static HoroEditor* horoEditor = null
+HoroEditor* horoEditorIns(){
+    return horoEditor
+}
 
 // 赫萝 horoscope 星象.  horo 有时间的意思
 class HoroEditor extends Listener{
@@ -182,6 +186,7 @@ class HoroEditor extends Listener{
 
 
     void ctor(){
+        horoEditor = self
         self.viewCb.horoEditor = self
 
         // self.curTilePosArr = mkVec2(-1, -1)

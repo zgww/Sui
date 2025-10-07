@@ -2,7 +2,8 @@
 	"version":	"0.0.3",
 	"root":	{
 		"attrs":	{
-			"backgroundColor":	-587202561
+			"backgroundColor":	-587202561,
+			"hover":	false
 		},
 		"tag":	"SuiLayout$LayoutLinear",
 		"children":	[{
@@ -30,7 +31,7 @@
 						"x":	10,
 						"y":	20
 					},
-					"src":	"./asset/SpongeBob.png",
+					"src":	"terrain.png",
 					"width":	142,
 					"height":	116,
 					"bezier":	{
@@ -50,7 +51,8 @@
 							"x":	1,
 							"y":	1
 						}
-					}
+					},
+					"hover":	false
 				},
 				"tag":	"SuiView$ImageView",
 				"children":	[]

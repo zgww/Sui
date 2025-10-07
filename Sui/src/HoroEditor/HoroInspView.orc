@@ -35,6 +35,8 @@ import * from "../Json/Json.orc"
 import * from "./HoroEditCtx.orc"
 import * from "./HoroEditor.orc"
 
+import * from "../SuiDesigner/EventANodeChanged.orc"
+
 
 class HoroInspView extends LayoutLinear{
 
@@ -71,10 +73,11 @@ class HoroInspView extends LayoutLinear{
         // if (e instanceof EditEventSelectedChanged){
         //     self.invalidReact()
         // }
-        // else if e instanceof EventANodeAttrChanged{
-        //     EventANodeAttrChanged* e = (EventANodeAttrChanged*)e;
-        //     self.trigger_react()
-        // }
+        if e instanceof EventANodeAttrChanged{
+            // EventANodeAttrChanged* e = (EventANodeAttrChanged*)e;
+            // self.trigger_react()
+            self.invalidReact()
+        }
     }
 
     void onMounted(){

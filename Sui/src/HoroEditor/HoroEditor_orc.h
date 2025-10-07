@@ -157,6 +157,7 @@ void HoroEditor$HoroEditorSceneViewCallback_fini(HoroEditor$HoroEditorSceneViewC
 
 void  HoroEditor$HoroEditorSceneViewCallback$afterDrawSelf(HoroEditor$HoroEditorSceneViewCallback *  self, SuiCore$View *  div, SuiCore$Canvas *  canvas);
 
+HoroEditor$HoroEditor *  HoroEditor$horoEditorIns();
 
 // 虚表
 struct tagVtable_HoroEditor$HoroEditor {

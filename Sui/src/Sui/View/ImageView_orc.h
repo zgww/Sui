@@ -56,6 +56,9 @@ typedef struct tagVtable_SuiView$ImageView Vtable_SuiView$ImageView;
 #define INCLUDE_ONLY_TYPE
 #include "../../SuiDesigner/Inspector_orc.h"
 #undef INCLUDE_ONLY_TYPE
+#define INCLUDE_ONLY_TYPE
+#include "../../SuiDesigner/Insp_orc.h"
+#undef INCLUDE_ONLY_TYPE
 
 
 #ifdef __cplusplus
@@ -127,6 +130,7 @@ struct tagSuiView$ImageView {
 	SuiCore$Vec2 pos ;
 	float  ratio ;
 	void  (*setRatio) (SuiView$ImageView *  self, float  v);
+	void  (*insp) (SuiView$ImageView *  self, SuiDesigner$Insp *  insp);
 	void  (*onInspect) (SuiView$ImageView *  self, SuiDesigner$Inspector *  insp);
 	Orc$String*  src ;
 	SuiView$ImageMode imageMode ;
@@ -143,6 +147,7 @@ SuiView$ImageView * SuiView$ImageView_new(void *pOwner);
 void SuiView$ImageView_fini(SuiView$ImageView *self);
 
 void  SuiView$ImageView$setRatio(SuiView$ImageView *  self, float  v);
+void  SuiView$ImageView$insp(SuiView$ImageView *  self, SuiDesigner$Insp *  insp);
 void  SuiView$ImageView$onInspect(SuiView$ImageView *  self, SuiDesigner$Inspector *  insp);
 void  SuiView$ImageView$layout(SuiView$ImageView *  self, SuiCore$Frame *  ctx);
 void  SuiView$ImageView$setSrc(SuiView$ImageView *  self, Orc$String*  src);

@@ -19,6 +19,7 @@ import * from "../../Orc/Map.orc"
 import * from "./ViewBuilder.orc"
 import * from "../Core/Image.orc"
 import type * from "../../SuiDesigner/Inspector.orc"
+import type * from "../../SuiDesigner/Insp.orc"
 
 
 
@@ -109,6 +110,10 @@ class ImageView extends View {
 	void setRatio(float v){
 		self.ratio = v
 		printf("set ratio:%f\n", self.ratio)
+	}
+	void insp(Insp* insp){
+		new InspAttrImageSrc().{o.bind(insp, "src", "图片")}
+		// new InspAttrImageSrc().{o.bind(insp, "src", null)}
 	}
 	void onInspect(Inspector *insp){
 		insp.markAttrAsImageSrc("src")
