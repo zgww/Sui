@@ -725,6 +725,12 @@ void  SuiDesigner$ANode$fromJson(SuiDesigner$ANode *  self, Json$Json *  jo){
 
 
 
+SuiDesigner$ANode*  SuiDesigner$mkANodeByTag(SuiDesigner$ANode **  __outRef__, const char *  tag){
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$ANode*  anode = (anode=NULL,urgc_init_var_class((void**)&anode, SuiDesigner$ANode_new(&anode) ));
+	Orc$String$set(anode->tag, tag) ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, anode) ; 
+}
+
 Orc$List*  SuiDesigner$ANode_parseByJsonArray(Orc$List **  __outRef__, Json$Json*  kidsJo){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(kidsJo);
 

@@ -989,12 +989,8 @@ void  SuiView$EditText$draw_self(SuiView$EditText *  self, SuiCore$Canvas *  can
 	int  cornerRadius = 5;
 	SuiCore$Canvas$beginPath(canvas) ;
 	SuiCore$Canvas$roundRect(canvas, x + 1, y + 1, w - 2, h - 2, 4 - 1) ;
-	SuiCore$Canvas$boxGradient(canvas, true, x + 1, y + 1 + 1.5f, w - 2, h - 2, 3, 4, SuiCore$mkIntByRgba(53, 64, 64, 32) , SuiCore$mkIntByRgba(0, 0, 0, 32) ) ;
+	SuiCore$Canvas$boxGradient(canvas, true, x + 1, y + 1 + 1.5f, w - 2, h - 2, 3, 4, SuiCore$mkIntByRgba(255, 255, 255, 32) , SuiCore$mkIntByRgba(0, 0, 0, 32) ) ;
 	SuiCore$Canvas$fill(canvas) ;
-	SuiCore$Canvas$beginPath(canvas) ;
-	SuiCore$Canvas$roundRect(canvas, x + 0.5f, y + 0.5f, w - 1, h - 1, 4 - 0.5f) ;
-	SuiCore$Canvas$strokeColorByInt32(canvas, SuiCore$mkIntByRgba(0, 0, 0, 48) ) ;
-	SuiCore$Canvas$stroke(canvas) ;
 	SuiCore$Canvas$fontSize(canvas, self->font_size) ;
 	float  hor = SuiCore$Inset$hor(&((SuiCore$View * )self)->margin) ;
 	float  ver = SuiCore$Inset$ver(&((SuiCore$View * )self)->margin) ;

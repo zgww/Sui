@@ -148,6 +148,7 @@ void  SuiDesigner$ANode$printTree(SuiDesigner$ANode *  self, int  tab);
 Json$Json*  SuiDesigner$ANode$toJson(Json$Json **  __outRef__, SuiDesigner$ANode *  self);
 void  SuiDesigner$ANode$fromJson(SuiDesigner$ANode *  self, Json$Json *  jo);
 
+SuiDesigner$ANode*  SuiDesigner$mkANodeByTag(SuiDesigner$ANode **  __outRef__, const char *  tag);
 Orc$List*  SuiDesigner$ANode_parseByJsonArray(Orc$List **  __outRef__, Json$Json*  kidsJo);
 
 

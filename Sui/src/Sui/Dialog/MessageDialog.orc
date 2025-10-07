@@ -8,6 +8,7 @@ import * from "../Core/App.orc"
 import * from "../View/EditText.orc"
 import * from "../Layout/LayoutLinear.orc"
 import * from "../View/Button.orc"
+import * from "../../SuiDesigner/Theme.orc"
 
 /// 布局上下文
 extern void MessageDialog_alert(const char * content, const char *title)
@@ -18,6 +19,7 @@ extern bool MessageDialog_confirm(const char *content, const char *title)
 
 
 void MessageDialog_prompt(const char *value, const char *title, ^void (String@ newValue) onNewValue){
+    Theme* t = themeIns()
     Window@ win = new Window()
     win.{
         new LayoutLinear().{
@@ -25,7 +27,7 @@ void MessageDialog_prompt(const char *value, const char *title, ^void (String@ n
             o.alignItems.set("stretch")
             o.justifyContent.set("center")
             o.padding.setAll(8)
-            o.backgroundColor = 0xffffffff
+            o.backgroundColor = t.bg1 //0xffffffff
 
             win.setRootView(o)
         }

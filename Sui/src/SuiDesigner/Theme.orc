@@ -18,7 +18,7 @@ class Theme {
 
     // edittext
     int edittext_color = 0xb5f1f7fe
-    int edittext_bg = 0x1dd3edf8
+    int edittext_bg = 0xfdffffff//0x2dd3edf8
     int edittext_caretColor = 0xb5f1f7fe
     int edittext_fontSize = 12
 

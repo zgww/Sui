@@ -134,7 +134,7 @@ void SuiDesigner$Theme_init_fields(SuiDesigner$Theme *self){
 	((SuiDesigner$Theme*)self)->textview_bg = 0x00000000;
 	((SuiDesigner$Theme*)self)->textview_fontSize = 12;
 	((SuiDesigner$Theme*)self)->edittext_color = 0xb5f1f7fe;
-	((SuiDesigner$Theme*)self)->edittext_bg = 0x1dd3edf8;
+	((SuiDesigner$Theme*)self)->edittext_bg = 0xfdffffff;
 	((SuiDesigner$Theme*)self)->edittext_caretColor = 0xb5f1f7fe;
 	((SuiDesigner$Theme*)self)->edittext_fontSize = 12;
 	((SuiDesigner$Theme*)self)->c_main = 0xff007aff;

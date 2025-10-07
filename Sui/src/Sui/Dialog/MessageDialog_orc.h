@@ -38,6 +38,7 @@
 #include "../View/EditText_orc.h"
 #include "../Layout/LayoutLinear_orc.h"
 #include "../View/Button_orc.h"
+#include "../../SuiDesigner/Theme_orc.h"
 
 
 #ifdef __cplusplus

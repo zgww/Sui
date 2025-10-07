@@ -71,8 +71,12 @@ class AssetDirTreeView extends LayoutLinear {
                 UiAction_renameFileItem(fi)
                 return;
             }
-            if item.cmd.equals("CreatePrefab"){//
+            if item.cmd.equals("CreatePrefab2d"){//
                 UiAction_createPrefab(fi)
+                return;
+            }
+            if item.cmd.equals("CreatePrefab3d"){//
+                UiAct_createPrefab3d(fi)
                 return;
             }
         }
@@ -132,7 +136,8 @@ class AssetDirTreeView extends LayoutLinear {
                     mkMenuNativeItem(o, str("删除目录"), onActive). {o.cmd = str("DeleteDirectory")}
                     mkMenuNativeItem(o, str("创建目录"), onActive). {o.cmd = str("CreateDirectory")}
                     mkMenuNativeItem(o, str("重命名目录"), onActive). {o.cmd = str("RenameDirectory")}
-                    mkMenuNativeItem(o, str("创建Prefab"), onActive). {o.cmd = str("CreatePrefab")}
+                    mkMenuNativeItem(o, str("创建Prefab2d"), onActive). {o.cmd = str("CreatePrefab2d")}
+                    mkMenuNativeItem(o, str("创建Prefab3d"), onActive). {o.cmd = str("CreatePrefab3d")}
 
                     MenuNative@ n = new MenuNative()
                     n.create(o)

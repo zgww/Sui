@@ -479,6 +479,11 @@ class ANode {
     }
 }
 
+ANode@ mkANodeByTag(const char *tag){
+    ANode@ anode = new ANode()
+    anode.tag.set(tag)
+    return anode
+}
 
 List@ ANode_parseByJsonArray(Json@ kidsJo){
     List@ ret = new List()

@@ -1,6 +1,8 @@
 
 package SuiDesigner
 
+#include "../Orc/Orc.h"
+
 import * from "./Asset/AssetDirView.orc"
 import * from "./Asset/AssetDirTreeView.orc"
 import * from "../Sui/Dialog/MessageDialog.orc"
@@ -53,9 +55,10 @@ void UiAction_createPrefab(FileItem@ parent){
 
 
 
-    MessageDialog_prompt("新建预制.prefab", "新建预制", ^void (String@ newName){
+    MessageDialog_prompt("新建预制.prefab.json", "新建预制", ^void (String@ newName){
         String@ path = parent.path.clone().add("/").addString(newName)
         Prefab@ prefab = new Prefab()
+        prefab.root = mkANodeByTag(Vtable_getClassName(LayoutLinear))
         String@ text = prefab.toJson().dump()
 
         MessageDialog_alert(str("新建预制. 路径").add(path.str).str, "tip")

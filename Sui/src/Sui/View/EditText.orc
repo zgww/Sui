@@ -393,13 +393,13 @@ class EditText extends View {
 		// bg = nvgBoxGradient(vg, x+1,y+1+1.5f, w-2,h-2, 3,4, nvgRGBA(255,255,255,32), nvgRGBA(32,32,32,32));
 		canvas.beginPath();
 		canvas.roundRect( x+1,y+1, w-2,h-2, 4-1);
-		canvas.boxGradient(true, x+1,y+1+1.5f, w-2,h-2, 3,4, mkIntByRgba(53,64,64,32), mkIntByRgba(0,0,0,32));
+		canvas.boxGradient(true, x+1,y+1+1.5f, w-2,h-2, 3,4, mkIntByRgba(255,255,255,32), mkIntByRgba(0,0,0,32));
 		canvas.fill();
 
-		canvas.beginPath();
-		canvas.roundRect( x+0.5f,y+0.5f, w-1,h-1, 4-0.5f);
-		canvas.strokeColorByInt32( mkIntByRgba(0,0,0,48));
-		canvas.stroke();
+		// canvas.beginPath();
+		// canvas.roundRect( x+0.5f,y+0.5f, w-1,h-1, 4-0.5f);
+		// canvas.strokeColorByInt32( mkIntByRgba(255,255,255, 48));
+		// canvas.stroke();
 
 		canvas.fontSize( self.font_size);
 		// nvgFontFace(vg, "sans");

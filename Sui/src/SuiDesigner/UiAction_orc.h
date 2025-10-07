@@ -14,6 +14,7 @@ typedef struct tagVtable_SuiDesigner$ClipboardForANodes Vtable_SuiDesigner$Clipb
 #include "Orc/Orc.h"
 #include <stdlib.h>
 
+#include "../Orc/Orc.h"
 
 
 
