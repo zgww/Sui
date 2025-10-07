@@ -12,6 +12,7 @@
 #include "Orc/Orc.h"
 #include <stdlib.h>
 
+#include "../Orc/Orc.h"
 
 
 
@@ -35,15 +36,18 @@
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Orc/Path_orc.h"
+#include "../Json/Json_orc.h"
 #include "./HoroEditCtx_orc.h"
 #include "./HoroEditor_orc.h"
 #include "../SuiDesigner/ANode_orc.h"
 #include "../SuiDesigner/EventANodeChanged_orc.h"
 #include "../SuiDesigner/FileItem_orc.h"
+#include "../SuiDesigner/Prefab_orc.h"
 #include "../SuiDesigner/EventFileItemChanged_orc.h"
 #include "../Sui/Core/NodeLib_orc.h"
 #include "../Sui/Dialog/Toast_orc.h"
 #include "../Sui/Dialog/MessageDialog_orc.h"
+#include "../Sgl/Obj3d_orc.h"
 
 
 #ifdef __cplusplus
@@ -51,6 +55,7 @@ extern "C"{
 #endif
 
 //代码内容
+void  HoroEditor$UiAct_createPrefab3d(SuiDesigner$FileItem*  parent);
 void  HoroEditor$UiAct_savePrefab(HoroEditor$HoroEditor *  editor);
 void  HoroEditor$UiAct_addView(HoroEditor$HoroEditor *  editor, SuiDesigner$ANode*  anode, Orc$String*  viewName);
 

@@ -26,6 +26,7 @@ import * from "../../Sui/Layout/LayoutAlign.orc"
 
 import * from "../FileItem.orc"
 import * from "../UiAction.orc"
+import * from "../../HoroEditor/UiAct.orc"
 import * from "../Theme.orc"
 import * from "../Project.orc"
 import * from "../EventANodeChanged.orc"
@@ -201,8 +202,12 @@ class AssetDirView extends LayoutLinear {
                 UiAction_openFile(fi)
                 return;
             }
-            if item.cmd.equals("CreatePrefab"){
+            if item.cmd.equals("CreatePrefab2d"){
                 UiAction_createPrefab(fi)
+                return;
+            }
+            if item.cmd.equals("CreatePrefab3d"){
+                UiAct_createPrefab3d(fi)
                 return;
             }
             if item.cmd.equals("DeleteFileItem"){//打开
@@ -268,7 +273,8 @@ class AssetDirView extends LayoutLinear {
                 }
 
                 mkMenuNativeItem(o, str("返回上级目录"), onActive). {o.cmd = str("GotoParentDirectory")}
-                mkMenuNativeItem(o, str("创建Prefab"), onActive). {o.cmd = str("CreatePrefab")}
+                mkMenuNativeItem(o, str("创建Prefab2d"), onActive). {o.cmd = str("CreatePrefab2d")}
+                mkMenuNativeItem(o, str("创建Prefab3d"), onActive). {o.cmd = str("CreatePrefab3d")}
                 mkMenuNativeItem(o, str("创建目录"), onActive). {o.cmd = str("CreateDirectory")}
                 // mkMenuNativeItem(o, str("返回上级目录"), null). {o.cmd = str("GotoParentDirectory")}
 
