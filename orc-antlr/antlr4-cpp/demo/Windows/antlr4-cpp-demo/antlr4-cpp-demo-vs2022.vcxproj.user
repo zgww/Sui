@@ -9,8 +9,8 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
-    <LocalDebuggerCommandArguments>c SuiDesigner/Insp.orc</LocalDebuggerCommandArguments>
-    <LocalDebuggerWorkingDirectory>D:\ws\sui\Sui\src</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommandArguments>w</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>e:\ws\Sui\Sui\src</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

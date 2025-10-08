@@ -533,8 +533,7 @@ class Insp {
                 panel.title = tmp.panelName
                 panel.react()
                 // panel.body.padding.setHor(12)
-                printf("panel start count:%d\n", panel.body.getChildrenCount())
-
+                // printf("panel start count:%d\n", panel.body.getChildrenCount())
                 self.curNodeStack.push(panel.body)
             }
 
@@ -1057,7 +1056,7 @@ class Insp {
                 self.setAttr(mf, mkStructObj(metaStructOf(Bezier), &nv))
             }
 
-            layoutLinearCell(o, 0).{ o.grow = 1}
+            // layoutLinearCell(o, 0).{ o.grow = 1; o.alignSelf.set("stretch")}
         }
         return true
     }

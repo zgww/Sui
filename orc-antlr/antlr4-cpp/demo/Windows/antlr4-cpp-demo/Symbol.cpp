@@ -3332,6 +3332,10 @@ public:
 
 				auto isExtensionMethod = false;
 				auto memberInfo = MemberInfo::findMemberInfo(objExpr, propName, space);
+
+				if (memberInfo.typeDef == nullptr) {
+					throw std::format("未找到成员类型的定义:{}\n", code);
+				}
 				//判断是不是扩展方法. 扩展方法调用。 objExpr转为null
 				if (memberInfo.extensionDef) { // 是扩展函数; 加完后，程序语义实际上是变了的？
 					

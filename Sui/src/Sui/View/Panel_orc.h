@@ -45,6 +45,7 @@ typedef struct tagVtable_SuiView$Panel2 Vtable_SuiView$Panel2;
 #include "../Core/MouseEvent_orc.h"
 #include "../View/ImageView_orc.h"
 #include "../View/TextView_orc.h"
+#include "../Core/View_orc.h"
 #include "../View/ViewBuilder_orc.h"
 #include "../Layout/LayoutLinear_orc.h"
 #include "../../SuiDesigner/Theme_orc.h"
