@@ -480,6 +480,7 @@ class Insp {
         if self.afterInsp {
             self.afterInsp(self, o)
         }
+
     }
     void inspObj(Node* o, Object *obj){
         self.curNodeStack.push(o)
@@ -547,6 +548,15 @@ class Insp {
             }
 
             self.inspField(obj, mf)
+
+            // Node* p = self.peekParent()
+            // mkTextView(p, (long long)mf)~{
+            //     char tmp[128];
+                
+            //     Vtable_Object* vt = orc_getVtableByObject(p)
+            //     sprintf(tmp, "%s p count:%d %d. vt:%s", mf.name, p.getChildrenCount(), p.outKids.size(), vt.className)
+            //     o.setText(str(tmp))//anode ? anode.className: str("attr"))
+            // }
 
             // 结束panel
             if tmp.isPanelEnd && panel {

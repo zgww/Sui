@@ -68,7 +68,23 @@ Node@ gocNode(void *sp, Node* parent, Vtable_Object*vt){
         if parent.outKids == null {
             parent.outKids = new List()
         }
-        parent.outKids.insert(n, parent._appendIndexForReact)
+        if n.isNewForReact {//新建的，必须不存在于旧列表中
+            parent.outKids.insert(n, parent._appendIndexForReact)
+        }
+        //位置不变, do nothing
+        else if parent.outKids.get(parent._appendIndexForReact) == n {
+        }
+        else {
+            int oldIdx = parent.outKids.indexOfFrom(n, parent._appendIndexForReact + 1)
+            if oldIdx == -1 {
+                parent.outKids.insert(n, parent._appendIndexForReact)
+            }
+            else {
+                // gocNode的特性。 oldIdx必定不会出现在_appendIndexForReact之前
+                parent.outKids.insert(n, parent._appendIndexForReact)
+                parent.outKids.removeAt(oldIdx + 1)
+            }
+        }
     }
     else {
         //插入到指定位置

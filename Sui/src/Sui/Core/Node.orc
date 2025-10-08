@@ -442,7 +442,9 @@ extension Node{
 
             //外部临时挂载的
             if needRmOutKids{
-                self.outKids.remove(unusedNode)
+                int cnt = self.outKids.removeAll(unusedNode)
+                // bool succ = self.outKids.remove(unusedNode)
+                // printf("remove outKids succ:%d. %d/%d\n", succ, i, l);
             }
         }
 

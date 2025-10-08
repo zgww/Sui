@@ -726,7 +726,7 @@ void  SuiCore$Node$clearUnusedKids(SuiCore$Node *  self){
 		URGC_VAR_CLEANUP_CLASS SuiCore$Node*  unusedNode = (unusedNode=NULL,urgc_init_var_class((void**)&unusedNode, (SuiCore$Node * )unused->get(unused, key->str) ));
 		unusedNode->removeSelf(unusedNode) ;
 		if (needRmOutKids) {
-			self->outKids->remove(self->outKids, unusedNode) ;
+			int  cnt = self->outKids->removeAll(self->outKids, unusedNode) ;
 		}
 	}
 	unused->clear(unused) ;

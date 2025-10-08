@@ -437,10 +437,16 @@ class TextView extends View {
 	// 	self.setText(str(text))
 	// }
 	void setText(String@ text){
-		if (self->text .equalsString( text) ) {
+		if (self->text.equalsString( text) ) {
 			return;
 		}
-		self->text = text;
+		if text == null {
+			self.text.set("")
+		}
+		else {
+			self->text = text;
+		}
+
 		self.invalidLayout();
 	}
 	int font_size = themeIns().textview_fontSize//14;

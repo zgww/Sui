@@ -30,8 +30,10 @@ void Orc$List_initMeta(Vtable_Orc$List *pvt){
 	orc_metaField_method(&pNext, "set", offsetof(Orc$List, set));
 	orc_metaField_method(&pNext, "addOnce", offsetof(Orc$List, addOnce));
 	orc_metaField_method(&pNext, "remove", offsetof(Orc$List, remove));
+	orc_metaField_method(&pNext, "removeAll", offsetof(Orc$List, removeAll));
 	orc_metaField_method(&pNext, "span", offsetof(Orc$List, span));
 	orc_metaField_method(&pNext, "has", offsetof(Orc$List, has));
+	orc_metaField_method(&pNext, "indexOfFrom", offsetof(Orc$List, indexOfFrom));
 	orc_metaField_method(&pNext, "indexOf", offsetof(Orc$List, indexOf));
 	orc_metaField_method(&pNext, "insert", offsetof(Orc$List, insert));
 	orc_metaField_method(&pNext, "_get", offsetof(Orc$List, _get));
@@ -109,8 +111,10 @@ void Orc$List_init_fields(Orc$List *self){
 	((Orc$List*)self)->set = (void*)Orc$List$set;
 	((Orc$List*)self)->addOnce = (void*)Orc$List$addOnce;
 	((Orc$List*)self)->remove = (void*)Orc$List$remove;
+	((Orc$List*)self)->removeAll = (void*)Orc$List$removeAll;
 	((Orc$List*)self)->span = (void*)Orc$List$span;
 	((Orc$List*)self)->has = (void*)Orc$List$has;
+	((Orc$List*)self)->indexOfFrom = (void*)Orc$List$indexOfFrom;
 	((Orc$List*)self)->indexOf = (void*)Orc$List$indexOf;
 	((Orc$List*)self)->insert = (void*)Orc$List$insert;
 	((Orc$List*)self)->_get = (void*)Orc$List$_get;
@@ -181,6 +185,24 @@ bool  Orc$List$remove(Orc$List *  self, Object *  obj){
 }
 
 
+int  Orc$List$removeAll(Orc$List *  self, Object *  obj){
+	int  cnt = 0;
+	int  start = 0;
+	while (true) {
+		int  idx = self->indexOfFrom(self, obj, start) ;
+		if (idx != -1) {
+			start = idx;
+			cnt++;
+			self->removeAt(self, idx) ;
+		}
+		else {
+			break;
+		}
+	}
+	return cnt; 
+}
+
+
 Orc$List*  Orc$List$span(Orc$List **  __outRef__, Orc$List *  self, int  fromIndex, int  toIndex){
 	if (fromIndex > toIndex) {
 		int  tmp = fromIndex;
@@ -205,6 +227,18 @@ Orc$List*  Orc$List$span(Orc$List **  __outRef__, Orc$List *  self, int  fromInd
 bool  Orc$List$has(Orc$List *  self, Object *  obj){
 	int  idx = self->indexOf(self, obj) ;
 	return idx != -1; 
+}
+
+
+int  Orc$List$indexOfFrom(Orc$List *  self, Object *  obj, int  start){
+	int  size = self->size(self) ;
+	for (int  i = start; i < size; i++) {
+		Object *  cur = self->get(self, i) ;
+		if (cur == obj) {
+			return i; 
+		}
+	}
+	return -1; 
 }
 
 

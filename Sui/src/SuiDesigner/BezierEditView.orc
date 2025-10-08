@@ -145,7 +145,7 @@ class BezierEditView extends View {
                 self._onIndicatorEvent(1, e)
             }
         }
-        //ctrl 0
+        //ctrl 1
         mkView(o, 0).{
             self.c1View = o
             o.width = self.indicatorSize

@@ -789,7 +789,12 @@ void  SuiView$TextView$setText(SuiView$TextView *  self, Orc$String*  text){
 	if (Orc$String$equalsString(self->text, text) ) {
 		return ; 
 	}
-	urgc_set_field_class(self, (void * )offsetof(SuiView$TextView, text) , text) ;
+	if (text == NULL) {
+		Orc$String$set(self->text, "") ;
+	}
+	else {
+		urgc_set_field_class(self, (void * )offsetof(SuiView$TextView, text) , text) ;
+	}
 	((SuiCore$ViewBase * )self)->invalidLayout(self) ;
 }
 

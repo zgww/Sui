@@ -40,6 +40,23 @@ class List {
         }
         return false;
     }
+    int removeAll(Object *obj){
+        int cnt = 0;
+        int start = 0;
+        while true {
+            int idx = self.indexOfFrom(obj, start)
+            if idx != -1{
+                start = idx;
+                cnt++;
+                self.removeAt(idx)
+            }
+            else {
+                break;
+            }
+        }
+        return cnt;
+    }
+
 
     //返回部分数据, 左闭右闭
     // fromIndex和toIndex会自己判断顺序
@@ -67,6 +84,17 @@ class List {
     bool has(Object *obj){
         int idx = self.indexOf(obj)
         return idx != -1
+    }
+
+    int indexOfFrom(Object *obj, int start) {
+        int size = self.size()
+        for int i = start; i < size; i++{
+            Object* cur = self.get(i)
+            if cur == obj{
+                return i;
+            }
+        }
+        return -1
     }
 
     extern int indexOf(Object *obj) 
