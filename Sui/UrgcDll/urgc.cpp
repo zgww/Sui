@@ -729,7 +729,7 @@ void Urgc::process_on_thread()
 			costMs = ms3 - ms;
 
 			// /*
-			if (costMs >= 2){
+			if (costMs >= 20){
 				int objCount = target_in_ref_mgr.size();
 				printf("T%lld#%5d-%4d 处理事件[%d]结束, 耗时:%lld ms %lldms. cost ref:%d,%lldus, deref:%d, %lldus guard:%d, %lldus degurad:%d, %lldus setDeleter:%d, %lldus\n", 
 					ms3, objCount, delete_cnt,

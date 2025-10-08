@@ -2,8 +2,123 @@
 	"version":	"0.0.3",
 	"root":	{
 		"attrs":	{
+			"alignItems":	"start",
+			"direction":	"row",
+			"backgroundColor":	-16777216,
+			"hover":	false
 		},
 		"tag":	"SuiLayout$LayoutLinear",
-		"children":	[]
+		"children":	[{
+				"attrs":	{
+					"src":	"SpongeBob.png",
+					"hover":	false,
+					"width":	111.00001525878906,
+					"height":	93.999969482421875,
+					"bezier":	{
+						"end":	{
+							"__struct":	"SuiCore$Vec2",
+							"x":	1,
+							"y":	1
+						},
+						"__struct":	"SuiCore$Bezier",
+						"start":	{
+							"__struct":	"SuiCore$Vec2",
+							"x":	0,
+							"y":	0
+						},
+						"c0":	{
+							"__struct":	"SuiCore$Vec2",
+							"x":	0.172231987118721,
+							"y":	0.800000011920929
+						},
+						"c1":	{
+							"__struct":	"SuiCore$Vec2",
+							"x":	0.75,
+							"y":	0.5
+						}
+					},
+					"padding":	{
+						"__struct":	"SuiCore$Inset",
+						"bottom":	0,
+						"left":	0,
+						"top":	0,
+						"right":	0
+					},
+					"margin":	{
+						"__struct":	"SuiCore$Inset",
+						"bottom":	10,
+						"left":	10,
+						"top":	10,
+						"right":	0
+					}
+				},
+				"tag":	"SuiView$ImageView",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"alignItems":	"start",
+					"direction":	"col",
+					"hover":	false,
+					"margin":	{
+						"__struct":	"SuiCore$Inset",
+						"bottom":	10,
+						"left":	10,
+						"top":	10,
+						"right":	10
+					}
+				},
+				"tag":	"SuiLayout$LayoutLinear",
+				"children":	[{
+						"attrs":	{
+							"padding":	{
+								"__struct":	"SuiCore$Inset",
+								"bottom":	0,
+								"left":	0,
+								"top":	0,
+								"right":	0
+							},
+							"text":	"关于",
+							"hover":	false,
+							"layoutDirty":	false,
+							"color":	-13857025,
+							"backgroundColor":	16723502,
+							"font_size":	20
+						},
+						"tag":	"SuiView$TextView",
+						"children":	[]
+					}, {
+						"attrs":	{
+							"text":	"Horo编辑器，采用CatLang开发的，支持硬件",
+							"hover":	true,
+							"layoutDirty":	false
+						},
+						"tag":	"SuiView$TextView",
+						"children":	[]
+					}, {
+						"attrs":	{
+							"text":	"加速的2d/3d场景设计器。性能优异，占用空间极小",
+							"layoutDirty":	false,
+							"hover":	true
+						},
+						"tag":	"SuiView$TextView",
+						"children":	[]
+					}, {
+						"attrs":	{
+							"text":	"联系我们",
+							"hoverColor":	-278028801,
+							"color":	-1257604355,
+							"hover":	false,
+							"margin":	{
+								"bottom":	0,
+								"__struct":	"SuiCore$Inset",
+								"left":	0,
+								"top":	10,
+								"right":	0
+							}
+						},
+						"tag":	"SuiView$DrawButton",
+						"children":	[]
+					}]
+			}]
 	}
 }

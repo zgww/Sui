@@ -5,6 +5,7 @@ package SuiCore
 #include <stdlib.h>
 
 import * from "./Vec2.orc"
+import * from "../../Orc/String.orc"
 
 
 
@@ -21,6 +22,12 @@ struct Rect {
 	//}
 
 extension Rect {
+	String@ toString(){
+		char tmp[128];
+		sprintf(tmp, "Rect(%f,%f,%f,%f)", self.x, self.y, self.w, self.h)
+		return str(tmp)
+
+	}
     void setAll(float x, float y, float w, float h){
 		self.x = x
 		self.y = y

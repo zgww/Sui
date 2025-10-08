@@ -565,11 +565,7 @@ SuiCore$Frame SuiCore$View$makeContentLayoutCtx(SuiCore$View *  self, SuiCore$Fr
 
 
 SuiCore$Rect SuiCore$View$get_abs_rect(SuiCore$View *  self){
-	SuiCore$Vec2 pos = ((SuiCore$ViewBase * )self)->localToWorld(self, 0.f, 0.f) ;
-	SuiCore$Vec2 viewSize = self->getViewSize(self) ;
-	SuiCore$Vec2 sizePos = ((SuiCore$ViewBase * )self)->localToWorld(self, viewSize.x, viewSize.y) ;
-	SuiCore$Vec2 size = SuiCore$Vec2$sub(&sizePos, pos) ;
-	return SuiCore$mkRect(pos.x, pos.y, size.x, size.y) ; 
+	return SuiCore$ViewBase$get_abs_rect(self) ; 
 }
 
 

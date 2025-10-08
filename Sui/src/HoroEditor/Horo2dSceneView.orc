@@ -308,7 +308,6 @@ class Horo2dSceneView extends View {
     }
 
     void reactGizmos(){
-        // if 1 {return;}
         if !self.editor {
             return
         }
@@ -339,8 +338,8 @@ class Horo2dSceneView extends View {
             // EditCtx@ ctx = EditCtx_ins()
             // if (ctx.state){
             //     ANode* sel = (ANode*)ctx.state.getFirstSelected()
-            if sel && sel.node && sel.node instanceof ViewBase{
-                ViewBase* selView = (ViewBase*) sel.node
+            if sel && sel.node && sel.node instanceof View{
+                View* selView = (View*) sel.node
                 Frame* f = &selView.frame
 
                 //将视图的坐标转到scene下
@@ -359,6 +358,7 @@ class Horo2dSceneView extends View {
                     Vec3 rb = selView._world_transform.localToLocal(&invMat, f.width, f.height, 0)
                     o.targetRect.set_ltrb(lt.x, lt.y, rb.x, rb.y)
                     o.onRectChanged = ^ void(Rect newr){
+                        printf("gizmo rect. set new rect:%s\n", newr.toString().str);
                         sel.setAttr("width", Json_mkNumber(newr.w))
                         sel.setAttr("height", Json_mkNumber(newr.h))
                         selView.width = newr.w
@@ -455,7 +455,8 @@ class Horo2dSceneView extends View {
         if (n && n instanceof ViewBase){
             ViewBase *vb = (ViewBase*)n
 
-            Rect myrect =self.get_abs_rect();
+            Frame* f = &vb.frame
+            Rect myrect = self.get_abs_rect();
             Rect rect = vb.get_abs_rect();
             int x = rect.x - myrect.x
             int y = rect.y - myrect.y
@@ -464,7 +465,7 @@ class Horo2dSceneView extends View {
             canvas.beginPath()
             canvas.rect( x, y, rect.w, rect.h)
 
-            canvas.fillColorByInt32( mkIntByRgba(0, 128, 255, 64))
+            canvas.fillColorByInt32( mkIntByRgba(255, 128, 255, 64))
             canvas.fill()
             canvas.strokeWidth( 1)
             canvas.strokeColorByInt32(mkIntByRgba(0, 128, 255, 192))

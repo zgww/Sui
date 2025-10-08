@@ -374,13 +374,16 @@ class View extends ViewBase {
         return ret;
     }
 	Rect get_abs_rect() {
-    	//auto pos = localToWorld(margin.left, margin.top);
-        Vec2 pos = self.localToWorld(0.f, 0.f);
-        Vec2 viewSize = self.getViewSize();
-        Vec2 sizePos = self.localToWorld(viewSize.x, viewSize.y);
-        Vec2 size = sizePos.sub( pos );
+        return super.get_abs_rect()
+        // Rect lr = self.getContentLocalRect()
+    	// //auto pos = localToWorld(margin.left, margin.top);
+        // Vec2 pos = self.localToWorld(lr.x, lr.y);
+        // Vec2 viewSize = self.getViewSize();
+        // Vec2 sizePos = self.localToWorld(viewSize.x, viewSize.y);
+        // Vec2 size = sizePos.sub( pos );
 
-        return mkRect(pos.x, pos.y, size.x, size.y );
+        // return mkRect(pos.x, pos.y, size.x, size.y );
+        // // return self.getContentClientRect()
     }
     
     //取得内容区的绝对位置

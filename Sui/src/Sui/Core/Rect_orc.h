@@ -44,6 +44,7 @@ struct tagSuiCore$Rect {
 
 //include  importHeadCode
 #include "./Vec2_orc.h"
+#include "../../Orc/String_orc.h"
 
 
 #ifdef __cplusplus
@@ -56,6 +57,7 @@ extern "C"{
 //结构体元数据获取即初始化
 MetaStruct* SuiCore$Rect_getOrInitMetaStruct();
 
+Orc$String*  SuiCore$Rect$toString(Orc$String **  __outRef__, SuiCore$Rect *  self);
 void  SuiCore$Rect$setAll(SuiCore$Rect *  self, float  x, float  y, float  w, float  h);
 bool  SuiCore$Rect$isEmpty(SuiCore$Rect *  self);
 void  SuiCore$Rect$set_ltrb(SuiCore$Rect *  self, float  left, float  top, float  right, float  bottom);

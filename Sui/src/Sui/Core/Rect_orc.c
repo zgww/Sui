@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./Vec2_orc.h"
+#include "../../Orc/String_orc.h"
 
 
 // static struct 
@@ -29,6 +30,13 @@ MetaStruct* SuiCore$Rect_getOrInitMetaStruct(){
     }
 	return meta;
 }
+Orc$String*  SuiCore$Rect$toString(Orc$String **  __outRef__, SuiCore$Rect *  self){
+	char  tmp[128];
+	sprintf(tmp, "Rect(%f,%f,%f,%f)", self->x, self->y, self->w, self->h) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+	return urgc_set_var_for_return_class((void ** )__outRef__, Orc$str(&tmpReturn_1, tmp) ) ; 
+}
+
 void  SuiCore$Rect$setAll(SuiCore$Rect *  self, float  x, float  y, float  w, float  h){
 	self->x = x;
 	self->y = y;

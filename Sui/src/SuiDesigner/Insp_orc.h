@@ -100,6 +100,7 @@ struct tagSuiDesigner$MethodInfo {
 #include "../Sui/Core/Vec2_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
 #include "../Sui/Core/Vec4_orc.h"
+#include "../Sui/Core/Inset_orc.h"
 #include "../Sui/Core/Bezier_orc.h"
 #include "../Sui/Core/Emitter_orc.h"
 #include "../Sui/Core/Event_orc.h"
@@ -437,6 +438,7 @@ struct tagSuiDesigner$Insp {
 	bool  (*inspVec2) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspVec3) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspVec4) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
+	bool  (*inspInset) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspIntColor) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspRgbaf) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 	bool  (*inspRgba) (SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
@@ -473,6 +475,7 @@ bool  SuiDesigner$Insp$inspBool(SuiDesigner$Insp *  self, SuiCore$Node *  o, Obj
 bool  SuiDesigner$Insp$inspVec2(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspVec3(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspVec4(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
+bool  SuiDesigner$Insp$inspInset(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspIntColor(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspRgbaf(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);
 bool  SuiDesigner$Insp$inspRgba(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf);

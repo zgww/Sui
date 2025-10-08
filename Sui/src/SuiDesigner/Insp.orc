@@ -17,6 +17,7 @@ import * from "../Sui/Core/Rect.orc"
 import * from "../Sui/Core/Vec2.orc"
 import * from "../Sui/Core/Vec3.orc"
 import * from "../Sui/Core/Vec4.orc"
+import * from "../Sui/Core/Inset.orc"
 import * from "../Sui/Core/Bezier.orc"
 import * from "../Sui/Core/Emitter.orc"
 import * from "../Sui/Core/Event.orc"
@@ -657,6 +658,7 @@ class Insp {
         if mf.metaStruct == metaStructOf(Vec4) { return false } 
         if mf.metaStruct == metaStructOf(Rgba) { return false } 
         if mf.metaStruct == metaStructOf(Bezier) { return false } 
+        if mf.metaStruct == metaStructOf(Inset) { return false } 
 
         if mf.type == OrcMetaType_method {
             // insp 功能按钮
@@ -688,6 +690,7 @@ class Insp {
         if self.inspVec2(o, obj, mf) { return}
         if self.inspVec3(o, obj, mf) { return}
         if self.inspVec4(o, obj, mf) { return}
+        if self.inspInset(o, obj, mf) { return}
         if self.inspRgba(o, obj, mf) { return}
         if self.inspRgbaf(o, obj, mf) { return}
         if self.inspBezier(o, obj, mf) { return}
@@ -994,6 +997,82 @@ class Insp {
                     v.w = nv;
 
                     self.setAttr(mf, mkStructObj(metaStructOf(Vec4), &v))
+                }
+                layoutLinearCell(o, 0).{ o.grow = 1}
+            }
+            layoutLinearCell(o, 0).{ o.grow = 1}
+        }
+        return true
+    }
+    bool inspInset(Node*o, Object *obj, OrcMetaField *mf){
+        if mf.metaStruct != metaStructOf(Inset) { return false } 
+
+        layoutLinear(o, (long long)mf).{
+            Inset v = *((Inset *)OrcMetaField_getPtr(mf, obj))
+
+            mkEditText(o, 0).{
+                o.padding.left = 4
+                o.margin.right = 8
+                o.margin.bottom = 4
+                o.setValue_notInFocus(str("").addf(v.top))
+                o.border.setAll(1, 0xffff0000)
+
+                o.onValueChanged = ^void (EditText* et){
+                    double nv = atof(et.value.str)
+                    printf("set top:%f=>%f\n", v.top, nv)
+                    v.top = nv;
+                    self.setAttr(mf, mkStructObj(metaStructOf(Inset), &v))
+                }
+                layoutLinearCell(o, 0).{ o.grow = 1}
+            }
+            mkEditText(o, 0).{
+                o.border.setAll(1, 0xff00ff00)
+
+                o.padding.left = 4
+                o.margin.right = 8
+                o.margin.bottom = 4
+                o.setValue_notInFocus(str("").addf(v.right))
+                o.onValueChanged = ^void (EditText* et){
+                    double nv = atof(et.value.str)
+                    printf("set right:%f=>%f\n", v.right, nv)
+
+                    v.right = nv;
+
+                    self.setAttr(mf, mkStructObj(metaStructOf(Inset), &v))
+
+                }
+                layoutLinearCell(o, 0).{ o.grow = 1}
+            }
+            mkEditText(o, 0).{
+                o.padding.left = 4
+                o.margin.right = 8
+                o.margin.bottom = 4
+                o.setValue_notInFocus(str("").addf(v.bottom))
+                o.border.setAll(1, 0xff0000ff)
+
+                o.onValueChanged = ^void (EditText* et){
+                    double nv = atof(et.value.str)
+
+                    printf("set bottom:%f=>%f\n", v.bottom, nv)
+                    v.bottom = nv;
+
+                    self.setAttr(mf, mkStructObj(metaStructOf(Inset), &v))
+                }
+                layoutLinearCell(o, 0).{ o.grow = 1}
+            }
+            mkEditText(o, 0).{
+                o.padding.left = 4
+                o.margin.bottom = 4
+                o.setValue_notInFocus(str("").addf(v.left))
+                o.border.setAll(1, 0xffff00ff)
+
+                o.onValueChanged = ^void (EditText* et){
+                    double nv = atof(et.value.str)
+
+                    printf("set left:%f=>%f\n", v.left, nv)
+                    v.left = nv;
+
+                    self.setAttr(mf, mkStructObj(metaStructOf(Inset), &v))
                 }
                 layoutLinearCell(o, 0).{ o.grow = 1}
             }

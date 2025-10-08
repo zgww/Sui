@@ -425,7 +425,7 @@ class HoroEditor extends Listener{
                             o.height = 14
                             o.setImageMode(Fill)
                             o.margin.right = 4
-                            if (item.id.equals("hier")){
+                            if (item.id.equals("hierarchy")){
                                 o.setSrc(Path_resolveFromExecutionDir("../asset/icon-light/hierarchy.png"))
                             }
                             else if (item.id.equals("scene")){
@@ -468,7 +468,7 @@ class HoroEditor extends Listener{
                             return o
                         }
                     }
-                    if (item.id.equals("hier")){
+                    if (item.id.equals("hierarchy")){
                         mkHoroSceneHierView(o, (long long)item).{
                             o.editCtx = self.editCtx
                             o.editor = self
@@ -517,7 +517,7 @@ class HoroEditor extends Listener{
                     o.isHorizontal = false
 
                     mkDockItemSplitter(o, null, true).{
-                        mkDockItem(o, str("hier")).{
+                        mkDockItem(o, str("hierarchy")).{
                             o.intId = 0;
                             o.width = 150
                         }

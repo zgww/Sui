@@ -885,7 +885,7 @@ void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCo
 					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_5 = NULL;
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_6 = NULL;
 					{
-						SuiView$DockItem*  __scopeVar_520_24 = SuiView$mkDockItem(&tmpReturn_5, o, Orc$str(&tmpReturn_6, "hier") ) , *o = __scopeVar_520_24;
+						SuiView$DockItem*  __scopeVar_520_24 = SuiView$mkDockItem(&tmpReturn_5, o, Orc$str(&tmpReturn_6, "hierarchy") ) , *o = __scopeVar_520_24;
 						
 					
 						o->intId = 0;
@@ -1639,7 +1639,7 @@ static void  __fn___Closure_403_41(HoroEditor$__Closure_403_41 *  self, SuiView$
 			((SuiCore$View * )o)->height = 14;
 			o->setImageMode(o, SuiView$Fill) ;
 			((SuiCore$View * )o)->margin.right = 4;
-			if (Orc$String$equals(item->id, "hier") ) {
+			if (Orc$String$equals(item->id, "hierarchy") ) {
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
 				o->setSrc(o, Orc$Path_resolveFromExecutionDir(&tmpReturn_3, "../asset/icon-light/hierarchy.png") ) ;
 			}
@@ -1707,7 +1707,7 @@ static SuiCore$ViewBase *  __fn___Closure_458_44(HoroEditor$__Closure_458_44 *  
 			return o; 
 		}
 	}
-	if (Orc$String$equals(item->id, "hier") ) {
+	if (Orc$String$equals(item->id, "hierarchy") ) {
 		URGC_VAR_CLEANUP_CLASS HoroEditor$HoroSceneHierView*  tmpReturn_3 = NULL;
 		{
 			HoroEditor$HoroSceneHierView*  __scopeVar_472_24 = HoroEditor$mkHoroSceneHierView(&tmpReturn_3, o, (long long )item) , *o = __scopeVar_472_24;
