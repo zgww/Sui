@@ -106,7 +106,7 @@ const char* Object_getClassName(Object* self)
 //统一的清理和释放内存: this要求是 Object*类型
 void orc_delete(void* p) {
     Object* this = (Object*)p;
-    //printf("释放内存:%p\n", this);
+    // printf("释放内存:%p %s\n", this, this->vtable->className);
     //Object*this = *pthis;
     this->fini(this);
 
@@ -707,6 +707,7 @@ void orc_addRefc(Object *p){
 void orc_delRefc(Object *p){
     atomic_fetch_sub(&p->refCount, 1);
     int refc = atomic_load(&p->refCount);
+    // printf("减引用计数至%d， 释放内存:%p %s\n", refc, p, p->vtable->className);
     if (refc <= 0){//释放
         orc_delete(p);
     }

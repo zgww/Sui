@@ -11,9 +11,11 @@ import * from "../Core/LayoutCell.orc"
 import * from "../../Orc/String.orc"
 import * from "../../Orc/Math.orc"
 import * from "../../Orc/List.orc"
+import * from "../../Orc/Time.orc"
 import * from "../View/ViewBuilder.orc"
 
 
+// static int itemCnt = 0;
 class refc LayoutGridItem{
 	ViewBase* view;
     int col
@@ -25,6 +27,19 @@ class refc LayoutGridItem{
     //对于wrapHeight模式，此布局会确保空间足够。 所有第一次布局计算出每行各个item的期望高度
     //第二次布局，拉伸每个item的高度去匹配每行的最高度，再次布局
     float desiredHeight = 0.f //第一次布局出来的期望的高度
+	// void ctor(){
+	// 	itemCnt++
+	// 		printf("itemCnt:%d\n", itemCnt)
+	// }
+	// void dtor(){
+	// 	long long sec = Time_unixSec()
+	// 	itemCnt--
+	// 	// if itemCnt % 10 == 0 {
+	// 	// if sec % 5 == 0 {
+	// 	// }
+	// 	// }
+	// }
+
 }
 class LayoutGridRowInfo{
     float height = 0.f

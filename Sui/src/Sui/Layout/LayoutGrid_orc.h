@@ -52,6 +52,7 @@ typedef struct tagVtable_SuiLayout$LayoutGrid Vtable_SuiLayout$LayoutGrid;
 #include "../../Orc/String_orc.h"
 #include "../../Orc/Math_orc.h"
 #include "../../Orc/List_orc.h"
+#include "../../Orc/Time_orc.h"
 #include "../View/ViewBuilder_orc.h"
 
 

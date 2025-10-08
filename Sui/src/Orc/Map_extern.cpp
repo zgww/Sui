@@ -16,6 +16,15 @@ void Orc$Map$ctor(Orc$Map* self) {
 }
 void Orc$Map$dtor(Orc$Map* self) {
 	auto map = getData(self);
+
+    //对于引用计数类型的，需要在这里手动解除引用
+    for (auto& it : *map) {
+        auto obj = it.second;
+        if (obj && obj->vtable->refc){
+            orc_delRefc(obj);
+        }
+    }
+
 	if (map) {
         //printf("release Map.data\n");
 		delete map;

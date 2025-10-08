@@ -12,6 +12,15 @@ void Orc$List$ctor(Orc$List* self) {
 void Orc$List$dtor(Orc$List* self) {
     //self->clear(self);//不用调用clear的  析构函数执行时，内部的引用关系不用释放。因为析构执行时，urgc已经知道是孤岛了
 
+    //需要考虑，如果元素是refc类型的话，就需要手动解引用。因为refc不归urgc管...
+    auto& vector = *getData(self);
+	for (int i = 0, l = vector.size(); i < l; i++){
+        auto obj = vector[i];
+        if (obj && obj->vtable->refc){
+            orc_delRefc(obj);
+        }
+    }
+
     if (self->data) {
         //TODO需要clear
         //printf("释放List   \n");
