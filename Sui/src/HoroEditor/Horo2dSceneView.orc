@@ -137,7 +137,7 @@ class Horo2dSceneView extends View {
         if e instanceof MouseEvent {
             MouseEvent *me = (MouseEvent *)e;
 
-            self.drag.onMouseDown_byPrefer(me, 3, false, true);
+            self.drag.onMouseDown_byPrefer(me, 3, true, false);
 
             if me.isBubble() && me.button == 3 {
                 if me.isMouseDown{
@@ -146,6 +146,9 @@ class Horo2dSceneView extends View {
                 if me.isMouseUp {
                     printf("mouse up scene\n")
                 }
+            }
+            if me.isMouseDown && me.isCapture {
+                me.stopPropagation()
             }
             if me.isClickInBubble() && me.button == 3 {
                 self.onRightClick(me)

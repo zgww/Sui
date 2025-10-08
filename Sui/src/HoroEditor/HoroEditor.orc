@@ -519,14 +519,14 @@ class HoroEditor extends Listener{
                     mkDockItemSplitter(o, null, true).{
                         mkDockItem(o, str("hierarchy")).{
                             o.intId = 0;
-                            o.width = 150
+                            o.width = 200
                         }
                         mkDockItem(o, str("scene")).{
                             o.intId = 0;
                         }
                         mkDockItem(o, str("inspector")).{
                             o.intId = 0;
-                            o.width = 150
+                            o.width = 250
                         }
                     }
                     mkDockItemSplitter(o, null, true).{

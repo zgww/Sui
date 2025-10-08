@@ -48,6 +48,14 @@ class View extends ViewBase {
     //这是指view宽高,包括border,padding,content,类似于css的box-sizing: border-box
     float width = nan
     float height = nan
+    void setHeight(float h){
+        self.height = h
+        self.invalidLayout()
+    }
+    void setWidth(float v){
+        self.width = v
+        self.invalidLayout()
+    }
 
     //期望的宽高，不包括margin
     float desiredWidth = nan
@@ -386,7 +394,7 @@ class View extends ViewBase {
         // // return self.getContentClientRect()
     }
     
-    //取得内容区的绝对位置
+    //取得内容区的绝对位置/
     Rect getContentClientRect(){
         Rect lr = self.getContentLocalRect()
         Vec2 pos = self.localToWorld(lr.x, lr.y);

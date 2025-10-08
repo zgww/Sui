@@ -1,0 +1,130 @@
+{
+	"version":	"0.0.3",
+	"root":	{
+		"attrs":	{
+			"direction":	"center",
+			"backgroundColor":	-16777216,
+			"padding":	{
+				"__struct":	"SuiCore$Inset",
+				"bottom":	10,
+				"left":	0,
+				"top":	10,
+				"right":	0
+			}
+		},
+		"tag":	"SuiLayout$LayoutLinear",
+		"children":	[{
+				"attrs":	{
+					"padding":	{
+						"__struct":	"SuiCore$Inset",
+						"bottom":	0,
+						"left":	0,
+						"top":	0,
+						"right":	0
+					},
+					"text":	"登录",
+					"hover":	false,
+					"layoutDirty":	false,
+					"font_size":	24,
+					"backgroundColor":	5870582,
+					"needClip":	false
+				},
+				"tag":	"SuiView$TextView",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"width":	400,
+					"rowCount":	0,
+					"height":	150,
+					"backgroundColor":	0,
+					"colCount":	3,
+					"hover":	false,
+					"padding":	{
+						"__struct":	"SuiCore$Inset",
+						"bottom":	0,
+						"left":	20,
+						"top":	20,
+						"right":	20
+					},
+					"needClip":	false
+				},
+				"tag":	"SuiLayout$LayoutGrid",
+				"children":	[{
+						"attrs":	{
+							"text":	"账号：",
+							"hover":	false,
+							"layoutDirty":	false,
+							"needClip":	false,
+							"text_align":	"right"
+						},
+						"tag":	"SuiView$TextView",
+						"children":	[]
+					}, {
+						"attrs":	{
+							"needClip":	true,
+							"hover":	false,
+							"placeholder":	"请输入账号"
+						},
+						"tag":	"SuiView$EditText",
+						"children":	[{
+								"attrs":	{
+									"colSpan":	2
+								},
+								"tag":	"SuiLayout$LayoutGridCell",
+								"children":	[]
+							}]
+					}, {
+						"attrs":	{
+							"text":	"密码：",
+							"hover":	false,
+							"layoutDirty":	false,
+							"text_align":	"right",
+							"needClip":	false
+						},
+						"tag":	"SuiView$TextView",
+						"children":	[]
+					}, {
+						"attrs":	{
+							"hover":	false,
+							"placeholder":	"请输入密码",
+							"needClip":	true
+						},
+						"tag":	"SuiView$EditText",
+						"children":	[{
+								"attrs":	{
+									"colSpan":	2
+								},
+								"tag":	"SuiLayout$LayoutGridCell",
+								"children":	[]
+							}]
+					}, {
+						"attrs":	{
+							"hover":	false
+						},
+						"tag":	"SuiCore$View",
+						"children":	[]
+					}, {
+						"attrs":	{
+							"hoverBg":	-161106433,
+							"text":	"登录",
+							"height":	30,
+							"normalBg":	-12348695,
+							"hover":	false,
+							"needClip":	false,
+							"color":	-1
+						},
+						"tag":	"SuiView$DrawButton",
+						"children":	[]
+					}, {
+						"attrs":	{
+							"text":	"注册",
+							"height":	30,
+							"hover":	false,
+							"needClip":	false
+						},
+						"tag":	"SuiView$DrawButton",
+						"children":	[]
+					}]
+			}]
+	}
+}

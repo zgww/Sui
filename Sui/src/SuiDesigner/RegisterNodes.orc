@@ -84,8 +84,11 @@ void registerNodes(){
     lib.registerClass(MenuButton)
 
     lib.registerClass(LayoutLinear)
+    lib.registerClass(LayoutLinearCell)
     lib.registerClass(LayoutGrid)
+    lib.registerClass(LayoutGridCell)
     lib.registerClass(LayoutAlign)
+    lib.registerClass(LayoutAlignCell)
     lib.registerClass(RowWrap)
 
     lib.registerClass(Scene)

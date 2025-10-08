@@ -59,8 +59,11 @@ void  SuiDesigner$registerNodes(){
 	lib->registerClass(lib, Vtable_SuiView$DrawButton_init(NULL)) ;
 	lib->registerClass(lib, Vtable_SuiView$MenuButton_init(NULL)) ;
 	lib->registerClass(lib, Vtable_SuiLayout$LayoutLinear_init(NULL)) ;
+	lib->registerClass(lib, Vtable_SuiLayout$LayoutLinearCell_init(NULL)) ;
 	lib->registerClass(lib, Vtable_SuiLayout$LayoutGrid_init(NULL)) ;
+	lib->registerClass(lib, Vtable_SuiLayout$LayoutGridCell_init(NULL)) ;
 	lib->registerClass(lib, Vtable_SuiLayout$LayoutAlign_init(NULL)) ;
+	lib->registerClass(lib, Vtable_SuiLayout$LayoutAlignCell_init(NULL)) ;
 	lib->registerClass(lib, Vtable_SuiLayout$RowWrap_init(NULL)) ;
 	lib->registerClass(lib, Vtable_Sgl$Scene_init(NULL)) ;
 	lib->registerClass(lib, Vtable_Sgl$Obj3d_init(NULL)) ;

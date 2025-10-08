@@ -15,12 +15,12 @@
 					"width":	111.00001525878906,
 					"height":	93.999969482421875,
 					"bezier":	{
+						"__struct":	"SuiCore$Bezier",
 						"end":	{
 							"__struct":	"SuiCore$Vec2",
 							"x":	1,
 							"y":	1
 						},
-						"__struct":	"SuiCore$Bezier",
 						"start":	{
 							"__struct":	"SuiCore$Vec2",
 							"x":	0,
@@ -38,15 +38,15 @@
 						}
 					},
 					"padding":	{
-						"__struct":	"SuiCore$Inset",
 						"bottom":	0,
+						"__struct":	"SuiCore$Inset",
 						"left":	0,
 						"top":	0,
 						"right":	0
 					},
 					"margin":	{
-						"__struct":	"SuiCore$Inset",
 						"bottom":	10,
+						"__struct":	"SuiCore$Inset",
 						"left":	10,
 						"top":	10,
 						"right":	0
@@ -60,8 +60,8 @@
 					"direction":	"col",
 					"hover":	false,
 					"margin":	{
-						"__struct":	"SuiCore$Inset",
 						"bottom":	10,
+						"__struct":	"SuiCore$Inset",
 						"left":	10,
 						"top":	10,
 						"right":	10
@@ -71,25 +71,26 @@
 				"children":	[{
 						"attrs":	{
 							"padding":	{
-								"__struct":	"SuiCore$Inset",
 								"bottom":	0,
+								"__struct":	"SuiCore$Inset",
 								"left":	0,
 								"top":	0,
 								"right":	0
 							},
 							"text":	"关于",
 							"hover":	false,
-							"layoutDirty":	false,
+							"layoutDirty":	true,
 							"color":	-13857025,
 							"backgroundColor":	16723502,
-							"font_size":	20
+							"font_size":	20,
+							"height":	63
 						},
 						"tag":	"SuiView$TextView",
 						"children":	[]
 					}, {
 						"attrs":	{
 							"text":	"Horo编辑器，采用CatLang开发的，支持硬件",
-							"hover":	true,
+							"hover":	false,
 							"layoutDirty":	false
 						},
 						"tag":	"SuiView$TextView",
@@ -98,7 +99,7 @@
 						"attrs":	{
 							"text":	"加速的2d/3d场景设计器。性能优异，占用空间极小",
 							"layoutDirty":	false,
-							"hover":	true
+							"hover":	false
 						},
 						"tag":	"SuiView$TextView",
 						"children":	[]
@@ -109,8 +110,8 @@
 							"color":	-1257604355,
 							"hover":	false,
 							"margin":	{
-								"bottom":	0,
 								"__struct":	"SuiCore$Inset",
+								"bottom":	0,
 								"left":	0,
 								"top":	10,
 								"right":	0

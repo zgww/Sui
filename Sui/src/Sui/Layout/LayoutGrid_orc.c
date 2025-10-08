@@ -618,7 +618,7 @@ void  SuiLayout$LayoutGrid$extendOccupyGrid(SuiLayout$LayoutGrid *  self, int  r
 	int  cnt = row * self->colCount;
 	if (cnt > self->occupyGrid->size(self->occupyGrid) ) {
 		for (int  i = self->occupyGrid->size(self->occupyGrid) ; i < cnt; i++) {
-			SuiLayout$LayoutGridOccupyCell *  cell = SuiLayout$LayoutGridOccupyCell_new(&cell) ;
+			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutGridOccupyCell*  cell = (cell=NULL,urgc_init_var_class((void**)&cell, SuiLayout$LayoutGridOccupyCell_new(&cell) ));
 			self->occupyGrid->add(self->occupyGrid, (Object * )cell) ;
 		}
 	}

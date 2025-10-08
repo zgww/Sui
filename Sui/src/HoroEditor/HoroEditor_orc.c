@@ -889,7 +889,7 @@ void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCo
 						
 					
 						o->intId = 0;
-						o->width = 150;
+						o->width = 200;
 					}
 					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_7 = NULL;
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
@@ -906,7 +906,7 @@ void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCo
 						
 					
 						o->intId = 0;
-						o->width = 150;
+						o->width = 250;
 					}
 				}
 				URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_11 = NULL;

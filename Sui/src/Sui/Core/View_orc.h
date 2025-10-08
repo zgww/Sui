@@ -106,6 +106,8 @@ struct tagSuiCore$View {
 	bool  needClip ;
 	float  width ;
 	float  height ;
+	void  (*setHeight) (SuiCore$View *  self, float  h);
+	void  (*setWidth) (SuiCore$View *  self, float  v);
 	float  desiredWidth ;
 	float  desiredHeight ;
 	float  minWidth ;
@@ -151,6 +153,8 @@ void SuiCore$View_init(SuiCore$View *self, void *pOwner);
 SuiCore$View * SuiCore$View_new(void *pOwner);
 void SuiCore$View_fini(SuiCore$View *self);
 
+void  SuiCore$View$setHeight(SuiCore$View *  self, float  h);
+void  SuiCore$View$setWidth(SuiCore$View *  self, float  v);
 SuiCore$Rect SuiCore$View$getViewRect_baseClient(SuiCore$View *  self);
 bool  SuiCore$View$_hitTestSelf(SuiCore$View *  self, float  x, float  y);
 SuiCore$Rect SuiCore$View$getFrameRect(SuiCore$View *  self);

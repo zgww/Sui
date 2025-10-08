@@ -1266,23 +1266,25 @@ void  SuiView$EditText$on_mouse_event(SuiView$EditText *  self, SuiCore$MouseEve
 
 
 void  SuiView$EditText$on_mouse_down(SuiView$EditText *  self, SuiCore$MouseEvent *  e){
-	int  position = self->get_char_position_by_client_x(self, e->clientX) ;
-	printf("EditText.mousedown position:%d. shift:%d\n", position, e->shift) ;
-	if (e->shift) {
-		self->selection->set_end(self->selection, position) ;
-	}
-	else {
-		self->selection->set_collapse_pos(self->selection, position) ;
-	}
-	SuiCore$Focus *  f = SuiCore$insFocus() ;
-	f->focus(f, self) ;
-	self->caret->restart(self->caret) ;
-	((SuiCore$Event * )e)->stopPropagation(e) ;
-	((SuiCore$ViewBase * )self)->invalidDraw(self) ;
-	SuiCore$Timer *  tmpThis_1 = NULL;
-	(tmpThis_1 = self->gocDragTimer(self) )->start(tmpThis_1) ;
-	if (e->window != NULL && e->window->rootView != NULL) {
-		((SuiCore$Emitter * )e->window->rootView)->addListenerOnce(e->window->rootView, self) ;
+	if (((SuiCore$ViewEvent * )e)->isBubble(e) ) {
+		int  position = self->get_char_position_by_client_x(self, e->clientX) ;
+		printf("EditText.mousedown position:%d. shift:%d\n", position, e->shift) ;
+		if (e->shift) {
+			self->selection->set_end(self->selection, position) ;
+		}
+		else {
+			self->selection->set_collapse_pos(self->selection, position) ;
+		}
+		SuiCore$Focus *  f = SuiCore$insFocus() ;
+		f->focus(f, self) ;
+		self->caret->restart(self->caret) ;
+		((SuiCore$Event * )e)->stopPropagation(e) ;
+		((SuiCore$ViewBase * )self)->invalidDraw(self) ;
+		SuiCore$Timer *  tmpThis_1 = NULL;
+		(tmpThis_1 = self->gocDragTimer(self) )->start(tmpThis_1) ;
+		if (e->window != NULL && e->window->rootView != NULL) {
+			((SuiCore$Emitter * )e->window->rootView)->addListenerOnce(e->window->rootView, self) ;
+		}
 	}
 }
 

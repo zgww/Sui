@@ -723,28 +723,30 @@ class EditText extends View {
 		}
 	}
 	void on_mouse_down(MouseEvent *e){
-		int position = self.get_char_position_by_client_x(e.clientX);
-		printf("EditText.mousedown position:%d. shift:%d\n", position, e.shift);
+		if e.isBubble(){
+			int position = self.get_char_position_by_client_x(e.clientX);
+			printf("EditText.mousedown position:%d. shift:%d\n", position, e.shift);
 
-		if (e.shift) {
-			self.selection.set_end(position);
-		}
-		else {
-			self.selection.set_collapse_pos(position);
-		}
-		// 取得焦点
-		Focus* f = insFocus()
-		f.focus(self)
-		//让光标显示
-		self.caret.restart()
-		//不再传播事件
-		e.stopPropagation()
-		self.invalidDraw()
+			if (e.shift) {
+				self.selection.set_end(position);
+			}
+			else {
+				self.selection.set_collapse_pos(position);
+			}
+			// 取得焦点
+			Focus* f = insFocus()
+			f.focus(self)
+			//让光标显示
+			self.caret.restart()
+			//不再传播事件
+			e.stopPropagation()
+			self.invalidDraw()
 
-		self.gocDragTimer().start()
+			self.gocDragTimer().start()
 
-		if (e.window != null && e.window.rootView != null){
-			e.window.rootView.addListenerOnce(self)
+			if (e.window != null && e.window.rootView != null){
+				e.window.rootView.addListenerOnce(self)
+			}
 		}
 	}
 

@@ -186,6 +186,8 @@ void SuiCore$View_initMeta(Vtable_SuiCore$View *pvt){
 	orc_metaField_primitive(&pNext, "backgroundColor", OrcMetaType_int, offsetof(SuiCore$View, backgroundColor), 0, 0, 0, 0);//int
 	orc_metaField_class(&pNext, "cb", ((Vtable_Object*)Vtable_SuiCore$ViewCallback_init(0)), offsetof(SuiCore$View, cb), true, false, 1);
 
+	orc_metaField_method(&pNext, "setHeight", offsetof(SuiCore$View, setHeight));
+	orc_metaField_method(&pNext, "setWidth", offsetof(SuiCore$View, setWidth));
 	orc_metaField_method(&pNext, "getViewRect_baseClient", offsetof(SuiCore$View, getViewRect_baseClient));
 	orc_metaField_method(&pNext, "getFrameRect", offsetof(SuiCore$View, getFrameRect));
 	orc_metaField_method(&pNext, "getViewRect", offsetof(SuiCore$View, getViewRect));
@@ -284,6 +286,8 @@ void SuiCore$View_init_fields(SuiCore$View *self){
 	((SuiCore$View*)self)->backgroundColor = 0x00000000;
 	urgc_set_field_class(self, (void**)&((SuiCore$View*)self)->cb, NULL);
     }
+	((SuiCore$View*)self)->setHeight = (void*)SuiCore$View$setHeight;
+	((SuiCore$View*)self)->setWidth = (void*)SuiCore$View$setWidth;
 	((SuiCore$View*)self)->getViewRect_baseClient = (void*)SuiCore$View$getViewRect_baseClient;
 	((SuiCore$ViewBase*)self)->_hitTestSelf = (void*)SuiCore$View$_hitTestSelf;
 	((SuiCore$View*)self)->getFrameRect = (void*)SuiCore$View$getFrameRect;
@@ -351,6 +355,18 @@ SuiCore$View * SuiCore$View_new(void *pOwner){
 
 
 // class members
+void  SuiCore$View$setHeight(SuiCore$View *  self, float  h){
+	self->height = h;
+	((SuiCore$ViewBase * )self)->invalidLayout(self) ;
+}
+
+
+void  SuiCore$View$setWidth(SuiCore$View *  self, float  v){
+	self->width = v;
+	((SuiCore$ViewBase * )self)->invalidLayout(self) ;
+}
+
+
 SuiCore$Rect SuiCore$View$getViewRect_baseClient(SuiCore$View *  self){
 	SuiCore$Rect vr = self->getViewRect(self) ;
 	SuiCore$Vec2 pos = ((SuiCore$ViewBase * )self)->localToWorld(self, vr.x, vr.y) ;

@@ -645,6 +645,12 @@ class Insp {
         // 以下划线开头
         if String_startsWith(mf.name, "_") { return true; }
 
+        //默认忽略的属性
+        if strcmp(mf.name, "isNewForReact") == 0 { return true;}
+        if strcmp(mf.name, "hasInnerReact") == 0 { return true;}
+        if strcmp(mf.name, "mounted") == 0 { return true;}
+        if strcmp(mf.name, "hover") == 0 { return true;}
+
 
         InspLibItem* libItem = useInspLib().getByObject(obj)
         if libItem {
@@ -1155,7 +1161,7 @@ class Insp {
         mkTextView(o, 0).{
             // String@ s = str(name)
             o.setText(str(name))
-            o.width = 100
+            o.width = 120
             o.padding.setHor(8)
             // o.padding.left = 8
             o.color = t.insp_color

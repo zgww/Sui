@@ -72,7 +72,7 @@ class LayoutGrid extends View {
 		int cnt = row * self.colCount;
 		if (cnt > self.occupyGrid.size()) {
 			for (int i = self.occupyGrid.size(); i < cnt; i++) {
-				LayoutGridOccupyCell *cell = new LayoutGridOccupyCell()
+				LayoutGridOccupyCell @cell = new LayoutGridOccupyCell()
 				self.occupyGrid.add((Object*)cell);
 			}
 		}
