@@ -12,7 +12,7 @@ import * from "../Core/Event.orc"
 import * from "../Core/MouseEvent.orc"
 import * from "../View/ImageView.orc"
 import * from "../View/TextView.orc"
-// import * from "../Core/View.orc"
+import * from "../Core/View.orc"
 import * from "../View/ViewBuilder.orc"
 import * from "../Layout/LayoutLinear.orc"
 
