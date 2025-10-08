@@ -300,8 +300,9 @@ class HoroSceneHierView extends LayoutLinear {
                 // o.border.setAll(2, 0xff000000)
                 // o.margin.setAll(20)
                 // o.backgroundColor = 0xffff3300
+                o.state = self.editCtx.state
 
-                self.editCtx.setState(o.state)
+                // self.editCtx.setState(o.state)
                 o.state.roots = self.editCtx.roots
                 o.state.getId = ^String@ (Object *item){
                     ANode@ s = (ANode@)item

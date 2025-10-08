@@ -56,12 +56,35 @@ class EventHoroSelectedChanged extends Event{
 }
 
 class HoroEditCtx {
-    TreeState@ state = null
+    TreeState@ state = new TreeState()
 
     SglSceneView@ sceneView
     List@ roots = new List()
     Node@ hoverNode 
     Prefab@ prefab = null //当前编辑的预制体
+
+    void ctor(){
+        self.state.cbSelectedIdChanged = ^void (TreeState* state){
+            self.onSelectedChanged()
+        }
+
+        self.state.roots = self.roots
+        self.state.getId = ^String@ (Object *item){
+            ANode@ s = (ANode@)item
+            String@ id = s.getId();
+            // printf("tag:%s, id:%s\n", s.tag.str, id.str)
+            return id;
+        }
+        self.state.getParent = ^Object* (Object* item){
+            ANode* s = (ANode*)item
+            return s.parent
+        }
+        self.state.getItemChildren = ^List@ (Object *item){
+            ANode* s = (ANode*)item
+            return s.children
+        }
+
+    }
 
     void setState(TreeState@ state){
         self.state = state

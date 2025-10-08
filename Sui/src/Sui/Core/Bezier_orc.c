@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./Vec2_orc.h"
+#include "../../Orc/String_orc.h"
 
 
 // static struct 
@@ -40,6 +41,17 @@ SuiCore$Bezier SuiCore$mkBezier(){
 	b.c1 = c1;
 	b.end = end;
 	return b; 
+}
+
+Orc$String*  SuiCore$Bezier$toString(Orc$String **  __outRef__, SuiCore$Bezier *  self){
+	char  tmp[256];
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
+	sprintf(tmp, "Bezier(%s,%s,%s,%s)", SuiCore$Vec2$toString(&tmpReturn_1, &self->start) ->str, SuiCore$Vec2$toString(&tmpReturn_2, &self->c0) ->str, SuiCore$Vec2$toString(&tmpReturn_3, &self->c1) ->str, SuiCore$Vec2$toString(&tmpReturn_4, &self->end) ->str) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_5 = NULL;
+	return urgc_set_var_for_return_class((void ** )__outRef__, Orc$str(&tmpReturn_5, tmp) ) ; 
 }
 
 

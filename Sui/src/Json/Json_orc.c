@@ -828,6 +828,44 @@ Json$Json*  Json$Json_toJsonNumberArrayByFloats(Json$Json **  __outRef__, float 
 	return urgc_set_var_for_return_class((void ** )__outRef__, ja) ; 
 }
 
+Json$Json*  Json$Json_toJsonByMetaStruct(Json$Json **  __outRef__, void *  pStruct, MetaStruct *  metaStruct){
+	if (metaStruct == NULL || pStruct == NULL) {
+		return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
+	}
+	OrcMetaField *  mf = metaStruct->headMetaField;
+	URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_mkObject((jo = NULL,&jo)) ;
+	while (mf) {
+		jo->putCstr(jo, "__struct", metaStruct->structName) ;
+		if (!(mf->isPointer || mf->isRef || mf->isArray)) {
+			if (mf->type == OrcMetaType_float) {
+				float *  pv = (float * )OrcMetaField_getPtr(mf, pStruct) ;
+				jo->putNumber(jo, mf->name, *pv) ;
+			}
+			else if (mf->type == OrcMetaType_double) {
+				double *  pv = (double * )OrcMetaField_getPtr(mf, pStruct) ;
+				jo->putNumber(jo, mf->name, *pv) ;
+			}
+			else if (mf->type == OrcMetaType_int) {
+				int *  pv = (int * )OrcMetaField_getPtr(mf, pStruct) ;
+				jo->putNumber(jo, mf->name, *pv) ;
+			}
+			else if (mf->type == OrcMetaType_bool) {
+				bool *  pv = (bool * )OrcMetaField_getPtr(mf, pStruct) ;
+				jo->putBool(jo, mf->name, *pv) ;
+			}
+			else if (mf->type == OrcMetaType_struct) {
+				if (mf->metaStruct) {
+					void *  pFieldStruct = OrcMetaField_getPtr(mf, pStruct) ;
+					URGC_VAR_CLEANUP_CLASS Json$Json*  nest = Json$Json_toJsonByMetaStruct((nest = NULL,&nest), pFieldStruct, mf->metaStruct) ;
+					jo->put(jo, mf->name, nest) ;
+				}
+			}
+		}
+		mf = mf->next;
+	}
+	return urgc_set_var_for_return_class((void ** )__outRef__, jo) ; 
+}
+
 Json$Json*  Json$Json_toJson(Json$Json **  __outRef__, Object *  obj){
 	if (obj == NULL) {
 		URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_1 = NULL;
@@ -850,28 +888,7 @@ Json$Json*  Json$Json_toJson(Json$Json **  __outRef__, Object *  obj){
 	}
 	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$StructObj_init(NULL))) {
 		Orc$StructObj *  so = (Orc$StructObj * )obj;
-		OrcMetaField *  mf = so->metaStruct->headMetaField;
-		URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_mkObject((jo = NULL,&jo)) ;
-		while (mf) {
-			jo->putCstr(jo, "__struct", so->metaStruct->structName) ;
-			if (mf->type == OrcMetaType_float) {
-				float *  pv = (float * )OrcMetaField_getPtr(mf, so->pStruct) ;
-				jo->putNumber(jo, mf->name, *pv) ;
-			}
-			else if (mf->type == OrcMetaType_double) {
-				double *  pv = (double * )OrcMetaField_getPtr(mf, so->pStruct) ;
-				jo->putNumber(jo, mf->name, *pv) ;
-			}
-			else if (mf->type == OrcMetaType_int) {
-				int *  pv = (int * )OrcMetaField_getPtr(mf, so->pStruct) ;
-				jo->putNumber(jo, mf->name, *pv) ;
-			}
-			else if (mf->type == OrcMetaType_bool) {
-				bool *  pv = (bool * )OrcMetaField_getPtr(mf, so->pStruct) ;
-				jo->putBool(jo, mf->name, *pv) ;
-			}
-			mf = mf->next;
-		}
+		URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_toJsonByMetaStruct((jo = NULL,&jo), so->pStruct, so->metaStruct) ;
 		return urgc_set_var_for_return_class((void ** )__outRef__, jo) ; 
 	}
 	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$List_init(NULL))) {

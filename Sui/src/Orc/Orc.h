@@ -46,7 +46,7 @@ struct tagVtable_Object {
     Vtable_Object* super;//指向父虚表
 
 
-    Object* (*make)(void *pOwner); //创建实例
+    Object* (*make)(void *pOwner); //创建实例.特别注意。 pOwner需要是指向引用的指针,不然可能内存泄漏
 
     //反射信息
     OrcMetaField *headMetaField;//不含父类的。

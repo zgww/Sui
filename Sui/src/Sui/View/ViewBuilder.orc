@@ -43,23 +43,25 @@ Node@ gocNode(void *sp, Node* parent, Vtable_Object*vt){
     snprintf(key, 32, "%p", sp);
 
 
+    Map* map = get_mapForReact(parent)
     Map* unusedMap = get_unusedMapForReact(parent)
     View* n = (View*)unusedMap.get(key)
     
     if (!n){
+        View@ tmp = null;
         // Object@ tmp = vt.make(&tmp)
-        n = vt.make(&n);
+        n = vt.make(&tmp);
+        // printf("gocNode. new:%s unusedMap size:%d. n:%p\n", key, unusedMap.size(), n);
+        map.put(key, n) //确保新创建出来的节点有持久的引用了
+        //在不需要新建时，可以省去一次解引用的开销
     } else {
         n.isNewForReact = false //标记为非新建
+        map.put(key, n)
     }
 
     strcpy(n.key, key)
-
     unusedMap.del(key)
 
-
-    Map* map = get_mapForReact(parent)
-    map.put(key, n)
 
     //有内部react
     if parent.hasInnerReact && !parent.isInInnerReact() {

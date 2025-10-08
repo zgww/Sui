@@ -511,7 +511,7 @@ class Insp {
         LayoutLinear* ll = null
 
         while mf {
-            printf("inspVt. vt:%s, mf.name:%s@%p\n", vt.className, mf.name, mf);
+            // printf("inspVt. vt:%s, mf.name:%s@%p\n", vt.className, mf.name, mf);
             //识别method
             //函数可以被组织成按钮
             InspAttr* attr = self.getAttr(mf.name)
@@ -1053,10 +1053,11 @@ class Insp {
             o.height = 60
             o.onChanged = ^void (BezierEditView*view){
                 Bezier nv = view.getBezier()
+                printf("bezier changed:%s\n", nv.toString().str);
                 self.setAttr(mf, mkStructObj(metaStructOf(Bezier), &nv))
             }
 
-            // layoutLinearCell(o, 0).{ o.grow = 1; o.alignSelf.set("stretch")}
+            layoutLinearCell(o, 0).{ o.grow = 1; o.alignSelf.set("stretch")}
         }
         return true
     }

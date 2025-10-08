@@ -437,6 +437,9 @@ extension Node{
             Node @unusedNode = (Node*)unused.get(key.str)
             unusedNode.removeSelf()
 
+            // printf("remove unusedNode:%p[%s]\n", unusedNode, unusedNode.name.str);
+            // urgc_report_sources_of(unusedNode);
+
             //外部临时挂载的
             if needRmOutKids{
                 self.outKids.remove(unusedNode)

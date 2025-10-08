@@ -156,6 +156,7 @@ void HoroEditor$HoroEditCtx_init(HoroEditor$HoroEditCtx *self, void *pOwner);
 HoroEditor$HoroEditCtx * HoroEditor$HoroEditCtx_new(void *pOwner);
 void HoroEditor$HoroEditCtx_fini(HoroEditor$HoroEditCtx *self);
 
+void  HoroEditor$HoroEditCtx$ctor(HoroEditor$HoroEditCtx *  self);
 void  HoroEditor$HoroEditCtx$setState(HoroEditor$HoroEditCtx *  self, SuiView$TreeState*  state);
 SuiDesigner$ANode*  HoroEditor$HoroEditCtx$findANodeByNode(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditCtx *  self, SuiCore$Node *  node);
 void  HoroEditor$HoroEditCtx$onSelectedChanged(HoroEditor$HoroEditCtx *  self);

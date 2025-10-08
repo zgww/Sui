@@ -258,26 +258,34 @@ class Horo2dSceneView extends View {
         // }
 
         // gizmo root
-        mkView(o, 0).{
-            self.gizmoRoot = o
-            o.hitTestType.set("onlychildren")
+        {
 
-            o.backgroundColor = 0x0000ff00
-            o.cbOnEvent = ^void(Event *e){
-                if e instanceof MouseEvent {
-                    MouseEvent* me = (MouseEvent*)e
-                    if me.isClickInBubble(){
-                        // Toast_make("hi click gizmo root")
-                    }
-                }
-            }
+        
+            View@ v = mkView(o, 0)
+            self.gizmoRoot = v
+            v.hitTestType.set("onlychildren")
+
+            get_unusedMapForReact(v)
+            get_mapForReact(v)
+
+            v.backgroundColor = 0x0000ff00
+            v.endReact()
+            // o.cbOnEvent = ^void(Event *e){
+            //     if e instanceof MouseEvent {
+            //         MouseEvent* me = (MouseEvent*)e
+            //         if me.isClickInBubble(){
+            //             // Toast_make("hi click gizmo root")
+            //         }
+            //     }
+            // }
         }
-        self.reactGizmos()
 
 
         self.backgroundColor = 0xcc000000
 
         self.endInnerReact()
+
+        self.reactGizmos()
     }
 
 
@@ -300,9 +308,15 @@ class Horo2dSceneView extends View {
     }
 
     void reactGizmos(){
+        // if 1 {return;}
         if !self.editor {
             return
         }
+        // i, act, cur, prev
+        // 0-0, , [], []
+        // 0-1, , [], [b5c0]
+        // 1-0, del b5c0 , [], []
+        // 1-0, , [], [d5f0]
         ANode* sel = self.editor.editCtx.state.getFirstSelected()
 
         self.gizmoDrag.onDrag = ^void (Drag *d){
@@ -311,18 +325,34 @@ class Horo2dSceneView extends View {
             // y += d.deltaPos.y
             // self.triggerReactGizmos()
         }
+        View* inner = null
+        Object* prevfirst = null
+        int prevSize = self.gizmoRoot._unusedMapForReact.size()
+        if self.gizmoRoot._unusedMapForReact.size() > 0 {
+            List@ keys = self.gizmoRoot._unusedMapForReact.keys()
+            String@ key = keys.get(0)
+            prevfirst = self.gizmoRoot._unusedMapForReact.get(key.str)
+        } 
         self.gizmoRoot.{
             ANode* sel = self.editor.editCtx.state.getFirstSelected()
 
             // EditCtx@ ctx = EditCtx_ins()
             // if (ctx.state){
             //     ANode* sel = (ANode*)ctx.state.getFirstSelected()
-            if sel && sel.node && sel.node instanceof View{
-                View* selView = (View*) sel.node
+            if sel && sel.node && sel.node instanceof ViewBase{
+                ViewBase* selView = (ViewBase*) sel.node
                 Frame* f = &selView.frame
 
                 //将视图的坐标转到scene下
                 Mat2d invMat = self._sceneWorldMat.inverseNew()
+
+                // mkView(o, 0).{
+                //     o.name.set("inner")
+                //     inner = o
+                //     o.width = 100
+                //     o.height = 100
+                //     o.backgroundColor = 0xffff0000
+                // }
                 
                 mkGizmoRectView(o, 0).{
                     Vec3 lt = selView._world_transform.localToLocal(&invMat, 0, 0, 0)
@@ -347,6 +377,25 @@ class Horo2dSceneView extends View {
             }
             // }
         }
+        Object* first = null
+        if self.gizmoRoot._unusedMapForReact.size() > 0 {
+            List@ keys = self.gizmoRoot._unusedMapForReact.keys()
+            String@ key = keys.get(0)
+            first = self.gizmoRoot._unusedMapForReact.get(key.str)
+        } 
+        // urgc_report_sources_of(inner);
+
+        // printf("react map size:%d/%d. first:%d, %p=>%p, map:%p, %p, view:%p. %p\n",
+        //     self.gizmoRoot._mapForReact.size(),
+        //     self.gizmoRoot._unusedMapForReact.size(),
+        //     prevSize,
+        //     prevfirst,
+        //     first,
+
+        //     self.gizmoRoot._mapForReact,
+        //     self.gizmoRoot._unusedMapForReact,
+        //     self.gizmoRoot, inner
+        // );
     }
 
 
@@ -362,7 +411,7 @@ class Horo2dSceneView extends View {
     Mat2d _sceneWorldMat = mkMat2d()
 
     void draw_self(Canvas *canvas){
-        self.triggerReactGizmos()
+        // self.triggerReactGizmos()
 
         // super.draw_self(canvas)
 

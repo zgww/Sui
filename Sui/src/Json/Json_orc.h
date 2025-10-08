@@ -200,6 +200,7 @@ Json$Json*  Json$Json_mkObject(Json$Json **  __outRef__);
 extern Json$Json*  Json$Json_parse(Json$Json **  __outRef__, const char *  s);
 Json$Json*  Json$Json_toJsonNumberArrayByInts(Json$Json **  __outRef__, int *  ints, int  count);
 Json$Json*  Json$Json_toJsonNumberArrayByFloats(Json$Json **  __outRef__, float *  ints, int  count);
+Json$Json*  Json$Json_toJsonByMetaStruct(Json$Json **  __outRef__, void *  pStruct, MetaStruct *  metaStruct);
 Json$Json*  Json$Json_toJson(Json$Json **  __outRef__, Object *  obj);
 Json$Json*  Json$Json_toJsonArray(Json$Json **  __outRef__, Orc$List *  list);
 Json$Json*  Json$Json_parseByPathCstr(Json$Json **  __outRef__, const char *  path);

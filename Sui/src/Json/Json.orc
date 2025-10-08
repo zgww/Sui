@@ -478,6 +478,46 @@ Json@ Json_toJsonNumberArrayByFloats(float *ints, int count){
 
     return ja
 }
+Json@ Json_toJsonByMetaStruct(void *pStruct, MetaStruct* metaStruct){
+    if metaStruct == null || pStruct == null {
+        return null
+    }
+
+    OrcMetaField *mf = metaStruct.headMetaField;
+    Json@ jo = Json_mkObject()
+    while mf {
+        jo.putCstr("__struct", metaStruct.structName)
+        if !(mf.isPointer || mf.isRef || mf.isArray){//非指针、引用、数组 
+
+            if mf.type == OrcMetaType_float {
+                float* pv = (float*)OrcMetaField_getPtr(mf, pStruct);
+                jo.putNumber(mf.name, *pv)
+            }
+            else if mf.type == OrcMetaType_double {
+                double* pv = (double*)OrcMetaField_getPtr(mf, pStruct);
+                jo.putNumber(mf.name, *pv)
+            }
+            else if mf.type == OrcMetaType_int {
+                int* pv = (int*)OrcMetaField_getPtr(mf, pStruct);
+                jo.putNumber(mf.name, *pv)
+            }
+            else if mf.type == OrcMetaType_bool {
+                bool* pv = (bool*)OrcMetaField_getPtr(mf, pStruct);
+                jo.putBool(mf.name, *pv)
+            }
+            else if mf.type == OrcMetaType_struct {//嵌套结构体，非指针
+                if mf.metaStruct {
+                    void* pFieldStruct = OrcMetaField_getPtr(mf, pStruct);
+                    Json@ nest = Json_toJsonByMetaStruct(pFieldStruct, mf.metaStruct)
+                    jo.put(mf.name, nest)
+                }
+            }
+        }
+
+        mf = mf.next
+    }
+    return jo;
+}
 Json@ Json_toJson(Object* obj){
     if obj == null {
         return Json_mkNull()
@@ -496,29 +536,7 @@ Json@ Json_toJson(Object* obj){
     }
     if obj instanceof StructObj {//只处理简单的结构体...
         StructObj* so = (StructObj*)obj
-        OrcMetaField *mf = so.metaStruct.headMetaField;
-        Json@ jo = Json_mkObject()
-        while mf {
-            jo.putCstr("__struct", so.metaStruct.structName)
-            if mf.type == OrcMetaType_float {
-                float* pv = (float*)OrcMetaField_getPtr(mf, so.pStruct);
-                jo.putNumber(mf.name, *pv)
-            }
-            else if mf.type == OrcMetaType_double {
-                double* pv = (double*)OrcMetaField_getPtr(mf, so.pStruct);
-                jo.putNumber(mf.name, *pv)
-            }
-            else if mf.type == OrcMetaType_int {
-                int* pv = (int*)OrcMetaField_getPtr(mf, so.pStruct);
-                jo.putNumber(mf.name, *pv)
-            }
-            else if mf.type == OrcMetaType_bool {
-                bool* pv = (bool*)OrcMetaField_getPtr(mf, so.pStruct);
-                jo.putBool(mf.name, *pv)
-            }
-
-            mf = mf.next
-        }
+        Json@ jo = Json_toJsonByMetaStruct(so.pStruct, so.metaStruct);
         return jo;
 
     }

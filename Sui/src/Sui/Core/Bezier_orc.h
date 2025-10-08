@@ -47,6 +47,7 @@ struct tagSuiCore$Bezier {
 
 //include  importHeadCode
 #include "./Vec2_orc.h"
+#include "../../Orc/String_orc.h"
 
 
 #ifdef __cplusplus
@@ -60,6 +61,7 @@ extern "C"{
 MetaStruct* SuiCore$Bezier_getOrInitMetaStruct();
 
 SuiCore$Bezier SuiCore$mkBezier();
+Orc$String*  SuiCore$Bezier$toString(Orc$String **  __outRef__, SuiCore$Bezier *  self);
 
 
 

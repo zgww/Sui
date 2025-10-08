@@ -6,6 +6,7 @@ package SuiCore
 
 
 import * from "./Vec2.orc"
+import * from "../../Orc/String.orc"
 
 /// 布局上下文
 struct Bezier {
@@ -27,5 +28,15 @@ Bezier mkBezier(){
 	b.end = end
 	return b
 }
-// extension Bezier {
-// }
+extension Bezier {
+    String@ toString(){
+        char tmp[256];
+        sprintf(tmp, "Bezier(%s,%s,%s,%s)", 
+            self.start.toString().str,
+            self.c0.toString().str,
+            self.c1.toString().str,
+            self.end.toString().str,
+        )
+        return str(tmp)
+    }
+}
