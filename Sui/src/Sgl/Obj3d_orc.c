@@ -289,6 +289,13 @@ void  Sgl$Obj3d$lookAt(Sgl$Obj3d *  self, float  x, float  y, float  z){
 
 
 
+SuiCore$Vec3 Sgl$Obj3d$applyRotationToVec3(Sgl$Obj3d *  self, SuiCore$Vec3 v3){
+	Sgl$Mat rot;
+	Sgl$Mat$extractRotationLocal(&rot, self->_world_transform) ;
+	SuiCore$Vec3 ret = SuiCore$Vec3$applyMatrix4(&v3, rot) ;
+	return ret; 
+}
+
 void  Sgl$Obj3d$updateWorldMatrixUptoRoot(Sgl$Obj3d *  self){
 	self->updateTransform(self) ;
 	Sgl$Obj3d *  parent = (Sgl$Obj3d * )((SuiCore$Node * )self)->parent;
@@ -303,7 +310,7 @@ void  Sgl$Obj3d$updateWorldMatrixUptoRoot(Sgl$Obj3d *  self){
 
 void  Sgl$Obj3d$lookAtByDir(Sgl$Obj3d *  self, bool  negativeZ, float  x, float  y, float  z){
 	Sgl$Obj3d *  parent = (Sgl$Obj3d * )((SuiCore$Node * )self)->parent;
-	if (!(Orc_instanceof((Object*)parent, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL)))) {
+	if (parent != NULL && !(Orc_instanceof((Object*)parent, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL)))) {
 		return ; 
 	}
 	SuiCore$Vec3 _target = SuiCore$mkVec3(x, y, z) ;

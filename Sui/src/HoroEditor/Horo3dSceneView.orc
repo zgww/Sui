@@ -112,7 +112,7 @@ class Horo3dSceneView extends ImageView {
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
 
-            self.groundGrid.draw(self.drawCtx)
+            // self.groundGrid.draw(self.drawCtx)
 
             self.fbo.endDraw()
 
@@ -135,7 +135,7 @@ class Horo3dSceneView extends ImageView {
         self.camera = new PerspectiveCamera()
         
         // Initialize camera with default values
-        self.camera.target = mkVec3(0, 0, 0)
+        // self.camera.target = mkVec3(0, 0, 0)
         self.camera.up = mkVec3(0, 1, 0)
         self.camera.fov = 45 / 180.0 * PI
         self.camera.aspect = 1.0
@@ -144,7 +144,10 @@ class Horo3dSceneView extends ImageView {
         
         // Position camera
         // self.camera.position = mkVec3(100, 300, 500)
-        self.camera.position = mkVec3(100, 100, 1000)
+        self.camera.position = mkVec3(100, 0, 1000)
+
+        self.camera.updateWorldMatrixUptoRoot()
+        self.camera.lookAt(0, 0, 0)
 
         
         // Update camera matrices; 不用调。在draw时会调

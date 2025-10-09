@@ -117,6 +117,7 @@ void  Sgl$Obj3d$tick(Sgl$Obj3d *  self, Sgl$DrawCtx *  ctx);
 bool  Sgl$Obj3d$hitTestSelfByRaycaster(Sgl$Obj3d *  self, Sgl$Raycaster *  raycaster);
 void  Sgl$Obj3d$lookAt(Sgl$Obj3d *  self, float  x, float  y, float  z);
 
+SuiCore$Vec3 Sgl$Obj3d$applyRotationToVec3(Sgl$Obj3d *  self, SuiCore$Vec3 v3);
 void  Sgl$Obj3d$updateWorldMatrixUptoRoot(Sgl$Obj3d *  self);
 void  Sgl$Obj3d$lookAtByDir(Sgl$Obj3d *  self, bool  negativeZ, float  x, float  y, float  z);
 

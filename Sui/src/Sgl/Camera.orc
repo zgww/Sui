@@ -74,7 +74,7 @@ class Camera extends Obj3d {
 		ndcPos.applyMatrix4Local( projectionInverse )
         return ndcPos
     }
-    // 令正z轴朝向目标位置
+    // 令负z轴朝向目标位置
     void lookAt( float x, float y, float z){
         self.lookAtByDir(true, x, y, z)
     }

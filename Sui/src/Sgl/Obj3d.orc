@@ -163,6 +163,14 @@ class Obj3d extends Node {
     }
 }
 extension Obj3d {
+    //本地方向矢量转世界坐标下的方向矢量
+    //只应用旋转
+    Vec3 applyRotationToVec3(Vec3 v3){
+        Mat rot;
+        rot.extractRotationLocal(self._world_transform)
+        Vec3 ret = v3.applyMatrix4(rot)
+        return ret
+    }
 
     //更新世界矩阵，从自己到根结点
     void updateWorldMatrixUptoRoot(){
@@ -182,7 +190,7 @@ extension Obj3d {
     // 普通的obj以正轴为前方
     void lookAtByDir(bool negativeZ, float x, float y, float z){
 		Obj3d * parent = (Obj3d*)self.parent;
-        if ! (parent instanceof Obj3d) {
+        if parent != null && !(parent instanceof Obj3d) {
             return
         }
 

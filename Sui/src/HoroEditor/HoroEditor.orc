@@ -624,29 +624,53 @@ class HoroEditor extends Listener{
         if e instanceof KeyEvent {
             KeyEvent *ke = (KeyEvent*)e
             printf("2窗口收到键盘消息:%s\n", ke.key.str);
-            // if self.sceneView && self.sceneView.camera {
-            //     //前进
-            //     if ke.key.equals("W"){
-            //         self.sceneView.camera.moveForward()
-            //     }
-            //     if ke.key.equals("S"){
-            //         self.sceneView.camera.moveBackward()
-            //     }
-            //     //左转
-            //     if ke.key.equals("A"){
-            //         self.sceneView.camera.rotateLeft()
-            //     }
-            //     if ke.key.equals("D"){
-            //         self.sceneView.camera.rotateRight()
-            //     }
-            //     //升降
-            //     if ke.key.equals("E"){
-            //         self.sceneView.camera.rise()
-            //     }
-            //     if ke.key.equals("Q"){
-            //         self.sceneView.camera.fall()
-            //     }
-            // }
+            if self.sceneView && self.sceneView.camera {
+                //前进
+                if ke.key.equals("W"){
+                    Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, 0, -1.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.sceneView.camera.position.addLocal(dir)
+                    // self.sceneView.camera.moveForward()
+                }
+                if ke.key.equals("S"){
+                    // self.sceneView.camera.moveBackward()
+                    Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, 0, 1.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.sceneView.camera.position.addLocal(dir)
+                }
+                //左转
+                if ke.key.equals("A"){
+                    // self.sceneView.camera.rotateLeft()
+                    Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(-1, 0, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.sceneView.camera.position.addLocal(dir)
+                }
+                if ke.key.equals("D"){
+                    // self.sceneView.camera.rotateRight()
+                    Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(1, 0, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.sceneView.camera.position.addLocal(dir)
+                }
+                //升降
+                if ke.key.equals("E"){
+                    // self.sceneView.camera.rise()
+                    Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, 1, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.sceneView.camera.position.addLocal(dir)
+                }
+                if ke.key.equals("Q"){
+                    // self.sceneView.camera.fall()
+                    Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, -1, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.sceneView.camera.position.addLocal(dir)
+                }
+            }
         }
     }
 

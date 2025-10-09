@@ -222,7 +222,6 @@ void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, S
 		self->fbo->startDraw(self->fbo, 0.0, 0.0, 0.0, 1.0, true, true, true) ;
 		self->drawCtx->frameSize = fboSize;
 		self->drawCtx->draw(self->drawCtx, self->scene, self->camera) ;
-		((Sgl$Obj3d * )self->groundGrid)->draw(self->groundGrid, self->drawCtx) ;
 		self->fbo->endDraw(self->fbo) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_2 = NULL;
 		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(&tmpReturn_2, self->fbo->tex2d) ) ;
@@ -246,13 +245,14 @@ void  HoroEditor$Horo3dSceneView$mkBaseScene(HoroEditor$Horo3dSceneView *  self)
 	urgc_set_field_class(self, (void * )offsetof(HoroEditor$Horo3dSceneView, scene) , Sgl$Scene_new(&tmpNewOwner_1) ) ;
 	URGC_VAR_CLEANUP_CLASS Sgl$PerspectiveCamera*  tmpNewOwner_2 = NULL;
 	urgc_set_field_class(self, (void * )offsetof(HoroEditor$Horo3dSceneView, camera) , Sgl$PerspectiveCamera_new(&tmpNewOwner_2) ) ;
-	self->camera->target = SuiCore$mkVec3(0, 0, 0) ;
 	((Sgl$Obj3d * )self->camera)->up = SuiCore$mkVec3(0, 1, 0) ;
 	self->camera->fov = 45 / 180.0 * Orc$PI;
 	self->camera->aspect = 1.0;
 	self->camera->nearPlane = 100.1;
 	self->camera->farPlane = 5000;
-	((Sgl$Obj3d * )self->camera)->position = SuiCore$mkVec3(100, 100, 1000) ;
+	((Sgl$Obj3d * )self->camera)->position = SuiCore$mkVec3(100, 0, 1000) ;
+	Sgl$Obj3d$updateWorldMatrixUptoRoot((Sgl$Obj3d * )self->camera) ;
+	((Sgl$Obj3d * )self->camera)->lookAt(self->camera, 0, 0, 0) ;
 	((SuiCore$Node * )self->scene)->appendChild(self->scene, self->camera) ;
 	{
 		URGC_VAR_CLEANUP_CLASS Sgl$DirLight*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$DirLight_new(&l) ));

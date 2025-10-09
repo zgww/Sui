@@ -215,7 +215,7 @@ class DrawCtx {
                 o.lineTo(0,  100000, 0)
 
                 // z轴
-                o.color = 0xff0000ff
+                o.color = 0xff00a0ff
                 o.moveTo(0, 0, -100000)
                 o.lineTo(0, 0,  100000)
             }

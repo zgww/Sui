@@ -313,7 +313,7 @@ void  Sgl$DrawCtx$draw(Sgl$DrawCtx *  self, Sgl$Scene *  scene, Sgl$Camera *  ca
 			o->color = 0xff00ff00;
 			o->moveTo(o, 0, -100000, 0) ;
 			o->lineTo(o, 0, 100000, 0) ;
-			o->color = 0xff0000ff;
+			o->color = 0xff00a0ff;
 			o->moveTo(o, 0, 0, -100000) ;
 			o->lineTo(o, 0, 0, 100000) ;
 		}
