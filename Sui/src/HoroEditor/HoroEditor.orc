@@ -624,16 +624,28 @@ class HoroEditor extends Listener{
         if e instanceof KeyEvent {
             KeyEvent *ke = (KeyEvent*)e
             printf("2窗口收到键盘消息:%s\n", ke.key.str);
-            if self.sceneView && self.sceneView.camera {
+            if self.sceneView && self.sceneView.camera && ke.isKeyDown {
+
+                // ke.
                 //前进
-                if ke.key.equals("W"){
+                if ke.shift {
+                    if ke.key.equalsIgnoreCase("A"){
+                        printf("左旋转\n");
+                        self.sceneView.camera.rotation.y += 0.01
+                    }
+                    else if ke.key.equalsIgnoreCase("D"){
+                        printf("右旋转\n");
+                        self.sceneView.camera.rotation.y -= 0.01
+                    }
+                }
+                else if ke.key.equals("W"){
                     Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, 0, -1.0))
                     dir.multiplyScalarLocal(10)
                     printf("apply dir:%s\n", dir.toString().str);
                     self.sceneView.camera.position.addLocal(dir)
                     // self.sceneView.camera.moveForward()
                 }
-                if ke.key.equals("S"){
+                else if ke.key.equals("S"){
                     // self.sceneView.camera.moveBackward()
                     Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, 0, 1.0))
                     dir.multiplyScalarLocal(10)
@@ -641,14 +653,14 @@ class HoroEditor extends Listener{
                     self.sceneView.camera.position.addLocal(dir)
                 }
                 //左转
-                if ke.key.equals("A"){
+                else if ke.key.equals("A"){
                     // self.sceneView.camera.rotateLeft()
                     Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(-1, 0, 0.0))
                     dir.multiplyScalarLocal(10)
                     printf("apply dir:%s\n", dir.toString().str);
                     self.sceneView.camera.position.addLocal(dir)
                 }
-                if ke.key.equals("D"){
+                else if ke.key.equals("D"){
                     // self.sceneView.camera.rotateRight()
                     Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(1, 0, 0.0))
                     dir.multiplyScalarLocal(10)
@@ -656,14 +668,14 @@ class HoroEditor extends Listener{
                     self.sceneView.camera.position.addLocal(dir)
                 }
                 //升降
-                if ke.key.equals("E"){
+                else if ke.key.equals("E"){
                     // self.sceneView.camera.rise()
                     Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, 1, 0.0))
                     dir.multiplyScalarLocal(10)
                     printf("apply dir:%s\n", dir.toString().str);
                     self.sceneView.camera.position.addLocal(dir)
                 }
-                if ke.key.equals("Q"){
+                else if ke.key.equals("Q"){
                     // self.sceneView.camera.fall()
                     Vec3 dir = self.sceneView.camera.applyRotationToVec3(mkVec3(0, -1, 0.0))
                     dir.multiplyScalarLocal(10)

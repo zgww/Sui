@@ -271,6 +271,9 @@ static int _key_up(HWND hwnd, WPARAM wp, LPARAM lp) {
     kd.ctrl = ak.ctrl;
     kd.shift = ak.shift;
     kd.alt = ak.alt;
+    if (ak.alt ){
+        printf("alt ...\n");
+    }
 
     SuiCore$Keyboard_onKeyDown(&kd);
 
