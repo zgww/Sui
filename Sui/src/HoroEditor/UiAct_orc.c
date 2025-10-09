@@ -2,6 +2,9 @@
 #include "UiAct_orc.h" 
 
 #include "../Orc/Orc.h"
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "../Orc/String_orc.h"
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
@@ -21,13 +24,13 @@
 
 
 // static struct 
-typedef struct tagHoroEditor$__Block_30_43 HoroEditor$__Block_30_43;
+typedef struct tagHoroEditor$__Block_33_43 HoroEditor$__Block_33_43;
 
-typedef struct tagHoroEditor$__Closure_43_57 HoroEditor$__Closure_43_57;
+typedef struct tagHoroEditor$__Closure_46_57 HoroEditor$__Closure_46_57;
 
 
 
-struct tagHoroEditor$__Block_30_43 {
+struct tagHoroEditor$__Block_33_43 {
 	SuiDesigner$FileItem*  parent ;
 };
 
@@ -35,10 +38,10 @@ struct tagHoroEditor$__Block_30_43 {
 
 
 
-struct tagHoroEditor$__Closure_43_57 {
-	void  (*invoke)(HoroEditor$__Closure_43_57 *  self, Orc$String*  newName);
+struct tagHoroEditor$__Closure_46_57 {
+	void  (*invoke)(HoroEditor$__Closure_46_57 *  self, Orc$String*  newName);
 	Vtable_Object *  vtable ;
-	HoroEditor$__Block_30_43*  __var___Block_30_43 ;
+	HoroEditor$__Block_33_43*  __var___Block_33_43 ;
 };
 
 
@@ -46,38 +49,38 @@ struct tagHoroEditor$__Closure_43_57 {
 
 
 // static function declaration
-static void  __finiBlock___Block_30_43(HoroEditor$__Block_30_43 *  self);
-static void  __fn___Closure_43_57(HoroEditor$__Closure_43_57 *  self, Orc$String*  newName);
-static void  __fini___Closure_43_57(HoroEditor$__Closure_43_57 *  self);
-static HoroEditor$__Closure_43_57*  __make___Closure_43_57(HoroEditor$__Closure_43_57 **  __outRef__, HoroEditor$__Block_30_43 *  __var___Block_30_43);
+static void  __finiBlock___Block_33_43(HoroEditor$__Block_33_43 *  self);
+static void  __fn___Closure_46_57(HoroEditor$__Closure_46_57 *  self, Orc$String*  newName);
+static void  __fini___Closure_46_57(HoroEditor$__Closure_46_57 *  self);
+static HoroEditor$__Closure_46_57*  __make___Closure_46_57(HoroEditor$__Closure_46_57 **  __outRef__, HoroEditor$__Block_33_43 *  __var___Block_33_43);
 
 
 void  HoroEditor$UiAct_createPrefab3d(SuiDesigner$FileItem*  parent){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(parent);
 
-	URGC_VAR_CLEANUP HoroEditor$__Block_30_43*  __var___Block_30_43 = (__var___Block_30_43=NULL,urgc_init_var((void**)&__var___Block_30_43, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_30_43) , __finiBlock___Block_30_43) ));
-	urgc_set_field_class(__var___Block_30_43, (void * )offsetof(HoroEditor$__Block_30_43, parent) , parent) ;
-	if (__var___Block_30_43->parent && !__var___Block_30_43->parent->isDirectory) {
-		urgc_set_field_class(__var___Block_30_43, (void * )offsetof(HoroEditor$__Block_30_43, parent) , __var___Block_30_43->parent->parent) ;
+	URGC_VAR_CLEANUP HoroEditor$__Block_33_43*  __var___Block_33_43 = (__var___Block_33_43=NULL,urgc_init_var((void**)&__var___Block_33_43, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_33_43) , __finiBlock___Block_33_43) ));
+	urgc_set_field_class(__var___Block_33_43, (void * )offsetof(HoroEditor$__Block_33_43, parent) , parent) ;
+	if (__var___Block_33_43->parent && !__var___Block_33_43->parent->isDirectory) {
+		urgc_set_field_class(__var___Block_33_43, (void * )offsetof(HoroEditor$__Block_33_43, parent) , __var___Block_33_43->parent->parent) ;
 	}
-	if (!__var___Block_30_43->parent) {
+	if (!__var___Block_33_43->parent) {
 		SuiDialog$MessageDialog_alert("未指定父目录", "tip") ;
 		return ; 
 	}
-	URGC_VAR_CLEANUP HoroEditor$__Closure_43_57*  tmpReturn_1 = NULL;
-	SuiDialog$MessageDialog_prompt("新建预制3d.prefab.json", "新建预制3d", __make___Closure_43_57(&tmpReturn_1, __var___Block_30_43) ) ;
+	URGC_VAR_CLEANUP HoroEditor$__Closure_46_57*  tmpReturn_1 = NULL;
+	SuiDialog$MessageDialog_prompt("新建预制3d.prefab.json", "新建预制3d", __make___Closure_46_57(&tmpReturn_1, __var___Block_33_43) ) ;
 }
 
-static void  __finiBlock___Block_30_43(HoroEditor$__Block_30_43 *  self){
-	urgc_set_field_class(self, (void * )offsetof(HoroEditor$__Block_30_43, parent) , NULL) ;
+static void  __finiBlock___Block_33_43(HoroEditor$__Block_33_43 *  self){
+	urgc_set_field_class(self, (void * )offsetof(HoroEditor$__Block_33_43, parent) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_43_57(HoroEditor$__Closure_43_57 *  self, Orc$String*  newName){
+static void  __fn___Closure_46_57(HoroEditor$__Closure_46_57 *  self, Orc$String*  newName){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(newName);
 
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  path = (path=NULL,urgc_init_var_class((void**)&path, Orc$String$addString(Orc$String$add(Orc$String$clone(&tmpReturn_1, self->__var___Block_30_43->parent->path) , "/") , newName) ));
+	URGC_VAR_CLEANUP_CLASS Orc$String*  path = (path=NULL,urgc_init_var_class((void**)&path, Orc$String$addString(Orc$String$add(Orc$String$clone(&tmpReturn_1, self->__var___Block_33_43->parent->path) , "/") , newName) ));
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$Prefab*  prefab = (prefab=NULL,urgc_init_var_class((void**)&prefab, SuiDesigner$Prefab_new(&prefab) ));
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$ANode*  tmpReturn_2 = NULL;
 	urgc_set_field_class(prefab, (void * )offsetof(SuiDesigner$Prefab, root) , SuiDesigner$mkANodeByTag(&tmpReturn_2, Vtable_getClassName(Vtable_Sgl$Obj3d_init(NULL)) ) ) ;
@@ -89,28 +92,28 @@ static void  __fn___Closure_43_57(HoroEditor$__Closure_43_57 *  self, Orc$String
 	if (Orc$Path_writeText(path->str, text->str) ) {
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_5 = NULL;
 		SuiDialog$MessageDialog_alert(Orc$String$add(Orc$str(&tmpReturn_5, "新建预制成功. 路径") , path->str) , "tip") ;
-		self->__var___Block_30_43->parent->loadSubtree(self->__var___Block_30_43->parent) ;
+		self->__var___Block_33_43->parent->loadSubtree(self->__var___Block_33_43->parent) ;
 		URGC_VAR_CLEANUP_CLASS SuiDesigner$EventFileItemChanged*  tmpNewOwner_6 = NULL;
 		{
 			SuiDesigner$EventFileItemChanged*  o = SuiDesigner$EventFileItemChanged_new(&tmpNewOwner_6) ;
 			
 		
-			urgc_set_field_class(o, (void * )offsetof(SuiDesigner$EventFileItemChanged, fileItem) , self->__var___Block_30_43->parent) ;
+			urgc_set_field_class(o, (void * )offsetof(SuiDesigner$EventFileItemChanged, fileItem) , self->__var___Block_33_43->parent) ;
 			((SuiDesigner$EventToEbus * )o)->emitToEbus(o) ;
 		}
 	}
 }
 
-static void  __fini___Closure_43_57(HoroEditor$__Closure_43_57 *  self){
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_43_57, __var___Block_30_43) , NULL) ;
+static void  __fini___Closure_46_57(HoroEditor$__Closure_46_57 *  self){
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_46_57, __var___Block_33_43) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static HoroEditor$__Closure_43_57*  __make___Closure_43_57(HoroEditor$__Closure_43_57 **  __outRef__, HoroEditor$__Block_30_43 *  __var___Block_30_43){
-	URGC_VAR_CLEANUP HoroEditor$__Closure_43_57*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_43_57) , __fini___Closure_43_57) ));
-	self->invoke = __fn___Closure_43_57;
+static HoroEditor$__Closure_46_57*  __make___Closure_46_57(HoroEditor$__Closure_46_57 **  __outRef__, HoroEditor$__Block_33_43 *  __var___Block_33_43){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_46_57*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_46_57) , __fini___Closure_46_57) ));
+	self->invoke = __fn___Closure_46_57;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_43_57, __var___Block_30_43) , __var___Block_30_43) ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_46_57, __var___Block_33_43) , __var___Block_33_43) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
@@ -118,7 +121,9 @@ void  HoroEditor$UiAct_savePrefab(HoroEditor$HoroEditor *  editor){
 	URGC_VAR_CLEANUP_CLASS HoroEditor$HoroEditCtx*  ctx = (ctx=NULL,urgc_init_var_class((void**)&ctx, editor->editCtx));
 	if (ctx->prefab) {
 		ctx->prefab->save(ctx->prefab) ;
-		SuiDialog$Toast_make("保存成功") ;
+		char  tmp[1000];
+		sprintf(tmp, "保存场景%s成功", ctx->prefab->_path->str) ;
+		SuiDialog$Toast_make(tmp) ;
 	}
 }
 

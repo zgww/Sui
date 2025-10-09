@@ -13,6 +13,9 @@
 #include <stdlib.h>
 
 #include "../Orc/Orc.h"
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 
 

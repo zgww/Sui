@@ -1,6 +1,9 @@
 package HoroEditor
 
 #include "../Orc/Orc.h"
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
@@ -65,7 +68,9 @@ void UiAct_savePrefab(HoroEditor* editor){
     if ctx.prefab {
         ctx.prefab.save()
 
-        Toast_make("保存成功")
+        char tmp[1000];
+        sprintf(tmp, "保存场景%s成功", ctx.prefab._path.str);
+        Toast_make(tmp)
     }
 }
 void UiAct_addView(HoroEditor* editor, ANode@ anode, String@ viewName){

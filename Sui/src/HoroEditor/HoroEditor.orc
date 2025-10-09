@@ -637,7 +637,12 @@ class HoroEditor extends Listener{
             if self.sceneView && self.sceneView.camera && ke.isKeyDown {
 
                 //前进
-                if ke.shift {
+                if ke.ctrl {
+                    if ke.key.equalsIgnoreCase("S"){//保存场景
+                        UiAct_savePrefab(self)
+                    }
+                }
+                else if ke.shift {
                     if ke.key.equalsIgnoreCase("A"){
                         printf("左旋转\n");
                         self.sceneView.camera.rotation.y += 0.01
