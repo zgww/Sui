@@ -36,6 +36,13 @@
 				"children":	[]
 			}, {
 				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	110,
+						"y":	0,
+						"z":	0
+					},
+					"geometryPath":	"Geometry/Box.geometry.json"
 				},
 				"tag":	"Sgl$Mesh",
 				"children":	[]

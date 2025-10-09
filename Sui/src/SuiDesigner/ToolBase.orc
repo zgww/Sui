@@ -140,7 +140,8 @@ class ToolSelect extends ToolBase{
                 );
                 if r.succ {
                     //选中r.obj
-                    self.mgr.editCtx.state.setSelected(r.obj)
+                    // self.mgr.editCtx.state.setSelected(r.obj)
+                    self.mgr.editor.selectByNode(r.obj)
                     printf("选中对象....")
                 }
             }
