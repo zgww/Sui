@@ -626,7 +626,6 @@ class HoroEditor extends Listener{
             printf("2窗口收到键盘消息:%s\n", ke.key.str);
             if self.sceneView && self.sceneView.camera && ke.isKeyDown {
 
-                // ke.
                 //前进
                 if ke.shift {
                     if ke.key.equalsIgnoreCase("A"){
@@ -636,6 +635,14 @@ class HoroEditor extends Listener{
                     else if ke.key.equalsIgnoreCase("D"){
                         printf("右旋转\n");
                         self.sceneView.camera.rotation.y -= 0.01
+                    }
+                    else if ke.key.equalsIgnoreCase("W"){
+                        printf("左旋转\n");
+                        self.sceneView.camera.rotation.x -= 0.01
+                    }
+                    else if ke.key.equalsIgnoreCase("S"){
+                        printf("右旋转\n");
+                        self.sceneView.camera.rotation.x += 0.01
                     }
                 }
                 else if ke.key.equals("W"){
