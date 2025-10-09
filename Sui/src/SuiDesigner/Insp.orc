@@ -741,7 +741,7 @@ class Insp {
             o.onClick = ^void(MouseEvent *me){
                 // Toast_make("HI click")
                 FileChooser@ fc = new FileChooser()
-                fc.dir.set("./asset")
+                fc.dir.set("./")
                 // fc.use_filterImage()
                 fc.loadPaths()
                 fc.onChoose = ^ void(String@ newpath){

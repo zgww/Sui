@@ -108,7 +108,7 @@ class Raycaster {
 
 
     RayCheckResult raycastGeometry(Obj3d* obj, Geometry* geom){
-        if geom.ibo == null {
+        if geom == null || geom.ibo == null {
             return mkRayCheckResultFail()
         }
         GeoAttr* positionAttr = geom.getAttr("position")

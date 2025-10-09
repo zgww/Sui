@@ -4714,7 +4714,7 @@ static SuiDesigner$__Closure_712_31*  __make___Closure_712_31(SuiDesigner$__Clos
 
 static void  __fn___Closure_741_24(SuiDesigner$__Closure_741_24 *  self, SuiCore$MouseEvent *  me){
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$FileChooser*  fc = (fc=NULL,urgc_init_var_class((void**)&fc, SuiDesigner$FileChooser_new(&fc) ));
-	Orc$String$set(fc->dir, "./asset") ;
+	Orc$String$set(fc->dir, "./") ;
 	fc->loadPaths(fc) ;
 	URGC_VAR_CLEANUP SuiDesigner$__Closure_747_30*  tmpReturn_1 = NULL;
 	urgc_set_field(fc, (void * )offsetof(SuiDesigner$FileChooser, onChoose) , __make___Closure_747_30(&tmpReturn_1, self->__var___Block_721_62) ) ;

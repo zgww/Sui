@@ -208,7 +208,7 @@ Sgl$RayCheckResult Sgl$Raycaster$checkIntersection(Sgl$Raycaster *  self, Sgl$Ob
 
 
 Sgl$RayCheckResult Sgl$Raycaster$raycastGeometry(Sgl$Raycaster *  self, Sgl$Obj3d *  obj, Sgl$Geometry *  geom){
-	if (geom->ibo == NULL) {
+	if (geom == NULL || geom->ibo == NULL) {
 		return Sgl$mkRayCheckResultFail() ; 
 	}
 	Sgl$GeoAttr *  positionAttr = geom->getAttr(geom, "position") ;

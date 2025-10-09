@@ -13,8 +13,10 @@
 void  SuiCore$Canvas$dtor(SuiCore$Canvas *  self){
     auto vg = (NVGcontext*)self->data;
 
-    if (vg){
-        nvgDeleteGL3(vg);
+    if (vg ){//&& self->isDataOwner){
+        // 如果canvas持有vg，需要释放
+        // 由于目前的实现直接跨canvas共享vg, 所以vg没必要释放
+        // nvgDeleteGL3(vg);
     }
 
     self->data = NULL;
@@ -24,6 +26,7 @@ void  SuiCore$Canvas$init(SuiCore$Canvas *  self){
     // auto vg = nvgCreateGL2();
     NVGcontext *vg = nvgCreateGL3(NVG_ANTIALIAS |NVG_STENCIL_STROKES);
     self->data = vg;
+    // self->isDataOwner = true;
 }
 
 void  SuiCore$Canvas$beginFrame(SuiCore$Canvas *  self, float  w, float  h, float  devicePixelRatio){

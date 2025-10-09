@@ -20,6 +20,9 @@
 #include "../Orc/String_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Json/Json_orc.h"
+#include "./GeometryBox_orc.h"
+#include "./GeometryPlane_orc.h"
+#include "./GeometrySphere_orc.h"
 
 
 // static struct 
@@ -41,8 +44,9 @@ void Sgl$Mesh_initMeta(Vtable_Sgl$Mesh *pvt){
 	orc_metaField_class(&pNext, "geometry", ((Vtable_Object*)Vtable_Sgl$Geometry_init(0)), offsetof(Sgl$Mesh, geometry), true, false, 1);
 	orc_metaField_class(&pNext, "vao", ((Vtable_Object*)Vtable_Sgl$Vao_init(0)), offsetof(Sgl$Mesh, vao), true, false, 1);
 	orc_metaField_class(&pNext, "depthVao", ((Vtable_Object*)Vtable_Sgl$Vao_init(0)), offsetof(Sgl$Mesh, depthVao), true, false, 1);
+	orc_metaField_class(&pNext, "geometryPath", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(Sgl$Mesh, geometryPath), true, false, 1);
 
-	
+	orc_metaField_method(&pNext, "setGeometryPath", offsetof(Sgl$Mesh, setGeometryPath));
 }
 
 
@@ -85,6 +89,7 @@ void Sgl$Mesh_fini(Sgl$Mesh *self){
 	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->geometry);
 	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->vao);
 	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->depthVao);
+	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->geometryPath);
 
 }
 
@@ -104,7 +109,9 @@ void Sgl$Mesh_init_fields(Sgl$Mesh *self){
 	urgc_set_field_class(self, (void**)&((Sgl$Mesh*)self)->vao, Sgl$Vao_new(&tmpNewOwner_1) );
 	URGC_VAR_CLEANUP_CLASS Sgl$Vao*  tmpNewOwner_2 = NULL;
 	urgc_set_field_class(self, (void**)&((Sgl$Mesh*)self)->depthVao, Sgl$Vao_new(&tmpNewOwner_2) );
+	urgc_set_field_class(self, (void**)&((Sgl$Mesh*)self)->geometryPath, NULL);
     }
+	((Sgl$Mesh*)self)->setGeometryPath = (void*)Sgl$Mesh$setGeometryPath;
 	((Sgl$Obj3d*)self)->tick = (void*)Sgl$Mesh$tick;
 	((Sgl$Obj3d*)self)->draw = (void*)Sgl$Mesh$draw;
 	((Sgl$Obj3d*)self)->drawSelfRaw = (void*)Sgl$Mesh$drawSelfRaw;
@@ -147,6 +154,38 @@ Sgl$Mesh * Sgl$Mesh_new(void *pOwner){
 
 
 // class members
+void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p){
+	URGC_REF_ARG_WITH_CLEANUP_CLASS(p);
+
+	urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometryPath) , p) ;
+	if (Orc$String$equals(p, "Geometry/Box.geometry.json") ) {
+		URGC_VAR_CLEANUP_CLASS Sgl$GeometryBox*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryBox_new(&geom) ));
+		geom->build(geom) ;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
+		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_1 = NULL;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_1) ) ;
+		self->material->load(self->material, "../asset/basic.matl.json") ;
+	}
+	else if (Orc$String$equals(p, "Geometry/Sphere.geometry.json") ) {
+		URGC_VAR_CLEANUP_CLASS Sgl$GeometrySphere*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometrySphere_new(&geom) ));
+		geom->build(geom) ;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
+		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_2 = NULL;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_2) ) ;
+		self->material->load(self->material, "../asset/basic.matl.json") ;
+	}
+	else if (Orc$String$equals(p, "Geometry/Plane.geometry.json") ) {
+		URGC_VAR_CLEANUP_CLASS Sgl$GeometryPlane*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryPlane_new(&geom) ));
+		geom->build(geom) ;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
+		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_3 = NULL;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_3) ) ;
+		self->material->load(self->material, "../asset/basic.matl.json") ;
+	}
+	printf("设置几何路径:%s\n", p ? p->str : "null") ;
+}
+
+
 void  Sgl$Mesh$tick(Sgl$Mesh *  self, Sgl$DrawCtx *  ctx){
 	
 }

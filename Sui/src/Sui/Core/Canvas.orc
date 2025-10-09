@@ -15,6 +15,10 @@ import * from "./Color.orc"
 
 class refc Canvas {
     void *data;
+    //是不是持有data
+    // bool isDataOwner = false
+
+
     extern void dtor()
     extern void init()
     // void initByWindowId(long long windowId)

@@ -52,6 +52,9 @@ typedef struct tagVtable_Sgl$Mesh Vtable_Sgl$Mesh;
 #include "../Orc/String_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Json/Json_orc.h"
+#include "./GeometryBox_orc.h"
+#include "./GeometryPlane_orc.h"
+#include "./GeometrySphere_orc.h"
 
 
 #ifdef __cplusplus
@@ -74,6 +77,8 @@ struct tagSgl$Mesh {
 	Sgl$Geometry*  geometry ;
 	Sgl$Vao*  vao ;
 	Sgl$Vao*  depthVao ;
+	Orc$String*  geometryPath ;
+	void  (*setGeometryPath) (Sgl$Mesh *  self, Orc$String*  p);
 };
 Vtable_Sgl$Mesh* Vtable_Sgl$Mesh_init(Vtable_Sgl$Mesh* pvt);
 void Sgl$Mesh_init_fields(Sgl$Mesh *self);
@@ -81,6 +86,7 @@ void Sgl$Mesh_init(Sgl$Mesh *self, void *pOwner);
 Sgl$Mesh * Sgl$Mesh_new(void *pOwner);
 void Sgl$Mesh_fini(Sgl$Mesh *self);
 
+void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p);
 void  Sgl$Mesh$tick(Sgl$Mesh *  self, Sgl$DrawCtx *  ctx);
 void  Sgl$Mesh$draw(Sgl$Mesh *  self, Sgl$DrawCtx *  ctx);
 void  Sgl$Mesh$drawSelfRaw(Sgl$Mesh *  self, Sgl$DrawCtx *  ctx, Sgl$Vao *  vao, Sgl$Material *  material);

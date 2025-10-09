@@ -22,6 +22,10 @@ import * from "../Orc/String.orc"
 import * from "../Orc/Map.orc"
 import * from "../Json/Json.orc"
 
+import * from "./GeometryBox.orc"
+import * from "./GeometryPlane.orc"
+import * from "./GeometrySphere.orc"
+
 
 class Mesh extends Obj3d {
     //材质，，含program和opengl开关状态
@@ -32,6 +36,37 @@ class Mesh extends Obj3d {
     //顶点数据与材质的绑定关系
     Vao@ vao = new Vao();
     Vao@ depthVao = new Vao();
+
+    String@ geometryPath;
+
+    void setGeometryPath(String@ p){
+        self.geometryPath = p
+
+        //内置的几何体
+        if p.equals("Geometry/Box.geometry.json"){
+            GeometryBox@ geom = new GeometryBox()
+            geom.build()
+            self.geometry = geom
+            self.material = new Material()
+            self.material.load("../asset/basic.matl.json")
+        }
+        else if p.equals("Geometry/Sphere.geometry.json"){
+            GeometrySphere@ geom = new GeometrySphere()
+            geom.build()
+            self.geometry = geom
+            self.material = new Material()
+            self.material.load("../asset/basic.matl.json")
+        }
+        else if p.equals("Geometry/Plane.geometry.json"){
+            GeometryPlane@ geom = new GeometryPlane()
+            geom.build()
+            self.geometry = geom
+            self.material = new Material()
+            self.material.load("../asset/basic.matl.json")
+        }
+        printf("设置几何路径:%s\n", p ? p.str: "null")
+    }
+
 
     void tick(DrawCtx *ctx){
         // printf("mesh tick:%lld\n", ctx.dtMs);
