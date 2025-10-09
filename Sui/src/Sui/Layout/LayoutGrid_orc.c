@@ -2,6 +2,7 @@
 #include "LayoutGrid_orc.h" 
 
 #include <stdio.h>
+#include "../../Orc/Orc.h"
 #include "../Core/ViewBase_orc.h"
 #include "../Core/Node_orc.h"
 #include "../Core/View_orc.h"
@@ -79,7 +80,7 @@ void SuiLayout$LayoutGridItem_fini(SuiLayout$LayoutGridItem *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -144,6 +145,7 @@ Vtable_SuiLayout$LayoutGridRowInfo _vtable_SuiLayout$LayoutGridRowInfo;
 void SuiLayout$LayoutGridRowInfo_initMeta(Vtable_SuiLayout$LayoutGridRowInfo *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
+	orc_metaField_class(&pNext, "item", ((Vtable_Object*)Vtable_SuiLayout$LayoutGridItem_init(0)), offsetof(SuiLayout$LayoutGridRowInfo, item), true, false, 1);
 	orc_metaField_primitive(&pNext, "height", OrcMetaType_float, offsetof(SuiLayout$LayoutGridRowInfo, height), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "y", OrcMetaType_float, offsetof(SuiLayout$LayoutGridRowInfo, y), 0, 0, 0, 0);//float
 
@@ -173,7 +175,7 @@ Vtable_SuiLayout$LayoutGridRowInfo* Vtable_SuiLayout$LayoutGridRowInfo_init(Vtab
 
     ((Vtable_Object*)pvt)->initMeta = (void*)SuiLayout$LayoutGridRowInfo_initMeta;
 
-    ((Vtable_Object*)pvt)->refc = 1;
+    ((Vtable_Object*)pvt)->refc = 0;
 
     return pvt;
 }
@@ -186,7 +188,7 @@ void SuiLayout$LayoutGridRowInfo_fini(SuiLayout$LayoutGridRowInfo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutGridRowInfo*)self)->item);
 
 }
 
@@ -200,6 +202,7 @@ void SuiLayout$LayoutGridRowInfo_init_fields(SuiLayout$LayoutGridRowInfo *self){
     ((Object*)self)->fini = (void*)SuiLayout$LayoutGridRowInfo_fini;
 	//fields
     {
+	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutGridRowInfo*)self)->item, NULL);
 	((SuiLayout$LayoutGridRowInfo*)self)->height = 0.f;
 	((SuiLayout$LayoutGridRowInfo*)self)->y = 0.f;
     }
@@ -293,7 +296,7 @@ void SuiLayout$LayoutGridOccupyCell_fini(SuiLayout$LayoutGridOccupyCell *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -400,7 +403,7 @@ void SuiLayout$LayoutGridCell_fini(SuiLayout$LayoutGridCell *self){
     SuiCore$LayoutCell_fini((SuiCore$LayoutCell *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -521,7 +524,7 @@ void SuiLayout$LayoutGrid_fini(SuiLayout$LayoutGrid *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutGrid*)self)->occupyGrid);
 
 }
 
@@ -603,6 +606,11 @@ void  SuiLayout$LayoutGrid$layout(SuiLayout$LayoutGrid *  self, SuiCore$Frame * 
 		return ; 
 	}
 	SuiCore$View$layout(self, ctx) ;
+	static int  i = 0;
+	i++;
+	if (i % 100 == 0) {
+		printf("引用计数对象数:%d\n", orc_getRefcObjCount() ) ;
+	}
 }
 
 

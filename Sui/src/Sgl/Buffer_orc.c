@@ -84,7 +84,7 @@ void Sgl$StructArrayBase_fini(Sgl$StructArrayBase *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -326,7 +326,7 @@ void Sgl$CharArray_fini(Sgl$CharArray *self){
     Sgl$StructArrayBase_fini((Sgl$StructArrayBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -495,7 +495,7 @@ void Sgl$ShortArray_fini(Sgl$ShortArray *self){
     Sgl$StructArrayBase_fini((Sgl$StructArrayBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -653,7 +653,7 @@ void Sgl$FloatArray_fini(Sgl$FloatArray *self){
     Sgl$StructArrayBase_fini((Sgl$StructArrayBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -818,7 +818,7 @@ void Sgl$MatArray_fini(Sgl$MatArray *self){
     Sgl$StructArrayBase_fini((Sgl$StructArrayBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -980,7 +980,7 @@ void Sgl$Vec4Array_fini(Sgl$Vec4Array *self){
     Sgl$StructArrayBase_fini((Sgl$StructArrayBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1138,7 +1138,7 @@ void Sgl$Vec3Array_fini(Sgl$Vec3Array *self){
     Sgl$StructArrayBase_fini((Sgl$StructArrayBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1314,7 +1314,7 @@ void Sgl$Vec2Array_fini(Sgl$Vec2Array *self){
     Sgl$StructArrayBase_fini((Sgl$StructArrayBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1470,7 +1470,7 @@ void Sgl$IntArray_fini(Sgl$IntArray *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1735,7 +1735,7 @@ void Sgl$Buffer_fini(Sgl$Buffer *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2058,7 +2058,7 @@ void Sgl$BufferReader_fini(Sgl$BufferReader *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$BufferReader*)self)->buffer);
 
 }
 

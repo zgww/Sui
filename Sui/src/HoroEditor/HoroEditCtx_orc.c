@@ -194,7 +194,7 @@ void HoroEditor$EventHoroSceneChanged_fini(HoroEditor$EventHoroSceneChanged *sel
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -298,7 +298,7 @@ void HoroEditor$EventHoroSelectedChanged_fini(HoroEditor$EventHoroSelectedChange
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -413,7 +413,11 @@ void HoroEditor$HoroEditCtx_fini(HoroEditor$HoroEditCtx *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditCtx*)self)->state);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditCtx*)self)->sceneView);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditCtx*)self)->roots);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditCtx*)self)->hoverNode);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditCtx*)self)->prefab);
 
 }
 

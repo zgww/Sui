@@ -67,7 +67,7 @@ void Orc$Number_fini(Orc$Number *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -201,7 +201,7 @@ void Orc$Integer_fini(Orc$Integer *self){
     Orc$Number_fini((Orc$Number *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -335,7 +335,7 @@ void Orc$Boolean_fini(Orc$Boolean *self){
     Orc$Number_fini((Orc$Number *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -469,7 +469,7 @@ void Orc$Float_fini(Orc$Float *self){
     Orc$Number_fini((Orc$Number *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -603,7 +603,7 @@ void Orc$Double_fini(Orc$Double *self){
     Orc$Number_fini((Orc$Number *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -737,7 +737,7 @@ void Orc$StructObj_fini(Orc$StructObj *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

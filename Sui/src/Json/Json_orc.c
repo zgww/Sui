@@ -130,7 +130,9 @@ void Json$Json_fini(Json$Json *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Json$Json*)self)->stringValue);
+	urgc_fini_field_class(self, (void**)&((Json$Json*)self)->list);
+	urgc_fini_field_class(self, (void**)&((Json$Json*)self)->map);
 
 }
 

@@ -75,7 +75,7 @@ void Sgl$GeometryCapsule_fini(Sgl$GeometryCapsule *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	
 
 }
 

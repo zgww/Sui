@@ -80,7 +80,10 @@ void Sgl$Billboard_fini(Sgl$Billboard *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Billboard*)self)->material);
+	urgc_fini_field_class(self, (void**)&((Sgl$Billboard*)self)->geometry);
+	urgc_fini_field_class(self, (void**)&((Sgl$Billboard*)self)->vao);
+	urgc_fini_field_class(self, (void**)&((Sgl$Billboard*)self)->depthVao);
 
 }
 

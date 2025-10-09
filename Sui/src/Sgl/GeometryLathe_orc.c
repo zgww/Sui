@@ -76,7 +76,7 @@ void Sgl$GeometryLathe_fini(Sgl$GeometryLathe *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryLathe*)self)->points);
 
 }
 

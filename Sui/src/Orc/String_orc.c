@@ -72,7 +72,7 @@ void Orc$String_fini(Orc$String *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

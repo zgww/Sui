@@ -75,7 +75,7 @@ void Sgl$GeometryCircle_fini(Sgl$GeometryCircle *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	
 
 }
 

@@ -79,7 +79,7 @@ void Sgl$Camera_fini(Sgl$Camera *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	
 
 }
 

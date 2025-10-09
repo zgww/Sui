@@ -73,7 +73,10 @@ void Sgl$SkinMesh_fini(Sgl$SkinMesh *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$SkinMesh*)self)->material);
+	urgc_fini_field_class(self, (void**)&((Sgl$SkinMesh*)self)->geometry);
+	urgc_fini_field_class(self, (void**)&((Sgl$SkinMesh*)self)->skeleton);
+	urgc_fini_field_class(self, (void**)&((Sgl$SkinMesh*)self)->vao);
 
 }
 

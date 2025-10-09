@@ -144,7 +144,10 @@ void Sgl$Fbo_fini(Sgl$Fbo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Fbo*)self)->tex2d);
+	urgc_fini_field_class(self, (void**)&((Sgl$Fbo*)self)->depthTex2d);
+	urgc_fini_field_class(self, (void**)&((Sgl$Fbo*)self)->stencilTex2d);
+	urgc_fini_field_class(self, (void**)&((Sgl$Fbo*)self)->depthStencilRbo);
 
 }
 
@@ -406,7 +409,7 @@ void Sgl$Rbo_fini(Sgl$Rbo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

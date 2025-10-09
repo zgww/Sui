@@ -23,6 +23,7 @@ typedef struct tagVtable_SuiLayout$LayoutGrid Vtable_SuiLayout$LayoutGrid;
 #include <stdlib.h>
 
 #include <stdio.h>
+#include "../../Orc/Orc.h"
 
 
 
@@ -96,9 +97,10 @@ struct tagVtable_SuiLayout$LayoutGridRowInfo {
 //虚表实例
 extern Vtable_SuiLayout$LayoutGridRowInfo _vtable_SuiLayout$LayoutGridRowInfo;
 
-// class refc:1
+// class refc:0
 struct tagSuiLayout$LayoutGridRowInfo {
 	Object super; 
+	SuiLayout$LayoutGridItem*  item ;
 	float  height ;
 	float  y ;
 };

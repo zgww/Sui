@@ -76,7 +76,7 @@ void Sgl$GeometryTorus_fini(Sgl$GeometryTorus *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	
 
 }
 

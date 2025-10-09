@@ -102,7 +102,12 @@ void HoroEditor$Horo3dSceneView_fini(HoroEditor$Horo3dSceneView *self){
     SuiView$ImageView_fini((SuiView$ImageView *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->fbo);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->matl);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->drawCtx);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->scene);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->camera);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->drag);
 
 }
 

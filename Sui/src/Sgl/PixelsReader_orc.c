@@ -66,7 +66,7 @@ void Sgl$DepthFloatPixlesReader_fini(Sgl$DepthFloatPixlesReader *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$DepthFloatPixlesReader*)self)->buffer);
 
 }
 

@@ -84,7 +84,9 @@ void Sgl$GeometryArrow_fini(Sgl$GeometryArrow *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryArrow*)self)->vtxBuf);
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryArrow*)self)->nmlBuf);
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryArrow*)self)->face);
 
 }
 

@@ -70,7 +70,7 @@ void Sgl$PointLight_fini(Sgl$PointLight *self){
     Sgl$Light_fini((Sgl$Light *)self);
 
     //字段释放
-
+	
 
 }
 

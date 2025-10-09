@@ -5814,10 +5814,17 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 						right
 					);
 					fieldsInitCode += fieldInitCode;
-
-					auto fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{}, NULL);\n"
-						, fieldClassDef ? "urgc_set_field_class" : "urgc_set_field"
-						, ownedClassFullname, fieldName);
+					std::string fieldFiniCode;
+					if (fieldClassDef) {
+						fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{});\n"
+							, "urgc_fini_field_class"
+							, ownedClassFullname, fieldName);
+					}
+					else {
+						fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{}, NULL);\n"
+							,  "urgc_set_field"
+							, ownedClassFullname, fieldName);
+					}
 					fieldsFiniCode += fieldFiniCode;
 				}
 				else { //普通值
@@ -5838,7 +5845,8 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 
 		fieldsFiniCode = StrUtil::addPrefixPerLine(fieldsFiniCode, "\t");
 		//好像FieldsFiniCode没有必要。因为都走到FiniCode了，都决定释放了， 内部的引用关系又不会影响urgc的处理.
-		fieldsFiniCode = "";
+		//2025-10-09 修正。  urgc不需要finiCode,但是refc需要。 
+		//fieldsFiniCode = "";
 
 		// 成员函数实现
 		auto methodsCode = string("");

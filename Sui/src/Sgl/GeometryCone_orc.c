@@ -73,7 +73,7 @@ void Sgl$GeometryCone_fini(Sgl$GeometryCone *self){
     Sgl$GeometryCylinder_fini((Sgl$GeometryCylinder *)self);
 
     //字段释放
-
+	
 
 }
 

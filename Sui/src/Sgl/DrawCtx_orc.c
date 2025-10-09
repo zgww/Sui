@@ -104,7 +104,12 @@ void Sgl$DrawCtx_fini(Sgl$DrawCtx *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->lights);
+	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->depthMatl);
+	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->lineMatl);
+	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->lineGeometry);
+	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->transparentObj3ds);
+	urgc_set_field(self, (void**)&((Sgl$DrawCtx*)self)->cbAfterDraw, NULL);
 
 }
 

@@ -66,7 +66,7 @@ void Sgl$Light_fini(Sgl$Light *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	
 
 }
 

@@ -81,7 +81,10 @@ void Sgl$Mesh_fini(Sgl$Mesh *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->material);
+	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->geometry);
+	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->vao);
+	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->depthVao);
 
 }
 

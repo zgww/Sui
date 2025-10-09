@@ -412,7 +412,7 @@ void HoroEditor$HoroEditorSceneViewCallback_fini(HoroEditor$HoroEditorSceneViewC
     SuiCore$ViewCallback_fini((SuiCore$ViewCallback *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditorSceneViewCallback*)self)->horoEditor);
 
 }
 
@@ -546,7 +546,15 @@ void HoroEditor$HoroEditor_fini(HoroEditor$HoroEditor *self){
     SuiCore$Listener_fini((SuiCore$Listener *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->editCtx);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->win);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->invalidReact);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->viewCb);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->toolMgr);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->sglGizmo);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->sceneView);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroEditor*)self)->gizmosView);
 
 }
 

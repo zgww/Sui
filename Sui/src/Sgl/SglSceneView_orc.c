@@ -119,7 +119,14 @@ void Sgl$SglSceneView_fini(Sgl$SglSceneView *self){
     SuiView$ImageView_fini((SuiView$ImageView *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->fbo);
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->matl);
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->drawObj);
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->drawCtx);
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->scene);
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->camera);
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->depthPreview);
+	urgc_fini_field_class(self, (void**)&((Sgl$SglSceneView*)self)->drag);
 
 }
 
@@ -360,7 +367,9 @@ void Sgl$DepthTexturePreview_fini(Sgl$DepthTexturePreview *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$DepthTexturePreview*)self)->depthTex);
+	urgc_fini_field_class(self, (void**)&((Sgl$DepthTexturePreview*)self)->depthRedBuffer);
+	urgc_fini_field_class(self, (void**)&((Sgl$DepthTexturePreview*)self)->depthPixelsReader);
 
 }
 

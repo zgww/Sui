@@ -74,7 +74,7 @@ void Sgl$Sgl_fini(Sgl$Sgl *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -186,7 +186,13 @@ void Sgl$Test_fini(Sgl$Test *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Test*)self)->program);
+	urgc_fini_field_class(self, (void**)&((Sgl$Test*)self)->vbo);
+	urgc_fini_field_class(self, (void**)&((Sgl$Test*)self)->ibo);
+	urgc_fini_field_class(self, (void**)&((Sgl$Test*)self)->tbo);
+	urgc_fini_field_class(self, (void**)&((Sgl$Test*)self)->cbo);
+	urgc_fini_field_class(self, (void**)&((Sgl$Test*)self)->tex);
+	urgc_fini_field_class(self, (void**)&((Sgl$Test*)self)->fbo);
 
 }
 
@@ -360,7 +366,9 @@ void Sgl$TestDraw_fini(Sgl$TestDraw *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$TestDraw*)self)->tex);
+	urgc_fini_field_class(self, (void**)&((Sgl$TestDraw*)self)->fbo);
+	urgc_fini_field_class(self, (void**)&((Sgl$TestDraw*)self)->drawObj);
 
 }
 

@@ -636,7 +636,10 @@ void Sgl$UniformInfo_fini(Sgl$UniformInfo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformInfo*)self)->key);
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformInfo*)self)->tex);
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformInfo*)self)->texPath);
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformInfo*)self)->matArray);
 
 }
 
@@ -962,7 +965,12 @@ void Sgl$Material_fini(Sgl$Material *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Material*)self)->path);
+	urgc_fini_field_class(self, (void**)&((Sgl$Material*)self)->program);
+	urgc_fini_field_class(self, (void**)&((Sgl$Material*)self)->uniforms);
+	urgc_fini_field_class(self, (void**)&((Sgl$Material*)self)->vsPath);
+	urgc_fini_field_class(self, (void**)&((Sgl$Material*)self)->fsPath);
+	urgc_fini_field_class(self, (void**)&((Sgl$Material*)self)->shaderMeta);
 
 }
 
@@ -1477,7 +1485,9 @@ void Sgl$MaterialInsp_fini(Sgl$MaterialInsp *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$MaterialInsp*)self)->win);
+	urgc_fini_field_class(self, (void**)&((Sgl$MaterialInsp*)self)->matl);
+	urgc_fini_field_class(self, (void**)&((Sgl$MaterialInsp*)self)->glPreviewView);
 
 }
 
@@ -1842,7 +1852,10 @@ void Sgl$UniformMeta_fini(Sgl$UniformMeta *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformMeta*)self)->name);
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformMeta*)self)->type);
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformMeta*)self)->editor);
+	urgc_fini_field_class(self, (void**)&((Sgl$UniformMeta*)self)->defaultValue);
 
 }
 
@@ -1960,7 +1973,11 @@ void Sgl$ShaderMeta_fini(Sgl$ShaderMeta *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$ShaderMeta*)self)->vsPath);
+	urgc_fini_field_class(self, (void**)&((Sgl$ShaderMeta*)self)->vsCode);
+	urgc_fini_field_class(self, (void**)&((Sgl$ShaderMeta*)self)->fsPath);
+	urgc_fini_field_class(self, (void**)&((Sgl$ShaderMeta*)self)->fsCode);
+	urgc_fini_field_class(self, (void**)&((Sgl$ShaderMeta*)self)->uniformMetas);
 
 }
 
@@ -2162,7 +2179,10 @@ void Sgl$MaterialPreviewView_fini(Sgl$MaterialPreviewView *self){
     SuiView$ImageView_fini((SuiView$ImageView *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$MaterialPreviewView*)self)->fbo);
+	urgc_fini_field_class(self, (void**)&((Sgl$MaterialPreviewView*)self)->matl);
+	urgc_fini_field_class(self, (void**)&((Sgl$MaterialPreviewView*)self)->drawObj);
+	urgc_fini_field_class(self, (void**)&((Sgl$MaterialPreviewView*)self)->drag);
 
 }
 

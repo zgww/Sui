@@ -112,7 +112,9 @@ void HoroEditor$HoroInspView_fini(HoroEditor$HoroInspView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroInspView*)self)->insp);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroInspView*)self)->editCtx);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroInspView*)self)->editor);
 
 }
 

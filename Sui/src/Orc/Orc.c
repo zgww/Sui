@@ -699,9 +699,18 @@ void * urgc_init_var_class(void **pvar, Object* p){
 	return p;
 
 }
+//统计使用引用计数对象的数量
+static int refcObjCount = 0;
+int orc_getRefcObjCount(){
+    return refcObjCount;
+}
 //加引用计数
 void orc_addRefc(Object *p){
     atomic_fetch_add(&p->refCount, 1);
+    int refc = atomic_load(&p->refCount);
+    if (refc == 1){
+        refcObjCount++;
+    }
 }
 //减引用计数
 void orc_delRefc(Object *p){
@@ -710,6 +719,7 @@ void orc_delRefc(Object *p){
     // printf("减引用计数至%d， 释放内存:%p %s\n", refc, p, p->vtable->className);
     if (refc <= 0){//释放
         orc_delete(p);
+        refcObjCount--;
     }
 }
 
@@ -796,6 +806,24 @@ void * urgc_set_var_for_return_class(void** pvar, Object* p){
 		return NULL;
 	}
 	return p;
+}
+void urgc_fini_field_class(void* host, void** field){
+	#ifdef NO_URGC_REF
+	if (1) return ;
+	#endif
+
+    Object* hostobj = (Object*)(host);
+    const char *hostClassName = hostobj->vtable->className;
+    Object* oldp = (Object*)(*field);
+	//先解引用
+	if (*field != NULL) {
+        const char *className = oldp->vtable->className;
+        //引用计数对象的释放需要在此额外处理。  urgc对象则不用。因为urgc能识别孤岛
+        if (oldp->vtable->refc){//采用引用计数
+            orc_delRefc(oldp);
+        }
+	}
+
 }
 void* urgc_set_field_class(void* host, void** field, Object* p)
 {

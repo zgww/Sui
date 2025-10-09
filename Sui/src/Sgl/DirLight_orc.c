@@ -68,7 +68,7 @@ void Sgl$DirLight_fini(Sgl$DirLight *self){
     Sgl$Light_fini((Sgl$Light *)self);
 
     //字段释放
-
+	
 
 }
 

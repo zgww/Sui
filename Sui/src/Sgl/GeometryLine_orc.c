@@ -95,7 +95,8 @@ void Sgl$GeometryLine_fini(Sgl$GeometryLine *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryLine*)self)->vtxBuf);
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryLine*)self)->colorBuf);
 
 }
 

@@ -87,7 +87,7 @@ void Orc$List_fini(Orc$List *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -374,7 +374,7 @@ void Orc$PointerArray_fini(Orc$PointerArray *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

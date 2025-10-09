@@ -78,7 +78,7 @@ void Sgl$GeometrySphere_fini(Sgl$GeometrySphere *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	
 
 }
 

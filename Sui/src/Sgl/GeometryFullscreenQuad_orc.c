@@ -75,7 +75,7 @@ void Sgl$GeometryFullscreenQuad_fini(Sgl$GeometryFullscreenQuad *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	
 
 }
 

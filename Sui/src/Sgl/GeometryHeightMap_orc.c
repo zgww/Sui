@@ -94,7 +94,7 @@ void Sgl$GeometryHeightMap_fini(Sgl$GeometryHeightMap *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	
 
 }
 

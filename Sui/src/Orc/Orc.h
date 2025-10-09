@@ -264,11 +264,15 @@ void * urgc_init_var_class(void **pvar, Object* p);
 void * urgc_set_var_class(void** pvar, Object* p);
 void * urgc_set_var_for_return_class(void** pvar, Object* p);
 void* urgc_set_field_class(void* host, void** field, Object* p);
+//释放对象时处理字段
+void urgc_fini_field_class(void *host, void **field);
 
 //加引用计数
 void orc_addRefc(Object *p);
 //减引用计数
 void orc_delRefc(Object *p);
+//返回使用引用计数的对象的数量
+int orc_getRefcObjCount();
 
 
 //类专用的cleanup

@@ -71,7 +71,8 @@ void Sgl$GeoAttr_fini(Sgl$GeoAttr *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$GeoAttr*)self)->key);
+	urgc_fini_field_class(self, (void**)&((Sgl$GeoAttr*)self)->vbo);
 
 }
 
@@ -190,7 +191,9 @@ void Sgl$Geometry_fini(Sgl$Geometry *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Geometry*)self)->attrs);
+	urgc_fini_field_class(self, (void**)&((Sgl$Geometry*)self)->ibo);
+	urgc_fini_field_class(self, (void**)&((Sgl$Geometry*)self)->instanceVbo);
 
 }
 

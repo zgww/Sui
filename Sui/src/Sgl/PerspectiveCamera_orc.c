@@ -80,7 +80,7 @@ void Sgl$PerspectiveCamera_fini(Sgl$PerspectiveCamera *self){
     Sgl$Camera_fini((Sgl$Camera *)self);
 
     //字段释放
-
+	
 
 }
 

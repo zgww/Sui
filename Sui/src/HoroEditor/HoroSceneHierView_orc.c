@@ -319,7 +319,10 @@ void HoroEditor$HoroSceneHierView_fini(HoroEditor$HoroSceneHierView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroSceneHierView*)self)->editCtx);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroSceneHierView*)self)->editor);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroSceneHierView*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$HoroSceneHierView*)self)->indi);
 
 }
 

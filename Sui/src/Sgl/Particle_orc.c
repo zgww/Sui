@@ -82,7 +82,7 @@ void Sgl$Particle_fini(Sgl$Particle *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -246,7 +246,12 @@ void Sgl$ParticleEmitter_fini(Sgl$ParticleEmitter *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$ParticleEmitter*)self)->particles);
+	urgc_fini_field_class(self, (void**)&((Sgl$ParticleEmitter*)self)->particlePool);
+	urgc_fini_field_class(self, (void**)&((Sgl$ParticleEmitter*)self)->material);
+	urgc_fini_field_class(self, (void**)&((Sgl$ParticleEmitter*)self)->geometry);
+	urgc_fini_field_class(self, (void**)&((Sgl$ParticleEmitter*)self)->vao);
+	urgc_fini_field_class(self, (void**)&((Sgl$ParticleEmitter*)self)->insPosBuf);
 
 }
 

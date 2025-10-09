@@ -80,7 +80,13 @@ void Sgl$OutlineFx_fini(Sgl$OutlineFx *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$OutlineFx*)self)->fbo);
+	urgc_fini_field_class(self, (void**)&((Sgl$OutlineFx*)self)->fboEdge);
+	urgc_fini_field_class(self, (void**)&((Sgl$OutlineFx*)self)->maskMatl);
+	urgc_fini_field_class(self, (void**)&((Sgl$OutlineFx*)self)->drawMatl);
+	urgc_fini_field_class(self, (void**)&((Sgl$OutlineFx*)self)->vao);
+	urgc_fini_field_class(self, (void**)&((Sgl$OutlineFx*)self)->vaoQuad);
+	urgc_fini_field_class(self, (void**)&((Sgl$OutlineFx*)self)->fsQuad);
 
 }
 

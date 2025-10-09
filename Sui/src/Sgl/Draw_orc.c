@@ -77,7 +77,9 @@ void Sgl$Draw_fini(Sgl$Draw *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Draw*)self)->material);
+	urgc_fini_field_class(self, (void**)&((Sgl$Draw*)self)->geometry);
+	urgc_fini_field_class(self, (void**)&((Sgl$Draw*)self)->vao);
 
 }
 
@@ -275,7 +277,11 @@ void Sgl$ObjLoader_fini(Sgl$ObjLoader *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$ObjLoader*)self)->vertices);
+	urgc_fini_field_class(self, (void**)&((Sgl$ObjLoader*)self)->normals);
+	urgc_fini_field_class(self, (void**)&((Sgl$ObjLoader*)self)->texCoords);
+	urgc_fini_field_class(self, (void**)&((Sgl$ObjLoader*)self)->faces);
+	urgc_fini_field_class(self, (void**)&((Sgl$ObjLoader*)self)->path);
 
 }
 

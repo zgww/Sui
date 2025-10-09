@@ -73,7 +73,7 @@ void HoroEditor$ImageChessBg_fini(HoroEditor$ImageChessBg *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$ImageChessBg*)self)->img);
 
 }
 

@@ -80,7 +80,7 @@ void Sgl$GeometryBox_fini(Sgl$GeometryBox *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	
 
 }
 

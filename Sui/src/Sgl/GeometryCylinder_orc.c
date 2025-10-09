@@ -86,7 +86,10 @@ void Sgl$GeometryCylinder_fini(Sgl$GeometryCylinder *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryCylinder*)self)->positions);
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryCylinder*)self)->normals);
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryCylinder*)self)->face);
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryCylinder*)self)->uvs);
 
 }
 

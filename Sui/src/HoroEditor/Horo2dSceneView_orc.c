@@ -261,7 +261,15 @@ void HoroEditor$Horo2dSceneView_fini(HoroEditor$Horo2dSceneView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->chessBg);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->sceneTransform);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->degree);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->editor);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->root);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->rootNode);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->gizmoRoot);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo2dSceneView*)self)->gizmoDrag);
 
 }
 

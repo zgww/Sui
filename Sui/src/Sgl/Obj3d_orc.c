@@ -98,7 +98,7 @@ void Sgl$Obj3d_fini(Sgl$Obj3d *self){
     SuiCore$Node_fini((SuiCore$Node *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Obj3d*)self)->objid);
 
 }
 

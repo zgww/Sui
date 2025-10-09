@@ -1,6 +1,7 @@
 package SuiLayout
 
 #include <stdio.h>
+#include "../../Orc/Orc.h"
 import * from "../Core/ViewBase.orc"
 import * from "../Core/Node.orc"
 import * from "../Core/View.orc"
@@ -42,6 +43,7 @@ class refc LayoutGridItem{
 
 }
 class LayoutGridRowInfo{
+	LayoutGridItem@ item;
     float height = 0.f
     float y = 0.f
 }
@@ -75,6 +77,14 @@ class LayoutGrid extends View {
   
 		//layoutContent(ctx);
 		super.layout(ctx);
+
+		static int i = 0;
+		i ++;
+		if i % 100 == 0 {
+			printf("引用计数对象数:%d\n", orc_getRefcObjCount());
+
+		}
+
 	}
 	void resetOccupyGrid(){
 		int l = self.occupyGrid.size()

@@ -119,7 +119,7 @@ void HoroEditor$SceneTransform_fini(HoroEditor$SceneTransform *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

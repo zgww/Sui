@@ -10,7 +10,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
     <LocalDebuggerCommandArguments>w</LocalDebuggerCommandArguments>
-    <LocalDebuggerWorkingDirectory>e:\ws\Sui\Sui\src</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>d:\ws\Sui\Sui\src</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
