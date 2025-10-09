@@ -29,6 +29,11 @@
 				},
 				"tag":	"Sgl$Light",
 				"children":	[]
+			}, {
+				"attrs":	{
+				},
+				"tag":	"Sgl$Camera",
+				"children":	[]
 			}]
 	}
 }

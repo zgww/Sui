@@ -157,7 +157,7 @@ class TreeState {
         }
     }
     void setAncestorsOpen(Object *item){
-        if self.getParent {
+        if item && self.getParent {
             item = self.getParent(item)
             while item {
                 self.setOpen(item, true)

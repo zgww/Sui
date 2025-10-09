@@ -7,6 +7,7 @@ package SuiDesigner
 import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
 import * from "../Orc/Map.orc"
+import * from "../Orc/Path.orc"
 import * from "../Sui/Core/Event.orc"
 import * from "../Sui/View/Drag.orc"
 
@@ -35,6 +36,9 @@ import * from "../Sgl/Material.orc"
 import * from "../Sgl/PerspectiveCamera.orc"
 import * from "./SglEditCtx.orc"
 import * from "./SglGizmo.orc"
+import * from "./ANode.orc"
+
+import * from "../HoroEditor/HoroEditor.orc"
 
 
 
@@ -294,6 +298,8 @@ class ToolMgr {
     Camera@ camera
     SglEditCtx@ editCtx 
 
+    HoroEditor@ editor
+
 
 
     void setTool(ToolBase* tool){
@@ -331,7 +337,7 @@ class ToolMgr {
             if n instanceof Light {
                 mkImageView(o, (long long)n).{
                     // printf("gizmos:%p\n", o)
-                    o.setSrc(str("../asset/gizmo/light.png"))
+                    o.setSrc(Path_resolveFromExecutionDir("../asset/gizmo/light.png"))
                     // o.height = 32
                     o.width = 32
                     o.setImageMode(WidthFix)
@@ -342,12 +348,23 @@ class ToolMgr {
 
                     o.frame.x = clientSize.width() * (clientPos.x + 1.0 ) / 2.0 - o.frame.width / 2.0
                     o.frame.y = clientSize.height() * (1.0 - (clientPos.y + 1.0) / 2.0) - o.frame.height / 2.0
+
+                    o.cbOnEvent = ^void(Event*e){
+                        if e instanceof MouseEvent {
+                            MouseEvent* me = (MouseEvent*)e
+                            if me.button == 1 && me.isClick() {
+                                printf("click light\n")
+
+                                self.editor.selectByNode(n)
+                            }
+                        }
+                    }
                 }
             }
             else if n instanceof Camera {
                 mkImageView(o, (long long)n).{
                     // printf("gizmos:%p\n", o)
-                    o.setSrc(str("../asset/gizmo/camera.png"))
+                    o.setSrc(Path_resolveFromExecutionDir("../asset/gizmo/camera.png"))
                     // o.height = 32
                     o.width = 32
                     o.setImageMode(WidthFix)
@@ -358,6 +375,15 @@ class ToolMgr {
 
                     o.frame.x = clientSize.width() * (clientPos.x + 1.0 ) / 2.0 - o.frame.width / 2.0
                     o.frame.y = clientSize.height() * (1.0 - (clientPos.y + 1.0) / 2.0) - o.frame.height / 2.0
+                    o.cbOnEvent = ^void(Event*e){
+                        if e instanceof MouseEvent {
+                            MouseEvent* me = (MouseEvent*)e
+                            if me.button == 1 && me.isClick() {
+                                printf("click camera\n")
+                                self.editor.selectByNode(n)
+                            }
+                        }
+                    }
                 }
 
             }

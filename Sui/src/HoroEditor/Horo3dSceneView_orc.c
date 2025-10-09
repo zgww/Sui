@@ -39,12 +39,39 @@
 #include "../Sui/Core/Node_orc.h"
 #include "../Sui/Core/Color_orc.h"
 #include "../Sui/Core/MouseEvent_orc.h"
+#include "./HoroEditor_orc.h"
 
 
 // static struct 
+typedef struct tagHoroEditor$__Block_62_15 HoroEditor$__Block_62_15;
+
+typedef struct tagHoroEditor$__Closure_64_27 HoroEditor$__Closure_64_27;
+
+
+
+struct tagHoroEditor$__Block_62_15 {
+	HoroEditor$Horo3dSceneView*  self ;
+};
+
+
+
+
+
+struct tagHoroEditor$__Closure_64_27 {
+	void  (*invoke)(HoroEditor$__Closure_64_27 *  self, SuiView$Drag *  d);
+	Vtable_Object *  vtable ;
+	HoroEditor$__Block_62_15*  __var___Block_62_15 ;
+};
+
+
+
 
 
 // static function declaration
+static void  __finiBlock___Block_62_15(HoroEditor$__Block_62_15 *  self);
+static void  __fn___Closure_64_27(HoroEditor$__Closure_64_27 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_64_27(HoroEditor$__Closure_64_27 *  self);
+static HoroEditor$__Closure_64_27*  __make___Closure_64_27(HoroEditor$__Closure_64_27 **  __outRef__, HoroEditor$__Block_62_15 *  __var___Block_62_15);
 
 
 
@@ -56,6 +83,7 @@ Vtable_HoroEditor$Horo3dSceneView _vtable_HoroEditor$Horo3dSceneView;
 void HoroEditor$Horo3dSceneView_initMeta(Vtable_HoroEditor$Horo3dSceneView *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
+	orc_metaField_class(&pNext, "editor", ((Vtable_Object*)Vtable_HoroEditor$HoroEditor_init(0)), offsetof(HoroEditor$Horo3dSceneView, editor), true, false, 1);
 	orc_metaField_class(&pNext, "fbo", ((Vtable_Object*)Vtable_Sgl$Fbo_init(0)), offsetof(HoroEditor$Horo3dSceneView, fbo), true, false, 1);
 	orc_metaField_class(&pNext, "matl", ((Vtable_Object*)Vtable_Sgl$Material_init(0)), offsetof(HoroEditor$Horo3dSceneView, matl), true, false, 1);
 	orc_metaField_class(&pNext, "drawCtx", ((Vtable_Object*)Vtable_Sgl$DrawCtx_init(0)), offsetof(HoroEditor$Horo3dSceneView, drawCtx), true, false, 1);
@@ -105,6 +133,7 @@ void HoroEditor$Horo3dSceneView_fini(HoroEditor$Horo3dSceneView *self){
     SuiView$ImageView_fini((SuiView$ImageView *)self);
 
     //字段释放
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->editor);
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->fbo);
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->matl);
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->drawCtx);
@@ -125,6 +154,7 @@ void HoroEditor$Horo3dSceneView_init_fields(HoroEditor$Horo3dSceneView *self){
     ((Object*)self)->fini = (void*)HoroEditor$Horo3dSceneView_fini;
 	//fields
     {
+	urgc_set_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->editor, NULL);
 	urgc_set_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->fbo, NULL);
 	urgc_set_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->matl, NULL);
 	URGC_VAR_CLEANUP_CLASS Sgl$DrawCtx*  tmpNewOwner_1 = NULL;
@@ -179,7 +209,11 @@ HoroEditor$Horo3dSceneView * HoroEditor$Horo3dSceneView_new(void *pOwner){
 
 // class members
 void  HoroEditor$Horo3dSceneView$ctor(HoroEditor$Horo3dSceneView *  self){
+	URGC_VAR_CLEANUP HoroEditor$__Block_62_15*  __var___Block_62_15 = (__var___Block_62_15=NULL,urgc_init_var((void**)&__var___Block_62_15, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Block_62_15) , __finiBlock___Block_62_15) ));
+	urgc_set_field_class(__var___Block_62_15, (void * )offsetof(HoroEditor$__Block_62_15, self) , self) ;
 	SuiCore$Listener$ctor(self) ;
+	URGC_VAR_CLEANUP HoroEditor$__Closure_64_27*  tmpReturn_1 = NULL;
+	urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_64_27(&tmpReturn_1, __var___Block_62_15) ) ;
 	{
 		URGC_VAR_CLEANUP_CLASS Sgl$GeometryPlane*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryPlane_new(&geom) ));
 		geom->planeType = 1;
@@ -190,8 +224,8 @@ void  HoroEditor$Horo3dSceneView$ctor(HoroEditor$Horo3dSceneView *  self){
 		geom->build(geom) ;
 		urgc_set_field_class(self->groundGrid, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$Material*  matl = (matl=NULL,urgc_init_var_class((void**)&matl, Sgl$Material_new(&matl) ));
-		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
-		matl->load(matl, Orc$Path_resolveFromExecutionDir(&tmpReturn_1, "../asset/basic.matl.json") ->str) ;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
+		matl->load(matl, Orc$Path_resolveFromExecutionDir(&tmpReturn_2, "../asset/basic.matl.json") ->str) ;
 		urgc_set_field_class(self->groundGrid, (void * )offsetof(Sgl$Mesh, material) , matl) ;
 	}
 }
@@ -263,6 +297,32 @@ void  HoroEditor$Horo3dSceneView$mkBaseScene(HoroEditor$Horo3dSceneView *  self)
 }
 
 
+
+static void  __finiBlock___Block_62_15(HoroEditor$__Block_62_15 *  self){
+	urgc_set_field_class(self, (void * )offsetof(HoroEditor$__Block_62_15, self) , NULL) ;
+	return urgc_free_later(self) ; 
+}
+
+static void  __fn___Closure_64_27(HoroEditor$__Closure_64_27 *  self, SuiView$Drag *  d){
+	if (d->isDragging) {
+		printf("dragging scene\n") ;
+		((Sgl$Obj3d * )self->__var___Block_62_15->self->camera)->rotation.y += d->deltaPos.x * 0.001;
+		((Sgl$Obj3d * )self->__var___Block_62_15->self->camera)->rotation.x += d->deltaPos.y * 0.001;
+	}
+}
+
+static void  __fini___Closure_64_27(HoroEditor$__Closure_64_27 *  self){
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_64_27, __var___Block_62_15) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static HoroEditor$__Closure_64_27*  __make___Closure_64_27(HoroEditor$__Closure_64_27 **  __outRef__, HoroEditor$__Block_62_15 *  __var___Block_62_15){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_64_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_64_27) , __fini___Closure_64_27) ));
+	self->invoke = __fn___Closure_64_27;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_64_27, __var___Block_62_15) , __var___Block_62_15) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
 
 HoroEditor$Horo3dSceneView*  HoroEditor$mkHoro3dSceneView(HoroEditor$Horo3dSceneView **  __outRef__, void *  parent, long long  key){
 	void *  addr = __builtin_return_address(0) ;

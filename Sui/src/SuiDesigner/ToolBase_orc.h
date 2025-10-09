@@ -42,6 +42,7 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../Orc/String_orc.h"
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
+#include "../Orc/Path_orc.h"
 #include "../Sui/Core/Event_orc.h"
 #include "../Sui/View/Drag_orc.h"
 #include "../Sui/Core/View_orc.h"
@@ -69,6 +70,8 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../Sgl/PerspectiveCamera_orc.h"
 #include "./SglEditCtx_orc.h"
 #include "./SglGizmo_orc.h"
+#include "./ANode_orc.h"
+#include "../HoroEditor/HoroEditor_orc.h"
 
 
 #ifdef __cplusplus
@@ -153,6 +156,7 @@ struct tagSuiDesigner$ToolMgr {
 	Sgl$Scene*  scene ;
 	Sgl$Camera*  camera ;
 	SuiDesigner$SglEditCtx*  editCtx ;
+	HoroEditor$HoroEditor*  editor ;
 	void  (*setTool) (SuiDesigner$ToolMgr *  self, SuiDesigner$ToolBase *  tool);
 	void  (*onEvent) (SuiDesigner$ToolMgr *  self, SuiCore$Event *  e);
 	void  (*reactGizmo) (SuiDesigner$ToolMgr *  self, SuiDesigner$SglGizmo *  gizmoScene);

@@ -71,6 +71,7 @@ typedef struct tagVtable_HoroEditor$Horo3dSceneView Vtable_HoroEditor$Horo3dScen
 #include "../Sui/Core/Node_orc.h"
 #include "../Sui/Core/Color_orc.h"
 #include "../Sui/Core/MouseEvent_orc.h"
+#include "./HoroEditor_orc.h"
 
 
 #ifdef __cplusplus
@@ -89,6 +90,7 @@ extern Vtable_HoroEditor$Horo3dSceneView _vtable_HoroEditor$Horo3dSceneView;
 // class refc:0
 struct tagHoroEditor$Horo3dSceneView {
 	SuiView$ImageView super; 
+	HoroEditor$HoroEditor*  editor ;
 	Sgl$Fbo*  fbo ;
 	Sgl$Material*  matl ;
 	Sgl$DrawCtx*  drawCtx ;

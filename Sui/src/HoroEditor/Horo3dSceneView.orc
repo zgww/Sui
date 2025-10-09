@@ -44,7 +44,10 @@ import * from "../Sui/Core/Node.orc"
 import * from "../Sui/Core/Color.orc"
 import * from "../Sui/Core/MouseEvent.orc"
 
+import * from "./HoroEditor.orc"
+
 class Horo3dSceneView extends ImageView {
+    HoroEditor@ editor
     Fbo@ fbo 
     Material@ matl
     DrawCtx@ drawCtx = new DrawCtx()
@@ -58,6 +61,14 @@ class Horo3dSceneView extends ImageView {
     Mesh@ groundGrid = new Mesh()
     void ctor(){
         super.ctor()
+        self.drag.onDrag = ^void(Drag*d){
+            if d.isDragging {
+                printf("dragging scene\n")
+                self.camera.rotation.y += d.deltaPos.x * 0.001
+                self.camera.rotation.x += d.deltaPos.y * 0.001
+            }
+
+        }
 
         {
 

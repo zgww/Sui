@@ -136,6 +136,15 @@ class HoroEditor extends Listener{
 
     View@ gizmosView
 
+
+    void selectByNode(Node* n){
+        ANode@ vnode = self.editCtx.findANodeByNode(n)
+        if vnode {
+            self.editCtx.state.setAncestorsOpen(vnode)
+            self.editCtx.state.setSelected(vnode)
+        }
+    }
+
     void onSceneEvent(Event* e){
         if e instanceof MouseEvent {
             MouseEvent *me = (MouseEvent*)e
@@ -188,6 +197,8 @@ class HoroEditor extends Listener{
     void ctor(){
         horoEditor = self
         self.viewCb.horoEditor = self
+
+        self.toolMgr.editor = self
 
         // self.curTilePosArr = mkVec2(-1, -1)
         self.drag.onDrag = ^ void (Drag *d){
@@ -244,6 +255,7 @@ class HoroEditor extends Listener{
     void reactScene_forObj3d(Node* o, ANode* anode){
         Obj3d* root = (Obj3d*)anode.node
         mkHoro3dSceneView(o, 0).{
+            o.editor = self
             o.cb = self.viewCb
             o.cbOnEvent = ^void(Event *e){
                 self.onSceneEvent(e)

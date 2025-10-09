@@ -347,7 +347,7 @@ void  SuiView$TreeState$fire_cbSelectedIdChanged(SuiView$TreeState *  self){
 
 
 void  SuiView$TreeState$setAncestorsOpen(SuiView$TreeState *  self, Object *  item){
-	if (self->getParent) {
+	if (item && self->getParent) {
 		item = (*(self->getParent))((void * )(self->getParent), item) ;
 		while (item) {
 			self->setOpen(self, item, true) ;

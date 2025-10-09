@@ -178,6 +178,7 @@ struct tagHoroEditor$HoroEditor {
 	SuiDesigner$SglGizmo*  sglGizmo ;
 	HoroEditor$Horo3dSceneView*  sceneView ;
 	SuiCore$View*  gizmosView ;
+	void  (*selectByNode) (HoroEditor$HoroEditor *  self, SuiCore$Node *  n);
 	void  (*onSceneEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 	void  (*_afterDrawScene) (HoroEditor$HoroEditor *  self);
 	void  (*reactScene_forViewBase) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o, SuiDesigner$ANode *  anode);
@@ -198,6 +199,7 @@ void HoroEditor$HoroEditor_init(HoroEditor$HoroEditor *self, void *pOwner);
 HoroEditor$HoroEditor * HoroEditor$HoroEditor_new(void *pOwner);
 void HoroEditor$HoroEditor_fini(HoroEditor$HoroEditor *self);
 
+void  HoroEditor$HoroEditor$selectByNode(HoroEditor$HoroEditor *  self, SuiCore$Node *  n);
 void  HoroEditor$HoroEditor$onSceneEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroEditor$_afterDrawScene(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$ctor(HoroEditor$HoroEditor *  self);
