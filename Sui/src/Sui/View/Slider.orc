@@ -93,7 +93,7 @@ class Slider extends View {
         canvas.fill()
 
 		//绘制底条
-        canvas.FillColorByInt32( (
+        canvas.fillColorByInt32( (
 			0xff1677ff
 		));
 		// 0xff1230ff

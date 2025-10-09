@@ -151,7 +151,9 @@ void SuiDesigner$ToolBase_fini(SuiDesigner$ToolBase *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolBase*)self)->name);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolBase*)self)->iconPath);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolBase*)self)->mgr);
 
 }
 
@@ -294,7 +296,7 @@ void SuiDesigner$ToolSelect_fini(SuiDesigner$ToolSelect *self){
     SuiDesigner$ToolBase_fini((SuiDesigner$ToolBase *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolSelect*)self)->drag);
 
 }
 
@@ -589,7 +591,11 @@ void SuiDesigner$ToolMgr_fini(SuiDesigner$ToolMgr *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolMgr*)self)->tool);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolMgr*)self)->selectNode);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolMgr*)self)->scene);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolMgr*)self)->camera);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ToolMgr*)self)->editCtx);
 
 }
 

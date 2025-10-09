@@ -81,7 +81,7 @@ void SuiView$TextLineInfo_fini(SuiView$TextLineInfo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$TextLineInfo*)self)->text);
 
 }
 
@@ -238,7 +238,9 @@ void SuiView$TextLayout_fini(SuiView$TextLayout *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$TextLayout*)self)->text);
+	urgc_fini_field_class(self, (void**)&((SuiView$TextLayout*)self)->text_align);
+	urgc_fini_field_class(self, (void**)&((SuiView$TextLayout*)self)->line_infos);
 
 }
 
@@ -627,7 +629,10 @@ void SuiView$TextView_fini(SuiView$TextView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$TextView*)self)->text);
+	urgc_fini_field_class(self, (void**)&((SuiView$TextView*)self)->font_face);
+	urgc_fini_field_class(self, (void**)&((SuiView$TextView*)self)->text_align);
+	urgc_fini_field_class(self, (void**)&((SuiView$TextView*)self)->_text_layout);
 
 }
 

@@ -62,7 +62,7 @@ void SuiDesigner$EventToEbus_fini(SuiDesigner$EventToEbus *self){
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -172,7 +172,7 @@ void SuiDesigner$EventANodeChanged_fini(SuiDesigner$EventANodeChanged *self){
     SuiDesigner$EventToEbus_fini((SuiDesigner$EventToEbus *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EventANodeChanged*)self)->anode);
 
 }
 
@@ -276,7 +276,7 @@ void SuiDesigner$EventANodeAttrChanged_fini(SuiDesigner$EventANodeAttrChanged *s
     SuiDesigner$EventToEbus_fini((SuiDesigner$EventToEbus *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EventANodeAttrChanged*)self)->anode);
 
 }
 

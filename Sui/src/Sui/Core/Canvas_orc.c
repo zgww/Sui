@@ -62,7 +62,7 @@ void SuiCore$Canvas_fini(SuiCore$Canvas *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

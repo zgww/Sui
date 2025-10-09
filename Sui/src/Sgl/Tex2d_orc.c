@@ -124,7 +124,7 @@ void Sgl$Tex2d_fini(Sgl$Tex2d *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Tex2d*)self)->path);
 
 }
 

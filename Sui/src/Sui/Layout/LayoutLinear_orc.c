@@ -72,7 +72,7 @@ void SuiLayout$LayoutLinearCell_fini(SuiLayout$LayoutLinearCell *self){
     SuiCore$LayoutCell_fini((SuiCore$LayoutCell *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinearCell*)self)->alignSelf);
 
 }
 
@@ -205,7 +205,9 @@ void SuiLayout$LayoutLinear_fini(SuiLayout$LayoutLinear *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->direction);
+	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->justifyContent);
+	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->alignItems);
 
 }
 

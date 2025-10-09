@@ -100,7 +100,10 @@ void SuiCore$InnerReact_fini(SuiCore$InnerReact *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$InnerReact*)self)->old_unusedMap);
+	urgc_fini_field_class(self, (void**)&((SuiCore$InnerReact*)self)->old_map);
+	urgc_fini_field_class(self, (void**)&((SuiCore$InnerReact*)self)->unusedMap);
+	urgc_fini_field_class(self, (void**)&((SuiCore$InnerReact*)self)->map);
 
 }
 
@@ -247,7 +250,15 @@ void SuiCore$Node_fini(SuiCore$Node *self){
     SuiCore$Emitter_fini((SuiCore$Emitter *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->children);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->parent);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->_mapForReact);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->_unusedMapForReact);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->name);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->innerReact);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->userdata);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->outKids);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Node*)self)->ownerWindow);
 
 }
 

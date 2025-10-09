@@ -196,7 +196,7 @@ void SuiDesigner$SelectFileItems_fini(SuiDesigner$SelectFileItems *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SelectFileItems*)self)->list);
 
 }
 
@@ -364,7 +364,9 @@ void SuiDesigner$AssetDirView_fini(SuiDesigner$AssetDirView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$AssetDirView*)self)->activeFileItems);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$AssetDirView*)self)->parentFileItem);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$AssetDirView*)self)->selectFileItems);
 
 }
 

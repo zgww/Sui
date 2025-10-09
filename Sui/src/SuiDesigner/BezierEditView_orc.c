@@ -183,7 +183,11 @@ void SuiDesigner$BezierEditView_fini(SuiDesigner$BezierEditView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->startView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->c0View);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->c1View);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->endView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->drag);
 
 }
 

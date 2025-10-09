@@ -64,7 +64,7 @@ void Sgl$Skybox_initMeta(Vtable_Sgl$Skybox *pvt){
 	orc_metaField_class(&pNext, "back", ((Vtable_Object*)Vtable_Sgl$Tex2d_init(0)), offsetof(Sgl$Skybox, back), true, false, 1);
 	orc_metaField_class(&pNext, "left", ((Vtable_Object*)Vtable_Sgl$Tex2d_init(0)), offsetof(Sgl$Skybox, left), true, false, 1);
 	orc_metaField_class(&pNext, "right", ((Vtable_Object*)Vtable_Sgl$Tex2d_init(0)), offsetof(Sgl$Skybox, right), true, false, 1);
-	orc_metaField_class(&pNext, "up", ((Vtable_Object*)Vtable_Sgl$Tex2d_init(0)), offsetof(Sgl$Skybox, up), true, false, 1);
+	orc_metaField_class(&pNext, "upTex", ((Vtable_Object*)Vtable_Sgl$Tex2d_init(0)), offsetof(Sgl$Skybox, upTex), true, false, 1);
 	orc_metaField_class(&pNext, "down", ((Vtable_Object*)Vtable_Sgl$Tex2d_init(0)), offsetof(Sgl$Skybox, down), true, false, 1);
 	orc_metaField_class(&pNext, "vao", ((Vtable_Object*)Vtable_Sgl$Vao_init(0)), offsetof(Sgl$Skybox, vao), true, false, 1);
 
@@ -107,7 +107,15 @@ void Sgl$Skybox_fini(Sgl$Skybox *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->material);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->geometry);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->front);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->back);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->left);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->right);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->upTex);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->down);
+	urgc_fini_field_class(self, (void**)&((Sgl$Skybox*)self)->vao);
 
 }
 
@@ -128,7 +136,7 @@ void Sgl$Skybox_init_fields(Sgl$Skybox *self){
 	urgc_set_field_class(self, (void**)&((Sgl$Skybox*)self)->back, NULL);
 	urgc_set_field_class(self, (void**)&((Sgl$Skybox*)self)->left, NULL);
 	urgc_set_field_class(self, (void**)&((Sgl$Skybox*)self)->right, NULL);
-	urgc_set_field_class(self, (void**)&((Sgl$Skybox*)self)->up, NULL);
+	urgc_set_field_class(self, (void**)&((Sgl$Skybox*)self)->upTex, NULL);
 	urgc_set_field_class(self, (void**)&((Sgl$Skybox*)self)->down, NULL);
 	URGC_VAR_CLEANUP_CLASS Sgl$Vao*  tmpNewOwner_2 = NULL;
 	urgc_set_field_class(self, (void**)&((Sgl$Skybox*)self)->vao, Sgl$Vao_new(&tmpNewOwner_2) );
@@ -184,7 +192,7 @@ void  Sgl$Skybox$ctor(Sgl$Skybox *  self){
 	URGC_VAR_CLEANUP_CLASS Sgl$Tex2d*  tmpReturn_4 = NULL;
 	urgc_set_field_class(self, (void * )offsetof(Sgl$Skybox, right) , Sgl$mkTex2dByPathCstr(&tmpReturn_4, "../asset/skybox/right.png") ) ;
 	URGC_VAR_CLEANUP_CLASS Sgl$Tex2d*  tmpReturn_5 = NULL;
-	urgc_set_field_class(self, (void * )offsetof(Sgl$Skybox, up) , Sgl$mkTex2dByPathCstr(&tmpReturn_5, "../asset/skybox/up.png") ) ;
+	urgc_set_field_class(self, (void * )offsetof(Sgl$Skybox, upTex) , Sgl$mkTex2dByPathCstr(&tmpReturn_5, "../asset/skybox/up.png") ) ;
 	URGC_VAR_CLEANUP_CLASS Sgl$Tex2d*  tmpReturn_6 = NULL;
 	urgc_set_field_class(self, (void * )offsetof(Sgl$Skybox, down) , Sgl$mkTex2dByPathCstr(&tmpReturn_6, "../asset/skybox/down.png") ) ;
 }
@@ -248,7 +256,7 @@ void  Sgl$Skybox$draw(Sgl$Skybox *  self, Sgl$DrawCtx *  ctx){
 	self->material->setUniformTex2d(self->material, "tex[1]", self->back) ;
 	self->material->setUniformTex2d(self->material, "tex[2]", self->left) ;
 	self->material->setUniformTex2d(self->material, "tex[3]", self->right) ;
-	self->material->setUniformTex2d(self->material, "tex[4]", self->up) ;
+	self->material->setUniformTex2d(self->material, "tex[4]", self->upTex) ;
 	self->material->setUniformTex2d(self->material, "tex[5]", self->down) ;
 	ctx->setMvpToMaterial(ctx, self, self->material) ;
 	self->material->view.data[12] = 0;

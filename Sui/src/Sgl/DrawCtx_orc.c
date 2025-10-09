@@ -109,7 +109,6 @@ void Sgl$DrawCtx_fini(Sgl$DrawCtx *self){
 	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->lineMatl);
 	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->lineGeometry);
 	urgc_fini_field_class(self, (void**)&((Sgl$DrawCtx*)self)->transparentObj3ds);
-	urgc_set_field(self, (void**)&((Sgl$DrawCtx*)self)->cbAfterDraw, NULL);
 
 }
 

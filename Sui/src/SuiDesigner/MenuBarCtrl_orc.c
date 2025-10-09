@@ -145,7 +145,10 @@ void SuiDesigner$MenuBarCtrl_fini(SuiDesigner$MenuBarCtrl *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->status);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->curMenu);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->nextMenu);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->popup);
 
 }
 

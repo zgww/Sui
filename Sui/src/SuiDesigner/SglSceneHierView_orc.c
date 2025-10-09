@@ -268,7 +268,7 @@ void SuiDesigner$SglSceneHierView_fini(SuiDesigner$SglSceneHierView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglSceneHierView*)self)->editCtx);
 
 }
 

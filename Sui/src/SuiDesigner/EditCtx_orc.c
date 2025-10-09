@@ -134,7 +134,7 @@ void SuiDesigner$EditEventBase_fini(SuiDesigner$EditEventBase *self){
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -238,7 +238,7 @@ void SuiDesigner$EditEventSelectedChanged_fini(SuiDesigner$EditEventSelectedChan
     SuiDesigner$EditEventBase_fini((SuiDesigner$EditEventBase *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -352,7 +352,12 @@ void SuiDesigner$EditCtx_fini(SuiDesigner$EditCtx *self){
     SuiCore$Emitter_fini((SuiCore$Emitter *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EditCtx*)self)->root);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EditCtx*)self)->roots);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EditCtx*)self)->state);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EditCtx*)self)->hoverNode);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EditCtx*)self)->prefab);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EditCtx*)self)->sceneView);
 
 }
 

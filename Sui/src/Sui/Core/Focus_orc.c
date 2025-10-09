@@ -64,7 +64,7 @@ void SuiCore$FocusEvent_fini(SuiCore$FocusEvent *self){
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$FocusEvent*)self)->source);
 
 }
 
@@ -182,7 +182,7 @@ void SuiCore$Focus_fini(SuiCore$Focus *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$Focus*)self)->focusNode);
 
 }
 

@@ -513,7 +513,12 @@ void SuiDesigner$SpriteSheetPlayerView_fini(SuiDesigner$SpriteSheetPlayerView *s
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetPlayerView*)self)->timer);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetPlayerView*)self)->_img);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetPlayerView*)self)->src);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetPlayerView*)self)->animName);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetPlayerView*)self)->_anim);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetPlayerView*)self)->info);
 
 }
 
@@ -731,7 +736,7 @@ void SuiDesigner$SpriteSheetFrameCoord_fini(SuiDesigner$SpriteSheetFrameCoord *s
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -854,7 +859,8 @@ void SuiDesigner$SpriteSheetAnim_fini(SuiDesigner$SpriteSheetAnim *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetAnim*)self)->name);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetAnim*)self)->coords);
 
 }
 
@@ -1017,7 +1023,7 @@ void SuiDesigner$SpriteSheetInfo_fini(SuiDesigner$SpriteSheetInfo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetInfo*)self)->anims);
 
 }
 
@@ -1177,7 +1183,19 @@ void SuiDesigner$SpriteSheetEditor_fini(SuiDesigner$SpriteSheetEditor *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->win);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->dragPreview);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->dragChoose);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->imgCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->previewCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->invalidReact);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->path);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->info);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->curAnim);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->sceneImageView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->playerView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SpriteSheetEditor*)self)->chessBg);
 
 }
 

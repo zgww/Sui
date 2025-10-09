@@ -696,7 +696,8 @@ class HoroEditor extends Listener{
         //确保opengl环境有初始化了
         Window@ win = new Window();
 
-        self.editCtx.openPrefab("prefab/button.prefab.json")
+        // self.editCtx.openPrefab("prefab/button.prefab.json")
+        self.editCtx.openPrefab("prefab/login.prefab.json")
         // self.editCtx.openPrefab("prefab/3d.prefab.json")
 
 

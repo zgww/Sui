@@ -166,7 +166,7 @@ void SuiDesigner$GizmoRectView_fini(SuiDesigner$GizmoRectView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$GizmoRectView*)self)->drag);
 
 }
 

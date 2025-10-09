@@ -82,7 +82,7 @@ void SuiCore$ViewCallback_fini(SuiCore$ViewCallback *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -251,7 +251,10 @@ void SuiCore$View_fini(SuiCore$View *self){
     SuiCore$ViewBase_fini((SuiCore$ViewBase *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$View*)self)->border);
+	urgc_fini_field_class(self, (void**)&((SuiCore$View*)self)->radius);
+	urgc_fini_field_class(self, (void**)&((SuiCore$View*)self)->boxShadow);
+	urgc_fini_field_class(self, (void**)&((SuiCore$View*)self)->cb);
 
 }
 

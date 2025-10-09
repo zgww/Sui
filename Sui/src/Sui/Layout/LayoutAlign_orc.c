@@ -75,7 +75,7 @@ void SuiLayout$LayoutAlignPositionCell_fini(SuiLayout$LayoutAlignPositionCell *s
     SuiCore$LayoutCell_fini((SuiCore$LayoutCell *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -193,7 +193,7 @@ void SuiLayout$LayoutAlignCell_fini(SuiLayout$LayoutAlignCell *self){
     SuiCore$LayoutCell_fini((SuiCore$LayoutCell *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -373,7 +373,7 @@ void SuiLayout$LayoutAlign_fini(SuiLayout$LayoutAlign *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	
 
 }
 

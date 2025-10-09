@@ -73,7 +73,7 @@ void SuiCore$AppEventLoopMessage_fini(SuiCore$AppEventLoopMessage *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -194,7 +194,9 @@ void SuiCore$App_fini(SuiCore$App *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$App*)self)->windows);
+	urgc_fini_field_class(self, (void**)&((SuiCore$App*)self)->postMessageMutex);
+	urgc_fini_field_class(self, (void**)&((SuiCore$App*)self)->messageList);
 
 }
 

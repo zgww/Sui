@@ -70,7 +70,8 @@ void SuiView$Checkbox_fini(SuiView$Checkbox *self){
     SuiView$ImageView_fini((SuiView$ImageView *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$Checkbox*)self)->onSrc);
+	urgc_fini_field_class(self, (void**)&((SuiView$Checkbox*)self)->offSrc);
 
 }
 

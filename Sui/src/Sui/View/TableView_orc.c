@@ -76,7 +76,7 @@ void SuiView$TableViewColumn_fini(SuiView$TableViewColumn *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$TableViewColumn*)self)->label);
 
 }
 
@@ -199,7 +199,7 @@ void SuiView$TableView_fini(SuiView$TableView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$TableView*)self)->columns);
 
 }
 

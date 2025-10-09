@@ -97,7 +97,8 @@ void SuiDesigner$SglInspView_fini(SuiDesigner$SglInspView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglInspView*)self)->insp);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglInspView*)self)->editCtx);
 
 }
 

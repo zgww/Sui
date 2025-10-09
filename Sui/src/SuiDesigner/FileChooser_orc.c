@@ -155,7 +155,10 @@ void SuiDesigner$FileChooser_fini(SuiDesigner$FileChooser *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->paths);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->dir);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->search);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->win);
 
 }
 

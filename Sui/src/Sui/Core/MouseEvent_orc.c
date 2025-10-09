@@ -72,7 +72,8 @@ void SuiCore$ViewEvent_fini(SuiCore$ViewEvent *self){
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$ViewEvent*)self)->target);
+	urgc_fini_field_class(self, (void**)&((SuiCore$ViewEvent*)self)->currentTarget);
 
 }
 
@@ -217,7 +218,7 @@ void SuiCore$MouseEvent_fini(SuiCore$MouseEvent *self){
     SuiCore$ViewEvent_fini((SuiCore$ViewEvent *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$MouseEvent*)self)->window);
 
 }
 
@@ -365,7 +366,7 @@ void SuiCore$MouseEnterEvent_fini(SuiCore$MouseEnterEvent *self){
     SuiCore$MouseEvent_fini((SuiCore$MouseEvent *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -469,7 +470,7 @@ void SuiCore$MouseLeaveEvent_fini(SuiCore$MouseLeaveEvent *self){
     SuiCore$MouseEvent_fini((SuiCore$MouseEvent *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -574,7 +575,7 @@ void SuiCore$WheelEvent_fini(SuiCore$WheelEvent *self){
     SuiCore$MouseEvent_fini((SuiCore$MouseEvent *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -679,7 +680,7 @@ void SuiCore$MouseEventListener_fini(SuiCore$MouseEventListener *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -792,7 +793,7 @@ void SuiCore$HoverSentive_fini(SuiCore$HoverSentive *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$HoverSentive*)self)->hoverings);
 
 }
 

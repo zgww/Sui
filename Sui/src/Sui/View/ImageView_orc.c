@@ -92,7 +92,7 @@ void SuiView$ImageModeCalc_fini(SuiView$ImageModeCalc *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -277,7 +277,9 @@ void SuiView$ImageView_fini(SuiView$ImageView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$ImageView*)self)->src);
+	urgc_fini_field_class(self, (void**)&((SuiView$ImageView*)self)->calc);
+	urgc_fini_field_class(self, (void**)&((SuiView$ImageView*)self)->_img);
 
 }
 

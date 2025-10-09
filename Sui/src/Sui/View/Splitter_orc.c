@@ -60,7 +60,7 @@ void SuiView$Splitter_fini(SuiView$Splitter *self){
     SuiCore$ViewBase_fini((SuiCore$ViewBase *)self);
 
     //字段释放
-
+	
 
 }
 

@@ -80,7 +80,7 @@ class LayoutGrid extends View {
 
 		static int i = 0;
 		i ++;
-		if i % 100 == 0 {
+		if i % 10 == 0 {
 			printf("引用计数对象数:%d\n", orc_getRefcObjCount());
 
 		}

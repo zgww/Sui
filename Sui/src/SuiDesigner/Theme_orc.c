@@ -114,7 +114,7 @@ void SuiDesigner$Theme_fini(SuiDesigner$Theme *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

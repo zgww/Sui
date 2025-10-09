@@ -27,7 +27,7 @@ class Skybox extends Obj3d {
     Tex2d@ back;
     Tex2d@ left;
     Tex2d@ right;
-    Tex2d@ up;
+    Tex2d@ upTex;
     Tex2d@ down;
 
     Vao@ vao = new Vao()
@@ -41,7 +41,7 @@ class Skybox extends Obj3d {
         self.back = mkTex2dByPathCstr("../asset/skybox/back.png")
         self.left = mkTex2dByPathCstr("../asset/skybox/left.png")
         self.right = mkTex2dByPathCstr("../asset/skybox/right.png")
-        self.up = mkTex2dByPathCstr("../asset/skybox/up.png")
+        self.upTex = mkTex2dByPathCstr("../asset/skybox/up.png")
         self.down = mkTex2dByPathCstr("../asset/skybox/down.png")
     }
 
@@ -138,7 +138,7 @@ class Skybox extends Obj3d {
         self.material.setUniformTex2d("tex[1]", self.back)
         self.material.setUniformTex2d("tex[2]", self.left)
         self.material.setUniformTex2d("tex[3]", self.right)
-        self.material.setUniformTex2d("tex[4]", self.up)
+        self.material.setUniformTex2d("tex[4]", self.upTex)
         self.material.setUniformTex2d("tex[5]", self.down)
 
         ctx.setMvpToMaterial(self, self.material)

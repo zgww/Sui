@@ -62,7 +62,7 @@ void SuiCore$Edge_fini(SuiCore$Edge *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

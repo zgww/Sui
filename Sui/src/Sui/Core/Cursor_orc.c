@@ -65,7 +65,7 @@ void SuiCore$Cursor_fini(SuiCore$Cursor *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$Cursor*)self)->cursor);
 
 }
 

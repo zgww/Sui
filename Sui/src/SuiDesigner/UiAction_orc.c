@@ -358,7 +358,8 @@ void SuiDesigner$ClipboardForANodes_fini(SuiDesigner$ClipboardForANodes *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ClipboardForANodes*)self)->list);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ClipboardForANodes*)self)->kind);
 
 }
 

@@ -183,7 +183,7 @@ void SuiView$ScrollModel_fini(SuiView$ScrollModel *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -402,7 +402,10 @@ void SuiView$ScrollArea_fini(SuiView$ScrollArea *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->scroll_model);
+	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->scrollDirection);
+	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->verScrollBar);
+	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->horScrollBar);
 
 }
 
@@ -664,7 +667,8 @@ void SuiView$ScrollBar_fini(SuiView$ScrollBar *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$ScrollBar*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((SuiView$ScrollBar*)self)->scrollArea);
 
 }
 

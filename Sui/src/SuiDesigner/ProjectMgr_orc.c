@@ -69,7 +69,9 @@ void SuiDesigner$ProjectInfo_fini(SuiDesigner$ProjectInfo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ProjectInfo*)self)->path);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ProjectInfo*)self)->version);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ProjectInfo*)self)->icon);
 
 }
 
@@ -211,7 +213,7 @@ void SuiDesigner$ProjectMgr_fini(SuiDesigner$ProjectMgr *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ProjectMgr*)self)->projects);
 
 }
 

@@ -71,7 +71,7 @@ void SuiCore$Image_fini(SuiCore$Image *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

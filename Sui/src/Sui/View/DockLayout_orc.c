@@ -227,7 +227,13 @@ void SuiView$DockItem_fini(SuiView$DockItem *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$DockItem*)self)->id);
+	urgc_fini_field_class(self, (void**)&((SuiView$DockItem*)self)->view);
+	urgc_fini_field_class(self, (void**)&((SuiView$DockItem*)self)->type);
+	urgc_fini_field_class(self, (void**)&((SuiView$DockItem*)self)->children);
+	urgc_fini_field_class(self, (void**)&((SuiView$DockItem*)self)->parent);
+	urgc_fini_field_class(self, (void**)&((SuiView$DockItem*)self)->nextSplitterView);
+	urgc_fini_field_class(self, (void**)&((SuiView$DockItem*)self)->prevSplitterView);
 
 }
 
@@ -583,7 +589,8 @@ void SuiView$DockLayout_fini(SuiView$DockLayout *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$DockLayout*)self)->root);
+	urgc_fini_field_class(self, (void**)&((SuiView$DockLayout*)self)->dragTab);
 
 }
 
@@ -1295,7 +1302,7 @@ void SuiView$DockSplitterView_fini(SuiView$DockSplitterView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$DockSplitterView*)self)->drag);
 
 }
 

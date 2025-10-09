@@ -63,7 +63,7 @@ void SuiCore$BoxShadow_fini(SuiCore$BoxShadow *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

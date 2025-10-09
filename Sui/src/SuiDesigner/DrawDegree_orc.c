@@ -68,7 +68,7 @@ void SuiDesigner$DrawDegreeItem_fini(SuiDesigner$DrawDegreeItem *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -186,7 +186,9 @@ void SuiDesigner$DrawDegree_fini(SuiDesigner$DrawDegree *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$DrawDegree*)self)->options);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$DrawDegree*)self)->levelOptions);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$DrawDegree*)self)->curOption);
 
 }
 

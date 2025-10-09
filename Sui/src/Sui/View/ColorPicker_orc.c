@@ -108,7 +108,7 @@ void SuiView$ColorPicker_fini(SuiView$ColorPicker *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	
 
 }
 

@@ -593,7 +593,21 @@ void SuiDesigner3d$W3eEditor_fini(SuiDesigner3d$W3eEditor *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->editCtx);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->win);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->imgCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->previewCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->invalidReact);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->path);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->chessBg);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->glPreviewView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->matl);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->mesh);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->meshSphere);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->sceneView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->w3e);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$W3eEditor*)self)->geom);
 
 }
 

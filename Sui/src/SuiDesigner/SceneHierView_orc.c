@@ -267,7 +267,7 @@ void SuiDesigner$SceneHierView_fini(SuiDesigner$SceneHierView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	
 
 }
 

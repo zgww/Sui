@@ -608,7 +608,7 @@ void  SuiLayout$LayoutGrid$layout(SuiLayout$LayoutGrid *  self, SuiCore$Frame * 
 	SuiCore$View$layout(self, ctx) ;
 	static int  i = 0;
 	i++;
-	if (i % 100 == 0) {
+	if (i % 10 == 0) {
 		printf("引用计数对象数:%d\n", orc_getRefcObjCount() ) ;
 	}
 }

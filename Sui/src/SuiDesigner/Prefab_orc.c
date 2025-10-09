@@ -76,7 +76,9 @@ void SuiDesigner$Prefab_fini(SuiDesigner$Prefab *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Prefab*)self)->version);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Prefab*)self)->root);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Prefab*)self)->_path);
 
 }
 

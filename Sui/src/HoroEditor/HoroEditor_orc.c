@@ -1375,7 +1375,7 @@ void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const cha
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$Project*  tmpReturn_1 = NULL;
 	(tmpThis_1 = SuiDesigner$Project_ins(&tmpReturn_1) )->init(tmpThis_1, abspath->str) ;
 	URGC_VAR_CLEANUP_CLASS Sui$Window*  win = (win=NULL,urgc_init_var_class((void**)&win, Sui$Window_new(&win) ));
-	self->editCtx->openPrefab(self->editCtx, "prefab/button.prefab.json") ;
+	self->editCtx->openPrefab(self->editCtx, "prefab/login.prefab.json") ;
 	self->showWindow(self) ;
 	win->close(win) ;
 }

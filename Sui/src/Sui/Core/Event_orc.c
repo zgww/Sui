@@ -63,7 +63,7 @@ void SuiCore$Event_fini(SuiCore$Event *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$Event*)self)->name);
 
 }
 

@@ -86,7 +86,8 @@ void SuiView$Button_fini(SuiView$Button *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$Button*)self)->label);
+	urgc_fini_field_class(self, (void**)&((SuiView$Button*)self)->src);
 
 }
 
@@ -311,7 +312,8 @@ void SuiView$DrawButton_fini(SuiView$DrawButton *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$DrawButton*)self)->text);
+	urgc_fini_field_class(self, (void**)&((SuiView$DrawButton*)self)->src);
 
 }
 
@@ -516,7 +518,7 @@ void SuiView$MenuButton_fini(SuiView$MenuButton *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$MenuButton*)self)->text);
 
 }
 

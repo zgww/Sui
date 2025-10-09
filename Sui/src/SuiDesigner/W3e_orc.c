@@ -121,7 +121,7 @@ void SuiDesigner3d_w3e$W3eCorner_fini(SuiDesigner3d_w3e$W3eCorner *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -279,7 +279,11 @@ void SuiDesigner3d_w3e$W3e_fini(SuiDesigner3d_w3e$W3e *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$W3e*)self)->head);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$W3e*)self)->groundTilesetNames);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$W3e*)self)->cliffTilesetNames);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$W3e*)self)->corners);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$W3e*)self)->groundTexs);
 
 }
 

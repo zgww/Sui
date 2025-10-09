@@ -69,7 +69,7 @@ struct tagSgl$Skybox {
 	Sgl$Tex2d*  back ;
 	Sgl$Tex2d*  left ;
 	Sgl$Tex2d*  right ;
-	Sgl$Tex2d*  up ;
+	Sgl$Tex2d*  upTex ;
 	Sgl$Tex2d*  down ;
 	Sgl$Vao*  vao ;
 	void  (*buildGeometry) (Sgl$Skybox *  self);

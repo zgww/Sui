@@ -224,12 +224,18 @@ void Project::recompileAll()
 		//allPaths = paths;
 		for (auto& path : paths) {
 			if (path.ends_with(".orc")) {
-
-				if (compile(path)) {
-					donePaths.push_back(path);
+				try {
+					if (compile(path)) {
+						donePaths.push_back(path);
+					}
+					else {
+						failPaths.push_back(path);
+					}
 				}
-				else {
-					compile(path);
+				catch (std::string msg) {
+					failPaths.push_back(path);
+				}
+				catch (...) {
 					failPaths.push_back(path);
 				}
 				//allPaths.erase(std::find(allPaths.begin(), allPaths.end(), path));

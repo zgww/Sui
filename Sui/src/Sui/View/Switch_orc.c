@@ -98,7 +98,8 @@ void SuiView$Switch_fini(SuiView$Switch *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$Switch*)self)->circle);
+	urgc_fini_field_class(self, (void**)&((SuiView$Switch*)self)->anim);
 
 }
 

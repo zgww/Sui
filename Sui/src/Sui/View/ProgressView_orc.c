@@ -103,7 +103,7 @@ void SuiView$ProgressView_fini(SuiView$ProgressView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$ProgressView*)self)->anim);
 
 }
 

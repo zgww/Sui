@@ -235,7 +235,9 @@ void SuiDesigner$SglGizmo_fini(SuiDesigner$SglGizmo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglGizmo*)self)->scene);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglGizmo*)self)->camera);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglGizmo*)self)->raycaster);
 
 }
 

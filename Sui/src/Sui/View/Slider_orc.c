@@ -19,13 +19,13 @@
 
 
 // static struct 
-typedef struct tagSuiView$__Block_118_24 SuiView$__Block_118_24;
+typedef struct tagSuiView$__Block_117_24 SuiView$__Block_117_24;
 
-typedef struct tagSuiView$__Closure_123_23 SuiView$__Closure_123_23;
+typedef struct tagSuiView$__Closure_122_23 SuiView$__Closure_122_23;
 
 
 
-struct tagSuiView$__Block_118_24 {
+struct tagSuiView$__Block_117_24 {
 	SuiView$Slider*  self ;
 };
 
@@ -33,10 +33,10 @@ struct tagSuiView$__Block_118_24 {
 
 
 
-struct tagSuiView$__Closure_123_23 {
-	void  (*invoke)(SuiView$__Closure_123_23 *  self, SuiView$Drag *  d);
+struct tagSuiView$__Closure_122_23 {
+	void  (*invoke)(SuiView$__Closure_122_23 *  self, SuiView$Drag *  d);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_118_24*  __var___Block_118_24 ;
+	SuiView$__Block_117_24*  __var___Block_117_24 ;
 };
 
 
@@ -44,10 +44,10 @@ struct tagSuiView$__Closure_123_23 {
 
 
 // static function declaration
-static void  __finiBlock___Block_118_24(SuiView$__Block_118_24 *  self);
-static void  __fn___Closure_123_23(SuiView$__Closure_123_23 *  self, SuiView$Drag *  d);
-static void  __fini___Closure_123_23(SuiView$__Closure_123_23 *  self);
-static SuiView$__Closure_123_23*  __make___Closure_123_23(SuiView$__Closure_123_23 **  __outRef__, SuiView$__Block_118_24 *  __var___Block_118_24);
+static void  __finiBlock___Block_117_24(SuiView$__Block_117_24 *  self);
+static void  __fn___Closure_122_23(SuiView$__Closure_122_23 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_122_23(SuiView$__Closure_122_23 *  self);
+static SuiView$__Closure_122_23*  __make___Closure_122_23(SuiView$__Closure_122_23 **  __outRef__, SuiView$__Block_117_24 *  __var___Block_117_24);
 
 
 
@@ -109,7 +109,8 @@ void SuiView$Slider_fini(SuiView$Slider *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$Slider*)self)->circle);
+	urgc_fini_field_class(self, (void**)&((SuiView$Slider*)self)->drag);
 
 }
 
@@ -234,15 +235,14 @@ void  SuiView$Slider$draw_self(SuiView$Slider *  self, SuiCore$Canvas *  canvas)
 	SuiCore$Rect r = ((SuiCore$View * )self)->getViewRect(self) ;
 	float  w = r.w;
 	float  y = (((SuiCore$ViewBase * )self)->frame.height - barH) / 2.0;
-	NVGcontext *  vg = (NVGcontext * )canvas->data;
-	nvgFillColor(vg, SuiCore$mkNVGColorByInt(0x33000000) ) ;
-	nvgBeginPath(vg) ;
-	nvgRect(vg, 0, y, w, barH) ;
-	nvgFill(vg) ;
-	nvgFillColor(vg, SuiCore$mkNVGColorByInt(0xff1677ff) ) ;
-	nvgBeginPath(vg) ;
-	nvgRect(vg, 0, y, w * self->ratio, barH) ;
-	nvgFill(vg) ;
+	SuiCore$Canvas$fillColorByInt32(canvas, (0x33000000)) ;
+	SuiCore$Canvas$beginPath(canvas) ;
+	SuiCore$Canvas$rect(canvas, 0, y, w, barH) ;
+	SuiCore$Canvas$fill(canvas) ;
+	SuiCore$Canvas$fillColorByInt32(canvas, (0xff1677ff)) ;
+	SuiCore$Canvas$beginPath(canvas) ;
+	SuiCore$Canvas$rect(canvas, 0, y, w * self->ratio, barH) ;
+	SuiCore$Canvas$fill(canvas) ;
 }
 
 
@@ -260,43 +260,43 @@ void  SuiView$Slider$setRatio(SuiView$Slider *  self, float  v){
 
 
 void  SuiView$Slider$onEvent(SuiView$Slider *  self, SuiCore$Event *  ev){
-	URGC_VAR_CLEANUP SuiView$__Block_118_24*  __var___Block_118_24 = (__var___Block_118_24=NULL,urgc_init_var((void**)&__var___Block_118_24, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_118_24) , __finiBlock___Block_118_24) ));
-	urgc_set_field_class(__var___Block_118_24, (void * )offsetof(SuiView$__Block_118_24, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Block_117_24*  __var___Block_117_24 = (__var___Block_117_24=NULL,urgc_init_var((void**)&__var___Block_117_24, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_117_24) , __finiBlock___Block_117_24) ));
+	urgc_set_field_class(__var___Block_117_24, (void * )offsetof(SuiView$__Block_117_24, self) , self) ;
 	if (Orc_instanceof((Object*)ev, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
 		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )ev;
 		if (((SuiCore$ViewEvent * )me)->isBubble(me)  && me->isMouseDown) {
 			self->drag->onMouseDown(self->drag, me) ;
-			URGC_VAR_CLEANUP SuiView$__Closure_123_23*  tmpReturn_1 = NULL;
-			urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_123_23(&tmpReturn_1, __var___Block_118_24) ) ;
+			URGC_VAR_CLEANUP SuiView$__Closure_122_23*  tmpReturn_1 = NULL;
+			urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_122_23(&tmpReturn_1, __var___Block_117_24) ) ;
 		}
 	}
 }
 
 
 
-static void  __finiBlock___Block_118_24(SuiView$__Block_118_24 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_118_24, self) , NULL) ;
+static void  __finiBlock___Block_117_24(SuiView$__Block_117_24 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_117_24, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_123_23(SuiView$__Closure_123_23 *  self, SuiView$Drag *  d){
-	SuiCore$Rect r = ((SuiCore$View * )self->__var___Block_118_24->self)->getViewRect_baseClient(self->__var___Block_118_24->self) ;
+static void  __fn___Closure_122_23(SuiView$__Closure_122_23 *  self, SuiView$Drag *  d){
+	SuiCore$Rect r = ((SuiCore$View * )self->__var___Block_117_24->self)->getViewRect_baseClient(self->__var___Block_117_24->self) ;
 	float  v = (d->currentClientPos.x - r.x) / r.w;
 	printf("ondrag...v:%f, w:%f\n", v, r.w) ;
 	v = Orc$clampFloat(v, 0.0, 1.0) ;
-	self->__var___Block_118_24->self->setRatio(self->__var___Block_118_24->self, v) ;
+	self->__var___Block_117_24->self->setRatio(self->__var___Block_117_24->self, v) ;
 }
 
-static void  __fini___Closure_123_23(SuiView$__Closure_123_23 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_123_23, __var___Block_118_24) , NULL) ;
+static void  __fini___Closure_122_23(SuiView$__Closure_122_23 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_122_23, __var___Block_117_24) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_123_23*  __make___Closure_123_23(SuiView$__Closure_123_23 **  __outRef__, SuiView$__Block_118_24 *  __var___Block_118_24){
-	URGC_VAR_CLEANUP SuiView$__Closure_123_23*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_123_23) , __fini___Closure_123_23) ));
-	self->invoke = __fn___Closure_123_23;
+static SuiView$__Closure_122_23*  __make___Closure_122_23(SuiView$__Closure_122_23 **  __outRef__, SuiView$__Block_117_24 *  __var___Block_117_24){
+	URGC_VAR_CLEANUP SuiView$__Closure_122_23*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_122_23) , __fini___Closure_122_23) ));
+	self->invoke = __fn___Closure_122_23;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_123_23, __var___Block_118_24) , __var___Block_118_24) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_122_23, __var___Block_117_24) , __var___Block_117_24) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

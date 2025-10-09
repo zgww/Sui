@@ -881,7 +881,7 @@ void SuiDesigner$Tile_fini(SuiDesigner$Tile *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -986,7 +986,7 @@ void SuiDesigner$SpecialTile_fini(SuiDesigner$SpecialTile *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1105,7 +1105,7 @@ void SuiDesigner$RuleInfo_fini(SuiDesigner$RuleInfo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$RuleInfo*)self)->neighborIdArr);
 
 }
 
@@ -1292,7 +1292,8 @@ void SuiDesigner$AutoTile_fini(SuiDesigner$AutoTile *self){
     SuiDesigner$SpecialTile_fini((SuiDesigner$SpecialTile *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$AutoTile*)self)->neighborIdArr);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$AutoTile*)self)->ruleInfos);
 
 }
 
@@ -1541,7 +1542,7 @@ void SuiDesigner$RandomTile_fini(SuiDesigner$RandomTile *self){
     SuiDesigner$SpecialTile_fini((SuiDesigner$SpecialTile *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$RandomTile*)self)->gidArr);
 
 }
 
@@ -1662,7 +1663,7 @@ void SuiDesigner$AnimTile_fini(SuiDesigner$AnimTile *self){
     SuiDesigner$SpecialTile_fini((SuiDesigner$SpecialTile *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$AnimTile*)self)->gidArr);
 
 }
 
@@ -1807,7 +1808,9 @@ void SuiDesigner$Tileset_fini(SuiDesigner$Tileset *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Tileset*)self)->imgPath);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Tileset*)self)->specialTiles);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Tileset*)self)->img);
 
 }
 
@@ -2004,7 +2007,7 @@ void SuiDesigner$Layer_fini(SuiDesigner$Layer *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Layer*)self)->name);
 
 }
 
@@ -2121,7 +2124,7 @@ void SuiDesigner$TileLayer_fini(SuiDesigner$TileLayer *self){
     SuiDesigner$Layer_fini((SuiDesigner$Layer *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileLayer*)self)->data);
 
 }
 
@@ -2250,7 +2253,8 @@ void SuiDesigner$TileMap_fini(SuiDesigner$TileMap *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMap*)self)->tilesets);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMap*)self)->layers);
 
 }
 
@@ -2432,7 +2436,7 @@ void SuiDesigner$ElapsedMs_fini(SuiDesigner$ElapsedMs *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2568,7 +2572,12 @@ void SuiDesigner$TileMapEditView_fini(SuiDesigner$TileMapEditView *self){
     SuiCore$ViewBase_fini((SuiCore$ViewBase *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMapEditView*)self)->map);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMapEditView*)self)->viewportView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMapEditView*)self)->sceneCtrl);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMapEditView*)self)->tileEditor);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMapEditView*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileMapEditView*)self)->elapsedMs);
 
 }
 
@@ -2887,7 +2896,7 @@ void SuiDesigner$SceneViewCb_fini(SuiDesigner$SceneViewCb *self){
     SuiDesigner$ChessBgViewCallback_fini((SuiDesigner$ChessBgViewCallback *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneViewCb*)self)->ctrl);
 
 }
 
@@ -3015,7 +3024,10 @@ void SuiDesigner$SceneCtrl_fini(SuiDesigner$SceneCtrl *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneCtrl*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneCtrl*)self)->degree);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneCtrl*)self)->contentView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneCtrl*)self)->sceneViewCb);
 
 }
 
@@ -3292,7 +3304,22 @@ void SuiDesigner$TileEditor_fini(SuiDesigner$TileEditor *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->win);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->imgCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->previewCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->invalidReact);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->path);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->map);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->curLayer);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->curTileset);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->editingAutoTile);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->tilesetStatus);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->tilesetSceneCtrl);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->sceneCtrl);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->tileMapEditView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->curTilePosArr);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->tilesetDrag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TileEditor*)self)->chessBg);
 
 }
 

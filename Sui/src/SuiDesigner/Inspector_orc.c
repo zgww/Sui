@@ -433,7 +433,7 @@ void SuiDesigner$InspectorOption_fini(SuiDesigner$InspectorOption *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspectorOption*)self)->label);
 
 }
 
@@ -547,7 +547,8 @@ void SuiDesigner$InspectorAttrInfo_fini(SuiDesigner$InspectorAttrInfo *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspectorAttrInfo*)self)->key);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspectorAttrInfo*)self)->options);
 
 }
 
@@ -723,7 +724,9 @@ void SuiDesigner$Inspector_fini(SuiDesigner$Inspector *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Inspector*)self)->obj);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Inspector*)self)->parentNode);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Inspector*)self)->attrInfoMap);
 
 }
 

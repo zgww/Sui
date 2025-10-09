@@ -104,7 +104,7 @@ void SuiView$SystemTrayIcon_fini(SuiView$SystemTrayIcon *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$SystemTrayIcon*)self)->iconPath);
 
 }
 

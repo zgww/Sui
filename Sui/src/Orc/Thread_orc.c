@@ -92,7 +92,7 @@ void Orc$Thread_fini(Orc$Thread *self){
     Object_fini((Object *)self);
 
     //字段释放
-	urgc_set_field(self, (void**)&((Orc$Thread*)self)->runFunc, NULL);
+	
 
 }
 

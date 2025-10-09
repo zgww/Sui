@@ -125,7 +125,10 @@ void SuiDesigner3d_w3e$MdxSeqPlayer_fini(SuiDesigner3d_w3e$MdxSeqPlayer *self){
     Sgl$Obj3d_fini((Sgl$Obj3d *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxSeqPlayer*)self)->seqs);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxSeqPlayer*)self)->helps);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxSeqPlayer*)self)->bones);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxSeqPlayer*)self)->curSeq);
 
 }
 
@@ -352,7 +355,8 @@ void SuiDesigner3d_w3e$FaceFX_fini(SuiDesigner3d_w3e$FaceFX *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$FaceFX*)self)->name);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$FaceFX*)self)->path);
 
 }
 
@@ -458,7 +462,7 @@ void SuiDesigner3d_w3e$LayerTexture_fini(SuiDesigner3d_w3e$LayerTexture *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$LayerTexture*)self)->KMTF);
 
 }
 
@@ -577,7 +581,12 @@ void SuiDesigner3d_w3e$Layer_fini(SuiDesigner3d_w3e$Layer *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Layer*)self)->textures);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Layer*)self)->KMTA);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Layer*)self)->KMTE);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Layer*)self)->KFC3);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Layer*)self)->KFCA);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Layer*)self)->KFTC);
 
 }
 
@@ -689,7 +698,7 @@ void SuiDesigner3d_w3e$MdxMaterial_fini(SuiDesigner3d_w3e$MdxMaterial *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxMaterial*)self)->layers);
 
 }
 
@@ -824,7 +833,7 @@ void SuiDesigner3d_w3e$Sequence_fini(SuiDesigner3d_w3e$Sequence *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Sequence*)self)->name);
 
 }
 
@@ -940,7 +949,7 @@ void SuiDesigner3d_w3e$GlobalSeq_fini(SuiDesigner3d_w3e$GlobalSeq *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1049,7 +1058,8 @@ void SuiDesigner3d_w3e$TextureData_fini(SuiDesigner3d_w3e$TextureData *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$TextureData*)self)->fileName);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$TextureData*)self)->_pngPath);
 
 }
 
@@ -1203,7 +1213,7 @@ void SuiDesigner3d_w3e$GeosetGroup_fini(SuiDesigner3d_w3e$GeosetGroup *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1307,7 +1317,7 @@ void SuiDesigner3d_w3e$CornEmitter_fini(SuiDesigner3d_w3e$CornEmitter *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$CornEmitter*)self)->node);
 
 }
 
@@ -1414,7 +1424,7 @@ void SuiDesigner3d_w3e$CollisionShape_fini(SuiDesigner3d_w3e$CollisionShape *sel
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$CollisionShape*)self)->node);
 
 }
 
@@ -1520,7 +1530,7 @@ void SuiDesigner3d_w3e$MdxBone_fini(SuiDesigner3d_w3e$MdxBone *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxBone*)self)->node);
 
 }
 
@@ -1638,7 +1648,14 @@ void SuiDesigner3d_w3e$MdxLight_fini(SuiDesigner3d_w3e$MdxLight *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->node);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->KLAS);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->KLAE);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->KLAC);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->KLAI);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->KLBI);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->KLBC);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxLight*)self)->KLAV);
 
 }
 
@@ -1749,7 +1766,7 @@ void SuiDesigner3d_w3e$TrackValue_fini(SuiDesigner3d_w3e$TrackValue *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1861,7 +1878,7 @@ void SuiDesigner3d_w3e$TrackInt_fini(SuiDesigner3d_w3e$TrackInt *self){
     SuiDesigner3d_w3e$TrackValue_fini((SuiDesigner3d_w3e$TrackValue *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1975,7 +1992,7 @@ void SuiDesigner3d_w3e$TrackFloat_fini(SuiDesigner3d_w3e$TrackFloat *self){
     SuiDesigner3d_w3e$TrackValue_fini((SuiDesigner3d_w3e$TrackValue *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2089,7 +2106,7 @@ void SuiDesigner3d_w3e$TrackVec3_fini(SuiDesigner3d_w3e$TrackVec3 *self){
     SuiDesigner3d_w3e$TrackValue_fini((SuiDesigner3d_w3e$TrackValue *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2203,7 +2220,7 @@ void SuiDesigner3d_w3e$TrackQuat_fini(SuiDesigner3d_w3e$TrackQuat *self){
     SuiDesigner3d_w3e$TrackValue_fini((SuiDesigner3d_w3e$TrackValue *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2390,7 +2407,7 @@ void SuiDesigner3d_w3e$TrackHeader_fini(SuiDesigner3d_w3e$TrackHeader *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$TrackHeader*)self)->tracks);
 
 }
 
@@ -2547,7 +2564,11 @@ void SuiDesigner3d_w3e$MdxNode_fini(SuiDesigner3d_w3e$MdxNode *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxNode*)self)->name);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxNode*)self)->KGTR);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxNode*)self)->KGRT);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxNode*)self)->KGSC);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxNode*)self)->bone);
 
 }
 
@@ -2659,7 +2680,9 @@ void SuiDesigner3d_w3e$Attachment_fini(SuiDesigner3d_w3e$Attachment *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Attachment*)self)->node);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Attachment*)self)->path);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Attachment*)self)->KATV);
 
 }
 
@@ -2767,7 +2790,8 @@ void SuiDesigner3d_w3e$EventObject_fini(SuiDesigner3d_w3e$EventObject *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$EventObject*)self)->node);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$EventObject*)self)->times);
 
 }
 
@@ -2879,7 +2903,8 @@ void SuiDesigner3d_w3e$GeosetAnimation_fini(SuiDesigner3d_w3e$GeosetAnimation *s
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$GeosetAnimation*)self)->KGAO);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$GeosetAnimation*)self)->KGAC);
 
 }
 
@@ -2988,7 +3013,10 @@ void SuiDesigner3d_w3e$Geoset_fini(SuiDesigner3d_w3e$Geoset *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Geoset*)self)->geom);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Geoset*)self)->matrix_indices);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Geoset*)self)->matrix_group);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$Geoset*)self)->vertex_groups);
 
 }
 
@@ -3143,7 +3171,22 @@ void SuiDesigner3d_w3e$MdxReader_fini(SuiDesigner3d_w3e$MdxReader *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->matls);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->geosets);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->texs);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->pivots);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->helps);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->bones);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->lights);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->seqs);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->globalSeqs);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->geosetAnimations);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->attachments);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->cornEmitters);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->events);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->collisionShapes);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->faceFxList);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MdxReader*)self)->bindPose);
 
 }
 
@@ -4237,7 +4280,8 @@ void SuiDesigner3d_w3e$MkMdx_fini(SuiDesigner3d_w3e$MkMdx *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MkMdx*)self)->mr);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d_w3e$MkMdx*)self)->ske);
 
 }
 

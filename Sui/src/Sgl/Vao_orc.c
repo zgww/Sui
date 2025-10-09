@@ -100,7 +100,8 @@ void Sgl$Vao_fini(Sgl$Vao *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sgl$Vao*)self)->material);
+	urgc_fini_field_class(self, (void**)&((Sgl$Vao*)self)->geometry);
 
 }
 

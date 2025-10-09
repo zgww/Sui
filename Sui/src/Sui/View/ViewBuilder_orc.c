@@ -160,7 +160,7 @@ void SuiView$TestPlaceView_fini(SuiView$TestPlaceView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	
 
 }
 

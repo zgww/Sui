@@ -68,7 +68,7 @@ void Sgl$SpotLight_fini(Sgl$SpotLight *self){
     Sgl$Light_fini((Sgl$Light *)self);
 
     //字段释放
-
+	
 
 }
 

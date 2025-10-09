@@ -124,7 +124,7 @@ void SuiDesigner$EventSglSceneChanged_fini(SuiDesigner$EventSglSceneChanged *sel
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -228,7 +228,7 @@ void SuiDesigner$EventSglSelectedChanged_fini(SuiDesigner$EventSglSelectedChange
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -338,7 +338,10 @@ void SuiDesigner$SglEditCtx_fini(SuiDesigner$SglEditCtx *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglEditCtx*)self)->state);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglEditCtx*)self)->sceneView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglEditCtx*)self)->roots);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglEditCtx*)self)->hoverNode);
 
 }
 

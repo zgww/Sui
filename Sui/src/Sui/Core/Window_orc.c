@@ -138,7 +138,8 @@ void Sui$Window_fini(Sui$Window *self){
     SuiCore$Emitter_fini((SuiCore$Emitter *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Sui$Window*)self)->rootView);
+	urgc_fini_field_class(self, (void**)&((Sui$Window*)self)->canvas);
 
 }
 
@@ -386,7 +387,7 @@ void Sui$DragCrossWindowIndicator_fini(Sui$DragCrossWindowIndicator *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

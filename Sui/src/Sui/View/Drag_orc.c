@@ -81,7 +81,8 @@ void SuiView$Drag_fini(SuiView$Drag *self){
     SuiCore$Listener_fini((SuiCore$Listener *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$Drag*)self)->cursor);
+	urgc_fini_field_class(self, (void**)&((SuiView$Drag*)self)->data);
 
 }
 

@@ -148,15 +148,15 @@ class ReflectionSerializer {
         Vtable_Object* vt = orc_getVtableByObject(obj)
         if (vt) {
             // 查找shouldSerializeField方法
-            OrcMetaField* method = orc_findMethodByName(vt, "shouldSerializeField")
-            if (method) {
-                // 调用对象的shouldSerializeField方法
-                typedef bool (*ShouldSerializeFunc)(Object*, const char*)
-                ShouldSerializeFunc func = (ShouldSerializeFunc)OrcMetaField_getMethodPtr(method)
-                if (func) {
-                    return func(obj, fieldName)
-                }
-            }
+            // OrcMetaField* method = orc_findMethodByName(vt, "shouldSerializeField")
+            // if (method) {
+            //     // 调用对象的shouldSerializeField方法
+            //     typedef bool (*ShouldSerializeFunc)(Object*, const char*)
+            //     ShouldSerializeFunc func = (ShouldSerializeFunc)OrcMetaField_getMethodPtr(method)
+            //     if (func) {
+            //         return func(obj, fieldName)
+            //     }
+            // }
         }
 
         // 默认序列化所有字段
@@ -469,9 +469,9 @@ class ReflectionDeserializer {
         } else if (type == OrcMetaType_class) {
             // 检查是否是List类型
             if (mf.classVtable && strcmp(mf.classVtable.className, "List") == 0) {
-                self.deserializeListField(fieldPtr, mf, fieldJson)
+                // self.deserializeListField(fieldPtr, mf, fieldJson)
             } else {
-                self.deserializeClassField(fieldPtr, mf, fieldJson)
+                // self.deserializeClassField(fieldPtr, mf, fieldJson)
             }
         } else if (type == OrcMetaType_struct) {
             self.deserializeStructField(fieldPtr, mf, fieldJson)

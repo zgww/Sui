@@ -85,7 +85,7 @@ void SuiDesigner$BiJsonExporter_fini(SuiDesigner$BiJsonExporter *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -203,7 +203,7 @@ void SuiDesigner$User_fini(SuiDesigner$User *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -319,7 +319,7 @@ void SuiDesigner$User2_fini(SuiDesigner$User2 *self){
     SuiDesigner$User_fini((SuiDesigner$User *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -437,7 +437,7 @@ void SuiDesigner$TestBi_fini(SuiDesigner$TestBi *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TestBi*)self)->u);
 
 }
 

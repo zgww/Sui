@@ -25,6 +25,7 @@ import * from "../../Sui/Layout/LayoutAlign.orc"
 
 import * from "../FileItem.orc"
 import * from "../UiAction.orc"
+import * from "../../HoroEditor/UiAct.orc"
 import * from "../Project.orc"
 import * from "../EventANodeChanged.orc"
 import * from "../EventFileItemChanged.orc"

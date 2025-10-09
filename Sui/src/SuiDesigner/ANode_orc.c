@@ -235,7 +235,8 @@ void SuiDesigner$ANodeAttr_fini(SuiDesigner$ANodeAttr *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANodeAttr*)self)->name);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANodeAttr*)self)->value);
 
 }
 
@@ -377,7 +378,12 @@ void SuiDesigner$ANode_fini(SuiDesigner$ANode *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANode*)self)->id);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANode*)self)->tag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANode*)self)->attrs);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANode*)self)->children);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANode*)self)->node);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ANode*)self)->parent);
 
 }
 

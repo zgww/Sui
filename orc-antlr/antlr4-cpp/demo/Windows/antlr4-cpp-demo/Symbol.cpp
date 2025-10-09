@@ -5814,18 +5814,19 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 						right
 					);
 					fieldsInitCode += fieldInitCode;
-					std::string fieldFiniCode;
 					if (fieldClassDef) {
-						fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{});\n"
+						auto fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{});\n"
 							, "urgc_fini_field_class"
 							, ownedClassFullname, fieldName);
+						fieldsFiniCode += fieldFiniCode;
 					}
 					else {
-						fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{}, NULL);\n"
+						//不用加。因为字段可能已经被urgc释放掉了。对象的释放顺序可能是乱序的。
+						//修正。 不会出现乱序释放的问题。因为实际释放会延后。但是也没有必要加。因为urgc能识别到孤岛
+						/*fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{}, NULL);\n"
 							,  "urgc_set_field"
-							, ownedClassFullname, fieldName);
+							, ownedClassFullname, fieldName);*/
 					}
-					fieldsFiniCode += fieldFiniCode;
 				}
 				else { //普通值
 					if (field->assignRightPart()) { //有初值

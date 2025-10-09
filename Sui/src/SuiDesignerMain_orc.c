@@ -327,7 +327,11 @@ void MenuBarCtrl_fini(MenuBarCtrl *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((MenuBarCtrl*)self)->status);
+	urgc_fini_field_class(self, (void**)&((MenuBarCtrl*)self)->curMenu);
+	urgc_fini_field_class(self, (void**)&((MenuBarCtrl*)self)->nextMenu);
+	urgc_fini_field_class(self, (void**)&((MenuBarCtrl*)self)->popup);
+	urgc_fini_field_class(self, (void**)&((MenuBarCtrl*)self)->window);
 
 }
 
@@ -774,7 +778,7 @@ void Tmp_fini(Tmp *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -901,7 +905,7 @@ void TmpListener_fini(TmpListener *self){
     SuiCore$Listener_fini((SuiCore$Listener *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1020,7 +1024,7 @@ void TmpListener2_fini(TmpListener2 *self){
     SuiCore$Listener_fini((SuiCore$Listener *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1138,7 +1142,7 @@ void ClickListener_fini(ClickListener *self){
     SuiCore$MouseEventListener_fini((SuiCore$MouseEventListener *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1539,7 +1543,7 @@ void Tmp3_fini(Tmp3 *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1644,7 +1648,7 @@ void Tmp2_fini(Tmp2 *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((Tmp2*)self)->tmp3);
 
 }
 

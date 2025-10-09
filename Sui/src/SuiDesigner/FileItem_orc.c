@@ -81,7 +81,11 @@ void SuiDesigner$FileItem_fini(SuiDesigner$FileItem *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileItem*)self)->filename);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileItem*)self)->children);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileItem*)self)->path);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileItem*)self)->parent);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileItem*)self)->subDirectoryChildren);
 
 }
 

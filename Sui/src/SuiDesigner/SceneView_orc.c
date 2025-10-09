@@ -260,7 +260,7 @@ void SuiDesigner$ImageChessBg_fini(SuiDesigner$ImageChessBg *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ImageChessBg*)self)->img);
 
 }
 
@@ -423,7 +423,7 @@ void SuiDesigner$SceneTransform_fini(SuiDesigner$SceneTransform *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -595,7 +595,13 @@ void SuiDesigner$SceneView_fini(SuiDesigner$SceneView *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneView*)self)->chessBg);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneView*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneView*)self)->sceneTransform);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneView*)self)->degree);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneView*)self)->rootNode);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneView*)self)->gizmoRoot);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$SceneView*)self)->gizmoDrag);
 
 }
 

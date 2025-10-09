@@ -66,7 +66,7 @@ void SuiCore$TextEventBase_fini(SuiCore$TextEventBase *self){
     SuiCore$ViewEvent_fini((SuiCore$ViewEvent *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$TextEventBase*)self)->window);
 
 }
 
@@ -185,7 +185,7 @@ void SuiCore$TextEditingEvent_fini(SuiCore$TextEditingEvent *self){
     SuiCore$TextEventBase_fini((SuiCore$TextEventBase *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$TextEditingEvent*)self)->text);
 
 }
 
@@ -326,7 +326,7 @@ void SuiCore$TextInputEvent_fini(SuiCore$TextInputEvent *self){
     SuiCore$TextEventBase_fini((SuiCore$TextEventBase *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$TextInputEvent*)self)->text);
 
 }
 
@@ -449,7 +449,8 @@ void SuiCore$KeyEvent_fini(SuiCore$KeyEvent *self){
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$KeyEvent*)self)->key);
+	urgc_fini_field_class(self, (void**)&((SuiCore$KeyEvent*)self)->window);
 
 }
 
@@ -584,7 +585,7 @@ void SuiCore$WindowFocusEvent_fini(SuiCore$WindowFocusEvent *self){
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$WindowFocusEvent*)self)->window);
 
 }
 

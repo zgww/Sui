@@ -95,7 +95,7 @@ void SuiDesigner$InspectorView_fini(SuiDesigner$InspectorView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspectorView*)self)->inspector);
 
 }
 

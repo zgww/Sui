@@ -64,7 +64,7 @@ void SuiDialog$FileDialog_fini(SuiDialog$FileDialog *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

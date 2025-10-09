@@ -73,7 +73,8 @@ void SuiDesigner$ChessBgViewCallback_fini(SuiDesigner$ChessBgViewCallback *self)
     SuiCore$ViewCallback_fini((SuiCore$ViewCallback *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ChessBgViewCallback*)self)->img);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$ChessBgViewCallback*)self)->obj);
 
 }
 

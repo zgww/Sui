@@ -127,7 +127,9 @@ void SuiView$HoverViewEffect_fini(SuiView$HoverViewEffect *self){
     SuiCore$Node_fini((SuiCore$Node *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->border);
+	urgc_fini_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->hoverBorder);
+	urgc_fini_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->activeBorder);
 
 }
 

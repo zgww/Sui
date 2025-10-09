@@ -1075,7 +1075,9 @@ void SuiDesigner$EventInspAttrChanged_fini(SuiDesigner$EventInspAttrChanged *sel
     SuiCore$Event_fini((SuiCore$Event *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EventInspAttrChanged*)self)->obj);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EventInspAttrChanged*)self)->newValue);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EventInspAttrChanged*)self)->inspAttr);
 
 }
 
@@ -1182,7 +1184,7 @@ void SuiDesigner$InspOpt_fini(SuiDesigner$InspOpt *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspOpt*)self)->label);
 
 }
 
@@ -1288,7 +1290,7 @@ void SuiDesigner$InspOpts_fini(SuiDesigner$InspOpts *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspOpts*)self)->opts);
 
 }
 
@@ -1511,7 +1513,8 @@ void SuiDesigner$InspAttr_fini(SuiDesigner$InspAttr *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspAttr*)self)->_name);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspAttr*)self)->_panelName);
 
 }
 
@@ -1641,7 +1644,7 @@ void SuiDesigner$InspAttrColor_fini(SuiDesigner$InspAttrColor *self){
     SuiDesigner$InspAttr_fini((SuiDesigner$InspAttr *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1762,7 +1765,7 @@ void SuiDesigner$InspAttrImageSrc_fini(SuiDesigner$InspAttrImageSrc *self){
     SuiDesigner$InspAttr_fini((SuiDesigner$InspAttr *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -1903,7 +1906,7 @@ void SuiDesigner$InspAttrFilePath_fini(SuiDesigner$InspAttrFilePath *self){
     SuiDesigner$InspAttr_fini((SuiDesigner$InspAttr *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2038,7 +2041,7 @@ void SuiDesigner$InspAttrSelect_fini(SuiDesigner$InspAttrSelect *self){
     SuiDesigner$InspAttr_fini((SuiDesigner$InspAttr *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspAttrSelect*)self)->opts);
 
 }
 
@@ -2161,7 +2164,7 @@ void SuiDesigner$InspNode_fini(SuiDesigner$InspNode *self){
     SuiCore$Node_fini((SuiCore$Node *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2265,7 +2268,7 @@ void SuiDesigner$InspAttrItem_fini(SuiDesigner$InspAttrItem *self){
     SuiDesigner$InspNode_fini((SuiDesigner$InspNode *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2369,7 +2372,7 @@ void SuiDesigner$InspPanel_fini(SuiDesigner$InspPanel *self){
     SuiDesigner$InspNode_fini((SuiDesigner$InspNode *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -2504,7 +2507,10 @@ void SuiDesigner$Insp_fini(SuiDesigner$Insp *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Insp*)self)->curNodeStack);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Insp*)self)->obj);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Insp*)self)->attrMap);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$Insp*)self)->lib);
 
 }
 
@@ -3614,7 +3620,7 @@ void SuiDesigner$InspLibItem_fini(SuiDesigner$InspLibItem *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspLibItem*)self)->name);
 
 }
 
@@ -3726,7 +3732,7 @@ void SuiDesigner$InspLib_fini(SuiDesigner$InspLib *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$InspLib*)self)->nameMap);
 
 }
 
@@ -3862,7 +3868,7 @@ void SuiDesigner$TestObjSuper_fini(SuiDesigner$TestObjSuper *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -3995,7 +4001,7 @@ void SuiDesigner$TestObj_fini(SuiDesigner$TestObj *self){
     SuiDesigner$TestObjSuper_fini((SuiDesigner$TestObjSuper *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$TestObj*)self)->name);
 
 }
 

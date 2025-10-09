@@ -63,7 +63,7 @@ void SuiDesigner$EventFileItemChanged_fini(SuiDesigner$EventFileItemChanged *sel
     SuiDesigner$EventToEbus_fini((SuiDesigner$EventToEbus *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner$EventFileItemChanged*)self)->fileItem);
 
 }
 

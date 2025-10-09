@@ -618,7 +618,7 @@ void SuiDesigner3d$SglEditorSceneViewCallback_fini(SuiDesigner3d$SglEditorSceneV
     SuiCore$ViewCallback_fini((SuiCore$ViewCallback *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditorSceneViewCallback*)self)->sglEditor);
 
 }
 
@@ -759,7 +759,27 @@ void SuiDesigner3d$SglEditor_fini(SuiDesigner3d$SglEditor *self){
     SuiCore$Listener_fini((SuiCore$Listener *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->editCtx);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->win);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->imgCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->previewCell);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->invalidReact);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->path);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->viewCb);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->toolMgr);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->sglGizmo);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->chessBg);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->glPreviewView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->matl);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->gizmosView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->mesh);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->meshSphere);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->sceneView);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->w3e);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->geom);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->heightmap);
+	urgc_fini_field_class(self, (void**)&((SuiDesigner3d$SglEditor*)self)->outlineFx);
 
 }
 

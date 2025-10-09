@@ -195,7 +195,7 @@ void SuiCore$Timer_fini(SuiCore$Timer *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$Timer*)self)->name);
 
 }
 
@@ -371,7 +371,10 @@ void SuiCore$TimerMgr_fini(SuiCore$TimerMgr *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$TimerMgr*)self)->items);
+	urgc_fini_field_class(self, (void**)&((SuiCore$TimerMgr*)self)->itemsMutex);
+	urgc_fini_field_class(self, (void**)&((SuiCore$TimerMgr*)self)->fireings);
+	urgc_fini_field_class(self, (void**)&((SuiCore$TimerMgr*)self)->fireingsMutex);
 
 }
 
@@ -656,7 +659,7 @@ void SuiCore$AnimStep_fini(SuiCore$AnimStep *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 
@@ -851,7 +854,7 @@ void SuiCore$TimerTestEnt_fini(SuiCore$TimerTestEnt *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	
 
 }
 

@@ -75,7 +75,7 @@ void SuiLayout$RowWrap_fini(SuiLayout$RowWrap *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiLayout$RowWrap*)self)->alignItems);
 
 }
 

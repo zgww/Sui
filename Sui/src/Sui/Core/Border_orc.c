@@ -68,7 +68,10 @@ void SuiCore$Border_fini(SuiCore$Border *self){
     Object_fini((Object *)self);
 
     //字段释放
-
+	urgc_fini_field_class(self, (void**)&((SuiCore$Border*)self)->t);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Border*)self)->r);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Border*)self)->b);
+	urgc_fini_field_class(self, (void**)&((SuiCore$Border*)self)->l);
 
 }
 
