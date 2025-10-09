@@ -164,7 +164,6 @@ class TreeState {
                 item = self.getParent(item)
             }
         }
-
     }
 
     void setSelected(Object *item){
@@ -172,9 +171,8 @@ class TreeState {
         if (item != null){
             String@ id = self.getId(item)
             self.selectedIds.add(id)
-
-            self.fire_cbSelectedIdChanged()
         }
+        self.fire_cbSelectedIdChanged()
     }
     void setOpen(Object *item, bool open){
         String@ id = self.getId(item)

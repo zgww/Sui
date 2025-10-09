@@ -169,11 +169,12 @@ class Horo3dSceneView extends ImageView {
         self.scene.appendChild(self.camera)
 
         //添加灯
-        {
-            DirLight@ l = new DirLight()
-            l.position.set(0, 10, 0)
-            self.scene.appendChild(l)
-        }
+
+        // {
+        //     DirLight@ l = new DirLight()
+        //     l.position.set(0, 10, 0)
+        //     self.scene.appendChild(l)
+        // }
         
         printf("Base scene and camera initialized\n")
     }

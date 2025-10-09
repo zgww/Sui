@@ -288,11 +288,6 @@ void  HoroEditor$Horo3dSceneView$mkBaseScene(HoroEditor$Horo3dSceneView *  self)
 	Sgl$Obj3d$updateWorldMatrixUptoRoot((Sgl$Obj3d * )self->camera) ;
 	((Sgl$Obj3d * )self->camera)->lookAt(self->camera, 0, 0, 0) ;
 	((SuiCore$Node * )self->scene)->appendChild(self->scene, self->camera) ;
-	{
-		URGC_VAR_CLEANUP_CLASS Sgl$DirLight*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$DirLight_new(&l) ));
-		SuiCore$Vec3$set(&((Sgl$Obj3d * )l)->position, 0, 10, 0) ;
-		((SuiCore$Node * )self->scene)->appendChild(self->scene, l) ;
-	}
 	printf("Base scene and camera initialized\n") ;
 }
 

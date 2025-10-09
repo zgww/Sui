@@ -139,10 +139,8 @@ class HoroEditor extends Listener{
 
     void selectByNode(Node* n){
         ANode@ vnode = self.editCtx.findANodeByNode(n)
-        if vnode {
-            self.editCtx.state.setAncestorsOpen(vnode)
-            self.editCtx.state.setSelected(vnode)
-        }
+        self.editCtx.state.setAncestorsOpen(vnode)
+        self.editCtx.state.setSelected(vnode)
     }
 
     void onSceneEvent(Event* e){
