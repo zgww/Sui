@@ -10,14 +10,24 @@
 	"blend":	true,
 	"cullFace":	false,
 	"wireframe": true,
-	"uniforms":	[{
+	"uniforms":	[
+		{
 			"__class":	"Sgl$UniformInfo",
 			"count":	4,
 			"key":	"uColor",
 			"floatValues":	[0.93921570777893066, 0.12156862765550613, 0.63921570777893066, 1],
 			"kind":	6,
 			"texIndex":	0
-		}, {
+		}, 
+		{
+			"__class":	"Sgl$UniformInfo",
+			"count":	4,
+			"key":	"color",
+			"floatValues":	[1, 0, 0, 1],
+			"kind":	6,
+			"texIndex":	0
+		}, 
+		{
 			"__class":	"Sgl$UniformInfo",
 			"count":	4,
 			"key":	"objColor",

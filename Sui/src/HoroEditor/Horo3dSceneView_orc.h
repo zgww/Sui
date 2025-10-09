@@ -47,6 +47,8 @@ typedef struct tagVtable_HoroEditor$Horo3dSceneView Vtable_HoroEditor$Horo3dScen
 #include "../Sgl/Fbo_orc.h"
 #include "../Sgl/Draw_orc.h"
 #include "../Sgl/Geometry_orc.h"
+#include "../Sgl/GeometryPlane_orc.h"
+#include "../Sgl/Mesh_orc.h"
 #include "../Sgl/Material_orc.h"
 #include "../Sgl/DrawCtx_orc.h"
 #include "../Sgl/Scene_orc.h"
@@ -95,6 +97,7 @@ struct tagHoroEditor$Horo3dSceneView {
 	SuiView$Drag*  drag ;
 	float  rotateY ;
 	float  scale ;
+	Sgl$Mesh*  groundGrid ;
 	void  (*mkBaseScene) (HoroEditor$Horo3dSceneView *  self);
 };
 Vtable_HoroEditor$Horo3dSceneView* Vtable_HoroEditor$Horo3dSceneView_init(Vtable_HoroEditor$Horo3dSceneView* pvt);
@@ -103,6 +106,7 @@ void HoroEditor$Horo3dSceneView_init(HoroEditor$Horo3dSceneView *self, void *pOw
 HoroEditor$Horo3dSceneView * HoroEditor$Horo3dSceneView_new(void *pOwner);
 void HoroEditor$Horo3dSceneView_fini(HoroEditor$Horo3dSceneView *self);
 
+void  HoroEditor$Horo3dSceneView$ctor(HoroEditor$Horo3dSceneView *  self);
 void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, SuiCore$Canvas *  canvas);
 void  HoroEditor$Horo3dSceneView$onEvent(HoroEditor$Horo3dSceneView *  self, SuiCore$Event *  e);
 void  HoroEditor$Horo3dSceneView$mkBaseScene(HoroEditor$Horo3dSceneView *  self);

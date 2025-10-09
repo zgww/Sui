@@ -697,8 +697,8 @@ class HoroEditor extends Listener{
         Window@ win = new Window();
 
         // self.editCtx.openPrefab("prefab/button.prefab.json")
-        self.editCtx.openPrefab("prefab/login.prefab.json")
-        // self.editCtx.openPrefab("prefab/3d.prefab.json")
+        // self.editCtx.openPrefab("prefab/login.prefab.json")
+        self.editCtx.openPrefab("prefab/3d.prefab.json")
 
 
         self.showWindow()

@@ -16,6 +16,8 @@ import * from "../Sgl/Tex2d.orc"
 import * from "../Sgl/Fbo.orc"
 import * from "../Sgl/Draw.orc"
 import * from "../Sgl/Geometry.orc"
+import * from "../Sgl/GeometryPlane.orc"
+import * from "../Sgl/Mesh.orc"
 
 import * from "../Sgl/Material.orc"
 import * from "../Sgl/DrawCtx.orc"
@@ -53,6 +55,28 @@ class Horo3dSceneView extends ImageView {
     float rotateY = 0
     float scale = 0.02
     
+    Mesh@ groundGrid = new Mesh()
+    void ctor(){
+        super.ctor()
+
+        {
+
+            GeometryPlane@ geom = new GeometryPlane()
+            geom.planeType = 1
+            geom.width = 10000
+            geom.height = 10000
+            geom.widthSegments = 100
+            geom.heightSegments = 100
+            geom.build()
+
+            self.groundGrid.geometry = geom
+
+            Material@ matl = new Material()
+            matl.load(Path_resolveFromExecutionDir("../asset/basic.matl.json").str)
+            self.groundGrid.material = matl
+        }
+
+    }
 
 
 	void draw_self(Canvas* canvas) {
@@ -88,6 +112,8 @@ class Horo3dSceneView extends ImageView {
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
 
+            self.groundGrid.draw(self.drawCtx)
+
             self.fbo.endDraw()
 
             self._img = loadImageByTex2d(self.fbo.tex2d)
@@ -118,7 +144,7 @@ class Horo3dSceneView extends ImageView {
         
         // Position camera
         // self.camera.position = mkVec3(100, 300, 500)
-        self.camera.position = mkVec3(0, -100, 1000)
+        self.camera.position = mkVec3(100, 100, 1000)
 
         
         // Update camera matrices; 不用调。在draw时会调

@@ -15,6 +15,8 @@
 #include "../Sgl/Fbo_orc.h"
 #include "../Sgl/Draw_orc.h"
 #include "../Sgl/Geometry_orc.h"
+#include "../Sgl/GeometryPlane_orc.h"
+#include "../Sgl/Mesh_orc.h"
 #include "../Sgl/Material_orc.h"
 #include "../Sgl/DrawCtx_orc.h"
 #include "../Sgl/Scene_orc.h"
@@ -62,6 +64,7 @@ void HoroEditor$Horo3dSceneView_initMeta(Vtable_HoroEditor$Horo3dSceneView *pvt)
 	orc_metaField_class(&pNext, "drag", ((Vtable_Object*)Vtable_SuiView$Drag_init(0)), offsetof(HoroEditor$Horo3dSceneView, drag), true, false, 1);
 	orc_metaField_primitive(&pNext, "rotateY", OrcMetaType_float, offsetof(HoroEditor$Horo3dSceneView, rotateY), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "scale", OrcMetaType_float, offsetof(HoroEditor$Horo3dSceneView, scale), 0, 0, 0, 0);//float
+	orc_metaField_class(&pNext, "groundGrid", ((Vtable_Object*)Vtable_Sgl$Mesh_init(0)), offsetof(HoroEditor$Horo3dSceneView, groundGrid), true, false, 1);
 
 	orc_metaField_method(&pNext, "mkBaseScene", offsetof(HoroEditor$Horo3dSceneView, mkBaseScene));
 }
@@ -108,6 +111,7 @@ void HoroEditor$Horo3dSceneView_fini(HoroEditor$Horo3dSceneView *self){
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->scene);
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->camera);
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->drag);
+	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->groundGrid);
 
 }
 
@@ -131,7 +135,10 @@ void HoroEditor$Horo3dSceneView_init_fields(HoroEditor$Horo3dSceneView *self){
 	urgc_set_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->drag, SuiView$Drag_new(&tmpNewOwner_2) );
 	((HoroEditor$Horo3dSceneView*)self)->rotateY = 0;
 	((HoroEditor$Horo3dSceneView*)self)->scale = 0.02;
+	URGC_VAR_CLEANUP_CLASS Sgl$Mesh*  tmpNewOwner_3 = NULL;
+	urgc_set_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->groundGrid, Sgl$Mesh_new(&tmpNewOwner_3) );
     }
+	((Object*)self)->ctor = (void*)HoroEditor$Horo3dSceneView$ctor;
 	((SuiCore$ViewBase*)self)->draw_self = (void*)HoroEditor$Horo3dSceneView$draw_self;
 	((SuiCore$Emitter*)self)->onEvent = (void*)HoroEditor$Horo3dSceneView$onEvent;
 	((HoroEditor$Horo3dSceneView*)self)->mkBaseScene = (void*)HoroEditor$Horo3dSceneView$mkBaseScene;
@@ -171,6 +178,25 @@ HoroEditor$Horo3dSceneView * HoroEditor$Horo3dSceneView_new(void *pOwner){
 
 
 // class members
+void  HoroEditor$Horo3dSceneView$ctor(HoroEditor$Horo3dSceneView *  self){
+	SuiCore$Listener$ctor(self) ;
+	{
+		URGC_VAR_CLEANUP_CLASS Sgl$GeometryPlane*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryPlane_new(&geom) ));
+		geom->planeType = 1;
+		geom->width = 10000;
+		geom->height = 10000;
+		geom->widthSegments = 100;
+		geom->heightSegments = 100;
+		geom->build(geom) ;
+		urgc_set_field_class(self->groundGrid, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
+		URGC_VAR_CLEANUP_CLASS Sgl$Material*  matl = (matl=NULL,urgc_init_var_class((void**)&matl, Sgl$Material_new(&matl) ));
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+		matl->load(matl, Orc$Path_resolveFromExecutionDir(&tmpReturn_1, "../asset/basic.matl.json") ->str) ;
+		urgc_set_field_class(self->groundGrid, (void * )offsetof(Sgl$Mesh, material) , matl) ;
+	}
+}
+
+
 void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, SuiCore$Canvas *  canvas){
 	{
 		bool  mkFbo = false;
@@ -196,6 +222,7 @@ void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, S
 		self->fbo->startDraw(self->fbo, 0.0, 0.0, 0.0, 1.0, true, true, true) ;
 		self->drawCtx->frameSize = fboSize;
 		self->drawCtx->draw(self->drawCtx, self->scene, self->camera) ;
+		((Sgl$Obj3d * )self->groundGrid)->draw(self->groundGrid, self->drawCtx) ;
 		self->fbo->endDraw(self->fbo) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_2 = NULL;
 		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(&tmpReturn_2, self->fbo->tex2d) ) ;
@@ -225,7 +252,7 @@ void  HoroEditor$Horo3dSceneView$mkBaseScene(HoroEditor$Horo3dSceneView *  self)
 	self->camera->aspect = 1.0;
 	self->camera->nearPlane = 100.1;
 	self->camera->farPlane = 5000;
-	((Sgl$Obj3d * )self->camera)->position = SuiCore$mkVec3(0, -100, 1000) ;
+	((Sgl$Obj3d * )self->camera)->position = SuiCore$mkVec3(100, 100, 1000) ;
 	((SuiCore$Node * )self->scene)->appendChild(self->scene, self->camera) ;
 	{
 		URGC_VAR_CLEANUP_CLASS Sgl$DirLight*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$DirLight_new(&l) ));
