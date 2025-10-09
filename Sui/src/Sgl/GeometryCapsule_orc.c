@@ -143,8 +143,8 @@ void  Sgl$GeometryCapsule$build(Sgl$GeometryCapsule *  self){
 	Sgl$Buffer$appendFloat2(uvs, 0.5, 0.5) ;
 	{
 		int  s = 0;
-		for (int  i = 3; s <= segments; i += 3) {
-			float  segment = thetaStart + s / segments * thetaLength;
+		for (int  i = 3; s <= self->segments; i += 3) {
+			float  segment = self->thetaStart + s / self->segments * self->thetaLength;
 			float  x = radius * cos(segment) ;
 			float  y = radius * sin(segment) ;
 			Sgl$Buffer$appendFloat3(pos, x, y, 0) ;
@@ -156,7 +156,7 @@ void  Sgl$GeometryCapsule$build(Sgl$GeometryCapsule *  self){
 	for (int  i = 1; i < segments; i++) {
 		Sgl$Buffer$appendInt3(face, i, i + 1, 0) ;
 	}
-	((Sgl$Geometry * )self)->setAttrByBuffer(self, "position", buf, 3) ;
+	((Sgl$Geometry * )self)->setAttrByBuffer(self, "position", pos, 3) ;
 	((Sgl$Geometry * )self)->setAttrByBuffer(self, "normal", nmls, 3) ;
 	((Sgl$Geometry * )self)->setAttrByBuffer(self, "uv", uvs, 2) ;
 	((Sgl$Geometry * )self)->setIboByBuffer(self, face) ;

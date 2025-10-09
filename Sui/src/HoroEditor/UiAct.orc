@@ -26,6 +26,11 @@ import * from "../Sui/Core/NodeLib.orc"
 import * from "../Sui/Dialog/Toast.orc"
 import * from "../Sui/Dialog/MessageDialog.orc"
 import * from "../Sgl/Obj3d.orc"
+import * from "../Sgl/Geometry.orc"
+import * from "../Sgl/GeometryBox.orc"
+import * from "../Sgl/GeometrySphere.orc"
+import * from "../Sgl/GeometryPlane.orc"
+import * from "../Sgl/GeometryCapsule.orc"
 
 
 
@@ -110,4 +115,35 @@ void UiAct_addView(HoroEditor* editor, ANode@ anode, String@ viewName){
     // else {
     //     Toast_make("不是节点类")
     // }
+}
+
+void UiAct_createGeometry(FileItem@ parent, String@ cmd){
+    MessageDialog_prompt("box.geometry.json", "新建几何体实例", ^void (String@ newName){
+        String@ path = parent.path.clone().add("/").addString(newName)
+        Geometry@ geom = null
+        if cmd.equals("CreateGeometry/Box"){
+            geom = new GeometryBox()
+        }
+        else if cmd.equals("CreateGeometry/Sphere"){
+            geom = new GeometrySphere()
+        }
+        else if cmd.equals("CreateGeometry/Plane"){
+            geom = new GeometryPlane()
+        }
+        else if cmd.equals("CreateGeometry/Capsule"){
+            geom = new GeometryCapsule()
+        }
+
+        Json@ jo = Json_toJson(geom)
+        printf(" %s instance at%s:%s", cmd.str, path.str, jo.dump().str)
+        if Path_writeText(path.str, jo.dump().str) {
+            Toast_make(str("保存{0}成功").replaceAll("{0}", path.str).str)
+
+            parent.loadSubtree()
+            new EventFileItemChanged().{
+                o.fileItem = parent
+                o.emitToEbus()
+            }
+        }
+    })
 }

@@ -258,6 +258,10 @@ class AssetDirView extends LayoutLinear {
                 }
                 return;
             }
+            if (item.cmd.startsWith("CreateGeometry/")){//检视材质
+                UiAct_createGeometry(fi, item.cmd)
+                return
+            }
         }
         MessageDialog_alert(item.label.str, "tip")
     }
@@ -276,6 +280,12 @@ class AssetDirView extends LayoutLinear {
                 mkMenuNativeItem(o, str("创建Prefab2d"), onActive). {o.cmd = str("CreatePrefab2d")}
                 mkMenuNativeItem(o, str("创建Prefab3d"), onActive). {o.cmd = str("CreatePrefab3d")}
                 mkMenuNativeItem(o, str("创建目录"), onActive). {o.cmd = str("CreateDirectory")}
+                mkMenuNativeItem(o, str("创建几何体"), null). {
+                    mkMenuNativeItem(o, str("Box"), onActive). {o.cmd = str("CreateGeometry/Box")}
+                    mkMenuNativeItem(o, str("Sphere"), onActive). {o.cmd = str("CreateGeometry/Sphere")}
+                    mkMenuNativeItem(o, str("Plane"), onActive). {o.cmd = str("CreateGeometry/Plane")}
+                    mkMenuNativeItem(o, str("Capsule"), onActive). {o.cmd = str("CreateGeometry/Capsule")}
+                }
                 // mkMenuNativeItem(o, str("返回上级目录"), null). {o.cmd = str("GotoParentDirectory")}
 
                 MenuNative@ n = new MenuNative()

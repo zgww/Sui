@@ -42,8 +42,8 @@ class GeometryCapsule extends Geometry {
         uvs.appendFloat2(0.5, 0.5)
         {
             int s = 0
-            for int i = 3; s <= segments; i+=3 {
-                float segment = thetaStart + s / segments * thetaLength
+            for int i = 3; s <= self.segments; i+=3 {
+                float segment = self.thetaStart + s / self.segments * self.thetaLength
                 float x = radius * cos(segment)
                 float y = radius * sin(segment)
                 pos.appendFloat3(x, y, 0)
@@ -61,7 +61,7 @@ class GeometryCapsule extends Geometry {
             face.appendInt3(i, i + 1, 0)
         }
 
-        self.setAttrByBuffer("position", buf, 3)
+        self.setAttrByBuffer("position", pos, 3)
         self.setAttrByBuffer("normal", nmls, 3)
         self.setAttrByBuffer("uv", uvs, 2)
         self.setIboByBuffer(face)

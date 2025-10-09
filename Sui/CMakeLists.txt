@@ -227,6 +227,7 @@ file(GLOB src
     src/Sgl/GeometryPlane_orc.c
     src/Sgl/GeometryRect_orc.c
     src/Sgl/GeometryCylinder_orc.c
+    src/Sgl/GeometryCapsule_orc.c
     src/Sgl/GeometryCone_orc.c
     src/Sgl/GeometrySphere_orc.c
     src/Sgl/GeometryCircle_orc.c

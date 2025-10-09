@@ -51,6 +51,11 @@
 #include "../Sui/Dialog/Toast_orc.h"
 #include "../Sui/Dialog/MessageDialog_orc.h"
 #include "../Sgl/Obj3d_orc.h"
+#include "../Sgl/Geometry_orc.h"
+#include "../Sgl/GeometryBox_orc.h"
+#include "../Sgl/GeometrySphere_orc.h"
+#include "../Sgl/GeometryPlane_orc.h"
+#include "../Sgl/GeometryCapsule_orc.h"
 
 
 #ifdef __cplusplus
@@ -61,6 +66,7 @@ extern "C"{
 void  HoroEditor$UiAct_createPrefab3d(SuiDesigner$FileItem*  parent);
 void  HoroEditor$UiAct_savePrefab(HoroEditor$HoroEditor *  editor);
 void  HoroEditor$UiAct_addView(HoroEditor$HoroEditor *  editor, SuiDesigner$ANode*  anode, Orc$String*  viewName);
+void  HoroEditor$UiAct_createGeometry(SuiDesigner$FileItem*  parent, Orc$String*  cmd);
 
 
 
