@@ -81,6 +81,7 @@ struct tagHoroEditor$HoroMaterialIconCreator {
 	Sgl$PerspectiveCamera*  camera ;
 	Orc$String*  materialPath ;
 	void  (*create) (HoroEditor$HoroMaterialIconCreator *  self, const char *  materialPath);
+	void  (*showTextureWindow) (HoroEditor$HoroMaterialIconCreator *  self);
 	void  (*saveAsPng) (HoroEditor$HoroMaterialIconCreator *  self, const char *  path);
 	void  (*draw) (HoroEditor$HoroMaterialIconCreator *  self);
 	void  (*mkScene) (HoroEditor$HoroMaterialIconCreator *  self);
@@ -92,6 +93,7 @@ HoroEditor$HoroMaterialIconCreator * HoroEditor$HoroMaterialIconCreator_new(void
 void HoroEditor$HoroMaterialIconCreator_fini(HoroEditor$HoroMaterialIconCreator *self);
 
 void  HoroEditor$HoroMaterialIconCreator$create(HoroEditor$HoroMaterialIconCreator *  self, const char *  materialPath);
+void  HoroEditor$HoroMaterialIconCreator$showTextureWindow(HoroEditor$HoroMaterialIconCreator *  self);
 void  HoroEditor$HoroMaterialIconCreator$saveAsPng(HoroEditor$HoroMaterialIconCreator *  self, const char *  path);
 void  HoroEditor$HoroMaterialIconCreator$draw(HoroEditor$HoroMaterialIconCreator *  self);
 void  HoroEditor$HoroMaterialIconCreator$mkScene(HoroEditor$HoroMaterialIconCreator *  self);

@@ -47,6 +47,7 @@ void HoroEditor$HoroMaterialIconCreator_initMeta(Vtable_HoroEditor$HoroMaterialI
 	orc_metaField_class(&pNext, "materialPath", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(HoroEditor$HoroMaterialIconCreator, materialPath), true, false, 1);
 
 	orc_metaField_method(&pNext, "create", offsetof(HoroEditor$HoroMaterialIconCreator, create));
+	orc_metaField_method(&pNext, "showTextureWindow", offsetof(HoroEditor$HoroMaterialIconCreator, showTextureWindow));
 	orc_metaField_method(&pNext, "saveAsPng", offsetof(HoroEditor$HoroMaterialIconCreator, saveAsPng));
 	orc_metaField_method(&pNext, "draw", offsetof(HoroEditor$HoroMaterialIconCreator, draw));
 	orc_metaField_method(&pNext, "mkScene", offsetof(HoroEditor$HoroMaterialIconCreator, mkScene));
@@ -116,6 +117,7 @@ void HoroEditor$HoroMaterialIconCreator_init_fields(HoroEditor$HoroMaterialIconC
 	urgc_set_field_class(self, (void**)&((HoroEditor$HoroMaterialIconCreator*)self)->materialPath, NULL);
     }
 	((HoroEditor$HoroMaterialIconCreator*)self)->create = (void*)HoroEditor$HoroMaterialIconCreator$create;
+	((HoroEditor$HoroMaterialIconCreator*)self)->showTextureWindow = (void*)HoroEditor$HoroMaterialIconCreator$showTextureWindow;
 	((HoroEditor$HoroMaterialIconCreator*)self)->saveAsPng = (void*)HoroEditor$HoroMaterialIconCreator$saveAsPng;
 	((HoroEditor$HoroMaterialIconCreator*)self)->draw = (void*)HoroEditor$HoroMaterialIconCreator$draw;
 	((HoroEditor$HoroMaterialIconCreator*)self)->mkScene = (void*)HoroEditor$HoroMaterialIconCreator$mkScene;
@@ -162,6 +164,10 @@ void  HoroEditor$HoroMaterialIconCreator$create(HoroEditor$HoroMaterialIconCreat
 	self->fbo->buildWithColorDepthStencilTexture(self->fbo, (int )SuiCore$Vec2$width(&self->size) , (int )SuiCore$Vec2$height(&self->size) , true, true, false) ;
 	self->draw(self) ;
 	self->saveAsPng(self, "materialicon.png") ;
+}
+
+
+void  HoroEditor$HoroMaterialIconCreator$showTextureWindow(HoroEditor$HoroMaterialIconCreator *  self){
 	Sgl$SglSceneView_showTextureWindow(self->fbo->tex2d, self->size.x, self->size.y) ;
 }
 
