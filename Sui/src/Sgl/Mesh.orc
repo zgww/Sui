@@ -25,6 +25,7 @@ import * from "../Json/Json.orc"
 import * from "./GeometryBox.orc"
 import * from "./GeometryPlane.orc"
 import * from "./GeometrySphere.orc"
+import * from "../HoroEditor/HoroGeometryPreviewView.orc"
 
 
 class Mesh extends Obj3d {
@@ -43,23 +44,30 @@ class Mesh extends Obj3d {
         self.geometryPath = p
 
         //内置的几何体
-        if p.equals("Geometry/Box.geometry.json"){
-            GeometryBox@ geom = new GeometryBox()
-            geom.build()
-            self.geometry = geom
-            self.material = new Material()
-            self.material.load("../asset/basic.matl.json")
-        }
-        else if p.equals("Geometry/Sphere.geometry.json"){
-            GeometrySphere@ geom = new GeometrySphere()
-            geom.build()
-            self.geometry = geom
-            self.material = new Material()
-            self.material.load("../asset/basic.matl.json")
-        }
-        else if p.equals("Geometry/Plane.geometry.json"){
-            GeometryPlane@ geom = new GeometryPlane()
-            geom.build()
+        // if p.equals("Geometry/Box.geometry.json"){
+        //     GeometryBox@ geom = new GeometryBox()
+        //     geom.build()
+        //     self.geometry = geom
+        //     self.material = new Material()
+        //     self.material.load("../asset/basic.matl.json")
+        // }
+        // else if p.equals("Geometry/Sphere.geometry.json"){
+        //     GeometrySphere@ geom = new GeometrySphere()
+        //     geom.build()
+        //     self.geometry = geom
+        //     self.material = new Material()
+        //     self.material.load("../asset/basic.matl.json")
+        // }
+        // else if p.equals("Geometry/Plane.geometry.json"){
+        //     GeometryPlane@ geom = new GeometryPlane()
+        //     geom.build()
+        //     self.geometry = geom
+        //     self.material = new Material()
+        //     self.material.load("../asset/basic.matl.json")
+        // }
+        // else 
+        {
+            Geometry@ geom = HoroGeometry_parseGeometryJson(p.str)
             self.geometry = geom
             self.material = new Material()
             self.material.load("../asset/basic.matl.json")

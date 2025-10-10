@@ -748,14 +748,14 @@ class HoroEditor extends Listener{
 
 
         Window@ win = new Window();
-        if 1 {
-            new HoroGeometryPreviewView()~{
-                o.showWindow("./Geometry/box2.geometry.json")
-            }
-                // o.showWindow("./Geometry/sp.geometry.json")
-            win.close()
-            return;
-        }
+        // if 1 {
+        //     new HoroGeometryPreviewView()~{
+        //         o.showWindow("./Geometry/box2.geometry.json")
+        //     }
+        //         // o.showWindow("./Geometry/sp.geometry.json")
+        //     win.close()
+        //     return;
+        // }
 
 
         String@ abspath = Path_toAbsolute(path)

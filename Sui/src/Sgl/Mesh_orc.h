@@ -55,6 +55,7 @@ typedef struct tagVtable_Sgl$Mesh Vtable_Sgl$Mesh;
 #include "./GeometryBox_orc.h"
 #include "./GeometryPlane_orc.h"
 #include "./GeometrySphere_orc.h"
+#include "../HoroEditor/HoroGeometryPreviewView_orc.h"
 
 
 #ifdef __cplusplus

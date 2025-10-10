@@ -137,6 +137,7 @@ void  HoroEditor$HoroGeometryPreviewView$draw_self(HoroEditor$HoroGeometryPrevie
 void  HoroEditor$HoroGeometryPreviewView$onEvent(HoroEditor$HoroGeometryPreviewView *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroGeometryPreviewView$mkBaseScene(HoroEditor$HoroGeometryPreviewView *  self);
 
+Sgl$Geometry*  HoroEditor$HoroGeometry_parseGeometryJson(Sgl$Geometry **  __outRef__, const char *  path);
 HoroEditor$HoroGeometryPreviewView*  HoroEditor$mkHoroGeometryPreviewView(HoroEditor$HoroGeometryPreviewView **  __outRef__, void *  parent, long long  key);
 
 

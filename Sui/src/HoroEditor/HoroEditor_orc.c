@@ -1448,23 +1448,12 @@ void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const cha
 	SuiDesigner$registerNodes() ;
 	Orc$Path_setcwd(path) ;
 	URGC_VAR_CLEANUP_CLASS Sui$Window*  win = (win=NULL,urgc_init_var_class((void**)&win, Sui$Window_new(&win) ));
-	if (1) {
-		URGC_VAR_CLEANUP_CLASS HoroEditor$HoroGeometryPreviewView*  tmpNewOwner_1 = NULL;
-		{
-			HoroEditor$HoroGeometryPreviewView*  o = HoroEditor$HoroGeometryPreviewView_new(&tmpNewOwner_1) ;
-			
-		
-			o->showWindow(o, "./Geometry/box2.geometry.json") ;
-		}
-		win->close(win) ;
-		return ; 
-	}
 	URGC_VAR_CLEANUP_CLASS Orc$String*  abspath = Orc$Path_toAbsolute((abspath = NULL,&abspath), path) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  cwd = Orc$Path_getcwd((cwd = NULL,&cwd)) ;
 	printf("打开项目。 项目路径为:%s. cwd:%s", abspath->str, cwd->str) ;
 	SuiDesigner$Project *  tmpThis_1 = NULL;
-	URGC_VAR_CLEANUP_CLASS SuiDesigner$Project*  tmpReturn_2 = NULL;
-	(tmpThis_1 = SuiDesigner$Project_ins(&tmpReturn_2) )->init(tmpThis_1, abspath->str) ;
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$Project*  tmpReturn_1 = NULL;
+	(tmpThis_1 = SuiDesigner$Project_ins(&tmpReturn_1) )->init(tmpThis_1, abspath->str) ;
 	self->editCtx->openPrefab(self->editCtx, "prefab/3d.prefab.json") ;
 	self->showWindow(self) ;
 }

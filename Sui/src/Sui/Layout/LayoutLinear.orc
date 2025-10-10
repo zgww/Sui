@@ -20,9 +20,6 @@ class LayoutLinearCell extends LayoutCell {
 	void dtor(){
 		printf(".LayoutLinearCell\n")
 	}
-	void removeSelf(){
-		super.removeSelf()
-	}
 }
 
 /// 布局上下文

@@ -185,22 +185,13 @@ class HoroGeometryPreviewView extends ImageView {
     void showWindow(const char *path){
         self.path = str(path)
 
-        Json@ jo = Json_parseByPathCstr(path)
-        printf("loadjson %s :%s\n", path, jo.dump().str)
-        PointerArray@ vts = new PointerArray()
-
-        vts.add(GeometryBox)
-        vts.add(GeometrySphere)
-        vts.add(GeometryPlane)
-        vts.add(GeometryCapsule)
-
-        Object* obj = jo.toObjectByVtables(vts)
-        if !(obj instanceof Geometry) {
+        Geometry@ geom = HoroGeometry_parseGeometryJson(path)
+        if !geom {
             Toast_make("not geometry.json file")
             return;
         }
-        self.mesh.geometry = (Geometry@)obj
-        self.mesh.geometry.build()
+
+        self.mesh.geometry = geom
 
         self.win = new Window() //先创建窗口，初始化opengl环境
         self.win.{
@@ -388,6 +379,28 @@ class HoroGeometryPreviewView extends ImageView {
         printf("Base scene and camera initialized\n")
     }
 }
+
+Geometry@ HoroGeometry_parseGeometryJson(const char *path){
+    Json@ jo = Json_parseByPathCstr(path)
+    printf("loadjson %s :%s\n", path, jo.dump().str)
+    PointerArray@ vts = new PointerArray()
+
+    vts.add(GeometryBox)
+    vts.add(GeometrySphere)
+    vts.add(GeometryPlane)
+    vts.add(GeometryCapsule)
+
+    Object* obj = jo.toObjectByVtables(vts)
+    if (obj instanceof Geometry) {
+        Geometry@ geom = (Geometry@)obj
+        geom.build()
+        return obj
+    }
+    Toast_make("not geometry.json file")
+    return null
+}
+
+
 HoroGeometryPreviewView@ mkHoroGeometryPreviewView(void* parent, long long key){
     void *addr =  __builtin_return_address(0)
     void *sp = key ? (void*)key: addr

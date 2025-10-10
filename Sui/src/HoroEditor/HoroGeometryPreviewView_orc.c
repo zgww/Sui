@@ -73,7 +73,7 @@ typedef struct tagHoroEditor$__Closure_157_36 HoroEditor$__Closure_157_36;
 
 typedef struct tagHoroEditor$__Closure_165_36 HoroEditor$__Closure_165_36;
 
-typedef struct tagHoroEditor$__Closure_207_26 HoroEditor$__Closure_207_26;
+typedef struct tagHoroEditor$__Closure_198_26 HoroEditor$__Closure_198_26;
 
 
 
@@ -141,8 +141,8 @@ struct tagHoroEditor$__Closure_165_36 {
 
 
 
-struct tagHoroEditor$__Closure_207_26 {
-	void  (*invoke)(HoroEditor$__Closure_207_26 *  self, SuiCore$Event *  e);
+struct tagHoroEditor$__Closure_198_26 {
+	void  (*invoke)(HoroEditor$__Closure_198_26 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
 	HoroEditor$__Block_185_37*  __var___Block_185_37 ;
 };
@@ -167,9 +167,9 @@ static HoroEditor$__Closure_157_36*  __make___Closure_157_36(HoroEditor$__Closur
 static void  __fn___Closure_165_36(HoroEditor$__Closure_165_36 *  self, SuiCore$MouseEvent *  me);
 static void  __fini___Closure_165_36(HoroEditor$__Closure_165_36 *  self);
 static HoroEditor$__Closure_165_36*  __make___Closure_165_36(HoroEditor$__Closure_165_36 **  __outRef__, HoroEditor$__Block_132_22 *  __var___Block_132_22);
-static void  __fn___Closure_207_26(HoroEditor$__Closure_207_26 *  self, SuiCore$Event *  e);
-static void  __fini___Closure_207_26(HoroEditor$__Closure_207_26 *  self);
-static HoroEditor$__Closure_207_26*  __make___Closure_207_26(HoroEditor$__Closure_207_26 **  __outRef__, HoroEditor$__Block_185_37 *  __var___Block_185_37);
+static void  __fn___Closure_198_26(HoroEditor$__Closure_198_26 *  self, SuiCore$Event *  e);
+static void  __fini___Closure_198_26(HoroEditor$__Closure_198_26 *  self);
+static HoroEditor$__Closure_198_26*  __make___Closure_198_26(HoroEditor$__Closure_198_26 **  __outRef__, HoroEditor$__Block_185_37 *  __var___Block_185_37);
 
 
 
@@ -458,36 +458,26 @@ void  HoroEditor$HoroGeometryPreviewView$showWindow(HoroEditor$HoroGeometryPrevi
 	urgc_set_field_class(__var___Block_185_37, (void * )offsetof(HoroEditor$__Block_185_37, self) , self) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 	urgc_set_field_class(self, (void * )offsetof(HoroEditor$HoroGeometryPreviewView, path) , Orc$str(&tmpReturn_1, path) ) ;
-	URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_parseByPathCstr((jo = NULL,&jo), path) ;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
-	printf("loadjson %s :%s\n", path, jo->dump(&tmpReturn_2, jo) ->str) ;
-	URGC_VAR_CLEANUP_CLASS Orc$PointerArray*  vts = (vts=NULL,urgc_init_var_class((void**)&vts, Orc$PointerArray_new(&vts) ));
-	vts->add(vts, Vtable_Sgl$GeometryBox_init(NULL)) ;
-	vts->add(vts, Vtable_Sgl$GeometrySphere_init(NULL)) ;
-	vts->add(vts, Vtable_Sgl$GeometryPlane_init(NULL)) ;
-	vts->add(vts, Vtable_Sgl$GeometryCapsule_init(NULL)) ;
-	URGC_VAR_CLEANUP_CLASS Object*  tmpReturn_3 = NULL;
-	Object *  obj = jo->toObjectByVtables(&tmpReturn_3, jo, vts) ;
-	if (!(Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Sgl$Geometry_init(NULL)))) {
+	URGC_VAR_CLEANUP_CLASS Sgl$Geometry*  geom = HoroEditor$HoroGeometry_parseGeometryJson((geom = NULL,&geom), path) ;
+	if (!geom) {
 		SuiDialog$Toast_make("not geometry.json file") ;
 		return ; 
 	}
-	urgc_set_field_class(self->mesh, (void * )offsetof(Sgl$Mesh, geometry) , (Sgl$Geometry* )obj) ;
-	self->mesh->geometry->build(self->mesh->geometry) ;
-	URGC_VAR_CLEANUP_CLASS Sui$Window*  tmpNewOwner_4 = NULL;
-	urgc_set_field_class(self, (void * )offsetof(HoroEditor$HoroGeometryPreviewView, win) , Sui$Window_new(&tmpNewOwner_4) ) ;
+	urgc_set_field_class(self->mesh, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
+	URGC_VAR_CLEANUP_CLASS Sui$Window*  tmpNewOwner_2 = NULL;
+	urgc_set_field_class(self, (void * )offsetof(HoroEditor$HoroGeometryPreviewView, win) , Sui$Window_new(&tmpNewOwner_2) ) ;
 	{
 		Sui$Window*  o = self->win;
 		
 	
-		URGC_VAR_CLEANUP HoroEditor$__Closure_207_26*  tmpReturn_5 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_207_26(&tmpReturn_5, __var___Block_185_37) ) ;
-		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpNewOwner_6 = NULL;
-		self->win->setRootView(self->win, SuiLayout$LayoutLinear_new(&tmpNewOwner_6) ) ;
+		URGC_VAR_CLEANUP HoroEditor$__Closure_198_26*  tmpReturn_3 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_198_26(&tmpReturn_3, __var___Block_185_37) ) ;
+		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpNewOwner_4 = NULL;
+		self->win->setRootView(self->win, SuiLayout$LayoutLinear_new(&tmpNewOwner_4) ) ;
 		self->reactWindow(self) ;
-		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
-		o->setTitle(o, Orc$String$replaceAll(&tmpReturn_7, Orc$str(&tmpReturn_8, "预览几何体{0}") , "{0}", path) ->str) ;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_5 = NULL;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_6 = NULL;
+		o->setTitle(o, Orc$String$replaceAll(&tmpReturn_5, Orc$str(&tmpReturn_6, "预览几何体{0}") , "{0}", path) ->str) ;
 		o->setSize(o, 800, 600) ;
 		o->moveToCenter(o) ;
 		o->show(o) ;
@@ -731,21 +721,41 @@ static HoroEditor$__Closure_165_36*  __make___Closure_165_36(HoroEditor$__Closur
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_207_26(HoroEditor$__Closure_207_26 *  self, SuiCore$Event *  e){
+static void  __fn___Closure_198_26(HoroEditor$__Closure_198_26 *  self, SuiCore$Event *  e){
 	self->__var___Block_185_37->self->onWindowEvent(self->__var___Block_185_37->self, e) ;
 }
 
-static void  __fini___Closure_207_26(HoroEditor$__Closure_207_26 *  self){
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_207_26, __var___Block_185_37) , NULL) ;
+static void  __fini___Closure_198_26(HoroEditor$__Closure_198_26 *  self){
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_198_26, __var___Block_185_37) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static HoroEditor$__Closure_207_26*  __make___Closure_207_26(HoroEditor$__Closure_207_26 **  __outRef__, HoroEditor$__Block_185_37 *  __var___Block_185_37){
-	URGC_VAR_CLEANUP HoroEditor$__Closure_207_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_207_26) , __fini___Closure_207_26) ));
-	self->invoke = __fn___Closure_207_26;
+static HoroEditor$__Closure_198_26*  __make___Closure_198_26(HoroEditor$__Closure_198_26 **  __outRef__, HoroEditor$__Block_185_37 *  __var___Block_185_37){
+	URGC_VAR_CLEANUP HoroEditor$__Closure_198_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(HoroEditor$__Closure_198_26) , __fini___Closure_198_26) ));
+	self->invoke = __fn___Closure_198_26;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_207_26, __var___Block_185_37) , __var___Block_185_37) ;
+	urgc_set_field(self, (void * )offsetof(HoroEditor$__Closure_198_26, __var___Block_185_37) , __var___Block_185_37) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
+
+Sgl$Geometry*  HoroEditor$HoroGeometry_parseGeometryJson(Sgl$Geometry **  __outRef__, const char *  path){
+	URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_parseByPathCstr((jo = NULL,&jo), path) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+	printf("loadjson %s :%s\n", path, jo->dump(&tmpReturn_1, jo) ->str) ;
+	URGC_VAR_CLEANUP_CLASS Orc$PointerArray*  vts = (vts=NULL,urgc_init_var_class((void**)&vts, Orc$PointerArray_new(&vts) ));
+	vts->add(vts, Vtable_Sgl$GeometryBox_init(NULL)) ;
+	vts->add(vts, Vtable_Sgl$GeometrySphere_init(NULL)) ;
+	vts->add(vts, Vtable_Sgl$GeometryPlane_init(NULL)) ;
+	vts->add(vts, Vtable_Sgl$GeometryCapsule_init(NULL)) ;
+	URGC_VAR_CLEANUP_CLASS Object*  tmpReturn_2 = NULL;
+	Object *  obj = jo->toObjectByVtables(&tmpReturn_2, jo, vts) ;
+	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Sgl$Geometry_init(NULL))) {
+		URGC_VAR_CLEANUP_CLASS Sgl$Geometry*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, (Sgl$Geometry* )obj));
+		geom->build(geom) ;
+		return urgc_set_var_for_return_class((void ** )__outRef__, obj) ; 
+	}
+	SuiDialog$Toast_make("not geometry.json file") ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
 }
 
 HoroEditor$HoroGeometryPreviewView*  HoroEditor$mkHoroGeometryPreviewView(HoroEditor$HoroGeometryPreviewView **  __outRef__, void *  parent, long long  key){

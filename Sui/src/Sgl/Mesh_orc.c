@@ -23,6 +23,7 @@
 #include "./GeometryBox_orc.h"
 #include "./GeometryPlane_orc.h"
 #include "./GeometrySphere_orc.h"
+#include "../HoroEditor/HoroGeometryPreviewView_orc.h"
 
 
 // static struct 
@@ -158,28 +159,11 @@ void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(p);
 
 	urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometryPath) , p) ;
-	if (Orc$String$equals(p, "Geometry/Box.geometry.json") ) {
-		URGC_VAR_CLEANUP_CLASS Sgl$GeometryBox*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryBox_new(&geom) ));
-		((Sgl$Geometry * )geom)->build(geom) ;
+	{
+		URGC_VAR_CLEANUP_CLASS Sgl$Geometry*  geom = HoroEditor$HoroGeometry_parseGeometryJson((geom = NULL,&geom), p->str) ;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_1 = NULL;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_1) ) ;
-		self->material->load(self->material, "../asset/basic.matl.json") ;
-	}
-	else if (Orc$String$equals(p, "Geometry/Sphere.geometry.json") ) {
-		URGC_VAR_CLEANUP_CLASS Sgl$GeometrySphere*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometrySphere_new(&geom) ));
-		((Sgl$Geometry * )geom)->build(geom) ;
-		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
-		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_2 = NULL;
-		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_2) ) ;
-		self->material->load(self->material, "../asset/basic.matl.json") ;
-	}
-	else if (Orc$String$equals(p, "Geometry/Plane.geometry.json") ) {
-		URGC_VAR_CLEANUP_CLASS Sgl$GeometryPlane*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryPlane_new(&geom) ));
-		((Sgl$Geometry * )geom)->build(geom) ;
-		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
-		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_3 = NULL;
-		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_3) ) ;
 		self->material->load(self->material, "../asset/basic.matl.json") ;
 	}
 	printf("设置几何路径:%s\n", p ? p->str : "null") ;
