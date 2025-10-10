@@ -750,11 +750,11 @@ class HoroEditor extends Listener{
 
         Window@ win = new Window();
 
-        if 1 {//材质球生成
-            testHoroMaterialIconCreator()
-            return;
-        }
-        // if 1 {
+        // if 1 {//材质球生成
+        //     testHoroMaterialIconCreator()
+        //     return;
+        // }
+        // if 1 { //测试几何体预览
         //     new HoroGeometryPreviewView()~{
         //         o.showWindow("./Geometry/heightmap.geometry.json")
         //     }

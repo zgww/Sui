@@ -39,7 +39,24 @@ class Mesh extends Obj3d {
     Vao@ depthVao = new Vao();
 
     String@ geometryPath;
+    String@ materialPath;
 
+    void setMaterialPath(String@ p){
+        if p && !p.endsWith(".matl.json") {
+            printf("not a matl.json file\n");
+            return 
+        }
+        self.materialPath = p
+        if p && p.notEmpty() {
+            new Material()~{
+                o.load(p.str)
+                self.material = o
+            }
+        }
+        else {
+            self.material = null
+        }
+    }
     void setGeometryPath(String@ p){
         self.geometryPath = p
 

@@ -20,6 +20,7 @@ import * from "../Sui/Core/Event.orc"
 import * from "../Sui/Core/Mat2d.orc"
 import * from "../Sui/Core/Vec2.orc"
 import * from "../Sui/Core/Image.orc"
+import * from "../Sui/Core/Color.orc"
 import * from "../Sui/Core/Vec3.orc"
 import * from "../Sui/Core/Frame.orc"
 import * from "../Sui/Core/Timer.orc"
@@ -569,10 +570,10 @@ class SceneView extends View {
             canvas.beginPath()
             canvas.rect( x, y, rect.w, rect.h)
 
-            canvas.fillColorByInt32( (0, 255, 0, 64))
+            canvas.fillColorByInt32(mkIntByRgba (0, 255, 0, 64))
             canvas.fill()
             canvas.strokeWidth( 1)
-            canvas.strokeColorByInt32( (0, 255, 0, 192))
+            canvas.strokeColorByInt32( mkIntByRgba(0, 255, 0, 192))
             canvas.stroke()
         }
     }

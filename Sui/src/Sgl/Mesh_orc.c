@@ -46,7 +46,9 @@ void Sgl$Mesh_initMeta(Vtable_Sgl$Mesh *pvt){
 	orc_metaField_class(&pNext, "vao", ((Vtable_Object*)Vtable_Sgl$Vao_init(0)), offsetof(Sgl$Mesh, vao), true, false, 1);
 	orc_metaField_class(&pNext, "depthVao", ((Vtable_Object*)Vtable_Sgl$Vao_init(0)), offsetof(Sgl$Mesh, depthVao), true, false, 1);
 	orc_metaField_class(&pNext, "geometryPath", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(Sgl$Mesh, geometryPath), true, false, 1);
+	orc_metaField_class(&pNext, "materialPath", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(Sgl$Mesh, materialPath), true, false, 1);
 
+	orc_metaField_method(&pNext, "setMaterialPath", offsetof(Sgl$Mesh, setMaterialPath));
 	orc_metaField_method(&pNext, "setGeometryPath", offsetof(Sgl$Mesh, setGeometryPath));
 }
 
@@ -91,6 +93,7 @@ void Sgl$Mesh_fini(Sgl$Mesh *self){
 	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->vao);
 	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->depthVao);
 	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->geometryPath);
+	urgc_fini_field_class(self, (void**)&((Sgl$Mesh*)self)->materialPath);
 
 }
 
@@ -111,7 +114,9 @@ void Sgl$Mesh_init_fields(Sgl$Mesh *self){
 	URGC_VAR_CLEANUP_CLASS Sgl$Vao*  tmpNewOwner_2 = NULL;
 	urgc_set_field_class(self, (void**)&((Sgl$Mesh*)self)->depthVao, Sgl$Vao_new(&tmpNewOwner_2) );
 	urgc_set_field_class(self, (void**)&((Sgl$Mesh*)self)->geometryPath, NULL);
+	urgc_set_field_class(self, (void**)&((Sgl$Mesh*)self)->materialPath, NULL);
     }
+	((Sgl$Mesh*)self)->setMaterialPath = (void*)Sgl$Mesh$setMaterialPath;
 	((Sgl$Mesh*)self)->setGeometryPath = (void*)Sgl$Mesh$setGeometryPath;
 	((Sgl$Obj3d*)self)->tick = (void*)Sgl$Mesh$tick;
 	((Sgl$Obj3d*)self)->draw = (void*)Sgl$Mesh$draw;
@@ -155,6 +160,30 @@ Sgl$Mesh * Sgl$Mesh_new(void *pOwner){
 
 
 // class members
+void  Sgl$Mesh$setMaterialPath(Sgl$Mesh *  self, Orc$String*  p){
+	URGC_REF_ARG_WITH_CLEANUP_CLASS(p);
+
+	if (p && !Orc$String$endsWith(p, ".matl.json") ) {
+		printf("not a matl.json file\n") ;
+		return ; 
+	}
+	urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, materialPath) , p) ;
+	if (p && Orc$String$notEmpty(p) ) {
+		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_1 = NULL;
+		{
+			Sgl$Material*  o = Sgl$Material_new(&tmpNewOwner_1) ;
+			
+		
+			o->load(o, p->str) ;
+			urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , o) ;
+		}
+	}
+	else {
+		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , NULL) ;
+	}
+}
+
+
 void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(p);
 

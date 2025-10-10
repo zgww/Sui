@@ -79,6 +79,8 @@ struct tagSgl$Mesh {
 	Sgl$Vao*  vao ;
 	Sgl$Vao*  depthVao ;
 	Orc$String*  geometryPath ;
+	Orc$String*  materialPath ;
+	void  (*setMaterialPath) (Sgl$Mesh *  self, Orc$String*  p);
 	void  (*setGeometryPath) (Sgl$Mesh *  self, Orc$String*  p);
 };
 Vtable_Sgl$Mesh* Vtable_Sgl$Mesh_init(Vtable_Sgl$Mesh* pvt);
@@ -87,6 +89,7 @@ void Sgl$Mesh_init(Sgl$Mesh *self, void *pOwner);
 Sgl$Mesh * Sgl$Mesh_new(void *pOwner);
 void Sgl$Mesh_fini(Sgl$Mesh *self);
 
+void  Sgl$Mesh$setMaterialPath(Sgl$Mesh *  self, Orc$String*  p);
 void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p);
 void  Sgl$Mesh$tick(Sgl$Mesh *  self, Sgl$DrawCtx *  ctx);
 void  Sgl$Mesh$draw(Sgl$Mesh *  self, Sgl$DrawCtx *  ctx);

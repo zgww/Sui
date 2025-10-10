@@ -54,6 +54,7 @@ typedef struct tagVtable_SuiDesigner$SceneView Vtable_SuiDesigner$SceneView;
 #include "../Sui/Core/Mat2d_orc.h"
 #include "../Sui/Core/Vec2_orc.h"
 #include "../Sui/Core/Image_orc.h"
+#include "../Sui/Core/Color_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
 #include "../Sui/Core/Frame_orc.h"
 #include "../Sui/Core/Timer_orc.h"
