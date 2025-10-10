@@ -1456,6 +1456,7 @@ void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const cha
 	(tmpThis_1 = SuiDesigner$Project_ins(&tmpReturn_1) )->init(tmpThis_1, abspath->str) ;
 	self->editCtx->openPrefab(self->editCtx, "prefab/3d.prefab.json") ;
 	self->showWindow(self) ;
+	win->close(win) ;
 }
 
 

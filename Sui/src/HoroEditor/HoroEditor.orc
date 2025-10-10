@@ -771,5 +771,6 @@ class HoroEditor extends Listener{
 
 
         self.showWindow()
+        win.close()
     }
 }

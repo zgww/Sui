@@ -60,6 +60,7 @@ typedef struct tagVtable_SuiDesigner$AssetDirView Vtable_SuiDesigner$AssetDirVie
 #include "../FileItem_orc.h"
 #include "../UiAction_orc.h"
 #include "../../HoroEditor/UiAct_orc.h"
+#include "../../HoroEditor/HoroGeometryPreviewView_orc.h"
 #include "../Theme_orc.h"
 #include "../Project_orc.h"
 #include "../EventANodeChanged_orc.h"

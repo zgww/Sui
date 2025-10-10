@@ -27,6 +27,7 @@ import * from "../../Sui/Layout/LayoutAlign.orc"
 import * from "../FileItem.orc"
 import * from "../UiAction.orc"
 import * from "../../HoroEditor/UiAct.orc"
+import * from "../../HoroEditor/HoroGeometryPreviewView.orc"
 import * from "../Theme.orc"
 import * from "../Project.orc"
 import * from "../EventANodeChanged.orc"
@@ -281,10 +282,15 @@ class AssetDirView extends LayoutLinear {
                 mkMenuNativeItem(o, str("创建Prefab3d"), onActive). {o.cmd = str("CreatePrefab3d")}
                 mkMenuNativeItem(o, str("创建目录"), onActive). {o.cmd = str("CreateDirectory")}
                 mkMenuNativeItem(o, str("创建几何体"), null). {
-                    mkMenuNativeItem(o, str("Box"), onActive). {o.cmd = str("CreateGeometry/Box")}
-                    mkMenuNativeItem(o, str("Sphere"), onActive). {o.cmd = str("CreateGeometry/Sphere")}
-                    mkMenuNativeItem(o, str("Plane"), onActive). {o.cmd = str("CreateGeometry/Plane")}
-                    mkMenuNativeItem(o, str("Capsule"), onActive). {o.cmd = str("CreateGeometry/Capsule")}
+                    PointerArray@ vts = HoroGeometry_getGeometryVtables()
+                    for int i = 0; i < vts.size(); i++{
+                        Vtable_Object* vt = (Vtable_Object*)vts.get(i)
+                        mkMenuNativeItem(o, str(vt.className), onActive). {o.cmd = str("CreateGeometry/{}").replaceAll("{}", vt.className)}
+                    }
+                    // mkMenuNativeItem(o, str("Box"), onActive). {o.cmd = str("CreateGeometry/Box")}
+                    // mkMenuNativeItem(o, str("Sphere"), onActive). {o.cmd = str("CreateGeometry/Sphere")}
+                    // mkMenuNativeItem(o, str("Plane"), onActive). {o.cmd = str("CreateGeometry/Plane")}
+                    // mkMenuNativeItem(o, str("Capsule"), onActive). {o.cmd = str("CreateGeometry/Capsule")}
                 }
                 // mkMenuNativeItem(o, str("返回上级目录"), null). {o.cmd = str("GotoParentDirectory")}
 

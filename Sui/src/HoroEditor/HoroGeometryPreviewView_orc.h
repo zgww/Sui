@@ -52,6 +52,7 @@ typedef struct tagVtable_HoroEditor$HoroGeometryPreviewView Vtable_HoroEditor$Ho
 #include "../Sgl/GeometryBox_orc.h"
 #include "../Sgl/GeometryCapsule_orc.h"
 #include "../Sgl/GeometrySphere_orc.h"
+#include "../Sgl/GeometryHeightMap_orc.h"
 #include "../Sgl/Mesh_orc.h"
 #include "../Sgl/Material_orc.h"
 #include "../Sgl/DrawCtx_orc.h"
@@ -137,6 +138,7 @@ void  HoroEditor$HoroGeometryPreviewView$draw_self(HoroEditor$HoroGeometryPrevie
 void  HoroEditor$HoroGeometryPreviewView$onEvent(HoroEditor$HoroGeometryPreviewView *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroGeometryPreviewView$mkBaseScene(HoroEditor$HoroGeometryPreviewView *  self);
 
+Orc$PointerArray*  HoroEditor$HoroGeometry_getGeometryVtables(Orc$PointerArray **  __outRef__);
 Sgl$Geometry*  HoroEditor$HoroGeometry_parseGeometryJson(Sgl$Geometry **  __outRef__, const char *  path);
 HoroEditor$HoroGeometryPreviewView*  HoroEditor$mkHoroGeometryPreviewView(HoroEditor$HoroGeometryPreviewView **  __outRef__, void *  parent, long long  key);
 

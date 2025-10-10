@@ -22,6 +22,7 @@ import * from "../Sgl/GeometryPlane.orc"
 import * from "../Sgl/GeometryBox.orc"
 import * from "../Sgl/GeometryCapsule.orc"
 import * from "../Sgl/GeometrySphere.orc"
+import * from "../Sgl/GeometryHeightMap.orc"
 import * from "../Sgl/Mesh.orc"
 
 import * from "../Sgl/Material.orc"
@@ -380,15 +381,22 @@ class HoroGeometryPreviewView extends ImageView {
     }
 }
 
-Geometry@ HoroGeometry_parseGeometryJson(const char *path){
-    Json@ jo = Json_parseByPathCstr(path)
-    printf("loadjson %s :%s\n", path, jo.dump().str)
+PointerArray@ HoroGeometry_getGeometryVtables(){
     PointerArray@ vts = new PointerArray()
 
     vts.add(GeometryBox)
     vts.add(GeometrySphere)
     vts.add(GeometryPlane)
     vts.add(GeometryCapsule)
+    vts.add(GeometryHeightMap)
+    return vts
+}
+Geometry@ HoroGeometry_parseGeometryJson(const char *path){
+    Json@ jo = Json_parseByPathCstr(path)
+    printf("loadjson %s :%s\n", path, jo.dump().str)
+
+
+    PointerArray@ vts = HoroGeometry_getGeometryVtables()
 
     Object* obj = jo.toObjectByVtables(vts)
     if (obj instanceof Geometry) {

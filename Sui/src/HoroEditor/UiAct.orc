@@ -118,7 +118,8 @@ void UiAct_addView(HoroEditor* editor, ANode@ anode, String@ viewName){
 }
 
 void UiAct_createGeometry(FileItem@ parent, String@ cmd){
-    MessageDialog_prompt("box.geometry.json", "新建几何体实例", ^void (String@ newName){
+    String@ basename = Path_basename(cmd.str)
+    MessageDialog_prompt(str("{}.geometry.json").replaceAll("{}", basename.str).str, "新建几何体实例", ^void (String@ newName){
         String@ path = parent.path.clone().add("/").addString(newName)
         Geometry@ geom = null
         if cmd.equals("CreateGeometry/Box"){
