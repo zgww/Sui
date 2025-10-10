@@ -816,7 +816,7 @@ SuiCore$ViewBase *  SuiDesigner3d$W3eEditor$reactScene(SuiDesigner3d$W3eEditor *
 					urgc_set_field_class(o, (void * )offsetof(Sgl$SglSceneView, matl) , self->matl) ;
 					o->buildDrawObj(o) ;
 					URGC_VAR_CLEANUP_CLASS Sgl$GeometryArrow*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryArrow_new(&geom) ));
-					geom->build(geom) ;
+					((Sgl$Geometry * )geom)->build(geom) ;
 					urgc_set_field_class(o->drawObj, (void * )offsetof(Sgl$Draw, geometry) , geom) ;
 					URGC_VAR_CLEANUP_CLASS Sgl$Mesh*  tmpNewOwner_10 = NULL;
 					urgc_set_field_class(__var___Block_243_47, (void * )offsetof(SuiDesigner3d$__Block_243_47, m) , Sgl$Mesh_new(&tmpNewOwner_10) ) ;
@@ -913,7 +913,7 @@ SuiCore$ViewBase *  SuiDesigner3d$W3eEditor$reactScene(SuiDesigner3d$W3eEditor *
 						geom->width = 10000;
 						geom->height = 10000;
 						geom->planeType = 1;
-						geom->build(geom) ;
+						((Sgl$Geometry * )geom)->build(geom) ;
 						URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_20 = NULL;
 						urgc_set_field_class(o, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_20) ) ;
 						o->material->load(o->material, "../asset/hi.matl.json") ;
@@ -1279,7 +1279,7 @@ void  SuiDesigner3d$W3eEditor$showWindow(SuiDesigner3d$W3eEditor *  self){
 		URGC_VAR_CLEANUP_CLASS Sgl$Geometry*  tmpReturn_2 = NULL;
 		urgc_set_field_class(self, (void * )offsetof(SuiDesigner3d$W3eEditor, geom) , w3e->mkGeometry(&tmpReturn_2, w3e) ) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$GeometryHeightMap*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryHeightMap_new(&geom) ));
-		geom->build(geom, "../asset/heightmap.png") ;
+		geom->buildByPath(geom, "../asset/heightmap.png") ;
 		urgc_set_field_class(self, (void * )offsetof(SuiDesigner3d$W3eEditor, geom) , geom) ;
 		w3e->mkGroundTexs(w3e) ;
 	}

@@ -141,6 +141,7 @@ void Sgl$Geometry_initMeta(Vtable_Sgl$Geometry *pvt){
 	orc_metaField_class(&pNext, "instanceVbo", ((Vtable_Object*)Vtable_Sgl$Vbo_init(0)), offsetof(Sgl$Geometry, instanceVbo), true, false, 1);
 	orc_metaField_primitive(&pNext, "version", OrcMetaType_int, offsetof(Sgl$Geometry, version), 0, 0, 0, 0);//int
 
+	orc_metaField_method(&pNext, "build", offsetof(Sgl$Geometry, build));
 	orc_metaField_method(&pNext, "setIboByBuffer", offsetof(Sgl$Geometry, setIboByBuffer));
 	orc_metaField_method(&pNext, "setAttrByBuffer", offsetof(Sgl$Geometry, setAttrByBuffer));
 	orc_metaField_method(&pNext, "setIboByInts", offsetof(Sgl$Geometry, setIboByInts));
@@ -213,6 +214,7 @@ void Sgl$Geometry_init_fields(Sgl$Geometry *self){
 	urgc_set_field_class(self, (void**)&((Sgl$Geometry*)self)->instanceVbo, NULL);
 	((Sgl$Geometry*)self)->version = 1;
     }
+	((Sgl$Geometry*)self)->build = (void*)Sgl$Geometry$build;
 	((Sgl$Geometry*)self)->setIboByBuffer = (void*)Sgl$Geometry$setIboByBuffer;
 	((Sgl$Geometry*)self)->setAttrByBuffer = (void*)Sgl$Geometry$setAttrByBuffer;
 	((Sgl$Geometry*)self)->setIboByInts = (void*)Sgl$Geometry$setIboByInts;
@@ -261,6 +263,11 @@ Sgl$Geometry * Sgl$Geometry_new(void *pOwner){
 
 
 // class members
+void  Sgl$Geometry$build(Sgl$Geometry *  self){
+	
+}
+
+
 void  Sgl$Geometry$setIboByBuffer(Sgl$Geometry *  self, Sgl$Buffer *  buffer){
 	URGC_VAR_CLEANUP_CLASS Sgl$Vbo*  tmpNewOwner_1 = NULL;
 	urgc_set_field_class(self, (void * )offsetof(Sgl$Geometry, ibo) , Sgl$Vbo_new(&tmpNewOwner_1) ) ;

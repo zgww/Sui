@@ -69,6 +69,7 @@ void Json$Json_initMeta(Vtable_Json$Json *pvt){
 	orc_metaField_method(&pNext, "getString", offsetof(Json$Json, getString));
 	orc_metaField_method(&pNext, "getToInts", offsetof(Json$Json, getToInts));
 	orc_metaField_method(&pNext, "getToFloats", offsetof(Json$Json, getToFloats));
+	orc_metaField_method(&pNext, "getToStruct", offsetof(Json$Json, getToStruct));
 	orc_metaField_method(&pNext, "setNumber", offsetof(Json$Json, setNumber));
 	orc_metaField_method(&pNext, "setBool", offsetof(Json$Json, setBool));
 	orc_metaField_method(&pNext, "setString", offsetof(Json$Json, setString));
@@ -87,6 +88,7 @@ void Json$Json_initMeta(Vtable_Json$Json *pvt){
 	orc_metaField_method(&pNext, "putObject", offsetof(Json$Json, putObject));
 	orc_metaField_method(&pNext, "mergeToSelf", offsetof(Json$Json, mergeToSelf));
 	orc_metaField_method(&pNext, "toObject", offsetof(Json$Json, toObject));
+	orc_metaField_method(&pNext, "toObjectByVtables", offsetof(Json$Json, toObjectByVtables));
 	orc_metaField_method(&pNext, "toObjectByVtable", offsetof(Json$Json, toObjectByVtable));
 	orc_metaField_method(&pNext, "getObjectsByVtable", offsetof(Json$Json, getObjectsByVtable));
 	orc_metaField_method(&pNext, "toObjectsByVtable", offsetof(Json$Json, toObjectsByVtable));
@@ -186,6 +188,7 @@ void Json$Json_init_fields(Json$Json *self){
 	((Json$Json*)self)->getString = (void*)Json$Json$getString;
 	((Json$Json*)self)->getToInts = (void*)Json$Json$getToInts;
 	((Json$Json*)self)->getToFloats = (void*)Json$Json$getToFloats;
+	((Json$Json*)self)->getToStruct = (void*)Json$Json$getToStruct;
 	((Json$Json*)self)->setNumber = (void*)Json$Json$setNumber;
 	((Json$Json*)self)->setBool = (void*)Json$Json$setBool;
 	((Json$Json*)self)->setString = (void*)Json$Json$setString;
@@ -204,6 +207,7 @@ void Json$Json_init_fields(Json$Json *self){
 	((Json$Json*)self)->putObject = (void*)Json$Json$putObject;
 	((Json$Json*)self)->mergeToSelf = (void*)Json$Json$mergeToSelf;
 	((Json$Json*)self)->toObject = (void*)Json$Json$toObject;
+	((Json$Json*)self)->toObjectByVtables = (void*)Json$Json$toObjectByVtables;
 	((Json$Json*)self)->toObjectByVtable = (void*)Json$Json$toObjectByVtable;
 	((Json$Json*)self)->getObjectsByVtable = (void*)Json$Json$getObjectsByVtable;
 	((Json$Json*)self)->toObjectsByVtable = (void*)Json$Json$toObjectsByVtable;
@@ -543,6 +547,15 @@ void  Json$Json$getToFloats(Json$Json *  self, const char *  key, float *  pInts
 }
 
 
+void  Json$Json$getToStruct(Json$Json *  self, const char *  key, void *  pStruct, MetaStruct *  metaStruct){
+	if (self->hasKey(self, key) ) {
+		URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_1 = NULL;
+		Json$Json *  kid = self->get(&tmpReturn_1, self, key) ;
+		Json$Json_setStructByJsonObject(pStruct, metaStruct, kid) ;
+	}
+}
+
+
 void  Json$Json$setNumber(Json$Json *  self, double  v){
 	self->kind = 2;
 	self->numberValue = v;
@@ -696,6 +709,21 @@ void  Json$Json$toObject(Json$Json *  self, Object *  obj){
 			p_fromJson(obj, self) ;
 		}
 	}
+}
+
+
+Object*  Json$Json$toObjectByVtables(Object **  __outRef__, Json$Json *  self, Orc$PointerArray*  vts){
+	URGC_REF_ARG_WITH_CLEANUP_CLASS(vts);
+
+	URGC_VAR_CLEANUP_CLASS Orc$String*  className = self->getString((className = NULL,&className), self, "__class") ;
+	for (int  i = 0; i < vts->size(vts) ; i++) {
+		Vtable_Object *  vt = (Vtable_Object * )vts->get(vts, i) ;
+		if (vt && strcmp(vt->className, className->str)  == 0) {
+			URGC_VAR_CLEANUP_CLASS Object*  tmpReturn_1 = NULL;
+			return urgc_set_var_for_return_class((void ** )__outRef__, self->toObjectByVtable(&tmpReturn_1, self, vt) ) ; 
+		}
+	}
+	return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
 }
 
 
@@ -938,6 +966,74 @@ Json$Json*  Json$Json_toJsonArray(Json$Json **  __outRef__, Orc$List *  list){
 		ja->add(ja, kidJo) ;
 	}
 	return urgc_set_var_for_return_class((void ** )__outRef__, ja) ; 
+}
+
+void  Json$Json_setPrimitive(OrcMetaField *  mf, void *  obj, Json$Json *  value){
+	if (mf->metaStruct != NULL && !mf->isPointer && !mf->isRef && !mf->isArray) {
+		void *  p = OrcMetaField_getPtr(mf, obj) ;
+		Json$Json_setStructByJsonObject(p, mf->metaStruct, value) ;
+		return ; 
+	}
+	if (!OrcMetaField_isPrimitive(mf) ) {
+		return ; 
+	}
+	int  type = OrcMetaField_getType(mf) ;
+	void *  p = OrcMetaField_getPtr(mf, obj) ;
+	if (type == OrcMetaType_bool) {
+		bool *  pv = (bool * )p;
+		*pv = value->asBool(value) ;
+	}
+	else if (type == OrcMetaType_char) {
+		char *  pv = (char * )p;
+		*pv = (char )value->asInt(value) ;
+	}
+	else if (type == OrcMetaType_short) {
+		short *  pv = (short * )p;
+		*pv = (short )value->asInt(value) ;
+	}
+	else if (type == OrcMetaType_int) {
+		int *  pv = (int * )p;
+		*pv = value->asInt(value) ;
+	}
+	else if (type == OrcMetaType_long) {
+		long *  pv = (long * )p;
+		*pv = (long )value->asInt(value) ;
+	}
+	else if (type == OrcMetaType_long_long) {
+		long long *  pv = (long long * )p;
+		*pv = (long long )value->asInt(value) ;
+	}
+	else if (type == OrcMetaType_float) {
+		float *  pv = (float * )p;
+		*pv = (float )value->asNumber(value) ;
+	}
+	else if (type == OrcMetaType_double) {
+		double *  pv = (double * )p;
+		*pv = value->asNumber(value) ;
+	}
+}
+
+void  Json$Json_setStructField(void *  pStruct, MetaStruct *  metaStruct, const char *  key, Json$Json*  value){
+	URGC_REF_ARG_WITH_CLEANUP_CLASS(value);
+
+	OrcMetaField *  mf = MetaStruct_getMetaFieldByFieldName(metaStruct, key) ;
+	if (mf != NULL) {
+		Json$Json_setPrimitive(mf, pStruct, value) ;
+	}
+}
+
+void  Json$Json_setStructByJsonObject(void *  pStruct, MetaStruct *  metaStruct, Json$Json*  value){
+	URGC_REF_ARG_WITH_CLEANUP_CLASS(value);
+
+	if (!value->isObject(value) ) {
+		return ; 
+	}
+	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = value->keys((keys = NULL,&keys), value) ;
+	for (int  i = 0; i < keys->size(keys) ; i++) {
+		Orc$String *  key = (Orc$String * )keys->get(keys, i) ;
+		URGC_VAR_CLEANUP_CLASS Json$Json*  fieldValue = value->get((fieldValue = NULL,&fieldValue), value, key->str) ;
+		Json$Json_setStructField(pStruct, metaStruct, key->str, fieldValue) ;
+	}
 }
 
 Json$Json*  Json$Json_parseByPathCstr(Json$Json **  __outRef__, const char *  path){

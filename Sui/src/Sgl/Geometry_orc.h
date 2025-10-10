@@ -91,6 +91,7 @@ struct tagSgl$Geometry {
 	Sgl$Vbo*  ibo ;
 	Sgl$Vbo*  instanceVbo ;
 	int  version ;
+	void  (*build) (Sgl$Geometry *  self);
 	void  (*setIboByBuffer) (Sgl$Geometry *  self, Sgl$Buffer *  buffer);
 	void  (*setAttrByBuffer) (Sgl$Geometry *  self, const char *  name, Sgl$Buffer *  buffer, int  elementCountPerVertex);
 	void  (*setIboByInts) (Sgl$Geometry *  self, int *  data, int  cnt);
@@ -110,6 +111,7 @@ void Sgl$Geometry_init(Sgl$Geometry *self, void *pOwner);
 Sgl$Geometry * Sgl$Geometry_new(void *pOwner);
 void Sgl$Geometry_fini(Sgl$Geometry *self);
 
+void  Sgl$Geometry$build(Sgl$Geometry *  self);
 void  Sgl$Geometry$setIboByBuffer(Sgl$Geometry *  self, Sgl$Buffer *  buffer);
 void  Sgl$Geometry$setAttrByBuffer(Sgl$Geometry *  self, const char *  name, Sgl$Buffer *  buffer, int  elementCountPerVertex);
 void  Sgl$Geometry$setIboByInts(Sgl$Geometry *  self, int *  data, int  cnt);

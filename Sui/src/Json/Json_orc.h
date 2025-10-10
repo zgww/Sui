@@ -101,6 +101,7 @@ struct tagJson$Json {
 	Orc$String*  (*getString) (Orc$String **  __outRef__, Json$Json *  self, const char *  key);
 	void  (*getToInts) (Json$Json *  self, const char *  key, int *  pInts, int  maxCount);
 	void  (*getToFloats) (Json$Json *  self, const char *  key, float *  pInts, int  maxCount);
+	void  (*getToStruct) (Json$Json *  self, const char *  key, void *  pStruct, MetaStruct *  metaStruct);
 	void  (*setNumber) (Json$Json *  self, double  v);
 	void  (*setBool) (Json$Json *  self, bool  v);
 	void  (*setString) (Json$Json *  self, Orc$String*  v);
@@ -119,6 +120,7 @@ struct tagJson$Json {
 	void  (*putObject) (Json$Json *  self, const char *  key, Object *  jo);
 	void  (*mergeToSelf) (Json$Json *  self, Json$Json*  jo);
 	void  (*toObject) (Json$Json *  self, Object *  obj);
+	Object*  (*toObjectByVtables) (Object **  __outRef__, Json$Json *  self, Orc$PointerArray*  vts);
 	Object*  (*toObjectByVtable) (Object **  __outRef__, Json$Json *  self, Vtable_Object *  vt);
 	Orc$List*  (*getObjectsByVtable) (Orc$List **  __outRef__, Json$Json *  self, const char *  key, Vtable_Object *  vt);
 	Orc$List*  (*toObjectsByVtable) (Orc$List **  __outRef__, Json$Json *  self, Vtable_Object *  vt);
@@ -166,6 +168,7 @@ bool  Json$Json$getBool(Json$Json *  self, const char *  key);
 Orc$String*  Json$Json$getString(Orc$String **  __outRef__, Json$Json *  self, const char *  key);
 void  Json$Json$getToInts(Json$Json *  self, const char *  key, int *  pInts, int  maxCount);
 void  Json$Json$getToFloats(Json$Json *  self, const char *  key, float *  pInts, int  maxCount);
+void  Json$Json$getToStruct(Json$Json *  self, const char *  key, void *  pStruct, MetaStruct *  metaStruct);
 void  Json$Json$setNumber(Json$Json *  self, double  v);
 void  Json$Json$setBool(Json$Json *  self, bool  v);
 void  Json$Json$setString(Json$Json *  self, Orc$String*  v);
@@ -184,6 +187,7 @@ void  Json$Json$put(Json$Json *  self, const char *  key, Json$Json*  jo);
 void  Json$Json$putObject(Json$Json *  self, const char *  key, Object *  jo);
 void  Json$Json$mergeToSelf(Json$Json *  self, Json$Json*  jo);
 void  Json$Json$toObject(Json$Json *  self, Object *  obj);
+Object*  Json$Json$toObjectByVtables(Object **  __outRef__, Json$Json *  self, Orc$PointerArray*  vts);
 Object*  Json$Json$toObjectByVtable(Object **  __outRef__, Json$Json *  self, Vtable_Object *  vt);
 Orc$List*  Json$Json$getObjectsByVtable(Orc$List **  __outRef__, Json$Json *  self, const char *  key, Vtable_Object *  vt);
 Orc$List*  Json$Json$toObjectsByVtable(Orc$List **  __outRef__, Json$Json *  self, Vtable_Object *  vt);
@@ -203,6 +207,9 @@ Json$Json*  Json$Json_toJsonNumberArrayByFloats(Json$Json **  __outRef__, float 
 Json$Json*  Json$Json_toJsonByMetaStruct(Json$Json **  __outRef__, void *  pStruct, MetaStruct *  metaStruct);
 Json$Json*  Json$Json_toJson(Json$Json **  __outRef__, Object *  obj);
 Json$Json*  Json$Json_toJsonArray(Json$Json **  __outRef__, Orc$List *  list);
+void  Json$Json_setPrimitive(OrcMetaField *  mf, void *  obj, Json$Json *  value);
+void  Json$Json_setStructField(void *  pStruct, MetaStruct *  metaStruct, const char *  key, Json$Json*  value);
+void  Json$Json_setStructByJsonObject(void *  pStruct, MetaStruct *  metaStruct, Json$Json*  value);
 Json$Json*  Json$Json_parseByPathCstr(Json$Json **  __outRef__, const char *  path);
 void  Json$testJson();
 

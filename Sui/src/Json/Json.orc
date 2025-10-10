@@ -252,6 +252,12 @@ class Json {
             kid.toFloats(pInts, maxCount)
         }
     }
+    void getToStruct(const char *key, void* pStruct, MetaStruct* metaStruct){
+        if self.hasKey(key){
+            Json* kid = self.get(key)
+            Json_setStructByJsonObject(pStruct, metaStruct, kid)
+        }
+    }
 
     void setNumber(double v){
         self.kind = 2
@@ -355,6 +361,16 @@ class Json {
                 p_fromJson(obj, self);
             }
         }
+    }
+    Object@ toObjectByVtables(PointerArray @vts){
+        String@ className = self.getString("__class")
+        for int i = 0; i < vts.size(); i++{
+            Vtable_Object* vt = (Vtable_Object*)vts.get(i)
+            if vt  && strcmp(vt.className, className.str) == 0 {
+                return self.toObjectByVtable(vt)
+            }
+        }
+        return null
     }
     //反射到对象
     //会调用fromJson(Json*jo)
@@ -588,6 +604,80 @@ Json@ Json_toJsonArray(List* list){
     return ja
 }
 
+void Json_setPrimitive(OrcMetaField *mf, void *obj, Json* value){
+    //结构体
+    if mf.metaStruct != null && !mf.isPointer && !mf.isRef && !mf.isArray {
+        void *p = OrcMetaField_getPtr(mf, obj)
+        Json_setStructByJsonObject(p, mf.metaStruct, value)
+        return
+    }
+
+    //只处理基类型
+    if (!OrcMetaField_isPrimitive(mf)){
+        return;
+    }
+
+    int type = OrcMetaField_getType(mf)
+    void *p = OrcMetaField_getPtr(mf, obj);
+
+    if (type == OrcMetaType_bool){
+        bool *pv = (bool*)p;
+        // *pv = value instanceof Boolean ? ((Boolean*)value).value : false;
+        *pv = value.asBool()
+    }
+    else if (type == OrcMetaType_char){
+        char *pv = (char*)p;
+        // *pv = value instanceof Boolean ? ((Boolean*)value).value : false;
+        *pv = (char)value.asInt()
+    }
+    else if (type == OrcMetaType_short){
+        short *pv = (short*)p;
+        // *pv = value instanceof Number ? ((Number*)value).toInt() : 0
+        *pv = (short)value.asInt()
+    }
+    else if (type == OrcMetaType_int){
+        int *pv = (int*)p;
+        // *pv = value instanceof Number ? ((Number*)value).toInt() : 0
+        *pv = value.asInt()
+    }
+    else if (type == OrcMetaType_long){
+        long *pv = (long*)p;
+        // *pv = value instanceof Number ? ((Number*)value).toLongLong() : 0
+        *pv = (long)value.asInt()
+    }
+    else if (type == OrcMetaType_long_long){
+        long long *pv = (long long *)p;
+        // *pv = value instanceof Number ? ((Number*)value).toLongLong() : 0
+        *pv = (long long)value.asInt()
+    }
+    else if (type == OrcMetaType_float){
+        float *pv = (float *)p;
+        // *pv = value instanceof Number ? ((Number*)value).toDouble() : 0
+        *pv = (float)value.asNumber()
+    }
+    else if (type == OrcMetaType_double){
+        double *pv = (double *)p;
+        // *pv = value instanceof Number ? ((Number*)value).toDouble() : 0
+        *pv = value.asNumber()
+    }
+}
+void Json_setStructField(void *pStruct, MetaStruct *metaStruct, const char *key, Json@ value){
+    OrcMetaField* mf = MetaStruct_getMetaFieldByFieldName(metaStruct, key)
+    if (mf != NULL){
+        Json_setPrimitive(mf, pStruct, value)
+    }
+}
+void Json_setStructByJsonObject(void *pStruct, MetaStruct *metaStruct, Json@ value){
+    if !value.isObject(){
+        return
+    }
+    List@ keys = value.keys()
+    for int i = 0; i < keys.size(); i++{
+        String* key = (String*)keys.get(i)
+        Json@ fieldValue = value.get(key.str)
+        Json_setStructField(pStruct, metaStruct, key.str, fieldValue)
+    }
+}
 
 Json@ Json_parseByPathCstr(const char *path){
     String@ text = Path_readText(path)

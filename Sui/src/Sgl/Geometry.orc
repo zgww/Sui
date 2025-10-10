@@ -31,6 +31,10 @@ class Geometry {
 
     int version = 1 //通过版本的变化，来识别vao是否需要重建
 
+    // build geom...
+    void build(){
+    }
+
     void setIboByBuffer(Buffer* buffer){
         self.ibo = new Vbo()
         self.ibo.elementBuffer(buffer)

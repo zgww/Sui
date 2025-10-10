@@ -740,19 +740,22 @@ class HoroEditor extends Listener{
         }
     }
     void openProject(const char *path){
-        Window@ win = new Window();
-        if 1 {
-            new HoroGeometryPreviewView().{
-                o.showWindow()
-            }
-            win.close()
-            return;
-        }
         registerNodes()
 
         // String@ projectDirPath = Path_dirname(Path_getExecutionPath().str).add("/../asset/matl")
         // printf("projectDirPath:%s\n", projectDirPath.str)
         Path_setcwd(path)
+
+
+        Window@ win = new Window();
+        if 1 {
+            new HoroGeometryPreviewView().{
+                // o.showWindow("./Geometry/sp.geometry.json")
+                o.showWindow("./Geometry/box2.geometry.json")
+            }
+            win.close()
+            return;
+        }
 
 
         String@ abspath = Path_toAbsolute(path)

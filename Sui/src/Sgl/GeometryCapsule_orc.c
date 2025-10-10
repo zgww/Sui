@@ -36,7 +36,7 @@ void Sgl$GeometryCapsule_initMeta(Vtable_Sgl$GeometryCapsule *pvt){
 	orc_metaField_primitive(&pNext, "thetaStart", OrcMetaType_float, offsetof(Sgl$GeometryCapsule, thetaStart), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "thetaLength", OrcMetaType_float, offsetof(Sgl$GeometryCapsule, thetaLength), 0, 0, 0, 0);//float
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryCapsule, build));
+	
 }
 
 
@@ -94,7 +94,7 @@ void Sgl$GeometryCapsule_init_fields(Sgl$GeometryCapsule *self){
 	((Sgl$GeometryCapsule*)self)->thetaStart = 0.0;
 	((Sgl$GeometryCapsule*)self)->thetaLength = 3.141592653589793 * 2;
     }
-	((Sgl$GeometryCapsule*)self)->build = (void*)Sgl$GeometryCapsule$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryCapsule$build;
 }
 
 // init function

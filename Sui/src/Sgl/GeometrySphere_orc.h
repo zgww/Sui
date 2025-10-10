@@ -71,7 +71,7 @@ struct tagSgl$GeometrySphere {
 	float  phiLength ;
 	float  thetaStart ;
 	float  thetaLength ;
-	void  (*build) (Sgl$GeometrySphere *  self);
+	void  (*setWidthSegments) (Sgl$GeometrySphere *  self, int  v);
 };
 Vtable_Sgl$GeometrySphere* Vtable_Sgl$GeometrySphere_init(Vtable_Sgl$GeometrySphere* pvt);
 void Sgl$GeometrySphere_init_fields(Sgl$GeometrySphere *self);
@@ -79,6 +79,7 @@ void Sgl$GeometrySphere_init(Sgl$GeometrySphere *self, void *pOwner);
 Sgl$GeometrySphere * Sgl$GeometrySphere_new(void *pOwner);
 void Sgl$GeometrySphere_fini(Sgl$GeometrySphere *self);
 
+void  Sgl$GeometrySphere$setWidthSegments(Sgl$GeometrySphere *  self, int  v);
 void  Sgl$GeometrySphere$build(Sgl$GeometrySphere *  self);
 
 

@@ -36,7 +36,7 @@ void Sgl$GeometryPlane_initMeta(Vtable_Sgl$GeometryPlane *pvt){
 	orc_metaField_primitive(&pNext, "heightSegments", OrcMetaType_int, offsetof(Sgl$GeometryPlane, heightSegments), 0, 0, 0, 0);//int
 	orc_metaField_primitive(&pNext, "planeType", OrcMetaType_int, offsetof(Sgl$GeometryPlane, planeType), 0, 0, 0, 0);//int
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryPlane, build));
+	
 }
 
 
@@ -95,7 +95,7 @@ void Sgl$GeometryPlane_init_fields(Sgl$GeometryPlane *self){
 	((Sgl$GeometryPlane*)self)->heightSegments = 10;
 	((Sgl$GeometryPlane*)self)->planeType = 0;
     }
-	((Sgl$GeometryPlane*)self)->build = (void*)Sgl$GeometryPlane$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryPlane$build;
 }
 
 // init function

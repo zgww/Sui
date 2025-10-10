@@ -14,6 +14,7 @@ import * from "../Orc/Math.orc"
 import * from "../Sui/Core/Vec3.orc"
 import * from "../Sui/Core/Color.orc"
 import * from "../Orc/String.orc"
+import * from "../Json/Json.orc"
 
 import * from "./Geometry.orc"
 
@@ -31,6 +32,28 @@ class GeometryBox extends Geometry {
     int depthSegments = 1
 
     int color = 0xffff0000
+
+    void toJson(Json* jo){
+        jo.putNumber("width", self.width)
+        jo.putNumber("height", self.height)
+        jo.putNumber("depth", self.depth)
+        jo.putNumber("widthSegments", self.widthSegments)
+        jo.putNumber("heightSegments", self.heightSegments)
+        jo.putNumber("depthSegments", self.depthSegments)
+        jo.putNumber("color", self.color)
+        jo.put("center", Json_toJsonByMetaStruct(&self.center, metaStructOf(Vec3)))
+    }
+    void fromJson(Json* jo){
+        jo.getToFloat("width", &self.width)
+        jo.getToFloat("height", &self.height)
+        jo.getToFloat("depth", &self.depth)
+        jo.getToInt("widthSegments", &self.widthSegments)
+        jo.getToInt("heightSegments", &self.heightSegments)
+        jo.getToInt("depthSegments", &self.depthSegments)
+        jo.getToInt("color", &self.color)
+        jo.getToStruct("center", &self.center, metaStructOf(Vec3))
+        // self.width = jo.put("center", Json_toJsonByMetaStruct(&self.center, metaStructOf(Vec3)))
+    }
 
     void mkPlane(
         int segcols,

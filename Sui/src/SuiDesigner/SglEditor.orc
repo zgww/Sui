@@ -1083,7 +1083,7 @@ class SglEditor extends Listener{
             self.geom = w3e.mkGeometry()
 
             GeometryHeightMap@ geom = new GeometryHeightMap();
-            geom.build("../asset/heightmap.png")
+            geom.buildByPath("../asset/heightmap.png")
 
             self.geom = geom
 

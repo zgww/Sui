@@ -9,6 +9,7 @@ import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
 import * from "../Orc/Map.orc"
 import * from "../Orc/Time.orc"
+import * from "../Orc/Number.orc"
 import * from "../Orc/Math.orc"
 import * from "../Orc/Path.orc"
 import * from "../Json/Json.orc"
@@ -18,22 +19,29 @@ import * from "../Sgl/Fbo.orc"
 import * from "../Sgl/Draw.orc"
 import * from "../Sgl/Geometry.orc"
 import * from "../Sgl/GeometryPlane.orc"
+import * from "../Sgl/GeometryBox.orc"
+import * from "../Sgl/GeometryCapsule.orc"
+import * from "../Sgl/GeometrySphere.orc"
 import * from "../Sgl/Mesh.orc"
 
 import * from "../Sgl/Material.orc"
 import * from "../Sgl/DrawCtx.orc"
 import * from "../Sgl/Scene.orc"
 import * from "../Sgl/Buffer.orc"
+import * from "../Sgl/Mesh.orc"
 import * from "../Sgl/PointLight.orc"
 import * from "../Sgl/DirLight.orc"
 import * from "../Sgl/PixelsReader.orc"
 import * from "../Sgl/PerspectiveCamera.orc"
 
 import * from "../Sui/View/TextView.orc"
+import * from "../Sui/View/Button.orc"
 import * from "../Sui/View/ImageView.orc"
 import * from "../Sui/View/ViewBuilder.orc"
 
 import * from "../Sui/Layout/LayoutLinear.orc"
+
+import * from "../Sui/Dialog/Toast.orc"
 
 import * from "../Sui/Core/Window.orc"
 import * from "../Sui/Core/View.orc"
@@ -48,11 +56,15 @@ import * from "../Sui/Core/Event.orc"
 import * from "../Sui/Core/Node.orc"
 import * from "../Sui/Core/Color.orc"
 import * from "../Sui/Core/MouseEvent.orc"
+import * from "../Sui/Core/KeyEvent.orc"
 
 import * from "./HoroEditor.orc"
+import * from "./UiAct.orc"
 
 import * from "../SuiDesigner/Theme.orc"
+import * from "../SuiDesigner/Insp.orc"
 import * from "../SuiDesigner/InvalidReact.orc"
+
 
 class HoroGeometryPreviewView extends ImageView {
     Window@ win;
@@ -67,13 +79,26 @@ class HoroGeometryPreviewView extends ImageView {
     float scale = 0.02
 
     InvalidReact@ _invalid = new InvalidReact().setReactName("sdf")
-
-    
     
     Mesh@ groundGrid = new Mesh()
+    Insp@ inspObj = new Insp()
+    Mesh@ mesh = new Mesh()
+
+
     void ctor(){
         super.ctor()
+        Material@ matl = new Material()
+        matl.load(Path_resolveFromExecutionDir("../asset/basic.matl.json").str)
+        self.mesh.material = matl
+
         self.mkBaseScene()
+
+        self.inspObj.cbSetAttr = ^void (Object* obj, OrcMetaField*mf, Object* inspValue){
+            Orc_setField(obj, mf, inspValue)
+            self.mesh.geometry.build()
+        }
+
+
         self.drag.onDrag = ^void(Drag*d){
             if d.isDragging {
                 printf("dragging scene\n")
@@ -104,7 +129,6 @@ class HoroGeometryPreviewView extends ImageView {
 
     void dtor(){
         printf("~~~~~HoroGeometryPreviewView\n\n");
-
     }
     void reactWindow(){
         LayoutLinear *ll = (LayoutLinear*)self.win.rootView
@@ -115,32 +139,151 @@ class HoroGeometryPreviewView extends ImageView {
 
             o.placeKid(self)
             self.{
-                layoutLinearCell(o, 0)
-
+                layoutLinearCell(o, 0).{o.grow = 2}
             }
-            mkTextView(o, 0).{
-                o.setText(str("Geometry"))
+            layoutLinear(o, 0).{
+                o.column()
+                layoutLinearCell(o, 0)
+                
+                if self.mesh.geometry{
+                    self.inspObj.insp(o, self.mesh.geometry)
+                    mkDrawButton(o, 0).{
+                        layoutLinearCell(o, 0).{o.grow = 0; o.alignSelf = str("stretch")}
+
+                        o.text = str("保存")
+                        o.onClick = ^void(MouseEvent*me){
+                            Json@ jo = Json_toJson(self.mesh.geometry)
+                            printf("save geometry:%s\n", jo.dump().str)
+                            if Path_writeText(self.path.str, jo.dump().str) {
+                                Toast_make(str("保存成功:{0}").replaceAll("{0}", self.path.str).str)
+                            }
+                        }
+                    }
+                }
+                else {
+                    mkTextView(o, 0).{
+                        o.setText(str("Create Geometry Instance fail"))
+                    }
+                }
+
             }
         }
     }
+    String@ path
 
-    void showWindow(){
+    void showWindow(const char *path){
+        self.path = str(path)
+
+        Json@ jo = Json_parseByPathCstr(path)
+        printf("loadjson %s :%s\n", path, jo.dump().str)
+        PointerArray@ vts = new PointerArray()
+
+        vts.add(GeometryBox)
+        vts.add(GeometrySphere)
+        vts.add(GeometryPlane)
+        vts.add(GeometryCapsule)
+
+        Object* obj = jo.toObjectByVtables(vts)
+        if !(obj instanceof Geometry) {
+            Toast_make("not geometry.json file")
+            return;
+        }
+        self.mesh.geometry = (Geometry@)obj
+        self.mesh.geometry.build()
+
         self.win = new Window() //先创建窗口，初始化opengl环境
         self.win.{
             o.cbOnEvent = ^void (Event*e){
-                // self.onWindowEvent(e)
+                self.onWindowEvent(e)
             }
 
             self.win.setRootView(new LayoutLinear())
             self.reactWindow()
 
-            o.setTitle("预览几何体")
+            o.setTitle(str("预览几何体{0}").replaceAll("{0}", path).str)
             o.setSize(800, 600)
             o.moveToCenter()
             o.show()
         }
     }
 
+    void onWindowEvent(Event *e){
+        if e instanceof KeyEvent {
+            KeyEvent *ke = (KeyEvent*)e
+            printf("2窗口收到键盘消息:%s\n", ke.key.str);
+            if self.camera && ke.isKeyDown {
+
+                //前进
+                if ke.ctrl {
+                    if ke.key.equalsIgnoreCase("S"){//保存场景
+                        UiAct_savePrefab(self)
+                    }
+                }
+                else if ke.shift {
+                    if ke.key.equalsIgnoreCase("A"){
+                        printf("左旋转\n");
+                        self.camera.rotation.y += 0.01
+                    }
+                    else if ke.key.equalsIgnoreCase("D"){
+                        printf("右旋转\n");
+                        self.camera.rotation.y -= 0.01
+                    }
+                    else if ke.key.equalsIgnoreCase("W"){
+                        printf("左旋转\n");
+                        self.camera.rotation.x -= 0.01
+                    }
+                    else if ke.key.equalsIgnoreCase("S"){
+                        printf("右旋转\n");
+                        self.camera.rotation.x += 0.01
+                    }
+                }
+                else if ke.key.equals("W"){
+                    Vec3 dir = self.camera.applyRotationToVec3(mkVec3(0, 0, -1.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.camera.position.addLocal(dir)
+                    // self.camera.moveForward()
+                }
+                else if ke.key.equals("S"){
+                    // self.camera.moveBackward()
+                    Vec3 dir = self.camera.applyRotationToVec3(mkVec3(0, 0, 1.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.camera.position.addLocal(dir)
+                }
+                //左转
+                else if ke.key.equals("A"){
+                    // self.camera.rotateLeft()
+                    Vec3 dir = self.camera.applyRotationToVec3(mkVec3(-1, 0, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.camera.position.addLocal(dir)
+                }
+                else if ke.key.equals("D"){
+                    // self.camera.rotateRight()
+                    Vec3 dir = self.camera.applyRotationToVec3(mkVec3(1, 0, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.camera.position.addLocal(dir)
+                }
+                //升降
+                else if ke.key.equals("E"){
+                    // self.camera.rise()
+                    Vec3 dir = self.camera.applyRotationToVec3(mkVec3(0, 1, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.camera.position.addLocal(dir)
+                }
+                else if ke.key.equals("Q"){
+                    // self.camera.fall()
+                    Vec3 dir = self.camera.applyRotationToVec3(mkVec3(0, -1, 0.0))
+                    dir.multiplyScalarLocal(10)
+                    printf("apply dir:%s\n", dir.toString().str);
+                    self.camera.position.addLocal(dir)
+                }
+            }
+        }
+    }
 
 	void draw_self(Canvas* canvas) {
 
@@ -174,6 +317,8 @@ class HoroGeometryPreviewView extends ImageView {
 
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
+
+            // self.mesh.draw(self.drawCtx)
 
             // self.groundGrid.draw(self.drawCtx)
 
@@ -219,6 +364,7 @@ class HoroGeometryPreviewView extends ImageView {
         
         // Add camera to scene
         self.scene.appendChild(self.camera)
+        self.scene.appendChild(self.mesh)
 
         //添加灯
 

@@ -221,7 +221,7 @@ void  HoroEditor$Horo3dSceneView$ctor(HoroEditor$Horo3dSceneView *  self){
 		geom->height = 10000;
 		geom->widthSegments = 100;
 		geom->heightSegments = 100;
-		geom->build(geom) ;
+		((Sgl$Geometry * )geom)->build(geom) ;
 		urgc_set_field_class(self->groundGrid, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$Material*  matl = (matl=NULL,urgc_init_var_class((void**)&matl, Sgl$Material_new(&matl) ));
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;

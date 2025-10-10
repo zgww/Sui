@@ -13,6 +13,7 @@
 #include "../Sui/Core/Vec3_orc.h"
 #include "../Sui/Core/Color_orc.h"
 #include "../Orc/String_orc.h"
+#include "../Json/Json_orc.h"
 #include "./Geometry_orc.h"
 
 
@@ -40,8 +41,9 @@ void Sgl$GeometryBox_initMeta(Vtable_Sgl$GeometryBox *pvt){
 	orc_metaField_primitive(&pNext, "depthSegments", OrcMetaType_int, offsetof(Sgl$GeometryBox, depthSegments), 0, 0, 0, 0);//int
 	orc_metaField_primitive(&pNext, "color", OrcMetaType_int, offsetof(Sgl$GeometryBox, color), 0, 0, 0, 0);//int
 
+	orc_metaField_method(&pNext, "toJson", offsetof(Sgl$GeometryBox, toJson));
+	orc_metaField_method(&pNext, "fromJson", offsetof(Sgl$GeometryBox, fromJson));
 	orc_metaField_method(&pNext, "mkPlane", offsetof(Sgl$GeometryBox, mkPlane));
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryBox, build));
 }
 
 
@@ -102,8 +104,10 @@ void Sgl$GeometryBox_init_fields(Sgl$GeometryBox *self){
 	((Sgl$GeometryBox*)self)->depthSegments = 1;
 	((Sgl$GeometryBox*)self)->color = 0xffff0000;
     }
+	((Sgl$GeometryBox*)self)->toJson = (void*)Sgl$GeometryBox$toJson;
+	((Sgl$GeometryBox*)self)->fromJson = (void*)Sgl$GeometryBox$fromJson;
 	((Sgl$GeometryBox*)self)->mkPlane = (void*)Sgl$GeometryBox$mkPlane;
-	((Sgl$GeometryBox*)self)->build = (void*)Sgl$GeometryBox$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryBox$build;
 }
 
 // init function
@@ -140,6 +144,31 @@ Sgl$GeometryBox * Sgl$GeometryBox_new(void *pOwner){
 
 
 // class members
+void  Sgl$GeometryBox$toJson(Sgl$GeometryBox *  self, Json$Json *  jo){
+	jo->putNumber(jo, "width", self->width) ;
+	jo->putNumber(jo, "height", self->height) ;
+	jo->putNumber(jo, "depth", self->depth) ;
+	jo->putNumber(jo, "widthSegments", self->widthSegments) ;
+	jo->putNumber(jo, "heightSegments", self->heightSegments) ;
+	jo->putNumber(jo, "depthSegments", self->depthSegments) ;
+	jo->putNumber(jo, "color", self->color) ;
+	URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_1 = NULL;
+	jo->put(jo, "center", Json$Json_toJsonByMetaStruct(&tmpReturn_1, &self->center, metaStructOf(SuiCore$Vec3) ) ) ;
+}
+
+
+void  Sgl$GeometryBox$fromJson(Sgl$GeometryBox *  self, Json$Json *  jo){
+	jo->getToFloat(jo, "width", &self->width) ;
+	jo->getToFloat(jo, "height", &self->height) ;
+	jo->getToFloat(jo, "depth", &self->depth) ;
+	jo->getToInt(jo, "widthSegments", &self->widthSegments) ;
+	jo->getToInt(jo, "heightSegments", &self->heightSegments) ;
+	jo->getToInt(jo, "depthSegments", &self->depthSegments) ;
+	jo->getToInt(jo, "color", &self->color) ;
+	jo->getToStruct(jo, "center", &self->center, metaStructOf(SuiCore$Vec3) ) ;
+}
+
+
 void  Sgl$GeometryBox$mkPlane(Sgl$GeometryBox *  self, int  segcols, int  segrows, float  dx, float  dy, SuiCore$Vec3 xfactor, SuiCore$Vec3 yfactor, SuiCore$Vec3 p0, SuiCore$Vec3 normalVec3, Sgl$Buffer *  position, Sgl$Buffer *  normal, Sgl$Buffer *  uv, Sgl$Buffer *  face, Sgl$Buffer *  color){
 	int  cols = segcols + 1;
 	int  rows = segrows + 1;

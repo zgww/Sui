@@ -50,7 +50,7 @@ class GeometryHeightMap extends Geometry {
         // }
         return r * self.heightScale;
     }
-    void build(const char *path){
+    void buildByPath(const char *path){
         Buffer@ vtxs = new Buffer()
         // Buffer@ nmls = new Buffer()
         Buffer@ face = new Buffer()
@@ -185,7 +185,7 @@ class GeometryHeightMap extends Geometry {
 
 void testHeightMap(){
     GeometryHeightMap@ g = new GeometryHeightMap()
-    g.build("../asset/heightmap.png")
+    g.buildByPath("../asset/heightmap.png")
 
 
     // stbi_set_flip_vertically_on_load(true);

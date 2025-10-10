@@ -45,6 +45,7 @@ typedef struct tagVtable_Sgl$GeometryBox Vtable_Sgl$GeometryBox;
 #include "../Sui/Core/Vec3_orc.h"
 #include "../Sui/Core/Color_orc.h"
 #include "../Orc/String_orc.h"
+#include "../Json/Json_orc.h"
 #include "./Geometry_orc.h"
 
 
@@ -72,8 +73,9 @@ struct tagSgl$GeometryBox {
 	int  heightSegments ;
 	int  depthSegments ;
 	int  color ;
+	void  (*toJson) (Sgl$GeometryBox *  self, Json$Json *  jo);
+	void  (*fromJson) (Sgl$GeometryBox *  self, Json$Json *  jo);
 	void  (*mkPlane) (Sgl$GeometryBox *  self, int  segcols, int  segrows, float  dx, float  dy, SuiCore$Vec3 xfactor, SuiCore$Vec3 yfactor, SuiCore$Vec3 p0, SuiCore$Vec3 normalVec3, Sgl$Buffer *  position, Sgl$Buffer *  normal, Sgl$Buffer *  uv, Sgl$Buffer *  face, Sgl$Buffer *  color);
-	void  (*build) (Sgl$GeometryBox *  self);
 };
 Vtable_Sgl$GeometryBox* Vtable_Sgl$GeometryBox_init(Vtable_Sgl$GeometryBox* pvt);
 void Sgl$GeometryBox_init_fields(Sgl$GeometryBox *self);
@@ -81,6 +83,8 @@ void Sgl$GeometryBox_init(Sgl$GeometryBox *self, void *pOwner);
 Sgl$GeometryBox * Sgl$GeometryBox_new(void *pOwner);
 void Sgl$GeometryBox_fini(Sgl$GeometryBox *self);
 
+void  Sgl$GeometryBox$toJson(Sgl$GeometryBox *  self, Json$Json *  jo);
+void  Sgl$GeometryBox$fromJson(Sgl$GeometryBox *  self, Json$Json *  jo);
 void  Sgl$GeometryBox$mkPlane(Sgl$GeometryBox *  self, int  segcols, int  segrows, float  dx, float  dy, SuiCore$Vec3 xfactor, SuiCore$Vec3 yfactor, SuiCore$Vec3 p0, SuiCore$Vec3 normalVec3, Sgl$Buffer *  position, Sgl$Buffer *  normal, Sgl$Buffer *  uv, Sgl$Buffer *  face, Sgl$Buffer *  color);
 void  Sgl$GeometryBox$build(Sgl$GeometryBox *  self);
 

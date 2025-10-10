@@ -40,6 +40,7 @@ typedef struct tagVtable_HoroEditor$HoroGeometryPreviewView Vtable_HoroEditor$Ho
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Orc/Time_orc.h"
+#include "../Orc/Number_orc.h"
 #include "../Orc/Math_orc.h"
 #include "../Orc/Path_orc.h"
 #include "../Json/Json_orc.h"
@@ -48,19 +49,25 @@ typedef struct tagVtable_HoroEditor$HoroGeometryPreviewView Vtable_HoroEditor$Ho
 #include "../Sgl/Draw_orc.h"
 #include "../Sgl/Geometry_orc.h"
 #include "../Sgl/GeometryPlane_orc.h"
+#include "../Sgl/GeometryBox_orc.h"
+#include "../Sgl/GeometryCapsule_orc.h"
+#include "../Sgl/GeometrySphere_orc.h"
 #include "../Sgl/Mesh_orc.h"
 #include "../Sgl/Material_orc.h"
 #include "../Sgl/DrawCtx_orc.h"
 #include "../Sgl/Scene_orc.h"
 #include "../Sgl/Buffer_orc.h"
+#include "../Sgl/Mesh_orc.h"
 #include "../Sgl/PointLight_orc.h"
 #include "../Sgl/DirLight_orc.h"
 #include "../Sgl/PixelsReader_orc.h"
 #include "../Sgl/PerspectiveCamera_orc.h"
 #include "../Sui/View/TextView_orc.h"
+#include "../Sui/View/Button_orc.h"
 #include "../Sui/View/ImageView_orc.h"
 #include "../Sui/View/ViewBuilder_orc.h"
 #include "../Sui/Layout/LayoutLinear_orc.h"
+#include "../Sui/Dialog/Toast_orc.h"
 #include "../Sui/Core/Window_orc.h"
 #include "../Sui/Core/View_orc.h"
 #include "../Sui/Core/Image_orc.h"
@@ -74,8 +81,11 @@ typedef struct tagVtable_HoroEditor$HoroGeometryPreviewView Vtable_HoroEditor$Ho
 #include "../Sui/Core/Node_orc.h"
 #include "../Sui/Core/Color_orc.h"
 #include "../Sui/Core/MouseEvent_orc.h"
+#include "../Sui/Core/KeyEvent_orc.h"
 #include "./HoroEditor_orc.h"
+#include "./UiAct_orc.h"
 #include "../SuiDesigner/Theme_orc.h"
+#include "../SuiDesigner/Insp_orc.h"
 #include "../SuiDesigner/InvalidReact_orc.h"
 
 
@@ -106,8 +116,12 @@ struct tagHoroEditor$HoroGeometryPreviewView {
 	float  scale ;
 	SuiDesigner$InvalidReact*  _invalid ;
 	Sgl$Mesh*  groundGrid ;
+	SuiDesigner$Insp*  inspObj ;
+	Sgl$Mesh*  mesh ;
 	void  (*reactWindow) (HoroEditor$HoroGeometryPreviewView *  self);
-	void  (*showWindow) (HoroEditor$HoroGeometryPreviewView *  self);
+	Orc$String*  path ;
+	void  (*showWindow) (HoroEditor$HoroGeometryPreviewView *  self, const char *  path);
+	void  (*onWindowEvent) (HoroEditor$HoroGeometryPreviewView *  self, SuiCore$Event *  e);
 	void  (*mkBaseScene) (HoroEditor$HoroGeometryPreviewView *  self);
 };
 Vtable_HoroEditor$HoroGeometryPreviewView* Vtable_HoroEditor$HoroGeometryPreviewView_init(Vtable_HoroEditor$HoroGeometryPreviewView* pvt);
@@ -119,7 +133,8 @@ void HoroEditor$HoroGeometryPreviewView_fini(HoroEditor$HoroGeometryPreviewView 
 void  HoroEditor$HoroGeometryPreviewView$ctor(HoroEditor$HoroGeometryPreviewView *  self);
 void  HoroEditor$HoroGeometryPreviewView$dtor(HoroEditor$HoroGeometryPreviewView *  self);
 void  HoroEditor$HoroGeometryPreviewView$reactWindow(HoroEditor$HoroGeometryPreviewView *  self);
-void  HoroEditor$HoroGeometryPreviewView$showWindow(HoroEditor$HoroGeometryPreviewView *  self);
+void  HoroEditor$HoroGeometryPreviewView$showWindow(HoroEditor$HoroGeometryPreviewView *  self, const char *  path);
+void  HoroEditor$HoroGeometryPreviewView$onWindowEvent(HoroEditor$HoroGeometryPreviewView *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroGeometryPreviewView$draw_self(HoroEditor$HoroGeometryPreviewView *  self, SuiCore$Canvas *  canvas);
 void  HoroEditor$HoroGeometryPreviewView$onEvent(HoroEditor$HoroGeometryPreviewView *  self, SuiCore$Event *  e);
 void  HoroEditor$HoroGeometryPreviewView$mkBaseScene(HoroEditor$HoroGeometryPreviewView *  self);

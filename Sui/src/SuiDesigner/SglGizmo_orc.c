@@ -709,8 +709,8 @@ Sgl$Obj3d*  SuiDesigner$SglGizmo_image(Sgl$Obj3d **  __outRef__, Sgl$Obj3d *  o,
 			URGC_VAR_CLEANUP_CLASS Sgl$Tex2d*  tex = Sgl$mkTex2dByPathCstr((tex = NULL,&tex), imgPath) ;
 			o->material->setUniformTex2d(o->material, "tex", tex) ;
 			URGC_VAR_CLEANUP_CLASS Sgl$GeometryRect*  box = (box=NULL,urgc_init_var_class((void**)&box, Sgl$GeometryRect_new(&box) ));
-			box->build(box) ;
-			urgc_set_field(o, (void * )offsetof(Sgl$Billboard, geometry) , box) ;
+			((Sgl$Geometry * )box)->build(box) ;
+			urgc_set_field_class(o, (void * )offsetof(Sgl$Billboard, geometry) , box) ;
 		}
 		return urgc_set_var_for_return_class((void ** )__outRef__, o) ; 
 	}
@@ -742,8 +742,8 @@ Sgl$Mesh*  SuiDesigner$SglGizmo_box(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, lon
 			box->height = size;
 			box->depth = size;
 			box->color = color;
-			box->build(box) ;
-			urgc_set_field(o, (void * )offsetof(Sgl$Mesh, geometry) , box) ;
+			((Sgl$Geometry * )box)->build(box) ;
+			urgc_set_field_class(o, (void * )offsetof(Sgl$Mesh, geometry) , box) ;
 		}
 		o->material->setUniformColor4fByInt32Color(o->material, "color", color) ;
 		((Sgl$Obj3d * )o)->position = pos;
@@ -764,8 +764,8 @@ Sgl$Mesh*  SuiDesigner$SglGizmo_cone(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, lo
 			URGC_VAR_CLEANUP_CLASS Sgl$GeometryCone*  cone = (cone=NULL,urgc_init_var_class((void**)&cone, Sgl$GeometryCone_new(&cone) ));
 			((Sgl$GeometryCylinder * )cone)->height = size;
 			((Sgl$GeometryCylinder * )cone)->radiusBottom = size / 4.0;
-			((Sgl$GeometryCylinder * )cone)->build(cone) ;
-			urgc_set_field(o, (void * )offsetof(Sgl$Mesh, geometry) , cone) ;
+			((Sgl$Geometry * )cone)->build(cone) ;
+			urgc_set_field_class(o, (void * )offsetof(Sgl$Mesh, geometry) , cone) ;
 		}
 		o->material->setUniformColor4fByInt32Color(o->material, "color", color) ;
 		((Sgl$Obj3d * )o)->position = pos;
@@ -784,8 +784,8 @@ Sgl$Mesh*  SuiDesigner$SglGizmo_torus(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, l
 			urgc_set_field_class(o, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_2) ) ;
 			o->material->load(o->material, "../asset/basic.matl.json") ;
 			URGC_VAR_CLEANUP_CLASS Sgl$GeometryTorus*  cone = (cone=NULL,urgc_init_var_class((void**)&cone, Sgl$GeometryTorus_new(&cone) ));
-			cone->build(cone) ;
-			urgc_set_field(o, (void * )offsetof(Sgl$Mesh, geometry) , cone) ;
+			((Sgl$Geometry * )cone)->build(cone) ;
+			urgc_set_field_class(o, (void * )offsetof(Sgl$Mesh, geometry) , cone) ;
 		}
 		o->material->setUniformColor4fByInt32Color(o->material, "color", color) ;
 		((Sgl$Obj3d * )o)->position = pos;

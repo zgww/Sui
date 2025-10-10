@@ -1445,20 +1445,20 @@ void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self){
 
 
 void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const char *  path){
+	SuiDesigner$registerNodes() ;
+	Orc$Path_setcwd(path) ;
 	URGC_VAR_CLEANUP_CLASS Sui$Window*  win = (win=NULL,urgc_init_var_class((void**)&win, Sui$Window_new(&win) ));
 	if (1) {
 		URGC_VAR_CLEANUP_CLASS HoroEditor$HoroGeometryPreviewView*  tmpNewOwner_1 = NULL;
 		{
 			HoroEditor$HoroGeometryPreviewView*  o = HoroEditor$HoroGeometryPreviewView_new(&tmpNewOwner_1) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_745_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_752_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
-			o->showWindow(o) ;
+			o->showWindow(o, "./Geometry/box2.geometry.json") ;
 		}
 		win->close(win) ;
 		return ; 
 	}
-	SuiDesigner$registerNodes() ;
-	Orc$Path_setcwd(path) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  abspath = Orc$Path_toAbsolute((abspath = NULL,&abspath), path) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  cwd = Orc$Path_getcwd((cwd = NULL,&cwd)) ;
 	printf("打开项目。 项目路径为:%s. cwd:%s", abspath->str, cwd->str) ;

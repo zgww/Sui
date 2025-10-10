@@ -68,7 +68,6 @@ struct tagSgl$GeometryCapsule {
 	int  segments ;
 	float  thetaStart ;
 	float  thetaLength ;
-	void  (*build) (Sgl$GeometryCapsule *  self);
 };
 Vtable_Sgl$GeometryCapsule* Vtable_Sgl$GeometryCapsule_init(Vtable_Sgl$GeometryCapsule* pvt);
 void Sgl$GeometryCapsule_init_fields(Sgl$GeometryCapsule *self);

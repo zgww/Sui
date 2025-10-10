@@ -68,7 +68,6 @@ struct tagSgl$GeometryPlane {
 	int  widthSegments ;
 	int  heightSegments ;
 	int  planeType ;
-	void  (*build) (Sgl$GeometryPlane *  self);
 };
 Vtable_Sgl$GeometryPlane* Vtable_Sgl$GeometryPlane_init(Vtable_Sgl$GeometryPlane* pvt);
 void Sgl$GeometryPlane_init_fields(Sgl$GeometryPlane *self);

@@ -31,6 +31,11 @@ class GeometrySphere extends Geometry {
     float thetaStart = 0.0
     float thetaLength = PI
 
+    void setWidthSegments(int v){
+        self.widthSegments = v
+        self.build()
+    }
+
     void build(){
         Buffer@ pos = new Buffer()
         Buffer@ nmls = new Buffer()
@@ -103,6 +108,7 @@ class GeometrySphere extends Geometry {
             }
         }
 
+        self.version++
         self.setAttrByBuffer("position", pos, 3)
         self.setAttrByBuffer("normal", nmls, 3)
         self.setAttrByBuffer("uv", uvs, 2)

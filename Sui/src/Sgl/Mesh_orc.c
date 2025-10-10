@@ -160,7 +160,7 @@ void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p){
 	urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometryPath) , p) ;
 	if (Orc$String$equals(p, "Geometry/Box.geometry.json") ) {
 		URGC_VAR_CLEANUP_CLASS Sgl$GeometryBox*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryBox_new(&geom) ));
-		geom->build(geom) ;
+		((Sgl$Geometry * )geom)->build(geom) ;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_1 = NULL;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_1) ) ;
@@ -168,7 +168,7 @@ void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p){
 	}
 	else if (Orc$String$equals(p, "Geometry/Sphere.geometry.json") ) {
 		URGC_VAR_CLEANUP_CLASS Sgl$GeometrySphere*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometrySphere_new(&geom) ));
-		geom->build(geom) ;
+		((Sgl$Geometry * )geom)->build(geom) ;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_2 = NULL;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_2) ) ;
@@ -176,7 +176,7 @@ void  Sgl$Mesh$setGeometryPath(Sgl$Mesh *  self, Orc$String*  p){
 	}
 	else if (Orc$String$equals(p, "Geometry/Plane.geometry.json") ) {
 		URGC_VAR_CLEANUP_CLASS Sgl$GeometryPlane*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryPlane_new(&geom) ));
-		geom->build(geom) ;
+		((Sgl$Geometry * )geom)->build(geom) ;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_3 = NULL;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_3) ) ;

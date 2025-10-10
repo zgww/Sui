@@ -1,3 +1,16 @@
 {
-	"__class":	"Sgl$GeometryBox"
+	"__class":	"Sgl$GeometryBox",
+	"width":	100,
+	"depth":	100,
+	"height":	100,
+	"widthSegments":	1,
+	"color":	-65536,
+	"depthSegments":	1,
+	"heightSegments":	4,
+	"center":	{
+		"__struct":	"SuiCore$Vec3",
+		"x":	110,
+		"y":	110,
+		"z":	0
+	}
 }

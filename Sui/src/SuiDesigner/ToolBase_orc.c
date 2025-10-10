@@ -508,8 +508,8 @@ void  SuiDesigner$ToolSelect$reactGizmo(SuiDesigner$ToolSelect *  self, Sgl$Obj3
 				geom->radius = l->distance;
 				geom->widthSegments = 8;
 				geom->heightSegments = 8;
-				geom->build(geom) ;
-				urgc_set_field(o, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
+				((Sgl$Geometry * )geom)->build(geom) ;
+				urgc_set_field_class(o, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 				URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_8 = NULL;
 				urgc_set_field_class(o, (void * )offsetof(Sgl$Mesh, material) , Sgl$Material_new(&tmpNewOwner_8) ) ;
 				o->material->load(o->material, "../asset/box.matl.json") ;

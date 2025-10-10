@@ -39,7 +39,7 @@ void Sgl$GeometrySphere_initMeta(Vtable_Sgl$GeometrySphere *pvt){
 	orc_metaField_primitive(&pNext, "thetaStart", OrcMetaType_float, offsetof(Sgl$GeometrySphere, thetaStart), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "thetaLength", OrcMetaType_float, offsetof(Sgl$GeometrySphere, thetaLength), 0, 0, 0, 0);//float
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometrySphere, build));
+	orc_metaField_method(&pNext, "setWidthSegments", offsetof(Sgl$GeometrySphere, setWidthSegments));
 }
 
 
@@ -100,7 +100,8 @@ void Sgl$GeometrySphere_init_fields(Sgl$GeometrySphere *self){
 	((Sgl$GeometrySphere*)self)->thetaStart = 0.0;
 	((Sgl$GeometrySphere*)self)->thetaLength = Orc$PI;
     }
-	((Sgl$GeometrySphere*)self)->build = (void*)Sgl$GeometrySphere$build;
+	((Sgl$GeometrySphere*)self)->setWidthSegments = (void*)Sgl$GeometrySphere$setWidthSegments;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometrySphere$build;
 }
 
 // init function
@@ -137,6 +138,12 @@ Sgl$GeometrySphere * Sgl$GeometrySphere_new(void *pOwner){
 
 
 // class members
+void  Sgl$GeometrySphere$setWidthSegments(Sgl$GeometrySphere *  self, int  v){
+	self->widthSegments = v;
+	((Sgl$Geometry * )self)->build(self) ;
+}
+
+
 void  Sgl$GeometrySphere$build(Sgl$GeometrySphere *  self){
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  pos = (pos=NULL,urgc_init_var_class((void**)&pos, Sgl$Buffer_new(&pos) ));
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  nmls = (nmls=NULL,urgc_init_var_class((void**)&nmls, Sgl$Buffer_new(&nmls) ));
@@ -193,6 +200,7 @@ void  Sgl$GeometrySphere$build(Sgl$GeometrySphere *  self){
 			}
 		}
 	}
+	((Sgl$Geometry * )self)->version++;
 	((Sgl$Geometry * )self)->setAttrByBuffer(self, "position", pos, 3) ;
 	((Sgl$Geometry * )self)->setAttrByBuffer(self, "normal", nmls, 3) ;
 	((Sgl$Geometry * )self)->setAttrByBuffer(self, "uv", uvs, 2) ;

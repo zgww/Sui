@@ -54,7 +54,7 @@ void Sgl$GeometryHeightMap_initMeta(Vtable_Sgl$GeometryHeightMap *pvt){
 	orc_metaField_primitive(&pNext, "startZ", OrcMetaType_float, offsetof(Sgl$GeometryHeightMap, startZ), 0, 0, 0, 0);//float
 
 	orc_metaField_method(&pNext, "getHeight", offsetof(Sgl$GeometryHeightMap, getHeight));
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryHeightMap, build));
+	orc_metaField_method(&pNext, "buildByPath", offsetof(Sgl$GeometryHeightMap, buildByPath));
 	orc_metaField_method(&pNext, "calcNormals", offsetof(Sgl$GeometryHeightMap, calcNormals));
 }
 
@@ -117,7 +117,7 @@ void Sgl$GeometryHeightMap_init_fields(Sgl$GeometryHeightMap *self){
     }
 	((Object*)self)->dtor = (void*)Sgl$GeometryHeightMap$dtor;
 	((Sgl$GeometryHeightMap*)self)->getHeight = (void*)Sgl$GeometryHeightMap$getHeight;
-	((Sgl$GeometryHeightMap*)self)->build = (void*)Sgl$GeometryHeightMap$build;
+	((Sgl$GeometryHeightMap*)self)->buildByPath = (void*)Sgl$GeometryHeightMap$buildByPath;
 	((Sgl$GeometryHeightMap*)self)->calcNormals = (void*)Sgl$GeometryHeightMap$calcNormals;
 }
 
@@ -170,7 +170,7 @@ float  Sgl$GeometryHeightMap$getHeight(Sgl$GeometryHeightMap *  self, Sgl$ImgInf
 }
 
 
-void  Sgl$GeometryHeightMap$build(Sgl$GeometryHeightMap *  self, const char *  path){
+void  Sgl$GeometryHeightMap$buildByPath(Sgl$GeometryHeightMap *  self, const char *  path){
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  vtxs = (vtxs=NULL,urgc_init_var_class((void**)&vtxs, Sgl$Buffer_new(&vtxs) ));
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  face = (face=NULL,urgc_init_var_class((void**)&face, Sgl$Buffer_new(&face) ));
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  uvs = (uvs=NULL,urgc_init_var_class((void**)&uvs, Sgl$Buffer_new(&uvs) ));
@@ -271,7 +271,7 @@ Sgl$Buffer*  Sgl$GeometryHeightMap$calcNormals(Sgl$Buffer **  __outRef__, Sgl$Ge
 
 void  Sgl$testHeightMap(){
 	URGC_VAR_CLEANUP_CLASS Sgl$GeometryHeightMap*  g = (g=NULL,urgc_init_var_class((void**)&g, Sgl$GeometryHeightMap_new(&g) ));
-	g->build(g, "../asset/heightmap.png") ;
+	g->buildByPath(g, "../asset/heightmap.png") ;
 }
 
 

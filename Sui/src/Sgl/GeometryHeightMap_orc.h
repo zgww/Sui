@@ -84,7 +84,7 @@ struct tagSgl$GeometryHeightMap {
 	float  startX ;
 	float  startZ ;
 	float  (*getHeight) (Sgl$GeometryHeightMap *  self, Sgl$ImgInfo *  info, int  row, int  col);
-	void  (*build) (Sgl$GeometryHeightMap *  self, const char *  path);
+	void  (*buildByPath) (Sgl$GeometryHeightMap *  self, const char *  path);
 	Sgl$Buffer*  (*calcNormals) (Sgl$Buffer **  __outRef__, Sgl$GeometryHeightMap *  self, Sgl$Buffer *  vtxs, int  width, int  height);
 };
 Vtable_Sgl$GeometryHeightMap* Vtable_Sgl$GeometryHeightMap_init(Vtable_Sgl$GeometryHeightMap* pvt);
@@ -95,7 +95,7 @@ void Sgl$GeometryHeightMap_fini(Sgl$GeometryHeightMap *self);
 
 void  Sgl$GeometryHeightMap$dtor(Sgl$GeometryHeightMap *  self);
 float  Sgl$GeometryHeightMap$getHeight(Sgl$GeometryHeightMap *  self, Sgl$ImgInfo *  info, int  row, int  col);
-void  Sgl$GeometryHeightMap$build(Sgl$GeometryHeightMap *  self, const char *  path);
+void  Sgl$GeometryHeightMap$buildByPath(Sgl$GeometryHeightMap *  self, const char *  path);
 Sgl$Buffer*  Sgl$GeometryHeightMap$calcNormals(Sgl$Buffer **  __outRef__, Sgl$GeometryHeightMap *  self, Sgl$Buffer *  vtxs, int  width, int  height);
 
 void  Sgl$testHeightMap();
