@@ -76,7 +76,7 @@ struct tagSuiDesigner$InvalidReact {
 	void  (**react)(void *  self);
 	Object*  target ;
 	Orc$String*  reactName ;
-	SuiDesigner$InvalidReact *  (*setReactName) (SuiDesigner$InvalidReact *  self, const char *  name);
+	SuiDesigner$InvalidReact *  (*bind) (SuiDesigner$InvalidReact *  self, Object *  target, const char *  name);
 	void  (*invalid) (SuiDesigner$InvalidReact *  self);
 };
 Vtable_SuiDesigner$InvalidReact* Vtable_SuiDesigner$InvalidReact_init(Vtable_SuiDesigner$InvalidReact* pvt);
@@ -85,7 +85,7 @@ void SuiDesigner$InvalidReact_init(SuiDesigner$InvalidReact *self, void *pOwner)
 SuiDesigner$InvalidReact * SuiDesigner$InvalidReact_new(void *pOwner);
 void SuiDesigner$InvalidReact_fini(SuiDesigner$InvalidReact *self);
 
-SuiDesigner$InvalidReact *  SuiDesigner$InvalidReact$setReactName(SuiDesigner$InvalidReact *  self, const char *  name);
+SuiDesigner$InvalidReact *  SuiDesigner$InvalidReact$bind(SuiDesigner$InvalidReact *  self, Object *  target, const char *  name);
 void  SuiDesigner$InvalidReact$invalid(SuiDesigner$InvalidReact *  self);
 
 SuiDesigner$InvalidReact*  SuiDesigner$mkInvalidReact(SuiDesigner$InvalidReact **  __outRef__, Object*  target);

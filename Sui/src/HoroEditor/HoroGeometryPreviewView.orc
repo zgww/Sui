@@ -70,16 +70,12 @@ import * from "../SuiDesigner/InvalidReact.orc"
 class HoroGeometryPreviewView extends ImageView {
     Window@ win;
     Fbo@ fbo 
-    Material@ matl
     DrawCtx@ drawCtx = new DrawCtx()
     Scene@ scene = null
     PerspectiveCamera@ camera = null
     Drag@ drag = new Drag()
 
-    float rotateY = 0
-    float scale = 0.02
-
-    InvalidReact@ _invalid = new InvalidReact().setReactName("sdf")
+    InvalidReact@ _invalid = new InvalidReact().bind(self, "reactWindow")
     
     Mesh@ groundGrid = new Mesh()
     Insp@ inspObj = new Insp()
@@ -96,7 +92,9 @@ class HoroGeometryPreviewView extends ImageView {
 
         self.inspObj.cbSetAttr = ^void (Object* obj, OrcMetaField*mf, Object* inspValue){
             Orc_setField(obj, mf, inspValue)
+            self.mesh.geometry.version++
             self.mesh.geometry.build()
+            self._invalid.invalid()
         }
 
 
@@ -132,6 +130,7 @@ class HoroGeometryPreviewView extends ImageView {
         printf(".....HoroGeometryPreviewView\n\n");
     }
     void reactWindow(){
+        printf("reactWindow========================================\n");
         LayoutLinear *ll = (LayoutLinear*)self.win.rootView
         ll.{
             o.backgroundColor = themeIns().bg1 //0xffffffff
@@ -140,7 +139,7 @@ class HoroGeometryPreviewView extends ImageView {
 
             o.placeKid(self)
             self.{
-                layoutLinearCell(o, 0).{o.grow = 5}
+                layoutLinearCell(o, 0).{o.grow = 2}
             }
 
             mkSplitterView(o, 0).{}

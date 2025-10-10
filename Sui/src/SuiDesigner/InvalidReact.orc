@@ -31,7 +31,8 @@ class InvalidReact{
 
     String@ reactName = str("react")
 
-    InvalidReact* setReactName(const char *name){
+    InvalidReact* bind(Object*target, const char *name){
+        self.target = target
         self.reactName.set(name)
         return self
     }

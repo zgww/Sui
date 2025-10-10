@@ -108,13 +108,10 @@ struct tagHoroEditor$HoroGeometryPreviewView {
 	SuiView$ImageView super; 
 	Sui$Window*  win ;
 	Sgl$Fbo*  fbo ;
-	Sgl$Material*  matl ;
 	Sgl$DrawCtx*  drawCtx ;
 	Sgl$Scene*  scene ;
 	Sgl$PerspectiveCamera*  camera ;
 	SuiView$Drag*  drag ;
-	float  rotateY ;
-	float  scale ;
 	SuiDesigner$InvalidReact*  _invalid ;
 	Sgl$Mesh*  groundGrid ;
 	SuiDesigner$Insp*  inspObj ;
