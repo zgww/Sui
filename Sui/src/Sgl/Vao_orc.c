@@ -209,6 +209,9 @@ bool  Sgl$Vao$build(Sgl$Vao *  self, Sgl$Geometry *  geometry, Sgl$Material *  m
 
 
 void  Sgl$Vao$draw(Sgl$Vao *  self, Sgl$Geometry *  geometry, Sgl$Material *  matl){
+	if (geometry->ibo == NULL) {
+		return ; 
+	}
 	self->build(self, geometry, matl) ;
 	self->material->program->use(self->material->program) ;
 	self->bind(self) ;

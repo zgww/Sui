@@ -52,6 +52,7 @@ struct tagSgl$ImgInfo {
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
+#include "../Json/Json_orc.h"
 #include "../Orc/String_orc.h"
 #include "./Geometry_orc.h"
 
@@ -82,7 +83,11 @@ struct tagSgl$GeometryHeightMap {
 	float  texInc ;
 	float  heightScale ;
 	float  startX ;
+	float  startY ;
 	float  startZ ;
+	Orc$String*  path ;
+	void  (*toJson) (Sgl$GeometryHeightMap *  self, Json$Json *  jo);
+	void  (*fromJson) (Sgl$GeometryHeightMap *  self, Json$Json *  jo);
 	float  (*getHeight) (Sgl$GeometryHeightMap *  self, Sgl$ImgInfo *  info, int  row, int  col);
 	void  (*buildByPath) (Sgl$GeometryHeightMap *  self, const char *  path);
 	Sgl$Buffer*  (*calcNormals) (Sgl$Buffer **  __outRef__, Sgl$GeometryHeightMap *  self, Sgl$Buffer *  vtxs, int  width, int  height);
@@ -94,7 +99,10 @@ Sgl$GeometryHeightMap * Sgl$GeometryHeightMap_new(void *pOwner);
 void Sgl$GeometryHeightMap_fini(Sgl$GeometryHeightMap *self);
 
 void  Sgl$GeometryHeightMap$dtor(Sgl$GeometryHeightMap *  self);
+void  Sgl$GeometryHeightMap$toJson(Sgl$GeometryHeightMap *  self, Json$Json *  jo);
+void  Sgl$GeometryHeightMap$fromJson(Sgl$GeometryHeightMap *  self, Json$Json *  jo);
 float  Sgl$GeometryHeightMap$getHeight(Sgl$GeometryHeightMap *  self, Sgl$ImgInfo *  info, int  row, int  col);
+void  Sgl$GeometryHeightMap$build(Sgl$GeometryHeightMap *  self);
 void  Sgl$GeometryHeightMap$buildByPath(Sgl$GeometryHeightMap *  self, const char *  path);
 Sgl$Buffer*  Sgl$GeometryHeightMap$calcNormals(Sgl$Buffer **  __outRef__, Sgl$GeometryHeightMap *  self, Sgl$Buffer *  vtxs, int  width, int  height);
 

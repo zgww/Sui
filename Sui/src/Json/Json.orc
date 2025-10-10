@@ -681,6 +681,9 @@ void Json_setStructByJsonObject(void *pStruct, MetaStruct *metaStruct, Json@ val
 
 Json@ Json_parseByPathCstr(const char *path){
     String@ text = Path_readText(path)
+    if text.empty(){
+        return null
+    }
     Json@ ret = Json_parse(text.str)
     return ret
 }

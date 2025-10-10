@@ -39,6 +39,7 @@ import type * from "../Sgl/Material.orc"
 import type * from "../Sgl/DrawCtx.orc"
 import type * from "../Sgl/SglSceneView.orc"
 import type * from "../HoroEditor/HoroEditor.orc"
+import type * from "../HoroEditor/HoroGeometryPreviewView.orc"
 import type * from "../HoroEditor/HoroEditCtx.orc"
 
 
@@ -345,6 +346,11 @@ void UiAction_openFile(FileItem@ fi){
         new EventANodeChanged().{
             o.anode = EditCtx_ins().root
             o.emitToEbus()
+        }
+    }
+    if fi.path.endsWith("geometry.json"){
+        new HoroGeometryPreviewView()~{
+            o.showWindow(fi.path.str)
         }
     }
 }

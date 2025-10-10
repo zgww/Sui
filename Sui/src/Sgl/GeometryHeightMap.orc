@@ -12,6 +12,7 @@ import * from "./Program.orc"
 import * from "../Orc/List.orc"
 import * from "../Orc/Map.orc"
 import * from "../Sui/Core/Vec3.orc"
+import * from "../Json/Json.orc"
 import * from "../Orc/String.orc"
 
 import * from "./Geometry.orc"
@@ -31,11 +32,36 @@ class GeometryHeightMap extends Geometry {
     float texInc = 1
     float heightScale = 2.0
     float startX = -600
+    float startY = 0
     float startZ = -600
 
     void dtor(){
         printf(".GeometryHeightMap\n")
     }
+
+    String@ path 
+
+    void toJson(Json* jo){
+        jo.putNumber("incx", self.incx)
+        jo.putNumber("incz", self.incz)
+        jo.putNumber("texInc", self.texInc)
+        jo.putNumber("heightScale", self.heightScale)
+        jo.putNumber("startX", self.startX)
+        jo.putNumber("startY", self.startY)
+        jo.putNumber("startZ", self.startZ)
+        jo.putString("path", self.path)
+    }
+    void fromJson(Json* jo){
+        jo.getToFloat("incx", &self.incx)
+        jo.getToFloat("incz", &self.incz)
+        jo.getToFloat("texInc", &self.texInc)
+        jo.getToFloat("heightScale", &self.heightScale)
+        jo.getToFloat("startX", &self.startX)
+        jo.getToFloat("startY", &self.startY)
+        jo.getToFloat("startZ", &self.startZ)
+        self.path = jo.getString("path")
+    }
+
 
     
     float getHeight(ImgInfo* info, int row, int col){
@@ -48,7 +74,12 @@ class GeometryHeightMap extends Geometry {
 
         // printf("height:%d,%d,%d,%d\n", r, g, b, a)
         // }
-        return r * self.heightScale;
+        return r * self.heightScale + self.startY;
+    }
+    void build(){
+        if self.path {
+            self.buildByPath(self.path.str)
+        }
     }
     void buildByPath(const char *path){
         Buffer@ vtxs = new Buffer()
@@ -58,8 +89,12 @@ class GeometryHeightMap extends Geometry {
 
         stbi_set_flip_vertically_on_load(true);
         ImgInfo info;
-        info.data = stbi_load("../asset/heightmap.png", 
+        info.data = stbi_load(
+            path,
+            // "../asset/heightmap.png", 
             &info.width, &info.height, &info.channel, 0);
+
+        stbi_set_flip_vertically_on_load(false);
 
         printf("png:%d,%d,%d\n", info.width, info.height, info.channel)
 

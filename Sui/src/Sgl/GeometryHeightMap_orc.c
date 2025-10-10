@@ -11,6 +11,7 @@
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
+#include "../Json/Json_orc.h"
 #include "../Orc/String_orc.h"
 #include "./Geometry_orc.h"
 
@@ -51,8 +52,12 @@ void Sgl$GeometryHeightMap_initMeta(Vtable_Sgl$GeometryHeightMap *pvt){
 	orc_metaField_primitive(&pNext, "texInc", OrcMetaType_float, offsetof(Sgl$GeometryHeightMap, texInc), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "heightScale", OrcMetaType_float, offsetof(Sgl$GeometryHeightMap, heightScale), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "startX", OrcMetaType_float, offsetof(Sgl$GeometryHeightMap, startX), 0, 0, 0, 0);//float
+	orc_metaField_primitive(&pNext, "startY", OrcMetaType_float, offsetof(Sgl$GeometryHeightMap, startY), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "startZ", OrcMetaType_float, offsetof(Sgl$GeometryHeightMap, startZ), 0, 0, 0, 0);//float
+	orc_metaField_class(&pNext, "path", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(Sgl$GeometryHeightMap, path), true, false, 1);
 
+	orc_metaField_method(&pNext, "toJson", offsetof(Sgl$GeometryHeightMap, toJson));
+	orc_metaField_method(&pNext, "fromJson", offsetof(Sgl$GeometryHeightMap, fromJson));
 	orc_metaField_method(&pNext, "getHeight", offsetof(Sgl$GeometryHeightMap, getHeight));
 	orc_metaField_method(&pNext, "buildByPath", offsetof(Sgl$GeometryHeightMap, buildByPath));
 	orc_metaField_method(&pNext, "calcNormals", offsetof(Sgl$GeometryHeightMap, calcNormals));
@@ -94,7 +99,7 @@ void Sgl$GeometryHeightMap_fini(Sgl$GeometryHeightMap *self){
     Sgl$Geometry_fini((Sgl$Geometry *)self);
 
     //字段释放
-	
+	urgc_fini_field_class(self, (void**)&((Sgl$GeometryHeightMap*)self)->path);
 
 }
 
@@ -113,10 +118,15 @@ void Sgl$GeometryHeightMap_init_fields(Sgl$GeometryHeightMap *self){
 	((Sgl$GeometryHeightMap*)self)->texInc = 1;
 	((Sgl$GeometryHeightMap*)self)->heightScale = 2.0;
 	((Sgl$GeometryHeightMap*)self)->startX = -600;
+	((Sgl$GeometryHeightMap*)self)->startY = 0;
 	((Sgl$GeometryHeightMap*)self)->startZ = -600;
+	urgc_set_field_class(self, (void**)&((Sgl$GeometryHeightMap*)self)->path, NULL);
     }
 	((Object*)self)->dtor = (void*)Sgl$GeometryHeightMap$dtor;
+	((Sgl$GeometryHeightMap*)self)->toJson = (void*)Sgl$GeometryHeightMap$toJson;
+	((Sgl$GeometryHeightMap*)self)->fromJson = (void*)Sgl$GeometryHeightMap$fromJson;
 	((Sgl$GeometryHeightMap*)self)->getHeight = (void*)Sgl$GeometryHeightMap$getHeight;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryHeightMap$build;
 	((Sgl$GeometryHeightMap*)self)->buildByPath = (void*)Sgl$GeometryHeightMap$buildByPath;
 	((Sgl$GeometryHeightMap*)self)->calcNormals = (void*)Sgl$GeometryHeightMap$calcNormals;
 }
@@ -160,13 +170,45 @@ void  Sgl$GeometryHeightMap$dtor(Sgl$GeometryHeightMap *  self){
 }
 
 
+void  Sgl$GeometryHeightMap$toJson(Sgl$GeometryHeightMap *  self, Json$Json *  jo){
+	jo->putNumber(jo, "incx", self->incx) ;
+	jo->putNumber(jo, "incz", self->incz) ;
+	jo->putNumber(jo, "texInc", self->texInc) ;
+	jo->putNumber(jo, "heightScale", self->heightScale) ;
+	jo->putNumber(jo, "startX", self->startX) ;
+	jo->putNumber(jo, "startY", self->startY) ;
+	jo->putNumber(jo, "startZ", self->startZ) ;
+	jo->putString(jo, "path", self->path) ;
+}
+
+
+void  Sgl$GeometryHeightMap$fromJson(Sgl$GeometryHeightMap *  self, Json$Json *  jo){
+	jo->getToFloat(jo, "incx", &self->incx) ;
+	jo->getToFloat(jo, "incz", &self->incz) ;
+	jo->getToFloat(jo, "texInc", &self->texInc) ;
+	jo->getToFloat(jo, "heightScale", &self->heightScale) ;
+	jo->getToFloat(jo, "startX", &self->startX) ;
+	jo->getToFloat(jo, "startY", &self->startY) ;
+	jo->getToFloat(jo, "startZ", &self->startZ) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+	urgc_set_field_class(self, (void * )offsetof(Sgl$GeometryHeightMap, path) , jo->getString(&tmpReturn_1, jo, "path") ) ;
+}
+
+
 float  Sgl$GeometryHeightMap$getHeight(Sgl$GeometryHeightMap *  self, Sgl$ImgInfo *  info, int  row, int  col){
 	int  idx = row * info->width * info->channel + col * info->channel;
 	unsigned char  r = info->data[idx + 0];
 	unsigned char  g = info->data[idx + 1];
 	unsigned char  b = info->data[idx + 2];
 	unsigned char  a = info->data[idx + 3];
-	return r * self->heightScale; 
+	return r * self->heightScale + self->startY; 
+}
+
+
+void  Sgl$GeometryHeightMap$build(Sgl$GeometryHeightMap *  self){
+	if (self->path) {
+		self->buildByPath(self, self->path->str) ;
+	}
 }
 
 
@@ -176,7 +218,8 @@ void  Sgl$GeometryHeightMap$buildByPath(Sgl$GeometryHeightMap *  self, const cha
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  uvs = (uvs=NULL,urgc_init_var_class((void**)&uvs, Sgl$Buffer_new(&uvs) ));
 	stbi_set_flip_vertically_on_load(true) ;
 	Sgl$ImgInfo info;
-	info.data = stbi_load("../asset/heightmap.png", &info.width, &info.height, &info.channel, 0) ;
+	info.data = stbi_load(path, &info.width, &info.height, &info.channel, 0) ;
+	stbi_set_flip_vertically_on_load(false) ;
 	printf("png:%d,%d,%d\n", info.width, info.height, info.channel) ;
 	for (int  row = 0; row < info.height; row++) {
 		for (int  col = 0; col < info.width; col++) {

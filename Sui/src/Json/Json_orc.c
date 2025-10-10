@@ -1038,6 +1038,9 @@ void  Json$Json_setStructByJsonObject(void *  pStruct, MetaStruct *  metaStruct,
 
 Json$Json*  Json$Json_parseByPathCstr(Json$Json **  __outRef__, const char *  path){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  text = Orc$Path_readText((text = NULL,&text), path) ;
+	if (Orc$String$empty(text) ) {
+		return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
+	}
 	URGC_VAR_CLEANUP_CLASS Json$Json*  ret = Json$Json_parse((ret = NULL,&ret), text->str) ;
 	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
 }

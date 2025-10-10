@@ -86,6 +86,9 @@ class Vao {
         Geometry* geometry,
         Material *matl
     ){
+        if geometry.ibo == null{
+            return
+        }
         self.build(geometry, matl)
 
         self.material.program.use()

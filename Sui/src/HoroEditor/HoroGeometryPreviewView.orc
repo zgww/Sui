@@ -394,6 +394,10 @@ PointerArray@ HoroGeometry_getGeometryVtables(){
 Geometry@ HoroGeometry_parseGeometryJson(const char *path){
     Json@ jo = Json_parseByPathCstr(path)
     printf("loadjson %s :%s\n", path, jo.dump().str)
+    if !jo || jo.isNull() {
+        Toast_make(str("打开文件{}失败").replaceAll("{}", path).str)
+        return null;
+    }
 
 
     PointerArray@ vts = HoroGeometry_getGeometryVtables()

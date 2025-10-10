@@ -42,6 +42,7 @@
 #include "../Json/Json_orc.h"
 #include "./HoroEditCtx_orc.h"
 #include "./HoroEditor_orc.h"
+#include "./HoroGeometryPreviewView_orc.h"
 #include "../SuiDesigner/ANode_orc.h"
 #include "../SuiDesigner/EventANodeChanged_orc.h"
 #include "../SuiDesigner/FileItem_orc.h"

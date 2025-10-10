@@ -753,9 +753,15 @@ Sgl$Geometry*  HoroEditor$HoroGeometry_parseGeometryJson(Sgl$Geometry **  __outR
 	URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_parseByPathCstr((jo = NULL,&jo), path) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 	printf("loadjson %s :%s\n", path, jo->dump(&tmpReturn_1, jo) ->str) ;
+	if (!jo || jo->isNull(jo) ) {
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
+		SuiDialog$Toast_make(Orc$String$replaceAll(&tmpReturn_2, Orc$str(&tmpReturn_3, "打开文件{}失败") , "{}", path) ->str) ;
+		return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
+	}
 	URGC_VAR_CLEANUP_CLASS Orc$PointerArray*  vts = HoroEditor$HoroGeometry_getGeometryVtables((vts = NULL,&vts)) ;
-	URGC_VAR_CLEANUP_CLASS Object*  tmpReturn_2 = NULL;
-	Object *  obj = jo->toObjectByVtables(&tmpReturn_2, jo, vts) ;
+	URGC_VAR_CLEANUP_CLASS Object*  tmpReturn_4 = NULL;
+	Object *  obj = jo->toObjectByVtables(&tmpReturn_4, jo, vts) ;
 	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Sgl$Geometry_init(NULL))) {
 		URGC_VAR_CLEANUP_CLASS Sgl$Geometry*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, (Sgl$Geometry* )obj));
 		geom->build(geom) ;

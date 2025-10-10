@@ -14,6 +14,7 @@ import * from "../Json/Json.orc"
 
 import * from "./HoroEditCtx.orc"
 import * from "./HoroEditor.orc"
+import * from "./HoroGeometryPreviewView.orc"
 
 import * from "../SuiDesigner/ANode.orc"
 import * from "../SuiDesigner/EventANodeChanged.orc"
@@ -122,18 +123,25 @@ void UiAct_createGeometry(FileItem@ parent, String@ cmd){
     MessageDialog_prompt(str("{}.geometry.json").replaceAll("{}", basename.str).str, "新建几何体实例", ^void (String@ newName){
         String@ path = parent.path.clone().add("/").addString(newName)
         Geometry@ geom = null
-        if cmd.equals("CreateGeometry/Box"){
-            geom = new GeometryBox()
+        PointerArray@ vts = HoroGeometry_getGeometryVtables()
+        for int i = 0; i < vts.size(); i++{
+            Vtable_Object* vt = (Vtable_Object*)vts.get(i)
+            if basename.equals(vt.className) {
+                vt.make(&geom)
+            }
         }
-        else if cmd.equals("CreateGeometry/Sphere"){
-            geom = new GeometrySphere()
-        }
-        else if cmd.equals("CreateGeometry/Plane"){
-            geom = new GeometryPlane()
-        }
-        else if cmd.equals("CreateGeometry/Capsule"){
-            geom = new GeometryCapsule()
-        }
+        // if cmd.equals("CreateGeometry/Box"){
+        //     geom = new GeometryBox()
+        // }
+        // else if cmd.equals("CreateGeometry/Sphere"){
+        //     geom = new GeometrySphere()
+        // }
+        // else if cmd.equals("CreateGeometry/Plane"){
+        //     geom = new GeometryPlane()
+        // }
+        // else if cmd.equals("CreateGeometry/Capsule"){
+        //     geom = new GeometryCapsule()
+        // }
 
         Json@ jo = Json_toJson(geom)
         printf(" %s instance at%s:%s", cmd.str, path.str, jo.dump().str)

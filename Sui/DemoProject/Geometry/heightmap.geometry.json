@@ -1,0 +1,10 @@
+{
+	"startX":	-600,
+	"incx":	10,
+	"__class":	"Sgl$GeometryHeightMap",
+	"startZ":	-600,
+	"incz":	10,
+	"path":	"heightmap.png",
+	"texInc":	1,
+	"heightScale":	2
+}
