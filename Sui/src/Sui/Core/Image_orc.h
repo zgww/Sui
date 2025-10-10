@@ -77,6 +77,8 @@ float  SuiCore$Image$width(SuiCore$Image *  self);
 float  SuiCore$Image$height(SuiCore$Image *  self);
 
 void  SuiCore$Image_writeFloatsAsGrey_toPng(const char *  topath, int  w, int  h, float *  vs);
+void  SuiCore$Image_writeRgbas_toPng(const char *  topath, int  w, int  h, unsigned char *  rgbas);
+void  SuiCore$Image_writeFloatsAsRgba_toPng(const char *  topath, int  w, int  h, float *  vs);
 void  SuiCore$Image_convertFloatsToGreyBuffer(Sgl$Buffer *  b, int  w, int  h, float *  vs);
 void  SuiCore$Image_convertFloatsToRgbaBuffer(Sgl$Buffer *  b, int  w, int  h, float *  vs);
 Orc$Map*  SuiCore$getImageMap(Orc$Map **  __outRef__);

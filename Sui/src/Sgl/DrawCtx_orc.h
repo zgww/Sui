@@ -86,6 +86,8 @@ struct tagSgl$DrawCtx {
 	Orc$PointerArray*  transparentObj3ds ;
 	void  (**cbAfterDraw)(void *  self);
 	bool  (*addTransparentObj3dIfIsTransparent) (Sgl$DrawCtx *  self, Sgl$Obj3d *  obj3d, Sgl$Material *  matl);
+	void  (*drawLineGeometry) (Sgl$DrawCtx *  self);
+	void  (*drawAxis) (Sgl$DrawCtx *  self);
 	void  (*collectLights) (Sgl$DrawCtx *  self);
 	void  (*_collectLight) (Sgl$DrawCtx *  self, SuiCore$Node *  n);
 	void  (*tick) (Sgl$DrawCtx *  self, Sgl$Scene *  scene);
@@ -107,6 +109,8 @@ void Sgl$DrawCtx_fini(Sgl$DrawCtx *self);
 
 void  Sgl$DrawCtx$ctor(Sgl$DrawCtx *  self);
 bool  Sgl$DrawCtx$addTransparentObj3dIfIsTransparent(Sgl$DrawCtx *  self, Sgl$Obj3d *  obj3d, Sgl$Material *  matl);
+void  Sgl$DrawCtx$drawLineGeometry(Sgl$DrawCtx *  self);
+void  Sgl$DrawCtx$drawAxis(Sgl$DrawCtx *  self);
 void  Sgl$DrawCtx$collectLights(Sgl$DrawCtx *  self);
 void  Sgl$DrawCtx$_collectLight(Sgl$DrawCtx *  self, SuiCore$Node *  n);
 void  Sgl$DrawCtx$tick(Sgl$DrawCtx *  self, Sgl$Scene *  scene);

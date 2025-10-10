@@ -160,6 +160,16 @@ void  SuiCore$Image_writeFloatsAsGrey_toPng(const char *  topath, int  w, int  h
 	stbi_write_png(topath, w, h, 1, b->data, 0) ;
 }
 
+void  SuiCore$Image_writeRgbas_toPng(const char *  topath, int  w, int  h, unsigned char *  rgbas){
+	stbi_write_png(topath, w, h, 4, rgbas, 0) ;
+}
+
+void  SuiCore$Image_writeFloatsAsRgba_toPng(const char *  topath, int  w, int  h, float *  vs){
+	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  b = (b=NULL,urgc_init_var_class((void**)&b, Sgl$Buffer_new(&b) ));
+	SuiCore$Image_convertFloatsToRgbaBuffer(b, w, h, vs) ;
+	stbi_write_png(topath, w, h, 4, b->data, 0) ;
+}
+
 void  SuiCore$Image_convertFloatsToGreyBuffer(Sgl$Buffer *  b, int  w, int  h, float *  vs){
 	int  cnt = w * h;
 	Sgl$Buffer$initSize(b, cnt) ;

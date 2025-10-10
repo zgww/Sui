@@ -9,7 +9,7 @@
 	"scissorTest":	false,
 	"blend":	true,
 	"cullFace":	false,
-	"wireframe": true,
+	"wireframe": false,
 	"uniforms":	[
 		{
 			"__class":	"Sgl$UniformInfo",

@@ -53,6 +53,23 @@ void Image_writeFloatsAsGrey_toPng(const char *topath, int w, int h, float *vs){
 	// }
 	stbi_write_png(topath, w, h, 1, b.data, 0)
 }
+void Image_writeRgbas_toPng(const char *topath, int w, int h, unsigned char *rgbas){
+	stbi_write_png(topath, w, h, 4, rgbas, 0)
+}
+//将floats转为0-255写到png中
+void Image_writeFloatsAsRgba_toPng(const char *topath, int w, int h, float *vs){
+	Buffer@ b = new Buffer()
+	Image_convertFloatsToRgbaBuffer(
+		b, w, h, vs
+	)
+	// int cnt = w * h
+	// b.initSize(cnt)
+	// for int i = 0; i < cnt; i++{
+	// 	unsigned char c = vs[i] * 255
+	// 	b.data[i] = c
+	// }
+	stbi_write_png(topath, w, h, 4, b.data, 0)
+}
 //将floats转为0-255的数据，放到buffer中
 void Image_convertFloatsToGreyBuffer(Buffer*b,  int w, int h, float *vs){
 	int cnt = w * h

@@ -59,6 +59,31 @@ class DrawCtx {
         return false
     }
 
+    void drawLineGeometry(){
+        self.lineGeometry.draw(self.lineMatl)
+    }
+    void drawAxis(){
+        {
+            //绘制坐标轴
+            self.lineGeometry.{
+                // x轴
+                o.color = 0xffff0000
+                o.moveTo(-100000, 0, 0)
+                o.lineTo( 100000, 0, 0)
+
+                // y轴
+                o.color = 0xff00ff00
+                o.moveTo(0, -100000, 0)
+                o.lineTo(0,  100000, 0)
+
+                // z轴
+                o.color = 0xff00a0ff
+                o.moveTo(0, 0, -100000)
+                o.lineTo(0, 0,  100000)
+            }
+        }
+    }
+
     // void collectCameras(){
     //     if !self.scene {
     //         return;
@@ -201,26 +226,6 @@ class DrawCtx {
         self.camera.updateViewMat()
 
         self.lineGeometry.clear()
-        {
-            //绘制坐标轴
-            self.lineGeometry.{
-                // x轴
-                o.color = 0xffff0000
-                o.moveTo(-100000, 0, 0)
-                o.lineTo( 100000, 0, 0)
-
-                // y轴
-                o.color = 0xff00ff00
-                o.moveTo(0, -100000, 0)
-                o.lineTo(0,  100000, 0)
-
-                // z轴
-                o.color = 0xff00a0ff
-                o.moveTo(0, 0, -100000)
-                o.lineTo(0, 0,  100000)
-            }
-        }
-
 
         //绘制
         scene.draw(self)
@@ -240,7 +245,6 @@ class DrawCtx {
         // self.lineGeometry.appendVertexAndColor(mkVec3(800,-400,0.5), 0xff00ffff)
 
 
-        self.lineGeometry.draw(self.lineMatl)
     }
     void drawTransparentObj3ds(){
         int size = self.transparentObj3ds.size();

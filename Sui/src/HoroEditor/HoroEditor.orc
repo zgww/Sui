@@ -96,6 +96,7 @@ import * from "./HoroInspView.orc"
 import * from "./UiAct.orc"
 import * from "./Horo2dSceneView.orc"
 import * from "./HoroGeometryPreviewView.orc"
+import * from "./HoroMaterialIcon.orc"
 
 
 static DockLayout@ dockLayoutIns = null
@@ -748,14 +749,19 @@ class HoroEditor extends Listener{
 
 
         Window@ win = new Window();
-        if 1 {
-            new HoroGeometryPreviewView()~{
-                o.showWindow("./Geometry/heightmap.geometry.json")
-            }
-                // o.showWindow("./Geometry/sp.geometry.json")
-            win.close()
+
+        if 1 {//材质球生成
+            testHoroMaterialIconCreator()
             return;
         }
+        // if 1 {
+        //     new HoroGeometryPreviewView()~{
+        //         o.showWindow("./Geometry/heightmap.geometry.json")
+        //     }
+        //         // o.showWindow("./Geometry/sp.geometry.json")
+        //     win.close()
+        //     return;
+        // }
 
 
         String@ abspath = Path_toAbsolute(path)

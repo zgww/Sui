@@ -54,6 +54,8 @@ void Sgl$DrawCtx_initMeta(Vtable_Sgl$DrawCtx *pvt){
 	orc_metaField_class(&pNext, "transparentObj3ds", ((Vtable_Object*)Vtable_Orc$PointerArray_init(0)), offsetof(Sgl$DrawCtx, transparentObj3ds), true, false, 1);
 
 	orc_metaField_method(&pNext, "addTransparentObj3dIfIsTransparent", offsetof(Sgl$DrawCtx, addTransparentObj3dIfIsTransparent));
+	orc_metaField_method(&pNext, "drawLineGeometry", offsetof(Sgl$DrawCtx, drawLineGeometry));
+	orc_metaField_method(&pNext, "drawAxis", offsetof(Sgl$DrawCtx, drawAxis));
 	orc_metaField_method(&pNext, "collectLights", offsetof(Sgl$DrawCtx, collectLights));
 	orc_metaField_method(&pNext, "_collectLight", offsetof(Sgl$DrawCtx, _collectLight));
 	orc_metaField_method(&pNext, "tick", offsetof(Sgl$DrawCtx, tick));
@@ -141,6 +143,8 @@ void Sgl$DrawCtx_init_fields(Sgl$DrawCtx *self){
     }
 	((Object*)self)->ctor = (void*)Sgl$DrawCtx$ctor;
 	((Sgl$DrawCtx*)self)->addTransparentObj3dIfIsTransparent = (void*)Sgl$DrawCtx$addTransparentObj3dIfIsTransparent;
+	((Sgl$DrawCtx*)self)->drawLineGeometry = (void*)Sgl$DrawCtx$drawLineGeometry;
+	((Sgl$DrawCtx*)self)->drawAxis = (void*)Sgl$DrawCtx$drawAxis;
 	((Sgl$DrawCtx*)self)->collectLights = (void*)Sgl$DrawCtx$collectLights;
 	((Sgl$DrawCtx*)self)->_collectLight = (void*)Sgl$DrawCtx$_collectLight;
 	((Sgl$DrawCtx*)self)->tick = (void*)Sgl$DrawCtx$tick;
@@ -201,6 +205,31 @@ bool  Sgl$DrawCtx$addTransparentObj3dIfIsTransparent(Sgl$DrawCtx *  self, Sgl$Ob
 		return true; 
 	}
 	return false; 
+}
+
+
+void  Sgl$DrawCtx$drawLineGeometry(Sgl$DrawCtx *  self){
+	self->lineGeometry->draw(self->lineGeometry, self->lineMatl) ;
+}
+
+
+void  Sgl$DrawCtx$drawAxis(Sgl$DrawCtx *  self){
+	{
+		{
+			Sgl$GeometryLine*  o = self->lineGeometry;
+			
+		
+			o->color = 0xffff0000;
+			o->moveTo(o, -100000, 0, 0) ;
+			o->lineTo(o, 100000, 0, 0) ;
+			o->color = 0xff00ff00;
+			o->moveTo(o, 0, -100000, 0) ;
+			o->lineTo(o, 0, 100000, 0) ;
+			o->color = 0xff00a0ff;
+			o->moveTo(o, 0, 0, -100000) ;
+			o->lineTo(o, 0, 0, 100000) ;
+		}
+	}
 }
 
 
@@ -302,29 +331,12 @@ void  Sgl$DrawCtx$draw(Sgl$DrawCtx *  self, Sgl$Scene *  scene, Sgl$Camera *  ca
 	self->camera->updateProjectionMat(self->camera) ;
 	self->camera->updateViewMat(self->camera) ;
 	self->lineGeometry->clear(self->lineGeometry) ;
-	{
-		{
-			Sgl$GeometryLine*  o = self->lineGeometry;
-			
-		
-			o->color = 0xffff0000;
-			o->moveTo(o, -100000, 0, 0) ;
-			o->lineTo(o, 100000, 0, 0) ;
-			o->color = 0xff00ff00;
-			o->moveTo(o, 0, -100000, 0) ;
-			o->lineTo(o, 0, 100000, 0) ;
-			o->color = 0xff00a0ff;
-			o->moveTo(o, 0, 0, -100000) ;
-			o->lineTo(o, 0, 0, 100000) ;
-		}
-	}
 	((Sgl$Obj3d * )scene)->draw(scene, self) ;
 	self->drawTransparentObj3ds(self) ;
 	if (self->cbAfterDraw) {
 		(*(self->cbAfterDraw))((void * )(self->cbAfterDraw)) ;
 	}
 	self->setMvpToMaterial(self, NULL, self->lineMatl) ;
-	self->lineGeometry->draw(self->lineGeometry, self->lineMatl) ;
 }
 
 
