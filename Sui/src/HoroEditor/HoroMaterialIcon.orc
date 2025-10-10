@@ -52,6 +52,7 @@ class HoroMaterialIconCreator{
 
         self.saveAsPng("materialicon.png")
 
+        // 注意。 测试时，fbo已被释放，可能导致tex2d在拖动窗口重画时，无效
         SglSceneView_showTextureWindow(
             self.fbo.tex2d, self.size.x, self.size.y)
     }
