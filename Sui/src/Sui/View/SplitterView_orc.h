@@ -66,7 +66,6 @@ struct tagSuiView$SplitterView {
 	SuiView$Drag*  drag ;
 	int  hoverBg ;
 	int  normalBg ;
-	bool  isHor ;
 	float  prevGrow ;
 	float  nextGrow ;
 };

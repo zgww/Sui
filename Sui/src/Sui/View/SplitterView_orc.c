@@ -59,7 +59,6 @@ void SuiView$SplitterView_initMeta(Vtable_SuiView$SplitterView *pvt){
 	orc_metaField_class(&pNext, "drag", ((Vtable_Object*)Vtable_SuiView$Drag_init(0)), offsetof(SuiView$SplitterView, drag), true, false, 1);
 	orc_metaField_primitive(&pNext, "hoverBg", OrcMetaType_int, offsetof(SuiView$SplitterView, hoverBg), 0, 0, 0, 0);//int
 	orc_metaField_primitive(&pNext, "normalBg", OrcMetaType_int, offsetof(SuiView$SplitterView, normalBg), 0, 0, 0, 0);//int
-	orc_metaField_primitive(&pNext, "isHor", OrcMetaType_bool, offsetof(SuiView$SplitterView, isHor), 0, 0, 0, 0);//bool
 	orc_metaField_primitive(&pNext, "prevGrow", OrcMetaType_float, offsetof(SuiView$SplitterView, prevGrow), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "nextGrow", OrcMetaType_float, offsetof(SuiView$SplitterView, nextGrow), 0, 0, 0, 0);//float
 
@@ -120,7 +119,6 @@ void SuiView$SplitterView_init_fields(SuiView$SplitterView *self){
 	urgc_set_field_class(self, (void**)&((SuiView$SplitterView*)self)->drag, SuiView$Drag_new(&tmpNewOwner_1) );
 	((SuiView$SplitterView*)self)->hoverBg = SuiDesigner$themeIns() ->dock_splitterBgHover;
 	((SuiView$SplitterView*)self)->normalBg = SuiDesigner$themeIns() ->dock_splitterBg;
-	((SuiView$SplitterView*)self)->isHor = true;
 	((SuiView$SplitterView*)self)->prevGrow = 0;
 	((SuiView$SplitterView*)self)->nextGrow = 0;
     }
@@ -202,7 +200,9 @@ static void  __finiBlock___Block_30_15(SuiView$__Block_30_15 *  self){
 }
 
 static void  __fn___Closure_32_27(SuiView$__Closure_32_27 *  self, SuiView$Drag *  d){
-	if (((SuiCore$Node * )self->__var___Block_30_15->self)->parent) {
+	SuiLayout$LayoutLinear *  ll = (SuiLayout$LayoutLinear * )((SuiCore$Node * )self->__var___Block_30_15->self)->parent;
+	if (Orc_instanceof((Object*)ll, (Vtable_Object*)Vtable_SuiLayout$LayoutLinear_init(NULL))) {
+		bool  isHor = ll->calcIsHor(ll) ;
 		int  idx = ((SuiCore$Node * )self->__var___Block_30_15->self)->parent->indexOf(((SuiCore$Node * )self->__var___Block_30_15->self)->parent, self->__var___Block_30_15->self) ;
 		if (idx == 0 || idx == ((SuiCore$Node * )self->__var___Block_30_15->self)->parent->getChildrenCount(((SuiCore$Node * )self->__var___Block_30_15->self)->parent)  - 1) {
 			return ; 
@@ -214,7 +214,7 @@ static void  __fn___Closure_32_27(SuiView$__Closure_32_27 *  self, SuiView$Drag 
 			SuiLayout$LayoutLinearCell *  nextCell = (SuiLayout$LayoutLinearCell * )((SuiCore$Node * )next)->getChildByType(next, Vtable_SuiLayout$LayoutLinearCell_init(NULL)) ;
 			if (prevCell && nextCell) {
 				if (d->isDragStart) {
-					if (self->__var___Block_30_15->self->isHor) {
+					if (isHor) {
 						self->__var___Block_30_15->self->prevGrow = prev->frame.width;
 						self->__var___Block_30_15->self->nextGrow = next->frame.width;
 					}
@@ -224,7 +224,7 @@ static void  __fn___Closure_32_27(SuiView$__Closure_32_27 *  self, SuiView$Drag 
 					}
 				}
 				if (d->isDragging) {
-					if (self->__var___Block_30_15->self->isHor) {
+					if (isHor) {
 						self->__var___Block_30_15->self->prevGrow += d->deltaPos.x;
 						self->__var___Block_30_15->self->nextGrow -= d->deltaPos.x;
 					}

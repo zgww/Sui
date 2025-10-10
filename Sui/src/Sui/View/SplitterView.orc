@@ -22,7 +22,7 @@ class SplitterView extends View {
 
     int hoverBg = themeIns().dock_splitterBgHover//0xff007aff//0xff00ff00
     int normalBg = themeIns().dock_splitterBg //0xffcdcdcf
-    bool isHor = true; //方向默认为水平
+    // bool isHor = true; //方向默认为水平
 
     float prevGrow = 0
     float nextGrow = 0
@@ -30,7 +30,10 @@ class SplitterView extends View {
     void ctor(){
         self.hitTestPadding = mkInset(3, 3, 3, 3)
         self.drag.onDrag = ^void(Drag*d){
-            if self.parent {
+            LayoutLinear* ll = (LayoutLinear*)self.parent
+            if ll instanceof LayoutLinear {
+                bool isHor = ll.calcIsHor()
+
                 int idx = self.parent.indexOf(self)
                 if idx == 0 || idx == self.parent.getChildrenCount() - 1{
                     return
@@ -42,7 +45,7 @@ class SplitterView extends View {
                     LayoutLinearCell* nextCell = (LayoutLinearCell*)next.getChildByType(LayoutLinearCell)
                     if prevCell && nextCell {
                         if d.isDragStart{
-                            if self.isHor {
+                            if isHor {
                                 self.prevGrow = prev.frame.width
                                 self.nextGrow = next.frame.width
                             }
@@ -53,7 +56,7 @@ class SplitterView extends View {
                         }
                         if d.isDragging {
 
-                            if self.isHor {
+                            if isHor {
                                 self.prevGrow += d.deltaPos.x
                                 self.nextGrow -= d.deltaPos.x
 
