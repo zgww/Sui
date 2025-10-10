@@ -233,7 +233,7 @@ static void renderWindow(){
             // group.window = win;
             for (int i = 0; i < btns.size(); i++){
                 String@ btn = (String@)btns.get(i)
-                mkMenuButton(o, i)~{
+                mkMenuButton(o, i).{
                     MenuButton@ mbutton = o
 
                     o.text = btn
@@ -319,7 +319,7 @@ static void renderWindow(){
         if 0 {
         layoutLinear(o, 0).{
             o.justifyContent.set("center")
-            // mkTextView(o, 0)~{
+            // mkTextView(o, 0).{
             //     o.margin.setAll(10)
             //     o.backgroundColor = 0xffeecccc;
             //     o.setText(str("hello world2"))
@@ -339,7 +339,7 @@ static void renderWindow(){
             //     o.width = 300
             //     o.height = 200
             // }
-            // mkTextView(o, 0)~{
+            // mkTextView(o, 0).{
             //     o.margin.setAll(10)
             //     o.backgroundColor = 0xffeecccc;
             //     o.setText(str("hello world2"))

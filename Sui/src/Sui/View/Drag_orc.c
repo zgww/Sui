@@ -150,7 +150,7 @@ SuiView$Drag * SuiView$Drag_new(void *pOwner){
 
 // class members
 void  SuiView$Drag$dtor(SuiView$Drag *  self){
-	printf("~Drag\n") ;
+	printf(".Drag\n") ;
 }
 
 

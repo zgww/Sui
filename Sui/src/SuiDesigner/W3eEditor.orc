@@ -751,7 +751,7 @@ class W3eEditor{
                                 }
                             }
                             if (item.id.equals("inspector")){
-                                mkSglInspView(o, (long long)item)~{
+                                mkSglInspView(o, (long long)item).{
                                     o.editCtx = self.editCtx
                                     o.backgroundColor = t.dock_content_bg
                                     return o
@@ -773,9 +773,9 @@ class W3eEditor{
                                 // return self.reactTilesetView(o, item)
                             }
                             // if (item.id.equals("scene")){
-                            //     mkSglSceneView(o, (long long)item)~{
+                            //     mkSglSceneView(o, (long long)item).{
                             //         o.backgroundColor = t.dock_content_bg
-                            //         layoutLinearCell(o, 0)~{
+                            //         layoutLinearCell(o, 0).{
                             //             o.grow = 1
                             //         }
                             //         return o
@@ -783,7 +783,7 @@ class W3eEditor{
                             // }
 
 
-                            mkTextView(o, (long long)item)~{
+                            mkTextView(o, (long long)item).{
                                 o.needClip = true
 
                                 printf("render dock content:%d, %s\n", item.intId, item.id.str);
@@ -799,7 +799,7 @@ class W3eEditor{
                                     : item.intId == 2 ? 0x5330ffff
                                     : 0x5300ffff
 
-                                layoutLinearCell(o, 0)~{
+                                layoutLinearCell(o, 0).{
                                     o.grow = 1
                                 }
 

@@ -17,12 +17,18 @@ import * from "../View/ViewBuilder.orc"
 class LayoutLinearCell extends LayoutCell {
 	float grow = 1.f //默认1
 	String@ alignSelf = str("")
+	void dtor(){
+		printf(".LayoutLinearCell\n")
+	}
+	void removeSelf(){
+		super.removeSelf()
+	}
 }
 
 /// 布局上下文
 class LayoutLinear extends View {
 	// void dtor(){
-	// 	printf("~LayoutLinear:%p\n", self);
+	// 	printf(".LayoutLinear:%p\n", self);
 	// }
 
 	bool isMax_in_maxOrStretch(Frame *ctx, bool isHor){

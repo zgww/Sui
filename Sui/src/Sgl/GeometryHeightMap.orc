@@ -34,7 +34,7 @@ class GeometryHeightMap extends Geometry {
     float startZ = -600
 
     void dtor(){
-        printf("~GeometryHeightMap\n")
+        printf(".GeometryHeightMap\n")
     }
 
     

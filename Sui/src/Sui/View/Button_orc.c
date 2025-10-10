@@ -589,7 +589,7 @@ void  SuiView$MenuButton$ctor(SuiView$MenuButton *  self){
 
 
 void  SuiView$MenuButton$dtor(SuiView$MenuButton *  self){
-	printf("~MenuButton:%s. %p\n", self->text ? self->text->str : "(null text)", self) ;
+	printf(".MenuButton:%s. %p\n", self->text ? self->text->str : "(null text)", self) ;
 }
 
 

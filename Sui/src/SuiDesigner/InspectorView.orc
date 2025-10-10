@@ -91,7 +91,7 @@ class InspectorView extends LayoutLinear{
         else {
             ANode@ anode = (ANode@)ctx.state.getFirstSelected()
 
-            mkScrollArea(o, 0)~{
+            mkScrollArea(o, 0).{
                 // o.backgroundColor = 0xff00ff0f
                 // o.width = 300
                 // o.height = 200
@@ -109,7 +109,7 @@ class InspectorView extends LayoutLinear{
                     self.inspector.inspect(o, anode.node)
                 }
                 else {
-                    mkTextView(o, 0)~{
+                    mkTextView(o, 0).{
                         o.setText(str("no data"))//anode ? anode.className: str("attr"))
                     }
                 }
@@ -117,14 +117,14 @@ class InspectorView extends LayoutLinear{
         }
 
 
-        // mkPanel(o, 0)~{
+        // mkPanel(o, 0).{
         //     o.cbRenderTitle = ^void(Node *o){
-        //         mkTextView(o, 0)~{
+        //         mkTextView(o, 0).{
         //             o.setText(str("title"))
         //         }
         //     }
         //     o.cbRenderContent = ^void(Node *o){
-        //         mkTextView(o, 0)~{
+        //         mkTextView(o, 0).{
         //             o.setText(str("content"))
         //         }
         //     }

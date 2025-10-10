@@ -70,7 +70,7 @@ class MenuBarCtrl {
 
 
     void dtor(){
-        printf("~MenuBarCtrl\n")
+        printf(".MenuBarCtrl\n")
     }
     
     ^MenuNativeItem@ (MenuButton *mbutton) cbCreateMenuNativeItem = null

@@ -26,7 +26,7 @@ class ChessBgViewCallback extends ViewCallback{
     Object@ obj
 
     void dtor(){
-        printf("~Dtor ChessBgViewCallback\n")
+        printf(".Dtor ChessBgViewCallback\n")
     }
 
     bool cbLayout(View *div, Frame *ctx){

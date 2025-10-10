@@ -74,6 +74,8 @@ void SuiLayout$LayoutLinearCell_init(SuiLayout$LayoutLinearCell *self, void *pOw
 SuiLayout$LayoutLinearCell * SuiLayout$LayoutLinearCell_new(void *pOwner);
 void SuiLayout$LayoutLinearCell_fini(SuiLayout$LayoutLinearCell *self);
 
+void  SuiLayout$LayoutLinearCell$dtor(SuiLayout$LayoutLinearCell *  self);
+void  SuiLayout$LayoutLinearCell$removeSelf(SuiLayout$LayoutLinearCell *  self);
 
 
 // 虚表

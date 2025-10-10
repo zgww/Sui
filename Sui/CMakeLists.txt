@@ -146,7 +146,7 @@ file(GLOB src
     src/Sui/View/Switch_orc.c
     src/Sui/View/Select_orc.c
     src/Sui/View/Slider_orc.c
-    src/Sui/View/Splitter_orc.c
+    src/Sui/View/SplitterView_orc.c
     src/Sui/View/TableView_orc.c
     src/Sui/View/TreeView_orc.c
     src/Sui/View/SystemTrayIcon_orc.c

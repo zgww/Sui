@@ -85,7 +85,7 @@ class MenuBarCtrl {
     Window@ window;
 
     void dtor(){
-        printf("~MenuBarCtrl\n")
+        printf(".MenuBarCtrl\n")
     }
 
 
@@ -360,13 +360,13 @@ void show_newWindow(Window *parent){
     win.{
         win.rootView.{
             o.name = str("rootDiv")
-            layoutLinear(o, 0)~{
-                mkTextView(o, 0)~{
+            layoutLinear(o, 0).{
+                mkTextView(o, 0).{
                     o.margin.setAll(10)
                     o.backgroundColor = 0xffeecccc;
                     o.setText(str("hello world2"))
                 } 
-                mkTextView(o, 0)~{
+                mkTextView(o, 0).{
                     o.margin.setAll(10)
                     o.backgroundColor = 0xffeecccc;
                     o.setText(str("hello world2"))
@@ -418,8 +418,8 @@ void startSuiDesigner(){
 
         win.rootView.{
             o.name = str("rootDiv")
-            // layoutLinear(o, 0)~{
-            //     imageView(o, 0)~{
+            // layoutLinear(o, 0).{
+            //     imageView(o, 0).{
             //         o.setSrc(
             //             str("asset/icon/arrow-down.png")
             //         )
@@ -486,25 +486,25 @@ void startSuiDesigner(){
                 }
                 }
 
-                // mkView(o, 0)~{
+                // mkView(o, 0).{
                 //     o.backgroundColor = 0x99ff0000
                 //     o.width = 100
                 //     o.height = 20
-                //     layoutLinearCell(o, 0)~{
+                //     layoutLinearCell(o, 0).{
                 //         o.grow = 2
                 //     }
                 // }
-                // mkView(o, 0)~{
+                // mkView(o, 0).{
                 //     o.backgroundColor = 0x9900ff00
                 //     o.width = 100
                 //     o.height = 20
-                //     layoutLinearCell(o, 0)~{
+                //     layoutLinearCell(o, 0).{
                 //         o.grow = 3
                 //     }
                 // }
                 if 1 {
 
-                dockLayout(o, 0)~{
+                dockLayout(o, 0).{
                     dockLayoutIns = o
 
                     o.tabHeadBg = t.dock_headbar_bg
@@ -525,7 +525,7 @@ void startSuiDesigner(){
                         ){
                             DockItem@ tmpItem = item
                             DockLayout@ tmpDock = dockLayoutIns
-                            mkTextView(o, (long long)item)~{
+                            mkTextView(o, (long long)item).{
                                 o.cursor = str("pointer")
                                 o.setText(item.id)
                                 // o.color = 0xff00ff00
@@ -555,33 +555,33 @@ void startSuiDesigner(){
                         }
                         o.cbRenderItemContentView = ^ViewBase* (DockItem *item, ViewBase *o){
                             if (item.id.equals("project")){
-                                mkAssetDirTreeView(o, (long long)item)~{
+                                mkAssetDirTreeView(o, (long long)item).{
                                     o.backgroundColor = t.dock_content_bg
                                     return o
                                 }
                             }
                             if (item.id.equals("hier")){
-                                mkSceneHierView(o, (long long)item)~{
+                                mkSceneHierView(o, (long long)item).{
                                     o.backgroundColor = t.dock_content_bg
                                     return o
                                 }
                             }
                             if (item.id.equals("inspector")){
-                                mkInspectorView(o, (long long)item)~{
+                                mkInspectorView(o, (long long)item).{
                                     o.backgroundColor = t.dock_content_bg
                                     return o
                                 }
                             }
                             if (item.id.equals("dir")){
-                                mkAssetDirView(o, (long long)item)~{
+                                mkAssetDirView(o, (long long)item).{
                                     o.backgroundColor = t.dock_content_bg
                                     return o
                                 }
                             }
                             if (item.id.equals("scene")){
-                                mkSceneView(o, (long long)item)~{
+                                mkSceneView(o, (long long)item).{
                                     o.backgroundColor = t.dock_content_bg
-                                    layoutLinearCell(o, 0)~{
+                                    layoutLinearCell(o, 0).{
                                         o.grow = 1
                                     }
                                     return o
@@ -589,7 +589,7 @@ void startSuiDesigner(){
                             }
 
 
-                            mkTextView(o, (long long)item)~{
+                            mkTextView(o, (long long)item).{
                                 o.needClip = true
 
                                 printf("render dock content:%d, %s\n", item.intId, item.id.str);
@@ -605,7 +605,7 @@ void startSuiDesigner(){
                                     : item.intId == 2 ? 0x5330ffff
                                     : 0x5300ffff
 
-                                layoutLinearCell(o, 0)~{
+                                layoutLinearCell(o, 0).{
                                     o.grow = 1
                                 }
 
@@ -660,14 +660,14 @@ void startSuiDesigner(){
                     }
 
 
-                    layoutLinearCell(o, 0)~{
+                    layoutLinearCell(o, 0).{
                         o.grow = 1
                     }
                 }
                 }
             }
 
-            // mkView(o, 0)~{
+            // mkView(o, 0).{
             //     o.name = str("div")
             //     o.backgroundColor = 0xffff0000
             //     // o.margin.setAll(10);
@@ -683,7 +683,7 @@ void startSuiDesigner(){
 
             if (0){
 
-            // layoutLinear(o, 0)~{
+            // layoutLinear(o, 0).{
             //     o.direction = str("column")
 
             //     // o.width = 16
@@ -696,7 +696,7 @@ void startSuiDesigner(){
 
             //     if (1){
 
-            //     layoutLinear(o, 0)~{
+            //     layoutLinear(o, 0).{
             //         o.backgroundColor = 0x33000000
             //         o.radius.setAll(6)
             //         //o.width = 100
@@ -708,18 +708,18 @@ void startSuiDesigner(){
             //             o.listener = new TmpListener()
             //         }
             //         // o.direction = str("column")
-            //         mkImageView(o, 0)~{
+            //         mkImageView(o, 0).{
             //             o.setSrc(str("./print.png"));
             //         }
 
-            //         mkSelect(o, 0)~{
+            //         mkSelect(o, 0).{
             //             o.appendOptionCStr("cstr0")
             //             o.appendOptionCStr("cstr1")
             //             o.appendOptionCStr("cstr2")
             //             o.appendOptionCStr("cstr3")
             //         }
 
-            //         mkView(o, 0)~{
+            //         mkView(o, 0).{
             //             o.width = 50.f
             //             o.height = 50.f
             //             o.name = str("内部div")
@@ -730,7 +730,7 @@ void startSuiDesigner(){
             //         }
 
             //         if (1){
-            //             mkButton(o, 0)~{
+            //             mkButton(o, 0).{
             //                 //o.clickListener = new ClickListener()
             //                 o.onClick = ^void(MouseEvent *me){
 
@@ -758,7 +758,7 @@ void startSuiDesigner(){
             //                 // o.margin.setAll(10);
             //             }
             //         }
-            //         mkDrawButton(o, 0)~{
+            //         mkDrawButton(o, 0).{
             //             o.onClick =^void(MouseEvent *me){
             //                 // MessageDialog_alert("hi drawButton", "closure标题")
             //                 win.enable(false)
@@ -766,20 +766,20 @@ void startSuiDesigner(){
             //                 me.stopPropagation()
             //             }
             //         }
-            //         mkProgressView(o, 0)~{
+            //         mkProgressView(o, 0).{
             //             o.width = 100
             //             o.margin.setHor(10)
             //         }
-            //         checkbox(o, 0)~{
+            //         checkbox(o, 0).{
             //         }
-            //         mkSwitch(o, 0)~{
+            //         mkSwitch(o, 0).{
             //         }
-            //         mkSlider(o, 0)~{
+            //         mkSlider(o, 0).{
             //             o.width = 100
             //         }
 
 
-            //         // div(o, 0)~{
+            //         // div(o, 0).{
             //         //     o.width = 50
             //         //     o.height = 50
             //         //     o.name = str("内部div")
@@ -787,7 +787,7 @@ void startSuiDesigner(){
                         
             //         //     o.margin.setAll(10);
             //         // }                
-            //         // div(o, 0)~{
+            //         // div(o, 0).{
             //         //     o.width = 50
             //         //     o.height = 50
             //         //     o.name = str("内部div")
@@ -795,7 +795,7 @@ void startSuiDesigner(){
                         
             //         //     o.margin.setAll(10);
             //         // }              
-            //         // div(o, 0)~{
+            //         // div(o, 0).{
             //         //     o.width = 50
             //         //     o.height = 50
             //         //     o.name = str("内部div")
@@ -803,7 +803,7 @@ void startSuiDesigner(){
                         
             //         //     o.margin.setAll(10);
             //         // }   
-            //         // div(o, 0)~{
+            //         // div(o, 0).{
             //         //     o.width = 50
             //         //     o.height = 50
             //         //     o.name = str("内部div")
@@ -812,32 +812,32 @@ void startSuiDesigner(){
             //         //     o.margin.setAll(10);
             //         //     o.listener = new TmpListener2()
             //         // }           
-            //         mkTextView(o, 0)~{
+            //         mkTextView(o, 0).{
             //             o.margin.setAll(10)
             //             o.backgroundColor = 0xffeecccc;
             //             o.setText(str("hello world2"))
             //         } 
-            //         mkTextView(o, 0)~{
+            //         mkTextView(o, 0).{
             //             o.margin.setAll(10)
             //             o.backgroundColor = 0xffeecccc;
             //             o.color = 0xffffff00;
             //             o.setText(str("hello world3"))
             //         } 
-            //         //mkTextView(o, 0)~{
+            //         //mkTextView(o, 0).{
             //             //o.margin.setAll(10)
             //             //o.backgroundColor = 0xffeecccc;
             //             //o.color = 0xff0000ff
             //             //o.font_size = 30
             //             //o.setText(str("hello world4"))
             //         //} 
-            //         //mkTextView(o, 0)~{
+            //         //mkTextView(o, 0).{
             //             //o.margin.setAll(10)
             //             //o.backgroundColor = 0xffeecccc;
             //             //o.color = 0xff00ffff;
             //             //o.padding.setAll(5)
             //             //o.setText(str("hello world5"))
             //         //}
-            //         // div(o, 0)~{
+            //         // div(o, 0).{
             //         //     o.width = 50
             //         //     o.height = 50
             //         //     o.name = str("内部div")
@@ -849,101 +849,101 @@ void startSuiDesigner(){
             //     }
             //     }
             //     if (1){
-            //     layoutLinear(o, 0)~{
+            //     layoutLinear(o, 0).{
             //         o.width = 800;
             //         o.height = 266
             //         o.alignItems = str("stretch")
             //         o.radius.setAll(6)
             //         // o.backgroundColor = 0x3ff000f0
-            //         // layoutLinearCell(o, 0)~{
+            //         // layoutLinearCell(o, 0).{
             //         //     o.grow = 1
             //         // }
 
-            //         mkView(o, 0)~{
+            //         mkView(o, 0).{
             //             // o.height = 300
             //             o.width = 100
             //             o.backgroundColor = 0x33000000
             //             o.margin.setAll(6);
             //             o.radius.setAll(6)
             //         }
-            //         mkView(o, 0)~{
+            //         mkView(o, 0).{
             //             // o.height = 300
             //             o.width = 400
             //             o.backgroundColor = 0x330ff000
             //             o.margin.setAll(6);
             //             o.radius.setAll(6)
 
-            //             layoutAlign(o, 0)~{
+            //             layoutAlign(o, 0).{
             //                 o.width = 200
             //                 o.height = 200
             //                 o.backgroundColor = 0x330ff0f0
             //                 o.setCenter()
 
-            //                 mkView(o, 0)~{
+            //                 mkView(o, 0).{
             //                     o.height = 50
             //                     o.width = 50
             //                     o.backgroundColor = 0x53ff0000
             //                     o.margin.setAll(6);
             //                     o.radius.setAll(6)
             //                 }
-            //                 mkView(o, 0)~{
+            //                 mkView(o, 0).{
             //                     o.height = 30
             //                     o.width = 30
             //                     o.backgroundColor = 0x53ffff00
             //                     o.margin.setAll(6);
             //                     o.radius.setAll(6)
             //                 }
-            //                 mkView(o, 0)~{
+            //                 mkView(o, 0).{
             //                     o.height = 30
             //                     o.width = 30
             //                     o.backgroundColor = 0x53ffff00
             //                     o.margin.setAll(6);
             //                     o.radius.setAll(6)
 
-            //                     layoutAlignCell(o, 0)~{
+            //                     layoutAlignCell(o, 0).{
             //                         o.setTopRight()
             //                     }
             //                 }
-            //                 mkView(o, 0)~{
+            //                 mkView(o, 0).{
             //                     o.height = 70
             //                     o.width = 30
             //                     o.backgroundColor = 0x5300ffff
             //                     o.margin.setAll(6);
             //                     o.radius.setAll(6)
 
-            //                     layoutAlignCell(o, 0)~{
+            //                     layoutAlignCell(o, 0).{
             //                         o.setMiddleLeft()
             //                     }
             //                 }
-            //                 mkView(o, 0)~{
+            //                 mkView(o, 0).{
             //                     o.height = 30
             //                     o.width = 80
             //                     o.backgroundColor = 0x53ff00ff
             //                     o.margin.setAll(6);
             //                     o.radius.setAll(6)
 
-            //                     layoutAlignCell(o, 0)~{
+            //                     layoutAlignCell(o, 0).{
             //                         o.setBottomRight()
             //                     }
             //                 }
-            //                 mkView(o, 0)~{
+            //                 mkView(o, 0).{
             //                     o.height = 120
             //                     o.width = 80
             //                     o.backgroundColor = 0x53ff00ff
             //                     o.margin.setAll(6);
             //                     o.radius.setAll(6)
 
-            //                     layoutAlignCell(o, 0)~{
+            //                     layoutAlignCell(o, 0).{
             //                         o.setBottomCenter()
             //                     }
             //                 }
 
-            //                 mkView(o, 0)~{
+            //                 mkView(o, 0).{
             //                     o.backgroundColor = 0xd36030ff
             //                     o.margin.setAll(6);
             //                     o.radius.setAll(6)
 
-            //                     layoutAlignPositionCell(o, 0)~{
+            //                     layoutAlignPositionCell(o, 0).{
             //                         o.left = 10
             //                         o.top = 20
             //                         o.right = 30
@@ -952,22 +952,22 @@ void startSuiDesigner(){
             //                 }
             //             }
             //         }
-            //         mkView(o, 0)~{
+            //         mkView(o, 0).{
             //             // o.height = 300
             //             // o.width = 500
             //             o.backgroundColor = 0x33000000
             //             o.margin.setAll(6);
             //             o.radius.setAll(6)
 
-            //             layoutLinearCell(o, 0)~{
+            //             layoutLinearCell(o, 0).{
             //                 o.grow = 1
             //             }
 
-            //             // mkEditText(o, 0)~{
+            //             // mkEditText(o, 0).{
             //             //     o.margin.setAll(6)
             //             // }
             //             if (0){
-            //                 mkTableView(o, 0)~{
+            //                 mkTableView(o, 0).{
             //                     if (o.isNewForReact){
             //                         {
             //                             TableViewColumn@ col = mkTableViewColumn(50, str("Id"))
@@ -991,7 +991,7 @@ void startSuiDesigner(){
             //                     o.width = 300
             //                     // Node *tmp = o
             //                     o.renderTd = ^void (Node *o, int row, int col){
-            //                         mkTextView(o, 0)~{
+            //                         mkTextView(o, 0).{
             //                             o.setColor(0xffffffff)
             //                             o.setText(str("go").addi(col))
             //                             //.addi(row))
@@ -1003,13 +1003,13 @@ void startSuiDesigner(){
             //             }
             //             if (0){
             //                 ScrollArea *sa = null
-            //                 mkScrollArea(o, 0)~{
+            //                 mkScrollArea(o, 0).{
             //                     sa = o
             //                     o.width = 300
             //                     o.height = 300
             //                     o.backgroundColor = 0x09ff0000
             //                     for (int i = 0; i < 10; i++){
-            //                         mkView(o, i)~{
+            //                         mkView(o, i).{
             //                             o.margin.setAll(6)
             //                             o.width = 100
             //                             o.height = 100
@@ -1017,14 +1017,14 @@ void startSuiDesigner(){
             //                             i % 2 == 0 ? 0x550000ff :
             //                             0x5500ff00
 
-            //                             mkTextView(o, 0)~{
+            //                             mkTextView(o, 0).{
             //                                 o.color = 0xffffffff
             //                                 o.setText(str("block").addi(i))
             //                             }
             //                         }
             //                     }
             //                 }
-            //                 mkScrollBar(o, 0)~{
+            //                 mkScrollBar(o, 0).{
             //                     o.bindScrollArea(sa)
 
             //                 }
@@ -1032,7 +1032,7 @@ void startSuiDesigner(){
 
 
             //             if (0){
-            //                 mkColorPalete(o, 0)~{
+            //                 mkColorPalete(o, 0).{
             //                     o.margin.setAll(20)
             //                     o.xDraggale = false
             //                     o.width = 200
@@ -1040,7 +1040,7 @@ void startSuiDesigner(){
             //                 }
             //             }
             //             if (1){
-            //                 mkTreeView(o, 0)~{
+            //                 mkTreeView(o, 0).{
             //                     o.margin.setAll(20)
             //                     o.width = 200
             //                     List@ data = new List()
@@ -1068,7 +1068,7 @@ void startSuiDesigner(){
             //                         return null
             //                     }
             //                     o.reactItem = ^void (Node *o, Object *item, int deep){
-            //                         mkTextView(o, 0)~{
+            //                         mkTextView(o, 0).{
             //                             o.backgroundColor = 0x120033ff
             //                             o.setText((String@)item)
             //                         }
@@ -1133,7 +1133,7 @@ class Tmp2{
         printf("Tmp()\n")
     }
     void dtor(){
-        printf("~Tmp()\n")
+        printf(".Tmp()\n")
     }
 }
 void test_tmp2(){

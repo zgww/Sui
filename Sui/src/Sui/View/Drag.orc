@@ -73,7 +73,7 @@ class Drag extends Listener{
     // bool preferCapture = false
 
     void dtor(){
-        printf("~Drag\n")
+        printf(".Drag\n")
     }
 
     void setStatus(const char *status){

@@ -38,6 +38,7 @@ import * from "../Sui/View/TextView.orc"
 import * from "../Sui/View/Button.orc"
 import * from "../Sui/View/ImageView.orc"
 import * from "../Sui/View/ViewBuilder.orc"
+import * from "../Sui/View/SplitterView.orc"
 
 import * from "../Sui/Layout/LayoutLinear.orc"
 
@@ -128,7 +129,7 @@ class HoroGeometryPreviewView extends ImageView {
     }
 
     void dtor(){
-        printf("~~~~~HoroGeometryPreviewView\n\n");
+        printf(".....HoroGeometryPreviewView\n\n");
     }
     void reactWindow(){
         LayoutLinear *ll = (LayoutLinear*)self.win.rootView
@@ -139,14 +140,25 @@ class HoroGeometryPreviewView extends ImageView {
 
             o.placeKid(self)
             self.{
-                layoutLinearCell(o, 0).{o.grow = 2}
+                layoutLinearCell(o, 0).{o.grow = 5}
             }
+
+            mkSplitterView(o, 0).{}
+
             layoutLinear(o, 0).{
                 o.column()
                 layoutLinearCell(o, 0)
                 
                 if self.mesh.geometry{
                     self.inspObj.insp(o, self.mesh.geometry)
+                    mkDrawButton(o, 0).{
+                        layoutLinearCell(o, 0).{o.grow = 0; o.alignSelf = str("stretch")}
+
+                        o.text = str("print")
+                        o.onClick = ^void(MouseEvent*me){
+                            printNodeTree(self, 0)
+                        }
+                    }
                     mkDrawButton(o, 0).{
                         layoutLinearCell(o, 0).{o.grow = 0; o.alignSelf = str("stretch")}
 

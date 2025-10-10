@@ -654,7 +654,7 @@ class SpriteSheetEditor{
                     ){
                         DockItem@ tmpItem = item
                         DockLayout@ tmpDock = dockLayoutIns
-                        mkTextView(o, (long long)item)~{
+                        mkTextView(o, (long long)item).{
                             o.cursor = str("pointer")
                             o.setText(item.id)
                             // o.color = 0xff00ff00
@@ -684,19 +684,19 @@ class SpriteSheetEditor{
                     }
                     o.cbRenderItemContentView = ^ViewBase* (DockItem *item, ViewBase *o){
                         // if (item.id.equals("project")){
-                        //     mkAssetDirTreeView(o, (long long)item)~{
+                        //     mkAssetDirTreeView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
                         //         return o
                         //     }
                         // }
                         // if (item.id.equals("hier")){
-                        //     mkSceneHierView(o, (long long)item)~{
+                        //     mkSceneHierView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
                         //         return o
                         //     }
                         // }
                         // if (item.id.equals("inspector")){
-                        //     mkInspectorView(o, (long long)item)~{
+                        //     mkInspectorView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
                         //         return o
                         //     }
@@ -711,9 +711,9 @@ class SpriteSheetEditor{
                             return self.reactAnimNames(o, item)
                         }
                         // if (item.id.equals("scene")){
-                        //     mkSceneView(o, (long long)item)~{
+                        //     mkSceneView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
-                        //         layoutLinearCell(o, 0)~{
+                        //         layoutLinearCell(o, 0).{
                         //             o.grow = 1
                         //         }
                         //         return o
@@ -721,7 +721,7 @@ class SpriteSheetEditor{
                         // }
 
 
-                        mkTextView(o, (long long)item)~{
+                        mkTextView(o, (long long)item).{
                             o.needClip = true
 
                             printf("render dock content:%d, %s\n", item.intId, item.id.str);
@@ -737,7 +737,7 @@ class SpriteSheetEditor{
                                 : item.intId == 2 ? 0x5330ffff
                                 : 0x5300ffff
 
-                            layoutLinearCell(o, 0)~{
+                            layoutLinearCell(o, 0).{
                                 o.grow = 1
                             }
 

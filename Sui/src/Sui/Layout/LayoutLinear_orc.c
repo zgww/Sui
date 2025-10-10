@@ -90,7 +90,8 @@ void SuiLayout$LayoutLinearCell_init_fields(SuiLayout$LayoutLinearCell *self){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinearCell*)self)->alignSelf, Orc$str(&tmpReturn_1, "") );
     }
-	
+	((Object*)self)->dtor = (void*)SuiLayout$LayoutLinearCell$dtor;
+	((SuiCore$Node*)self)->removeSelf = (void*)SuiLayout$LayoutLinearCell$removeSelf;
 }
 
 // init function
@@ -127,6 +128,16 @@ SuiLayout$LayoutLinearCell * SuiLayout$LayoutLinearCell_new(void *pOwner){
 
 
 // class members
+void  SuiLayout$LayoutLinearCell$dtor(SuiLayout$LayoutLinearCell *  self){
+	printf(".LayoutLinearCell\n") ;
+}
+
+
+void  SuiLayout$LayoutLinearCell$removeSelf(SuiLayout$LayoutLinearCell *  self){
+	SuiCore$Node$removeSelf(self) ;
+}
+
+
 
 
 //vtable instance

@@ -314,7 +314,7 @@ class MenuButton extends LayoutLinear{
 	}
 
 	void dtor(){
-		printf("~MenuButton:%s. %p\n", self.text ? self.text.str:"(null text)", self);
+		printf(".MenuButton:%s. %p\n", self.text ? self.text.str:"(null text)", self);
 	}
 
 	void onHoverChanged(){

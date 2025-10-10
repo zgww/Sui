@@ -135,7 +135,7 @@ class View extends ViewBase {
     }
 
     // void dtor(){
-    //     printf("~View %p\n", self);
+    //     printf(".View %p\n", self);
     // }
     Vec2 getSizeWithoutMargin(){
         float w = self.frame.width;

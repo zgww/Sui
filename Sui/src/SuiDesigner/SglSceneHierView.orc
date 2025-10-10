@@ -202,7 +202,7 @@ class SglSceneHierView extends LayoutLinear {
 
         self.startInnerReact()
 
-        // mkTextView(self, 0)~{
+        // mkTextView(self, 0).{
         //     o.setText(str("good"))
         // }
 
@@ -213,17 +213,17 @@ class SglSceneHierView extends LayoutLinear {
 
         // o.backgroundColor = 0x33ffffff
         // o.backgroundColor = 0x33ffffff
-        layoutLinearCell(o, 0)~{
+        layoutLinearCell(o, 0).{
             o.grow = 1
         }
 
-        // layoutAlign(o, 0)~{
-        //     layoutLinearCell(o, 0)~{
+        // layoutAlign(o, 0).{
+        //     layoutLinearCell(o, 0).{
         //         o.grow = 1
         //     }
         // }
 
-        mkScrollArea(o, 0)~{
+        mkScrollArea(o, 0).{
             // o.backgroundColor = 0xff00ffff
             // o.width = 300
             // o.height = 200
@@ -232,18 +232,18 @@ class SglSceneHierView extends LayoutLinear {
             o.useMinWidthConstraint = true
             
 
-            layoutLinearCell(o, 0)~{
+            layoutLinearCell(o, 0).{
                 o.grow = 1
             }
 
-            // mkTextView(o, 0)~{
+            // mkTextView(o, 0).{
             //     // o.backgroundColor = 0x120033ff
             //     o.setText(str("你好啊 SglSceneHierView"))
             //     o.color = 0xffffffff
             // }
 
 
-            mkTreeView(o, 0)~{
+            mkTreeView(o, 0).{
                 TreeView@ treeView = o
                 // o.border.setAll(2, 0xff000000)
                 // o.margin.setAll(20)
@@ -320,7 +320,7 @@ class SglSceneHierView extends LayoutLinear {
                         )
                     }
 
-                        // mkTextView(o, 0)~{
+                        // mkTextView(o, 0).{
                         //     o.setText_align(str("center"))
                         //     o.width = 20
                         //     // o.backgroundColor = 0x120033ff

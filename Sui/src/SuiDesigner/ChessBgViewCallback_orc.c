@@ -137,7 +137,7 @@ SuiDesigner$ChessBgViewCallback * SuiDesigner$ChessBgViewCallback_new(void *pOwn
 
 // class members
 void  SuiDesigner$ChessBgViewCallback$dtor(SuiDesigner$ChessBgViewCallback *  self){
-	printf("~Dtor ChessBgViewCallback\n") ;
+	printf(".Dtor ChessBgViewCallback\n") ;
 }
 
 

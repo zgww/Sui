@@ -843,7 +843,7 @@ class SglEditor extends Listener{
                                 }
                             }
                             if (item.id.equals("inspector")){
-                                mkSglInspView(o, (long long)item)~{
+                                mkSglInspView(o, (long long)item).{
                                     o.editCtx = self.editCtx
                                     o.backgroundColor = t.dock_content_bg
                                     return o
@@ -853,7 +853,7 @@ class SglEditor extends Listener{
                                 return self.reactScene(o, item)
                             }
 
-                            mkTextView(o, (long long)item)~{
+                            mkTextView(o, (long long)item).{
                                 o.needClip = true
 
                                 printf("render dock content:%d, %s\n", item.intId, item.id.str);
@@ -869,7 +869,7 @@ class SglEditor extends Listener{
                                     : item.intId == 2 ? 0x5330ffff
                                     : 0x5300ffff
 
-                                layoutLinearCell(o, 0)~{
+                                layoutLinearCell(o, 0).{
                                     o.grow = 1
                                 }
 

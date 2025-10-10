@@ -318,7 +318,7 @@ struct RuneInfo{
 /// 布局上下文
 class TextView extends View {
 	// void dtor(){
-	// 	printf("~TextView:%p\n", self)
+	// 	printf(".TextView:%p\n", self)
 	// }
 	Vec2 get_pos_by_rune_cnt(int rune_cnt){
 		Vec2 ret = mkVec2(0, 0);

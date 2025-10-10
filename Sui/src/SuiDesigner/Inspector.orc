@@ -345,15 +345,15 @@ class Inspector{
         //     return
         // }
 
-        mkPanel(o, ((long long) _obj) + vtIdx)~{
+        mkPanel(o, ((long long) _obj) + vtIdx).{
             o.cbRenderTitle = ^void(Node *o){
-                mkTextView(o, 0)~{
+                mkTextView(o, 0).{
                     o.setText(str(Vtable_getClassName(vtable)))
                 }
             }
             o.cbRenderContent = ^void(Node *parent){
                 // Node@ o = parent
-                // mkTextView(parent, 0)~{
+                // mkTextView(parent, 0).{
                 //     o.setText(str("content"))
                 // }
 

@@ -551,7 +551,7 @@ class Insp {
             self.inspField(obj, mf)
 
             // Node* p = self.peekParent()
-            // mkTextView(p, (long long)mf)~{
+            // mkTextView(p, (long long)mf).{
             //     char tmp[128];
                 
             //     Vtable_Object* vt = orc_getVtableByObject(p)

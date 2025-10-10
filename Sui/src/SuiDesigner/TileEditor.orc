@@ -1998,19 +1998,19 @@ class TileEditor{
                     }
                     o.cbRenderItemContentView = ^ViewBase* (DockItem *item, ViewBase *o){
                         // if (item.id.equals("project")){
-                        //     mkAssetDirTreeView(o, (long long)item)~{
+                        //     mkAssetDirTreeView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
                         //         return o
                         //     }
                         // }
                         // if (item.id.equals("hier")){
-                        //     mkSceneHierView(o, (long long)item)~{
+                        //     mkSceneHierView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
                         //         return o
                         //     }
                         // }
                         // if (item.id.equals("inspector")){
-                        //     mkInspectorView(o, (long long)item)~{
+                        //     mkInspectorView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
                         //         return o
                         //     }
@@ -2031,9 +2031,9 @@ class TileEditor{
                             return self.reactTilesetView(o, item)
                         }
                         // if (item.id.equals("scene")){
-                        //     mkSceneView(o, (long long)item)~{
+                        //     mkSceneView(o, (long long)item).{
                         //         o.backgroundColor = t.dock_content_bg
-                        //         layoutLinearCell(o, 0)~{
+                        //         layoutLinearCell(o, 0).{
                         //             o.grow = 1
                         //         }
                         //         return o
@@ -2041,7 +2041,7 @@ class TileEditor{
                         // }
 
 
-                        mkTextView(o, (long long)item)~{
+                        mkTextView(o, (long long)item).{
                             o.needClip = true
 
                             printf("render dock content:%d, %s\n", item.intId, item.id.str);
@@ -2057,7 +2057,7 @@ class TileEditor{
                                 : item.intId == 2 ? 0x5330ffff
                                 : 0x5300ffff
 
-                            layoutLinearCell(o, 0)~{
+                            layoutLinearCell(o, 0).{
                                 o.grow = 1
                             }
 

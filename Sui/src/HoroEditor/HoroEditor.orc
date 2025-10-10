@@ -234,7 +234,7 @@ class HoroEditor extends Listener{
         // }
         Theme*t = themeIns()
 
-        mkHoro2dSceneView(o, (long long)anode)~{
+        mkHoro2dSceneView(o, (long long)anode).{
             o.root = anode
             o.editor = self
             o.backgroundColor = t.dock_content_bg
@@ -489,7 +489,7 @@ class HoroEditor extends Listener{
                         }
                     }
                     if (item.id.equals("inspector")){
-                        mkHoroInspView(o, (long long)item)~{
+                        mkHoroInspView(o, (long long)item).{
                             o.editCtx = self.editCtx
                             o.editor = self
                             o.backgroundColor = t.dock_content_bg
@@ -500,7 +500,7 @@ class HoroEditor extends Listener{
                         return self.reactScene(o, item)
                     }
 
-                    mkTextView(o, (long long)item)~{
+                    mkTextView(o, (long long)item).{
                         o.needClip = true
 
                         printf("render dock content:%d, %s\n", item.intId, item.id.str);
@@ -516,7 +516,7 @@ class HoroEditor extends Listener{
                             : item.intId == 2 ? 0x5330ffff
                             : 0x5300ffff
 
-                        layoutLinearCell(o, 0)~{
+                        layoutLinearCell(o, 0).{
                             o.grow = 1
                         }
 
@@ -749,10 +749,10 @@ class HoroEditor extends Listener{
 
         Window@ win = new Window();
         if 1 {
-            new HoroGeometryPreviewView().{
-                // o.showWindow("./Geometry/sp.geometry.json")
+            new HoroGeometryPreviewView()~{
                 o.showWindow("./Geometry/box2.geometry.json")
             }
+                // o.showWindow("./Geometry/sp.geometry.json")
             win.close()
             return;
         }

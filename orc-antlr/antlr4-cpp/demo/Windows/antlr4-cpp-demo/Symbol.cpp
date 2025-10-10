@@ -5405,6 +5405,11 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 		auto block = ctx->block();
 		auto expr = ctx->singleExpression();
 
+		auto rune = ctx->children[1];
+
+		auto term = dynamic_cast<antlr4::tree::TerminalNode*>(rune);
+		auto hasScopeExit = term->getText() == "."; // term: .|~  ~不会生成ScopeExit后处理逻辑
+
 		auto symbolTypeInfo = ast_calcSymbolTypeOfExpressionResult(expr, space);
 		auto astType = mk->type(symbolTypeInfo->type->toAstType(mk));
 
@@ -5414,44 +5419,46 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 		auto exprCode = visitReturnString(expr);
 		string exitCode = "";
 
-		auto symDef = symbolTypeInfo->findSymbolDefinition();
-		auto symDefClass = std::dynamic_pointer_cast<SymbolDefinitionClass>(symDef);
-		//支持__exit__ 退出作用的回调
-		if (symDefClass) {
-			auto memberInfo = symDefClass->findMemberByName_includeSupers("__exit__");
-			//auto classAstType = memberInfo->clas->getType()->toAstType(mk);
-			//auto classTypeCode = visitReturnString(classAstType);
-			if (memberInfo) {
-				CostUsGuard g(this);
-				auto scopeObjName = std::format("__scopeObj_{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
-				exitCode = std::format("UNUSED DEFER(Orc_scopeExit) Orc$ScopeData {} = (({}*)o)->__exit__((void*)o);"
-					, scopeObjName
-					, memberInfo->classDef->fullname
-				);
-			}
-		}
-		{
-			auto symDefStruct = std::dynamic_pointer_cast<SymbolDefinitionStruct>(symDef);
-
+		if (hasScopeExit) {
+			auto symDef = symbolTypeInfo->findSymbolDefinition();
+			auto symDefClass = std::dynamic_pointer_cast<SymbolDefinitionClass>(symDef);
 			//支持__exit__ 退出作用的回调
-			if (symDefStruct) {
-				auto memberSymDef = symDefStruct->findMemberByName("__exit__");
+			if (symDefClass) {
+				auto memberInfo = symDefClass->findMemberByName_includeSupers("__exit__");
 				//auto classAstType = memberInfo->clas->getType()->toAstType(mk);
 				//auto classTypeCode = visitReturnString(classAstType);
-				if (memberSymDef) {
+				if (memberInfo) {
 					CostUsGuard g(this);
-					int pointLevel = symbolTypeInfo->getPointLevel_ofType();
-
 					auto scopeObjName = std::format("__scopeObj_{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
-					if (pointLevel == 0) {
-						exitCode = std::format("UNUSED DEFER(Orc_scopeExit) Orc$ScopeData {} = o.__exit__(&o);"
-							, scopeObjName
-						);
-					}
-					else {
-						exitCode = std::format("UNUSED DEFER(Orc_scopeExit) Orc$ScopeData {} = o->__exit__(o);"
-							, scopeObjName
-						);
+					exitCode = std::format("UNUSED DEFER(Orc_scopeExit) Orc$ScopeData {} = (({}*)o)->__exit__((void*)o);"
+						, scopeObjName
+						, memberInfo->classDef->fullname
+					);
+				}
+			}
+			{
+				auto symDefStruct = std::dynamic_pointer_cast<SymbolDefinitionStruct>(symDef);
+
+				//支持__exit__ 退出作用的回调
+				if (symDefStruct) {
+					auto memberSymDef = symDefStruct->findMemberByName("__exit__");
+					//auto classAstType = memberInfo->clas->getType()->toAstType(mk);
+					//auto classTypeCode = visitReturnString(classAstType);
+					if (memberSymDef) {
+						CostUsGuard g(this);
+						int pointLevel = symbolTypeInfo->getPointLevel_ofType();
+
+						auto scopeObjName = std::format("__scopeObj_{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
+						if (pointLevel == 0) {
+							exitCode = std::format("UNUSED DEFER(Orc_scopeExit) Orc$ScopeData {} = o.__exit__(&o);"
+								, scopeObjName
+							);
+						}
+						else {
+							exitCode = std::format("UNUSED DEFER(Orc_scopeExit) Orc$ScopeData {} = o->__exit__(o);"
+								, scopeObjName
+							);
+						}
 					}
 				}
 			}

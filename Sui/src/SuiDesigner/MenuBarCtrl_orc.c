@@ -212,7 +212,7 @@ SuiDesigner$MenuBarCtrl * SuiDesigner$MenuBarCtrl_new(void *pOwner){
 
 // class members
 void  SuiDesigner$MenuBarCtrl$dtor(SuiDesigner$MenuBarCtrl *  self){
-	printf("~MenuBarCtrl\n") ;
+	printf(".MenuBarCtrl\n") ;
 }
 
 

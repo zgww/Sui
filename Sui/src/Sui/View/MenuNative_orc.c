@@ -319,7 +319,7 @@ void  SuiView$MenuNative$ctor(SuiView$MenuNative *  self){
 
 
 void  SuiView$MenuNative$dtor(SuiView$MenuNative *  self){
-	printf("~MenuNative\n") ;
+	printf(".MenuNative\n") ;
 }
 
 

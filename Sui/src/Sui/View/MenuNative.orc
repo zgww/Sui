@@ -34,7 +34,7 @@ class MenuNativeItem{
         gMenuId = gMenuId + 1
     }
     void dtor(){
-        // printf("~MenuNativeItem\n");
+        // printf(".MenuNativeItem\n");
     }
 
     void append(MenuNativeItem *item){
@@ -84,7 +84,7 @@ class MenuNative {
         currentMenuNative = self
     }
     void dtor(){
-        printf("~MenuNative\n");
+        printf(".MenuNative\n");
     }
 
     void create(MenuNativeItem *root){

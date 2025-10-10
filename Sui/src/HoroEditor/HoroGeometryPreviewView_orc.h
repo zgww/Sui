@@ -66,6 +66,7 @@ typedef struct tagVtable_HoroEditor$HoroGeometryPreviewView Vtable_HoroEditor$Ho
 #include "../Sui/View/Button_orc.h"
 #include "../Sui/View/ImageView_orc.h"
 #include "../Sui/View/ViewBuilder_orc.h"
+#include "../Sui/View/SplitterView_orc.h"
 #include "../Sui/Layout/LayoutLinear_orc.h"
 #include "../Sui/Dialog/Toast_orc.h"
 #include "../Sui/Core/Window_orc.h"

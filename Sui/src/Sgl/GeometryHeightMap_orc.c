@@ -156,7 +156,7 @@ Sgl$GeometryHeightMap * Sgl$GeometryHeightMap_new(void *pOwner){
 
 // class members
 void  Sgl$GeometryHeightMap$dtor(Sgl$GeometryHeightMap *  self){
-	printf("~GeometryHeightMap\n") ;
+	printf(".GeometryHeightMap\n") ;
 }
 
 

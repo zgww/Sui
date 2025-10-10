@@ -1452,7 +1452,7 @@ void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const cha
 		URGC_VAR_CLEANUP_CLASS HoroEditor$HoroGeometryPreviewView*  tmpNewOwner_1 = NULL;
 		{
 			HoroEditor$HoroGeometryPreviewView*  o = HoroEditor$HoroGeometryPreviewView_new(&tmpNewOwner_1) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_752_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			
 		
 			o->showWindow(o, "./Geometry/box2.geometry.json") ;
 		}

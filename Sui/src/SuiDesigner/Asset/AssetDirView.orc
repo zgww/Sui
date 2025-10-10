@@ -140,7 +140,7 @@ class AssetDirView extends LayoutLinear {
 
         self.startInnerReact()
 
-        // mkTextView(self, 0)~{
+        // mkTextView(self, 0).{
         //     o.setText(str("good"))
         // }
 
@@ -150,17 +150,17 @@ class AssetDirView extends LayoutLinear {
         AssetDirView* o = (AssetDirView*)self
 
         o.backgroundColor = t.dir_bg //0x33ffffff
-        layoutLinearCell(o, 0)~{
+        layoutLinearCell(o, 0).{
             o.grow = 1
         }
 
-        // layoutAlign(o, 0)~{
-        //     layoutLinearCell(o, 0)~{
+        // layoutAlign(o, 0).{
+        //     layoutLinearCell(o, 0).{
         //         o.grow = 1
         //     }
         // }
 
-        mkScrollArea(o, 0)~{
+        mkScrollArea(o, 0).{
             // o.backgroundColor = 0xff00ffff
             // o.width = 300
             // o.height = 200
@@ -170,11 +170,11 @@ class AssetDirView extends LayoutLinear {
 
             o.margin.setAll(6)
 
-            layoutLinearCell(o, 0)~{
+            layoutLinearCell(o, 0).{
                 o.grow = 1
             }
 
-            mkRowWrap(o, 0)~{
+            mkRowWrap(o, 0).{
                 // o.alignItems = str("stretch")
                 o.alignItems.set("start")
 
@@ -379,7 +379,7 @@ class AssetDirView extends LayoutLinear {
         Theme* t = themeIns()
 
         FileItem@ tmpFi = fi
-        layoutLinear(o, (long long)fi)~{
+        layoutLinear(o, (long long)fi).{
             o.width = 80
             o.direction = str("column")
             o.margin.setHor(6)
@@ -389,13 +389,13 @@ class AssetDirView extends LayoutLinear {
                 self._fileItem_onEvent(e, tmpFi)
             }
 
-            mkHoverViewEffect(o, 0)~{
+            mkHoverViewEffect(o, 0).{
                 // o.isActive = self.activeFileItem == fi
                 o.isActive = self.selectFileItems.list.has(fi)
                 // o.hoverBackgroundColor = 0xff
             }
 
-            mkImageView(o, 0)~{
+            mkImageView(o, 0).{
                 if fi.path.endsWith(".png"){
                     o.setSrc(fi.path)
                 }
@@ -412,7 +412,7 @@ class AssetDirView extends LayoutLinear {
                 o.width = 60
                 o.height = 60
             }
-            mkTextView(o, 0)~{
+            mkTextView(o, 0).{
                 o.margin.setVer(6)
                 o.setText(fi.filename)
                 o.setFont_size(t.dir_fontSize)

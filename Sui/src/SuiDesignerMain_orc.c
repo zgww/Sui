@@ -395,7 +395,7 @@ MenuBarCtrl * MenuBarCtrl_new(void *pOwner){
 
 // class members
 void  MenuBarCtrl$dtor(MenuBarCtrl *  self){
-	printf("~MenuBarCtrl\n") ;
+	printf(".MenuBarCtrl\n") ;
 }
 
 
@@ -1715,7 +1715,7 @@ void  Tmp2$ctor(Tmp2 *  self){
 
 
 void  Tmp2$dtor(Tmp2 *  self){
-	printf("~Tmp()\n") ;
+	printf(".Tmp()\n") ;
 }
 
 

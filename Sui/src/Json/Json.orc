@@ -23,7 +23,7 @@ class Json {
     Map@ map = null
 
     void dtor(){
-        // printf("~Json. kind:%d\n", self.kind)
+        // printf(".Json. kind:%d\n", self.kind)
     }
 
     // 序列化
