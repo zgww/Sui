@@ -3481,7 +3481,9 @@ public:
 										pointerType->typeName = typeInfo->type->getNakeTypeName();
 										typeInfo->type = pointerType;
 									}
-									auto curFunc = ast_findAncestorByType<OrcParser::FunctionDefinitionContext>(objExpr);
+									auto curFunc = (OrcRuleContext*)ast_findFirstAncestorByTwoType<
+										OrcParser::ClassDefinitionContext,
+										OrcParser::FunctionDefinitionContext>(objExpr);
 									curFunc->numberTmpThis++;
 									// 起个名字
 									string tmpForThis_varName = std::format("tmpThis_{}", curFunc->numberTmpThis);

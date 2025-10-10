@@ -29,6 +29,14 @@ class InvalidReact{
     ^void () react
     Object @target
 
+    String@ reactName = str("react")
+
+    InvalidReact* setReactName(const char *name){
+        self.reactName.set(name)
+        return self
+    }
+
+
     void invalid(){
         if self._reactDirty{
             return
@@ -43,7 +51,7 @@ class InvalidReact{
             else if self.target {
                 //通过反射调用
                 void (**pReact)(Object *obj);
-                OrcMetaField *mf = orc_getMetaFieldByObject(self.target, "react")
+                OrcMetaField *mf = orc_getMetaFieldByObject(self.target, self.reactName.str)
                 if mf {
                     pReact = OrcMetaField_getPtr(mf, self.target);
                     if *pReact{
