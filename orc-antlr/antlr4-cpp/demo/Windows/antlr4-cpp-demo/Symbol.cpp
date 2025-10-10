@@ -1410,6 +1410,38 @@ VarInfo ast_findVarInfoByVarName(
 				}
 			}
 		}
+		{
+			//类块，由于会插入临时变量声明
+			auto block = dynamic_cast<OrcParser::ClassDefinitionBlockContext*>(tree);
+			if (block) {
+				//遍历子语句，查找变量声明
+				auto kids = block->children;
+				for (auto kid : kids) {
+					auto stmt = dynamic_cast<OrcParser::StatementContext*>(kid);
+					if (stmt) {
+						auto varDecl = stmt->varDeclaration();
+						//找到同名的定义
+						if (varDecl) {
+							if (varDecl->Id()) {
+								if (varDecl->Id()->getText() == varName) {
+									info.isFound = true;
+									info.varDeclaration = varDecl;
+									return info;
+								}
+							}
+							//函数指针型的变量
+							auto func = varDecl->functionPointerVarDeclaration();
+							if (func && func->Id()->getText() == varName) {
+								info.isFound = true;
+								info.varDeclaration = varDecl;
+								return info;
+							}
+						}
+					}
+				}
+
+			}
+		}
 		{ // 在for中声明变量
 			auto iteration = dynamic_cast<OrcParser::IterationStatementContext*>(tree);
 			auto forCtx = iteration ? iteration->forCondition(): NULL;
@@ -3493,7 +3525,10 @@ public:
 									auto type = mk->type(astType);
 									auto varDecl = mk->varDeclaration(type, tmpForThis_varName, mk->nullLiteralExpression());
 
-									auto statement = ast_findAncestorByType<OrcParser::StatementContext>(ctx);
+									auto statement = dynamic_cast<OrcRuleContext*>(ast_findFirstAncestorByTwoType<
+										OrcParser::ClassFieldDeclarationContext,
+										OrcParser::StatementContext>(ctx));
+									//auto statement = ast_findAncestorByType<OrcParser::StatementContext>(ctx);
 									if (statement) {
 										//临时变量声明语句
 										auto varDeclarationStatement = mk->statement();

@@ -278,6 +278,7 @@ file(GLOB src
     src/HoroEditor/Horo2dSceneView_orc.c
     src/HoroEditor/ImageChessBg_orc.c
     src/HoroEditor/SceneTransform_orc.c
+    src/HoroEditor/HoroGeometryPreviewView_orc.c
 
     # src/testTgfx.cpp
 

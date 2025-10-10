@@ -95,6 +95,7 @@ import * from "./HoroEditCtx.orc"
 import * from "./HoroInspView.orc"
 import * from "./UiAct.orc"
 import * from "./Horo2dSceneView.orc"
+import * from "./HoroGeometryPreviewView.orc"
 
 
 static DockLayout@ dockLayoutIns = null
@@ -739,6 +740,14 @@ class HoroEditor extends Listener{
         }
     }
     void openProject(const char *path){
+        Window@ win = new Window();
+        if 1 {
+            new HoroGeometryPreviewView().{
+                o.showWindow()
+            }
+            win.close()
+            return;
+        }
         registerNodes()
 
         // String@ projectDirPath = Path_dirname(Path_getExecutionPath().str).add("/../asset/matl")
@@ -752,7 +761,6 @@ class HoroEditor extends Listener{
         Project_ins().init(abspath.str)
 
         //确保opengl环境有初始化了
-        Window@ win = new Window();
 
         // self.editCtx.openPrefab("prefab/button.prefab.json")
         // self.editCtx.openPrefab("prefab/login.prefab.json")
@@ -760,6 +768,5 @@ class HoroEditor extends Listener{
 
 
         self.showWindow()
-        win.close()
     }
 }

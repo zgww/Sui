@@ -117,7 +117,7 @@ HoroEditor$HoroGeometryPreviewView * HoroEditor$HoroGeometryPreviewView_new(void
 void HoroEditor$HoroGeometryPreviewView_fini(HoroEditor$HoroGeometryPreviewView *self);
 
 void  HoroEditor$HoroGeometryPreviewView$ctor(HoroEditor$HoroGeometryPreviewView *  self);
-void  HoroEditor$HoroGeometryPreviewView$react(HoroEditor$HoroGeometryPreviewView *  self);
+void  HoroEditor$HoroGeometryPreviewView$dtor(HoroEditor$HoroGeometryPreviewView *  self);
 void  HoroEditor$HoroGeometryPreviewView$reactWindow(HoroEditor$HoroGeometryPreviewView *  self);
 void  HoroEditor$HoroGeometryPreviewView$showWindow(HoroEditor$HoroGeometryPreviewView *  self);
 void  HoroEditor$HoroGeometryPreviewView$draw_self(HoroEditor$HoroGeometryPreviewView *  self, SuiCore$Canvas *  canvas);

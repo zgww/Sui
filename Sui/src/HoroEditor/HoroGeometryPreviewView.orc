@@ -73,7 +73,7 @@ class HoroGeometryPreviewView extends ImageView {
     Mesh@ groundGrid = new Mesh()
     void ctor(){
         super.ctor()
-        self._invalid.reactName.set("reactWindow")
+        self.mkBaseScene()
         self.drag.onDrag = ^void(Drag*d){
             if d.isDragging {
                 printf("dragging scene\n")
@@ -101,11 +101,23 @@ class HoroGeometryPreviewView extends ImageView {
         }
 
     }
-    void react(){
+
+    void dtor(){
+        printf("~~~~~HoroGeometryPreviewView\n\n");
 
     }
     void reactWindow(){
-        self.win.rootView.{
+        LayoutLinear *ll = (LayoutLinear*)self.win.rootView
+        ll.{
+            o.backgroundColor = themeIns().bg1 //0xffffffff
+            o.direction.set("row")
+            o.alignItems.set("stretch")
+
+            o.placeKid(self)
+            self.{
+                layoutLinearCell(o, 0)
+
+            }
             mkTextView(o, 0).{
                 o.setText(str("Geometry"))
             }
@@ -119,19 +131,8 @@ class HoroGeometryPreviewView extends ImageView {
                 // self.onWindowEvent(e)
             }
 
-            new LayoutLinear().{
-                o.backgroundColor = themeIns().bg1 //0xffffffff
-                o.direction.set("row")
-                o.alignItems.set("stretch")
-
-                // ChessBgViewCallback@ tmp= new ChessBgViewCallback()
-                // o.cb  = tmp
-
-                self.win.setRootView(o)
-            }
-
+            self.win.setRootView(new LayoutLinear())
             self.reactWindow()
-
 
             o.setTitle("预览几何体")
             o.setSize(800, 600)
