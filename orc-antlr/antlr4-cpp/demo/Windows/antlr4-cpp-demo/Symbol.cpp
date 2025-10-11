@@ -6775,6 +6775,20 @@ std::shared_ptr<SymbolSpace> SymbolSpace::build(std::string path, antlr4::tree::
 		return vi.space;
 	}
 }
+static std::string getClangConfig_flags() {
+	static bool loaded = false;
+	static std::string flags = "";
+	if (!loaded) {
+		std::string clangConfigPath = "clang-config.json";
+		if (Path(clangConfigPath).exists()) {
+			auto clangConfigJsonStr = FsUtil::read_all_text("clang-config.json");
+			auto jo = nlohmann::json::parse(clangConfigJsonStr);
+			flags = jo["flags"].get<std::string>();
+		}
+		loaded = true;
+	}
+	return flags;
+}
 
 std::shared_ptr<SymbolSpace>  SymbolSpace::buildSymbolSpace_forInclude(std::string orcPath, std::string path, std::string includeSegment,
 	std::shared_ptr<SymbolSpaceLoader> loader)
@@ -6790,9 +6804,10 @@ std::shared_ptr<SymbolSpace>  SymbolSpace::buildSymbolSpace_forInclude(std::stri
 	FsUtil$write_all_text(tmpCPath.string().c_str(), includeSegment.c_str(), "w+");
 	printf("创建c临时文件成功:%s %s\n", tmpCPath.string().c_str(), includeSegment.c_str());
 
+	auto flags = getClangConfig_flags();
 	//调用clang生成 ast json
 	auto synJsonPath = orcPath_fs.parent_path() / (fname + "-symbol.json");
-	auto cmdline = std::format("clang -I.. -Xclang -ast-dump=json -fsyntax-only \"{}\" > \"{}\"", tmpCPath.string(), synJsonPath.string());
+	auto cmdline = std::format("clang -I.. {} -Xclang -ast-dump=json -fsyntax-only \"{}\" > \"{}\"", flags, tmpCPath.string(), synJsonPath.string());
 	printf("使用clang生成符号文件. cmdline=%s\n", cmdline.c_str());
 	int exitCode = system(cmdline.c_str());
 	if (exitCode != 0) {

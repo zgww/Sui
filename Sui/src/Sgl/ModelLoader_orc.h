@@ -15,6 +15,9 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 #include <stdlib.h>
 
 #include <stdio.h>
+#include <assimp/cimport.h>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 
 

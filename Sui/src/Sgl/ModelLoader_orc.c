@@ -2,6 +2,9 @@
 #include "ModelLoader_orc.h" 
 
 #include <stdio.h>
+#include <assimp/cimport.h>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 #include "../Orc/String_orc.h"
 #include "../Orc/List_orc.h"
 #include "./Obj3d_orc.h"

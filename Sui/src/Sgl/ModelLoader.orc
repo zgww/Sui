@@ -1,6 +1,9 @@
 package Sgl
 
 #include <stdio.h>
+#include <assimp/cimport.h>      // C++ importer interface
+#include <assimp/scene.h>           // Output data structure
+#include <assimp/postprocess.h>     // Post processing flags
 
 import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
