@@ -226,7 +226,12 @@ void  Sgl$AssimpLoader$printScene(Sgl$AssimpLoader *  self){
 void  Sgl$AssimpLoader$printNode(Sgl$AssimpLoader *  self, struct aiNode *  node, int  idx, int  tabCount){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tab = Orc$str((tab = NULL,&tab), "") ;
 	Orc$String$fillCount(tab, "\t", tabCount) ;
-	printf("%s%4d %s[nKids=%d, nMesh=%d, ]\n", tab->str, idx, node->mName.data, node->mNumChildren, node->mNumMeshes) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  meshIds = Orc$str((meshIds = NULL,&meshIds), "") ;
+	for (int  i = 0; i < node->mNumMeshes; i++) {
+		unsigned int  meshIndex = node->mMeshes[i];
+		Orc$String$add(Orc$String$addi(meshIds, meshIndex) , ",") ;
+	}
+	printf("%s%4d %s[nKids=%d, nMesh=%d;%s]\n", tab->str, idx, node->mName.data, node->mNumChildren, node->mNumMeshes, meshIds->str) ;
 	for (unsigned int  i = 0; i < node->mNumChildren; ++i) {
 		self->printNode(self, node->mChildren[i], i, tabCount + 1) ;
 	}

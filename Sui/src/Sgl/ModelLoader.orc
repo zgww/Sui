@@ -218,7 +218,12 @@ class AssimpLoader {
     void printNode(struct aiNode* node, int idx, int tabCount){
         String@ tab = str("") 
         tab.fillCount("\t", tabCount)
-        printf("%s%4d %s[nKids=%d, nMesh=%d, ]\n", tab.str, idx, node.mName.data, node.mNumChildren, node.mNumMeshes);
+        String@ meshIds = str("")
+        for int i = 0; i < node.mNumMeshes; i++{
+            unsigned int meshIndex = node.mMeshes[i]
+            meshIds.addi(meshIndex).add(",")
+        }
+        printf("%s%4d %s[nKids=%d, nMesh=%d;%s]\n", tab.str, idx, node.mName.data, node.mNumChildren, node.mNumMeshes, meshIds.str);
         // 递归处理子节点
         for (unsigned int i = 0; i < node->mNumChildren; ++i) {
             self.printNode(node->mChildren[i], i, tabCount+1);
