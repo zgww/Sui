@@ -46,6 +46,10 @@ class AssimpLoader {
             aiReleaseImport(self.scene);
         }
     }
+
+    void buildSglTree(){
+    }
+
     void showWindow(){
         new Window()~{
             Window* win = o

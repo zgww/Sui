@@ -74,6 +74,7 @@ struct tagSgl$AssimpLoader {
 	Object super; 
 	Orc$String*  path ;
 	struct aiScene *  scene ;
+	void  (*buildSglTree) (Sgl$AssimpLoader *  self);
 	void  (*showWindow) (Sgl$AssimpLoader *  self);
 	void  (*mkNodeTreeView) (Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);
 	void  (*load) (Sgl$AssimpLoader *  self, const char *  model_path);
@@ -87,6 +88,7 @@ Sgl$AssimpLoader * Sgl$AssimpLoader_new(void *pOwner);
 void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self);
 
 void  Sgl$AssimpLoader$dtor(Sgl$AssimpLoader *  self);
+void  Sgl$AssimpLoader$buildSglTree(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$mkNodeTreeView(Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);
 void  Sgl$AssimpLoader$load(Sgl$AssimpLoader *  self, const char *  model_path);
