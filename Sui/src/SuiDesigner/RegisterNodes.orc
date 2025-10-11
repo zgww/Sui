@@ -35,6 +35,7 @@ import * from "../Sgl/Light.orc"
 import * from "../Sgl/PointLight.orc"
 import * from "../Sgl/DirLight.orc"
 import * from "../Sgl/SpotLight.orc"
+import * from "../Sgl/ModelLoader.orc"
 
 
 void registerNodes(){
@@ -100,6 +101,7 @@ void registerNodes(){
     lib.registerClass(PointLight)
     lib.registerClass(DirLight)
     lib.registerClass(SpotLight)
+    lib.registerClass(ModelLoader)
 }
 
 

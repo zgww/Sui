@@ -32,6 +32,7 @@
 #include "../Sgl/PointLight_orc.h"
 #include "../Sgl/DirLight_orc.h"
 #include "../Sgl/SpotLight_orc.h"
+#include "../Sgl/ModelLoader_orc.h"
 
 
 // static struct 
@@ -74,6 +75,7 @@ void  SuiDesigner$registerNodes(){
 	lib->registerClass(lib, Vtable_Sgl$PointLight_init(NULL)) ;
 	lib->registerClass(lib, Vtable_Sgl$DirLight_init(NULL)) ;
 	lib->registerClass(lib, Vtable_Sgl$SpotLight_init(NULL)) ;
+	lib->registerClass(lib, Vtable_Sgl$ModelLoader_init(NULL)) ;
 }
 
 

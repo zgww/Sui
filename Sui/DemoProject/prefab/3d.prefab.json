@@ -45,6 +45,11 @@
 				},
 				"tag":	"Sgl$Mesh",
 				"children":	[]
+			}, {
+				"attrs":	{
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
 			}]
 	}
 }

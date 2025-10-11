@@ -62,6 +62,7 @@
 #include "../Sgl/PointLight_orc.h"
 #include "../Sgl/DirLight_orc.h"
 #include "../Sgl/SpotLight_orc.h"
+#include "../Sgl/ModelLoader_orc.h"
 
 
 #ifdef __cplusplus
