@@ -20,6 +20,23 @@ import * from "./Geometry.orc"
 import * from "./Material.orc"
 
 
+struct aiMaterialProperty* assimp_getMaterialPropByName(struct aiMaterial* matl, const char *name){
+    for int j = 0; j < matl.mNumProperties; j++{
+        struct aiMaterialProperty *prop = matl.mProperties[j]
+        if strcmp(prop.mKey.data, name) == 0 {
+            return prop;
+        }
+    }
+    return null
+}
+const char *assimp_getMaterialName(struct aiMaterial* matl){
+    struct aiMaterialProperty* prop = assimp_getMaterialPropByName(matl, "?mat.name")
+    if prop {
+        struct aiString* s = (struct aiString*)prop.mData;
+        return s->data;
+    }
+    return null
+}
 class AssimpLoader {
     String@ path
     struct aiScene *scene;
@@ -47,16 +64,42 @@ class AssimpLoader {
                 }
                 for int i = 0; i < self.scene.mNumMaterials; i++{
                     struct aiMaterial *e = self.scene.mMaterials[i]
+                    char tmp[1024];
+                    sprintf(tmp, "%d %s numProperty=%d\n", 
+                        i, 
+                        assimp_getMaterialName(e),
+                        e.mNumProperties
+                    )
                     mkTreeSelfCtrlView(o, (long long)e).{
                         o.deep = 1
-                        o.hasKids = false
+                        o.hasKids = true
                         mkTextView(o, 0).{
-                            char tmp[1024];
-                            sprintf(tmp, "%d numProperty=%d\n", 
-                                i, 
-                                e.mNumProperties
-                            )
                             o.setText(str(tmp))
+                        }
+                    }
+                    for int j = 0; j < e.mNumProperties; j++{
+                        struct aiMaterialProperty *prop = e.mProperties[j]
+                        sprintf(tmp, "%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d ", j, prop.mKey.data, prop.mSemantic, prop.mIndex, prop.mDataLength, prop.mType);
+                        if prop.mType == aiPTI_Float {
+                            sprintf(tmp, "%s%f", tmp, *((float*)prop.mData));
+                        }
+                        else if prop.mType == aiPTI_Double {
+                            sprintf(tmp, "%s%f", tmp, *((double*)prop.mData));
+                        }
+                        else if prop.mType == aiPTI_Integer {
+                            sprintf(tmp, "%s%d", tmp, *((int*)prop.mData));
+                        }
+                        else if prop.mType == aiPTI_String {
+                            struct aiString* s = (struct aiString*)prop.mData;
+                            sprintf(tmp, "%s%s", tmp, s->data);
+                        }
+                        // printf("\n")
+                        mkTreeSelfCtrlView(o, (long long)e).{
+                            o.deep = 2
+                            o.hasKids = false
+                            mkTextView(o, 0).{
+                                o.setText(str(tmp))
+                            }
                         }
                     }
                 }
@@ -585,6 +628,7 @@ class ModelLoader extends Obj3d {
 void test_AssimpLoader () {
     AssimpLoader@ l = new AssimpLoader()
     // l.load("duck.dae")
-    l.load("spider.fbx")
+    // l.load("spider.fbx")
+    l.load("spider.obj")
     l.showWindow()
 }

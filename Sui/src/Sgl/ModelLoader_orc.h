@@ -59,6 +59,8 @@ extern "C"{
 #endif
 
 //代码内容
+struct aiMaterialProperty *  Sgl$assimp_getMaterialPropByName(struct aiMaterial *  matl, const char *  name);
+const char *  Sgl$assimp_getMaterialName(struct aiMaterial *  matl);
 
 // 虚表
 struct tagVtable_Sgl$AssimpLoader {
