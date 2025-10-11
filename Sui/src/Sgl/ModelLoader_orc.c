@@ -58,6 +58,7 @@ void Sgl$AssimpLoader_initMeta(Vtable_Sgl$AssimpLoader *pvt){
 	orc_metaField_plainStruct(&pNext, "scene", sizeof(struct aiScene), offsetof(Sgl$AssimpLoader, scene), false, true, 1);
 
 	orc_metaField_method(&pNext, "buildSglTree", offsetof(Sgl$AssimpLoader, buildSglTree));
+	orc_metaField_method(&pNext, "buildNode", offsetof(Sgl$AssimpLoader, buildNode));
 	orc_metaField_method(&pNext, "showWindow", offsetof(Sgl$AssimpLoader, showWindow));
 	orc_metaField_method(&pNext, "mkNodeTreeView", offsetof(Sgl$AssimpLoader, mkNodeTreeView));
 	orc_metaField_method(&pNext, "load", offsetof(Sgl$AssimpLoader, load));
@@ -119,6 +120,7 @@ void Sgl$AssimpLoader_init_fields(Sgl$AssimpLoader *self){
     }
 	((Object*)self)->dtor = (void*)Sgl$AssimpLoader$dtor;
 	((Sgl$AssimpLoader*)self)->buildSglTree = (void*)Sgl$AssimpLoader$buildSglTree;
+	((Sgl$AssimpLoader*)self)->buildNode = (void*)Sgl$AssimpLoader$buildNode;
 	((Sgl$AssimpLoader*)self)->showWindow = (void*)Sgl$AssimpLoader$showWindow;
 	((Sgl$AssimpLoader*)self)->mkNodeTreeView = (void*)Sgl$AssimpLoader$mkNodeTreeView;
 	((Sgl$AssimpLoader*)self)->load = (void*)Sgl$AssimpLoader$load;
@@ -167,8 +169,30 @@ void  Sgl$AssimpLoader$dtor(Sgl$AssimpLoader *  self){
 }
 
 
-void  Sgl$AssimpLoader$buildSglTree(Sgl$AssimpLoader *  self){
-	
+Sgl$Obj3d*  Sgl$AssimpLoader$buildSglTree(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self){
+	URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpReturn_1 = NULL;
+	return urgc_set_var_for_return_class((void ** )__outRef__, self->buildNode(&tmpReturn_1, self, NULL, self->scene->mRootNode, 0, 0) ) ; 
+}
+
+
+Sgl$Obj3d*  Sgl$AssimpLoader$buildNode(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self, Sgl$Obj3d *  parent, struct aiNode *  node, int  idx, int  deep){
+	URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  ret = NULL;
+	if (node->mNumMeshes == 0) {
+		URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpNewOwner_1 = NULL;
+		urgc_set_var_class(&ret, Sgl$Obj3d_new(&tmpNewOwner_1) ) ;
+	}
+	else {
+		URGC_VAR_CLEANUP_CLASS Sgl$Mesh*  mesh = (mesh=NULL,urgc_init_var_class((void**)&mesh, Sgl$Mesh_new(&mesh) ));
+		urgc_set_var_class(&ret, mesh) ;
+	}
+	if (parent) {
+		((SuiCore$Node * )parent)->appendChild(parent, ret) ;
+	}
+	for (unsigned int  i = 0; i < node->mNumChildren; ++i) {
+		URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpReturn_2 = NULL;
+		self->buildNode(&tmpReturn_2, self, ret, node->mChildren[i], i, deep + 1) ;
+	}
+	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
 }
 
 
@@ -182,45 +206,113 @@ void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self){
 		URGC_VAR_CLEANUP_CLASS SuiView$ScrollArea*  tmpNewOwner_2 = NULL;
 		{
 			SuiView$ScrollArea*  o = SuiView$ScrollArea_new(&tmpNewOwner_2) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_56_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_79_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			win->setRootView(win, o) ;
 			SuiLayout$LayoutLinear *  tmpThis_1 = NULL;
 			(tmpThis_1 = ((SuiLayout$LayoutLinear * )o)->column(o) )->aiStretch(tmpThis_1) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_3 = NULL;
 			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_62_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_3, o, (long long )0) , *o = __scopeVar_62_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_62_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$TreeSelfCtrlView*  __scopeVar_85_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_3, o, (long long )0) , *o = __scopeVar_85_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_85_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->deep = 0;
 				o->hasKids = true;
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_4 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_65_20 = SuiView$mkTextView(&tmpReturn_4, o, 0) , *o = __scopeVar_65_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_65_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_88_20 = SuiView$mkTextView(&tmpReturn_4, o, 0) , *o = __scopeVar_88_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_88_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_5 = NULL;
-					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_5, "材质") , self->scene->mNumMaterials) ) ;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_5, "元数据") , self->scene->mMetaData->mNumProperties) ) ;
+				}
+			}
+			for (int  i = 0; i < self->scene->mMetaData->mNumProperties; i++) {
+				struct aiString *  key = self->scene->mMetaData->mKeys + i;
+				struct aiMetadataEntry *  value = self->scene->mMetaData->mValues + i;
+				char  valueStr[512];
+				if (value->mType == AI_BOOL) {
+					sprintf(valueStr, "%d", *((bool * )value->mData)) ;
+				}
+				else if (value->mType == AI_INT32) {
+					sprintf(valueStr, "%d", *((int * )value->mData)) ;
+				}
+				else if (value->mType == AI_UINT32) {
+					sprintf(valueStr, "%u", *((unsigned int * )value->mData)) ;
+				}
+				else if (value->mType == AI_INT64) {
+					sprintf(valueStr, "%lld", *((long long * )value->mData)) ;
+				}
+				else if (value->mType == AI_AIVECTOR3D) {
+					struct aiVector3D *  pv = (struct aiVector3D * )value->mData;
+					sprintf(valueStr, "Vec3(%f,%f,%f)", pv->x, pv->y, pv->z) ;
+				}
+				else if (value->mType == AI_UINT64) {
+					sprintf(valueStr, "%llu", *((unsigned long long * )value->mData)) ;
+				}
+				else if (value->mType == AI_FLOAT) {
+					sprintf(valueStr, "%f", *((float * )value->mData)) ;
+				}
+				else if (value->mType == AI_DOUBLE) {
+					sprintf(valueStr, "%f", *((double * )value->mData)) ;
+				}
+				else if (value->mType == AI_AISTRING) {
+					struct aiString *  ais = (struct aiString * )value->mData;
+					sprintf(valueStr, "%s", ais->data) ;
+				}
+				char  tmp[1024];
+				sprintf(tmp, "%d %s =%s\n", i, key->data, valueStr) ;
+				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_6 = NULL;
+				{
+					SuiView$TreeSelfCtrlView*  __scopeVar_131_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_6, o, (long long )key) , *o = __scopeVar_131_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_131_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				
+					o->deep = 1;
+					o->hasKids = true;
+					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_7 = NULL;
+					{
+						SuiView$TextView*  __scopeVar_134_24 = SuiView$mkTextView(&tmpReturn_7, o, 0) , *o = __scopeVar_134_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_134_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
+						o->setText(o, Orc$str(&tmpReturn_8, tmp) ) ;
+					}
+				}
+			}
+			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_9 = NULL;
+			{
+				SuiView$TreeSelfCtrlView*  __scopeVar_139_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_9, o, (long long )0) , *o = __scopeVar_139_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_139_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			
+				o->deep = 0;
+				o->hasKids = true;
+				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_10 = NULL;
+				{
+					SuiView$TextView*  __scopeVar_142_20 = SuiView$mkTextView(&tmpReturn_10, o, 0) , *o = __scopeVar_142_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_142_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_11, "材质") , self->scene->mNumMaterials) ) ;
 				}
 			}
 			for (int  i = 0; i < self->scene->mNumMaterials; i++) {
 				struct aiMaterial *  e = self->scene->mMaterials[i];
 				char  tmp[1024];
 				sprintf(tmp, "%d %s numProperty=%d\n", i, Sgl$assimp_getMaterialName(e) , e->mNumProperties) ;
-				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_6 = NULL;
+				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_12 = NULL;
 				{
-					SuiView$TreeSelfCtrlView*  __scopeVar_77_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_6, o, (long long )e) , *o = __scopeVar_77_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_77_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TreeSelfCtrlView*  __scopeVar_154_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_12, o, (long long )e) , *o = __scopeVar_154_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_154_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					o->deep = 1;
 					o->hasKids = true;
-					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_7 = NULL;
+					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_13 = NULL;
 					{
-						SuiView$TextView*  __scopeVar_80_24 = SuiView$mkTextView(&tmpReturn_7, o, 0) , *o = __scopeVar_80_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_80_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TextView*  __scopeVar_157_24 = SuiView$mkTextView(&tmpReturn_13, o, 0) , *o = __scopeVar_157_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_157_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
-						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
-						o->setText(o, Orc$str(&tmpReturn_8, tmp) ) ;
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_14 = NULL;
+						o->setText(o, Orc$str(&tmpReturn_14, tmp) ) ;
 					}
 				}
 				for (int  j = 0; j < e->mNumProperties; j++) {
@@ -239,92 +331,55 @@ void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self){
 						struct aiString *  s = (struct aiString * )prop->mData;
 						sprintf(tmp, "%s%s", tmp, s->data) ;
 					}
-					URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_9 = NULL;
+					URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_15 = NULL;
 					{
-						SuiView$TreeSelfCtrlView*  __scopeVar_101_24 = SuiView$mkTreeSelfCtrlView(&tmpReturn_9, o, (long long )e) , *o = __scopeVar_101_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_101_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TreeSelfCtrlView*  __scopeVar_178_24 = SuiView$mkTreeSelfCtrlView(&tmpReturn_15, o, (long long )e) , *o = __scopeVar_178_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_178_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
 						o->deep = 2;
 						o->hasKids = false;
-						URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_10 = NULL;
+						URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_16 = NULL;
 						{
-							SuiView$TextView*  __scopeVar_104_28 = SuiView$mkTextView(&tmpReturn_10, o, 0) , *o = __scopeVar_104_28;
-							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_104_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
+							SuiView$TextView*  __scopeVar_181_28 = SuiView$mkTextView(&tmpReturn_16, o, 0) , *o = __scopeVar_181_28;
+							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_181_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
 						
-							URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
-							o->setText(o, Orc$str(&tmpReturn_11, tmp) ) ;
+							URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_17 = NULL;
+							o->setText(o, Orc$str(&tmpReturn_17, tmp) ) ;
 						}
 					}
 				}
 			}
-			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_12 = NULL;
+			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_18 = NULL;
 			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_110_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_12, o, (long long )0) , *o = __scopeVar_110_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_110_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$TreeSelfCtrlView*  __scopeVar_187_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_18, o, (long long )0) , *o = __scopeVar_187_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_187_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->deep = 0;
 				o->hasKids = true;
-				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_13 = NULL;
+				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_19 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_113_20 = SuiView$mkTextView(&tmpReturn_13, o, 0) , *o = __scopeVar_113_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_113_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_190_20 = SuiView$mkTextView(&tmpReturn_19, o, 0) , *o = __scopeVar_190_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_190_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
-					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_14 = NULL;
-					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_14, "动画#") , self->scene->mNumAnimations) ) ;
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_20 = NULL;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_20, "动画#") , self->scene->mNumAnimations) ) ;
 				}
 			}
 			for (int  i = 0; i < self->scene->mNumAnimations; i++) {
 				struct aiAnimation *  anim = self->scene->mAnimations[i];
 				char  tmp[1024];
 				sprintf(tmp, "%s dura=%f, ticksPs:%f, channels:%d meshChannel:%d  morphChannel:%d\n", anim->mName.data, anim->mDuration, anim->mTicksPerSecond, anim->mNumChannels, anim->mNumMeshChannels, anim->mNumMorphMeshChannels) ;
-				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_15 = NULL;
-				{
-					SuiView$TreeSelfCtrlView*  __scopeVar_126_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_15, o, (long long )anim) , *o = __scopeVar_126_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_126_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
-				
-					o->deep = 1;
-					o->hasKids = false;
-					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_16 = NULL;
-					{
-						SuiView$TextView*  __scopeVar_129_24 = SuiView$mkTextView(&tmpReturn_16, o, 0) , *o = __scopeVar_129_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_129_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
-					
-						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_17 = NULL;
-						o->setText(o, Orc$str(&tmpReturn_17, tmp) ) ;
-					}
-				}
-			}
-			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_18 = NULL;
-			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_134_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_18, o, (long long )0) , *o = __scopeVar_134_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_134_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
-			
-				o->deep = 0;
-				o->hasKids = true;
-				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_19 = NULL;
-				{
-					SuiView$TextView*  __scopeVar_137_20 = SuiView$mkTextView(&tmpReturn_19, o, 0) , *o = __scopeVar_137_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_137_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
-				
-					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_20 = NULL;
-					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_20, "纹理") , self->scene->mNumTextures) ) ;
-				}
-			}
-			for (int  i = 0; i < self->scene->mNumTextures; i++) {
-				struct aiTexture *  tex = self->scene->mTextures[i];
-				char  tmp[1024];
-				sprintf(tmp, "%s w=%d, h=%d, achFormatHint=%s\n", tex->mFilename.data, tex->mWidth, tex->mHeight, tex->achFormatHint) ;
 				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_21 = NULL;
 				{
-					SuiView$TreeSelfCtrlView*  __scopeVar_150_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_21, o, (long long )tex) , *o = __scopeVar_150_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_150_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TreeSelfCtrlView*  __scopeVar_203_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_21, o, (long long )anim) , *o = __scopeVar_203_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_203_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					o->deep = 1;
 					o->hasKids = false;
 					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_22 = NULL;
 					{
-						SuiView$TextView*  __scopeVar_153_24 = SuiView$mkTextView(&tmpReturn_22, o, 0) , *o = __scopeVar_153_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_153_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TextView*  __scopeVar_206_24 = SuiView$mkTextView(&tmpReturn_22, o, 0) , *o = __scopeVar_206_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_206_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
 						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_23 = NULL;
 						o->setText(o, Orc$str(&tmpReturn_23, tmp) ) ;
@@ -333,35 +388,35 @@ void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self){
 			}
 			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_24 = NULL;
 			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_158_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_24, o, (long long )0) , *o = __scopeVar_158_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_158_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$TreeSelfCtrlView*  __scopeVar_211_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_24, o, (long long )0) , *o = __scopeVar_211_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_211_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->deep = 0;
 				o->hasKids = true;
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_25 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_161_20 = SuiView$mkTextView(&tmpReturn_25, o, 0) , *o = __scopeVar_161_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_161_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_214_20 = SuiView$mkTextView(&tmpReturn_25, o, 0) , *o = __scopeVar_214_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_214_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_26 = NULL;
-					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_26, "网格") , self->scene->mNumMeshes) ) ;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_26, "纹理") , self->scene->mNumTextures) ) ;
 				}
 			}
-			for (int  i = 0; i < self->scene->mNumMeshes; i++) {
-				struct aiMesh *  e = self->scene->mMeshes[i];
+			for (int  i = 0; i < self->scene->mNumTextures; i++) {
+				struct aiTexture *  tex = self->scene->mTextures[i];
 				char  tmp[1024];
-				sprintf(tmp, "%s type=%d vtx=%d face=%d bones=%d matlIdx=%d animMeshes=%d method=%d, aabb=%f,%f,%f; %f,%f,%f\n", e->mName.data, e->mPrimitiveTypes, e->mNumVertices, e->mNumFaces, e->mNumBones, e->mMaterialIndex, e->mNumAnimMeshes, e->mMethod, e->mAABB.mMin.x, e->mAABB.mMin.y, e->mAABB.mMin.z, e->mAABB.mMax.x, e->mAABB.mMax.y, e->mAABB.mMax.z) ;
+				sprintf(tmp, "%s w=%d, h=%d, achFormatHint=%s\n", tex->mFilename.data, tex->mWidth, tex->mHeight, tex->achFormatHint) ;
 				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_27 = NULL;
 				{
-					SuiView$TreeSelfCtrlView*  __scopeVar_184_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_27, o, (long long )e) , *o = __scopeVar_184_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_184_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TreeSelfCtrlView*  __scopeVar_227_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_27, o, (long long )tex) , *o = __scopeVar_227_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_227_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					o->deep = 1;
 					o->hasKids = false;
 					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_28 = NULL;
 					{
-						SuiView$TextView*  __scopeVar_187_24 = SuiView$mkTextView(&tmpReturn_28, o, 0) , *o = __scopeVar_187_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_187_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TextView*  __scopeVar_230_24 = SuiView$mkTextView(&tmpReturn_28, o, 0) , *o = __scopeVar_230_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_230_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
 						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_29 = NULL;
 						o->setText(o, Orc$str(&tmpReturn_29, tmp) ) ;
@@ -370,35 +425,35 @@ void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self){
 			}
 			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_30 = NULL;
 			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_193_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_30, o, (long long )0) , *o = __scopeVar_193_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_193_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$TreeSelfCtrlView*  __scopeVar_235_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_30, o, (long long )0) , *o = __scopeVar_235_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_235_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->deep = 0;
 				o->hasKids = true;
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_31 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_196_20 = SuiView$mkTextView(&tmpReturn_31, o, 0) , *o = __scopeVar_196_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_196_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_238_20 = SuiView$mkTextView(&tmpReturn_31, o, 0) , *o = __scopeVar_238_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_238_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_32 = NULL;
-					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_32, "灯光") , self->scene->mNumLights) ) ;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_32, "网格") , self->scene->mNumMeshes) ) ;
 				}
 			}
-			for (int  i = 0; i < self->scene->mNumLights; i++) {
-				struct aiLight *  e = self->scene->mLights[i];
+			for (int  i = 0; i < self->scene->mNumMeshes; i++) {
+				struct aiMesh *  e = self->scene->mMeshes[i];
 				char  tmp[1024];
-				sprintf(tmp, "%s type=%d,%s pos=%f,%f,%f dir=%f,%f,%f up=%f,%f,%f atte=%f,%f,%f, cone=%f,%f size=%f,%f\n", e->mName.data, e->mType, e->mType == aiLightSource_DIRECTIONAL ? "dir" : e->mType == aiLightSource_POINT ? "point" : e->mType == aiLightSource_SPOT ? "sport" : e->mType == aiLightSource_AMBIENT ? "ambient" : e->mType == aiLightSource_AREA ? "area" : "undef", e->mPosition.x, e->mPosition.y, e->mPosition.z, e->mDirection.x, e->mDirection.y, e->mDirection.z, e->mUp.x, e->mUp.y, e->mUp.z, e->mAttenuationConstant, e->mAttenuationLinear, e->mAttenuationQuadratic, e->mAngleInnerCone, e->mAngleOuterCone, e->mSize.x, e->mSize.y) ;
+				sprintf(tmp, "%s type=%d vtx=%d face=%d bones=%d matlIdx=%d animMeshes=%d method=%d, aabb=%f,%f,%f; %f,%f,%f\n", e->mName.data, e->mPrimitiveTypes, e->mNumVertices, e->mNumFaces, e->mNumBones, e->mMaterialIndex, e->mNumAnimMeshes, e->mMethod, e->mAABB.mMin.x, e->mAABB.mMin.y, e->mAABB.mMin.z, e->mAABB.mMax.x, e->mAABB.mMax.y, e->mAABB.mMax.z) ;
 				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_33 = NULL;
 				{
-					SuiView$TreeSelfCtrlView*  __scopeVar_235_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_33, o, (long long )e) , *o = __scopeVar_235_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_235_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TreeSelfCtrlView*  __scopeVar_261_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_33, o, (long long )e) , *o = __scopeVar_261_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_261_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					o->deep = 1;
 					o->hasKids = false;
 					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_34 = NULL;
 					{
-						SuiView$TextView*  __scopeVar_238_24 = SuiView$mkTextView(&tmpReturn_34, o, 0) , *o = __scopeVar_238_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_238_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TextView*  __scopeVar_264_24 = SuiView$mkTextView(&tmpReturn_34, o, 0) , *o = __scopeVar_264_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_264_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
 						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_35 = NULL;
 						o->setText(o, Orc$str(&tmpReturn_35, tmp) ) ;
@@ -407,35 +462,35 @@ void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self){
 			}
 			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_36 = NULL;
 			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_243_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_36, o, (long long )0) , *o = __scopeVar_243_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_243_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$TreeSelfCtrlView*  __scopeVar_270_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_36, o, (long long )0) , *o = __scopeVar_270_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_270_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->deep = 0;
 				o->hasKids = true;
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_37 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_246_20 = SuiView$mkTextView(&tmpReturn_37, o, 0) , *o = __scopeVar_246_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_246_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_273_20 = SuiView$mkTextView(&tmpReturn_37, o, 0) , *o = __scopeVar_273_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_273_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_38 = NULL;
-					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_38, "相机") , self->scene->mNumCameras) ) ;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_38, "灯光") , self->scene->mNumLights) ) ;
 				}
 			}
-			for (int  i = 0; i < self->scene->mNumCameras; i++) {
-				struct aiCamera *  e = self->scene->mCameras[i];
+			for (int  i = 0; i < self->scene->mNumLights; i++) {
+				struct aiLight *  e = self->scene->mLights[i];
 				char  tmp[1024];
-				sprintf(tmp, "\t%s pos=%f,%f,%f up=%f,%f,%f lookAt=%f,%f,%f fov=%f near=%f far=%f aspect=%f orthorWidth=%f\n", e->mName.data, e->mPosition.x, e->mPosition.y, e->mPosition.z, e->mUp.x, e->mUp.y, e->mUp.z, e->mLookAt.x, e->mLookAt.y, e->mLookAt.z, e->mHorizontalFOV, e->mClipPlaneNear, e->mClipPlaneFar, e->mAspect, e->mOrthographicWidth) ;
+				sprintf(tmp, "%s type=%d,%s pos=%f,%f,%f dir=%f,%f,%f up=%f,%f,%f atte=%f,%f,%f, cone=%f,%f size=%f,%f\n", e->mName.data, e->mType, e->mType == aiLightSource_DIRECTIONAL ? "dir" : e->mType == aiLightSource_POINT ? "point" : e->mType == aiLightSource_SPOT ? "sport" : e->mType == aiLightSource_AMBIENT ? "ambient" : e->mType == aiLightSource_AREA ? "area" : "undef", e->mPosition.x, e->mPosition.y, e->mPosition.z, e->mDirection.x, e->mDirection.y, e->mDirection.z, e->mUp.x, e->mUp.y, e->mUp.z, e->mAttenuationConstant, e->mAttenuationLinear, e->mAttenuationQuadratic, e->mAngleInnerCone, e->mAngleOuterCone, e->mSize.x, e->mSize.y) ;
 				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_39 = NULL;
 				{
-					SuiView$TreeSelfCtrlView*  __scopeVar_274_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_39, o, (long long )e) , *o = __scopeVar_274_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_274_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TreeSelfCtrlView*  __scopeVar_312_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_39, o, (long long )e) , *o = __scopeVar_312_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_312_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					o->deep = 1;
 					o->hasKids = false;
 					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_40 = NULL;
 					{
-						SuiView$TextView*  __scopeVar_277_24 = SuiView$mkTextView(&tmpReturn_40, o, 0) , *o = __scopeVar_277_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_277_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TextView*  __scopeVar_315_24 = SuiView$mkTextView(&tmpReturn_40, o, 0) , *o = __scopeVar_315_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_315_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
 						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_41 = NULL;
 						o->setText(o, Orc$str(&tmpReturn_41, tmp) ) ;
@@ -444,103 +499,140 @@ void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self){
 			}
 			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_42 = NULL;
 			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_282_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_42, o, (long long )0) , *o = __scopeVar_282_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_282_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$TreeSelfCtrlView*  __scopeVar_320_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_42, o, (long long )0) , *o = __scopeVar_320_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_320_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->deep = 0;
 				o->hasKids = true;
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_43 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_285_20 = SuiView$mkTextView(&tmpReturn_43, o, 0) , *o = __scopeVar_285_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_285_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_323_20 = SuiView$mkTextView(&tmpReturn_43, o, 0) , *o = __scopeVar_323_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_323_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_44 = NULL;
-					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_44, "骨架") , self->scene->mNumSkeletons) ) ;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_44, "相机") , self->scene->mNumCameras) ) ;
+				}
+			}
+			for (int  i = 0; i < self->scene->mNumCameras; i++) {
+				struct aiCamera *  e = self->scene->mCameras[i];
+				char  tmp[1024];
+				sprintf(tmp, "\t%s pos=%f,%f,%f up=%f,%f,%f lookAt=%f,%f,%f fov=%f near=%f far=%f aspect=%f orthorWidth=%f\n", e->mName.data, e->mPosition.x, e->mPosition.y, e->mPosition.z, e->mUp.x, e->mUp.y, e->mUp.z, e->mLookAt.x, e->mLookAt.y, e->mLookAt.z, e->mHorizontalFOV, e->mClipPlaneNear, e->mClipPlaneFar, e->mAspect, e->mOrthographicWidth) ;
+				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_45 = NULL;
+				{
+					SuiView$TreeSelfCtrlView*  __scopeVar_351_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_45, o, (long long )e) , *o = __scopeVar_351_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_351_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				
+					o->deep = 1;
+					o->hasKids = false;
+					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_46 = NULL;
+					{
+						SuiView$TextView*  __scopeVar_354_24 = SuiView$mkTextView(&tmpReturn_46, o, 0) , *o = __scopeVar_354_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_354_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_47 = NULL;
+						o->setText(o, Orc$str(&tmpReturn_47, tmp) ) ;
+					}
+				}
+			}
+			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_48 = NULL;
+			{
+				SuiView$TreeSelfCtrlView*  __scopeVar_359_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_48, o, (long long )0) , *o = __scopeVar_359_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_359_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			
+				o->deep = 0;
+				o->hasKids = true;
+				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_49 = NULL;
+				{
+					SuiView$TextView*  __scopeVar_362_20 = SuiView$mkTextView(&tmpReturn_49, o, 0) , *o = __scopeVar_362_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_362_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_50 = NULL;
+					o->setText(o, Orc$String$addi(Orc$str(&tmpReturn_50, "骨架") , self->scene->mNumSkeletons) ) ;
 				}
 			}
 			for (int  i = 0; i < self->scene->mNumSkeletons; i++) {
 				struct aiSkeleton *  e = self->scene->mSkeletons[i];
 				char  tmp[1024];
 				sprintf(tmp, "%s bone=%d\n", e->mName.data, e->mNumBones) ;
-				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_45 = NULL;
+				URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_51 = NULL;
 				{
-					SuiView$TreeSelfCtrlView*  __scopeVar_296_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_45, o, (long long )e) , *o = __scopeVar_296_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_296_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TreeSelfCtrlView*  __scopeVar_373_20 = SuiView$mkTreeSelfCtrlView(&tmpReturn_51, o, (long long )e) , *o = __scopeVar_373_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_373_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					o->deep = 1;
 					o->hasKids = false;
-					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_46 = NULL;
+					URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_52 = NULL;
 					{
-						SuiView$TextView*  __scopeVar_299_24 = SuiView$mkTextView(&tmpReturn_46, o, 0) , *o = __scopeVar_299_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_299_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TextView*  __scopeVar_376_24 = SuiView$mkTextView(&tmpReturn_52, o, 0) , *o = __scopeVar_376_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_376_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
-						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_47 = NULL;
-						o->setText(o, Orc$str(&tmpReturn_47, tmp) ) ;
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_53 = NULL;
+						o->setText(o, Orc$str(&tmpReturn_53, tmp) ) ;
 					}
 				}
 				for (int  j = 0; j < e->mNumBones; j++) {
 					struct aiSkeletonBone *  bone = e->mBones[j];
 					sprintf(tmp, "%2d numWeights=%d\n", j, bone->mNumnWeights) ;
-					URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_48 = NULL;
+					URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_54 = NULL;
 					{
-						SuiView$TreeSelfCtrlView*  __scopeVar_309_24 = SuiView$mkTreeSelfCtrlView(&tmpReturn_48, o, (long long )e) , *o = __scopeVar_309_24;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_309_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiView$TreeSelfCtrlView*  __scopeVar_386_24 = SuiView$mkTreeSelfCtrlView(&tmpReturn_54, o, (long long )e) , *o = __scopeVar_386_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_386_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
 						o->deep = 2;
 						o->hasKids = false;
-						URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_49 = NULL;
+						URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_55 = NULL;
 						{
-							SuiView$TextView*  __scopeVar_312_28 = SuiView$mkTextView(&tmpReturn_49, o, 0) , *o = __scopeVar_312_28;
-							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_312_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
+							SuiView$TextView*  __scopeVar_389_28 = SuiView$mkTextView(&tmpReturn_55, o, 0) , *o = __scopeVar_389_28;
+							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_389_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
 						
-							URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_50 = NULL;
-							o->setText(o, Orc$str(&tmpReturn_50, tmp) ) ;
+							URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_56 = NULL;
+							o->setText(o, Orc$str(&tmpReturn_56, tmp) ) ;
 						}
 					}
 					for (int  k = 0; k < bone->mNumnWeights; k++) {
 						struct aiMesh *  mesh = bone->mMeshId;
 						struct aiVertexWeight *  weight = bone->mWeights + k;
 						sprintf(tmp, "%2d mesh=%s weight=%f vtxId=%d\n", k, mesh->mName.data, weight->mWeight, weight->mVertexId) ;
-						URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_51 = NULL;
+						URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_57 = NULL;
 						{
-							SuiView$TreeSelfCtrlView*  __scopeVar_320_28 = SuiView$mkTreeSelfCtrlView(&tmpReturn_51, o, (long long )e) , *o = __scopeVar_320_28;
-							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_320_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
+							SuiView$TreeSelfCtrlView*  __scopeVar_397_28 = SuiView$mkTreeSelfCtrlView(&tmpReturn_57, o, (long long )e) , *o = __scopeVar_397_28;
+							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_397_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
 						
 							o->deep = 3;
 							o->hasKids = false;
-							URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_52 = NULL;
+							URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_58 = NULL;
 							{
-								SuiView$TextView*  __scopeVar_323_32 = SuiView$mkTextView(&tmpReturn_52, o, 0) , *o = __scopeVar_323_32;
-								UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_323_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
+								SuiView$TextView*  __scopeVar_400_32 = SuiView$mkTextView(&tmpReturn_58, o, 0) , *o = __scopeVar_400_32;
+								UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_400_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
 							
-								URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_53 = NULL;
-								o->setText(o, Orc$str(&tmpReturn_53, tmp) ) ;
+								URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_59 = NULL;
+								o->setText(o, Orc$str(&tmpReturn_59, tmp) ) ;
 							}
 						}
 					}
 				}
 			}
-			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_54 = NULL;
+			URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_60 = NULL;
 			{
-				SuiView$TreeSelfCtrlView*  __scopeVar_330_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_54, o, (long long )0) , *o = __scopeVar_330_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_330_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$TreeSelfCtrlView*  __scopeVar_407_16 = SuiView$mkTreeSelfCtrlView(&tmpReturn_60, o, (long long )0) , *o = __scopeVar_407_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_407_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->deep = 0;
 				o->hasKids = true;
-				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_55 = NULL;
+				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_61 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_333_20 = SuiView$mkTextView(&tmpReturn_55, o, 0) , *o = __scopeVar_333_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_333_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_410_20 = SuiView$mkTextView(&tmpReturn_61, o, 0) , *o = __scopeVar_410_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_410_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
-					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_56 = NULL;
-					o->setText(o, Orc$str(&tmpReturn_56, "节点") ) ;
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_62 = NULL;
+					o->setText(o, Orc$str(&tmpReturn_62, "节点") ) ;
 				}
 			}
 			self->mkNodeTreeView(self, o, self->scene->mRootNode, 0, 1) ;
 		}
-		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_57 = NULL;
-		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_58 = NULL;
-		o->setTitle(o, Orc$String$replaceAll(&tmpReturn_57, Orc$str(&tmpReturn_58, "预览模型{0}") , "{0}", self->path->str) ->str) ;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_63 = NULL;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_64 = NULL;
+		o->setTitle(o, Orc$String$replaceAll(&tmpReturn_63, Orc$str(&tmpReturn_64, "预览模型{0}") , "{0}", self->path->str) ->str) ;
 		o->setSize(o, 800, 600) ;
 		o->moveToCenter(o) ;
 		o->show(o) ;
@@ -549,20 +641,27 @@ void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self){
 
 
 void  Sgl$AssimpLoader$mkNodeTreeView(Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep){
+	URGC_VAR_CLEANUP_CLASS Orc$String*  meshIds = Orc$str((meshIds = NULL,&meshIds), "") ;
+	for (int  i = 0; i < node->mNumMeshes; i++) {
+		unsigned int  meshIndex = node->mMeshes[i];
+		Orc$String$add(Orc$String$addi(meshIds, meshIndex) , ",") ;
+	}
+	char  tmp[1024];
+	sprintf(tmp, "%4d %s nKids=%d, nMesh=%d meshIdxs=%s\n", idx, node->mName.data, node->mNumChildren, node->mNumMeshes, meshIds->str) ;
 	URGC_VAR_CLEANUP_CLASS SuiView$TreeSelfCtrlView*  tmpReturn_1 = NULL;
 	{
-		SuiView$TreeSelfCtrlView*  __scopeVar_350_8 = SuiView$mkTreeSelfCtrlView(&tmpReturn_1, o, (long long )node) , *o = __scopeVar_350_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_350_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$TreeSelfCtrlView*  __scopeVar_435_8 = SuiView$mkTreeSelfCtrlView(&tmpReturn_1, o, (long long )node) , *o = __scopeVar_435_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_435_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		o->deep = deep;
 		o->hasKids = node->mNumChildren > 0;
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_2 = NULL;
 		{
-			SuiView$TextView*  __scopeVar_353_12 = SuiView$mkTextView(&tmpReturn_2, o, 0) , *o = __scopeVar_353_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_353_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$TextView*  __scopeVar_438_12 = SuiView$mkTextView(&tmpReturn_2, o, 0) , *o = __scopeVar_438_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_438_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setText(o, Orc$str(&tmpReturn_3, node->mName.data) ) ;
+			o->setText(o, Orc$str(&tmpReturn_3, tmp) ) ;
 		}
 	}
 	for (unsigned int  i = 0; i < node->mNumChildren; ++i) {
@@ -859,6 +958,8 @@ void  Sgl$test_AssimpLoader(){
 	URGC_VAR_CLEANUP_CLASS Sgl$AssimpLoader*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$AssimpLoader_new(&l) ));
 	l->load(l, "spider.obj") ;
 	l->showWindow(l) ;
+	URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  root = l->buildSglTree((root = NULL,&root), l) ;
+	SuiCore$printNodeTree(root, 0) ;
 }
 
 

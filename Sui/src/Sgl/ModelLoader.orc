@@ -47,7 +47,30 @@ class AssimpLoader {
         }
     }
 
-    void buildSglTree(){
+    Obj3d@ buildSglTree(){
+        return self.buildNode(null, self.scene.mRootNode, 0, 0)
+    }
+    Obj3d@ buildNode(Obj3d* parent, struct aiNode* node, int idx, int deep){
+        Obj3d@ ret = null
+        if node.mNumMeshes == 0 {
+            ret = new Obj3d()
+        }
+        else {
+            Mesh@ mesh = new Mesh()
+            //填充mesh
+
+
+            ret = mesh
+        }
+        if parent {
+            parent.appendChild(ret)
+        }
+
+        // 递归处理子节点
+        for (unsigned int i = 0; i < node->mNumChildren; ++i) {
+            self.buildNode(ret, node->mChildren[i], i, deep+1);
+        }
+        return ret
     }
 
     void showWindow(){
@@ -59,6 +82,60 @@ class AssimpLoader {
                 o.column().aiStretch()
                 // o.backgroundColor = 0xffffffff
 
+                mkTreeSelfCtrlView(o, (long long)0).{
+                    o.deep = 0
+                    o.hasKids = true
+                    mkTextView(o, 0).{
+                        o.setText(str("元数据").addi(self.scene.mMetaData->mNumProperties))
+                    }
+                }
+                for int i = 0; i < self.scene.mMetaData.mNumProperties; i++{
+                    struct aiString *key = self.scene.mMetaData.mKeys + i
+                    struct aiMetadataEntry *value = self.scene.mMetaData.mValues + i;
+                    char valueStr[512];
+                    if value.mType == AI_BOOL {
+                        sprintf(valueStr, "%d", *((bool*)value.mData))
+                    }
+                    else if value.mType == AI_INT32 {
+                        sprintf(valueStr, "%d", *((int*)value.mData))
+                    }
+                    else if value.mType == AI_UINT32 {
+                        sprintf(valueStr, "%u", *((unsigned int*)value.mData))
+                    }
+                    else if value.mType == AI_INT64 {
+                        sprintf(valueStr, "%lld", *((long long*)value.mData))
+                    }
+                    else if value.mType == AI_AIVECTOR3D {
+                        struct aiVector3D *pv = (struct aiVector3D*)value.mData
+                        sprintf(valueStr, "Vec3(%f,%f,%f)", pv.x, pv.y, pv.z)
+                    }
+                    else if value.mType == AI_UINT64 {
+                        sprintf(valueStr, "%llu", *((unsigned long long*)value.mData))
+                    }
+                    else if value.mType == AI_FLOAT {
+                        sprintf(valueStr, "%f", *((float*)value.mData))
+                    }
+                    else if value.mType == AI_DOUBLE {
+                        sprintf(valueStr, "%f", *((double *)value.mData))
+                    }
+                    else if value.mType == AI_AISTRING {
+                        struct aiString *ais = (struct aiString*)value.mData
+                        sprintf(valueStr, "%s", ais.data)
+                    }
+                    char tmp[1024];
+                    sprintf(tmp, "%d %s =%s\n", 
+                        i, 
+                        key.data,
+                        valueStr,
+                    )
+                    mkTreeSelfCtrlView(o, (long long)key).{
+                        o.deep = 1
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str(tmp))
+                        }
+                    }
+                }
                 mkTreeSelfCtrlView(o, (long long)0).{
                     o.deep = 0
                     o.hasKids = true
@@ -347,11 +424,19 @@ class AssimpLoader {
         }
     }
     void mkNodeTreeView(Node* o, struct aiNode* node, int idx, int deep){
+        String@ meshIds = str("")
+        for int i = 0; i < node.mNumMeshes; i++{
+            unsigned int meshIndex = node.mMeshes[i]
+            meshIds.addi(meshIndex).add(",")
+        }
+        char tmp[1024];
+        sprintf(tmp, "%4d %s nKids=%d, nMesh=%d meshIdxs=%s\n", idx, node.mName.data, node.mNumChildren, node.mNumMeshes, meshIds.str);
+
         mkTreeSelfCtrlView(o, (long long)node).{
             o.deep = deep
             o.hasKids = node.mNumChildren > 0
             mkTextView(o, 0).{
-                o.setText(str(node.mName.data))
+                o.setText(str(tmp))
             }
         }
         // 递归处理子节点
@@ -635,4 +720,6 @@ void test_AssimpLoader () {
     // l.load("spider.fbx")
     l.load("spider.obj")
     l.showWindow()
+    Obj3d@ root = l.buildSglTree()
+    printNodeTree(root, 0)
 }
