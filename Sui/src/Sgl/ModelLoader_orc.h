@@ -1,4 +1,6 @@
 
+typedef struct tagSgl$AssimpLoader Sgl$AssimpLoader;
+typedef struct tagVtable_Sgl$AssimpLoader Vtable_Sgl$AssimpLoader;
 typedef struct tagSgl$ModelLoader Sgl$ModelLoader;
 typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 
@@ -54,6 +56,30 @@ extern "C"{
 //代码内容
 
 // 虚表
+struct tagVtable_Sgl$AssimpLoader {
+	Vtable_Object super;
+};
+//虚表实例
+extern Vtable_Sgl$AssimpLoader _vtable_Sgl$AssimpLoader;
+
+// class refc:0
+struct tagSgl$AssimpLoader {
+	Object super; 
+	struct aiScene *  scene ;
+	void  (*load) (Sgl$AssimpLoader *  self, const char *  model_path);
+	void  (*printScene) (Sgl$AssimpLoader *  self);
+};
+Vtable_Sgl$AssimpLoader* Vtable_Sgl$AssimpLoader_init(Vtable_Sgl$AssimpLoader* pvt);
+void Sgl$AssimpLoader_init_fields(Sgl$AssimpLoader *self);
+void Sgl$AssimpLoader_init(Sgl$AssimpLoader *self, void *pOwner);
+Sgl$AssimpLoader * Sgl$AssimpLoader_new(void *pOwner);
+void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self);
+
+void  Sgl$AssimpLoader$load(Sgl$AssimpLoader *  self, const char *  model_path);
+void  Sgl$AssimpLoader$printScene(Sgl$AssimpLoader *  self);
+
+
+// 虚表
 struct tagVtable_Sgl$ModelLoader {
 	Vtable_Sgl$Obj3d super;
 };
@@ -83,6 +109,7 @@ void  Sgl$ModelLoader$setPath(Sgl$ModelLoader *  self, Orc$String*  path);
 extern void  Sgl$ModelLoader$_load(Sgl$ModelLoader *  self);
 Sgl$Geometry*  Sgl$ModelLoader$buildGeometry(Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);
 
+void  Sgl$test_AssimpLoader();
 
 
 

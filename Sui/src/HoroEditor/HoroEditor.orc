@@ -81,6 +81,8 @@ import * from "../Sgl/Tex2d.orc"
 import * from "../Sgl/PerspectiveCamera.orc"
 import * from "../Sgl/Skybox.orc"
 import * from "../Sgl/OutlineFx.orc"
+import * from "../Sgl/ModelLoader.orc"
+
 import * from "../SuiDesigner/MdxReader.orc"
 import * from "../SuiDesigner/Asset/AssetDirView.orc"
 import * from "../SuiDesigner/Asset/AssetDirTreeView.orc"
@@ -749,6 +751,11 @@ class HoroEditor extends Listener{
 
 
         Window@ win = new Window();
+
+        if 1 {//加载模型
+            test_AssimpLoader()
+            return;
+        }
 
         // if 1 {//材质球生成
         //     testHoroMaterialIconCreator()

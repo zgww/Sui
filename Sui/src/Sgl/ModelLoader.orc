@@ -14,6 +14,35 @@ import * from "./Vbo.orc"
 import * from "./Geometry.orc"
 import * from "./Material.orc"
 
+
+class AssimpLoader {
+    struct aiScene *scene;
+    void load(const char *model_path){
+        // 加载模型（使用默认后处理）
+        struct aiScene* scene = aiImportFile(
+            model_path,
+            aiProcess_Triangulate       |   // 三角化多边形
+            aiProcess_GenNormals        |   // 如果没有法线则生成
+            aiProcess_FlipUVs           |   // 根据需要翻转 UV（OpenGL vs DirectX）
+            aiProcess_JoinIdenticalVertices // 合并重复顶点
+        );
+
+        printf("assimp 加载模型:%s. scene:%p\n", model_path, scene)
+        if !scene {
+            printf("assimp load %s fail. \n", model_path);
+            return
+        }
+
+        // 释放资源
+        aiReleaseImport(scene);
+    }
+    void printScene(){
+
+    }
+
+}
+
+
 // 模型加载器
 class ModelLoader extends Obj3d {
     Buffer@ vertices = new Buffer();
@@ -72,4 +101,9 @@ class ModelLoader extends Obj3d {
         return geo
     }
 
+}
+
+void test_AssimpLoader () {
+    AssimpLoader@ l = new AssimpLoader()
+    l.load("spider.obj")
 }

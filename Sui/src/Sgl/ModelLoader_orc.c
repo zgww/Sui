@@ -23,6 +23,128 @@
 
 
 //vtable instance
+Vtable_Sgl$AssimpLoader _vtable_Sgl$AssimpLoader;
+
+// init meta
+
+void Sgl$AssimpLoader_initMeta(Vtable_Sgl$AssimpLoader *pvt){
+    OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
+	
+	orc_metaField_plainStruct(&pNext, "scene", sizeof(aiScene), offsetof(Sgl$AssimpLoader, scene), false, true, 1);
+
+	orc_metaField_method(&pNext, "load", offsetof(Sgl$AssimpLoader, load));
+	orc_metaField_method(&pNext, "printScene", offsetof(Sgl$AssimpLoader, printScene));
+}
+
+
+// vtable init
+
+
+Vtable_Sgl$AssimpLoader* Vtable_Sgl$AssimpLoader_init(Vtable_Sgl$AssimpLoader* pvt){
+    if (pvt == NULL){
+        pvt = &_vtable_Sgl$AssimpLoader;
+    }
+    if (((Vtable_Object*)pvt)->inited){
+        return pvt;
+    }
+	// init super vtable
+    Vtable_Object_init(&_vtable_Object);
+
+	// init by super vtable init function
+    Vtable_Object_init((void*)pvt);
+
+    ((Vtable_Object*)pvt)->super = (void*)&_vtable_Object;
+    ((Vtable_Object*)pvt)->make = (void*)&Sgl$AssimpLoader_new;
+    ((Vtable_Object*)pvt)->className = "Sgl$AssimpLoader";
+
+    ((Vtable_Object*)pvt)->initMeta = (void*)Sgl$AssimpLoader_initMeta;
+
+    ((Vtable_Object*)pvt)->refc = 0;
+
+    return pvt;
+}
+
+
+// fini function
+
+void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self){
+	//super fini
+    Object_fini((Object *)self);
+
+    //字段释放
+	
+
+}
+
+// init fields function
+
+
+void Sgl$AssimpLoader_init_fields(Sgl$AssimpLoader *self){
+	//super class
+    Object_init_fields((Object*)self);
+
+    ((Object*)self)->fini = (void*)Sgl$AssimpLoader_fini;
+	//fields
+    {
+	
+    }
+	((Sgl$AssimpLoader*)self)->load = (void*)Sgl$AssimpLoader$load;
+	((Sgl$AssimpLoader*)self)->printScene = (void*)Sgl$AssimpLoader$printScene;
+}
+
+// init function
+
+void Sgl$AssimpLoader_init(Sgl$AssimpLoader *self, void *pOwner){
+    Vtable_Sgl$AssimpLoader_init(&_vtable_Sgl$AssimpLoader);
+
+    ((Object*)self)->vtable = (void*)&_vtable_Sgl$AssimpLoader;
+	
+	//has old object
+	if (*((void**)pOwner) != NULL) urgc_deref_class(pOwner, *((void**)pOwner));
+	*((void**)pOwner) = self;
+	urgc_ref_class(pOwner, self, (void*)orc_delete);
+
+    //urgc_guard(self, (void*)orc_delete);
+
+    Sgl$AssimpLoader_init_fields(self);
+
+    if (((Object*)self)->ctor){
+        ((Object*)self)->ctor((void*)self);
+    }
+
+    //urgc_deguard(self);
+}
+
+// new function
+Sgl$AssimpLoader * Sgl$AssimpLoader_new(void *pOwner){
+	if (pOwner == NULL){ return NULL;}
+    Sgl$AssimpLoader *self = calloc(1, sizeof(Sgl$AssimpLoader));
+	
+    Sgl$AssimpLoader_init(self, pOwner);
+    return self;
+}
+
+
+// class members
+void  Sgl$AssimpLoader$load(Sgl$AssimpLoader *  self, const char *  model_path){
+	struct aiScene *  scene = aiImportFile(model_path, aiProcess_Triangulate | aiProcess_GenNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices) ;
+	printf("assimp 加载模型:%s. scene:%p\n", model_path, scene) ;
+	if (!scene) {
+		printf("assimp load %s fail. \n", model_path) ;
+		return ; 
+	}
+	aiReleaseImport(scene) ;
+}
+
+
+void  Sgl$AssimpLoader$printScene(Sgl$AssimpLoader *  self){
+	
+}
+
+
+
+
+//vtable instance
 Vtable_Sgl$ModelLoader _vtable_Sgl$ModelLoader;
 
 // init meta
@@ -202,6 +324,11 @@ Sgl$Geometry*  Sgl$ModelLoader$buildGeometry(Sgl$Geometry **  __outRef__, Sgl$Mo
 }
 
 
+
+void  Sgl$test_AssimpLoader(){
+	URGC_VAR_CLEANUP_CLASS Sgl$AssimpLoader*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$AssimpLoader_new(&l) ));
+	l->load(l, "spider.obj") ;
+}
 
 
 

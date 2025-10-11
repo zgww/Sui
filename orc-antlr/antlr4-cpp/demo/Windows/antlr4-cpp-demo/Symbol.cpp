@@ -5757,7 +5757,7 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 			else {
 				CostUsGuard g(this);
 				auto ret = std::format(
-					"orc_metaField_plainStruct(&pNext, \"{}\", sizeof({}), offsetof({}, {}), {}, {}, {});\n"
+					"orc_metaField_plainStruct(&pNext, \"{}\", sizeof(struct {}), offsetof({}, {}), {}, {}, {});\n"
 					, fieldName // frame
 					, symbolDefinitionStruct_ofType->fullname
 					, fullname // OrcCore$View

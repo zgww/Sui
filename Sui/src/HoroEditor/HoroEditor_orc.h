@@ -117,6 +117,7 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "../Sgl/PerspectiveCamera_orc.h"
 #include "../Sgl/Skybox_orc.h"
 #include "../Sgl/OutlineFx_orc.h"
+#include "../Sgl/ModelLoader_orc.h"
 #include "../SuiDesigner/MdxReader_orc.h"
 #include "../SuiDesigner/Asset/AssetDirView_orc.h"
 #include "../SuiDesigner/Asset/AssetDirTreeView_orc.h"
