@@ -65,9 +65,11 @@ extern Vtable_Sgl$AssimpLoader _vtable_Sgl$AssimpLoader;
 // class refc:0
 struct tagSgl$AssimpLoader {
 	Object super; 
+	Orc$String*  path ;
 	struct aiScene *  scene ;
 	void  (*load) (Sgl$AssimpLoader *  self, const char *  model_path);
 	void  (*printScene) (Sgl$AssimpLoader *  self);
+	void  (*printNode) (Sgl$AssimpLoader *  self, struct aiNode *  node, int  idx, int  tabCount);
 };
 Vtable_Sgl$AssimpLoader* Vtable_Sgl$AssimpLoader_init(Vtable_Sgl$AssimpLoader* pvt);
 void Sgl$AssimpLoader_init_fields(Sgl$AssimpLoader *self);
@@ -75,8 +77,10 @@ void Sgl$AssimpLoader_init(Sgl$AssimpLoader *self, void *pOwner);
 Sgl$AssimpLoader * Sgl$AssimpLoader_new(void *pOwner);
 void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self);
 
+void  Sgl$AssimpLoader$dtor(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$load(Sgl$AssimpLoader *  self, const char *  model_path);
 void  Sgl$AssimpLoader$printScene(Sgl$AssimpLoader *  self);
+void  Sgl$AssimpLoader$printNode(Sgl$AssimpLoader *  self, struct aiNode *  node, int  idx, int  tabCount);
 
 
 // 虚表

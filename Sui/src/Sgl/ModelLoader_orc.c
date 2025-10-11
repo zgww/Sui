@@ -30,10 +30,12 @@ Vtable_Sgl$AssimpLoader _vtable_Sgl$AssimpLoader;
 void Sgl$AssimpLoader_initMeta(Vtable_Sgl$AssimpLoader *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
-	orc_metaField_plainStruct(&pNext, "scene", sizeof(aiScene), offsetof(Sgl$AssimpLoader, scene), false, true, 1);
+	orc_metaField_class(&pNext, "path", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(Sgl$AssimpLoader, path), true, false, 1);
+	orc_metaField_plainStruct(&pNext, "scene", sizeof(struct aiScene), offsetof(Sgl$AssimpLoader, scene), false, true, 1);
 
 	orc_metaField_method(&pNext, "load", offsetof(Sgl$AssimpLoader, load));
 	orc_metaField_method(&pNext, "printScene", offsetof(Sgl$AssimpLoader, printScene));
+	orc_metaField_method(&pNext, "printNode", offsetof(Sgl$AssimpLoader, printNode));
 }
 
 
@@ -72,7 +74,7 @@ void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self){
     Object_fini((Object *)self);
 
     //字段释放
-	
+	urgc_fini_field_class(self, (void**)&((Sgl$AssimpLoader*)self)->path);
 
 }
 
@@ -86,10 +88,12 @@ void Sgl$AssimpLoader_init_fields(Sgl$AssimpLoader *self){
     ((Object*)self)->fini = (void*)Sgl$AssimpLoader_fini;
 	//fields
     {
-	
+	urgc_set_field_class(self, (void**)&((Sgl$AssimpLoader*)self)->path, NULL);
     }
+	((Object*)self)->dtor = (void*)Sgl$AssimpLoader$dtor;
 	((Sgl$AssimpLoader*)self)->load = (void*)Sgl$AssimpLoader$load;
 	((Sgl$AssimpLoader*)self)->printScene = (void*)Sgl$AssimpLoader$printScene;
+	((Sgl$AssimpLoader*)self)->printNode = (void*)Sgl$AssimpLoader$printNode;
 }
 
 // init function
@@ -126,19 +130,106 @@ Sgl$AssimpLoader * Sgl$AssimpLoader_new(void *pOwner){
 
 
 // class members
+void  Sgl$AssimpLoader$dtor(Sgl$AssimpLoader *  self){
+	if (self->scene) {
+		aiReleaseImport(self->scene) ;
+	}
+}
+
+
 void  Sgl$AssimpLoader$load(Sgl$AssimpLoader *  self, const char *  model_path){
-	struct aiScene *  scene = aiImportFile(model_path, aiProcess_Triangulate | aiProcess_GenNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+	urgc_set_field_class(self, (void * )offsetof(Sgl$AssimpLoader, path) , Orc$str(&tmpReturn_1, model_path) ) ;
+	struct aiScene *  scene = aiImportFile(model_path, aiProcess_Triangulate | aiProcess_GenNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices | 0) ;
 	printf("assimp 加载模型:%s. scene:%p\n", model_path, scene) ;
 	if (!scene) {
-		printf("assimp load %s fail. \n", model_path) ;
+		const char *  err = aiGetErrorString() ;
+		printf("assimp load %s fail. err:%s\n", model_path, err) ;
 		return ; 
 	}
-	aiReleaseImport(scene) ;
+	self->scene = scene;
+	self->printScene(self) ;
 }
 
 
 void  Sgl$AssimpLoader$printScene(Sgl$AssimpLoader *  self){
-	
+	if (self->scene) {
+		printf("---------------scene[%s; %s] flag:%d, anim:%d, tex:%d, mesh:%d, matl:%d light:%d, cam:%d, ske:%d---------------\n", self->path->str, self->scene->mName.data, self->scene->mFlags, self->scene->mNumAnimations, self->scene->mNumTextures, self->scene->mNumMeshes, self->scene->mNumMaterials, self->scene->mNumLights, self->scene->mNumCameras, self->scene->mNumSkeletons) ;
+		printf("---------------animations---------------\n") ;
+		for (int  i = 0; i < self->scene->mNumAnimations; i++) {
+			struct aiAnimation *  anim = self->scene->mAnimations[i];
+			printf("\t%s dura=%f, ticksPs:%f, channels:%d meshChannel:%d  morphChannel:%d\n", anim->mName.data, anim->mDuration, anim->mTicksPerSecond, anim->mNumChannels, anim->mNumMeshChannels, anim->mNumMorphMeshChannels) ;
+		}
+		printf("---------------textures---------------\n") ;
+		for (int  i = 0; i < self->scene->mNumTextures; i++) {
+			struct aiTexture *  tex = self->scene->mTextures[i];
+			printf("\t%s w=%d, h=%d, achFormatHint=%s\n", tex->mFilename.data, tex->mWidth, tex->mHeight, tex->achFormatHint) ;
+		}
+		printf("---------------meshes---------------\n") ;
+		for (int  i = 0; i < self->scene->mNumMeshes; i++) {
+			struct aiMesh *  e = self->scene->mMeshes[i];
+			printf("\t%s type=%d vtx=%d face=%d bones=%d matlIdx=%d animMeshes=%d method=%d, aabb=%f,%f,%f; %f,%f,%f\n", e->mName.data, e->mPrimitiveTypes, e->mNumVertices, e->mNumFaces, e->mNumBones, e->mMaterialIndex, e->mNumAnimMeshes, e->mMethod, e->mAABB.mMin.x, e->mAABB.mMin.y, e->mAABB.mMin.z, e->mAABB.mMax.x, e->mAABB.mMax.y, e->mAABB.mMax.z) ;
+		}
+		printf("---------------materials---------------\n") ;
+		for (int  i = 0; i < self->scene->mNumMaterials; i++) {
+			struct aiMaterial *  e = self->scene->mMaterials[i];
+			printf("\t%d numProperty=%d\n", i, e->mNumProperties) ;
+			for (int  j = 0; j < e->mNumProperties; j++) {
+				struct aiMaterialProperty *  prop = e->mProperties[j];
+				printf("\t\t%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d ", j, prop->mKey.data, prop->mSemantic, prop->mIndex, prop->mDataLength, prop->mType) ;
+				if (prop->mType == aiPTI_Float) {
+					printf("%f", *((float * )prop->mData)) ;
+				}
+				else if (prop->mType == aiPTI_Double) {
+					printf("%f", *((double * )prop->mData)) ;
+				}
+				else if (prop->mType == aiPTI_Integer) {
+					printf("%d", *((int * )prop->mData)) ;
+				}
+				else if (prop->mType == aiPTI_String) {
+					struct aiString *  s = (struct aiString * )prop->mData;
+					printf("%s", s->data) ;
+				}
+				printf("\n") ;
+			}
+		}
+		printf("---------------lights---------------\n") ;
+		for (int  i = 0; i < self->scene->mNumLights; i++) {
+			struct aiLight *  e = self->scene->mLights[i];
+			printf("\t%s type=%d,%s pos=%f,%f,%f dir=%f,%f,%f up=%f,%f,%f atte=%f,%f,%f, cone=%f,%f size=%f,%f\n", e->mName.data, e->mType, e->mType == aiLightSource_DIRECTIONAL ? "dir" : e->mType == aiLightSource_POINT ? "point" : e->mType == aiLightSource_SPOT ? "sport" : e->mType == aiLightSource_AMBIENT ? "ambient" : e->mType == aiLightSource_AREA ? "area" : "undef", e->mPosition.x, e->mPosition.y, e->mPosition.z, e->mDirection.x, e->mDirection.y, e->mDirection.z, e->mUp.x, e->mUp.y, e->mUp.z, e->mAttenuationConstant, e->mAttenuationLinear, e->mAttenuationQuadratic, e->mAngleInnerCone, e->mAngleOuterCone, e->mSize.x, e->mSize.y) ;
+		}
+		printf("---------------cameras---------------\n") ;
+		for (int  i = 0; i < self->scene->mNumCameras; i++) {
+			struct aiCamera *  e = self->scene->mCameras[i];
+			printf("\t%s pos=%f,%f,%f up=%f,%f,%f lookAt=%f,%f,%f fov=%f near=%f far=%f aspect=%f orthorWidth=%f\n", e->mName.data, e->mPosition.x, e->mPosition.y, e->mPosition.z, e->mUp.x, e->mUp.y, e->mUp.z, e->mLookAt.x, e->mLookAt.y, e->mLookAt.z, e->mHorizontalFOV, e->mClipPlaneNear, e->mClipPlaneFar, e->mAspect, e->mOrthographicWidth) ;
+		}
+		printf("---------------skeletons---------------\n") ;
+		for (int  i = 0; i < self->scene->mNumSkeletons; i++) {
+			struct aiSkeleton *  e = self->scene->mSkeletons[i];
+			printf("\t%s bone=%d\n", e->mName.data, e->mNumBones) ;
+			for (int  j = 0; j < e->mNumBones; j++) {
+				struct aiSkeletonBone *  bone = e->mBones[j];
+				printf("\t\t%2d numWeights=%d\n", j, bone->mNumnWeights) ;
+				for (int  k = 0; k < bone->mNumnWeights; k++) {
+					struct aiMesh *  mesh = bone->mMeshId;
+					struct aiVertexWeight *  weight = bone->mWeights + k;
+					printf("\t\t\t%2d mesh=%s weight=%f vtxId=%d\n", k, mesh->mName.data, weight->mWeight, weight->mVertexId) ;
+				}
+			}
+		}
+		printf("------------------nodes-----------------\n") ;
+		self->printNode(self, self->scene->mRootNode, 0, 1) ;
+	}
+}
+
+
+void  Sgl$AssimpLoader$printNode(Sgl$AssimpLoader *  self, struct aiNode *  node, int  idx, int  tabCount){
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tab = Orc$str((tab = NULL,&tab), "") ;
+	Orc$String$fillCount(tab, "\t", tabCount) ;
+	printf("%s%4d %s[nKids=%d, nMesh=%d, ]\n", tab->str, idx, node->mName.data, node->mNumChildren, node->mNumMeshes) ;
+	for (unsigned int  i = 0; i < node->mNumChildren; ++i) {
+		self->printNode(self, node->mChildren[i], i, tabCount + 1) ;
+	}
 }
 
 
@@ -327,7 +418,7 @@ Sgl$Geometry*  Sgl$ModelLoader$buildGeometry(Sgl$Geometry **  __outRef__, Sgl$Mo
 
 void  Sgl$test_AssimpLoader(){
 	URGC_VAR_CLEANUP_CLASS Sgl$AssimpLoader*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$AssimpLoader_new(&l) ));
-	l->load(l, "spider.obj") ;
+	l->load(l, "spider.fbx") ;
 }
 
 
