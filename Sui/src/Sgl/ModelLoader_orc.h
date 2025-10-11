@@ -42,6 +42,11 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 #include "../Orc/String_orc.h"
 #include "../Orc/List_orc.h"
 #include "./Obj3d_orc.h"
+#include "../Sui/Core/Window_orc.h"
+#include "../Sui/View/TreeView_orc.h"
+#include "../Sui/View/TextView_orc.h"
+#include "../Sui/View/ScrollArea_orc.h"
+#include "../Sui/Layout/LayoutLinear_orc.h"
 #include "./Mesh_orc.h"
 #include "./Buffer_orc.h"
 #include "./Vbo_orc.h"
@@ -67,6 +72,8 @@ struct tagSgl$AssimpLoader {
 	Object super; 
 	Orc$String*  path ;
 	struct aiScene *  scene ;
+	void  (*showWindow) (Sgl$AssimpLoader *  self);
+	void  (*mkNodeTreeView) (Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);
 	void  (*load) (Sgl$AssimpLoader *  self, const char *  model_path);
 	void  (*printScene) (Sgl$AssimpLoader *  self);
 	void  (*printNode) (Sgl$AssimpLoader *  self, struct aiNode *  node, int  idx, int  tabCount);
@@ -78,6 +85,8 @@ Sgl$AssimpLoader * Sgl$AssimpLoader_new(void *pOwner);
 void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self);
 
 void  Sgl$AssimpLoader$dtor(Sgl$AssimpLoader *  self);
+void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self);
+void  Sgl$AssimpLoader$mkNodeTreeView(Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);
 void  Sgl$AssimpLoader$load(Sgl$AssimpLoader *  self, const char *  model_path);
 void  Sgl$AssimpLoader$printScene(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$printNode(Sgl$AssimpLoader *  self, struct aiNode *  node, int  idx, int  tabCount);

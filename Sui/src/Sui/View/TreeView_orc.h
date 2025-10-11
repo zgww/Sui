@@ -3,6 +3,8 @@ typedef struct tagSuiView$TreeState SuiView$TreeState;
 typedef struct tagVtable_SuiView$TreeState Vtable_SuiView$TreeState;
 typedef struct tagSuiView$TreeView SuiView$TreeView;
 typedef struct tagVtable_SuiView$TreeView Vtable_SuiView$TreeView;
+typedef struct tagSuiView$TreeSelfCtrlView SuiView$TreeSelfCtrlView;
+typedef struct tagVtable_SuiView$TreeSelfCtrlView Vtable_SuiView$TreeSelfCtrlView;
 
 
 #ifndef define_struct___SuiView__TreeView_orc_h__
@@ -43,10 +45,13 @@ typedef struct tagVtable_SuiView$TreeView Vtable_SuiView$TreeView;
 #include "../Core/Node_orc.h"
 #include "./ViewBuilder_orc.h"
 #include "./TextView_orc.h"
+#include "./ImageView_orc.h"
 #include "./HoverViewEffect_orc.h"
 #include "../Core/Event_orc.h"
+#include "../Core/Node_orc.h"
 #include "../Core/MouseEvent_orc.h"
 #include "../../Orc/List_orc.h"
+#include "../../Orc/Path_orc.h"
 #include "../../Orc/String_orc.h"
 #include "../Dialog/MessageDialog_orc.h"
 
@@ -132,7 +137,40 @@ void  SuiView$TreeView$ctor(SuiView$TreeView *  self);
 void  SuiView$TreeView$react(SuiView$TreeView *  self);
 void  SuiView$TreeView$reactChildren(SuiView$TreeView *  self, SuiCore$Node *  parent, Orc$List *  items, int  deep);
 
+
+// 虚表
+struct tagVtable_SuiView$TreeSelfCtrlView {
+	Vtable_SuiLayout$LayoutLinear super;
+};
+//虚表实例
+extern Vtable_SuiView$TreeSelfCtrlView _vtable_SuiView$TreeSelfCtrlView;
+
+// class refc:0
+struct tagSuiView$TreeSelfCtrlView {
+	SuiLayout$LayoutLinear super; 
+	bool  open ;
+	bool  hasKids ;
+	int  deep ;
+	bool  isSelected ;
+	bool  (*calcVisible) (SuiView$TreeSelfCtrlView *  self);
+	void  (*clearSelect) (SuiView$TreeSelfCtrlView *  self);
+	void  (*updateForOpen) (SuiView$TreeSelfCtrlView *  self);
+};
+Vtable_SuiView$TreeSelfCtrlView* Vtable_SuiView$TreeSelfCtrlView_init(Vtable_SuiView$TreeSelfCtrlView* pvt);
+void SuiView$TreeSelfCtrlView_init_fields(SuiView$TreeSelfCtrlView *self);
+void SuiView$TreeSelfCtrlView_init(SuiView$TreeSelfCtrlView *self, void *pOwner);
+SuiView$TreeSelfCtrlView * SuiView$TreeSelfCtrlView_new(void *pOwner);
+void SuiView$TreeSelfCtrlView_fini(SuiView$TreeSelfCtrlView *self);
+
+void  SuiView$TreeSelfCtrlView$ctor(SuiView$TreeSelfCtrlView *  self);
+void  SuiView$TreeSelfCtrlView$onEvent(SuiView$TreeSelfCtrlView *  self, SuiCore$Event *  e);
+bool  SuiView$TreeSelfCtrlView$calcVisible(SuiView$TreeSelfCtrlView *  self);
+void  SuiView$TreeSelfCtrlView$clearSelect(SuiView$TreeSelfCtrlView *  self);
+void  SuiView$TreeSelfCtrlView$updateForOpen(SuiView$TreeSelfCtrlView *  self);
+void  SuiView$TreeSelfCtrlView$react(SuiView$TreeSelfCtrlView *  self);
+
 SuiView$TreeView*  SuiView$mkTreeView(SuiView$TreeView **  __outRef__, void *  parent, long long  key);
+SuiView$TreeSelfCtrlView*  SuiView$mkTreeSelfCtrlView(SuiView$TreeSelfCtrlView **  __outRef__, void *  parent, long long  key);
 
 
 

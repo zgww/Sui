@@ -185,7 +185,7 @@ class LayoutLinear extends View {
 					idx = len - i ;//处理reverse
 				}
 				ViewBase* view = self.getChildAsView(idx);
-				if (view) {
+				if (view && view.canLayoutByParent()) {
 					LayoutLinearCell* cell = (LayoutLinearCell*)view->getLayoutCellByType(LayoutLinearCell);
 					String * crossAlign = self.getCrossAlign_ofKid(view);
  
@@ -215,7 +215,7 @@ class LayoutLinear extends View {
 			for (int i = 0; i < len; i++) {
 				int idx = isReverse ? len - i : i; //处理reverse
 				ViewBase* view = self.getChildAsView(idx);
-				if (view) {
+				if (view && view.canLayoutByParent()) {
 					LayoutLinearCell* cell =  (LayoutLinearCell*)view->getLayoutCellByType(LayoutLinearCell);
 					String* crossAlign = self.getCrossAlign_ofKid(view);
 

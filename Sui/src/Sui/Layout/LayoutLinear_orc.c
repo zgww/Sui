@@ -439,7 +439,7 @@ void  SuiLayout$LayoutLinear$positionChildren(SuiLayout$LayoutLinear *  self, Su
 				idx = len - i;
 			}
 			SuiCore$ViewBase *  view = ((SuiCore$ViewBase * )self)->getChildAsView(self, idx) ;
-			if (view) {
+			if (view && view->canLayoutByParent(view) ) {
 				SuiLayout$LayoutLinearCell *  cell = (SuiLayout$LayoutLinearCell * )view->getLayoutCellByType(view, Vtable_SuiLayout$LayoutLinearCell_init(NULL)) ;
 				Orc$String *  crossAlign = self->getCrossAlign_ofKid(self, view) ;
 				view->frame.x = mainPos;
@@ -464,7 +464,7 @@ void  SuiLayout$LayoutLinear$positionChildren(SuiLayout$LayoutLinear *  self, Su
 		for (int  i = 0; i < len; i++) {
 			int  idx = isReverse ? len - i : i;
 			SuiCore$ViewBase *  view = ((SuiCore$ViewBase * )self)->getChildAsView(self, idx) ;
-			if (view) {
+			if (view && view->canLayoutByParent(view) ) {
 				SuiLayout$LayoutLinearCell *  cell = (SuiLayout$LayoutLinearCell * )view->getLayoutCellByType(view, Vtable_SuiLayout$LayoutLinearCell_init(NULL)) ;
 				Orc$String *  crossAlign = self->getCrossAlign_ofKid(self, view) ;
 				view->frame.y = mainPos;

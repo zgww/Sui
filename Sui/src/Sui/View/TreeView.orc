@@ -11,10 +11,13 @@ import * from "../Core/Node.orc"
 // import * from "../Core/View.orc"
 import * from "./ViewBuilder.orc"
 import * from "./TextView.orc"
+import * from "./ImageView.orc"
 import * from "./HoverViewEffect.orc"
 import * from "../Core/Event.orc"
+import * from "../Core/Node.orc"
 import * from "../Core/MouseEvent.orc"
 import * from "../../Orc/List.orc"
+import * from "../../Orc/Path.orc"
 import * from "../../Orc/String.orc"
 import * from "../Dialog/MessageDialog.orc"
  
@@ -208,6 +211,7 @@ class TreeView extends LayoutLinear {
         self.invalidLayout()
     }
 
+
     void reactChildren(Node *parent, List *items, int deep){
         if (items == null){
             return
@@ -268,8 +272,167 @@ class TreeView extends LayoutLinear {
     }
 }
 
+
+//不需要受TreeView管理。 TreeSelfCtrlView只要平铺罗列即可。 
+class TreeSelfCtrlView extends LayoutLinear{
+    bool open = true
+    bool hasKids = true
+    int deep = 0
+    bool isSelected = false
+    // TreeSelfCtrlView@ parentCtrl
+
+    void ctor(){
+        super.ctor()
+        self.hasInnerReact = true
+    }
+
+    void onEvent(Event *e){
+        if (e instanceof MouseEvent){
+            MouseEvent *me = (MouseEvent*)e 
+            //点击选中
+            if (me.isClickInBubble() && me.button == 1){
+                // self.state.setSelectedWithShiftAndCtrl(item, me.shift, me.ctrl)
+                // self.invalidReact()
+                self.clearSelect()
+                self.isSelected = true
+                self.trigger_react()
+            }
+            //双击可以展开
+            if (me.isDblClickInBubble()){
+                // MessageDialog_alert("hi", "tip")
+                // self.state.setOpen(item, !self.state.isOpend(item))
+                // self.invalidReact()
+                self.open = !self.open
+                self.updateForOpen()
+            }
+        }
+    }
+    //现找。 先不考虑性能。 后续可优化记录parentCtrl
+    bool calcVisible(){
+        if self.parent {
+            if self.deep == 0 {
+                return true
+            }
+
+            //现找所有上级
+            int l = self.parent.getChildrenCount(); 
+            int idx = self.parent.indexOf(self)
+            int targetDeep = self.deep - 1
+            for int i = idx - 1; i >= 0; i--{
+                Node* kid = self.parent.getChild(i)
+                if kid instanceof TreeSelfCtrlView {
+                    TreeSelfCtrlView* upper = (TreeSelfCtrlView*)kid;
+                    if upper.deep == targetDeep {//找到了祖先
+                        if !upper.open{ //有祖先是close状态
+                            return false
+                        }
+                        targetDeep --
+                        if targetDeep < 0 {//说明所有的祖先都可见
+                            return true
+                        }
+                    }
+                }
+            }
+        }
+        return false
+    }
+    void clearSelect(){
+        if self.parent {
+            int l = self.parent.getChildrenCount(); 
+
+            for int i = 0; i<l; i++{
+                Node* kid = self.parent.getChild(i)
+                if kid instanceof TreeSelfCtrlView {
+                    TreeSelfCtrlView* next = (TreeSelfCtrlView*)kid;
+                    if next.isSelected {
+                        next.isSelected = false
+                        next.trigger_react()
+                    }
+                }
+            }
+            self.trigger_react()
+        }
+    }
+    void updateForOpen(){
+        if self.parent {
+            int l = self.parent.getChildrenCount(); 
+            int idx = self.parent.indexOf(self)
+
+            for int i = idx + 1; i<l; i++{
+                Node* kid = self.parent.getChild(i)
+                if kid instanceof TreeSelfCtrlView {
+                    TreeSelfCtrlView* next = (TreeSelfCtrlView*)kid;
+                    //说明是子节点
+                    if next.deep > self.deep { 
+                        next.visible = next.calcVisible() //self.open
+                    }
+                    else { //不是子节点了
+                        break;
+                    }
+                }
+            }
+            self.trigger_react()
+        }
+    }
+    void react(){
+        self.padding.left = self.deep * 20
+
+        Node* o = self
+        self.startInnerReact()
+
+        mkHoverViewEffect(o, 0).{
+            // o.backgroundColor = idx % 2 == 1 ? 0xffffffff: 0
+            // o.backgroundColor =  0xffff0000
+            o.isActive = self.isSelected
+            o.cbOnHoverChanged = ^void(ViewBase*v){
+                // if (v.hover){
+                //     self.editCtx.hoverNode = s
+                // } else {
+                //     self.editCtx.hoverNode = null
+                // }
+                // self.invalidDraw()
+                printf("Scene.cbOnHoverChanged:%d\n", v.hover);
+            }
+        }
+        mkImageView(o, 0).{
+            o.width = 12
+            o.height = 12
+            o.setSrc(
+                self.hasKids 
+                ?
+                    self.open 
+                    ? Path_resolveFromExecutionDir("../asset/icon/light-arrow-down.png")
+                    : Path_resolveFromExecutionDir("../asset/icon/light-arrow-right.png")
+                : null
+            )
+            o.cbOnEvent = ^void(Event *e){
+                MouseEvent *me = (MouseEvent*)e
+                if me instanceof MouseEvent{
+                    if me.isClickInBubble() && me.button == 1 {
+                        self.open = !self.open
+                        self.updateForOpen()
+
+                    }
+
+                }
+
+            }
+        }
+
+        self.placeKids(self.outKids)
+
+        self.endInnerReact()
+    }
+}
+
 TreeView@ mkTreeView(void* parent, long long key){
     return (TreeView@)gocNode(
 		key ? (void*)key: __builtin_return_address(0)
 		, (Node*)parent, TreeView)
+}
+TreeSelfCtrlView@ mkTreeSelfCtrlView(void* parent, long long key){
+    return (TreeSelfCtrlView@)gocNode(
+        key ? (void*)key: __builtin_return_address(0), 
+        (Node*)parent, 
+        TreeSelfCtrlView)
 }
