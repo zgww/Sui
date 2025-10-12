@@ -9,7 +9,7 @@
 	"scissorTest":	false,
 	"blend":	true,
 	"cullFace":	false,
-	"wireframe": false,
+	"wireframe": true,
 	"uniforms":	[
 		{
 			"__class":	"Sgl$UniformInfo",
@@ -23,7 +23,7 @@
 			"__class":	"Sgl$UniformInfo",
 			"count":	4,
 			"key":	"color",
-			"floatValues":	[0.5, 0.5, 0.5, 1],
+			"floatValues":	[1.0, 1.0, 1.0, 1],
 			"kind":	6,
 			"texIndex":	0
 		}, 

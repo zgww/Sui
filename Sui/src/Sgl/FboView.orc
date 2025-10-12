@@ -73,6 +73,7 @@ class FboView extends ImageView {
     
     Mesh@ groundGrid = new Mesh()
     Drag@ drag = new Drag()
+    ^void (FboView* s) cbDraw
 
 
     void ctor(){
@@ -138,14 +139,17 @@ class FboView extends ImageView {
             Vec2 fboSize = self.fbo.getSize()
             self.camera.aspect = fboSize.x / fboSize.y
             //绘制fbo
-            self.fbo.startDraw(1.0, 0.0, 0.0, 1.0, true, true, true)
+            self.fbo.startDraw(0.0, 0.0, 0.0, 1.0, true, true, true)
 
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
 
             // self.mesh.draw(self.drawCtx)
 
-            // self.groundGrid.draw(self.drawCtx)
+            if self.cbDraw {
+                self.cbDraw(self)
+            }
+            self.groundGrid.draw(self.drawCtx)
 
             self.fbo.endDraw()
 
@@ -177,7 +181,7 @@ class FboView extends ImageView {
         
         // Position camera
         // self.camera.position = mkVec3(100, 300, 500)
-        self.camera.position = mkVec3(100, 0, 1000)
+        self.camera.position = mkVec3(100, 200, 1000)
 
         self.camera.updateWorldMatrixUptoRoot()
         self.camera.lookAt(0, 0, 0)

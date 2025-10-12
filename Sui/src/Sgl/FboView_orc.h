@@ -110,6 +110,7 @@ struct tagSgl$FboView {
 	Sgl$PerspectiveCamera*  camera ;
 	Sgl$Mesh*  groundGrid ;
 	SuiView$Drag*  drag ;
+	void  (**cbDraw)(void *  self, Sgl$FboView *  s);
 	void  (*mkBaseScene) (Sgl$FboView *  self);
 };
 Vtable_Sgl$FboView* Vtable_Sgl$FboView_init(Vtable_Sgl$FboView* pvt);

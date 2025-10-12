@@ -9,6 +9,8 @@ import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
 import * from "./Obj3d.orc"
 import * from "../Sui/Core/Window.orc"
+import * from "../Sui/Core/Vec3.orc"
+import * from "../Sui/Core/Node.orc"
 import * from "../Sui/View/TreeView.orc"
 import * from "../Sui/View/TextView.orc"
 import * from "../Sui/View/SplitterView.orc"
@@ -42,6 +44,8 @@ const char *assimp_getMaterialName(struct aiMaterial* matl){
 class AssimpLoader {
     String@ path
     struct aiScene *scene;
+
+    Obj3d@ rootObj3d
     void dtor(){
         if self.scene {
             // 释放资源
@@ -50,14 +54,57 @@ class AssimpLoader {
     }
 
     Obj3d@ buildSglTree(){
-        return self.buildNode(null, self.scene.mRootNode, 0, 0)
+        self.rootObj3d = self.buildNode(null, self.scene.mRootNode, 0, 0)
+        return self.rootObj3d
     }
     List@ geometries = new List()
     void buildGeometries(){
+        self.geometries.clear()
         for int i = 0; i < self.scene.mNumMeshes; i++{
             struct aiMesh* mesh = self.scene.mMeshes[i]
-        }
+            Buffer@ vertices = new Buffer();
+            Buffer@ normals = new Buffer();
+            Buffer@ uvs = new Buffer();
+            Buffer@ faces = new Buffer();
+            
+            float scale = 1.0;
 
+            for int i = 0; i < mesh.mNumVertices; i++ {
+                // has = true;
+                Vec3 v3;
+                v3.x = mesh.mVertices[i].x / scale;
+                v3.y = mesh.mVertices[i].y / scale;
+                v3.z = mesh.mVertices[i].z / scale;
+
+                Vec3 n;
+                n.x = mesh.mNormals[i].x;
+                n.y = mesh.mNormals[i].y;
+                n.z = mesh.mNormals[i].z;
+                vertices.appendVec3(v3)
+                normals.appendVec3(v3)
+            }
+
+            // 处理索引
+            for(unsigned int i = 0; i < mesh->mNumFaces; i++) {
+                struct aiFace* face = mesh->mFaces + i;
+                for(unsigned int j = 0; j < face.mNumIndices; j++){
+                    int idx = face.mIndices[j] ;
+                    faces.appendInt(idx);
+                }
+            }
+
+
+            Geometry@ g = new Geometry()
+
+            g.setAttrByBuffer("position", vertices, 3)
+            g.setAttrByBuffer("normal", normals, 3)
+            // g.setAttrByBuffer("color", color, 4)
+            g.setAttrByBuffer("uv", uvs, 2)
+            g.setIboByBuffer(faces)
+
+
+            self.geometries.add(g)
+        }
     }
 
     Obj3d@ buildNode(Obj3d* parent, struct aiNode* node, int idx, int deep){
@@ -82,6 +129,62 @@ class AssimpLoader {
         }
         return ret
     }
+    void drawFboView(FboView* fboView){
+        if self.rootObj3d {
+            self.rootObj3d.draw(fboView.drawCtx)
+        }
+    }
+
+    void reactMetaData(Node* o, struct aiMetadata *mMetaData, int deep){
+        for int i = 0; i < mMetaData.mNumProperties; i++{
+            struct aiString *key = mMetaData.mKeys + i
+            struct aiMetadataEntry *value = mMetaData.mValues + i;
+            char valueStr[512];
+            if value.mType == AI_BOOL {
+                sprintf(valueStr, "%d", *((bool*)value.mData))
+            }
+            else if value.mType == AI_INT32 {
+                sprintf(valueStr, "%d", *((int*)value.mData))
+            }
+            else if value.mType == AI_UINT32 {
+                sprintf(valueStr, "%u", *((unsigned int*)value.mData))
+            }
+            else if value.mType == AI_INT64 {
+                sprintf(valueStr, "%lld", *((long long*)value.mData))
+            }
+            else if value.mType == AI_AIVECTOR3D {
+                struct aiVector3D *pv = (struct aiVector3D*)value.mData
+                sprintf(valueStr, "Vec3(%f,%f,%f)", pv.x, pv.y, pv.z)
+            }
+            else if value.mType == AI_UINT64 {
+                sprintf(valueStr, "%llu", *((unsigned long long*)value.mData))
+            }
+            else if value.mType == AI_FLOAT {
+                sprintf(valueStr, "%f", *((float*)value.mData))
+            }
+            else if value.mType == AI_DOUBLE {
+                sprintf(valueStr, "%f", *((double *)value.mData))
+            }
+            else if value.mType == AI_AISTRING {
+                struct aiString *ais = (struct aiString*)value.mData
+                sprintf(valueStr, "%s", ais.data)
+            }
+            char tmp[1024];
+            sprintf(tmp, "%d %s =%s\n", 
+                i, 
+                key.data,
+                valueStr,
+            )
+            mkTreeSelfCtrlView(o, ((long long)mMetaData) * 1000 + (long long)key).{
+                o.deep = deep
+                o.hasKids = true
+                mkTextView(o, 0).{
+                    o.setText(str(tmp))
+                }
+            }
+        }
+    }
+
 
     void showWindow(){
         new Window()~{
@@ -92,6 +195,9 @@ class AssimpLoader {
                 win.setRootView(o)
 
                 mkFboView(o, 0).{
+                    o.cbDraw = ^void(FboView* fboView){
+                        self.drawFboView(fboView)
+                    }
                     layoutLinearCell(o, 0)
                 }
 
@@ -110,53 +216,7 @@ class AssimpLoader {
                             o.setText(str("元数据").addi(self.scene.mMetaData->mNumProperties))
                         }
                     }
-                    for int i = 0; i < self.scene.mMetaData.mNumProperties; i++{
-                        struct aiString *key = self.scene.mMetaData.mKeys + i
-                        struct aiMetadataEntry *value = self.scene.mMetaData.mValues + i;
-                        char valueStr[512];
-                        if value.mType == AI_BOOL {
-                            sprintf(valueStr, "%d", *((bool*)value.mData))
-                        }
-                        else if value.mType == AI_INT32 {
-                            sprintf(valueStr, "%d", *((int*)value.mData))
-                        }
-                        else if value.mType == AI_UINT32 {
-                            sprintf(valueStr, "%u", *((unsigned int*)value.mData))
-                        }
-                        else if value.mType == AI_INT64 {
-                            sprintf(valueStr, "%lld", *((long long*)value.mData))
-                        }
-                        else if value.mType == AI_AIVECTOR3D {
-                            struct aiVector3D *pv = (struct aiVector3D*)value.mData
-                            sprintf(valueStr, "Vec3(%f,%f,%f)", pv.x, pv.y, pv.z)
-                        }
-                        else if value.mType == AI_UINT64 {
-                            sprintf(valueStr, "%llu", *((unsigned long long*)value.mData))
-                        }
-                        else if value.mType == AI_FLOAT {
-                            sprintf(valueStr, "%f", *((float*)value.mData))
-                        }
-                        else if value.mType == AI_DOUBLE {
-                            sprintf(valueStr, "%f", *((double *)value.mData))
-                        }
-                        else if value.mType == AI_AISTRING {
-                            struct aiString *ais = (struct aiString*)value.mData
-                            sprintf(valueStr, "%s", ais.data)
-                        }
-                        char tmp[1024];
-                        sprintf(tmp, "%d %s =%s\n", 
-                            i, 
-                            key.data,
-                            valueStr,
-                        )
-                        mkTreeSelfCtrlView(o, (long long)key).{
-                            o.deep = 1
-                            o.hasKids = true
-                            mkTextView(o, 0).{
-                                o.setText(str(tmp))
-                            }
-                        }
-                    }
+                    self.reactMetaData(o, self.scene.mMetaData, 1)
                     mkTreeSelfCtrlView(o, (long long)0).{
                         o.deep = 0
                         o.hasKids = true
@@ -456,10 +516,20 @@ class AssimpLoader {
 
         mkTreeSelfCtrlView(o, (long long)node).{
             o.deep = deep
-            o.hasKids = node.mNumChildren > 0
+            o.hasKids = node.mNumChildren > 0 || node.mMetaData != null
             mkTextView(o, 0).{
                 o.setText(str(tmp))
             }
+        }
+        if node.mMetaData {
+            mkTreeSelfCtrlView(o, (long long)0).{
+                o.deep = deep + 1
+                o.hasKids = true
+                mkTextView(o, 0).{
+                    o.setText(str("元数据").addi(self.scene.mMetaData->mNumProperties))
+                }
+            }
+            self.reactMetaData(o, node.mMetaData, deep + 2)
         }
         // 递归处理子节点
         for (unsigned int i = 0; i < node->mNumChildren; ++i) {
