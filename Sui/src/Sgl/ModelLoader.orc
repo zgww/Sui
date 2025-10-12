@@ -54,6 +54,8 @@ class AssimpLoader {
     }
 
     Obj3d@ buildSglTree(){
+        self.buildGeometries()
+
         self.rootObj3d = self.buildNode(null, self.scene.mRootNode, 0, 0)
         return self.rootObj3d
     }
@@ -115,7 +117,15 @@ class AssimpLoader {
         else {
             Mesh@ mesh = new Mesh()
             //填充mesh
-
+            if node.mNumMeshes > 0 {
+                int idx = node.mMeshes[0]
+                Geometry* geom = (Geometry*)self.geometries.get(idx)
+                mesh.geometry = geom
+                new Material()~{
+                    o.load("../asset/basic.matl.json")
+                    mesh.material = o
+                }
+            }
 
             ret = mesh
         }
@@ -754,20 +764,29 @@ class ModelLoader extends Obj3d {
     Buffer@ faces = new Buffer();
 
     String@ path
-    Mesh@ mesh = new Mesh()
+    // Mesh@ mesh = new Mesh()
+
+    Obj3d@ modelRoot
 
     void setPath(String@ path){
         self.path = path
 
         // 调用加载器加载
         if path {
-            self._load()
-            self.mesh.geometry = self.buildGeometry()
-            new Material()~{
-                o.load("../asset/basic.matl.json")
-                self.mesh.material = o
-            }
-            self.appendChild(self.mesh)
+
+            AssimpLoader@ l = new AssimpLoader()
+            l.load(self.path.str)
+            self.modelRoot = l.buildSglTree()
+            self.appendChild(self.modelRoot)
+            printNodeTree(self, 0)
+
+            // self._load()
+            // self.mesh.geometry = self.buildGeometry()
+            // new Material()~{
+            //     o.load("../asset/basic.matl.json")
+            //     self.mesh.material = o
+            // }
+            // self.appendChild(self.mesh)
         }
     }
 

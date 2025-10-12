@@ -125,7 +125,7 @@ struct tagSgl$ModelLoader {
 	Sgl$Buffer*  texCoords ;
 	Sgl$Buffer*  faces ;
 	Orc$String*  path ;
-	Sgl$Mesh*  mesh ;
+	Sgl$Obj3d*  modelRoot ;
 	void  (*setPath) (Sgl$ModelLoader *  self, Orc$String*  path);
 	void  (*_load) (Sgl$ModelLoader *  self);
 	Sgl$Geometry*  (*buildGeometry) (Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);

@@ -41,6 +41,8 @@ import type * from "../Sgl/SglSceneView.orc"
 import type * from "../HoroEditor/HoroEditor.orc"
 import type * from "../HoroEditor/HoroGeometryPreviewView.orc"
 import type * from "../HoroEditor/HoroEditCtx.orc"
+import * from "../Sgl/ModelLoader.orc"
+import * from "../Sgl/Obj3d.orc"
 
 
 
@@ -352,6 +354,19 @@ void UiAction_openFile(FileItem@ fi){
         new HoroGeometryPreviewView()~{
             o.showWindow(fi.path.str)
         }
+    }
+    if fi.path.endsWith(".obj") 
+    || fi.path.endsWith(".fbx")
+    || fi.path.endsWith(".gltf")
+    {
+
+        AssimpLoader@ l = new AssimpLoader()
+        // l.load("duck.dae")
+        // l.load("spider.fbx")
+        l.load(fi.path.str)
+        l.showWindow()
+        Obj3d@ root = l.buildSglTree()
+        printNodeTree(root, 0)
     }
 }
 void UiAction_closeCurrentPrefab(){

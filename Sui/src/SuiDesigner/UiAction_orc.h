@@ -82,6 +82,8 @@ typedef struct tagVtable_SuiDesigner$ClipboardForANodes Vtable_SuiDesigner$Clipb
 #define INCLUDE_ONLY_TYPE
 #include "../HoroEditor/HoroEditCtx_orc.h"
 #undef INCLUDE_ONLY_TYPE
+#include "../Sgl/ModelLoader_orc.h"
+#include "../Sgl/Obj3d_orc.h"
 
 
 #ifdef __cplusplus
