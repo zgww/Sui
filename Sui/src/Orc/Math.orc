@@ -11,6 +11,13 @@ int absInt(int a){
     }
     return a;
 }
+//归一化. 等于是保留方向，长度置为1
+float normalFloat(float a){
+    if (a < 0.0){
+        return -1
+    }
+    return 1;
+}
 float absFloat(float a){
     if (a < 0.0){
         return -a

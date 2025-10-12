@@ -352,7 +352,7 @@ class LayoutLinear extends View {
 				LayoutLinearCell* cell = (LayoutLinearCell*)view->getLayoutCellByType(LayoutLinearCell);
 
 				if (cell) {
-					if (cell->grow > 0.f) {
+					if (cell.grow >= 0.f) {
 						sumGrow = sumGrow + cell->grow;
 						growNodes.add((Object*)view);
 						continue;
@@ -385,7 +385,7 @@ class LayoutLinear extends View {
 			} 
 			else {//按比例均分空间
 				LayoutLinearCell* cell = (LayoutLinearCell*)view->getLayoutCellByType(LayoutLinearCell);
-				float ratio = cell->grow / sumGrow;
+				float ratio = cell.grow / sumGrow;
 				float mainSpace = remainMain * ratio;
 				Frame* kidCtx = &view->frame;
 				self.setMainConstraints(kidCtx, isHor, mainSpace, mainSpace);

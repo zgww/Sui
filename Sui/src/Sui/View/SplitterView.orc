@@ -3,6 +3,7 @@ package SuiView
 #include <stdio.h>
 
 import * from "../../Orc/String.orc"
+import * from "../../Orc/Math.orc"
 import * from "../Core/ViewBase.orc"
 import * from "../Core/View.orc"
 import * from "../Core/Inset.orc"
@@ -57,6 +58,7 @@ class SplitterView extends View {
                         if d.isDragging {
 
                             if isHor {
+                                //防止值越界
                                 self.prevGrow += d.deltaPos.x
                                 self.nextGrow -= d.deltaPos.x
 
@@ -65,6 +67,16 @@ class SplitterView extends View {
                                 self.prevGrow += d.deltaPos.y
                                 self.nextGrow -= d.deltaPos.y
                             }
+                            //防止越界
+                            if self.prevGrow <  0 {
+                                self.nextGrow += self.prevGrow
+                                self.prevGrow -= self.prevGrow
+                            }
+                            else if self.nextGrow <  0 {
+                                self.prevGrow += self.nextGrow
+                                self.nextGrow -= self.nextGrow
+                            }
+
                             printf("更新Spliiter左右的cell.grow. :%f,%f\n", self.prevGrow, self.nextGrow);
                             prevCell.grow = self.prevGrow
                             nextCell.grow = self.nextGrow

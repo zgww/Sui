@@ -587,7 +587,7 @@ bool  SuiLayout$LayoutLinear$layout_mainLimit(SuiLayout$LayoutLinear *  self, Su
 		if (view && view->canLayoutByParent(view) ) {
 			SuiLayout$LayoutLinearCell *  cell = (SuiLayout$LayoutLinearCell * )view->getLayoutCellByType(view, Vtable_SuiLayout$LayoutLinearCell_init(NULL)) ;
 			if (cell) {
-				if (cell->grow > 0.f) {
+				if (cell->grow >= 0.f) {
 					sumGrow = sumGrow + cell->grow;
 					growNodes->add(growNodes, (Object * )view) ;
 					continue;

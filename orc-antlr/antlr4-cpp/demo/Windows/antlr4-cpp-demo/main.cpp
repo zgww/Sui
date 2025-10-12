@@ -1138,7 +1138,7 @@ cmd指令如下所示。
 			}
 
 			if (cmd == "version") {
-				auto version = std::string("0.8.1");
+				auto version = std::string("0.8.2");
 #ifdef NDEBUG
 				printf("version:%s debug:0\n", version.c_str());
 #else

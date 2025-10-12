@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "../../Orc/String_orc.h"
+#include "../../Orc/Math_orc.h"
 #include "../Core/ViewBase_orc.h"
 #include "../Core/View_orc.h"
 #include "../Core/Inset_orc.h"
@@ -16,13 +17,13 @@
 
 
 // static struct 
-typedef struct tagSuiView$__Block_30_15 SuiView$__Block_30_15;
+typedef struct tagSuiView$__Block_31_15 SuiView$__Block_31_15;
 
-typedef struct tagSuiView$__Closure_32_27 SuiView$__Closure_32_27;
+typedef struct tagSuiView$__Closure_33_27 SuiView$__Closure_33_27;
 
 
 
-struct tagSuiView$__Block_30_15 {
+struct tagSuiView$__Block_31_15 {
 	SuiView$SplitterView*  self ;
 };
 
@@ -30,10 +31,10 @@ struct tagSuiView$__Block_30_15 {
 
 
 
-struct tagSuiView$__Closure_32_27 {
-	void  (*invoke)(SuiView$__Closure_32_27 *  self, SuiView$Drag *  d);
+struct tagSuiView$__Closure_33_27 {
+	void  (*invoke)(SuiView$__Closure_33_27 *  self, SuiView$Drag *  d);
 	Vtable_Object *  vtable ;
-	SuiView$__Block_30_15*  __var___Block_30_15 ;
+	SuiView$__Block_31_15*  __var___Block_31_15 ;
 };
 
 
@@ -41,10 +42,10 @@ struct tagSuiView$__Closure_32_27 {
 
 
 // static function declaration
-static void  __finiBlock___Block_30_15(SuiView$__Block_30_15 *  self);
-static void  __fn___Closure_32_27(SuiView$__Closure_32_27 *  self, SuiView$Drag *  d);
-static void  __fini___Closure_32_27(SuiView$__Closure_32_27 *  self);
-static SuiView$__Closure_32_27*  __make___Closure_32_27(SuiView$__Closure_32_27 **  __outRef__, SuiView$__Block_30_15 *  __var___Block_30_15);
+static void  __finiBlock___Block_31_15(SuiView$__Block_31_15 *  self);
+static void  __fn___Closure_33_27(SuiView$__Closure_33_27 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_33_27(SuiView$__Closure_33_27 *  self);
+static SuiView$__Closure_33_27*  __make___Closure_33_27(SuiView$__Closure_33_27 **  __outRef__, SuiView$__Block_31_15 *  __var___Block_31_15);
 
 
 
@@ -163,11 +164,11 @@ SuiView$SplitterView * SuiView$SplitterView_new(void *pOwner){
 
 // class members
 void  SuiView$SplitterView$ctor(SuiView$SplitterView *  self){
-	URGC_VAR_CLEANUP SuiView$__Block_30_15*  __var___Block_30_15 = (__var___Block_30_15=NULL,urgc_init_var((void**)&__var___Block_30_15, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_30_15) , __finiBlock___Block_30_15) ));
-	urgc_set_field_class(__var___Block_30_15, (void * )offsetof(SuiView$__Block_30_15, self) , self) ;
+	URGC_VAR_CLEANUP SuiView$__Block_31_15*  __var___Block_31_15 = (__var___Block_31_15=NULL,urgc_init_var((void**)&__var___Block_31_15, orc_alloc_and_set_deleter(sizeof(SuiView$__Block_31_15) , __finiBlock___Block_31_15) ));
+	urgc_set_field_class(__var___Block_31_15, (void * )offsetof(SuiView$__Block_31_15, self) , self) ;
 	((SuiCore$ViewBase * )self)->hitTestPadding = SuiCore$mkInset(3, 3, 3, 3) ;
-	URGC_VAR_CLEANUP SuiView$__Closure_32_27*  tmpReturn_1 = NULL;
-	urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_32_27(&tmpReturn_1, __var___Block_30_15) ) ;
+	URGC_VAR_CLEANUP SuiView$__Closure_33_27*  tmpReturn_1 = NULL;
+	urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_33_27(&tmpReturn_1, __var___Block_31_15) ) ;
 }
 
 
@@ -194,63 +195,71 @@ void  SuiView$SplitterView$onHoverChanged(SuiView$SplitterView *  self){
 
 
 
-static void  __finiBlock___Block_30_15(SuiView$__Block_30_15 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_30_15, self) , NULL) ;
+static void  __finiBlock___Block_31_15(SuiView$__Block_31_15 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiView$__Block_31_15, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_32_27(SuiView$__Closure_32_27 *  self, SuiView$Drag *  d){
-	SuiLayout$LayoutLinear *  ll = (SuiLayout$LayoutLinear * )((SuiCore$Node * )self->__var___Block_30_15->self)->parent;
+static void  __fn___Closure_33_27(SuiView$__Closure_33_27 *  self, SuiView$Drag *  d){
+	SuiLayout$LayoutLinear *  ll = (SuiLayout$LayoutLinear * )((SuiCore$Node * )self->__var___Block_31_15->self)->parent;
 	if (Orc_instanceof((Object*)ll, (Vtable_Object*)Vtable_SuiLayout$LayoutLinear_init(NULL))) {
 		bool  isHor = ll->calcIsHor(ll) ;
-		int  idx = ((SuiCore$Node * )self->__var___Block_30_15->self)->parent->indexOf(((SuiCore$Node * )self->__var___Block_30_15->self)->parent, self->__var___Block_30_15->self) ;
-		if (idx == 0 || idx == ((SuiCore$Node * )self->__var___Block_30_15->self)->parent->getChildrenCount(((SuiCore$Node * )self->__var___Block_30_15->self)->parent)  - 1) {
+		int  idx = ((SuiCore$Node * )self->__var___Block_31_15->self)->parent->indexOf(((SuiCore$Node * )self->__var___Block_31_15->self)->parent, self->__var___Block_31_15->self) ;
+		if (idx == 0 || idx == ((SuiCore$Node * )self->__var___Block_31_15->self)->parent->getChildrenCount(((SuiCore$Node * )self->__var___Block_31_15->self)->parent)  - 1) {
 			return ; 
 		}
-		SuiCore$ViewBase *  prev = (SuiCore$ViewBase * )((SuiCore$Node * )self->__var___Block_30_15->self)->parent->getChild(((SuiCore$Node * )self->__var___Block_30_15->self)->parent, idx - 1) ;
-		SuiCore$ViewBase *  next = (SuiCore$ViewBase * )((SuiCore$Node * )self->__var___Block_30_15->self)->parent->getChild(((SuiCore$Node * )self->__var___Block_30_15->self)->parent, idx + 1) ;
+		SuiCore$ViewBase *  prev = (SuiCore$ViewBase * )((SuiCore$Node * )self->__var___Block_31_15->self)->parent->getChild(((SuiCore$Node * )self->__var___Block_31_15->self)->parent, idx - 1) ;
+		SuiCore$ViewBase *  next = (SuiCore$ViewBase * )((SuiCore$Node * )self->__var___Block_31_15->self)->parent->getChild(((SuiCore$Node * )self->__var___Block_31_15->self)->parent, idx + 1) ;
 		if (Orc_instanceof((Object*)prev, (Vtable_Object*)Vtable_SuiCore$ViewBase_init(NULL)) && Orc_instanceof((Object*)next, (Vtable_Object*)Vtable_SuiCore$ViewBase_init(NULL))) {
 			SuiLayout$LayoutLinearCell *  prevCell = (SuiLayout$LayoutLinearCell * )((SuiCore$Node * )prev)->getChildByType(prev, Vtable_SuiLayout$LayoutLinearCell_init(NULL)) ;
 			SuiLayout$LayoutLinearCell *  nextCell = (SuiLayout$LayoutLinearCell * )((SuiCore$Node * )next)->getChildByType(next, Vtable_SuiLayout$LayoutLinearCell_init(NULL)) ;
 			if (prevCell && nextCell) {
 				if (d->isDragStart) {
 					if (isHor) {
-						self->__var___Block_30_15->self->prevGrow = prev->frame.width;
-						self->__var___Block_30_15->self->nextGrow = next->frame.width;
+						self->__var___Block_31_15->self->prevGrow = prev->frame.width;
+						self->__var___Block_31_15->self->nextGrow = next->frame.width;
 					}
 					else {
-						self->__var___Block_30_15->self->prevGrow = prev->frame.height;
-						self->__var___Block_30_15->self->nextGrow = next->frame.height;
+						self->__var___Block_31_15->self->prevGrow = prev->frame.height;
+						self->__var___Block_31_15->self->nextGrow = next->frame.height;
 					}
 				}
 				if (d->isDragging) {
 					if (isHor) {
-						self->__var___Block_30_15->self->prevGrow += d->deltaPos.x;
-						self->__var___Block_30_15->self->nextGrow -= d->deltaPos.x;
+						self->__var___Block_31_15->self->prevGrow += d->deltaPos.x;
+						self->__var___Block_31_15->self->nextGrow -= d->deltaPos.x;
 					}
 					else {
-						self->__var___Block_30_15->self->prevGrow += d->deltaPos.y;
-						self->__var___Block_30_15->self->nextGrow -= d->deltaPos.y;
+						self->__var___Block_31_15->self->prevGrow += d->deltaPos.y;
+						self->__var___Block_31_15->self->nextGrow -= d->deltaPos.y;
 					}
-					printf("更新Spliiter左右的cell.grow. :%f,%f\n", self->__var___Block_30_15->self->prevGrow, self->__var___Block_30_15->self->nextGrow) ;
-					prevCell->grow = self->__var___Block_30_15->self->prevGrow;
-					nextCell->grow = self->__var___Block_30_15->self->nextGrow;
+					if (self->__var___Block_31_15->self->prevGrow < 0) {
+						self->__var___Block_31_15->self->nextGrow += self->__var___Block_31_15->self->prevGrow;
+						self->__var___Block_31_15->self->prevGrow -= self->__var___Block_31_15->self->prevGrow;
+					}
+					else if (self->__var___Block_31_15->self->nextGrow < 0) {
+						self->__var___Block_31_15->self->prevGrow += self->__var___Block_31_15->self->nextGrow;
+						self->__var___Block_31_15->self->nextGrow -= self->__var___Block_31_15->self->nextGrow;
+					}
+					printf("更新Spliiter左右的cell.grow. :%f,%f\n", self->__var___Block_31_15->self->prevGrow, self->__var___Block_31_15->self->nextGrow) ;
+					prevCell->grow = self->__var___Block_31_15->self->prevGrow;
+					nextCell->grow = self->__var___Block_31_15->self->nextGrow;
 				}
 			}
 		}
 	}
 }
 
-static void  __fini___Closure_32_27(SuiView$__Closure_32_27 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_32_27, __var___Block_30_15) , NULL) ;
+static void  __fini___Closure_33_27(SuiView$__Closure_33_27 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_33_27, __var___Block_31_15) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiView$__Closure_32_27*  __make___Closure_32_27(SuiView$__Closure_32_27 **  __outRef__, SuiView$__Block_30_15 *  __var___Block_30_15){
-	URGC_VAR_CLEANUP SuiView$__Closure_32_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_32_27) , __fini___Closure_32_27) ));
-	self->invoke = __fn___Closure_32_27;
+static SuiView$__Closure_33_27*  __make___Closure_33_27(SuiView$__Closure_33_27 **  __outRef__, SuiView$__Block_31_15 *  __var___Block_31_15){
+	URGC_VAR_CLEANUP SuiView$__Closure_33_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiView$__Closure_33_27) , __fini___Closure_33_27) ));
+	self->invoke = __fn___Closure_33_27;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_32_27, __var___Block_30_15) , __var___Block_30_15) ;
+	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_33_27, __var___Block_31_15) , __var___Block_31_15) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

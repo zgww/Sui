@@ -35,6 +35,7 @@ typedef struct tagVtable_SuiView$SplitterView Vtable_SuiView$SplitterView;
 
 //include  importHeadCode
 #include "../../Orc/String_orc.h"
+#include "../../Orc/Math_orc.h"
 #include "../Core/ViewBase_orc.h"
 #include "../Core/View_orc.h"
 #include "../Core/Inset_orc.h"

@@ -45,9 +45,11 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 #include "../Sui/Core/Window_orc.h"
 #include "../Sui/View/TreeView_orc.h"
 #include "../Sui/View/TextView_orc.h"
+#include "../Sui/View/SplitterView_orc.h"
 #include "../Sui/View/ScrollArea_orc.h"
 #include "../Sui/Layout/LayoutLinear_orc.h"
 #include "./Mesh_orc.h"
+#include "./FboView_orc.h"
 #include "./Buffer_orc.h"
 #include "./Vbo_orc.h"
 #include "./Geometry_orc.h"
@@ -75,6 +77,8 @@ struct tagSgl$AssimpLoader {
 	Orc$String*  path ;
 	struct aiScene *  scene ;
 	Sgl$Obj3d*  (*buildSglTree) (Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self);
+	Orc$List*  geometries ;
+	void  (*buildGeometries) (Sgl$AssimpLoader *  self);
 	Sgl$Obj3d*  (*buildNode) (Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self, Sgl$Obj3d *  parent, struct aiNode *  node, int  idx, int  deep);
 	void  (*showWindow) (Sgl$AssimpLoader *  self);
 	void  (*mkNodeTreeView) (Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);
@@ -90,6 +94,7 @@ void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self);
 
 void  Sgl$AssimpLoader$dtor(Sgl$AssimpLoader *  self);
 Sgl$Obj3d*  Sgl$AssimpLoader$buildSglTree(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self);
+void  Sgl$AssimpLoader$buildGeometries(Sgl$AssimpLoader *  self);
 Sgl$Obj3d*  Sgl$AssimpLoader$buildNode(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self, Sgl$Obj3d *  parent, struct aiNode *  node, int  idx, int  deep);
 void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$mkNodeTreeView(Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);

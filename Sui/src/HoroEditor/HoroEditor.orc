@@ -754,6 +754,7 @@ class HoroEditor extends Listener{
 
         if 1 {//加载模型
             test_AssimpLoader()
+            win.close()
             return;
         }
 

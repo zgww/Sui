@@ -19,6 +19,13 @@ int  Orc$absInt(int  a){
 	return a; 
 }
 
+float  Orc$normalFloat(float  a){
+	if (a < 0.0) {
+		return -1; 
+	}
+	return 1; 
+}
+
 float  Orc$absFloat(float  a){
 	if (a < 0.0) {
 		return -a; 

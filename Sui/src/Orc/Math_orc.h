@@ -42,6 +42,7 @@ extern "C"{
 
 //代码内容
 int  Orc$absInt(int  a);
+float  Orc$normalFloat(float  a);
 float  Orc$absFloat(float  a);
 int  Orc$minInt(int  a, int  b);
 int  Orc$maxInt(int  a, int  b);

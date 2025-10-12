@@ -11,9 +11,11 @@ import * from "./Obj3d.orc"
 import * from "../Sui/Core/Window.orc"
 import * from "../Sui/View/TreeView.orc"
 import * from "../Sui/View/TextView.orc"
+import * from "../Sui/View/SplitterView.orc"
 import * from "../Sui/View/ScrollArea.orc"
 import * from "../Sui/Layout/LayoutLinear.orc"
 import * from "./Mesh.orc"
+import * from "./FboView.orc"
 import * from "./Buffer.orc"
 import * from "./Vbo.orc"
 import * from "./Geometry.orc"
@@ -50,6 +52,14 @@ class AssimpLoader {
     Obj3d@ buildSglTree(){
         return self.buildNode(null, self.scene.mRootNode, 0, 0)
     }
+    List@ geometries = new List()
+    void buildGeometries(){
+        for int i = 0; i < self.scene.mNumMeshes; i++{
+            struct aiMesh* mesh = self.scene.mMeshes[i]
+        }
+
+    }
+
     Obj3d@ buildNode(Obj3d* parent, struct aiNode* node, int idx, int deep){
         Obj3d@ ret = null
         if node.mNumMeshes == 0 {
@@ -76,326 +86,118 @@ class AssimpLoader {
     void showWindow(){
         new Window()~{
             Window* win = o
-            new ScrollArea().{
+            new LayoutLinear().{
+                // o.backgroundColor = 0xff33ff00
+                o.aiStretch()
                 win.setRootView(o)
 
-                o.column().aiStretch()
-                // o.backgroundColor = 0xffffffff
+                mkFboView(o, 0).{
+                    layoutLinearCell(o, 0)
+                }
 
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("元数据").addi(self.scene.mMetaData->mNumProperties))
-                    }
-                }
-                for int i = 0; i < self.scene.mMetaData.mNumProperties; i++{
-                    struct aiString *key = self.scene.mMetaData.mKeys + i
-                    struct aiMetadataEntry *value = self.scene.mMetaData.mValues + i;
-                    char valueStr[512];
-                    if value.mType == AI_BOOL {
-                        sprintf(valueStr, "%d", *((bool*)value.mData))
-                    }
-                    else if value.mType == AI_INT32 {
-                        sprintf(valueStr, "%d", *((int*)value.mData))
-                    }
-                    else if value.mType == AI_UINT32 {
-                        sprintf(valueStr, "%u", *((unsigned int*)value.mData))
-                    }
-                    else if value.mType == AI_INT64 {
-                        sprintf(valueStr, "%lld", *((long long*)value.mData))
-                    }
-                    else if value.mType == AI_AIVECTOR3D {
-                        struct aiVector3D *pv = (struct aiVector3D*)value.mData
-                        sprintf(valueStr, "Vec3(%f,%f,%f)", pv.x, pv.y, pv.z)
-                    }
-                    else if value.mType == AI_UINT64 {
-                        sprintf(valueStr, "%llu", *((unsigned long long*)value.mData))
-                    }
-                    else if value.mType == AI_FLOAT {
-                        sprintf(valueStr, "%f", *((float*)value.mData))
-                    }
-                    else if value.mType == AI_DOUBLE {
-                        sprintf(valueStr, "%f", *((double *)value.mData))
-                    }
-                    else if value.mType == AI_AISTRING {
-                        struct aiString *ais = (struct aiString*)value.mData
-                        sprintf(valueStr, "%s", ais.data)
-                    }
-                    char tmp[1024];
-                    sprintf(tmp, "%d %s =%s\n", 
-                        i, 
-                        key.data,
-                        valueStr,
-                    )
-                    mkTreeSelfCtrlView(o, (long long)key).{
-                        o.deep = 1
+                mkSplitterView(o, 0).{}
+
+                mkScrollArea(o, 0).{
+                    layoutLinearCell(o, 0)
+
+                    o.column().aiStretch()
+                    // o.backgroundColor = 0xffffffff
+
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
                         o.hasKids = true
                         mkTextView(o, 0).{
-                            o.setText(str(tmp))
+                            o.setText(str("元数据").addi(self.scene.mMetaData->mNumProperties))
                         }
                     }
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("材质").addi(self.scene.mNumMaterials))
-                    }
-                }
-                for int i = 0; i < self.scene.mNumMaterials; i++{
-                    struct aiMaterial *e = self.scene.mMaterials[i]
-                    char tmp[1024];
-                    sprintf(tmp, "%d %s numProperty=%d\n", 
-                        i, 
-                        assimp_getMaterialName(e),
-                        e.mNumProperties
-                    )
-                    mkTreeSelfCtrlView(o, (long long)e).{
-                        o.deep = 1
-                        o.hasKids = true
-                        mkTextView(o, 0).{
-                            o.setText(str(tmp))
+                    for int i = 0; i < self.scene.mMetaData.mNumProperties; i++{
+                        struct aiString *key = self.scene.mMetaData.mKeys + i
+                        struct aiMetadataEntry *value = self.scene.mMetaData.mValues + i;
+                        char valueStr[512];
+                        if value.mType == AI_BOOL {
+                            sprintf(valueStr, "%d", *((bool*)value.mData))
                         }
-                    }
-                    for int j = 0; j < e.mNumProperties; j++{
-                        struct aiMaterialProperty *prop = e.mProperties[j]
-                        sprintf(tmp, "%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d ", j, prop.mKey.data, prop.mSemantic, prop.mIndex, prop.mDataLength, prop.mType);
-                        if prop.mType == aiPTI_Float {
-                            sprintf(tmp, "%s%f", tmp, *((float*)prop.mData));
+                        else if value.mType == AI_INT32 {
+                            sprintf(valueStr, "%d", *((int*)value.mData))
                         }
-                        else if prop.mType == aiPTI_Double {
-                            sprintf(tmp, "%s%f", tmp, *((double*)prop.mData));
+                        else if value.mType == AI_UINT32 {
+                            sprintf(valueStr, "%u", *((unsigned int*)value.mData))
                         }
-                        else if prop.mType == aiPTI_Integer {
-                            sprintf(tmp, "%s%d", tmp, *((int*)prop.mData));
+                        else if value.mType == AI_INT64 {
+                            sprintf(valueStr, "%lld", *((long long*)value.mData))
                         }
-                        else if prop.mType == aiPTI_String {
-                            struct aiString* s = (struct aiString*)prop.mData;
-                            sprintf(tmp, "%s%s", tmp, s->data);
+                        else if value.mType == AI_AIVECTOR3D {
+                            struct aiVector3D *pv = (struct aiVector3D*)value.mData
+                            sprintf(valueStr, "Vec3(%f,%f,%f)", pv.x, pv.y, pv.z)
                         }
-                        // printf("\n")
-                        mkTreeSelfCtrlView(o, (long long)e).{
-                            o.deep = 2
-                            o.hasKids = false
+                        else if value.mType == AI_UINT64 {
+                            sprintf(valueStr, "%llu", *((unsigned long long*)value.mData))
+                        }
+                        else if value.mType == AI_FLOAT {
+                            sprintf(valueStr, "%f", *((float*)value.mData))
+                        }
+                        else if value.mType == AI_DOUBLE {
+                            sprintf(valueStr, "%f", *((double *)value.mData))
+                        }
+                        else if value.mType == AI_AISTRING {
+                            struct aiString *ais = (struct aiString*)value.mData
+                            sprintf(valueStr, "%s", ais.data)
+                        }
+                        char tmp[1024];
+                        sprintf(tmp, "%d %s =%s\n", 
+                            i, 
+                            key.data,
+                            valueStr,
+                        )
+                        mkTreeSelfCtrlView(o, (long long)key).{
+                            o.deep = 1
+                            o.hasKids = true
                             mkTextView(o, 0).{
                                 o.setText(str(tmp))
                             }
                         }
                     }
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("动画#").addi(self.scene.mNumAnimations))
-                    }
-                }
-                for int i = 0; i < self.scene.mNumAnimations; i++{
-                    struct aiAnimation *anim = self.scene.mAnimations[i]
-                    char tmp[1024]
-                    sprintf(tmp, "%s dura=%f, ticksPs:%f, channels:%d meshChannel:%d  morphChannel:%d\n", 
-                        anim.mName.data, anim.mDuration, anim.mTicksPerSecond, 
-                        anim.mNumChannels, 
-                        anim.mNumMeshChannels, 
-                        anim.mNumMorphMeshChannels, 
-                    )
-                    mkTreeSelfCtrlView(o, (long long)anim).{
-                        o.deep = 1
-                        o.hasKids = false
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
                         mkTextView(o, 0).{
-                            o.setText(str(tmp))
+                            o.setText(str("材质").addi(self.scene.mNumMaterials))
                         }
                     }
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("纹理").addi(self.scene.mNumTextures))
-                    }
-                }
-                for int i = 0; i < self.scene.mNumTextures; i++{
-                    struct aiTexture *tex = self.scene.mTextures[i]
-                    char tmp[1024]
-                    sprintf(tmp, "%s w=%d, h=%d, achFormatHint=%s\n", 
-                        tex.mFilename.data, 
-                        tex.mWidth,
-                        tex.mHeight,
-                        tex.achFormatHint
-                    )
-                    mkTreeSelfCtrlView(o, (long long)tex).{
-                        o.deep = 1
-                        o.hasKids = false
-                        mkTextView(o, 0).{
-                            o.setText(str(tmp))
-                        }
-                    }
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("网格").addi(self.scene.mNumMeshes))
-                    }
-                }
-                for int i = 0; i < self.scene.mNumMeshes; i++{
-                    struct aiMesh *e = self.scene.mMeshes[i]
-                    char tmp[1024]
-                    sprintf(tmp, "%s type=%d vtx=%d face=%d bones=%d matlIdx=%d animMeshes=%d method=%d, aabb=%f,%f,%f; %f,%f,%f\n", 
-                        e.mName.data, 
-                        e.mPrimitiveTypes,
-                        e.mNumVertices,
-                        e.mNumFaces,
-                        e.mNumBones,
-                        e.mMaterialIndex,
-                        e.mNumAnimMeshes,
-                        e.mMethod, 
-                        e.mAABB.mMin.x,
-                        e.mAABB.mMin.y,
-                        e.mAABB.mMin.z,
-                        e.mAABB.mMax.x,
-                        e.mAABB.mMax.y,
-                        e.mAABB.mMax.z,
-                    )
-                    mkTreeSelfCtrlView(o, (long long)e).{
-                        o.deep = 1
-                        o.hasKids = false
-                        mkTextView(o, 0).{
-                            o.setText(str(tmp))
-                        }
-                    }
-
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("灯光").addi(self.scene.mNumLights))
-                    }
-                }
-                for int i = 0; i < self.scene.mNumLights; i++{
-                    struct aiLight *e = self.scene.mLights[i]
-                    char tmp[1024];
-                    sprintf(tmp, "%s type=%d,%s pos=%f,%f,%f dir=%f,%f,%f up=%f,%f,%f atte=%f,%f,%f, cone=%f,%f size=%f,%f\n", 
-                        e.mName.data,
-                        e.mType,
-                        e.mType == aiLightSource_DIRECTIONAL ? "dir"
-                        : e.mType == aiLightSource_POINT ? "point"
-                        : e.mType == aiLightSource_SPOT ? "sport"
-                        : e.mType == aiLightSource_AMBIENT ? "ambient"
-                        : e.mType == aiLightSource_AREA ? "area"
-                        : "undef",
-
-                        e.mPosition.x,
-                        e.mPosition.y,
-                        e.mPosition.z,
-
-                        e.mDirection.x,
-                        e.mDirection.y,
-                        e.mDirection.z,
-
-                        e.mUp.x,
-                        e.mUp.y,
-                        e.mUp.z,
-                        
-                        e.mAttenuationConstant,
-                        e.mAttenuationLinear,
-                        e.mAttenuationQuadratic,
-
-                        e.mAngleInnerCone,
-                        e.mAngleOuterCone,
-
-                        e.mSize.x,
-                        e.mSize.y,
-                    )
-                    mkTreeSelfCtrlView(o, (long long)e).{
-                        o.deep = 1
-                        o.hasKids = false
-                        mkTextView(o, 0).{
-                            o.setText(str(tmp))
-                        }
-                    }
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("相机").addi(self.scene.mNumCameras))
-                    }
-                }
-                for int i = 0; i < self.scene.mNumCameras; i++{
-                    struct aiCamera *e = self.scene.mCameras[i]
-                    char tmp[1024]
-                    sprintf(tmp, "\t%s pos=%f,%f,%f up=%f,%f,%f lookAt=%f,%f,%f fov=%f near=%f far=%f aspect=%f orthorWidth=%f\n", 
-                        e.mName.data,
-
-                        e.mPosition.x,
-                        e.mPosition.y,
-                        e.mPosition.z,
-
-                        e.mUp.x,
-                        e.mUp.y,
-                        e.mUp.z,
-
-                        e.mLookAt.x,
-                        e.mLookAt.y,
-                        e.mLookAt.z,
-                        
-                        e.mHorizontalFOV,
-                        e.mClipPlaneNear,
-                        e.mClipPlaneFar,
-                        e.mAspect,
-                        e.mOrthographicWidth,
-                    )
-                    mkTreeSelfCtrlView(o, (long long)e).{
-                        o.deep = 1
-                        o.hasKids = false
-                        mkTextView(o, 0).{
-                            o.setText(str(tmp))
-                        }
-                    }
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("骨架").addi(self.scene.mNumSkeletons))
-                    }
-                }
-                for int i = 0; i < self.scene.mNumSkeletons; i++{
-                    struct aiSkeleton *e = self.scene.mSkeletons[i]
-                    char tmp[1024];
-                    sprintf(tmp, "%s bone=%d\n", 
-                        e.mName.data,
-                        e.mNumBones
-                    )
-                    mkTreeSelfCtrlView(o, (long long)e).{
-                        o.deep = 1
-                        o.hasKids = false
-                        mkTextView(o, 0).{
-                            o.setText(str(tmp))
-                        }
-                    }
-                    for int j = 0; j < e.mNumBones; j++{
-                        struct aiSkeletonBone* bone = e.mBones[j]
-                        sprintf(tmp, "%2d numWeights=%d\n", 
-                            j,
-                            bone.mNumnWeights
+                    for int i = 0; i < self.scene.mNumMaterials; i++{
+                        struct aiMaterial *e = self.scene.mMaterials[i]
+                        char tmp[1024];
+                        sprintf(tmp, "%d %s numProperty=%d\n", 
+                            i, 
+                            assimp_getMaterialName(e),
+                            e.mNumProperties
                         )
                         mkTreeSelfCtrlView(o, (long long)e).{
-                            o.deep = 2
-                            o.hasKids = false
+                            o.deep = 1
+                            o.hasKids = true
                             mkTextView(o, 0).{
                                 o.setText(str(tmp))
                             }
                         }
-                        for int k = 0; k < bone.mNumnWeights; k++{
-                            struct aiMesh* mesh = bone.mMeshId
-                            struct aiVertexWeight* weight = bone.mWeights+k
-                            sprintf(tmp, "%2d mesh=%s weight=%f vtxId=%d\n", k, mesh.mName.data, weight.mWeight, weight.mVertexId);
+                        for int j = 0; j < e.mNumProperties; j++{
+                            struct aiMaterialProperty *prop = e.mProperties[j]
+                            sprintf(tmp, "%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d ", j, prop.mKey.data, prop.mSemantic, prop.mIndex, prop.mDataLength, prop.mType);
+                            if prop.mType == aiPTI_Float {
+                                sprintf(tmp, "%s%f", tmp, *((float*)prop.mData));
+                            }
+                            else if prop.mType == aiPTI_Double {
+                                sprintf(tmp, "%s%f", tmp, *((double*)prop.mData));
+                            }
+                            else if prop.mType == aiPTI_Integer {
+                                sprintf(tmp, "%s%d", tmp, *((int*)prop.mData));
+                            }
+                            else if prop.mType == aiPTI_String {
+                                struct aiString* s = (struct aiString*)prop.mData;
+                                sprintf(tmp, "%s%s", tmp, s->data);
+                            }
+                            // printf("\n")
                             mkTreeSelfCtrlView(o, (long long)e).{
-                                o.deep = 3
+                                o.deep = 2
                                 o.hasKids = false
                                 mkTextView(o, 0).{
                                     o.setText(str(tmp))
@@ -403,18 +205,238 @@ class AssimpLoader {
                             }
                         }
                     }
-                }
-                mkTreeSelfCtrlView(o, (long long)0).{
-                    o.deep = 0
-                    o.hasKids = true
-                    mkTextView(o, 0).{
-                        o.setText(str("节点"))
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str("动画#").addi(self.scene.mNumAnimations))
+                        }
                     }
+                    for int i = 0; i < self.scene.mNumAnimations; i++{
+                        struct aiAnimation *anim = self.scene.mAnimations[i]
+                        char tmp[1024]
+                        sprintf(tmp, "%s dura=%f, ticksPs:%f, channels:%d meshChannel:%d  morphChannel:%d\n", 
+                            anim.mName.data, anim.mDuration, anim.mTicksPerSecond, 
+                            anim.mNumChannels, 
+                            anim.mNumMeshChannels, 
+                            anim.mNumMorphMeshChannels, 
+                        )
+                        mkTreeSelfCtrlView(o, (long long)anim).{
+                            o.deep = 1
+                            o.hasKids = false
+                            mkTextView(o, 0).{
+                                o.setText(str(tmp))
+                            }
+                        }
+                    }
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str("纹理").addi(self.scene.mNumTextures))
+                        }
+                    }
+                    for int i = 0; i < self.scene.mNumTextures; i++{
+                        struct aiTexture *tex = self.scene.mTextures[i]
+                        char tmp[1024]
+                        sprintf(tmp, "%s w=%d, h=%d, achFormatHint=%s\n", 
+                            tex.mFilename.data, 
+                            tex.mWidth,
+                            tex.mHeight,
+                            tex.achFormatHint
+                        )
+                        mkTreeSelfCtrlView(o, (long long)tex).{
+                            o.deep = 1
+                            o.hasKids = false
+                            mkTextView(o, 0).{
+                                o.setText(str(tmp))
+                            }
+                        }
+                    }
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str("网格").addi(self.scene.mNumMeshes))
+                        }
+                    }
+                    for int i = 0; i < self.scene.mNumMeshes; i++{
+                        struct aiMesh *e = self.scene.mMeshes[i]
+                        char tmp[1024]
+                        sprintf(tmp, "%s type=%d vtx=%d face=%d bones=%d matlIdx=%d animMeshes=%d method=%d, aabb=%f,%f,%f; %f,%f,%f\n", 
+                            e.mName.data, 
+                            e.mPrimitiveTypes,
+                            e.mNumVertices,
+                            e.mNumFaces,
+                            e.mNumBones,
+                            e.mMaterialIndex,
+                            e.mNumAnimMeshes,
+                            e.mMethod, 
+                            e.mAABB.mMin.x,
+                            e.mAABB.mMin.y,
+                            e.mAABB.mMin.z,
+                            e.mAABB.mMax.x,
+                            e.mAABB.mMax.y,
+                            e.mAABB.mMax.z,
+                        )
+                        mkTreeSelfCtrlView(o, (long long)e).{
+                            o.deep = 1
+                            o.hasKids = false
+                            mkTextView(o, 0).{
+                                o.setText(str(tmp))
+                            }
+                        }
+
+                    }
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str("灯光").addi(self.scene.mNumLights))
+                        }
+                    }
+                    for int i = 0; i < self.scene.mNumLights; i++{
+                        struct aiLight *e = self.scene.mLights[i]
+                        char tmp[1024];
+                        sprintf(tmp, "%s type=%d,%s pos=%f,%f,%f dir=%f,%f,%f up=%f,%f,%f atte=%f,%f,%f, cone=%f,%f size=%f,%f\n", 
+                            e.mName.data,
+                            e.mType,
+                            e.mType == aiLightSource_DIRECTIONAL ? "dir"
+                            : e.mType == aiLightSource_POINT ? "point"
+                            : e.mType == aiLightSource_SPOT ? "sport"
+                            : e.mType == aiLightSource_AMBIENT ? "ambient"
+                            : e.mType == aiLightSource_AREA ? "area"
+                            : "undef",
+
+                            e.mPosition.x,
+                            e.mPosition.y,
+                            e.mPosition.z,
+
+                            e.mDirection.x,
+                            e.mDirection.y,
+                            e.mDirection.z,
+
+                            e.mUp.x,
+                            e.mUp.y,
+                            e.mUp.z,
+                            
+                            e.mAttenuationConstant,
+                            e.mAttenuationLinear,
+                            e.mAttenuationQuadratic,
+
+                            e.mAngleInnerCone,
+                            e.mAngleOuterCone,
+
+                            e.mSize.x,
+                            e.mSize.y,
+                        )
+                        mkTreeSelfCtrlView(o, (long long)e).{
+                            o.deep = 1
+                            o.hasKids = false
+                            mkTextView(o, 0).{
+                                o.setText(str(tmp))
+                            }
+                        }
+                    }
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str("相机").addi(self.scene.mNumCameras))
+                        }
+                    }
+                    for int i = 0; i < self.scene.mNumCameras; i++{
+                        struct aiCamera *e = self.scene.mCameras[i]
+                        char tmp[1024]
+                        sprintf(tmp, "\t%s pos=%f,%f,%f up=%f,%f,%f lookAt=%f,%f,%f fov=%f near=%f far=%f aspect=%f orthorWidth=%f\n", 
+                            e.mName.data,
+
+                            e.mPosition.x,
+                            e.mPosition.y,
+                            e.mPosition.z,
+
+                            e.mUp.x,
+                            e.mUp.y,
+                            e.mUp.z,
+
+                            e.mLookAt.x,
+                            e.mLookAt.y,
+                            e.mLookAt.z,
+                            
+                            e.mHorizontalFOV,
+                            e.mClipPlaneNear,
+                            e.mClipPlaneFar,
+                            e.mAspect,
+                            e.mOrthographicWidth,
+                        )
+                        mkTreeSelfCtrlView(o, (long long)e).{
+                            o.deep = 1
+                            o.hasKids = false
+                            mkTextView(o, 0).{
+                                o.setText(str(tmp))
+                            }
+                        }
+                    }
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str("骨架").addi(self.scene.mNumSkeletons))
+                        }
+                    }
+                    for int i = 0; i < self.scene.mNumSkeletons; i++{
+                        struct aiSkeleton *e = self.scene.mSkeletons[i]
+                        char tmp[1024];
+                        sprintf(tmp, "%s bone=%d\n", 
+                            e.mName.data,
+                            e.mNumBones
+                        )
+                        mkTreeSelfCtrlView(o, (long long)e).{
+                            o.deep = 1
+                            o.hasKids = false
+                            mkTextView(o, 0).{
+                                o.setText(str(tmp))
+                            }
+                        }
+                        for int j = 0; j < e.mNumBones; j++{
+                            struct aiSkeletonBone* bone = e.mBones[j]
+                            sprintf(tmp, "%2d numWeights=%d\n", 
+                                j,
+                                bone.mNumnWeights
+                            )
+                            mkTreeSelfCtrlView(o, (long long)e).{
+                                o.deep = 2
+                                o.hasKids = false
+                                mkTextView(o, 0).{
+                                    o.setText(str(tmp))
+                                }
+                            }
+                            for int k = 0; k < bone.mNumnWeights; k++{
+                                struct aiMesh* mesh = bone.mMeshId
+                                struct aiVertexWeight* weight = bone.mWeights+k
+                                sprintf(tmp, "%2d mesh=%s weight=%f vtxId=%d\n", k, mesh.mName.data, weight.mWeight, weight.mVertexId);
+                                mkTreeSelfCtrlView(o, (long long)e).{
+                                    o.deep = 3
+                                    o.hasKids = false
+                                    mkTextView(o, 0).{
+                                        o.setText(str(tmp))
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    mkTreeSelfCtrlView(o, (long long)0).{
+                        o.deep = 0
+                        o.hasKids = true
+                        mkTextView(o, 0).{
+                            o.setText(str("节点"))
+                        }
+                    }
+
+                    self.mkNodeTreeView(o, self.scene.mRootNode, 0, 1)
+
+                    // TreeSelfCtrlView_upate(o)
                 }
-
-                self.mkNodeTreeView(o, self.scene.mRootNode, 0, 1)
-
-                // TreeSelfCtrlView_upate(o)
             }
 
             o.setTitle(str("预览模型{0}").replaceAll("{0}", self.path.str).str)

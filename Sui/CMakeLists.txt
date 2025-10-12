@@ -169,6 +169,7 @@ file(GLOB src
     src/SuiDesigner/InspectorView_orc.c
     src/SuiDesigner/SglInspectorView_orc.c
     src/SuiDesigner/SglInspView_orc.c
+    src/Sgl/FboView_orc.c
     src/SuiDesigner/Inspector_extern.c
     src/SuiDesigner/Serial/BiJson_orc.c
     src/SuiDesigner/Serial/BiJson_extern.cpp
