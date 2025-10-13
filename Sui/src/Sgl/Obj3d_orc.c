@@ -200,7 +200,7 @@ SuiCore$Vec3 Sgl$Obj3d$localToWorld(Sgl$Obj3d *  self, SuiCore$Vec3 v3){
 void  Sgl$Obj3d$updateTransform(Sgl$Obj3d *  self){
 	SuiCore$Quaternion q;
 	SuiCore$Euler e;
-	SuiCore$Euler$set(&e, self->rotation.x, self->rotation.y, self->rotation.z, "YXZ") ;
+	SuiCore$Euler$set(&e, self->rotation.x, self->rotation.y, self->rotation.z, "XYZ") ;
 	SuiCore$Quaternion$setFromEuler(&q, e) ;
 	Sgl$Mat$compose(&self->transform, self->position, q, self->scale) ;
 }

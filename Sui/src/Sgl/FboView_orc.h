@@ -77,6 +77,7 @@ typedef struct tagVtable_Sgl$FboView Vtable_Sgl$FboView;
 #include "../Sui/View/Drag_orc.h"
 #include "../Sui/Core/Canvas_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
+#include "../Sui/Core/Euler_orc.h"
 #include "../Sui/Core/Timer_orc.h"
 #include "../Sui/Core/Event_orc.h"
 #include "../Sui/Core/Node_orc.h"

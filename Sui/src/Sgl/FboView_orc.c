@@ -45,6 +45,7 @@
 #include "../Sui/View/Drag_orc.h"
 #include "../Sui/Core/Canvas_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
+#include "../Sui/Core/Euler_orc.h"
 #include "../Sui/Core/Timer_orc.h"
 #include "../Sui/Core/Event_orc.h"
 #include "../Sui/Core/Node_orc.h"
@@ -57,13 +58,13 @@
 
 
 // static struct 
-typedef struct tagSgl$__Block_79_15 Sgl$__Block_79_15;
+typedef struct tagSgl$__Block_80_15 Sgl$__Block_80_15;
 
-typedef struct tagSgl$__Closure_83_27 Sgl$__Closure_83_27;
+typedef struct tagSgl$__Closure_84_27 Sgl$__Closure_84_27;
 
 
 
-struct tagSgl$__Block_79_15 {
+struct tagSgl$__Block_80_15 {
 	Sgl$FboView*  self ;
 };
 
@@ -71,10 +72,10 @@ struct tagSgl$__Block_79_15 {
 
 
 
-struct tagSgl$__Closure_83_27 {
-	void  (*invoke)(Sgl$__Closure_83_27 *  self, SuiView$Drag *  d);
+struct tagSgl$__Closure_84_27 {
+	void  (*invoke)(Sgl$__Closure_84_27 *  self, SuiView$Drag *  d);
 	Vtable_Object *  vtable ;
-	Sgl$__Block_79_15*  __var___Block_79_15 ;
+	Sgl$__Block_80_15*  __var___Block_80_15 ;
 };
 
 
@@ -82,10 +83,10 @@ struct tagSgl$__Closure_83_27 {
 
 
 // static function declaration
-static void  __finiBlock___Block_79_15(Sgl$__Block_79_15 *  self);
-static void  __fn___Closure_83_27(Sgl$__Closure_83_27 *  self, SuiView$Drag *  d);
-static void  __fini___Closure_83_27(Sgl$__Closure_83_27 *  self);
-static Sgl$__Closure_83_27*  __make___Closure_83_27(Sgl$__Closure_83_27 **  __outRef__, Sgl$__Block_79_15 *  __var___Block_79_15);
+static void  __finiBlock___Block_80_15(Sgl$__Block_80_15 *  self);
+static void  __fn___Closure_84_27(Sgl$__Closure_84_27 *  self, SuiView$Drag *  d);
+static void  __fini___Closure_84_27(Sgl$__Closure_84_27 *  self);
+static Sgl$__Closure_84_27*  __make___Closure_84_27(Sgl$__Closure_84_27 **  __outRef__, Sgl$__Block_80_15 *  __var___Block_80_15);
 
 
 
@@ -214,12 +215,12 @@ Sgl$FboView * Sgl$FboView_new(void *pOwner){
 
 // class members
 void  Sgl$FboView$ctor(Sgl$FboView *  self){
-	URGC_VAR_CLEANUP Sgl$__Block_79_15*  __var___Block_79_15 = (__var___Block_79_15=NULL,urgc_init_var((void**)&__var___Block_79_15, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_79_15) , __finiBlock___Block_79_15) ));
-	urgc_set_field_class(__var___Block_79_15, (void * )offsetof(Sgl$__Block_79_15, self) , self) ;
+	URGC_VAR_CLEANUP Sgl$__Block_80_15*  __var___Block_80_15 = (__var___Block_80_15=NULL,urgc_init_var((void**)&__var___Block_80_15, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_80_15) , __finiBlock___Block_80_15) ));
+	urgc_set_field_class(__var___Block_80_15, (void * )offsetof(Sgl$__Block_80_15, self) , self) ;
 	SuiCore$Listener$ctor(self) ;
 	self->mkBaseScene(self) ;
-	URGC_VAR_CLEANUP Sgl$__Closure_83_27*  tmpReturn_1 = NULL;
-	urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_83_27(&tmpReturn_1, __var___Block_79_15) ) ;
+	URGC_VAR_CLEANUP Sgl$__Closure_84_27*  tmpReturn_1 = NULL;
+	urgc_set_field(self->drag, (void * )offsetof(SuiView$Drag, onDrag) , __make___Closure_84_27(&tmpReturn_1, __var___Block_80_15) ) ;
 	{
 		URGC_VAR_CLEANUP_CLASS Sgl$GeometryPlane*  geom = (geom=NULL,urgc_init_var_class((void**)&geom, Sgl$GeometryPlane_new(&geom) ));
 		geom->planeType = 1;
@@ -307,29 +308,34 @@ void  Sgl$FboView$mkBaseScene(Sgl$FboView *  self){
 
 
 
-static void  __finiBlock___Block_79_15(Sgl$__Block_79_15 *  self){
-	urgc_set_field_class(self, (void * )offsetof(Sgl$__Block_79_15, self) , NULL) ;
+static void  __finiBlock___Block_80_15(Sgl$__Block_80_15 *  self){
+	urgc_set_field_class(self, (void * )offsetof(Sgl$__Block_80_15, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_83_27(Sgl$__Closure_83_27 *  self, SuiView$Drag *  d){
+static void  __fn___Closure_84_27(Sgl$__Closure_84_27 *  self, SuiView$Drag *  d){
 	if (d->isDragging) {
 		printf("dragging scene\n") ;
-		((Sgl$Obj3d * )self->__var___Block_79_15->self->camera)->rotation.y += d->deltaPos.x * 0.001;
-		((Sgl$Obj3d * )self->__var___Block_79_15->self->camera)->rotation.x += d->deltaPos.y * 0.001;
+		SuiCore$Euler e;
+		SuiCore$Euler$setFromVector3(&e, ((Sgl$Obj3d * )self->__var___Block_80_15->self->camera)->rotation, NULL) ;
+		SuiCore$Euler$reorder(&e, "YXZ") ;
+		e.y += d->deltaPos.x * 0.001;
+		e.x += d->deltaPos.y * 0.001;
+		SuiCore$Euler$reorder(&e, "XYZ") ;
+		SuiCore$Vec3$setFromEuler(&((Sgl$Obj3d * )self->__var___Block_80_15->self->camera)->rotation, e) ;
 	}
 }
 
-static void  __fini___Closure_83_27(Sgl$__Closure_83_27 *  self){
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_83_27, __var___Block_79_15) , NULL) ;
+static void  __fini___Closure_84_27(Sgl$__Closure_84_27 *  self){
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_84_27, __var___Block_80_15) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static Sgl$__Closure_83_27*  __make___Closure_83_27(Sgl$__Closure_83_27 **  __outRef__, Sgl$__Block_79_15 *  __var___Block_79_15){
-	URGC_VAR_CLEANUP Sgl$__Closure_83_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_83_27) , __fini___Closure_83_27) ));
-	self->invoke = __fn___Closure_83_27;
+static Sgl$__Closure_84_27*  __make___Closure_84_27(Sgl$__Closure_84_27 **  __outRef__, Sgl$__Block_80_15 *  __var___Block_80_15){
+	URGC_VAR_CLEANUP Sgl$__Closure_84_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_84_27) , __fini___Closure_84_27) ));
+	self->invoke = __fn___Closure_84_27;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_83_27, __var___Block_79_15) , __var___Block_79_15) ;
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_84_27, __var___Block_80_15) , __var___Block_80_15) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

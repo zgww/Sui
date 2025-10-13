@@ -52,6 +52,7 @@ import * from "../Sui/Core/Vec2.orc"
 import * from "../Sui/View/Drag.orc"
 import * from "../Sui/Core/Canvas.orc"
 import * from "../Sui/Core/Vec3.orc"
+import * from "../Sui/Core/Euler.orc"
 import * from "../Sui/Core/Timer.orc"
 import * from "../Sui/Core/Event.orc"
 import * from "../Sui/Core/Node.orc"
@@ -83,8 +84,18 @@ class FboView extends ImageView {
         self.drag.onDrag = ^void(Drag*d){
             if d.isDragging {
                 printf("dragging scene\n")
-                self.camera.rotation.y += d.deltaPos.x * 0.001
-                self.camera.rotation.x += d.deltaPos.y * 0.001
+                Euler e
+                e.setFromVector3(self.camera.rotation, null)
+
+                e.reorder("YXZ")
+                e.y += d.deltaPos.x * 0.001
+                e.x += d.deltaPos.y * 0.001
+                e.reorder("XYZ")
+
+                self.camera.rotation.setFromEuler(e)
+
+                // self.camera.rotation.y += d.deltaPos.x * 0.001
+                // self.camera.rotation.x += d.deltaPos.y * 0.001
             }
         }
 

@@ -101,7 +101,7 @@ SuiCore$Euler *  SuiCore$Euler$setFromRotationMatrix(SuiCore$Euler *  self, Sgl$
 	float  m31 = te[2];
 	float  m32 = te[6];
 	float  m33 = te[10];
-	if (strcmp(order, "XYZ") ) {
+	if (strcmp(order, "XYZ")  == 0) {
 		self->y = asin(Orc$clampFloat(m13, -1, 1) ) ;
 		if (Orc$absFloat(m13)  < 0.9999999) {
 			self->x = atan2(-m23, m33) ;
@@ -112,7 +112,7 @@ SuiCore$Euler *  SuiCore$Euler$setFromRotationMatrix(SuiCore$Euler *  self, Sgl$
 			self->z = 0;
 		}
 	}
-	else if (strcmp(order, "YXZ") ) {
+	else if (strcmp(order, "YXZ")  == 0) {
 		self->x = asin(-Orc$clampFloat(m23, -1, 1) ) ;
 		if (Orc$absFloat(m23)  < 0.9999999) {
 			self->y = atan2(m13, m33) ;
@@ -123,7 +123,7 @@ SuiCore$Euler *  SuiCore$Euler$setFromRotationMatrix(SuiCore$Euler *  self, Sgl$
 			self->z = 0;
 		}
 	}
-	else if (strcmp(order, "ZXY") ) {
+	else if (strcmp(order, "ZXY")  == 0) {
 		self->x = asin(Orc$clampFloat(m32, -1, 1) ) ;
 		if (Orc$absFloat(m32)  < 0.9999999) {
 			self->y = atan2(-m31, m33) ;
@@ -134,7 +134,7 @@ SuiCore$Euler *  SuiCore$Euler$setFromRotationMatrix(SuiCore$Euler *  self, Sgl$
 			self->z = atan2(m21, m11) ;
 		}
 	}
-	else if (strcmp(order, "ZYX") ) {
+	else if (strcmp(order, "ZYX")  == 0) {
 		self->y = asin(-Orc$clampFloat(m31, -1, 1) ) ;
 		if (Orc$absFloat(m31)  < 0.9999999) {
 			self->x = atan2(m32, m33) ;
@@ -145,7 +145,7 @@ SuiCore$Euler *  SuiCore$Euler$setFromRotationMatrix(SuiCore$Euler *  self, Sgl$
 			self->z = atan2(-m12, m22) ;
 		}
 	}
-	else if (strcmp(order, "YZX") ) {
+	else if (strcmp(order, "YZX")  == 0) {
 		self->z = asin(Orc$clampFloat(m21, -1, 1) ) ;
 		if (Orc$absFloat(m21)  < 0.9999999) {
 			self->x = atan2(-m23, m22) ;
@@ -156,7 +156,7 @@ SuiCore$Euler *  SuiCore$Euler$setFromRotationMatrix(SuiCore$Euler *  self, Sgl$
 			self->y = atan2(m13, m33) ;
 		}
 	}
-	else if (strcmp(order, "XZY") ) {
+	else if (strcmp(order, "XZY")  == 0) {
 		self->z = asin(-Orc$clampFloat(m12, -1, 1) ) ;
 		if (Orc$absFloat(m12)  < 0.9999999) {
 			self->x = atan2(m32, m22) ;
@@ -186,7 +186,7 @@ SuiCore$Euler *  SuiCore$Euler$setFromVector3(SuiCore$Euler *  self, SuiCore$Vec
 
 SuiCore$Euler *  SuiCore$Euler$reorder(SuiCore$Euler *  self, const char *  newOrder){
 	SuiCore$Quaternion q;
-	SuiCore$Quaternion$setFromEuler(&q, self) ;
+	SuiCore$Quaternion$setFromEuler(&q, *self) ;
 	return SuiCore$Euler$setFromQuaternion(self, q, newOrder) ; 
 }
 

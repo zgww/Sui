@@ -96,7 +96,7 @@ extension Euler {
 		float m31 = te[ 2 ]; float m32 = te[ 6 ]; float m33 = te[ 10 ];
 
 
-			if strcmp(order, "XYZ") {
+			if strcmp(order, "XYZ") == 0 {
 
 
 				self.y = asin( clampFloat( m13, - 1, 1 ) );
@@ -114,7 +114,7 @@ extension Euler {
 				}
 			}
 
-			else if strcmp(order,  "YXZ"){
+			else if strcmp(order,  "YXZ") == 0{
 
 				self.x = asin( - clampFloat( m23, - 1, 1 ) );
 
@@ -132,7 +132,7 @@ extension Euler {
 
 			}
 
-			else if strcmp(order,  "ZXY"){
+			else if strcmp(order,  "ZXY") == 0{
 
 				self.x = asin( clampFloat( m32, - 1, 1 ) );
 
@@ -150,7 +150,7 @@ extension Euler {
 
 			}
 
-			else if strcmp(order,  "ZYX"){
+			else if strcmp(order,  "ZYX") == 0{
 
 				self.y = asin( - clampFloat( m31, - 1, 1 ) );
 
@@ -168,7 +168,7 @@ extension Euler {
 
 			}
 
-			else if strcmp(order,  "YZX"){
+			else if strcmp(order,  "YZX") == 0 {
 
 				self.z = asin( clampFloat( m21, - 1, 1 ) );
 
@@ -186,7 +186,7 @@ extension Euler {
 
 			}
 
-			else if strcmp(order,  "XZY"){
+			else if strcmp(order,  "XZY") == 0{
 
 				self.z = asin( - clampFloat( m12, - 1, 1 ) );
 
@@ -235,7 +235,7 @@ extension Euler {
 	Euler * reorder(const char* newOrder ) {
 		// WARNING: self discards revolution information -bhouston
 		Quaternion q
-		q.setFromEuler( self );
+		q.setFromEuler( *self );
 		return self.setFromQuaternion( q, newOrder );
 	}
 
