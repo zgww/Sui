@@ -82,6 +82,7 @@ SuiCore$Euler *  SuiCore$Euler$copy(SuiCore$Euler *  self, SuiCore$Euler euler);
 SuiCore$Euler *  SuiCore$Euler$setFromRotationMatrix(SuiCore$Euler *  self, Sgl$Mat m, const char *  order);
 SuiCore$Euler *  SuiCore$Euler$setFromQuaternion(SuiCore$Euler *  self, SuiCore$Quaternion q, const char *  order);
 SuiCore$Euler *  SuiCore$Euler$setFromVector3(SuiCore$Euler *  self, SuiCore$Vec3 v, const char *  order);
+SuiCore$Euler *  SuiCore$Euler$reorder(SuiCore$Euler *  self, const char *  newOrder);
 bool  SuiCore$Euler$equals(SuiCore$Euler *  self, SuiCore$Euler euler);
 SuiCore$Euler *  SuiCore$Euler$fromArray(SuiCore$Euler *  self, float *  array);
 float *  SuiCore$Euler$toArray(SuiCore$Euler *  self, float *  array, int  offset);

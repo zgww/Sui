@@ -73,7 +73,10 @@ class Obj3d extends Node {
 
         Quaternion q
         Euler e
-        e.set(self.rotation.x, self.rotation.y, self.rotation.z, null)
+        e.set(self.rotation.x, self.rotation.y, self.rotation.z, 
+        // null
+        "YXZ"
+        )
         q.setFromEuler(e)
 
         self.transform.compose(self.position, q, self.scale)

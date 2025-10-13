@@ -184,6 +184,12 @@ SuiCore$Euler *  SuiCore$Euler$setFromVector3(SuiCore$Euler *  self, SuiCore$Vec
 	return SuiCore$Euler$set(self, v.x, v.y, v.z, order) ; 
 }
 
+SuiCore$Euler *  SuiCore$Euler$reorder(SuiCore$Euler *  self, const char *  newOrder){
+	SuiCore$Quaternion q;
+	SuiCore$Quaternion$setFromEuler(&q, self) ;
+	return SuiCore$Euler$setFromQuaternion(self, q, newOrder) ; 
+}
+
 bool  SuiCore$Euler$equals(SuiCore$Euler *  self, SuiCore$Euler euler){
 	return Orc$eqFloat(euler.x, self->x)  && Orc$eqFloat(euler.y, self->y)  && Orc$eqFloat(euler.z, self->z)  && (strcmp(euler.order, self->order)  == 0); 
 }

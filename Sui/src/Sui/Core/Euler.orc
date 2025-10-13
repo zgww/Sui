@@ -232,11 +232,12 @@ extension Euler {
 
 	}
 
-	// Euler * reorder(const char* newOrder ) {
-	// 	// WARNING: self discards revolution information -bhouston
-	// 	_quaternion.setFromEuler( self );
-	// 	return self.setFromQuaternion( _quaternion, newOrder );
-	// }
+	Euler * reorder(const char* newOrder ) {
+		// WARNING: self discards revolution information -bhouston
+		Quaternion q
+		q.setFromEuler( self );
+		return self.setFromQuaternion( q, newOrder );
+	}
 
 	bool equals(Euler euler ) {
 
