@@ -170,7 +170,9 @@ class HoroEditor extends Listener{
         }
     }
     void _afterDrawScene(){
-        Node* sel = self.editCtx.state.getFirstSelected()
+        ANode* selANode = (ANode*)self.editCtx.state.getFirstSelected()
+        Node* sel = selANode == null ? null : selANode.node
+
         if sel && sel instanceof Obj3d{
             //绘制outline
             // self.outlineFx.draw(self.sceneView.drawCtx, sel, self.sceneView.fbo)
@@ -332,6 +334,7 @@ class HoroEditor extends Listener{
     }
     void reactGizmosView(){
         self.gizmosView.{
+            self.toolMgr.drawCtx = self.sceneView.drawCtx
             self.toolMgr.reactGizmosView(self.gizmosView)
         }
     }
@@ -752,11 +755,11 @@ class HoroEditor extends Listener{
 
         Window@ win = new Window();
 
-        if 1 {//加载模型
-            test_AssimpLoader()
-            win.close()
-            return;
-        }
+        // if 1 {//加载模型
+        //     test_AssimpLoader()
+        //     win.close()
+        //     return;
+        // }
 
         // if 1 {//材质球生成
         //     testHoroMaterialIconCreator()

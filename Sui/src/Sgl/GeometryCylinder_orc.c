@@ -45,7 +45,6 @@ void Sgl$GeometryCylinder_initMeta(Vtable_Sgl$GeometryCylinder *pvt){
 	orc_metaField_class(&pNext, "face", ((Vtable_Object*)Vtable_Sgl$Buffer_init(0)), offsetof(Sgl$GeometryCylinder, face), true, false, 1);
 	orc_metaField_class(&pNext, "uvs", ((Vtable_Object*)Vtable_Sgl$Buffer_init(0)), offsetof(Sgl$GeometryCylinder, uvs), true, false, 1);
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryCylinder, build));
 	orc_metaField_method(&pNext, "generateTorso", offsetof(Sgl$GeometryCylinder, generateTorso));
 	orc_metaField_method(&pNext, "generateCap", offsetof(Sgl$GeometryCylinder, generateCap));
 }
@@ -120,7 +119,7 @@ void Sgl$GeometryCylinder_init_fields(Sgl$GeometryCylinder *self){
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  tmpNewOwner_4 = NULL;
 	urgc_set_field_class(self, (void**)&((Sgl$GeometryCylinder*)self)->uvs, Sgl$Buffer_new(&tmpNewOwner_4) );
     }
-	((Sgl$GeometryCylinder*)self)->build = (void*)Sgl$GeometryCylinder$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryCylinder$build;
 	((Sgl$GeometryCylinder*)self)->generateTorso = (void*)Sgl$GeometryCylinder$generateTorso;
 	((Sgl$GeometryCylinder*)self)->generateCap = (void*)Sgl$GeometryCylinder$generateCap;
 }

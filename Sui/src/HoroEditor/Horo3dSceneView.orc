@@ -17,6 +17,8 @@ import * from "../Sgl/Fbo.orc"
 import * from "../Sgl/Draw.orc"
 import * from "../Sgl/Geometry.orc"
 import * from "../Sgl/GeometryPlane.orc"
+import * from "../Sgl/GeometryBox.orc"
+import * from "../Sgl/GeometryCone.orc"
 import * from "../Sgl/Mesh.orc"
 
 import * from "../Sgl/Material.orc"
@@ -38,6 +40,7 @@ import * from "../Sui/Core/Vec2.orc"
 import * from "../Sui/View/Drag.orc"
 import * from "../Sui/Core/Canvas.orc"
 import * from "../Sui/Core/Vec3.orc"
+import * from "../Sui/Core/Euler.orc"
 import * from "../Sui/Core/Timer.orc"
 import * from "../Sui/Core/Event.orc"
 import * from "../Sui/Core/Node.orc"
@@ -64,8 +67,17 @@ class Horo3dSceneView extends ImageView {
         self.drag.onDrag = ^void(Drag*d){
             if d.isDragging {
                 printf("dragging scene\n")
-                self.camera.rotation.y += d.deltaPos.x * 0.001
-                self.camera.rotation.x += d.deltaPos.y * 0.001
+                Euler e
+                e.setFromVector3(self.camera.rotation, null)
+
+                e.reorder("YXZ")
+                e.y += d.deltaPos.x * 0.001
+                e.x += d.deltaPos.y * 0.001
+                e.reorder("XYZ")
+                self.camera.rotation.setFromEuler(e)
+
+                // self.camera.rotation.y += d.deltaPos.x * 0.001
+                // self.camera.rotation.x += d.deltaPos.y * 0.001
             }
 
         }
@@ -123,7 +135,9 @@ class Horo3dSceneView extends ImageView {
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
 
-            // self.groundGrid.draw(self.drawCtx)
+            self.groundGrid.draw(self.drawCtx)
+            self.drawCtx.mkAxis()
+            self.drawCtx.drawLineGeometry()
 
             self.fbo.endDraw()
 
@@ -155,7 +169,7 @@ class Horo3dSceneView extends ImageView {
         
         // Position camera
         // self.camera.position = mkVec3(100, 300, 500)
-        self.camera.position = mkVec3(100, 0, 1000)
+        self.camera.position = mkVec3(100, 500, 1000)
 
         self.camera.updateWorldMatrixUptoRoot()
         self.camera.lookAt(0, 0, 0)
@@ -177,6 +191,24 @@ class Horo3dSceneView extends ImageView {
         // }
         
         printf("Base scene and camera initialized\n")
+
+        // new Mesh()~{
+        //     self.scene.appendChild(o)
+
+        //     o.material = new Material()
+        //     o.material.load("../asset/basic.matl.json")
+        //     GeometryCone@ cone = new GeometryCone()
+        //     cone.height = 200
+        //     cone.radiusBottom = 50
+        //     cone.build()
+        //     o.geometry = cone
+
+        //     GeometryBox@ box = new GeometryBox()
+        //     box.build()
+        //     // o.geometry = box
+        //     o.position.x = 100
+        // }
+
     }
 }
 Horo3dSceneView@ mkHoro3dSceneView(void* parent, long long key){

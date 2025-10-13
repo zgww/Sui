@@ -68,6 +68,7 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../Sgl/GeometrySphere_orc.h"
 #include "../Sgl/Material_orc.h"
 #include "../Sgl/PerspectiveCamera_orc.h"
+#include "../Sgl/DrawCtx_orc.h"
 #include "./SglEditCtx_orc.h"
 #include "./SglGizmo_orc.h"
 #include "./ANode_orc.h"
@@ -156,6 +157,7 @@ struct tagSuiDesigner$ToolMgr {
 	Sgl$Scene*  scene ;
 	Sgl$Camera*  camera ;
 	SuiDesigner$SglEditCtx*  editCtx ;
+	Sgl$DrawCtx*  drawCtx ;
 	HoroEditor$HoroEditor*  editor ;
 	void  (*setTool) (SuiDesigner$ToolMgr *  self, SuiDesigner$ToolBase *  tool);
 	void  (*onEvent) (SuiDesigner$ToolMgr *  self, SuiCore$Event *  e);

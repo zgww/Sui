@@ -776,8 +776,8 @@ Sgl$Mesh*  SuiDesigner$SglGizmo_cone(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, lo
 Sgl$Mesh*  SuiDesigner$SglGizmo_torus(Sgl$Mesh **  __outRef__, Sgl$Obj3d *  o, long long  key, float  size, SuiCore$Vec3 pos, int  color){
 	URGC_VAR_CLEANUP_CLASS Sgl$Mesh*  tmpReturn_1 = NULL;
 	{
-		Sgl$Mesh*  __scopeVar_413_4 = Sgl$mkMesh(&tmpReturn_1, o, key ? key : (long long )__builtin_return_address(0) ) , *o = __scopeVar_413_4;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_413_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		Sgl$Mesh*  __scopeVar_421_4 = Sgl$mkMesh(&tmpReturn_1, o, key ? key : (long long )__builtin_return_address(0) ) , *o = __scopeVar_421_4;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_421_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		if (((SuiCore$Node * )o)->isNewForReact) {
 			URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_2 = NULL;

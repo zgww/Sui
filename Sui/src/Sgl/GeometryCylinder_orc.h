@@ -77,7 +77,6 @@ struct tagSgl$GeometryCylinder {
 	Sgl$Buffer*  normals ;
 	Sgl$Buffer*  face ;
 	Sgl$Buffer*  uvs ;
-	void  (*build) (Sgl$GeometryCylinder *  self);
 	void  (*generateTorso) (Sgl$GeometryCylinder *  self, int *  index);
 	void  (*generateCap) (Sgl$GeometryCylinder *  self, bool  top, int *  index);
 };
