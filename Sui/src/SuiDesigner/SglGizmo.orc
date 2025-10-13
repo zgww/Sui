@@ -287,10 +287,11 @@ Obj3d@ SglGizmo_scale(Obj3d* o, long long key, Obj3d@ target){
             o.material = new Material()
             o.material.load("../asset/line.matl.json")
         }
+        Vec3 tmpScale;
         target._world_transform.decompose(
             &o.position,
             &o.quaternion,
-            &o.scale,
+            &tmpScale,
         )
 
 
@@ -309,10 +310,13 @@ Obj3d@ SglGizmo_scale(Obj3d* o, long long key, Obj3d@ target){
                                 printf("dragging...%s\n", mesh.name.str)
 
                                 if mesh.name.equals("xCube"){
+                                    target.scale.x += d.deltaPos.x
                                 }
                                 else if mesh.name.equals("yCube"){
+                                    target.scale.y += d.deltaPos.x
                                 }
                                 else if mesh.name.equals("zCube"){
+                                    target.scale.z += d.deltaPos.x
                                 }
                             }
                         }

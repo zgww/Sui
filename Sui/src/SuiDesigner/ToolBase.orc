@@ -201,9 +201,9 @@ class ToolSelect extends ToolBase{
 
         Obj3d *obj3d = self.mgr.selectNode 
         if obj3d instanceof Obj3d {
-            // SglGizmo_scale(o, 0, obj3d);
+            SglGizmo_scale(o, 0, obj3d);
             // SglGizmo_rotate(o, 0, obj3d);
-            SglGizmo_translate(o, 0, obj3d);
+            // SglGizmo_translate(o, 0, obj3d);
         }
 
 
