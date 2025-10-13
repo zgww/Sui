@@ -455,7 +455,7 @@ void  SuiDesigner$ToolSelect$reactGizmo(SuiDesigner$ToolSelect *  self, Sgl$Obj3
 	Sgl$Obj3d *  obj3d = ((SuiDesigner$ToolBase * )self)->mgr->selectNode;
 	if (Orc_instanceof((Object*)obj3d, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
 		URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpReturn_2 = NULL;
-		SuiDesigner$SglGizmo_scale(&tmpReturn_2, o, 0, obj3d) ;
+		SuiDesigner$SglGizmo_rotate(&tmpReturn_2, o, 0, obj3d) ;
 	}
 	if (Orc_instanceof((Object*)((SuiDesigner$ToolBase * )self)->mgr->selectNode, (Vtable_Object*)Vtable_Sgl$PerspectiveCamera_init(NULL))) {
 		Sgl$PerspectiveCamera *  cam = (Sgl$PerspectiveCamera * )((SuiDesigner$ToolBase * )self)->mgr->selectNode;

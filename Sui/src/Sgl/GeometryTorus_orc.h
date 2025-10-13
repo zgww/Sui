@@ -69,7 +69,6 @@ struct tagSgl$GeometryTorus {
 	float  radialSegments ;
 	float  tubularSegments ;
 	float  arc ;
-	void  (*build) (Sgl$GeometryTorus *  self);
 };
 Vtable_Sgl$GeometryTorus* Vtable_Sgl$GeometryTorus_init(Vtable_Sgl$GeometryTorus* pvt);
 void Sgl$GeometryTorus_init_fields(Sgl$GeometryTorus *self);
