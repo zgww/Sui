@@ -758,6 +758,11 @@ class AssimpLoader {
 
 
 // 模型加载器
+// 材质的使用
+// 加载模型，生成Mesh, geometry直接指定. 材质默认会由模型内部的材质转换得到。
+// ModelLoader也提供materialPaths属性, 可以覆盖默认的材质。是list类型， 
+// 根据index覆盖
+// 如果材质有变化，就同步更新模型子树所使用的材质。
 class ModelLoader extends Obj3d {
     Buffer@ vertices = new Buffer();
     Buffer@ normals = new Buffer();
