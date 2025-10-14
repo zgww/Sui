@@ -47,6 +47,12 @@ class AssimpLoader {
     struct aiScene *scene;
 
     Obj3d@ rootObj3d
+
+
+    // List<Material>
+    List@ materials = new List()
+
+
     void dtor(){
         if self.scene {
             // 释放资源
@@ -775,6 +781,8 @@ class ModelLoader extends Obj3d {
     Obj3d@ modelRoot
     //List<String>
     List@ materialPaths = new List()
+    List@ _materialSlots = new List()
+    AssimpLoader@ loader //= new AssimpLoader()
 
     void insp(Insp@ insp){
         new InspAttrMaterialList()~{o.bind(insp, "materialPaths", null); }
@@ -786,14 +794,41 @@ class ModelLoader extends Obj3d {
             self.materialPaths.add(str("../asset/basic.matl.json"))
         // }
     }
+    void setMaterialPaths(List* list){
+        self.materialPaths = list
+        self.updateMaterialSlots()
+    }
+
+    void updateMaterialSlots(){
+        self._materialSlots.clear()
+        if self.loader {
+            for int i = 0; i < self.loader.materials.size(); i++{
+                //是否有覆盖
+                String* path = self.materialPaths.get(i)
+                if path {
+                    new Material()~{
+                        o.load(path.str)
+                        self._materialSlots.set(i, o)
+                    }
+                }
+                else {
+                    Material* matl = (Material*)self.loader.materials.get(i)
+                    self._materialSlots.set(i, matl)
+                }
+            }
+        }
+    }
+    void onMounted(){
+        self.updateMaterialSlots()
+    }
 
     void setPath(String@ path){
         self.path = path
 
         // 调用加载器加载
         if path {
-
             AssimpLoader@ l = new AssimpLoader()
+            self.loader = l
             l.load(self.path.str)
             self.modelRoot = l.buildSglTree()
             self.appendChild(self.modelRoot)
@@ -810,7 +845,6 @@ class ModelLoader extends Obj3d {
     }
 
 
-    extern void _load()
 
     Geometry@ buildGeometry(){
         Geometry@ geo = new Geometry()

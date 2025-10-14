@@ -80,6 +80,7 @@ struct tagSgl$AssimpLoader {
 	Orc$String*  path ;
 	struct aiScene *  scene ;
 	Sgl$Obj3d*  rootObj3d ;
+	Orc$List*  materials ;
 	Sgl$Obj3d*  (*buildSglTree) (Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self);
 	Orc$List*  geometries ;
 	void  (*buildGeometries) (Sgl$AssimpLoader *  self);
@@ -128,9 +129,12 @@ struct tagSgl$ModelLoader {
 	Orc$String*  path ;
 	Sgl$Obj3d*  modelRoot ;
 	Orc$List*  materialPaths ;
+	Orc$List*  _materialSlots ;
+	Sgl$AssimpLoader*  loader ;
 	void  (*insp) (Sgl$ModelLoader *  self, SuiDesigner$Insp*  insp);
+	void  (*setMaterialPaths) (Sgl$ModelLoader *  self, Orc$List *  list);
+	void  (*updateMaterialSlots) (Sgl$ModelLoader *  self);
 	void  (*setPath) (Sgl$ModelLoader *  self, Orc$String*  path);
-	void  (*_load) (Sgl$ModelLoader *  self);
 	Sgl$Geometry*  (*buildGeometry) (Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);
 };
 Vtable_Sgl$ModelLoader* Vtable_Sgl$ModelLoader_init(Vtable_Sgl$ModelLoader* pvt);
@@ -141,8 +145,10 @@ void Sgl$ModelLoader_fini(Sgl$ModelLoader *self);
 
 void  Sgl$ModelLoader$insp(Sgl$ModelLoader *  self, SuiDesigner$Insp*  insp);
 void  Sgl$ModelLoader$ctor(Sgl$ModelLoader *  self);
+void  Sgl$ModelLoader$setMaterialPaths(Sgl$ModelLoader *  self, Orc$List *  list);
+void  Sgl$ModelLoader$updateMaterialSlots(Sgl$ModelLoader *  self);
+void  Sgl$ModelLoader$onMounted(Sgl$ModelLoader *  self);
 void  Sgl$ModelLoader$setPath(Sgl$ModelLoader *  self, Orc$String*  path);
-extern void  Sgl$ModelLoader$_load(Sgl$ModelLoader *  self);
 Sgl$Geometry*  Sgl$ModelLoader$buildGeometry(Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);
 
 void  Sgl$test_AssimpLoader();
