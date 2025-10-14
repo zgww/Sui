@@ -22,6 +22,7 @@ import * from "./Buffer.orc"
 import * from "./Vbo.orc"
 import * from "./Geometry.orc"
 import * from "./Material.orc"
+import * from "../SuiDesigner/Insp.orc"
 
 
 struct aiMaterialProperty* assimp_getMaterialPropByName(struct aiMaterial* matl, const char *name){
@@ -767,6 +768,20 @@ class ModelLoader extends Obj3d {
     // Mesh@ mesh = new Mesh()
 
     Obj3d@ modelRoot
+    //List<String>
+    List@ materialPaths = new List()
+
+    void insp(Insp@ insp){
+        new InspAttrMaterialList()~{o.bind(insp, "materialPaths", null); }
+    }
+    void ctor(){
+        super.ctor()
+        // new Material()~{
+            // o.load("../asset/basic.matl.json")
+            self.materialPaths.add(str("../asset/basic.matl.json"))
+        // }
+
+    }
 
     void setPath(String@ path){
         self.path = path
@@ -828,8 +843,8 @@ class ModelLoader extends Obj3d {
 void test_AssimpLoader () {
     AssimpLoader@ l = new AssimpLoader()
     // l.load("duck.dae")
-    // l.load("spider.fbx")
-    l.load("spider.obj")
+    l.load("spider.fbx")
+    // l.load("spider.obj")
     l.showWindow()
     Obj3d@ root = l.buildSglTree()
     printNodeTree(root, 0)

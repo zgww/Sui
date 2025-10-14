@@ -63,49 +63,61 @@ typedef struct tagSuiDesigner$__Block_309_69 SuiDesigner$__Block_309_69;
 
 typedef struct tagSuiDesigner$__Block_341_69 SuiDesigner$__Block_341_69;
 
-typedef struct tagSuiDesigner$__Block_576_49 SuiDesigner$__Block_576_49;
+typedef struct tagSuiDesigner$__Block_358_39 SuiDesigner$__Block_358_39;
 
-typedef struct tagSuiDesigner$__Block_705_58 SuiDesigner$__Block_705_58;
+typedef struct tagSuiDesigner$__Block_357_69 SuiDesigner$__Block_357_69;
 
-typedef struct tagSuiDesigner$__Block_721_62 SuiDesigner$__Block_721_62;
+typedef struct tagSuiDesigner$__Block_372_52 SuiDesigner$__Block_372_52;
 
-typedef struct tagSuiDesigner$__Block_755_55 SuiDesigner$__Block_755_55;
+typedef struct tagSuiDesigner$__Block_396_39 SuiDesigner$__Block_396_39;
 
-typedef struct tagSuiDesigner$__Block_783_57 SuiDesigner$__Block_783_57;
+typedef struct tagSuiDesigner$__Block_395_69 SuiDesigner$__Block_395_69;
 
-typedef struct tagSuiDesigner$__Block_808_56 SuiDesigner$__Block_808_56;
+typedef struct tagSuiDesigner$__Block_410_52 SuiDesigner$__Block_410_52;
 
-typedef struct tagSuiDesigner$__Block_830_39 SuiDesigner$__Block_830_39;
+typedef struct tagSuiDesigner$__Block_672_49 SuiDesigner$__Block_672_49;
 
-typedef struct tagSuiDesigner$__Block_827_56 SuiDesigner$__Block_827_56;
+typedef struct tagSuiDesigner$__Block_800_58 SuiDesigner$__Block_800_58;
 
-typedef struct tagSuiDesigner$__Block_875_39 SuiDesigner$__Block_875_39;
+typedef struct tagSuiDesigner$__Block_816_62 SuiDesigner$__Block_816_62;
 
-typedef struct tagSuiDesigner$__Block_872_56 SuiDesigner$__Block_872_56;
+typedef struct tagSuiDesigner$__Block_850_55 SuiDesigner$__Block_850_55;
 
-typedef struct tagSuiDesigner$__Block_938_39 SuiDesigner$__Block_938_39;
+typedef struct tagSuiDesigner$__Block_878_57 SuiDesigner$__Block_878_57;
 
-typedef struct tagSuiDesigner$__Block_935_56 SuiDesigner$__Block_935_56;
+typedef struct tagSuiDesigner$__Block_903_56 SuiDesigner$__Block_903_56;
 
-typedef struct tagSuiDesigner$__Block_1016_39 SuiDesigner$__Block_1016_39;
+typedef struct tagSuiDesigner$__Block_925_39 SuiDesigner$__Block_925_39;
 
-typedef struct tagSuiDesigner$__Block_1013_57 SuiDesigner$__Block_1013_57;
+typedef struct tagSuiDesigner$__Block_922_56 SuiDesigner$__Block_922_56;
 
-typedef struct tagSuiDesigner$__Block_1090_60 SuiDesigner$__Block_1090_60;
+typedef struct tagSuiDesigner$__Block_970_39 SuiDesigner$__Block_970_39;
 
-typedef struct tagSuiDesigner$__Block_1111_57 SuiDesigner$__Block_1111_57;
+typedef struct tagSuiDesigner$__Block_967_56 SuiDesigner$__Block_967_56;
 
-typedef struct tagSuiDesigner$__Block_1125_56 SuiDesigner$__Block_1125_56;
+typedef struct tagSuiDesigner$__Block_1033_39 SuiDesigner$__Block_1033_39;
 
-typedef struct tagSuiDesigner$__Block_1139_58 SuiDesigner$__Block_1139_58;
+typedef struct tagSuiDesigner$__Block_1030_56 SuiDesigner$__Block_1030_56;
 
-typedef struct tagSuiDesigner$__Block_1360_68 SuiDesigner$__Block_1360_68;
+typedef struct tagSuiDesigner$__Block_1111_39 SuiDesigner$__Block_1111_39;
 
-typedef struct tagSuiDesigner$__Block_1403_68 SuiDesigner$__Block_1403_68;
+typedef struct tagSuiDesigner$__Block_1108_57 SuiDesigner$__Block_1108_57;
 
-typedef struct tagSuiDesigner$__Block_1461_68 SuiDesigner$__Block_1461_68;
+typedef struct tagSuiDesigner$__Block_1185_60 SuiDesigner$__Block_1185_60;
 
-typedef struct tagSuiDesigner$__Block_1546_31 SuiDesigner$__Block_1546_31;
+typedef struct tagSuiDesigner$__Block_1206_57 SuiDesigner$__Block_1206_57;
+
+typedef struct tagSuiDesigner$__Block_1220_56 SuiDesigner$__Block_1220_56;
+
+typedef struct tagSuiDesigner$__Block_1234_58 SuiDesigner$__Block_1234_58;
+
+typedef struct tagSuiDesigner$__Block_1470_68 SuiDesigner$__Block_1470_68;
+
+typedef struct tagSuiDesigner$__Block_1513_68 SuiDesigner$__Block_1513_68;
+
+typedef struct tagSuiDesigner$__Block_1571_68 SuiDesigner$__Block_1571_68;
+
+typedef struct tagSuiDesigner$__Block_1656_31 SuiDesigner$__Block_1656_31;
 
 typedef struct tagSuiDesigner$__Closure_265_26 SuiDesigner$__Closure_265_26;
 
@@ -119,79 +131,91 @@ typedef struct tagSuiDesigner$__Closure_328_34 SuiDesigner$__Closure_328_34;
 
 typedef struct tagSuiDesigner$__Closure_344_26 SuiDesigner$__Closure_344_26;
 
-typedef struct tagSuiDesigner$__Closure_592_32 SuiDesigner$__Closure_592_32;
+typedef struct tagSuiDesigner$__Closure_365_28 SuiDesigner$__Closure_365_28;
 
-typedef struct tagSuiDesigner$__Closure_712_31 SuiDesigner$__Closure_712_31;
+typedef struct tagSuiDesigner$__Closure_378_40 SuiDesigner$__Closure_378_40;
 
-typedef struct tagSuiDesigner$__Closure_741_24 SuiDesigner$__Closure_741_24;
+typedef struct tagSuiDesigner$__Closure_403_28 SuiDesigner$__Closure_403_28;
 
-typedef struct tagSuiDesigner$__Closure_747_30 SuiDesigner$__Closure_747_30;
+typedef struct tagSuiDesigner$__Closure_416_40 SuiDesigner$__Closure_416_40;
 
-typedef struct tagSuiDesigner$__Closure_770_31 SuiDesigner$__Closure_770_31;
+typedef struct tagSuiDesigner$__Closure_423_40 SuiDesigner$__Closure_423_40;
 
-typedef struct tagSuiDesigner$__Closure_796_31 SuiDesigner$__Closure_796_31;
+typedef struct tagSuiDesigner$__Closure_428_46 SuiDesigner$__Closure_428_46;
 
-typedef struct tagSuiDesigner$__Closure_817_37 SuiDesigner$__Closure_817_37;
+typedef struct tagSuiDesigner$__Closure_687_32 SuiDesigner$__Closure_687_32;
 
-typedef struct tagSuiDesigner$__Closure_840_35 SuiDesigner$__Closure_840_35;
+typedef struct tagSuiDesigner$__Closure_807_31 SuiDesigner$__Closure_807_31;
 
-typedef struct tagSuiDesigner$__Closure_857_35 SuiDesigner$__Closure_857_35;
+typedef struct tagSuiDesigner$__Closure_836_24 SuiDesigner$__Closure_836_24;
 
-typedef struct tagSuiDesigner$__Closure_885_35 SuiDesigner$__Closure_885_35;
+typedef struct tagSuiDesigner$__Closure_842_30 SuiDesigner$__Closure_842_30;
 
-typedef struct tagSuiDesigner$__Closure_903_35 SuiDesigner$__Closure_903_35;
+typedef struct tagSuiDesigner$__Closure_865_31 SuiDesigner$__Closure_865_31;
 
-typedef struct tagSuiDesigner$__Closure_921_35 SuiDesigner$__Closure_921_35;
+typedef struct tagSuiDesigner$__Closure_891_31 SuiDesigner$__Closure_891_31;
 
-typedef struct tagSuiDesigner$__Closure_948_35 SuiDesigner$__Closure_948_35;
+typedef struct tagSuiDesigner$__Closure_912_37 SuiDesigner$__Closure_912_37;
 
-typedef struct tagSuiDesigner$__Closure_965_35 SuiDesigner$__Closure_965_35;
+typedef struct tagSuiDesigner$__Closure_935_35 SuiDesigner$__Closure_935_35;
 
-typedef struct tagSuiDesigner$__Closure_983_35 SuiDesigner$__Closure_983_35;
+typedef struct tagSuiDesigner$__Closure_952_35 SuiDesigner$__Closure_952_35;
 
-typedef struct tagSuiDesigner$__Closure_999_35 SuiDesigner$__Closure_999_35;
+typedef struct tagSuiDesigner$__Closure_980_35 SuiDesigner$__Closure_980_35;
 
-typedef struct tagSuiDesigner$__Closure_1026_35 SuiDesigner$__Closure_1026_35;
+typedef struct tagSuiDesigner$__Closure_998_35 SuiDesigner$__Closure_998_35;
 
-typedef struct tagSuiDesigner$__Closure_1041_35 SuiDesigner$__Closure_1041_35;
+typedef struct tagSuiDesigner$__Closure_1016_35 SuiDesigner$__Closure_1016_35;
 
-typedef struct tagSuiDesigner$__Closure_1059_35 SuiDesigner$__Closure_1059_35;
+typedef struct tagSuiDesigner$__Closure_1043_35 SuiDesigner$__Closure_1043_35;
 
-typedef struct tagSuiDesigner$__Closure_1075_35 SuiDesigner$__Closure_1075_35;
+typedef struct tagSuiDesigner$__Closure_1060_35 SuiDesigner$__Closure_1060_35;
 
-typedef struct tagSuiDesigner$__Closure_1105_26 SuiDesigner$__Closure_1105_26;
+typedef struct tagSuiDesigner$__Closure_1078_35 SuiDesigner$__Closure_1078_35;
 
-typedef struct tagSuiDesigner$__Closure_1118_26 SuiDesigner$__Closure_1118_26;
+typedef struct tagSuiDesigner$__Closure_1094_35 SuiDesigner$__Closure_1094_35;
 
-typedef struct tagSuiDesigner$__Closure_1132_26 SuiDesigner$__Closure_1132_26;
+typedef struct tagSuiDesigner$__Closure_1121_35 SuiDesigner$__Closure_1121_35;
 
-typedef struct tagSuiDesigner$__Closure_1149_26 SuiDesigner$__Closure_1149_26;
+typedef struct tagSuiDesigner$__Closure_1136_35 SuiDesigner$__Closure_1136_35;
 
-typedef struct tagSuiDesigner$__Closure_1312_26 SuiDesigner$__Closure_1312_26;
+typedef struct tagSuiDesigner$__Closure_1154_35 SuiDesigner$__Closure_1154_35;
 
-typedef struct tagSuiDesigner$__Closure_1317_25 SuiDesigner$__Closure_1317_25;
+typedef struct tagSuiDesigner$__Closure_1170_35 SuiDesigner$__Closure_1170_35;
 
-typedef struct tagSuiDesigner$__Closure_1325_32 SuiDesigner$__Closure_1325_32;
+typedef struct tagSuiDesigner$__Closure_1200_26 SuiDesigner$__Closure_1200_26;
 
-typedef struct tagSuiDesigner$__Closure_1371_31 SuiDesigner$__Closure_1371_31;
+typedef struct tagSuiDesigner$__Closure_1213_26 SuiDesigner$__Closure_1213_26;
 
-typedef struct tagSuiDesigner$__Closure_1389_31 SuiDesigner$__Closure_1389_31;
+typedef struct tagSuiDesigner$__Closure_1227_26 SuiDesigner$__Closure_1227_26;
 
-typedef struct tagSuiDesigner$__Closure_1414_31 SuiDesigner$__Closure_1414_31;
+typedef struct tagSuiDesigner$__Closure_1244_26 SuiDesigner$__Closure_1244_26;
 
-typedef struct tagSuiDesigner$__Closure_1432_31 SuiDesigner$__Closure_1432_31;
+typedef struct tagSuiDesigner$__Closure_1422_26 SuiDesigner$__Closure_1422_26;
 
-typedef struct tagSuiDesigner$__Closure_1449_31 SuiDesigner$__Closure_1449_31;
+typedef struct tagSuiDesigner$__Closure_1427_25 SuiDesigner$__Closure_1427_25;
 
-typedef struct tagSuiDesigner$__Closure_1472_31 SuiDesigner$__Closure_1472_31;
+typedef struct tagSuiDesigner$__Closure_1435_32 SuiDesigner$__Closure_1435_32;
 
-typedef struct tagSuiDesigner$__Closure_1490_31 SuiDesigner$__Closure_1490_31;
+typedef struct tagSuiDesigner$__Closure_1481_31 SuiDesigner$__Closure_1481_31;
 
-typedef struct tagSuiDesigner$__Closure_1507_31 SuiDesigner$__Closure_1507_31;
+typedef struct tagSuiDesigner$__Closure_1499_31 SuiDesigner$__Closure_1499_31;
 
-typedef struct tagSuiDesigner$__Closure_1522_31 SuiDesigner$__Closure_1522_31;
+typedef struct tagSuiDesigner$__Closure_1524_31 SuiDesigner$__Closure_1524_31;
 
-typedef struct tagSuiDesigner$__Closure_1564_38 SuiDesigner$__Closure_1564_38;
+typedef struct tagSuiDesigner$__Closure_1542_31 SuiDesigner$__Closure_1542_31;
+
+typedef struct tagSuiDesigner$__Closure_1559_31 SuiDesigner$__Closure_1559_31;
+
+typedef struct tagSuiDesigner$__Closure_1582_31 SuiDesigner$__Closure_1582_31;
+
+typedef struct tagSuiDesigner$__Closure_1600_31 SuiDesigner$__Closure_1600_31;
+
+typedef struct tagSuiDesigner$__Closure_1617_31 SuiDesigner$__Closure_1617_31;
+
+typedef struct tagSuiDesigner$__Closure_1632_31 SuiDesigner$__Closure_1632_31;
+
+typedef struct tagSuiDesigner$__Closure_1674_38 SuiDesigner$__Closure_1674_38;
 
 
 
@@ -232,7 +256,55 @@ struct tagSuiDesigner$__Block_341_69 {
 
 
 
-struct tagSuiDesigner$__Block_576_49 {
+struct tagSuiDesigner$__Block_358_39 {
+	Orc$List *  list ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Block_357_69 {
+	SuiDesigner$Insp *  insp ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Block_372_52 {
+	int  idx ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Block_396_39 {
+	Orc$List *  list ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Block_395_69 {
+	SuiDesigner$Insp *  insp ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Block_410_52 {
+	int  idx ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Block_672_49 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -241,7 +313,7 @@ struct tagSuiDesigner$__Block_576_49 {
 
 
 
-struct tagSuiDesigner$__Block_705_58 {
+struct tagSuiDesigner$__Block_800_58 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -250,7 +322,7 @@ struct tagSuiDesigner$__Block_705_58 {
 
 
 
-struct tagSuiDesigner$__Block_721_62 {
+struct tagSuiDesigner$__Block_816_62 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -259,7 +331,7 @@ struct tagSuiDesigner$__Block_721_62 {
 
 
 
-struct tagSuiDesigner$__Block_755_55 {
+struct tagSuiDesigner$__Block_850_55 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -268,7 +340,7 @@ struct tagSuiDesigner$__Block_755_55 {
 
 
 
-struct tagSuiDesigner$__Block_783_57 {
+struct tagSuiDesigner$__Block_878_57 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -277,7 +349,7 @@ struct tagSuiDesigner$__Block_783_57 {
 
 
 
-struct tagSuiDesigner$__Block_808_56 {
+struct tagSuiDesigner$__Block_903_56 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -286,7 +358,7 @@ struct tagSuiDesigner$__Block_808_56 {
 
 
 
-struct tagSuiDesigner$__Block_830_39 {
+struct tagSuiDesigner$__Block_925_39 {
 	SuiCore$Vec2 v ;
 };
 
@@ -294,7 +366,7 @@ struct tagSuiDesigner$__Block_830_39 {
 
 
 
-struct tagSuiDesigner$__Block_827_56 {
+struct tagSuiDesigner$__Block_922_56 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -303,7 +375,7 @@ struct tagSuiDesigner$__Block_827_56 {
 
 
 
-struct tagSuiDesigner$__Block_875_39 {
+struct tagSuiDesigner$__Block_970_39 {
 	SuiCore$Vec3 v ;
 };
 
@@ -311,7 +383,7 @@ struct tagSuiDesigner$__Block_875_39 {
 
 
 
-struct tagSuiDesigner$__Block_872_56 {
+struct tagSuiDesigner$__Block_967_56 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -320,7 +392,7 @@ struct tagSuiDesigner$__Block_872_56 {
 
 
 
-struct tagSuiDesigner$__Block_938_39 {
+struct tagSuiDesigner$__Block_1033_39 {
 	SuiCore$Vec4 v ;
 };
 
@@ -328,7 +400,7 @@ struct tagSuiDesigner$__Block_938_39 {
 
 
 
-struct tagSuiDesigner$__Block_935_56 {
+struct tagSuiDesigner$__Block_1030_56 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -337,7 +409,7 @@ struct tagSuiDesigner$__Block_935_56 {
 
 
 
-struct tagSuiDesigner$__Block_1016_39 {
+struct tagSuiDesigner$__Block_1111_39 {
 	SuiCore$Inset v ;
 };
 
@@ -345,7 +417,7 @@ struct tagSuiDesigner$__Block_1016_39 {
 
 
 
-struct tagSuiDesigner$__Block_1013_57 {
+struct tagSuiDesigner$__Block_1108_57 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -354,7 +426,7 @@ struct tagSuiDesigner$__Block_1013_57 {
 
 
 
-struct tagSuiDesigner$__Block_1090_60 {
+struct tagSuiDesigner$__Block_1185_60 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -363,7 +435,7 @@ struct tagSuiDesigner$__Block_1090_60 {
 
 
 
-struct tagSuiDesigner$__Block_1111_57 {
+struct tagSuiDesigner$__Block_1206_57 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -372,7 +444,7 @@ struct tagSuiDesigner$__Block_1111_57 {
 
 
 
-struct tagSuiDesigner$__Block_1125_56 {
+struct tagSuiDesigner$__Block_1220_56 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -381,7 +453,7 @@ struct tagSuiDesigner$__Block_1125_56 {
 
 
 
-struct tagSuiDesigner$__Block_1139_58 {
+struct tagSuiDesigner$__Block_1234_58 {
 	SuiDesigner$Insp*  self ;
 	OrcMetaField *  mf ;
 };
@@ -390,7 +462,7 @@ struct tagSuiDesigner$__Block_1139_58 {
 
 
 
-struct tagSuiDesigner$__Block_1360_68 {
+struct tagSuiDesigner$__Block_1470_68 {
 	SuiCore$Vec2 v ;
 	void  (**set)(void *  self, SuiCore$Vec2 nv);
 };
@@ -399,7 +471,7 @@ struct tagSuiDesigner$__Block_1360_68 {
 
 
 
-struct tagSuiDesigner$__Block_1403_68 {
+struct tagSuiDesigner$__Block_1513_68 {
 	SuiCore$Vec3 v ;
 	void  (**set)(void *  self, SuiCore$Vec3 nv);
 };
@@ -408,7 +480,7 @@ struct tagSuiDesigner$__Block_1403_68 {
 
 
 
-struct tagSuiDesigner$__Block_1461_68 {
+struct tagSuiDesigner$__Block_1571_68 {
 	SuiCore$Vec4 v ;
 	void  (**set)(void *  self, SuiCore$Vec4 nv);
 };
@@ -417,7 +489,7 @@ struct tagSuiDesigner$__Block_1461_68 {
 
 
 
-struct tagSuiDesigner$__Block_1546_31 {
+struct tagSuiDesigner$__Block_1656_31 {
 	SuiDesigner$TestObj*  obj ;
 };
 
@@ -485,261 +557,331 @@ struct tagSuiDesigner$__Closure_344_26 {
 
 
 
-struct tagSuiDesigner$__Closure_592_32 {
-	void  (*invoke)(SuiDesigner$__Closure_592_32 *  self, SuiCore$MouseEvent *  me);
+struct tagSuiDesigner$__Closure_365_28 {
+	void  (*invoke)(SuiDesigner$__Closure_365_28 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_576_49*  __var___Block_576_49 ;
+	SuiDesigner$__Block_358_39*  __var___Block_358_39 ;
+	SuiDesigner$__Block_357_69*  __var___Block_357_69 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_712_31 {
-	void  (*invoke)(SuiDesigner$__Closure_712_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_378_40 {
+	void  (*invoke)(SuiDesigner$__Closure_378_40 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_705_58*  __var___Block_705_58 ;
+	SuiDesigner$__Block_358_39*  __var___Block_358_39 ;
+	SuiDesigner$__Block_372_52*  __var___Block_372_52 ;
+	SuiDesigner$__Block_357_69*  __var___Block_357_69 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_741_24 {
-	void  (*invoke)(SuiDesigner$__Closure_741_24 *  self, SuiCore$MouseEvent *  me);
+struct tagSuiDesigner$__Closure_403_28 {
+	void  (*invoke)(SuiDesigner$__Closure_403_28 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_721_62*  __var___Block_721_62 ;
+	SuiDesigner$__Block_396_39*  __var___Block_396_39 ;
+	SuiDesigner$__Block_395_69*  __var___Block_395_69 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_747_30 {
-	void  (*invoke)(SuiDesigner$__Closure_747_30 *  self, Orc$String*  newpath);
+struct tagSuiDesigner$__Closure_416_40 {
+	void  (*invoke)(SuiDesigner$__Closure_416_40 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_721_62*  __var___Block_721_62 ;
+	SuiDesigner$__Block_396_39*  __var___Block_396_39 ;
+	SuiDesigner$__Block_410_52*  __var___Block_410_52 ;
+	SuiDesigner$__Block_395_69*  __var___Block_395_69 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_770_31 {
-	void  (*invoke)(SuiDesigner$__Closure_770_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_423_40 {
+	void  (*invoke)(SuiDesigner$__Closure_423_40 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_755_55*  __var___Block_755_55 ;
+	SuiDesigner$__Block_396_39*  __var___Block_396_39 ;
+	SuiDesigner$__Block_410_52*  __var___Block_410_52 ;
+	SuiDesigner$__Block_395_69*  __var___Block_395_69 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_796_31 {
-	void  (*invoke)(SuiDesigner$__Closure_796_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_428_46 {
+	void  (*invoke)(SuiDesigner$__Closure_428_46 *  self, Orc$String*  newpath);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_783_57*  __var___Block_783_57 ;
+	SuiDesigner$__Block_396_39*  __var___Block_396_39 ;
+	SuiDesigner$__Block_410_52*  __var___Block_410_52 ;
+	SuiDesigner$__Block_395_69*  __var___Block_395_69 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_817_37 {
-	void  (*invoke)(SuiDesigner$__Closure_817_37 *  self, SuiView$Switch *  v);
+struct tagSuiDesigner$__Closure_687_32 {
+	void  (*invoke)(SuiDesigner$__Closure_687_32 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_808_56*  __var___Block_808_56 ;
+	SuiDesigner$__Block_672_49*  __var___Block_672_49 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_840_35 {
-	void  (*invoke)(SuiDesigner$__Closure_840_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_807_31 {
+	void  (*invoke)(SuiDesigner$__Closure_807_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_830_39*  __var___Block_830_39 ;
-	SuiDesigner$__Block_827_56*  __var___Block_827_56 ;
+	SuiDesigner$__Block_800_58*  __var___Block_800_58 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_857_35 {
-	void  (*invoke)(SuiDesigner$__Closure_857_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_836_24 {
+	void  (*invoke)(SuiDesigner$__Closure_836_24 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_830_39*  __var___Block_830_39 ;
-	SuiDesigner$__Block_827_56*  __var___Block_827_56 ;
+	SuiDesigner$__Block_816_62*  __var___Block_816_62 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_885_35 {
-	void  (*invoke)(SuiDesigner$__Closure_885_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_842_30 {
+	void  (*invoke)(SuiDesigner$__Closure_842_30 *  self, Orc$String*  newpath);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_875_39*  __var___Block_875_39 ;
-	SuiDesigner$__Block_872_56*  __var___Block_872_56 ;
+	SuiDesigner$__Block_816_62*  __var___Block_816_62 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_903_35 {
-	void  (*invoke)(SuiDesigner$__Closure_903_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_865_31 {
+	void  (*invoke)(SuiDesigner$__Closure_865_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_875_39*  __var___Block_875_39 ;
-	SuiDesigner$__Block_872_56*  __var___Block_872_56 ;
+	SuiDesigner$__Block_850_55*  __var___Block_850_55 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_921_35 {
-	void  (*invoke)(SuiDesigner$__Closure_921_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_891_31 {
+	void  (*invoke)(SuiDesigner$__Closure_891_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_875_39*  __var___Block_875_39 ;
-	SuiDesigner$__Block_872_56*  __var___Block_872_56 ;
+	SuiDesigner$__Block_878_57*  __var___Block_878_57 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_948_35 {
-	void  (*invoke)(SuiDesigner$__Closure_948_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_912_37 {
+	void  (*invoke)(SuiDesigner$__Closure_912_37 *  self, SuiView$Switch *  v);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_938_39*  __var___Block_938_39 ;
-	SuiDesigner$__Block_935_56*  __var___Block_935_56 ;
+	SuiDesigner$__Block_903_56*  __var___Block_903_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_965_35 {
-	void  (*invoke)(SuiDesigner$__Closure_965_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_935_35 {
+	void  (*invoke)(SuiDesigner$__Closure_935_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_938_39*  __var___Block_938_39 ;
-	SuiDesigner$__Block_935_56*  __var___Block_935_56 ;
+	SuiDesigner$__Block_925_39*  __var___Block_925_39 ;
+	SuiDesigner$__Block_922_56*  __var___Block_922_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_983_35 {
-	void  (*invoke)(SuiDesigner$__Closure_983_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_952_35 {
+	void  (*invoke)(SuiDesigner$__Closure_952_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_938_39*  __var___Block_938_39 ;
-	SuiDesigner$__Block_935_56*  __var___Block_935_56 ;
+	SuiDesigner$__Block_925_39*  __var___Block_925_39 ;
+	SuiDesigner$__Block_922_56*  __var___Block_922_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_999_35 {
-	void  (*invoke)(SuiDesigner$__Closure_999_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_980_35 {
+	void  (*invoke)(SuiDesigner$__Closure_980_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_938_39*  __var___Block_938_39 ;
-	SuiDesigner$__Block_935_56*  __var___Block_935_56 ;
+	SuiDesigner$__Block_970_39*  __var___Block_970_39 ;
+	SuiDesigner$__Block_967_56*  __var___Block_967_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1026_35 {
-	void  (*invoke)(SuiDesigner$__Closure_1026_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_998_35 {
+	void  (*invoke)(SuiDesigner$__Closure_998_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1016_39*  __var___Block_1016_39 ;
-	SuiDesigner$__Block_1013_57*  __var___Block_1013_57 ;
+	SuiDesigner$__Block_970_39*  __var___Block_970_39 ;
+	SuiDesigner$__Block_967_56*  __var___Block_967_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1041_35 {
-	void  (*invoke)(SuiDesigner$__Closure_1041_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1016_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1016_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1016_39*  __var___Block_1016_39 ;
-	SuiDesigner$__Block_1013_57*  __var___Block_1013_57 ;
+	SuiDesigner$__Block_970_39*  __var___Block_970_39 ;
+	SuiDesigner$__Block_967_56*  __var___Block_967_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1059_35 {
-	void  (*invoke)(SuiDesigner$__Closure_1059_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1043_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1043_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1016_39*  __var___Block_1016_39 ;
-	SuiDesigner$__Block_1013_57*  __var___Block_1013_57 ;
+	SuiDesigner$__Block_1033_39*  __var___Block_1033_39 ;
+	SuiDesigner$__Block_1030_56*  __var___Block_1030_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1075_35 {
-	void  (*invoke)(SuiDesigner$__Closure_1075_35 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1060_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1060_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1016_39*  __var___Block_1016_39 ;
-	SuiDesigner$__Block_1013_57*  __var___Block_1013_57 ;
+	SuiDesigner$__Block_1033_39*  __var___Block_1033_39 ;
+	SuiDesigner$__Block_1030_56*  __var___Block_1030_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1105_26 {
-	void  (*invoke)(SuiDesigner$__Closure_1105_26 *  self, int  newcolor);
+struct tagSuiDesigner$__Closure_1078_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1078_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1090_60*  __var___Block_1090_60 ;
+	SuiDesigner$__Block_1033_39*  __var___Block_1033_39 ;
+	SuiDesigner$__Block_1030_56*  __var___Block_1030_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1118_26 {
-	void  (*invoke)(SuiDesigner$__Closure_1118_26 *  self, int  newcolor);
+struct tagSuiDesigner$__Closure_1094_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1094_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1111_57*  __var___Block_1111_57 ;
+	SuiDesigner$__Block_1033_39*  __var___Block_1033_39 ;
+	SuiDesigner$__Block_1030_56*  __var___Block_1030_56 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1132_26 {
-	void  (*invoke)(SuiDesigner$__Closure_1132_26 *  self, int  newcolor);
+struct tagSuiDesigner$__Closure_1121_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1121_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1125_56*  __var___Block_1125_56 ;
+	SuiDesigner$__Block_1111_39*  __var___Block_1111_39 ;
+	SuiDesigner$__Block_1108_57*  __var___Block_1108_57 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1149_26 {
-	void  (*invoke)(SuiDesigner$__Closure_1149_26 *  self, SuiDesigner$BezierEditView *  view);
+struct tagSuiDesigner$__Closure_1136_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1136_35 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1139_58*  __var___Block_1139_58 ;
+	SuiDesigner$__Block_1111_39*  __var___Block_1111_39 ;
+	SuiDesigner$__Block_1108_57*  __var___Block_1108_57 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1312_26 {
-	void  (*invoke)(SuiDesigner$__Closure_1312_26 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
+struct tagSuiDesigner$__Closure_1154_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1154_35 *  self, SuiView$EditText *  et);
+	Vtable_Object *  vtable ;
+	SuiDesigner$__Block_1111_39*  __var___Block_1111_39 ;
+	SuiDesigner$__Block_1108_57*  __var___Block_1108_57 ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Closure_1170_35 {
+	void  (*invoke)(SuiDesigner$__Closure_1170_35 *  self, SuiView$EditText *  et);
+	Vtable_Object *  vtable ;
+	SuiDesigner$__Block_1111_39*  __var___Block_1111_39 ;
+	SuiDesigner$__Block_1108_57*  __var___Block_1108_57 ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Closure_1200_26 {
+	void  (*invoke)(SuiDesigner$__Closure_1200_26 *  self, int  newcolor);
+	Vtable_Object *  vtable ;
+	SuiDesigner$__Block_1185_60*  __var___Block_1185_60 ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Closure_1213_26 {
+	void  (*invoke)(SuiDesigner$__Closure_1213_26 *  self, int  newcolor);
+	Vtable_Object *  vtable ;
+	SuiDesigner$__Block_1206_57*  __var___Block_1206_57 ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Closure_1227_26 {
+	void  (*invoke)(SuiDesigner$__Closure_1227_26 *  self, int  newcolor);
+	Vtable_Object *  vtable ;
+	SuiDesigner$__Block_1220_56*  __var___Block_1220_56 ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Closure_1244_26 {
+	void  (*invoke)(SuiDesigner$__Closure_1244_26 *  self, SuiDesigner$BezierEditView *  view);
+	Vtable_Object *  vtable ;
+	SuiDesigner$__Block_1234_58*  __var___Block_1234_58 ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Closure_1422_26 {
+	void  (*invoke)(SuiDesigner$__Closure_1422_26 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
 	Vtable_Object *  vtable ;
 };
 
@@ -747,8 +889,8 @@ struct tagSuiDesigner$__Closure_1312_26 {
 
 
 
-struct tagSuiDesigner$__Closure_1317_25 {
-	void  (*invoke)(SuiDesigner$__Closure_1317_25 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
+struct tagSuiDesigner$__Closure_1427_25 {
+	void  (*invoke)(SuiDesigner$__Closure_1427_25 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
 	Vtable_Object *  vtable ;
 };
 
@@ -756,8 +898,8 @@ struct tagSuiDesigner$__Closure_1317_25 {
 
 
 
-struct tagSuiDesigner$__Closure_1325_32 {
-	void  (*invoke)(SuiDesigner$__Closure_1325_32 *  self, SuiCore$MouseEvent *  me);
+struct tagSuiDesigner$__Closure_1435_32 {
+	void  (*invoke)(SuiDesigner$__Closure_1435_32 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
 };
 
@@ -765,100 +907,100 @@ struct tagSuiDesigner$__Closure_1325_32 {
 
 
 
-struct tagSuiDesigner$__Closure_1371_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1371_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1481_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1481_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1360_68*  __var___Block_1360_68 ;
+	SuiDesigner$__Block_1470_68*  __var___Block_1470_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1389_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1389_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1499_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1499_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1360_68*  __var___Block_1360_68 ;
+	SuiDesigner$__Block_1470_68*  __var___Block_1470_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1414_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1414_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1524_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1524_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1403_68*  __var___Block_1403_68 ;
+	SuiDesigner$__Block_1513_68*  __var___Block_1513_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1432_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1432_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1542_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1542_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1403_68*  __var___Block_1403_68 ;
+	SuiDesigner$__Block_1513_68*  __var___Block_1513_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1449_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1449_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1559_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1559_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1403_68*  __var___Block_1403_68 ;
+	SuiDesigner$__Block_1513_68*  __var___Block_1513_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1472_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1472_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1582_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1582_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1461_68*  __var___Block_1461_68 ;
+	SuiDesigner$__Block_1571_68*  __var___Block_1571_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1490_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1490_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1600_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1600_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1461_68*  __var___Block_1461_68 ;
+	SuiDesigner$__Block_1571_68*  __var___Block_1571_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1507_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1507_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1617_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1617_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1461_68*  __var___Block_1461_68 ;
+	SuiDesigner$__Block_1571_68*  __var___Block_1571_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1522_31 {
-	void  (*invoke)(SuiDesigner$__Closure_1522_31 *  self, SuiView$EditText *  et);
+struct tagSuiDesigner$__Closure_1632_31 {
+	void  (*invoke)(SuiDesigner$__Closure_1632_31 *  self, SuiView$EditText *  et);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1461_68*  __var___Block_1461_68 ;
+	SuiDesigner$__Block_1571_68*  __var___Block_1571_68 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_1564_38 {
-	void  (*invoke)(SuiDesigner$__Closure_1564_38 *  self, SuiCore$Event *  e);
+struct tagSuiDesigner$__Closure_1674_38 {
+	void  (*invoke)(SuiDesigner$__Closure_1674_38 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_1546_31*  __var___Block_1546_31 ;
+	SuiDesigner$__Block_1656_31*  __var___Block_1656_31 ;
 };
 
 
@@ -870,28 +1012,34 @@ static void  __finiBlock___Block_260_69(SuiDesigner$__Block_260_69 *  self);
 static void  __finiBlock___Block_272_69(SuiDesigner$__Block_272_69 *  self);
 static void  __finiBlock___Block_309_69(SuiDesigner$__Block_309_69 *  self);
 static void  __finiBlock___Block_341_69(SuiDesigner$__Block_341_69 *  self);
-static void  __finiBlock___Block_576_49(SuiDesigner$__Block_576_49 *  self);
-static void  __finiBlock___Block_705_58(SuiDesigner$__Block_705_58 *  self);
-static void  __finiBlock___Block_721_62(SuiDesigner$__Block_721_62 *  self);
-static void  __finiBlock___Block_755_55(SuiDesigner$__Block_755_55 *  self);
-static void  __finiBlock___Block_783_57(SuiDesigner$__Block_783_57 *  self);
-static void  __finiBlock___Block_808_56(SuiDesigner$__Block_808_56 *  self);
-static void  __finiBlock___Block_830_39(SuiDesigner$__Block_830_39 *  self);
-static void  __finiBlock___Block_827_56(SuiDesigner$__Block_827_56 *  self);
-static void  __finiBlock___Block_875_39(SuiDesigner$__Block_875_39 *  self);
-static void  __finiBlock___Block_872_56(SuiDesigner$__Block_872_56 *  self);
-static void  __finiBlock___Block_938_39(SuiDesigner$__Block_938_39 *  self);
-static void  __finiBlock___Block_935_56(SuiDesigner$__Block_935_56 *  self);
-static void  __finiBlock___Block_1016_39(SuiDesigner$__Block_1016_39 *  self);
-static void  __finiBlock___Block_1013_57(SuiDesigner$__Block_1013_57 *  self);
-static void  __finiBlock___Block_1090_60(SuiDesigner$__Block_1090_60 *  self);
-static void  __finiBlock___Block_1111_57(SuiDesigner$__Block_1111_57 *  self);
-static void  __finiBlock___Block_1125_56(SuiDesigner$__Block_1125_56 *  self);
-static void  __finiBlock___Block_1139_58(SuiDesigner$__Block_1139_58 *  self);
-static void  __finiBlock___Block_1360_68(SuiDesigner$__Block_1360_68 *  self);
-static void  __finiBlock___Block_1403_68(SuiDesigner$__Block_1403_68 *  self);
-static void  __finiBlock___Block_1461_68(SuiDesigner$__Block_1461_68 *  self);
-static void  __finiBlock___Block_1546_31(SuiDesigner$__Block_1546_31 *  self);
+static void  __finiBlock___Block_358_39(SuiDesigner$__Block_358_39 *  self);
+static void  __finiBlock___Block_357_69(SuiDesigner$__Block_357_69 *  self);
+static void  __finiBlock___Block_372_52(SuiDesigner$__Block_372_52 *  self);
+static void  __finiBlock___Block_396_39(SuiDesigner$__Block_396_39 *  self);
+static void  __finiBlock___Block_395_69(SuiDesigner$__Block_395_69 *  self);
+static void  __finiBlock___Block_410_52(SuiDesigner$__Block_410_52 *  self);
+static void  __finiBlock___Block_672_49(SuiDesigner$__Block_672_49 *  self);
+static void  __finiBlock___Block_800_58(SuiDesigner$__Block_800_58 *  self);
+static void  __finiBlock___Block_816_62(SuiDesigner$__Block_816_62 *  self);
+static void  __finiBlock___Block_850_55(SuiDesigner$__Block_850_55 *  self);
+static void  __finiBlock___Block_878_57(SuiDesigner$__Block_878_57 *  self);
+static void  __finiBlock___Block_903_56(SuiDesigner$__Block_903_56 *  self);
+static void  __finiBlock___Block_925_39(SuiDesigner$__Block_925_39 *  self);
+static void  __finiBlock___Block_922_56(SuiDesigner$__Block_922_56 *  self);
+static void  __finiBlock___Block_970_39(SuiDesigner$__Block_970_39 *  self);
+static void  __finiBlock___Block_967_56(SuiDesigner$__Block_967_56 *  self);
+static void  __finiBlock___Block_1033_39(SuiDesigner$__Block_1033_39 *  self);
+static void  __finiBlock___Block_1030_56(SuiDesigner$__Block_1030_56 *  self);
+static void  __finiBlock___Block_1111_39(SuiDesigner$__Block_1111_39 *  self);
+static void  __finiBlock___Block_1108_57(SuiDesigner$__Block_1108_57 *  self);
+static void  __finiBlock___Block_1185_60(SuiDesigner$__Block_1185_60 *  self);
+static void  __finiBlock___Block_1206_57(SuiDesigner$__Block_1206_57 *  self);
+static void  __finiBlock___Block_1220_56(SuiDesigner$__Block_1220_56 *  self);
+static void  __finiBlock___Block_1234_58(SuiDesigner$__Block_1234_58 *  self);
+static void  __finiBlock___Block_1470_68(SuiDesigner$__Block_1470_68 *  self);
+static void  __finiBlock___Block_1513_68(SuiDesigner$__Block_1513_68 *  self);
+static void  __finiBlock___Block_1571_68(SuiDesigner$__Block_1571_68 *  self);
+static void  __finiBlock___Block_1656_31(SuiDesigner$__Block_1656_31 *  self);
 static void  __fn___Closure_265_26(SuiDesigner$__Closure_265_26 *  self, int  newcolor);
 static void  __fini___Closure_265_26(SuiDesigner$__Closure_265_26 *  self);
 static SuiDesigner$__Closure_265_26*  __make___Closure_265_26(SuiDesigner$__Closure_265_26 **  __outRef__, SuiDesigner$__Block_260_69 *  __var___Block_260_69);
@@ -910,117 +1058,135 @@ static SuiDesigner$__Closure_328_34*  __make___Closure_328_34(SuiDesigner$__Clos
 static void  __fn___Closure_344_26(SuiDesigner$__Closure_344_26 *  self, int  i, Orc$String*  label);
 static void  __fini___Closure_344_26(SuiDesigner$__Closure_344_26 *  self);
 static SuiDesigner$__Closure_344_26*  __make___Closure_344_26(SuiDesigner$__Closure_344_26 **  __outRef__, SuiDesigner$__Block_341_69 *  __var___Block_341_69);
-static void  __fn___Closure_592_32(SuiDesigner$__Closure_592_32 *  self, SuiCore$MouseEvent *  me);
-static void  __fini___Closure_592_32(SuiDesigner$__Closure_592_32 *  self);
-static SuiDesigner$__Closure_592_32*  __make___Closure_592_32(SuiDesigner$__Closure_592_32 **  __outRef__, SuiDesigner$__Block_576_49 *  __var___Block_576_49);
-static void  __fn___Closure_712_31(SuiDesigner$__Closure_712_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_712_31(SuiDesigner$__Closure_712_31 *  self);
-static SuiDesigner$__Closure_712_31*  __make___Closure_712_31(SuiDesigner$__Closure_712_31 **  __outRef__, SuiDesigner$__Block_705_58 *  __var___Block_705_58);
-static void  __fn___Closure_741_24(SuiDesigner$__Closure_741_24 *  self, SuiCore$MouseEvent *  me);
-static void  __fini___Closure_741_24(SuiDesigner$__Closure_741_24 *  self);
-static SuiDesigner$__Closure_741_24*  __make___Closure_741_24(SuiDesigner$__Closure_741_24 **  __outRef__, SuiDesigner$__Block_721_62 *  __var___Block_721_62);
-static void  __fn___Closure_747_30(SuiDesigner$__Closure_747_30 *  self, Orc$String*  newpath);
-static void  __fini___Closure_747_30(SuiDesigner$__Closure_747_30 *  self);
-static SuiDesigner$__Closure_747_30*  __make___Closure_747_30(SuiDesigner$__Closure_747_30 **  __outRef__, SuiDesigner$__Block_721_62 *  __var___Block_721_62);
-static void  __fn___Closure_770_31(SuiDesigner$__Closure_770_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_770_31(SuiDesigner$__Closure_770_31 *  self);
-static SuiDesigner$__Closure_770_31*  __make___Closure_770_31(SuiDesigner$__Closure_770_31 **  __outRef__, SuiDesigner$__Block_755_55 *  __var___Block_755_55);
-static void  __fn___Closure_796_31(SuiDesigner$__Closure_796_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_796_31(SuiDesigner$__Closure_796_31 *  self);
-static SuiDesigner$__Closure_796_31*  __make___Closure_796_31(SuiDesigner$__Closure_796_31 **  __outRef__, SuiDesigner$__Block_783_57 *  __var___Block_783_57);
-static void  __fn___Closure_817_37(SuiDesigner$__Closure_817_37 *  self, SuiView$Switch *  v);
-static void  __fini___Closure_817_37(SuiDesigner$__Closure_817_37 *  self);
-static SuiDesigner$__Closure_817_37*  __make___Closure_817_37(SuiDesigner$__Closure_817_37 **  __outRef__, SuiDesigner$__Block_808_56 *  __var___Block_808_56);
-static void  __fn___Closure_840_35(SuiDesigner$__Closure_840_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_840_35(SuiDesigner$__Closure_840_35 *  self);
-static SuiDesigner$__Closure_840_35*  __make___Closure_840_35(SuiDesigner$__Closure_840_35 **  __outRef__, SuiDesigner$__Block_830_39 *  __var___Block_830_39, SuiDesigner$__Block_827_56 *  __var___Block_827_56);
-static void  __fn___Closure_857_35(SuiDesigner$__Closure_857_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_857_35(SuiDesigner$__Closure_857_35 *  self);
-static SuiDesigner$__Closure_857_35*  __make___Closure_857_35(SuiDesigner$__Closure_857_35 **  __outRef__, SuiDesigner$__Block_830_39 *  __var___Block_830_39, SuiDesigner$__Block_827_56 *  __var___Block_827_56);
-static void  __fn___Closure_885_35(SuiDesigner$__Closure_885_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_885_35(SuiDesigner$__Closure_885_35 *  self);
-static SuiDesigner$__Closure_885_35*  __make___Closure_885_35(SuiDesigner$__Closure_885_35 **  __outRef__, SuiDesigner$__Block_875_39 *  __var___Block_875_39, SuiDesigner$__Block_872_56 *  __var___Block_872_56);
-static void  __fn___Closure_903_35(SuiDesigner$__Closure_903_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_903_35(SuiDesigner$__Closure_903_35 *  self);
-static SuiDesigner$__Closure_903_35*  __make___Closure_903_35(SuiDesigner$__Closure_903_35 **  __outRef__, SuiDesigner$__Block_875_39 *  __var___Block_875_39, SuiDesigner$__Block_872_56 *  __var___Block_872_56);
-static void  __fn___Closure_921_35(SuiDesigner$__Closure_921_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_921_35(SuiDesigner$__Closure_921_35 *  self);
-static SuiDesigner$__Closure_921_35*  __make___Closure_921_35(SuiDesigner$__Closure_921_35 **  __outRef__, SuiDesigner$__Block_875_39 *  __var___Block_875_39, SuiDesigner$__Block_872_56 *  __var___Block_872_56);
-static void  __fn___Closure_948_35(SuiDesigner$__Closure_948_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_948_35(SuiDesigner$__Closure_948_35 *  self);
-static SuiDesigner$__Closure_948_35*  __make___Closure_948_35(SuiDesigner$__Closure_948_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56);
-static void  __fn___Closure_965_35(SuiDesigner$__Closure_965_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_965_35(SuiDesigner$__Closure_965_35 *  self);
-static SuiDesigner$__Closure_965_35*  __make___Closure_965_35(SuiDesigner$__Closure_965_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56);
-static void  __fn___Closure_983_35(SuiDesigner$__Closure_983_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_983_35(SuiDesigner$__Closure_983_35 *  self);
-static SuiDesigner$__Closure_983_35*  __make___Closure_983_35(SuiDesigner$__Closure_983_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56);
-static void  __fn___Closure_999_35(SuiDesigner$__Closure_999_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_999_35(SuiDesigner$__Closure_999_35 *  self);
-static SuiDesigner$__Closure_999_35*  __make___Closure_999_35(SuiDesigner$__Closure_999_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56);
-static void  __fn___Closure_1026_35(SuiDesigner$__Closure_1026_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1026_35(SuiDesigner$__Closure_1026_35 *  self);
-static SuiDesigner$__Closure_1026_35*  __make___Closure_1026_35(SuiDesigner$__Closure_1026_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57);
-static void  __fn___Closure_1041_35(SuiDesigner$__Closure_1041_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1041_35(SuiDesigner$__Closure_1041_35 *  self);
-static SuiDesigner$__Closure_1041_35*  __make___Closure_1041_35(SuiDesigner$__Closure_1041_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57);
-static void  __fn___Closure_1059_35(SuiDesigner$__Closure_1059_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1059_35(SuiDesigner$__Closure_1059_35 *  self);
-static SuiDesigner$__Closure_1059_35*  __make___Closure_1059_35(SuiDesigner$__Closure_1059_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57);
-static void  __fn___Closure_1075_35(SuiDesigner$__Closure_1075_35 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1075_35(SuiDesigner$__Closure_1075_35 *  self);
-static SuiDesigner$__Closure_1075_35*  __make___Closure_1075_35(SuiDesigner$__Closure_1075_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57);
-static void  __fn___Closure_1105_26(SuiDesigner$__Closure_1105_26 *  self, int  newcolor);
-static void  __fini___Closure_1105_26(SuiDesigner$__Closure_1105_26 *  self);
-static SuiDesigner$__Closure_1105_26*  __make___Closure_1105_26(SuiDesigner$__Closure_1105_26 **  __outRef__, SuiDesigner$__Block_1090_60 *  __var___Block_1090_60);
-static void  __fn___Closure_1118_26(SuiDesigner$__Closure_1118_26 *  self, int  newcolor);
-static void  __fini___Closure_1118_26(SuiDesigner$__Closure_1118_26 *  self);
-static SuiDesigner$__Closure_1118_26*  __make___Closure_1118_26(SuiDesigner$__Closure_1118_26 **  __outRef__, SuiDesigner$__Block_1111_57 *  __var___Block_1111_57);
-static void  __fn___Closure_1132_26(SuiDesigner$__Closure_1132_26 *  self, int  newcolor);
-static void  __fini___Closure_1132_26(SuiDesigner$__Closure_1132_26 *  self);
-static SuiDesigner$__Closure_1132_26*  __make___Closure_1132_26(SuiDesigner$__Closure_1132_26 **  __outRef__, SuiDesigner$__Block_1125_56 *  __var___Block_1125_56);
-static void  __fn___Closure_1149_26(SuiDesigner$__Closure_1149_26 *  self, SuiDesigner$BezierEditView *  view);
-static void  __fini___Closure_1149_26(SuiDesigner$__Closure_1149_26 *  self);
-static SuiDesigner$__Closure_1149_26*  __make___Closure_1149_26(SuiDesigner$__Closure_1149_26 **  __outRef__, SuiDesigner$__Block_1139_58 *  __var___Block_1139_58);
-static void  __fn___Closure_1312_26(SuiDesigner$__Closure_1312_26 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
-static void  __fini___Closure_1312_26(SuiDesigner$__Closure_1312_26 *  self);
-static SuiDesigner$__Closure_1312_26*  __make___Closure_1312_26(SuiDesigner$__Closure_1312_26 **  __outRef__);
-static void  __fn___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
-static void  __fini___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self);
-static SuiDesigner$__Closure_1317_25*  __make___Closure_1317_25(SuiDesigner$__Closure_1317_25 **  __outRef__);
-static void  __fn___Closure_1325_32(SuiDesigner$__Closure_1325_32 *  self, SuiCore$MouseEvent *  me);
-static void  __fini___Closure_1325_32(SuiDesigner$__Closure_1325_32 *  self);
-static SuiDesigner$__Closure_1325_32*  __make___Closure_1325_32(SuiDesigner$__Closure_1325_32 **  __outRef__);
-static void  __fn___Closure_1371_31(SuiDesigner$__Closure_1371_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1371_31(SuiDesigner$__Closure_1371_31 *  self);
-static SuiDesigner$__Closure_1371_31*  __make___Closure_1371_31(SuiDesigner$__Closure_1371_31 **  __outRef__, SuiDesigner$__Block_1360_68 *  __var___Block_1360_68);
-static void  __fn___Closure_1389_31(SuiDesigner$__Closure_1389_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1389_31(SuiDesigner$__Closure_1389_31 *  self);
-static SuiDesigner$__Closure_1389_31*  __make___Closure_1389_31(SuiDesigner$__Closure_1389_31 **  __outRef__, SuiDesigner$__Block_1360_68 *  __var___Block_1360_68);
-static void  __fn___Closure_1414_31(SuiDesigner$__Closure_1414_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1414_31(SuiDesigner$__Closure_1414_31 *  self);
-static SuiDesigner$__Closure_1414_31*  __make___Closure_1414_31(SuiDesigner$__Closure_1414_31 **  __outRef__, SuiDesigner$__Block_1403_68 *  __var___Block_1403_68);
-static void  __fn___Closure_1432_31(SuiDesigner$__Closure_1432_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1432_31(SuiDesigner$__Closure_1432_31 *  self);
-static SuiDesigner$__Closure_1432_31*  __make___Closure_1432_31(SuiDesigner$__Closure_1432_31 **  __outRef__, SuiDesigner$__Block_1403_68 *  __var___Block_1403_68);
-static void  __fn___Closure_1449_31(SuiDesigner$__Closure_1449_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1449_31(SuiDesigner$__Closure_1449_31 *  self);
-static SuiDesigner$__Closure_1449_31*  __make___Closure_1449_31(SuiDesigner$__Closure_1449_31 **  __outRef__, SuiDesigner$__Block_1403_68 *  __var___Block_1403_68);
-static void  __fn___Closure_1472_31(SuiDesigner$__Closure_1472_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1472_31(SuiDesigner$__Closure_1472_31 *  self);
-static SuiDesigner$__Closure_1472_31*  __make___Closure_1472_31(SuiDesigner$__Closure_1472_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68);
-static void  __fn___Closure_1490_31(SuiDesigner$__Closure_1490_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1490_31(SuiDesigner$__Closure_1490_31 *  self);
-static SuiDesigner$__Closure_1490_31*  __make___Closure_1490_31(SuiDesigner$__Closure_1490_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68);
-static void  __fn___Closure_1507_31(SuiDesigner$__Closure_1507_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1507_31(SuiDesigner$__Closure_1507_31 *  self);
-static SuiDesigner$__Closure_1507_31*  __make___Closure_1507_31(SuiDesigner$__Closure_1507_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68);
-static void  __fn___Closure_1522_31(SuiDesigner$__Closure_1522_31 *  self, SuiView$EditText *  et);
-static void  __fini___Closure_1522_31(SuiDesigner$__Closure_1522_31 *  self);
-static SuiDesigner$__Closure_1522_31*  __make___Closure_1522_31(SuiDesigner$__Closure_1522_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68);
-static void  __fn___Closure_1564_38(SuiDesigner$__Closure_1564_38 *  self, SuiCore$Event *  e);
-static void  __fini___Closure_1564_38(SuiDesigner$__Closure_1564_38 *  self);
-static SuiDesigner$__Closure_1564_38*  __make___Closure_1564_38(SuiDesigner$__Closure_1564_38 **  __outRef__, SuiDesigner$__Block_1546_31 *  __var___Block_1546_31);
+static void  __fn___Closure_365_28(SuiDesigner$__Closure_365_28 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_365_28(SuiDesigner$__Closure_365_28 *  self);
+static SuiDesigner$__Closure_365_28*  __make___Closure_365_28(SuiDesigner$__Closure_365_28 **  __outRef__, SuiDesigner$__Block_358_39 *  __var___Block_358_39, SuiDesigner$__Block_357_69 *  __var___Block_357_69);
+static void  __fn___Closure_378_40(SuiDesigner$__Closure_378_40 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_378_40(SuiDesigner$__Closure_378_40 *  self);
+static SuiDesigner$__Closure_378_40*  __make___Closure_378_40(SuiDesigner$__Closure_378_40 **  __outRef__, SuiDesigner$__Block_358_39 *  __var___Block_358_39, SuiDesigner$__Block_372_52 *  __var___Block_372_52, SuiDesigner$__Block_357_69 *  __var___Block_357_69);
+static void  __fn___Closure_403_28(SuiDesigner$__Closure_403_28 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_403_28(SuiDesigner$__Closure_403_28 *  self);
+static SuiDesigner$__Closure_403_28*  __make___Closure_403_28(SuiDesigner$__Closure_403_28 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_395_69 *  __var___Block_395_69);
+static void  __fn___Closure_416_40(SuiDesigner$__Closure_416_40 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_416_40(SuiDesigner$__Closure_416_40 *  self);
+static SuiDesigner$__Closure_416_40*  __make___Closure_416_40(SuiDesigner$__Closure_416_40 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_410_52 *  __var___Block_410_52, SuiDesigner$__Block_395_69 *  __var___Block_395_69);
+static void  __fn___Closure_423_40(SuiDesigner$__Closure_423_40 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_423_40(SuiDesigner$__Closure_423_40 *  self);
+static SuiDesigner$__Closure_423_40*  __make___Closure_423_40(SuiDesigner$__Closure_423_40 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_410_52 *  __var___Block_410_52, SuiDesigner$__Block_395_69 *  __var___Block_395_69);
+static void  __fn___Closure_428_46(SuiDesigner$__Closure_428_46 *  self, Orc$String*  newpath);
+static void  __fini___Closure_428_46(SuiDesigner$__Closure_428_46 *  self);
+static SuiDesigner$__Closure_428_46*  __make___Closure_428_46(SuiDesigner$__Closure_428_46 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_410_52 *  __var___Block_410_52, SuiDesigner$__Block_395_69 *  __var___Block_395_69);
+static void  __fn___Closure_687_32(SuiDesigner$__Closure_687_32 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_687_32(SuiDesigner$__Closure_687_32 *  self);
+static SuiDesigner$__Closure_687_32*  __make___Closure_687_32(SuiDesigner$__Closure_687_32 **  __outRef__, SuiDesigner$__Block_672_49 *  __var___Block_672_49);
+static void  __fn___Closure_807_31(SuiDesigner$__Closure_807_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_807_31(SuiDesigner$__Closure_807_31 *  self);
+static SuiDesigner$__Closure_807_31*  __make___Closure_807_31(SuiDesigner$__Closure_807_31 **  __outRef__, SuiDesigner$__Block_800_58 *  __var___Block_800_58);
+static void  __fn___Closure_836_24(SuiDesigner$__Closure_836_24 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_836_24(SuiDesigner$__Closure_836_24 *  self);
+static SuiDesigner$__Closure_836_24*  __make___Closure_836_24(SuiDesigner$__Closure_836_24 **  __outRef__, SuiDesigner$__Block_816_62 *  __var___Block_816_62);
+static void  __fn___Closure_842_30(SuiDesigner$__Closure_842_30 *  self, Orc$String*  newpath);
+static void  __fini___Closure_842_30(SuiDesigner$__Closure_842_30 *  self);
+static SuiDesigner$__Closure_842_30*  __make___Closure_842_30(SuiDesigner$__Closure_842_30 **  __outRef__, SuiDesigner$__Block_816_62 *  __var___Block_816_62);
+static void  __fn___Closure_865_31(SuiDesigner$__Closure_865_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_865_31(SuiDesigner$__Closure_865_31 *  self);
+static SuiDesigner$__Closure_865_31*  __make___Closure_865_31(SuiDesigner$__Closure_865_31 **  __outRef__, SuiDesigner$__Block_850_55 *  __var___Block_850_55);
+static void  __fn___Closure_891_31(SuiDesigner$__Closure_891_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_891_31(SuiDesigner$__Closure_891_31 *  self);
+static SuiDesigner$__Closure_891_31*  __make___Closure_891_31(SuiDesigner$__Closure_891_31 **  __outRef__, SuiDesigner$__Block_878_57 *  __var___Block_878_57);
+static void  __fn___Closure_912_37(SuiDesigner$__Closure_912_37 *  self, SuiView$Switch *  v);
+static void  __fini___Closure_912_37(SuiDesigner$__Closure_912_37 *  self);
+static SuiDesigner$__Closure_912_37*  __make___Closure_912_37(SuiDesigner$__Closure_912_37 **  __outRef__, SuiDesigner$__Block_903_56 *  __var___Block_903_56);
+static void  __fn___Closure_935_35(SuiDesigner$__Closure_935_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_935_35(SuiDesigner$__Closure_935_35 *  self);
+static SuiDesigner$__Closure_935_35*  __make___Closure_935_35(SuiDesigner$__Closure_935_35 **  __outRef__, SuiDesigner$__Block_925_39 *  __var___Block_925_39, SuiDesigner$__Block_922_56 *  __var___Block_922_56);
+static void  __fn___Closure_952_35(SuiDesigner$__Closure_952_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_952_35(SuiDesigner$__Closure_952_35 *  self);
+static SuiDesigner$__Closure_952_35*  __make___Closure_952_35(SuiDesigner$__Closure_952_35 **  __outRef__, SuiDesigner$__Block_925_39 *  __var___Block_925_39, SuiDesigner$__Block_922_56 *  __var___Block_922_56);
+static void  __fn___Closure_980_35(SuiDesigner$__Closure_980_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_980_35(SuiDesigner$__Closure_980_35 *  self);
+static SuiDesigner$__Closure_980_35*  __make___Closure_980_35(SuiDesigner$__Closure_980_35 **  __outRef__, SuiDesigner$__Block_970_39 *  __var___Block_970_39, SuiDesigner$__Block_967_56 *  __var___Block_967_56);
+static void  __fn___Closure_998_35(SuiDesigner$__Closure_998_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_998_35(SuiDesigner$__Closure_998_35 *  self);
+static SuiDesigner$__Closure_998_35*  __make___Closure_998_35(SuiDesigner$__Closure_998_35 **  __outRef__, SuiDesigner$__Block_970_39 *  __var___Block_970_39, SuiDesigner$__Block_967_56 *  __var___Block_967_56);
+static void  __fn___Closure_1016_35(SuiDesigner$__Closure_1016_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1016_35(SuiDesigner$__Closure_1016_35 *  self);
+static SuiDesigner$__Closure_1016_35*  __make___Closure_1016_35(SuiDesigner$__Closure_1016_35 **  __outRef__, SuiDesigner$__Block_970_39 *  __var___Block_970_39, SuiDesigner$__Block_967_56 *  __var___Block_967_56);
+static void  __fn___Closure_1043_35(SuiDesigner$__Closure_1043_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1043_35(SuiDesigner$__Closure_1043_35 *  self);
+static SuiDesigner$__Closure_1043_35*  __make___Closure_1043_35(SuiDesigner$__Closure_1043_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56);
+static void  __fn___Closure_1060_35(SuiDesigner$__Closure_1060_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1060_35(SuiDesigner$__Closure_1060_35 *  self);
+static SuiDesigner$__Closure_1060_35*  __make___Closure_1060_35(SuiDesigner$__Closure_1060_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56);
+static void  __fn___Closure_1078_35(SuiDesigner$__Closure_1078_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1078_35(SuiDesigner$__Closure_1078_35 *  self);
+static SuiDesigner$__Closure_1078_35*  __make___Closure_1078_35(SuiDesigner$__Closure_1078_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56);
+static void  __fn___Closure_1094_35(SuiDesigner$__Closure_1094_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1094_35(SuiDesigner$__Closure_1094_35 *  self);
+static SuiDesigner$__Closure_1094_35*  __make___Closure_1094_35(SuiDesigner$__Closure_1094_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56);
+static void  __fn___Closure_1121_35(SuiDesigner$__Closure_1121_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1121_35(SuiDesigner$__Closure_1121_35 *  self);
+static SuiDesigner$__Closure_1121_35*  __make___Closure_1121_35(SuiDesigner$__Closure_1121_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57);
+static void  __fn___Closure_1136_35(SuiDesigner$__Closure_1136_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1136_35(SuiDesigner$__Closure_1136_35 *  self);
+static SuiDesigner$__Closure_1136_35*  __make___Closure_1136_35(SuiDesigner$__Closure_1136_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57);
+static void  __fn___Closure_1154_35(SuiDesigner$__Closure_1154_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1154_35(SuiDesigner$__Closure_1154_35 *  self);
+static SuiDesigner$__Closure_1154_35*  __make___Closure_1154_35(SuiDesigner$__Closure_1154_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57);
+static void  __fn___Closure_1170_35(SuiDesigner$__Closure_1170_35 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1170_35(SuiDesigner$__Closure_1170_35 *  self);
+static SuiDesigner$__Closure_1170_35*  __make___Closure_1170_35(SuiDesigner$__Closure_1170_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57);
+static void  __fn___Closure_1200_26(SuiDesigner$__Closure_1200_26 *  self, int  newcolor);
+static void  __fini___Closure_1200_26(SuiDesigner$__Closure_1200_26 *  self);
+static SuiDesigner$__Closure_1200_26*  __make___Closure_1200_26(SuiDesigner$__Closure_1200_26 **  __outRef__, SuiDesigner$__Block_1185_60 *  __var___Block_1185_60);
+static void  __fn___Closure_1213_26(SuiDesigner$__Closure_1213_26 *  self, int  newcolor);
+static void  __fini___Closure_1213_26(SuiDesigner$__Closure_1213_26 *  self);
+static SuiDesigner$__Closure_1213_26*  __make___Closure_1213_26(SuiDesigner$__Closure_1213_26 **  __outRef__, SuiDesigner$__Block_1206_57 *  __var___Block_1206_57);
+static void  __fn___Closure_1227_26(SuiDesigner$__Closure_1227_26 *  self, int  newcolor);
+static void  __fini___Closure_1227_26(SuiDesigner$__Closure_1227_26 *  self);
+static SuiDesigner$__Closure_1227_26*  __make___Closure_1227_26(SuiDesigner$__Closure_1227_26 **  __outRef__, SuiDesigner$__Block_1220_56 *  __var___Block_1220_56);
+static void  __fn___Closure_1244_26(SuiDesigner$__Closure_1244_26 *  self, SuiDesigner$BezierEditView *  view);
+static void  __fini___Closure_1244_26(SuiDesigner$__Closure_1244_26 *  self);
+static SuiDesigner$__Closure_1244_26*  __make___Closure_1244_26(SuiDesigner$__Closure_1244_26 **  __outRef__, SuiDesigner$__Block_1234_58 *  __var___Block_1234_58);
+static void  __fn___Closure_1422_26(SuiDesigner$__Closure_1422_26 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
+static void  __fini___Closure_1422_26(SuiDesigner$__Closure_1422_26 *  self);
+static SuiDesigner$__Closure_1422_26*  __make___Closure_1422_26(SuiDesigner$__Closure_1422_26 **  __outRef__);
+static void  __fn___Closure_1427_25(SuiDesigner$__Closure_1427_25 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o);
+static void  __fini___Closure_1427_25(SuiDesigner$__Closure_1427_25 *  self);
+static SuiDesigner$__Closure_1427_25*  __make___Closure_1427_25(SuiDesigner$__Closure_1427_25 **  __outRef__);
+static void  __fn___Closure_1435_32(SuiDesigner$__Closure_1435_32 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_1435_32(SuiDesigner$__Closure_1435_32 *  self);
+static SuiDesigner$__Closure_1435_32*  __make___Closure_1435_32(SuiDesigner$__Closure_1435_32 **  __outRef__);
+static void  __fn___Closure_1481_31(SuiDesigner$__Closure_1481_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1481_31(SuiDesigner$__Closure_1481_31 *  self);
+static SuiDesigner$__Closure_1481_31*  __make___Closure_1481_31(SuiDesigner$__Closure_1481_31 **  __outRef__, SuiDesigner$__Block_1470_68 *  __var___Block_1470_68);
+static void  __fn___Closure_1499_31(SuiDesigner$__Closure_1499_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1499_31(SuiDesigner$__Closure_1499_31 *  self);
+static SuiDesigner$__Closure_1499_31*  __make___Closure_1499_31(SuiDesigner$__Closure_1499_31 **  __outRef__, SuiDesigner$__Block_1470_68 *  __var___Block_1470_68);
+static void  __fn___Closure_1524_31(SuiDesigner$__Closure_1524_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1524_31(SuiDesigner$__Closure_1524_31 *  self);
+static SuiDesigner$__Closure_1524_31*  __make___Closure_1524_31(SuiDesigner$__Closure_1524_31 **  __outRef__, SuiDesigner$__Block_1513_68 *  __var___Block_1513_68);
+static void  __fn___Closure_1542_31(SuiDesigner$__Closure_1542_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1542_31(SuiDesigner$__Closure_1542_31 *  self);
+static SuiDesigner$__Closure_1542_31*  __make___Closure_1542_31(SuiDesigner$__Closure_1542_31 **  __outRef__, SuiDesigner$__Block_1513_68 *  __var___Block_1513_68);
+static void  __fn___Closure_1559_31(SuiDesigner$__Closure_1559_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1559_31(SuiDesigner$__Closure_1559_31 *  self);
+static SuiDesigner$__Closure_1559_31*  __make___Closure_1559_31(SuiDesigner$__Closure_1559_31 **  __outRef__, SuiDesigner$__Block_1513_68 *  __var___Block_1513_68);
+static void  __fn___Closure_1582_31(SuiDesigner$__Closure_1582_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1582_31(SuiDesigner$__Closure_1582_31 *  self);
+static SuiDesigner$__Closure_1582_31*  __make___Closure_1582_31(SuiDesigner$__Closure_1582_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68);
+static void  __fn___Closure_1600_31(SuiDesigner$__Closure_1600_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1600_31(SuiDesigner$__Closure_1600_31 *  self);
+static SuiDesigner$__Closure_1600_31*  __make___Closure_1600_31(SuiDesigner$__Closure_1600_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68);
+static void  __fn___Closure_1617_31(SuiDesigner$__Closure_1617_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1617_31(SuiDesigner$__Closure_1617_31 *  self);
+static SuiDesigner$__Closure_1617_31*  __make___Closure_1617_31(SuiDesigner$__Closure_1617_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68);
+static void  __fn___Closure_1632_31(SuiDesigner$__Closure_1632_31 *  self, SuiView$EditText *  et);
+static void  __fini___Closure_1632_31(SuiDesigner$__Closure_1632_31 *  self);
+static SuiDesigner$__Closure_1632_31*  __make___Closure_1632_31(SuiDesigner$__Closure_1632_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68);
+static void  __fn___Closure_1674_38(SuiDesigner$__Closure_1674_38 *  self, SuiCore$Event *  e);
+static void  __fini___Closure_1674_38(SuiDesigner$__Closure_1674_38 *  self);
+static SuiDesigner$__Closure_1674_38*  __make___Closure_1674_38(SuiDesigner$__Closure_1674_38 **  __outRef__, SuiDesigner$__Block_1656_31 *  __var___Block_1656_31);
 
 
 
@@ -1703,7 +1869,7 @@ void  SuiDesigner$InspAttrColor$inspValue(SuiDesigner$InspAttrColor *  self, Sui
 	__var___Block_260_69->insp = insp;
 	URGC_VAR_CLEANUP_CLASS SuiView$ColorPicker*  tmpReturn_1 = NULL;
 	{
-		SuiView$ColorPicker*  __scopeVar_261_8 = SuiView$mkColorPicker(&tmpReturn_1, o, 0) , *o = __scopeVar_261_8;
+		SuiView$ColorPicker*  __scopeVar_261_8 = SuiView$mkColorPicker(&tmpReturn_1, o, (long long )__var___Block_260_69->mf) , *o = __scopeVar_261_8;
 		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_261_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		int *  pColor = OrcMetaField_getIntPtr(__var___Block_260_69->mf, obj) ;
@@ -2102,13 +2268,341 @@ void  SuiDesigner$InspAttrSelect$inspValue(SuiDesigner$InspAttrSelect *  self, S
 	urgc_set_field_class(__var___Block_341_69, (void * )offsetof(SuiDesigner$__Block_341_69, self) , self) ;
 	URGC_VAR_CLEANUP_CLASS SuiView$Select*  tmpReturn_1 = NULL;
 	{
-		SuiView$Select*  __scopeVar_342_8 = SuiView$mkSelect(&tmpReturn_1, o, 0) , *o = __scopeVar_342_8;
+		SuiView$Select*  __scopeVar_342_8 = SuiView$mkSelect(&tmpReturn_1, o, (long long )__var___Block_341_69->mf) , *o = __scopeVar_342_8;
 		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_342_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$List*  tmpReturn_2 = NULL;
 		urgc_set_field_class(o, (void * )offsetof(SuiView$Select, options) , self->opts->getLabels(&tmpReturn_2, self->opts) ) ;
 		URGC_VAR_CLEANUP SuiDesigner$__Closure_344_26*  tmpReturn_3 = NULL;
 		urgc_set_field(o, (void * )offsetof(SuiView$Select, onChanged) , __make___Closure_344_26(&tmpReturn_3, __var___Block_341_69) ) ;
+	}
+}
+
+
+
+
+//vtable instance
+Vtable_SuiDesigner$InspAttrList _vtable_SuiDesigner$InspAttrList;
+
+// init meta
+
+void SuiDesigner$InspAttrList_initMeta(Vtable_SuiDesigner$InspAttrList *pvt){
+    OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
+	
+	
+
+	
+}
+
+
+// vtable init
+
+
+Vtable_SuiDesigner$InspAttrList* Vtable_SuiDesigner$InspAttrList_init(Vtable_SuiDesigner$InspAttrList* pvt){
+    if (pvt == NULL){
+        pvt = &_vtable_SuiDesigner$InspAttrList;
+    }
+    if (((Vtable_Object*)pvt)->inited){
+        return pvt;
+    }
+	// init super vtable
+    Vtable_SuiDesigner$InspAttr_init(&_vtable_SuiDesigner$InspAttr);
+
+	// init by super vtable init function
+    Vtable_SuiDesigner$InspAttr_init((void*)pvt);
+
+    ((Vtable_Object*)pvt)->super = (void*)&_vtable_SuiDesigner$InspAttr;
+    ((Vtable_Object*)pvt)->make = (void*)&SuiDesigner$InspAttrList_new;
+    ((Vtable_Object*)pvt)->className = "SuiDesigner$InspAttrList";
+
+    ((Vtable_Object*)pvt)->initMeta = (void*)SuiDesigner$InspAttrList_initMeta;
+
+    ((Vtable_Object*)pvt)->refc = 0;
+
+    return pvt;
+}
+
+
+// fini function
+
+void SuiDesigner$InspAttrList_fini(SuiDesigner$InspAttrList *self){
+	//super fini
+    SuiDesigner$InspAttr_fini((SuiDesigner$InspAttr *)self);
+
+    //字段释放
+	
+
+}
+
+// init fields function
+
+
+void SuiDesigner$InspAttrList_init_fields(SuiDesigner$InspAttrList *self){
+	//super class
+    SuiDesigner$InspAttr_init_fields((SuiDesigner$InspAttr*)self);
+
+    ((Object*)self)->fini = (void*)SuiDesigner$InspAttrList_fini;
+	//fields
+    {
+	
+    }
+	((SuiDesigner$InspAttr*)self)->inspValue = (void*)SuiDesigner$InspAttrList$inspValue;
+}
+
+// init function
+
+void SuiDesigner$InspAttrList_init(SuiDesigner$InspAttrList *self, void *pOwner){
+    Vtable_SuiDesigner$InspAttrList_init(&_vtable_SuiDesigner$InspAttrList);
+
+    ((Object*)self)->vtable = (void*)&_vtable_SuiDesigner$InspAttrList;
+	
+	//has old object
+	if (*((void**)pOwner) != NULL) urgc_deref_class(pOwner, *((void**)pOwner));
+	*((void**)pOwner) = self;
+	urgc_ref_class(pOwner, self, (void*)orc_delete);
+
+    //urgc_guard(self, (void*)orc_delete);
+
+    SuiDesigner$InspAttrList_init_fields(self);
+
+    if (((Object*)self)->ctor){
+        ((Object*)self)->ctor((void*)self);
+    }
+
+    //urgc_deguard(self);
+}
+
+// new function
+SuiDesigner$InspAttrList * SuiDesigner$InspAttrList_new(void *pOwner){
+	if (pOwner == NULL){ return NULL;}
+    SuiDesigner$InspAttrList *self = calloc(1, sizeof(SuiDesigner$InspAttrList));
+	
+    SuiDesigner$InspAttrList_init(self, pOwner);
+    return self;
+}
+
+
+// class members
+void  SuiDesigner$InspAttrList$inspValue(SuiDesigner$InspAttrList *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf, SuiDesigner$Insp *  insp){
+	URGC_VAR_CLEANUP SuiDesigner$__Block_357_69*  __var___Block_357_69 = (__var___Block_357_69=NULL,urgc_init_var((void**)&__var___Block_357_69, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_357_69) , __finiBlock___Block_357_69) ));
+	__var___Block_357_69->insp = insp;
+	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
+	{
+		SuiLayout$LayoutLinear*  __scopeVar_358_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )mf) , *o = __scopeVar_358_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_358_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+	
+		URGC_VAR_CLEANUP SuiDesigner$__Block_358_39*  __var___Block_358_39 = (__var___Block_358_39=NULL,urgc_init_var((void**)&__var___Block_358_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_358_39) , __finiBlock___Block_358_39) ));
+		SuiLayout$LayoutLinear *  tmpThis_1 = NULL;
+		(tmpThis_1 = o->column(o) )->aiStretch(tmpThis_1) ;
+		__var___Block_358_39->list = *((Orc$List ** )OrcMetaField_getPtr(mf, obj) );
+		URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_2 = NULL;
+		{
+			SuiView$DrawButton*  __scopeVar_361_12 = SuiView$mkDrawButton(&tmpReturn_2, o, (long long )mf) , *o = __scopeVar_361_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_361_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		
+			char  tmp[100];
+			sprintf(tmp, "size:%d +", __var___Block_358_39->list == NULL ? 0 : __var___Block_358_39->list->size(__var___Block_358_39->list) ) ;
+			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
+			urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_3, tmp) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_365_28*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_365_28(&tmpReturn_4, __var___Block_358_39, __var___Block_357_69) ) ;
+		}
+		if (__var___Block_358_39->list != NULL) {
+			for (int  i = 0; i < __var___Block_358_39->list->size(__var___Block_358_39->list) ; i++) {
+				URGC_VAR_CLEANUP SuiDesigner$__Block_372_52*  __var___Block_372_52 = (__var___Block_372_52=NULL,urgc_init_var((void**)&__var___Block_372_52, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_372_52) , __finiBlock___Block_372_52) ));
+				__var___Block_372_52->idx = i;
+				Object *  obj = __var___Block_358_39->list->get(__var___Block_358_39->list, i) ;
+				URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_5 = NULL;
+				{
+					SuiLayout$LayoutLinear*  __scopeVar_375_20 = SuiLayout$layoutLinear(&tmpReturn_5, o, 10000 + i) , *o = __scopeVar_375_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_375_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				
+					URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_6 = NULL;
+					{
+						SuiView$DrawButton*  __scopeVar_376_24 = SuiView$mkDrawButton(&tmpReturn_6, o, 0) , *o = __scopeVar_376_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_376_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
+						urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_7, "-") ) ;
+						URGC_VAR_CLEANUP SuiDesigner$__Closure_378_40*  tmpReturn_8 = NULL;
+						urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_378_40(&tmpReturn_8, __var___Block_358_39, __var___Block_372_52, __var___Block_357_69) ) ;
+					}
+					URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_9 = NULL;
+					{
+						SuiView$DrawButton*  __scopeVar_383_24 = SuiView$mkDrawButton(&tmpReturn_9, o, 0) , *o = __scopeVar_383_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_383_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_10 = NULL;
+						urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$String$addPtr(Orc$String$add(Orc$str(&tmpReturn_10, "obj:") , Object_getClassName(obj) ) , obj) ) ;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+//vtable instance
+Vtable_SuiDesigner$InspAttrMaterialList _vtable_SuiDesigner$InspAttrMaterialList;
+
+// init meta
+
+void SuiDesigner$InspAttrMaterialList_initMeta(Vtable_SuiDesigner$InspAttrMaterialList *pvt){
+    OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
+	
+	
+
+	
+}
+
+
+// vtable init
+
+
+Vtable_SuiDesigner$InspAttrMaterialList* Vtable_SuiDesigner$InspAttrMaterialList_init(Vtable_SuiDesigner$InspAttrMaterialList* pvt){
+    if (pvt == NULL){
+        pvt = &_vtable_SuiDesigner$InspAttrMaterialList;
+    }
+    if (((Vtable_Object*)pvt)->inited){
+        return pvt;
+    }
+	// init super vtable
+    Vtable_SuiDesigner$InspAttr_init(&_vtable_SuiDesigner$InspAttr);
+
+	// init by super vtable init function
+    Vtable_SuiDesigner$InspAttr_init((void*)pvt);
+
+    ((Vtable_Object*)pvt)->super = (void*)&_vtable_SuiDesigner$InspAttr;
+    ((Vtable_Object*)pvt)->make = (void*)&SuiDesigner$InspAttrMaterialList_new;
+    ((Vtable_Object*)pvt)->className = "SuiDesigner$InspAttrMaterialList";
+
+    ((Vtable_Object*)pvt)->initMeta = (void*)SuiDesigner$InspAttrMaterialList_initMeta;
+
+    ((Vtable_Object*)pvt)->refc = 0;
+
+    return pvt;
+}
+
+
+// fini function
+
+void SuiDesigner$InspAttrMaterialList_fini(SuiDesigner$InspAttrMaterialList *self){
+	//super fini
+    SuiDesigner$InspAttr_fini((SuiDesigner$InspAttr *)self);
+
+    //字段释放
+	
+
+}
+
+// init fields function
+
+
+void SuiDesigner$InspAttrMaterialList_init_fields(SuiDesigner$InspAttrMaterialList *self){
+	//super class
+    SuiDesigner$InspAttr_init_fields((SuiDesigner$InspAttr*)self);
+
+    ((Object*)self)->fini = (void*)SuiDesigner$InspAttrMaterialList_fini;
+	//fields
+    {
+	
+    }
+	((SuiDesigner$InspAttr*)self)->inspValue = (void*)SuiDesigner$InspAttrMaterialList$inspValue;
+}
+
+// init function
+
+void SuiDesigner$InspAttrMaterialList_init(SuiDesigner$InspAttrMaterialList *self, void *pOwner){
+    Vtable_SuiDesigner$InspAttrMaterialList_init(&_vtable_SuiDesigner$InspAttrMaterialList);
+
+    ((Object*)self)->vtable = (void*)&_vtable_SuiDesigner$InspAttrMaterialList;
+	
+	//has old object
+	if (*((void**)pOwner) != NULL) urgc_deref_class(pOwner, *((void**)pOwner));
+	*((void**)pOwner) = self;
+	urgc_ref_class(pOwner, self, (void*)orc_delete);
+
+    //urgc_guard(self, (void*)orc_delete);
+
+    SuiDesigner$InspAttrMaterialList_init_fields(self);
+
+    if (((Object*)self)->ctor){
+        ((Object*)self)->ctor((void*)self);
+    }
+
+    //urgc_deguard(self);
+}
+
+// new function
+SuiDesigner$InspAttrMaterialList * SuiDesigner$InspAttrMaterialList_new(void *pOwner){
+	if (pOwner == NULL){ return NULL;}
+    SuiDesigner$InspAttrMaterialList *self = calloc(1, sizeof(SuiDesigner$InspAttrMaterialList));
+	
+    SuiDesigner$InspAttrMaterialList_init(self, pOwner);
+    return self;
+}
+
+
+// class members
+void  SuiDesigner$InspAttrMaterialList$inspValue(SuiDesigner$InspAttrMaterialList *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf, SuiDesigner$Insp *  insp){
+	URGC_VAR_CLEANUP SuiDesigner$__Block_395_69*  __var___Block_395_69 = (__var___Block_395_69=NULL,urgc_init_var((void**)&__var___Block_395_69, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_395_69) , __finiBlock___Block_395_69) ));
+	__var___Block_395_69->insp = insp;
+	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
+	{
+		SuiLayout$LayoutLinear*  __scopeVar_396_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )mf) , *o = __scopeVar_396_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_396_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+	
+		URGC_VAR_CLEANUP SuiDesigner$__Block_396_39*  __var___Block_396_39 = (__var___Block_396_39=NULL,urgc_init_var((void**)&__var___Block_396_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_396_39) , __finiBlock___Block_396_39) ));
+		SuiLayout$LayoutLinear *  tmpThis_1 = NULL;
+		(tmpThis_1 = o->column(o) )->aiStretch(tmpThis_1) ;
+		__var___Block_396_39->list = *((Orc$List ** )OrcMetaField_getPtr(mf, obj) );
+		URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_2 = NULL;
+		{
+			SuiView$DrawButton*  __scopeVar_399_12 = SuiView$mkDrawButton(&tmpReturn_2, o, (long long )mf) , *o = __scopeVar_399_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_399_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		
+			char  tmp[100];
+			sprintf(tmp, "size:%d +", __var___Block_396_39->list == NULL ? 0 : __var___Block_396_39->list->size(__var___Block_396_39->list) ) ;
+			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
+			urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_3, tmp) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_403_28*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_403_28(&tmpReturn_4, __var___Block_396_39, __var___Block_395_69) ) ;
+		}
+		if (__var___Block_396_39->list != NULL) {
+			for (int  i = 0; i < __var___Block_396_39->list->size(__var___Block_396_39->list) ; i++) {
+				URGC_VAR_CLEANUP SuiDesigner$__Block_410_52*  __var___Block_410_52 = (__var___Block_410_52=NULL,urgc_init_var((void**)&__var___Block_410_52, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_410_52) , __finiBlock___Block_410_52) ));
+				__var___Block_410_52->idx = i;
+				Orc$String *  path = (Orc$String * )__var___Block_396_39->list->get(__var___Block_396_39->list, i) ;
+				URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_5 = NULL;
+				{
+					SuiLayout$LayoutLinear*  __scopeVar_413_20 = SuiLayout$layoutLinear(&tmpReturn_5, o, 10000 + i) , *o = __scopeVar_413_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_413_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				
+					URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_6 = NULL;
+					{
+						SuiView$DrawButton*  __scopeVar_414_24 = SuiView$mkDrawButton(&tmpReturn_6, o, 0) , *o = __scopeVar_414_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_414_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
+						urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_7, "-") ) ;
+						URGC_VAR_CLEANUP SuiDesigner$__Closure_416_40*  tmpReturn_8 = NULL;
+						urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_416_40(&tmpReturn_8, __var___Block_396_39, __var___Block_410_52, __var___Block_395_69) ) ;
+					}
+					URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_9 = NULL;
+					{
+						SuiView$DrawButton*  __scopeVar_421_24 = SuiView$mkDrawButton(&tmpReturn_9, o, 0) , *o = __scopeVar_421_24;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_421_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					
+						URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_10 = NULL;
+						urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , path == NULL ? Orc$str(&tmpReturn_10, "null")  : path) ;
+						URGC_VAR_CLEANUP SuiDesigner$__Closure_423_40*  tmpReturn_11 = NULL;
+						urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_423_40(&tmpReturn_11, __var___Block_396_39, __var___Block_410_52, __var___Block_395_69) ) ;
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -2469,6 +2963,8 @@ void SuiDesigner$Insp_initMeta(Vtable_SuiDesigner$Insp *pvt){
 	orc_metaField_method(&pNext, "mkFieldName", offsetof(SuiDesigner$Insp, mkFieldName));
 	orc_metaField_method(&pNext, "setAttrDefault", offsetof(SuiDesigner$Insp, setAttrDefault));
 	orc_metaField_method(&pNext, "setAttr", offsetof(SuiDesigner$Insp, setAttr));
+	orc_metaField_method(&pNext, "emitChanged", offsetof(SuiDesigner$Insp, emitChanged));
+	orc_metaField_method(&pNext, "emitEventInspAttrChanged", offsetof(SuiDesigner$Insp, emitEventInspAttrChanged));
 }
 
 
@@ -2564,6 +3060,8 @@ void SuiDesigner$Insp_init_fields(SuiDesigner$Insp *self){
 	((SuiDesigner$Insp*)self)->mkFieldName = (void*)SuiDesigner$Insp$mkFieldName;
 	((SuiDesigner$Insp*)self)->setAttrDefault = (void*)SuiDesigner$Insp$setAttrDefault;
 	((SuiDesigner$Insp*)self)->setAttr = (void*)SuiDesigner$Insp$setAttr;
+	((SuiDesigner$Insp*)self)->emitChanged = (void*)SuiDesigner$Insp$emitChanged;
+	((SuiDesigner$Insp*)self)->emitEventInspAttrChanged = (void*)SuiDesigner$Insp$emitEventInspAttrChanged;
 }
 
 // init function
@@ -2698,9 +3196,17 @@ void  SuiDesigner$Insp$inspVt(SuiDesigner$Insp *  self, Object *  obj, Vtable_Ob
 	SuiLayout$LayoutLinear *  ll = NULL;
 	while (mf) {
 		SuiDesigner$InspAttr *  attr = self->getAttr(self, mf->name) ;
-		if (attr && attr->_ignore) {
-			mf = OrcMetaField_getNext(mf) ;
-			continue;
+		if (attr) {
+			if (attr->_ignore) {
+				mf = OrcMetaField_getNext(mf) ;
+				continue;
+			}
+		}
+		else {
+			if (self->isSkipAttr(self, obj, mf) ) {
+				mf = OrcMetaField_getNext(mf) ;
+				continue;
+			}
 		}
 		SuiDesigner$TmpAttrInfo$proc(&tmp, mf, attr, self) ;
 		if (tmp.isPanelStart) {
@@ -2737,29 +3243,26 @@ void  SuiDesigner$Insp$inspVt(SuiDesigner$Insp *  self, Object *  obj, Vtable_Ob
 
 
 void  SuiDesigner$Insp$inspField(SuiDesigner$Insp *  self, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_576_49*  __var___Block_576_49 = (__var___Block_576_49=NULL,urgc_init_var((void**)&__var___Block_576_49, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_576_49) , __finiBlock___Block_576_49) ));
-	__var___Block_576_49->mf = mf;
-	urgc_set_field_class(__var___Block_576_49, (void * )offsetof(SuiDesigner$__Block_576_49, self) , self) ;
-	if (self->isSkipAttr(self, obj, __var___Block_576_49->mf) ) {
-		return ; 
-	}
-	SuiDesigner$InspAttr *  attr = self->getAttr(self, __var___Block_576_49->mf->name) ;
+	URGC_VAR_CLEANUP SuiDesigner$__Block_672_49*  __var___Block_672_49 = (__var___Block_672_49=NULL,urgc_init_var((void**)&__var___Block_672_49, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_672_49) , __finiBlock___Block_672_49) ));
+	__var___Block_672_49->mf = mf;
+	urgc_set_field_class(__var___Block_672_49, (void * )offsetof(SuiDesigner$__Block_672_49, self) , self) ;
+	SuiDesigner$InspAttr *  attr = self->getAttr(self, __var___Block_672_49->mf->name) ;
 	SuiCore$Node *  o = self->peekParent(self) ;
-	if (__var___Block_576_49->mf->type == OrcMetaType_method) {
-		if (Orc$String_startsWith(__var___Block_576_49->mf->name, "insp_") ) {
+	if (__var___Block_672_49->mf->type == OrcMetaType_method) {
+		if (Orc$String_startsWith(__var___Block_672_49->mf->name, "insp_") ) {
 			URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_1 = NULL;
 			{
-				SuiView$DrawButton*  __scopeVar_588_16 = SuiView$mkDrawButton(&tmpReturn_1, o, (long long )__var___Block_576_49->mf) , *o = __scopeVar_588_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_588_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$DrawButton*  __scopeVar_683_16 = SuiView$mkDrawButton(&tmpReturn_1, o, (long long )__var___Block_672_49->mf) , *o = __scopeVar_683_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_683_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
-				urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_2, __var___Block_576_49->mf->name + 5) ) ;
-				URGC_VAR_CLEANUP SuiDesigner$__Closure_592_32*  tmpReturn_3 = NULL;
-				urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_592_32(&tmpReturn_3, __var___Block_576_49) ) ;
+				urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_2, __var___Block_672_49->mf->name + 5) ) ;
+				URGC_VAR_CLEANUP SuiDesigner$__Closure_687_32*  tmpReturn_3 = NULL;
+				urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_687_32(&tmpReturn_3, __var___Block_672_49) ) ;
 				URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_4 = NULL;
 				{
-					SuiLayout$LayoutLinearCell*  __scopeVar_602_20 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_602_20;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_602_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiLayout$LayoutLinearCell*  __scopeVar_697_20 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_697_20;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_697_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					o->grow = 1;
 					Orc$String$set(o->alignSelf, "stretch") ;
@@ -2770,18 +3273,18 @@ void  SuiDesigner$Insp$inspField(SuiDesigner$Insp *  self, Object *  obj, OrcMet
 	}
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_5 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_613_8 = SuiLayout$layoutLinear(&tmpReturn_5, o, (long long )__var___Block_576_49->mf) , *o = __scopeVar_613_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_613_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_708_8 = SuiLayout$layoutLinear(&tmpReturn_5, o, (long long )__var___Block_672_49->mf) , *o = __scopeVar_708_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_708_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
-		const char *  dir = self->queryAttrDirection(self, __var___Block_576_49->mf) ;
+		const char *  dir = self->queryAttrDirection(self, __var___Block_672_49->mf) ;
 		((SuiCore$View * )o)->border->b->set(((SuiCore$View * )o)->border->b, 1, 0x13000000) ;
 		Orc$String$set(o->direction, dir) ;
-		self->mkFieldName(self, o, __var___Block_576_49->mf->name) ;
+		self->mkFieldName(self, o, __var___Block_672_49->mf->name) ;
 		if (attr) {
-			attr->inspValue(attr, o, obj, __var___Block_576_49->mf, self) ;
+			attr->inspValue(attr, o, obj, __var___Block_672_49->mf, self) ;
 		}
 		else {
-			self->inspValueDefault(self, o, obj, __var___Block_576_49->mf) ;
+			self->inspValueDefault(self, o, obj, __var___Block_672_49->mf) ;
 		}
 	}
 }
@@ -2901,27 +3404,27 @@ void  SuiDesigner$Insp$inspValueDefault(SuiDesigner$Insp *  self, SuiCore$Node *
 
 
 bool  SuiDesigner$Insp$inspString(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_705_58*  __var___Block_705_58 = (__var___Block_705_58=NULL,urgc_init_var((void**)&__var___Block_705_58, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_705_58) , __finiBlock___Block_705_58) ));
-	__var___Block_705_58->mf = mf;
-	urgc_set_field_class(__var___Block_705_58, (void * )offsetof(SuiDesigner$__Block_705_58, self) , self) ;
-	if (!OrcMetaField_isStringRef(__var___Block_705_58->mf) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_800_58*  __var___Block_800_58 = (__var___Block_800_58=NULL,urgc_init_var((void**)&__var___Block_800_58, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_800_58) , __finiBlock___Block_800_58) ));
+	__var___Block_800_58->mf = mf;
+	urgc_set_field_class(__var___Block_800_58, (void * )offsetof(SuiDesigner$__Block_800_58, self) , self) ;
+	if (!OrcMetaField_isStringRef(__var___Block_800_58->mf) ) {
 		return false; 
 	}
-	Orc$String *  s = *((Orc$String ** )OrcMetaField_getPtr(__var___Block_705_58->mf, obj) );
+	Orc$String *  s = *((Orc$String ** )OrcMetaField_getPtr(__var___Block_800_58->mf, obj) );
 	URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_1 = NULL;
 	{
-		SuiView$EditText*  __scopeVar_709_8 = SuiView$mkEditText(&tmpReturn_1, o, 0) , *o = __scopeVar_709_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_709_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$EditText*  __scopeVar_804_8 = SuiView$mkEditText(&tmpReturn_1, o, 0) , *o = __scopeVar_804_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_804_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->padding.left = 4;
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 		o->setValue(o, s == NULL ? Orc$str(&tmpReturn_2, "")  : s) ;
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_712_31*  tmpReturn_3 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_712_31(&tmpReturn_3, __var___Block_705_58) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_807_31*  tmpReturn_3 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_807_31(&tmpReturn_3, __var___Block_800_58) ) ;
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_4 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_716_12 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_716_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_716_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_811_12 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_811_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_811_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -2931,17 +3434,17 @@ bool  SuiDesigner$Insp$inspString(SuiDesigner$Insp *  self, SuiCore$Node *  o, O
 
 
 bool  SuiDesigner$Insp$inspStringPath(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_721_62*  __var___Block_721_62 = (__var___Block_721_62=NULL,urgc_init_var((void**)&__var___Block_721_62, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_721_62) , __finiBlock___Block_721_62) ));
-	__var___Block_721_62->mf = mf;
-	urgc_set_field_class(__var___Block_721_62, (void * )offsetof(SuiDesigner$__Block_721_62, self) , self) ;
-	if (!(OrcMetaField_isStringRef(__var___Block_721_62->mf)  && (Orc$String_endsWithIgnoreCase(__var___Block_721_62->mf->name, "src")  || Orc$String_endsWithIgnoreCase(__var___Block_721_62->mf->name, "path") ))) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_816_62*  __var___Block_816_62 = (__var___Block_816_62=NULL,urgc_init_var((void**)&__var___Block_816_62, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_816_62) , __finiBlock___Block_816_62) ));
+	__var___Block_816_62->mf = mf;
+	urgc_set_field_class(__var___Block_816_62, (void * )offsetof(SuiDesigner$__Block_816_62, self) , self) ;
+	if (!(OrcMetaField_isStringRef(__var___Block_816_62->mf)  && (Orc$String_endsWithIgnoreCase(__var___Block_816_62->mf->name, "src")  || Orc$String_endsWithIgnoreCase(__var___Block_816_62->mf->name, "path") ))) {
 		return false; 
 	}
-	Orc$String *  src = *((Orc$String ** )OrcMetaField_getPtr(__var___Block_721_62->mf, obj) );
+	Orc$String *  src = *((Orc$String ** )OrcMetaField_getPtr(__var___Block_816_62->mf, obj) );
 	URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_1 = NULL;
 	{
-		SuiView$DrawButton*  __scopeVar_734_8 = SuiView$mkDrawButton(&tmpReturn_1, o, 0) , *o = __scopeVar_734_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_734_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$DrawButton*  __scopeVar_829_8 = SuiView$mkDrawButton(&tmpReturn_1, o, 0) , *o = __scopeVar_829_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_829_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		if (src && Orc$String$notEmpty(src) ) {
 			urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , src) ;
@@ -2950,36 +3453,36 @@ bool  SuiDesigner$Insp$inspStringPath(SuiDesigner$Insp *  self, SuiCore$Node *  
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 			urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_2, "null") ) ;
 		}
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_741_24*  tmpReturn_3 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_741_24(&tmpReturn_3, __var___Block_721_62) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_836_24*  tmpReturn_3 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_836_24(&tmpReturn_3, __var___Block_816_62) ) ;
 	}
 	return true; 
 }
 
 
 bool  SuiDesigner$Insp$inspInt(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_755_55*  __var___Block_755_55 = (__var___Block_755_55=NULL,urgc_init_var((void**)&__var___Block_755_55, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_755_55) , __finiBlock___Block_755_55) ));
-	__var___Block_755_55->mf = mf;
-	urgc_set_field_class(__var___Block_755_55, (void * )offsetof(SuiDesigner$__Block_755_55, self) , self) ;
-	if (!(OrcMetaField_isPrimitive(__var___Block_755_55->mf)  && (OrcMetaField_getType(__var___Block_755_55->mf)  == OrcMetaType_int))) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_850_55*  __var___Block_850_55 = (__var___Block_850_55=NULL,urgc_init_var((void**)&__var___Block_850_55, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_850_55) , __finiBlock___Block_850_55) ));
+	__var___Block_850_55->mf = mf;
+	urgc_set_field_class(__var___Block_850_55, (void * )offsetof(SuiDesigner$__Block_850_55, self) , self) ;
+	if (!(OrcMetaField_isPrimitive(__var___Block_850_55->mf)  && (OrcMetaField_getType(__var___Block_850_55->mf)  == OrcMetaType_int))) {
 		return false; 
 	}
-	int *  pv = OrcMetaField_getPtr(__var___Block_755_55->mf, obj) ;
+	int *  pv = OrcMetaField_getPtr(__var___Block_850_55->mf, obj) ;
 	URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_1 = NULL;
 	{
-		SuiView$EditText*  __scopeVar_763_8 = SuiView$mkEditText(&tmpReturn_1, o, 0) , *o = __scopeVar_763_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_763_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$EditText*  __scopeVar_858_8 = SuiView$mkEditText(&tmpReturn_1, o, 0) , *o = __scopeVar_858_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_858_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  val = Orc$str((val = NULL,&val), "") ;
 		Orc$String$addi(val, *pv) ;
 		((SuiCore$View * )o)->padding.left = 4;
 		o->setValue(o, val) ;
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_770_31*  tmpReturn_2 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_770_31(&tmpReturn_2, __var___Block_755_55) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_865_31*  tmpReturn_2 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_865_31(&tmpReturn_2, __var___Block_850_55) ) ;
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_3 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_778_12 = SuiLayout$layoutLinearCell(&tmpReturn_3, o, 0) , *o = __scopeVar_778_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_778_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_873_12 = SuiLayout$layoutLinearCell(&tmpReturn_3, o, 0) , *o = __scopeVar_873_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_873_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -2989,28 +3492,28 @@ bool  SuiDesigner$Insp$inspInt(SuiDesigner$Insp *  self, SuiCore$Node *  o, Obje
 
 
 bool  SuiDesigner$Insp$inspFloat(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_783_57*  __var___Block_783_57 = (__var___Block_783_57=NULL,urgc_init_var((void**)&__var___Block_783_57, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_783_57) , __finiBlock___Block_783_57) ));
-	__var___Block_783_57->mf = mf;
-	urgc_set_field_class(__var___Block_783_57, (void * )offsetof(SuiDesigner$__Block_783_57, self) , self) ;
-	if (!(OrcMetaField_isPrimitive(__var___Block_783_57->mf)  && OrcMetaField_getType(__var___Block_783_57->mf)  == OrcMetaType_float)) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_878_57*  __var___Block_878_57 = (__var___Block_878_57=NULL,urgc_init_var((void**)&__var___Block_878_57, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_878_57) , __finiBlock___Block_878_57) ));
+	__var___Block_878_57->mf = mf;
+	urgc_set_field_class(__var___Block_878_57, (void * )offsetof(SuiDesigner$__Block_878_57, self) , self) ;
+	if (!(OrcMetaField_isPrimitive(__var___Block_878_57->mf)  && OrcMetaField_getType(__var___Block_878_57->mf)  == OrcMetaType_float)) {
 		return false; 
 	}
-	float *  pv = OrcMetaField_getPtr(__var___Block_783_57->mf, obj) ;
+	float *  pv = OrcMetaField_getPtr(__var___Block_878_57->mf, obj) ;
 	URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_1 = NULL;
 	{
-		SuiView$EditText*  __scopeVar_789_8 = SuiView$mkEditText(&tmpReturn_1, o, 0) , *o = __scopeVar_789_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_789_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$EditText*  __scopeVar_884_8 = SuiView$mkEditText(&tmpReturn_1, o, 0) , *o = __scopeVar_884_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_884_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  val = Orc$str((val = NULL,&val), "") ;
 		Orc$String$addf(val, *pv) ;
 		((SuiCore$View * )o)->padding.left = 4;
 		o->setValue(o, val) ;
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_796_31*  tmpReturn_2 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_796_31(&tmpReturn_2, __var___Block_783_57) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_891_31*  tmpReturn_2 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_891_31(&tmpReturn_2, __var___Block_878_57) ) ;
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_3 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_804_12 = SuiLayout$layoutLinearCell(&tmpReturn_3, o, 0) , *o = __scopeVar_804_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_804_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_899_12 = SuiLayout$layoutLinearCell(&tmpReturn_3, o, 0) , *o = __scopeVar_899_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_899_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -3020,31 +3523,31 @@ bool  SuiDesigner$Insp$inspFloat(SuiDesigner$Insp *  self, SuiCore$Node *  o, Ob
 
 
 bool  SuiDesigner$Insp$inspBool(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_808_56*  __var___Block_808_56 = (__var___Block_808_56=NULL,urgc_init_var((void**)&__var___Block_808_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_808_56) , __finiBlock___Block_808_56) ));
-	__var___Block_808_56->mf = mf;
-	urgc_set_field_class(__var___Block_808_56, (void * )offsetof(SuiDesigner$__Block_808_56, self) , self) ;
-	if (!(OrcMetaField_isPrimitive(__var___Block_808_56->mf)  && OrcMetaField_getType(__var___Block_808_56->mf)  == OrcMetaType_bool)) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_903_56*  __var___Block_903_56 = (__var___Block_903_56=NULL,urgc_init_var((void**)&__var___Block_903_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_903_56) , __finiBlock___Block_903_56) ));
+	__var___Block_903_56->mf = mf;
+	urgc_set_field_class(__var___Block_903_56, (void * )offsetof(SuiDesigner$__Block_903_56, self) , self) ;
+	if (!(OrcMetaField_isPrimitive(__var___Block_903_56->mf)  && OrcMetaField_getType(__var___Block_903_56->mf)  == OrcMetaType_bool)) {
 		return false; 
 	}
-	bool *  pv = ((bool * )OrcMetaField_getPtr(__var___Block_808_56->mf, obj) );
+	bool *  pv = ((bool * )OrcMetaField_getPtr(__var___Block_903_56->mf, obj) );
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_814_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_808_56->mf) , *o = __scopeVar_814_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_814_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_909_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_903_56->mf) , *o = __scopeVar_909_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_909_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS SuiView$Switch*  tmpReturn_2 = NULL;
 		{
-			SuiView$Switch*  __scopeVar_815_12 = SuiView$mkSwitch(&tmpReturn_2, o, 0) , *o = __scopeVar_815_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_815_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$Switch*  __scopeVar_910_12 = SuiView$mkSwitch(&tmpReturn_2, o, 0) , *o = __scopeVar_910_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_910_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->setChecked(o, *pv) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_817_37*  tmpReturn_3 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$Switch, onCheckedChanged) , __make___Closure_817_37(&tmpReturn_3, __var___Block_808_56) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_912_37*  tmpReturn_3 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$Switch, onCheckedChanged) , __make___Closure_912_37(&tmpReturn_3, __var___Block_903_56) ) ;
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_4 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_822_12 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_822_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_822_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_917_12 = SuiLayout$layoutLinearCell(&tmpReturn_4, o, 0) , *o = __scopeVar_917_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_917_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -3054,65 +3557,65 @@ bool  SuiDesigner$Insp$inspBool(SuiDesigner$Insp *  self, SuiCore$Node *  o, Obj
 
 
 bool  SuiDesigner$Insp$inspVec2(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_827_56*  __var___Block_827_56 = (__var___Block_827_56=NULL,urgc_init_var((void**)&__var___Block_827_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_827_56) , __finiBlock___Block_827_56) ));
-	__var___Block_827_56->mf = mf;
-	urgc_set_field_class(__var___Block_827_56, (void * )offsetof(SuiDesigner$__Block_827_56, self) , self) ;
-	if (__var___Block_827_56->mf->metaStruct != metaStructOf(SuiCore$Vec2) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_922_56*  __var___Block_922_56 = (__var___Block_922_56=NULL,urgc_init_var((void**)&__var___Block_922_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_922_56) , __finiBlock___Block_922_56) ));
+	__var___Block_922_56->mf = mf;
+	urgc_set_field_class(__var___Block_922_56, (void * )offsetof(SuiDesigner$__Block_922_56, self) , self) ;
+	if (__var___Block_922_56->mf->metaStruct != metaStructOf(SuiCore$Vec2) ) {
 		return false; 
 	}
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_830_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_827_56->mf) , *o = __scopeVar_830_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_830_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_925_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_922_56->mf) , *o = __scopeVar_925_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_925_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
-		URGC_VAR_CLEANUP SuiDesigner$__Block_830_39*  __var___Block_830_39 = (__var___Block_830_39=NULL,urgc_init_var((void**)&__var___Block_830_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_830_39) , __finiBlock___Block_830_39) ));
-		__var___Block_830_39->v = *((SuiCore$Vec2 * )OrcMetaField_getPtr(__var___Block_827_56->mf, obj) );
+		URGC_VAR_CLEANUP SuiDesigner$__Block_925_39*  __var___Block_925_39 = (__var___Block_925_39=NULL,urgc_init_var((void**)&__var___Block_925_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_925_39) , __finiBlock___Block_925_39) ));
+		__var___Block_925_39->v = *((SuiCore$Vec2 * )OrcMetaField_getPtr(__var___Block_922_56->mf, obj) );
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_2 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_833_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_833_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_833_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_928_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_928_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_928_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_830_39->v.x) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_925_39->v.x) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xffff0000) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_840_35*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_840_35(&tmpReturn_4, __var___Block_830_39, __var___Block_827_56) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_935_35*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_935_35(&tmpReturn_4, __var___Block_925_39, __var___Block_922_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_848_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_848_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_848_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_943_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_943_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_943_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_6 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_850_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_850_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_850_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_945_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_945_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_945_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff00ff00) ;
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_830_39->v.y) ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_857_35*  tmpReturn_8 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_857_35(&tmpReturn_8, __var___Block_830_39, __var___Block_827_56) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_925_39->v.y) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_952_35*  tmpReturn_8 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_952_35(&tmpReturn_8, __var___Block_925_39, __var___Block_922_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_866_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_866_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_866_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_961_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_961_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_961_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_10 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_868_12 = SuiLayout$layoutLinearCell(&tmpReturn_10, o, 0) , *o = __scopeVar_868_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_868_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_963_12 = SuiLayout$layoutLinearCell(&tmpReturn_10, o, 0) , *o = __scopeVar_963_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_963_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -3122,86 +3625,86 @@ bool  SuiDesigner$Insp$inspVec2(SuiDesigner$Insp *  self, SuiCore$Node *  o, Obj
 
 
 bool  SuiDesigner$Insp$inspVec3(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_872_56*  __var___Block_872_56 = (__var___Block_872_56=NULL,urgc_init_var((void**)&__var___Block_872_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_872_56) , __finiBlock___Block_872_56) ));
-	__var___Block_872_56->mf = mf;
-	urgc_set_field_class(__var___Block_872_56, (void * )offsetof(SuiDesigner$__Block_872_56, self) , self) ;
-	if (__var___Block_872_56->mf->metaStruct != metaStructOf(SuiCore$Vec3) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_967_56*  __var___Block_967_56 = (__var___Block_967_56=NULL,urgc_init_var((void**)&__var___Block_967_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_967_56) , __finiBlock___Block_967_56) ));
+	__var___Block_967_56->mf = mf;
+	urgc_set_field_class(__var___Block_967_56, (void * )offsetof(SuiDesigner$__Block_967_56, self) , self) ;
+	if (__var___Block_967_56->mf->metaStruct != metaStructOf(SuiCore$Vec3) ) {
 		return false; 
 	}
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_875_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_872_56->mf) , *o = __scopeVar_875_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_875_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_970_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_967_56->mf) , *o = __scopeVar_970_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_970_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
-		URGC_VAR_CLEANUP SuiDesigner$__Block_875_39*  __var___Block_875_39 = (__var___Block_875_39=NULL,urgc_init_var((void**)&__var___Block_875_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_875_39) , __finiBlock___Block_875_39) ));
-		__var___Block_875_39->v = *((SuiCore$Vec3 * )OrcMetaField_getPtr(__var___Block_872_56->mf, obj) );
+		URGC_VAR_CLEANUP SuiDesigner$__Block_970_39*  __var___Block_970_39 = (__var___Block_970_39=NULL,urgc_init_var((void**)&__var___Block_970_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_970_39) , __finiBlock___Block_970_39) ));
+		__var___Block_970_39->v = *((SuiCore$Vec3 * )OrcMetaField_getPtr(__var___Block_967_56->mf, obj) );
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_2 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_878_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_878_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_878_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_973_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_973_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_973_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_875_39->v.x) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_970_39->v.x) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0x99ff0000) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_885_35*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_885_35(&tmpReturn_4, __var___Block_875_39, __var___Block_872_56) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_980_35*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_980_35(&tmpReturn_4, __var___Block_970_39, __var___Block_967_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_893_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_893_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_893_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_988_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_988_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_988_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_6 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_895_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_895_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_895_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_990_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_990_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_990_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0x9900ff00) ;
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_875_39->v.y) ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_903_35*  tmpReturn_8 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_903_35(&tmpReturn_8, __var___Block_875_39, __var___Block_872_56) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_970_39->v.y) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_998_35*  tmpReturn_8 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_998_35(&tmpReturn_8, __var___Block_970_39, __var___Block_967_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_912_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_912_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_912_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1007_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1007_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1007_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_10 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_914_12 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_914_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_914_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1009_12 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1009_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1009_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_875_39->v.z) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_970_39->v.z) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xbb0000ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_921_35*  tmpReturn_12 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_921_35(&tmpReturn_12, __var___Block_875_39, __var___Block_872_56) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1016_35*  tmpReturn_12 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1016_35(&tmpReturn_12, __var___Block_970_39, __var___Block_967_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_13 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_929_16 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_929_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_929_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1024_16 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1024_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1024_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_14 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_931_12 = SuiLayout$layoutLinearCell(&tmpReturn_14, o, 0) , *o = __scopeVar_931_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_931_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_1026_12 = SuiLayout$layoutLinearCell(&tmpReturn_14, o, 0) , *o = __scopeVar_1026_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1026_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -3211,106 +3714,106 @@ bool  SuiDesigner$Insp$inspVec3(SuiDesigner$Insp *  self, SuiCore$Node *  o, Obj
 
 
 bool  SuiDesigner$Insp$inspVec4(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_935_56*  __var___Block_935_56 = (__var___Block_935_56=NULL,urgc_init_var((void**)&__var___Block_935_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_935_56) , __finiBlock___Block_935_56) ));
-	__var___Block_935_56->mf = mf;
-	urgc_set_field_class(__var___Block_935_56, (void * )offsetof(SuiDesigner$__Block_935_56, self) , self) ;
-	if (__var___Block_935_56->mf->metaStruct != metaStructOf(SuiCore$Vec4) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1030_56*  __var___Block_1030_56 = (__var___Block_1030_56=NULL,urgc_init_var((void**)&__var___Block_1030_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1030_56) , __finiBlock___Block_1030_56) ));
+	__var___Block_1030_56->mf = mf;
+	urgc_set_field_class(__var___Block_1030_56, (void * )offsetof(SuiDesigner$__Block_1030_56, self) , self) ;
+	if (__var___Block_1030_56->mf->metaStruct != metaStructOf(SuiCore$Vec4) ) {
 		return false; 
 	}
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_938_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_935_56->mf) , *o = __scopeVar_938_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_938_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_1033_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_1030_56->mf) , *o = __scopeVar_1033_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1033_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
-		URGC_VAR_CLEANUP SuiDesigner$__Block_938_39*  __var___Block_938_39 = (__var___Block_938_39=NULL,urgc_init_var((void**)&__var___Block_938_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_938_39) , __finiBlock___Block_938_39) ));
-		__var___Block_938_39->v = *((SuiCore$Vec4 * )OrcMetaField_getPtr(__var___Block_935_56->mf, obj) );
+		URGC_VAR_CLEANUP SuiDesigner$__Block_1033_39*  __var___Block_1033_39 = (__var___Block_1033_39=NULL,urgc_init_var((void**)&__var___Block_1033_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1033_39) , __finiBlock___Block_1033_39) ));
+		__var___Block_1033_39->v = *((SuiCore$Vec4 * )OrcMetaField_getPtr(__var___Block_1030_56->mf, obj) );
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_2 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_941_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_941_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_941_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1036_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1036_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1036_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_938_39->v.x) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1033_39->v.x) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xffff0000) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_948_35*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_948_35(&tmpReturn_4, __var___Block_938_39, __var___Block_935_56) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1043_35*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1043_35(&tmpReturn_4, __var___Block_1033_39, __var___Block_1030_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_956_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_956_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_956_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1051_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1051_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1051_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_6 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_958_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_958_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_958_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1053_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1053_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1053_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff00ff00) ;
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_938_39->v.y) ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_965_35*  tmpReturn_8 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_965_35(&tmpReturn_8, __var___Block_938_39, __var___Block_935_56) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1033_39->v.y) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1060_35*  tmpReturn_8 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1060_35(&tmpReturn_8, __var___Block_1033_39, __var___Block_1030_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_974_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_974_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_974_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1069_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1069_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1069_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_10 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_976_12 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_976_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_976_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1071_12 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1071_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1071_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_938_39->v.z) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_1033_39->v.z) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff0000ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_983_35*  tmpReturn_12 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_983_35(&tmpReturn_12, __var___Block_938_39, __var___Block_935_56) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1078_35*  tmpReturn_12 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1078_35(&tmpReturn_12, __var___Block_1033_39, __var___Block_1030_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_13 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_991_16 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_991_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_991_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1086_16 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1086_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1086_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_14 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_993_12 = SuiView$mkEditText(&tmpReturn_14, o, 0) , *o = __scopeVar_993_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_993_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1088_12 = SuiView$mkEditText(&tmpReturn_14, o, 0) , *o = __scopeVar_1088_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1088_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_15 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_15, "") , __var___Block_938_39->v.w) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_15, "") , __var___Block_1033_39->v.w) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xffff00ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_999_35*  tmpReturn_16 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_999_35(&tmpReturn_16, __var___Block_938_39, __var___Block_935_56) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1094_35*  tmpReturn_16 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1094_35(&tmpReturn_16, __var___Block_1033_39, __var___Block_1030_56) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_17 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1007_16 = SuiLayout$layoutLinearCell(&tmpReturn_17, o, 0) , *o = __scopeVar_1007_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1007_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1102_16 = SuiLayout$layoutLinearCell(&tmpReturn_17, o, 0) , *o = __scopeVar_1102_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1102_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_18 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_1009_12 = SuiLayout$layoutLinearCell(&tmpReturn_18, o, 0) , *o = __scopeVar_1009_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1009_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_1104_12 = SuiLayout$layoutLinearCell(&tmpReturn_18, o, 0) , *o = __scopeVar_1104_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1104_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -3320,106 +3823,106 @@ bool  SuiDesigner$Insp$inspVec4(SuiDesigner$Insp *  self, SuiCore$Node *  o, Obj
 
 
 bool  SuiDesigner$Insp$inspInset(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1013_57*  __var___Block_1013_57 = (__var___Block_1013_57=NULL,urgc_init_var((void**)&__var___Block_1013_57, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1013_57) , __finiBlock___Block_1013_57) ));
-	__var___Block_1013_57->mf = mf;
-	urgc_set_field_class(__var___Block_1013_57, (void * )offsetof(SuiDesigner$__Block_1013_57, self) , self) ;
-	if (__var___Block_1013_57->mf->metaStruct != metaStructOf(SuiCore$Inset) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1108_57*  __var___Block_1108_57 = (__var___Block_1108_57=NULL,urgc_init_var((void**)&__var___Block_1108_57, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1108_57) , __finiBlock___Block_1108_57) ));
+	__var___Block_1108_57->mf = mf;
+	urgc_set_field_class(__var___Block_1108_57, (void * )offsetof(SuiDesigner$__Block_1108_57, self) , self) ;
+	if (__var___Block_1108_57->mf->metaStruct != metaStructOf(SuiCore$Inset) ) {
 		return false; 
 	}
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_1016_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_1013_57->mf) , *o = __scopeVar_1016_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1016_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_1111_8 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )__var___Block_1108_57->mf) , *o = __scopeVar_1111_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1111_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
-		URGC_VAR_CLEANUP SuiDesigner$__Block_1016_39*  __var___Block_1016_39 = (__var___Block_1016_39=NULL,urgc_init_var((void**)&__var___Block_1016_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1016_39) , __finiBlock___Block_1016_39) ));
-		__var___Block_1016_39->v = *((SuiCore$Inset * )OrcMetaField_getPtr(__var___Block_1013_57->mf, obj) );
+		URGC_VAR_CLEANUP SuiDesigner$__Block_1111_39*  __var___Block_1111_39 = (__var___Block_1111_39=NULL,urgc_init_var((void**)&__var___Block_1111_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1111_39) , __finiBlock___Block_1111_39) ));
+		__var___Block_1111_39->v = *((SuiCore$Inset * )OrcMetaField_getPtr(__var___Block_1108_57->mf, obj) );
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_2 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1019_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1019_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1019_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1114_12 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1114_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1114_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1016_39->v.top) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1111_39->v.top) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xffff0000) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1026_35*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1026_35(&tmpReturn_4, __var___Block_1016_39, __var___Block_1013_57) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1121_35*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1121_35(&tmpReturn_4, __var___Block_1111_39, __var___Block_1108_57) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1032_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1032_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1032_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1127_16 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1127_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1127_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_6 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1034_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1034_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1034_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1129_12 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1129_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1129_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff00ff00) ;
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1016_39->v.right) ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1041_35*  tmpReturn_8 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1041_35(&tmpReturn_8, __var___Block_1016_39, __var___Block_1013_57) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1111_39->v.right) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1136_35*  tmpReturn_8 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1136_35(&tmpReturn_8, __var___Block_1111_39, __var___Block_1108_57) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1050_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1050_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1050_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1145_16 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1145_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1145_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_10 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1052_12 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1052_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1052_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1147_12 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1147_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1147_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_1016_39->v.bottom) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_1111_39->v.bottom) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff0000ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1059_35*  tmpReturn_12 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1059_35(&tmpReturn_12, __var___Block_1016_39, __var___Block_1013_57) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1154_35*  tmpReturn_12 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1154_35(&tmpReturn_12, __var___Block_1111_39, __var___Block_1108_57) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_13 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1067_16 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1067_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1067_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1162_16 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1162_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1162_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_14 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1069_12 = SuiView$mkEditText(&tmpReturn_14, o, 0) , *o = __scopeVar_1069_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1069_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1164_12 = SuiView$mkEditText(&tmpReturn_14, o, 0) , *o = __scopeVar_1164_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1164_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_15 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_15, "") , __var___Block_1016_39->v.left) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_15, "") , __var___Block_1111_39->v.left) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xffff00ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1075_35*  tmpReturn_16 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1075_35(&tmpReturn_16, __var___Block_1016_39, __var___Block_1013_57) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1170_35*  tmpReturn_16 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1170_35(&tmpReturn_16, __var___Block_1111_39, __var___Block_1108_57) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_17 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1083_16 = SuiLayout$layoutLinearCell(&tmpReturn_17, o, 0) , *o = __scopeVar_1083_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1083_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1178_16 = SuiLayout$layoutLinearCell(&tmpReturn_17, o, 0) , *o = __scopeVar_1178_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1178_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_18 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_1085_12 = SuiLayout$layoutLinearCell(&tmpReturn_18, o, 0) , *o = __scopeVar_1085_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1085_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_1180_12 = SuiLayout$layoutLinearCell(&tmpReturn_18, o, 0) , *o = __scopeVar_1180_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1180_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -3429,91 +3932,91 @@ bool  SuiDesigner$Insp$inspInset(SuiDesigner$Insp *  self, SuiCore$Node *  o, Ob
 
 
 bool  SuiDesigner$Insp$inspIntColor(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1090_60*  __var___Block_1090_60 = (__var___Block_1090_60=NULL,urgc_init_var((void**)&__var___Block_1090_60, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1090_60) , __finiBlock___Block_1090_60) ));
-	__var___Block_1090_60->mf = mf;
-	urgc_set_field_class(__var___Block_1090_60, (void * )offsetof(SuiDesigner$__Block_1090_60, self) , self) ;
-	if (!(OrcMetaField_isPrimitive(__var___Block_1090_60->mf)  && (OrcMetaField_getType(__var___Block_1090_60->mf)  == OrcMetaType_int) && (Orc$String_endsWithIgnoreCase(__var___Block_1090_60->mf->name, "color")  || Orc$String_endsWithIgnoreCase(__var___Block_1090_60->mf->name, "Bg") ))) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1185_60*  __var___Block_1185_60 = (__var___Block_1185_60=NULL,urgc_init_var((void**)&__var___Block_1185_60, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1185_60) , __finiBlock___Block_1185_60) ));
+	__var___Block_1185_60->mf = mf;
+	urgc_set_field_class(__var___Block_1185_60, (void * )offsetof(SuiDesigner$__Block_1185_60, self) , self) ;
+	if (!(OrcMetaField_isPrimitive(__var___Block_1185_60->mf)  && (OrcMetaField_getType(__var___Block_1185_60->mf)  == OrcMetaType_int) && (Orc$String_endsWithIgnoreCase(__var___Block_1185_60->mf->name, "color")  || Orc$String_endsWithIgnoreCase(__var___Block_1185_60->mf->name, "Bg") ))) {
 		return false; 
 	}
-	int *  pv = OrcMetaField_getPtr(__var___Block_1090_60->mf, obj) ;
+	int *  pv = OrcMetaField_getPtr(__var___Block_1185_60->mf, obj) ;
 	URGC_VAR_CLEANUP_CLASS SuiView$ColorPicker*  tmpReturn_1 = NULL;
 	{
-		SuiView$ColorPicker*  __scopeVar_1103_8 = SuiView$mkColorPicker(&tmpReturn_1, o, 0) , *o = __scopeVar_1103_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1103_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$ColorPicker*  __scopeVar_1198_8 = SuiView$mkColorPicker(&tmpReturn_1, o, 0) , *o = __scopeVar_1198_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1198_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = *pv;
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_1105_26*  tmpReturn_2 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiView$ColorPicker, onChanged) , __make___Closure_1105_26(&tmpReturn_2, __var___Block_1090_60) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_1200_26*  tmpReturn_2 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiView$ColorPicker, onChanged) , __make___Closure_1200_26(&tmpReturn_2, __var___Block_1185_60) ) ;
 	}
 	return true; 
 }
 
 
 bool  SuiDesigner$Insp$inspRgbaf(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1111_57*  __var___Block_1111_57 = (__var___Block_1111_57=NULL,urgc_init_var((void**)&__var___Block_1111_57, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1111_57) , __finiBlock___Block_1111_57) ));
-	__var___Block_1111_57->mf = mf;
-	urgc_set_field_class(__var___Block_1111_57, (void * )offsetof(SuiDesigner$__Block_1111_57, self) , self) ;
-	if (__var___Block_1111_57->mf->metaStruct != metaStructOf(SuiCore$Rgbaf) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1206_57*  __var___Block_1206_57 = (__var___Block_1206_57=NULL,urgc_init_var((void**)&__var___Block_1206_57, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1206_57) , __finiBlock___Block_1206_57) ));
+	__var___Block_1206_57->mf = mf;
+	urgc_set_field_class(__var___Block_1206_57, (void * )offsetof(SuiDesigner$__Block_1206_57, self) , self) ;
+	if (__var___Block_1206_57->mf->metaStruct != metaStructOf(SuiCore$Rgbaf) ) {
 		return false; 
 	}
-	SuiCore$Rgbaf v = *((SuiCore$Rgbaf * )OrcMetaField_getPtr(__var___Block_1111_57->mf, obj) );
+	SuiCore$Rgbaf v = *((SuiCore$Rgbaf * )OrcMetaField_getPtr(__var___Block_1206_57->mf, obj) );
 	URGC_VAR_CLEANUP_CLASS SuiView$ColorPicker*  tmpReturn_1 = NULL;
 	{
-		SuiView$ColorPicker*  __scopeVar_1116_8 = SuiView$mkColorPicker(&tmpReturn_1, o, 0) , *o = __scopeVar_1116_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1116_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$ColorPicker*  __scopeVar_1211_8 = SuiView$mkColorPicker(&tmpReturn_1, o, 0) , *o = __scopeVar_1211_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1211_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = SuiCore$Rgbaf$toInt(&v) ;
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_1118_26*  tmpReturn_2 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiView$ColorPicker, onChanged) , __make___Closure_1118_26(&tmpReturn_2, __var___Block_1111_57) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_1213_26*  tmpReturn_2 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiView$ColorPicker, onChanged) , __make___Closure_1213_26(&tmpReturn_2, __var___Block_1206_57) ) ;
 	}
 	return true; 
 }
 
 
 bool  SuiDesigner$Insp$inspRgba(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1125_56*  __var___Block_1125_56 = (__var___Block_1125_56=NULL,urgc_init_var((void**)&__var___Block_1125_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1125_56) , __finiBlock___Block_1125_56) ));
-	__var___Block_1125_56->mf = mf;
-	urgc_set_field_class(__var___Block_1125_56, (void * )offsetof(SuiDesigner$__Block_1125_56, self) , self) ;
-	if (__var___Block_1125_56->mf->metaStruct != metaStructOf(SuiCore$Rgba) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1220_56*  __var___Block_1220_56 = (__var___Block_1220_56=NULL,urgc_init_var((void**)&__var___Block_1220_56, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1220_56) , __finiBlock___Block_1220_56) ));
+	__var___Block_1220_56->mf = mf;
+	urgc_set_field_class(__var___Block_1220_56, (void * )offsetof(SuiDesigner$__Block_1220_56, self) , self) ;
+	if (__var___Block_1220_56->mf->metaStruct != metaStructOf(SuiCore$Rgba) ) {
 		return false; 
 	}
-	SuiCore$Rgba v = *((SuiCore$Rgba * )OrcMetaField_getPtr(__var___Block_1125_56->mf, obj) );
+	SuiCore$Rgba v = *((SuiCore$Rgba * )OrcMetaField_getPtr(__var___Block_1220_56->mf, obj) );
 	URGC_VAR_CLEANUP_CLASS SuiView$ColorPicker*  tmpReturn_1 = NULL;
 	{
-		SuiView$ColorPicker*  __scopeVar_1130_8 = SuiView$mkColorPicker(&tmpReturn_1, o, 0) , *o = __scopeVar_1130_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1130_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$ColorPicker*  __scopeVar_1225_8 = SuiView$mkColorPicker(&tmpReturn_1, o, 0) , *o = __scopeVar_1225_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1225_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = SuiCore$Rgba$toInt(&v) ;
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_1132_26*  tmpReturn_2 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiView$ColorPicker, onChanged) , __make___Closure_1132_26(&tmpReturn_2, __var___Block_1125_56) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_1227_26*  tmpReturn_2 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiView$ColorPicker, onChanged) , __make___Closure_1227_26(&tmpReturn_2, __var___Block_1220_56) ) ;
 	}
 	return true; 
 }
 
 
 bool  SuiDesigner$Insp$inspBezier(SuiDesigner$Insp *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1139_58*  __var___Block_1139_58 = (__var___Block_1139_58=NULL,urgc_init_var((void**)&__var___Block_1139_58, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1139_58) , __finiBlock___Block_1139_58) ));
-	__var___Block_1139_58->mf = mf;
-	urgc_set_field_class(__var___Block_1139_58, (void * )offsetof(SuiDesigner$__Block_1139_58, self) , self) ;
-	if (__var___Block_1139_58->mf->metaStruct != metaStructOf(SuiCore$Bezier) ) {
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1234_58*  __var___Block_1234_58 = (__var___Block_1234_58=NULL,urgc_init_var((void**)&__var___Block_1234_58, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1234_58) , __finiBlock___Block_1234_58) ));
+	__var___Block_1234_58->mf = mf;
+	urgc_set_field_class(__var___Block_1234_58, (void * )offsetof(SuiDesigner$__Block_1234_58, self) , self) ;
+	if (__var___Block_1234_58->mf->metaStruct != metaStructOf(SuiCore$Bezier) ) {
 		return false; 
 	}
-	SuiCore$Bezier v = *((SuiCore$Bezier * )OrcMetaField_getPtr(__var___Block_1139_58->mf, obj) );
+	SuiCore$Bezier v = *((SuiCore$Bezier * )OrcMetaField_getPtr(__var___Block_1234_58->mf, obj) );
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$BezierEditView*  tmpReturn_1 = NULL;
 	{
-		SuiDesigner$BezierEditView*  __scopeVar_1143_8 = SuiDesigner$mkBezierEditView(&tmpReturn_1, o, 0) , *o = __scopeVar_1143_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1143_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiDesigner$BezierEditView*  __scopeVar_1238_8 = SuiDesigner$mkBezierEditView(&tmpReturn_1, o, 0) , *o = __scopeVar_1238_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1238_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		o->setBezier(o, v) ;
 		SuiCore$Inset$setHor(&((SuiCore$View * )o)->margin, 10) ;
 		SuiCore$Inset$setVer(&((SuiCore$View * )o)->margin, 10) ;
 		((SuiCore$View * )o)->height = 60;
-		URGC_VAR_CLEANUP SuiDesigner$__Closure_1149_26*  tmpReturn_2 = NULL;
-		urgc_set_field(o, (void * )offsetof(SuiDesigner$BezierEditView, onChanged) , __make___Closure_1149_26(&tmpReturn_2, __var___Block_1139_58) ) ;
+		URGC_VAR_CLEANUP SuiDesigner$__Closure_1244_26*  tmpReturn_2 = NULL;
+		urgc_set_field(o, (void * )offsetof(SuiDesigner$BezierEditView, onChanged) , __make___Closure_1244_26(&tmpReturn_2, __var___Block_1234_58) ) ;
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_3 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_1155_12 = SuiLayout$layoutLinearCell(&tmpReturn_3, o, 0) , *o = __scopeVar_1155_12;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1155_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_1250_12 = SuiLayout$layoutLinearCell(&tmpReturn_3, o, 0) , *o = __scopeVar_1250_12;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1250_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 			Orc$String$set(o->alignSelf, "stretch") ;
@@ -3527,8 +4030,8 @@ void  SuiDesigner$Insp$mkFieldName(SuiDesigner$Insp *  self, SuiCore$Node *  o, 
 	SuiDesigner$Theme *  t = SuiDesigner$themeIns() ;
 	URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_1 = NULL;
 	{
-		SuiView$TextView*  __scopeVar_1161_8 = SuiView$mkTextView(&tmpReturn_1, o, 0) , *o = __scopeVar_1161_8;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1161_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$TextView*  __scopeVar_1256_8 = SuiView$mkTextView(&tmpReturn_1, o, 0) , *o = __scopeVar_1256_8;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1256_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 		o->setText(o, Orc$str(&tmpReturn_2, name) ) ;
@@ -3559,10 +4062,22 @@ void  SuiDesigner$Insp$setAttr(SuiDesigner$Insp *  self, OrcMetaField *  mf, Obj
 	else {
 		self->setAttrDefault(self, mf, inspValue) ;
 	}
+	self->emitEventInspAttrChanged(self, attr, mf, self->obj, inspValue) ;
+}
+
+
+void  SuiDesigner$Insp$emitChanged(SuiDesigner$Insp *  self){
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$EventANodeAttrChanged*  e = (e=NULL,urgc_init_var_class((void**)&e, SuiDesigner$EventANodeAttrChanged_new(&e) ));
+	SuiCore$Emitter *  tmpThis_1 = NULL;
+	(tmpThis_1 = SuiCore$useEbus() )->emit(tmpThis_1, e) ;
+}
+
+
+void  SuiDesigner$Insp$emitEventInspAttrChanged(SuiDesigner$Insp *  self, SuiDesigner$InspAttr *  attr, OrcMetaField *  mf, Object *  obj, Object *  inspValue){
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$EventInspAttrChanged*  evt = (evt=NULL,urgc_init_var_class((void**)&evt, SuiDesigner$EventInspAttrChanged_new(&evt) ));
 	urgc_set_field_class(evt, (void * )offsetof(SuiDesigner$EventInspAttrChanged, inspAttr) , attr) ;
 	evt->mf = mf;
-	urgc_set_field_class(evt, (void * )offsetof(SuiDesigner$EventInspAttrChanged, obj) , self->obj) ;
+	urgc_set_field_class(evt, (void * )offsetof(SuiDesigner$EventInspAttrChanged, obj) , obj) ;
 	urgc_set_field_class(evt, (void * )offsetof(SuiDesigner$EventInspAttrChanged, newValue) , inspValue) ;
 	SuiCore$Emitter *  tmpThis_1 = NULL;
 	(tmpThis_1 = SuiCore$useEbus() )->emit(tmpThis_1, evt) ;
@@ -4106,10 +4621,10 @@ void  SuiDesigner$TestObj$insp(SuiDesigner$TestObj *  self, SuiDesigner$Insp *  
 		o->bind(o, insp, "quat", "变换") ;
 	}
 	insp->excludes(insp, "age pos name quat ") ;
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1312_26*  tmpReturn_7 = NULL;
-	urgc_set_field(insp, (void * )offsetof(SuiDesigner$Insp, beforeInsp) , __make___Closure_1312_26(&tmpReturn_7) ) ;
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1317_25*  tmpReturn_8 = NULL;
-	urgc_set_field(insp, (void * )offsetof(SuiDesigner$Insp, afterInsp) , __make___Closure_1317_25(&tmpReturn_8) ) ;
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1422_26*  tmpReturn_7 = NULL;
+	urgc_set_field(insp, (void * )offsetof(SuiDesigner$Insp, beforeInsp) , __make___Closure_1422_26(&tmpReturn_7) ) ;
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1427_25*  tmpReturn_8 = NULL;
+	urgc_set_field(insp, (void * )offsetof(SuiDesigner$Insp, afterInsp) , __make___Closure_1427_25(&tmpReturn_8) ) ;
 }
 
 
@@ -4136,60 +4651,60 @@ void  SuiDesigner$TestObj$insp0_say2(SuiDesigner$TestObj *  self){
 void  SuiDesigner$Insp_mkVec2(SuiCore$Node *  o, long long  key, SuiCore$Vec2 v, void  (**set)(void *  self, SuiCore$Vec2 nv)){
 	URGC_REF_ARG_WITH_CLEANUP(set);
 
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1360_68*  __var___Block_1360_68 = (__var___Block_1360_68=NULL,urgc_init_var((void**)&__var___Block_1360_68, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1360_68) , __finiBlock___Block_1360_68) ));
-	urgc_set_field(__var___Block_1360_68, (void * )offsetof(SuiDesigner$__Block_1360_68, set) , set) ;
-	__var___Block_1360_68->v = v;
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1470_68*  __var___Block_1470_68 = (__var___Block_1470_68=NULL,urgc_init_var((void**)&__var___Block_1470_68, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1470_68) , __finiBlock___Block_1470_68) ));
+	urgc_set_field(__var___Block_1470_68, (void * )offsetof(SuiDesigner$__Block_1470_68, set) , set) ;
+	__var___Block_1470_68->v = v;
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_1361_4 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )key) , *o = __scopeVar_1361_4;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1361_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_1471_4 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )key) , *o = __scopeVar_1471_4;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1471_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_2 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1364_8 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1364_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1364_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1474_8 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1474_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1474_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1360_68->v.x) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1470_68->v.x) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0x99ff0000) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1371_31*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1371_31(&tmpReturn_4, __var___Block_1360_68) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1481_31*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1481_31(&tmpReturn_4, __var___Block_1470_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1379_12 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1379_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1379_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1489_12 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1489_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1489_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_6 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1381_8 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1381_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1381_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1491_8 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1491_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1491_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xbb00ff00) ;
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1360_68->v.y) ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1389_31*  tmpReturn_8 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1389_31(&tmpReturn_8, __var___Block_1360_68) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1470_68->v.y) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1499_31*  tmpReturn_8 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1499_31(&tmpReturn_8, __var___Block_1470_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1397_12 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1397_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1397_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1507_12 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1507_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1507_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_10 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_1400_8 = SuiLayout$layoutLinearCell(&tmpReturn_10, o, 0) , *o = __scopeVar_1400_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1400_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_1510_8 = SuiLayout$layoutLinearCell(&tmpReturn_10, o, 0) , *o = __scopeVar_1510_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1510_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -4199,81 +4714,81 @@ void  SuiDesigner$Insp_mkVec2(SuiCore$Node *  o, long long  key, SuiCore$Vec2 v,
 void  SuiDesigner$Insp_mkVec3(SuiCore$Node *  o, long long  key, SuiCore$Vec3 v, void  (**set)(void *  self, SuiCore$Vec3 nv)){
 	URGC_REF_ARG_WITH_CLEANUP(set);
 
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1403_68*  __var___Block_1403_68 = (__var___Block_1403_68=NULL,urgc_init_var((void**)&__var___Block_1403_68, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1403_68) , __finiBlock___Block_1403_68) ));
-	urgc_set_field(__var___Block_1403_68, (void * )offsetof(SuiDesigner$__Block_1403_68, set) , set) ;
-	__var___Block_1403_68->v = v;
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1513_68*  __var___Block_1513_68 = (__var___Block_1513_68=NULL,urgc_init_var((void**)&__var___Block_1513_68, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1513_68) , __finiBlock___Block_1513_68) ));
+	urgc_set_field(__var___Block_1513_68, (void * )offsetof(SuiDesigner$__Block_1513_68, set) , set) ;
+	__var___Block_1513_68->v = v;
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_1404_4 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )key) , *o = __scopeVar_1404_4;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1404_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_1514_4 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )key) , *o = __scopeVar_1514_4;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1514_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_2 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1407_8 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1407_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1407_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1517_8 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1517_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1517_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1403_68->v.x) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1513_68->v.x) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0x99ff0000) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1414_31*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1414_31(&tmpReturn_4, __var___Block_1403_68) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1524_31*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1524_31(&tmpReturn_4, __var___Block_1513_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1422_12 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1422_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1422_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1532_12 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1532_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1532_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_6 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1424_8 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1424_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1424_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1534_8 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1534_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1534_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xbb00ff00) ;
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1403_68->v.y) ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1432_31*  tmpReturn_8 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1432_31(&tmpReturn_8, __var___Block_1403_68) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1513_68->v.y) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1542_31*  tmpReturn_8 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1542_31(&tmpReturn_8, __var___Block_1513_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1440_12 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1440_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1440_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1550_12 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1550_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1550_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_10 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1442_8 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1442_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1442_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1552_8 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1552_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1552_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_1403_68->v.z) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_1513_68->v.z) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff0000ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1449_31*  tmpReturn_12 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1449_31(&tmpReturn_12, __var___Block_1403_68) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1559_31*  tmpReturn_12 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1559_31(&tmpReturn_12, __var___Block_1513_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_13 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1456_12 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1456_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1456_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1566_12 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1566_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1566_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_14 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_1458_8 = SuiLayout$layoutLinearCell(&tmpReturn_14, o, 0) , *o = __scopeVar_1458_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1458_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_1568_8 = SuiLayout$layoutLinearCell(&tmpReturn_14, o, 0) , *o = __scopeVar_1568_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1568_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -4283,101 +4798,101 @@ void  SuiDesigner$Insp_mkVec3(SuiCore$Node *  o, long long  key, SuiCore$Vec3 v,
 void  SuiDesigner$Insp_mkVec4(SuiCore$Node *  o, long long  key, SuiCore$Vec4 v, void  (**set)(void *  self, SuiCore$Vec4 nv)){
 	URGC_REF_ARG_WITH_CLEANUP(set);
 
-	URGC_VAR_CLEANUP SuiDesigner$__Block_1461_68*  __var___Block_1461_68 = (__var___Block_1461_68=NULL,urgc_init_var((void**)&__var___Block_1461_68, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1461_68) , __finiBlock___Block_1461_68) ));
-	urgc_set_field(__var___Block_1461_68, (void * )offsetof(SuiDesigner$__Block_1461_68, set) , set) ;
-	__var___Block_1461_68->v = v;
+	URGC_VAR_CLEANUP SuiDesigner$__Block_1571_68*  __var___Block_1571_68 = (__var___Block_1571_68=NULL,urgc_init_var((void**)&__var___Block_1571_68, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1571_68) , __finiBlock___Block_1571_68) ));
+	urgc_set_field(__var___Block_1571_68, (void * )offsetof(SuiDesigner$__Block_1571_68, set) , set) ;
+	__var___Block_1571_68->v = v;
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_1462_4 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )key) , *o = __scopeVar_1462_4;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1462_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_1572_4 = SuiLayout$layoutLinear(&tmpReturn_1, o, (long long )key) , *o = __scopeVar_1572_4;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1572_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_2 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1465_8 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1465_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1465_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1575_8 = SuiView$mkEditText(&tmpReturn_2, o, 0) , *o = __scopeVar_1575_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1575_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1461_68->v.x) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_3, "") , __var___Block_1571_68->v.x) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xffff0000) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1472_31*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1472_31(&tmpReturn_4, __var___Block_1461_68) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1582_31*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1582_31(&tmpReturn_4, __var___Block_1571_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1480_12 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1480_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1480_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1590_12 = SuiLayout$layoutLinearCell(&tmpReturn_5, o, 0) , *o = __scopeVar_1590_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1590_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_6 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1482_8 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1482_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1482_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1592_8 = SuiView$mkEditText(&tmpReturn_6, o, 0) , *o = __scopeVar_1592_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1592_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff00ff00) ;
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1461_68->v.y) ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1490_31*  tmpReturn_8 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1490_31(&tmpReturn_8, __var___Block_1461_68) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_7, "") , __var___Block_1571_68->v.y) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1600_31*  tmpReturn_8 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1600_31(&tmpReturn_8, __var___Block_1571_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1498_12 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1498_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1498_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1608_12 = SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) , *o = __scopeVar_1608_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1608_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_10 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1500_8 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1500_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1500_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1610_8 = SuiView$mkEditText(&tmpReturn_10, o, 0) , *o = __scopeVar_1610_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1610_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.right = 8;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_1461_68->v.z) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_11, "") , __var___Block_1571_68->v.z) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xff0000ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1507_31*  tmpReturn_12 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1507_31(&tmpReturn_12, __var___Block_1461_68) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1617_31*  tmpReturn_12 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1617_31(&tmpReturn_12, __var___Block_1571_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_13 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1514_12 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1514_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1514_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1624_12 = SuiLayout$layoutLinearCell(&tmpReturn_13, o, 0) , *o = __scopeVar_1624_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1624_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$EditText*  tmpReturn_14 = NULL;
 		{
-			SuiView$EditText*  __scopeVar_1516_8 = SuiView$mkEditText(&tmpReturn_14, o, 0) , *o = __scopeVar_1516_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1516_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$EditText*  __scopeVar_1626_8 = SuiView$mkEditText(&tmpReturn_14, o, 0) , *o = __scopeVar_1626_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1626_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->padding.left = 4;
 			((SuiCore$View * )o)->margin.bottom = 4;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_15 = NULL;
-			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_15, "") , __var___Block_1461_68->v.w) ) ;
+			o->setValue_notInFocus(o, Orc$String$addf(Orc$str(&tmpReturn_15, "") , __var___Block_1571_68->v.w) ) ;
 			((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0xffff00ff) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1522_31*  tmpReturn_16 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1522_31(&tmpReturn_16, __var___Block_1461_68) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1632_31*  tmpReturn_16 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$EditText, onValueChanged) , __make___Closure_1632_31(&tmpReturn_16, __var___Block_1571_68) ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_17 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_1529_12 = SuiLayout$layoutLinearCell(&tmpReturn_17, o, 0) , *o = __scopeVar_1529_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1529_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_1639_12 = SuiLayout$layoutLinearCell(&tmpReturn_17, o, 0) , *o = __scopeVar_1639_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1639_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
 		}
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_18 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_1531_8 = SuiLayout$layoutLinearCell(&tmpReturn_18, o, 0) , *o = __scopeVar_1531_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1531_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_1641_8 = SuiLayout$layoutLinearCell(&tmpReturn_18, o, 0) , *o = __scopeVar_1641_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1641_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -4395,27 +4910,27 @@ void  SuiDesigner$testInsp(){
 		URGC_VAR_CLEANUP_CLASS SuiView$ScrollArea*  tmpNewOwner_2 = NULL;
 		{
 			SuiView$ScrollArea*  o = SuiView$ScrollArea_new(&tmpNewOwner_2) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1541_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1651_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->backgroundColor = 0;
 			win->setRootView(win, o) ;
 			((SuiLayout$LayoutLinear * )o)->aiStretch(o) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_3 = NULL;
 			{
-				SuiLayout$LayoutLinear*  __scopeVar_1546_12 = SuiLayout$layoutLinear(&tmpReturn_3, o, 0) , *o = __scopeVar_1546_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1546_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinear*  __scopeVar_1656_12 = SuiLayout$layoutLinear(&tmpReturn_3, o, 0) , *o = __scopeVar_1656_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1656_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
-				URGC_VAR_CLEANUP SuiDesigner$__Block_1546_31*  __var___Block_1546_31 = (__var___Block_1546_31=NULL,urgc_init_var((void**)&__var___Block_1546_31, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1546_31) , __finiBlock___Block_1546_31) ));
+				URGC_VAR_CLEANUP SuiDesigner$__Block_1656_31*  __var___Block_1656_31 = (__var___Block_1656_31=NULL,urgc_init_var((void**)&__var___Block_1656_31, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_1656_31) , __finiBlock___Block_1656_31) ));
 				SuiLayout$LayoutLinear *  tmpThis_1 = NULL;
 				SuiLayout$LayoutLinear *  tmpThis_2 = NULL;
 				(tmpThis_1 = (tmpThis_2 = o->column(o) )->jcs(tmpThis_2) )->aiStretch(tmpThis_1) ;
 				((SuiCore$View * )o)->backgroundColor = 0x99efefff;
 				URGC_VAR_CLEANUP_CLASS SuiDesigner$TestObj*  tmpNewOwner_4 = NULL;
-				urgc_set_field_class(__var___Block_1546_31, (void * )offsetof(SuiDesigner$__Block_1546_31, obj) , SuiDesigner$TestObj_new(&tmpNewOwner_4) ) ;
+				urgc_set_field_class(__var___Block_1656_31, (void * )offsetof(SuiDesigner$__Block_1656_31, obj) , SuiDesigner$TestObj_new(&tmpNewOwner_4) ) ;
 				URGC_VAR_CLEANUP_CLASS SuiDesigner$Insp*  insp = (insp=NULL,urgc_init_var_class((void**)&insp, SuiDesigner$Insp_new(&insp) ));
-				insp->insp(insp, o, __var___Block_1546_31->obj) ;
-				URGC_VAR_CLEANUP SuiDesigner$__Closure_1564_38*  tmpReturn_5 = NULL;
-				urgc_set_field(SuiCore$useEbus() , (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_1564_38(&tmpReturn_5, __var___Block_1546_31) ) ;
+				insp->insp(insp, o, __var___Block_1656_31->obj) ;
+				URGC_VAR_CLEANUP SuiDesigner$__Closure_1674_38*  tmpReturn_5 = NULL;
+				urgc_set_field(SuiCore$useEbus() , (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_1674_38(&tmpReturn_5, __var___Block_1656_31) ) ;
 			}
 		}
 		o->setTitle(o, "检视器") ;
@@ -4442,106 +4957,130 @@ static void  __finiBlock___Block_341_69(SuiDesigner$__Block_341_69 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_576_49(SuiDesigner$__Block_576_49 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_576_49, self) , NULL) ;
+static void  __finiBlock___Block_358_39(SuiDesigner$__Block_358_39 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_705_58(SuiDesigner$__Block_705_58 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_705_58, self) , NULL) ;
+static void  __finiBlock___Block_357_69(SuiDesigner$__Block_357_69 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_721_62(SuiDesigner$__Block_721_62 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_721_62, self) , NULL) ;
+static void  __finiBlock___Block_372_52(SuiDesigner$__Block_372_52 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_755_55(SuiDesigner$__Block_755_55 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_755_55, self) , NULL) ;
+static void  __finiBlock___Block_396_39(SuiDesigner$__Block_396_39 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_783_57(SuiDesigner$__Block_783_57 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_783_57, self) , NULL) ;
+static void  __finiBlock___Block_395_69(SuiDesigner$__Block_395_69 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_808_56(SuiDesigner$__Block_808_56 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_808_56, self) , NULL) ;
+static void  __finiBlock___Block_410_52(SuiDesigner$__Block_410_52 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_830_39(SuiDesigner$__Block_830_39 *  self){
+static void  __finiBlock___Block_672_49(SuiDesigner$__Block_672_49 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_672_49, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_827_56(SuiDesigner$__Block_827_56 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_827_56, self) , NULL) ;
+static void  __finiBlock___Block_800_58(SuiDesigner$__Block_800_58 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_800_58, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_875_39(SuiDesigner$__Block_875_39 *  self){
+static void  __finiBlock___Block_816_62(SuiDesigner$__Block_816_62 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_816_62, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_872_56(SuiDesigner$__Block_872_56 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_872_56, self) , NULL) ;
+static void  __finiBlock___Block_850_55(SuiDesigner$__Block_850_55 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_850_55, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_938_39(SuiDesigner$__Block_938_39 *  self){
+static void  __finiBlock___Block_878_57(SuiDesigner$__Block_878_57 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_878_57, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_935_56(SuiDesigner$__Block_935_56 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_935_56, self) , NULL) ;
+static void  __finiBlock___Block_903_56(SuiDesigner$__Block_903_56 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_903_56, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1016_39(SuiDesigner$__Block_1016_39 *  self){
+static void  __finiBlock___Block_925_39(SuiDesigner$__Block_925_39 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1013_57(SuiDesigner$__Block_1013_57 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1013_57, self) , NULL) ;
+static void  __finiBlock___Block_922_56(SuiDesigner$__Block_922_56 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_922_56, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1090_60(SuiDesigner$__Block_1090_60 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1090_60, self) , NULL) ;
+static void  __finiBlock___Block_970_39(SuiDesigner$__Block_970_39 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1111_57(SuiDesigner$__Block_1111_57 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1111_57, self) , NULL) ;
+static void  __finiBlock___Block_967_56(SuiDesigner$__Block_967_56 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_967_56, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1125_56(SuiDesigner$__Block_1125_56 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1125_56, self) , NULL) ;
+static void  __finiBlock___Block_1033_39(SuiDesigner$__Block_1033_39 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1139_58(SuiDesigner$__Block_1139_58 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1139_58, self) , NULL) ;
+static void  __finiBlock___Block_1030_56(SuiDesigner$__Block_1030_56 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1030_56, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1360_68(SuiDesigner$__Block_1360_68 *  self){
+static void  __finiBlock___Block_1111_39(SuiDesigner$__Block_1111_39 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1403_68(SuiDesigner$__Block_1403_68 *  self){
+static void  __finiBlock___Block_1108_57(SuiDesigner$__Block_1108_57 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1108_57, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1461_68(SuiDesigner$__Block_1461_68 *  self){
+static void  __finiBlock___Block_1185_60(SuiDesigner$__Block_1185_60 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1185_60, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1546_31(SuiDesigner$__Block_1546_31 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1546_31, obj) , NULL) ;
+static void  __finiBlock___Block_1206_57(SuiDesigner$__Block_1206_57 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1206_57, self) , NULL) ;
+	return urgc_free_later(self) ; 
+}
+
+static void  __finiBlock___Block_1220_56(SuiDesigner$__Block_1220_56 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1220_56, self) , NULL) ;
+	return urgc_free_later(self) ; 
+}
+
+static void  __finiBlock___Block_1234_58(SuiDesigner$__Block_1234_58 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1234_58, self) , NULL) ;
+	return urgc_free_later(self) ; 
+}
+
+static void  __finiBlock___Block_1470_68(SuiDesigner$__Block_1470_68 *  self){
+	return urgc_free_later(self) ; 
+}
+
+static void  __finiBlock___Block_1513_68(SuiDesigner$__Block_1513_68 *  self){
+	return urgc_free_later(self) ; 
+}
+
+static void  __finiBlock___Block_1571_68(SuiDesigner$__Block_1571_68 *  self){
+	return urgc_free_later(self) ; 
+}
+
+static void  __finiBlock___Block_1656_31(SuiDesigner$__Block_1656_31 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_1656_31, obj) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
@@ -4671,551 +5210,685 @@ static SuiDesigner$__Closure_344_26*  __make___Closure_344_26(SuiDesigner$__Clos
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_592_32(SuiDesigner$__Closure_592_32 *  self, SuiCore$MouseEvent *  me){
-	void **  ptr = orc_getFieldPtr(self->__var___Block_576_49->self->obj, self->__var___Block_576_49->mf->name) ;
+static void  __fn___Closure_365_28(SuiDesigner$__Closure_365_28 *  self, SuiCore$MouseEvent *  me){
+	self->__var___Block_358_39->list->add(self->__var___Block_358_39->list, NULL) ;
+	self->__var___Block_357_69->insp->emitChanged(self->__var___Block_357_69->insp) ;
+}
+
+static void  __fini___Closure_365_28(SuiDesigner$__Closure_365_28 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_365_28, __var___Block_358_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_365_28, __var___Block_357_69) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static SuiDesigner$__Closure_365_28*  __make___Closure_365_28(SuiDesigner$__Closure_365_28 **  __outRef__, SuiDesigner$__Block_358_39 *  __var___Block_358_39, SuiDesigner$__Block_357_69 *  __var___Block_357_69){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_365_28*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_365_28) , __fini___Closure_365_28) ));
+	self->invoke = __fn___Closure_365_28;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_365_28, __var___Block_358_39) , __var___Block_358_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_365_28, __var___Block_357_69) , __var___Block_357_69) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
+
+static void  __fn___Closure_378_40(SuiDesigner$__Closure_378_40 *  self, SuiCore$MouseEvent *  me){
+	self->__var___Block_358_39->list->removeAt(self->__var___Block_358_39->list, self->__var___Block_372_52->idx) ;
+	self->__var___Block_357_69->insp->emitChanged(self->__var___Block_357_69->insp) ;
+}
+
+static void  __fini___Closure_378_40(SuiDesigner$__Closure_378_40 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_378_40, __var___Block_358_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_378_40, __var___Block_372_52) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_378_40, __var___Block_357_69) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static SuiDesigner$__Closure_378_40*  __make___Closure_378_40(SuiDesigner$__Closure_378_40 **  __outRef__, SuiDesigner$__Block_358_39 *  __var___Block_358_39, SuiDesigner$__Block_372_52 *  __var___Block_372_52, SuiDesigner$__Block_357_69 *  __var___Block_357_69){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_378_40*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_378_40) , __fini___Closure_378_40) ));
+	self->invoke = __fn___Closure_378_40;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_378_40, __var___Block_358_39) , __var___Block_358_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_378_40, __var___Block_372_52) , __var___Block_372_52) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_378_40, __var___Block_357_69) , __var___Block_357_69) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
+
+static void  __fn___Closure_403_28(SuiDesigner$__Closure_403_28 *  self, SuiCore$MouseEvent *  me){
+	self->__var___Block_396_39->list->add(self->__var___Block_396_39->list, NULL) ;
+	self->__var___Block_395_69->insp->emitChanged(self->__var___Block_395_69->insp) ;
+}
+
+static void  __fini___Closure_403_28(SuiDesigner$__Closure_403_28 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_403_28, __var___Block_396_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_403_28, __var___Block_395_69) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static SuiDesigner$__Closure_403_28*  __make___Closure_403_28(SuiDesigner$__Closure_403_28 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_395_69 *  __var___Block_395_69){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_403_28*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_403_28) , __fini___Closure_403_28) ));
+	self->invoke = __fn___Closure_403_28;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_403_28, __var___Block_396_39) , __var___Block_396_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_403_28, __var___Block_395_69) , __var___Block_395_69) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
+
+static void  __fn___Closure_416_40(SuiDesigner$__Closure_416_40 *  self, SuiCore$MouseEvent *  me){
+	self->__var___Block_396_39->list->removeAt(self->__var___Block_396_39->list, self->__var___Block_410_52->idx) ;
+	self->__var___Block_395_69->insp->emitChanged(self->__var___Block_395_69->insp) ;
+}
+
+static void  __fini___Closure_416_40(SuiDesigner$__Closure_416_40 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_416_40, __var___Block_396_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_416_40, __var___Block_410_52) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_416_40, __var___Block_395_69) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static SuiDesigner$__Closure_416_40*  __make___Closure_416_40(SuiDesigner$__Closure_416_40 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_410_52 *  __var___Block_410_52, SuiDesigner$__Block_395_69 *  __var___Block_395_69){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_416_40*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_416_40) , __fini___Closure_416_40) ));
+	self->invoke = __fn___Closure_416_40;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_416_40, __var___Block_396_39) , __var___Block_396_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_416_40, __var___Block_410_52) , __var___Block_410_52) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_416_40, __var___Block_395_69) , __var___Block_395_69) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
+
+static void  __fn___Closure_423_40(SuiDesigner$__Closure_423_40 *  self, SuiCore$MouseEvent *  me){
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$FileChooser*  fc = (fc=NULL,urgc_init_var_class((void**)&fc, SuiDesigner$FileChooser_new(&fc) ));
+	Orc$String$set(fc->dir, "./") ;
+	fc->loadPaths(fc) ;
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_428_46*  tmpReturn_1 = NULL;
+	urgc_set_field(fc, (void * )offsetof(SuiDesigner$FileChooser, onChoose) , __make___Closure_428_46(&tmpReturn_1, self->__var___Block_396_39, self->__var___Block_410_52, self->__var___Block_395_69) ) ;
+	fc->showWindow(fc) ;
+}
+
+static void  __fini___Closure_423_40(SuiDesigner$__Closure_423_40 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_423_40, __var___Block_396_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_423_40, __var___Block_410_52) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_423_40, __var___Block_395_69) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static SuiDesigner$__Closure_423_40*  __make___Closure_423_40(SuiDesigner$__Closure_423_40 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_410_52 *  __var___Block_410_52, SuiDesigner$__Block_395_69 *  __var___Block_395_69){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_423_40*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_423_40) , __fini___Closure_423_40) ));
+	self->invoke = __fn___Closure_423_40;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_423_40, __var___Block_396_39) , __var___Block_396_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_423_40, __var___Block_410_52) , __var___Block_410_52) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_423_40, __var___Block_395_69) , __var___Block_395_69) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
+
+static void  __fn___Closure_428_46(SuiDesigner$__Closure_428_46 *  self, Orc$String*  newpath){
+	URGC_REF_ARG_WITH_CLEANUP_CLASS(newpath);
+
+	self->__var___Block_396_39->list->set(self->__var___Block_396_39->list, self->__var___Block_410_52->idx, newpath) ;
+	self->__var___Block_395_69->insp->emitChanged(self->__var___Block_395_69->insp) ;
+}
+
+static void  __fini___Closure_428_46(SuiDesigner$__Closure_428_46 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_428_46, __var___Block_396_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_428_46, __var___Block_410_52) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_428_46, __var___Block_395_69) , NULL) ;
+	urgc_free_later(self) ;
+}
+
+static SuiDesigner$__Closure_428_46*  __make___Closure_428_46(SuiDesigner$__Closure_428_46 **  __outRef__, SuiDesigner$__Block_396_39 *  __var___Block_396_39, SuiDesigner$__Block_410_52 *  __var___Block_410_52, SuiDesigner$__Block_395_69 *  __var___Block_395_69){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_428_46*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_428_46) , __fini___Closure_428_46) ));
+	self->invoke = __fn___Closure_428_46;
+	self->vtable = orc_Vtable_Closure_init() ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_428_46, __var___Block_396_39) , __var___Block_396_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_428_46, __var___Block_410_52) , __var___Block_410_52) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_428_46, __var___Block_395_69) , __var___Block_395_69) ;
+	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
+}
+
+static void  __fn___Closure_687_32(SuiDesigner$__Closure_687_32 *  self, SuiCore$MouseEvent *  me){
+	void **  ptr = orc_getFieldPtr(self->__var___Block_672_49->self->obj, self->__var___Block_672_49->mf->name) ;
 	if (ptr != NULL) {
 		void  (*inspFn)(Object *  _self);
 		inspFn = *ptr;
 		if (inspFn) {
-			inspFn(self->__var___Block_576_49->self->obj) ;
+			inspFn(self->__var___Block_672_49->self->obj) ;
 		}
 	}
 }
 
-static void  __fini___Closure_592_32(SuiDesigner$__Closure_592_32 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_592_32, __var___Block_576_49) , NULL) ;
+static void  __fini___Closure_687_32(SuiDesigner$__Closure_687_32 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_687_32, __var___Block_672_49) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_592_32*  __make___Closure_592_32(SuiDesigner$__Closure_592_32 **  __outRef__, SuiDesigner$__Block_576_49 *  __var___Block_576_49){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_592_32*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_592_32) , __fini___Closure_592_32) ));
-	self->invoke = __fn___Closure_592_32;
+static SuiDesigner$__Closure_687_32*  __make___Closure_687_32(SuiDesigner$__Closure_687_32 **  __outRef__, SuiDesigner$__Block_672_49 *  __var___Block_672_49){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_687_32*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_687_32) , __fini___Closure_687_32) ));
+	self->invoke = __fn___Closure_687_32;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_592_32, __var___Block_576_49) , __var___Block_576_49) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_687_32, __var___Block_672_49) , __var___Block_672_49) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_712_31(SuiDesigner$__Closure_712_31 *  self, SuiView$EditText *  et){
-	self->__var___Block_705_58->self->setAttr(self->__var___Block_705_58->self, self->__var___Block_705_58->mf, et->value) ;
+static void  __fn___Closure_807_31(SuiDesigner$__Closure_807_31 *  self, SuiView$EditText *  et){
+	self->__var___Block_800_58->self->setAttr(self->__var___Block_800_58->self, self->__var___Block_800_58->mf, et->value) ;
 }
 
-static void  __fini___Closure_712_31(SuiDesigner$__Closure_712_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_712_31, __var___Block_705_58) , NULL) ;
+static void  __fini___Closure_807_31(SuiDesigner$__Closure_807_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_807_31, __var___Block_800_58) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_712_31*  __make___Closure_712_31(SuiDesigner$__Closure_712_31 **  __outRef__, SuiDesigner$__Block_705_58 *  __var___Block_705_58){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_712_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_712_31) , __fini___Closure_712_31) ));
-	self->invoke = __fn___Closure_712_31;
+static SuiDesigner$__Closure_807_31*  __make___Closure_807_31(SuiDesigner$__Closure_807_31 **  __outRef__, SuiDesigner$__Block_800_58 *  __var___Block_800_58){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_807_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_807_31) , __fini___Closure_807_31) ));
+	self->invoke = __fn___Closure_807_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_712_31, __var___Block_705_58) , __var___Block_705_58) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_807_31, __var___Block_800_58) , __var___Block_800_58) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_741_24(SuiDesigner$__Closure_741_24 *  self, SuiCore$MouseEvent *  me){
+static void  __fn___Closure_836_24(SuiDesigner$__Closure_836_24 *  self, SuiCore$MouseEvent *  me){
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$FileChooser*  fc = (fc=NULL,urgc_init_var_class((void**)&fc, SuiDesigner$FileChooser_new(&fc) ));
 	Orc$String$set(fc->dir, "./") ;
 	fc->loadPaths(fc) ;
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_747_30*  tmpReturn_1 = NULL;
-	urgc_set_field(fc, (void * )offsetof(SuiDesigner$FileChooser, onChoose) , __make___Closure_747_30(&tmpReturn_1, self->__var___Block_721_62) ) ;
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_842_30*  tmpReturn_1 = NULL;
+	urgc_set_field(fc, (void * )offsetof(SuiDesigner$FileChooser, onChoose) , __make___Closure_842_30(&tmpReturn_1, self->__var___Block_816_62) ) ;
 	fc->showWindow(fc) ;
 }
 
-static void  __fini___Closure_741_24(SuiDesigner$__Closure_741_24 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_741_24, __var___Block_721_62) , NULL) ;
+static void  __fini___Closure_836_24(SuiDesigner$__Closure_836_24 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_836_24, __var___Block_816_62) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_741_24*  __make___Closure_741_24(SuiDesigner$__Closure_741_24 **  __outRef__, SuiDesigner$__Block_721_62 *  __var___Block_721_62){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_741_24*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_741_24) , __fini___Closure_741_24) ));
-	self->invoke = __fn___Closure_741_24;
+static SuiDesigner$__Closure_836_24*  __make___Closure_836_24(SuiDesigner$__Closure_836_24 **  __outRef__, SuiDesigner$__Block_816_62 *  __var___Block_816_62){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_836_24*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_836_24) , __fini___Closure_836_24) ));
+	self->invoke = __fn___Closure_836_24;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_741_24, __var___Block_721_62) , __var___Block_721_62) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_836_24, __var___Block_816_62) , __var___Block_816_62) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_747_30(SuiDesigner$__Closure_747_30 *  self, Orc$String*  newpath){
+static void  __fn___Closure_842_30(SuiDesigner$__Closure_842_30 *  self, Orc$String*  newpath){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(newpath);
 
-	self->__var___Block_721_62->self->setAttr(self->__var___Block_721_62->self, self->__var___Block_721_62->mf, newpath) ;
+	self->__var___Block_816_62->self->setAttr(self->__var___Block_816_62->self, self->__var___Block_816_62->mf, newpath) ;
 }
 
-static void  __fini___Closure_747_30(SuiDesigner$__Closure_747_30 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_747_30, __var___Block_721_62) , NULL) ;
+static void  __fini___Closure_842_30(SuiDesigner$__Closure_842_30 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_842_30, __var___Block_816_62) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_747_30*  __make___Closure_747_30(SuiDesigner$__Closure_747_30 **  __outRef__, SuiDesigner$__Block_721_62 *  __var___Block_721_62){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_747_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_747_30) , __fini___Closure_747_30) ));
-	self->invoke = __fn___Closure_747_30;
+static SuiDesigner$__Closure_842_30*  __make___Closure_842_30(SuiDesigner$__Closure_842_30 **  __outRef__, SuiDesigner$__Block_816_62 *  __var___Block_816_62){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_842_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_842_30) , __fini___Closure_842_30) ));
+	self->invoke = __fn___Closure_842_30;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_747_30, __var___Block_721_62) , __var___Block_721_62) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_842_30, __var___Block_816_62) , __var___Block_816_62) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_770_31(SuiDesigner$__Closure_770_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_865_31(SuiDesigner$__Closure_865_31 *  self, SuiView$EditText *  et){
 	printf("onValueChanged:%s\n", et->value->str) ;
 	double  nv = atof(et->value->str) ;
 	printf("\t  double value:%f\n", nv) ;
 	URGC_VAR_CLEANUP_CLASS Orc$Double*  tmpReturn_1 = NULL;
-	self->__var___Block_755_55->self->setAttr(self->__var___Block_755_55->self, self->__var___Block_755_55->mf, Orc$mkDouble(&tmpReturn_1, nv) ) ;
+	self->__var___Block_850_55->self->setAttr(self->__var___Block_850_55->self, self->__var___Block_850_55->mf, Orc$mkDouble(&tmpReturn_1, nv) ) ;
 }
 
-static void  __fini___Closure_770_31(SuiDesigner$__Closure_770_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_770_31, __var___Block_755_55) , NULL) ;
+static void  __fini___Closure_865_31(SuiDesigner$__Closure_865_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_865_31, __var___Block_850_55) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_770_31*  __make___Closure_770_31(SuiDesigner$__Closure_770_31 **  __outRef__, SuiDesigner$__Block_755_55 *  __var___Block_755_55){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_770_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_770_31) , __fini___Closure_770_31) ));
-	self->invoke = __fn___Closure_770_31;
+static SuiDesigner$__Closure_865_31*  __make___Closure_865_31(SuiDesigner$__Closure_865_31 **  __outRef__, SuiDesigner$__Block_850_55 *  __var___Block_850_55){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_865_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_865_31) , __fini___Closure_865_31) ));
+	self->invoke = __fn___Closure_865_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_770_31, __var___Block_755_55) , __var___Block_755_55) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_865_31, __var___Block_850_55) , __var___Block_850_55) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_796_31(SuiDesigner$__Closure_796_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_891_31(SuiDesigner$__Closure_891_31 *  self, SuiView$EditText *  et){
 	printf("onValueChanged:%s\n", et->value->str) ;
 	double  nv = atof(et->value->str) ;
 	printf("\t  double value:%f\n", nv) ;
 	URGC_VAR_CLEANUP_CLASS Orc$Double*  tmpReturn_1 = NULL;
-	self->__var___Block_783_57->self->setAttr(self->__var___Block_783_57->self, self->__var___Block_783_57->mf, Orc$mkDouble(&tmpReturn_1, nv) ) ;
+	self->__var___Block_878_57->self->setAttr(self->__var___Block_878_57->self, self->__var___Block_878_57->mf, Orc$mkDouble(&tmpReturn_1, nv) ) ;
 }
 
-static void  __fini___Closure_796_31(SuiDesigner$__Closure_796_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_796_31, __var___Block_783_57) , NULL) ;
+static void  __fini___Closure_891_31(SuiDesigner$__Closure_891_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_891_31, __var___Block_878_57) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_796_31*  __make___Closure_796_31(SuiDesigner$__Closure_796_31 **  __outRef__, SuiDesigner$__Block_783_57 *  __var___Block_783_57){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_796_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_796_31) , __fini___Closure_796_31) ));
-	self->invoke = __fn___Closure_796_31;
+static SuiDesigner$__Closure_891_31*  __make___Closure_891_31(SuiDesigner$__Closure_891_31 **  __outRef__, SuiDesigner$__Block_878_57 *  __var___Block_878_57){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_891_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_891_31) , __fini___Closure_891_31) ));
+	self->invoke = __fn___Closure_891_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_796_31, __var___Block_783_57) , __var___Block_783_57) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_891_31, __var___Block_878_57) , __var___Block_878_57) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_817_37(SuiDesigner$__Closure_817_37 *  self, SuiView$Switch *  v){
+static void  __fn___Closure_912_37(SuiDesigner$__Closure_912_37 *  self, SuiView$Switch *  v){
 	URGC_VAR_CLEANUP_CLASS Orc$Boolean*  tmpReturn_1 = NULL;
-	self->__var___Block_808_56->self->setAttr(self->__var___Block_808_56->self, self->__var___Block_808_56->mf, Orc$mkBoolean(&tmpReturn_1, v->checked) ) ;
+	self->__var___Block_903_56->self->setAttr(self->__var___Block_903_56->self, self->__var___Block_903_56->mf, Orc$mkBoolean(&tmpReturn_1, v->checked) ) ;
 }
 
-static void  __fini___Closure_817_37(SuiDesigner$__Closure_817_37 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_817_37, __var___Block_808_56) , NULL) ;
+static void  __fini___Closure_912_37(SuiDesigner$__Closure_912_37 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_912_37, __var___Block_903_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_817_37*  __make___Closure_817_37(SuiDesigner$__Closure_817_37 **  __outRef__, SuiDesigner$__Block_808_56 *  __var___Block_808_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_817_37*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_817_37) , __fini___Closure_817_37) ));
-	self->invoke = __fn___Closure_817_37;
+static SuiDesigner$__Closure_912_37*  __make___Closure_912_37(SuiDesigner$__Closure_912_37 **  __outRef__, SuiDesigner$__Block_903_56 *  __var___Block_903_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_912_37*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_912_37) , __fini___Closure_912_37) ));
+	self->invoke = __fn___Closure_912_37;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_817_37, __var___Block_808_56) , __var___Block_808_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_912_37, __var___Block_903_56) , __var___Block_903_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_840_35(SuiDesigner$__Closure_840_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_935_35(SuiDesigner$__Closure_935_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_830_39->v.x, nv) ;
-	self->__var___Block_830_39->v.x = nv;
+	printf("set x:%f=>%f\n", self->__var___Block_925_39->v.x, nv) ;
+	self->__var___Block_925_39->v.x = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_827_56->self->setAttr(self->__var___Block_827_56->self, self->__var___Block_827_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec2) , &self->__var___Block_830_39->v) ) ;
+	self->__var___Block_922_56->self->setAttr(self->__var___Block_922_56->self, self->__var___Block_922_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec2) , &self->__var___Block_925_39->v) ) ;
 }
 
-static void  __fini___Closure_840_35(SuiDesigner$__Closure_840_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_840_35, __var___Block_830_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_840_35, __var___Block_827_56) , NULL) ;
+static void  __fini___Closure_935_35(SuiDesigner$__Closure_935_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_935_35, __var___Block_925_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_935_35, __var___Block_922_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_840_35*  __make___Closure_840_35(SuiDesigner$__Closure_840_35 **  __outRef__, SuiDesigner$__Block_830_39 *  __var___Block_830_39, SuiDesigner$__Block_827_56 *  __var___Block_827_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_840_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_840_35) , __fini___Closure_840_35) ));
-	self->invoke = __fn___Closure_840_35;
+static SuiDesigner$__Closure_935_35*  __make___Closure_935_35(SuiDesigner$__Closure_935_35 **  __outRef__, SuiDesigner$__Block_925_39 *  __var___Block_925_39, SuiDesigner$__Block_922_56 *  __var___Block_922_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_935_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_935_35) , __fini___Closure_935_35) ));
+	self->invoke = __fn___Closure_935_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_840_35, __var___Block_830_39) , __var___Block_830_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_840_35, __var___Block_827_56) , __var___Block_827_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_935_35, __var___Block_925_39) , __var___Block_925_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_935_35, __var___Block_922_56) , __var___Block_922_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_857_35(SuiDesigner$__Closure_857_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_952_35(SuiDesigner$__Closure_952_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set y:%f=>%f\n", self->__var___Block_830_39->v.y, nv) ;
-	self->__var___Block_830_39->v.y = nv;
+	printf("set y:%f=>%f\n", self->__var___Block_925_39->v.y, nv) ;
+	self->__var___Block_925_39->v.y = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_827_56->self->setAttr(self->__var___Block_827_56->self, self->__var___Block_827_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec2) , &self->__var___Block_830_39->v) ) ;
+	self->__var___Block_922_56->self->setAttr(self->__var___Block_922_56->self, self->__var___Block_922_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec2) , &self->__var___Block_925_39->v) ) ;
 }
 
-static void  __fini___Closure_857_35(SuiDesigner$__Closure_857_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_857_35, __var___Block_830_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_857_35, __var___Block_827_56) , NULL) ;
+static void  __fini___Closure_952_35(SuiDesigner$__Closure_952_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_952_35, __var___Block_925_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_952_35, __var___Block_922_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_857_35*  __make___Closure_857_35(SuiDesigner$__Closure_857_35 **  __outRef__, SuiDesigner$__Block_830_39 *  __var___Block_830_39, SuiDesigner$__Block_827_56 *  __var___Block_827_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_857_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_857_35) , __fini___Closure_857_35) ));
-	self->invoke = __fn___Closure_857_35;
+static SuiDesigner$__Closure_952_35*  __make___Closure_952_35(SuiDesigner$__Closure_952_35 **  __outRef__, SuiDesigner$__Block_925_39 *  __var___Block_925_39, SuiDesigner$__Block_922_56 *  __var___Block_922_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_952_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_952_35) , __fini___Closure_952_35) ));
+	self->invoke = __fn___Closure_952_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_857_35, __var___Block_830_39) , __var___Block_830_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_857_35, __var___Block_827_56) , __var___Block_827_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_952_35, __var___Block_925_39) , __var___Block_925_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_952_35, __var___Block_922_56) , __var___Block_922_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_885_35(SuiDesigner$__Closure_885_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_980_35(SuiDesigner$__Closure_980_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_875_39->v.x, nv) ;
-	self->__var___Block_875_39->v.x = nv;
+	printf("set x:%f=>%f\n", self->__var___Block_970_39->v.x, nv) ;
+	self->__var___Block_970_39->v.x = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_872_56->self->setAttr(self->__var___Block_872_56->self, self->__var___Block_872_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec3) , &self->__var___Block_875_39->v) ) ;
+	self->__var___Block_967_56->self->setAttr(self->__var___Block_967_56->self, self->__var___Block_967_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec3) , &self->__var___Block_970_39->v) ) ;
 }
 
-static void  __fini___Closure_885_35(SuiDesigner$__Closure_885_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_885_35, __var___Block_875_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_885_35, __var___Block_872_56) , NULL) ;
+static void  __fini___Closure_980_35(SuiDesigner$__Closure_980_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_980_35, __var___Block_970_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_980_35, __var___Block_967_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_885_35*  __make___Closure_885_35(SuiDesigner$__Closure_885_35 **  __outRef__, SuiDesigner$__Block_875_39 *  __var___Block_875_39, SuiDesigner$__Block_872_56 *  __var___Block_872_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_885_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_885_35) , __fini___Closure_885_35) ));
-	self->invoke = __fn___Closure_885_35;
+static SuiDesigner$__Closure_980_35*  __make___Closure_980_35(SuiDesigner$__Closure_980_35 **  __outRef__, SuiDesigner$__Block_970_39 *  __var___Block_970_39, SuiDesigner$__Block_967_56 *  __var___Block_967_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_980_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_980_35) , __fini___Closure_980_35) ));
+	self->invoke = __fn___Closure_980_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_885_35, __var___Block_875_39) , __var___Block_875_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_885_35, __var___Block_872_56) , __var___Block_872_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_980_35, __var___Block_970_39) , __var___Block_970_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_980_35, __var___Block_967_56) , __var___Block_967_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_903_35(SuiDesigner$__Closure_903_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_998_35(SuiDesigner$__Closure_998_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set y:%f=>%f\n", self->__var___Block_875_39->v.y, nv) ;
-	self->__var___Block_875_39->v.y = nv;
+	printf("set y:%f=>%f\n", self->__var___Block_970_39->v.y, nv) ;
+	self->__var___Block_970_39->v.y = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_872_56->self->setAttr(self->__var___Block_872_56->self, self->__var___Block_872_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec3) , &self->__var___Block_875_39->v) ) ;
+	self->__var___Block_967_56->self->setAttr(self->__var___Block_967_56->self, self->__var___Block_967_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec3) , &self->__var___Block_970_39->v) ) ;
 }
 
-static void  __fini___Closure_903_35(SuiDesigner$__Closure_903_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_903_35, __var___Block_875_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_903_35, __var___Block_872_56) , NULL) ;
+static void  __fini___Closure_998_35(SuiDesigner$__Closure_998_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_998_35, __var___Block_970_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_998_35, __var___Block_967_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_903_35*  __make___Closure_903_35(SuiDesigner$__Closure_903_35 **  __outRef__, SuiDesigner$__Block_875_39 *  __var___Block_875_39, SuiDesigner$__Block_872_56 *  __var___Block_872_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_903_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_903_35) , __fini___Closure_903_35) ));
-	self->invoke = __fn___Closure_903_35;
+static SuiDesigner$__Closure_998_35*  __make___Closure_998_35(SuiDesigner$__Closure_998_35 **  __outRef__, SuiDesigner$__Block_970_39 *  __var___Block_970_39, SuiDesigner$__Block_967_56 *  __var___Block_967_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_998_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_998_35) , __fini___Closure_998_35) ));
+	self->invoke = __fn___Closure_998_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_903_35, __var___Block_875_39) , __var___Block_875_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_903_35, __var___Block_872_56) , __var___Block_872_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_998_35, __var___Block_970_39) , __var___Block_970_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_998_35, __var___Block_967_56) , __var___Block_967_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_921_35(SuiDesigner$__Closure_921_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1016_35(SuiDesigner$__Closure_1016_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_875_39->v.z, nv) ;
-	self->__var___Block_875_39->v.z = nv;
+	printf("set x:%f=>%f\n", self->__var___Block_970_39->v.z, nv) ;
+	self->__var___Block_970_39->v.z = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_872_56->self->setAttr(self->__var___Block_872_56->self, self->__var___Block_872_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec3) , &self->__var___Block_875_39->v) ) ;
+	self->__var___Block_967_56->self->setAttr(self->__var___Block_967_56->self, self->__var___Block_967_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec3) , &self->__var___Block_970_39->v) ) ;
 }
 
-static void  __fini___Closure_921_35(SuiDesigner$__Closure_921_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_921_35, __var___Block_875_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_921_35, __var___Block_872_56) , NULL) ;
+static void  __fini___Closure_1016_35(SuiDesigner$__Closure_1016_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1016_35, __var___Block_970_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1016_35, __var___Block_967_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_921_35*  __make___Closure_921_35(SuiDesigner$__Closure_921_35 **  __outRef__, SuiDesigner$__Block_875_39 *  __var___Block_875_39, SuiDesigner$__Block_872_56 *  __var___Block_872_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_921_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_921_35) , __fini___Closure_921_35) ));
-	self->invoke = __fn___Closure_921_35;
+static SuiDesigner$__Closure_1016_35*  __make___Closure_1016_35(SuiDesigner$__Closure_1016_35 **  __outRef__, SuiDesigner$__Block_970_39 *  __var___Block_970_39, SuiDesigner$__Block_967_56 *  __var___Block_967_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1016_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1016_35) , __fini___Closure_1016_35) ));
+	self->invoke = __fn___Closure_1016_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_921_35, __var___Block_875_39) , __var___Block_875_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_921_35, __var___Block_872_56) , __var___Block_872_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1016_35, __var___Block_970_39) , __var___Block_970_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1016_35, __var___Block_967_56) , __var___Block_967_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_948_35(SuiDesigner$__Closure_948_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1043_35(SuiDesigner$__Closure_1043_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_938_39->v.x, nv) ;
-	self->__var___Block_938_39->v.x = nv;
+	printf("set x:%f=>%f\n", self->__var___Block_1033_39->v.x, nv) ;
+	self->__var___Block_1033_39->v.x = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_935_56->self->setAttr(self->__var___Block_935_56->self, self->__var___Block_935_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_938_39->v) ) ;
+	self->__var___Block_1030_56->self->setAttr(self->__var___Block_1030_56->self, self->__var___Block_1030_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_1033_39->v) ) ;
 }
 
-static void  __fini___Closure_948_35(SuiDesigner$__Closure_948_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_948_35, __var___Block_938_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_948_35, __var___Block_935_56) , NULL) ;
+static void  __fini___Closure_1043_35(SuiDesigner$__Closure_1043_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1043_35, __var___Block_1033_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1043_35, __var___Block_1030_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_948_35*  __make___Closure_948_35(SuiDesigner$__Closure_948_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_948_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_948_35) , __fini___Closure_948_35) ));
-	self->invoke = __fn___Closure_948_35;
+static SuiDesigner$__Closure_1043_35*  __make___Closure_1043_35(SuiDesigner$__Closure_1043_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1043_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1043_35) , __fini___Closure_1043_35) ));
+	self->invoke = __fn___Closure_1043_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_948_35, __var___Block_938_39) , __var___Block_938_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_948_35, __var___Block_935_56) , __var___Block_935_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1043_35, __var___Block_1033_39) , __var___Block_1033_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1043_35, __var___Block_1030_56) , __var___Block_1030_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_965_35(SuiDesigner$__Closure_965_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1060_35(SuiDesigner$__Closure_1060_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set y:%f=>%f\n", self->__var___Block_938_39->v.y, nv) ;
-	self->__var___Block_938_39->v.y = nv;
+	printf("set y:%f=>%f\n", self->__var___Block_1033_39->v.y, nv) ;
+	self->__var___Block_1033_39->v.y = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_935_56->self->setAttr(self->__var___Block_935_56->self, self->__var___Block_935_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_938_39->v) ) ;
+	self->__var___Block_1030_56->self->setAttr(self->__var___Block_1030_56->self, self->__var___Block_1030_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_1033_39->v) ) ;
 }
 
-static void  __fini___Closure_965_35(SuiDesigner$__Closure_965_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_965_35, __var___Block_938_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_965_35, __var___Block_935_56) , NULL) ;
+static void  __fini___Closure_1060_35(SuiDesigner$__Closure_1060_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1060_35, __var___Block_1033_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1060_35, __var___Block_1030_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_965_35*  __make___Closure_965_35(SuiDesigner$__Closure_965_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_965_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_965_35) , __fini___Closure_965_35) ));
-	self->invoke = __fn___Closure_965_35;
+static SuiDesigner$__Closure_1060_35*  __make___Closure_1060_35(SuiDesigner$__Closure_1060_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1060_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1060_35) , __fini___Closure_1060_35) ));
+	self->invoke = __fn___Closure_1060_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_965_35, __var___Block_938_39) , __var___Block_938_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_965_35, __var___Block_935_56) , __var___Block_935_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1060_35, __var___Block_1033_39) , __var___Block_1033_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1060_35, __var___Block_1030_56) , __var___Block_1030_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_983_35(SuiDesigner$__Closure_983_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1078_35(SuiDesigner$__Closure_1078_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_938_39->v.x, nv) ;
-	self->__var___Block_938_39->v.z = nv;
+	printf("set x:%f=>%f\n", self->__var___Block_1033_39->v.x, nv) ;
+	self->__var___Block_1033_39->v.z = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_935_56->self->setAttr(self->__var___Block_935_56->self, self->__var___Block_935_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_938_39->v) ) ;
+	self->__var___Block_1030_56->self->setAttr(self->__var___Block_1030_56->self, self->__var___Block_1030_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_1033_39->v) ) ;
 }
 
-static void  __fini___Closure_983_35(SuiDesigner$__Closure_983_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_983_35, __var___Block_938_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_983_35, __var___Block_935_56) , NULL) ;
+static void  __fini___Closure_1078_35(SuiDesigner$__Closure_1078_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1078_35, __var___Block_1033_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1078_35, __var___Block_1030_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_983_35*  __make___Closure_983_35(SuiDesigner$__Closure_983_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_983_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_983_35) , __fini___Closure_983_35) ));
-	self->invoke = __fn___Closure_983_35;
+static SuiDesigner$__Closure_1078_35*  __make___Closure_1078_35(SuiDesigner$__Closure_1078_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1078_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1078_35) , __fini___Closure_1078_35) ));
+	self->invoke = __fn___Closure_1078_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_983_35, __var___Block_938_39) , __var___Block_938_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_983_35, __var___Block_935_56) , __var___Block_935_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1078_35, __var___Block_1033_39) , __var___Block_1033_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1078_35, __var___Block_1030_56) , __var___Block_1030_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_999_35(SuiDesigner$__Closure_999_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1094_35(SuiDesigner$__Closure_1094_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_938_39->v.x, nv) ;
-	self->__var___Block_938_39->v.w = nv;
+	printf("set x:%f=>%f\n", self->__var___Block_1033_39->v.x, nv) ;
+	self->__var___Block_1033_39->v.w = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_935_56->self->setAttr(self->__var___Block_935_56->self, self->__var___Block_935_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_938_39->v) ) ;
+	self->__var___Block_1030_56->self->setAttr(self->__var___Block_1030_56->self, self->__var___Block_1030_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Vec4) , &self->__var___Block_1033_39->v) ) ;
 }
 
-static void  __fini___Closure_999_35(SuiDesigner$__Closure_999_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_999_35, __var___Block_938_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_999_35, __var___Block_935_56) , NULL) ;
+static void  __fini___Closure_1094_35(SuiDesigner$__Closure_1094_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1094_35, __var___Block_1033_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1094_35, __var___Block_1030_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_999_35*  __make___Closure_999_35(SuiDesigner$__Closure_999_35 **  __outRef__, SuiDesigner$__Block_938_39 *  __var___Block_938_39, SuiDesigner$__Block_935_56 *  __var___Block_935_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_999_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_999_35) , __fini___Closure_999_35) ));
-	self->invoke = __fn___Closure_999_35;
+static SuiDesigner$__Closure_1094_35*  __make___Closure_1094_35(SuiDesigner$__Closure_1094_35 **  __outRef__, SuiDesigner$__Block_1033_39 *  __var___Block_1033_39, SuiDesigner$__Block_1030_56 *  __var___Block_1030_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1094_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1094_35) , __fini___Closure_1094_35) ));
+	self->invoke = __fn___Closure_1094_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_999_35, __var___Block_938_39) , __var___Block_938_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_999_35, __var___Block_935_56) , __var___Block_935_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1094_35, __var___Block_1033_39) , __var___Block_1033_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1094_35, __var___Block_1030_56) , __var___Block_1030_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1026_35(SuiDesigner$__Closure_1026_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1121_35(SuiDesigner$__Closure_1121_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set top:%f=>%f\n", self->__var___Block_1016_39->v.top, nv) ;
-	self->__var___Block_1016_39->v.top = nv;
+	printf("set top:%f=>%f\n", self->__var___Block_1111_39->v.top, nv) ;
+	self->__var___Block_1111_39->v.top = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_1013_57->self->setAttr(self->__var___Block_1013_57->self, self->__var___Block_1013_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1016_39->v) ) ;
+	self->__var___Block_1108_57->self->setAttr(self->__var___Block_1108_57->self, self->__var___Block_1108_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1111_39->v) ) ;
 }
 
-static void  __fini___Closure_1026_35(SuiDesigner$__Closure_1026_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1026_35, __var___Block_1016_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1026_35, __var___Block_1013_57) , NULL) ;
+static void  __fini___Closure_1121_35(SuiDesigner$__Closure_1121_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1121_35, __var___Block_1111_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1121_35, __var___Block_1108_57) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1026_35*  __make___Closure_1026_35(SuiDesigner$__Closure_1026_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1026_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1026_35) , __fini___Closure_1026_35) ));
-	self->invoke = __fn___Closure_1026_35;
+static SuiDesigner$__Closure_1121_35*  __make___Closure_1121_35(SuiDesigner$__Closure_1121_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1121_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1121_35) , __fini___Closure_1121_35) ));
+	self->invoke = __fn___Closure_1121_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1026_35, __var___Block_1016_39) , __var___Block_1016_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1026_35, __var___Block_1013_57) , __var___Block_1013_57) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1121_35, __var___Block_1111_39) , __var___Block_1111_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1121_35, __var___Block_1108_57) , __var___Block_1108_57) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1041_35(SuiDesigner$__Closure_1041_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1136_35(SuiDesigner$__Closure_1136_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set right:%f=>%f\n", self->__var___Block_1016_39->v.right, nv) ;
-	self->__var___Block_1016_39->v.right = nv;
+	printf("set right:%f=>%f\n", self->__var___Block_1111_39->v.right, nv) ;
+	self->__var___Block_1111_39->v.right = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_1013_57->self->setAttr(self->__var___Block_1013_57->self, self->__var___Block_1013_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1016_39->v) ) ;
+	self->__var___Block_1108_57->self->setAttr(self->__var___Block_1108_57->self, self->__var___Block_1108_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1111_39->v) ) ;
 }
 
-static void  __fini___Closure_1041_35(SuiDesigner$__Closure_1041_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1041_35, __var___Block_1016_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1041_35, __var___Block_1013_57) , NULL) ;
+static void  __fini___Closure_1136_35(SuiDesigner$__Closure_1136_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1136_35, __var___Block_1111_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1136_35, __var___Block_1108_57) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1041_35*  __make___Closure_1041_35(SuiDesigner$__Closure_1041_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1041_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1041_35) , __fini___Closure_1041_35) ));
-	self->invoke = __fn___Closure_1041_35;
+static SuiDesigner$__Closure_1136_35*  __make___Closure_1136_35(SuiDesigner$__Closure_1136_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1136_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1136_35) , __fini___Closure_1136_35) ));
+	self->invoke = __fn___Closure_1136_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1041_35, __var___Block_1016_39) , __var___Block_1016_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1041_35, __var___Block_1013_57) , __var___Block_1013_57) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1136_35, __var___Block_1111_39) , __var___Block_1111_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1136_35, __var___Block_1108_57) , __var___Block_1108_57) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1059_35(SuiDesigner$__Closure_1059_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1154_35(SuiDesigner$__Closure_1154_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set bottom:%f=>%f\n", self->__var___Block_1016_39->v.bottom, nv) ;
-	self->__var___Block_1016_39->v.bottom = nv;
+	printf("set bottom:%f=>%f\n", self->__var___Block_1111_39->v.bottom, nv) ;
+	self->__var___Block_1111_39->v.bottom = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_1013_57->self->setAttr(self->__var___Block_1013_57->self, self->__var___Block_1013_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1016_39->v) ) ;
+	self->__var___Block_1108_57->self->setAttr(self->__var___Block_1108_57->self, self->__var___Block_1108_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1111_39->v) ) ;
 }
 
-static void  __fini___Closure_1059_35(SuiDesigner$__Closure_1059_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1059_35, __var___Block_1016_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1059_35, __var___Block_1013_57) , NULL) ;
+static void  __fini___Closure_1154_35(SuiDesigner$__Closure_1154_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1154_35, __var___Block_1111_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1154_35, __var___Block_1108_57) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1059_35*  __make___Closure_1059_35(SuiDesigner$__Closure_1059_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1059_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1059_35) , __fini___Closure_1059_35) ));
-	self->invoke = __fn___Closure_1059_35;
+static SuiDesigner$__Closure_1154_35*  __make___Closure_1154_35(SuiDesigner$__Closure_1154_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1154_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1154_35) , __fini___Closure_1154_35) ));
+	self->invoke = __fn___Closure_1154_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1059_35, __var___Block_1016_39) , __var___Block_1016_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1059_35, __var___Block_1013_57) , __var___Block_1013_57) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1154_35, __var___Block_1111_39) , __var___Block_1111_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1154_35, __var___Block_1108_57) , __var___Block_1108_57) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1075_35(SuiDesigner$__Closure_1075_35 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1170_35(SuiDesigner$__Closure_1170_35 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set left:%f=>%f\n", self->__var___Block_1016_39->v.left, nv) ;
-	self->__var___Block_1016_39->v.left = nv;
+	printf("set left:%f=>%f\n", self->__var___Block_1111_39->v.left, nv) ;
+	self->__var___Block_1111_39->v.left = nv;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_1013_57->self->setAttr(self->__var___Block_1013_57->self, self->__var___Block_1013_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1016_39->v) ) ;
+	self->__var___Block_1108_57->self->setAttr(self->__var___Block_1108_57->self, self->__var___Block_1108_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Inset) , &self->__var___Block_1111_39->v) ) ;
 }
 
-static void  __fini___Closure_1075_35(SuiDesigner$__Closure_1075_35 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1075_35, __var___Block_1016_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1075_35, __var___Block_1013_57) , NULL) ;
+static void  __fini___Closure_1170_35(SuiDesigner$__Closure_1170_35 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1170_35, __var___Block_1111_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1170_35, __var___Block_1108_57) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1075_35*  __make___Closure_1075_35(SuiDesigner$__Closure_1075_35 **  __outRef__, SuiDesigner$__Block_1016_39 *  __var___Block_1016_39, SuiDesigner$__Block_1013_57 *  __var___Block_1013_57){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1075_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1075_35) , __fini___Closure_1075_35) ));
-	self->invoke = __fn___Closure_1075_35;
+static SuiDesigner$__Closure_1170_35*  __make___Closure_1170_35(SuiDesigner$__Closure_1170_35 **  __outRef__, SuiDesigner$__Block_1111_39 *  __var___Block_1111_39, SuiDesigner$__Block_1108_57 *  __var___Block_1108_57){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1170_35*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1170_35) , __fini___Closure_1170_35) ));
+	self->invoke = __fn___Closure_1170_35;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1075_35, __var___Block_1016_39) , __var___Block_1016_39) ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1075_35, __var___Block_1013_57) , __var___Block_1013_57) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1170_35, __var___Block_1111_39) , __var___Block_1111_39) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1170_35, __var___Block_1108_57) , __var___Block_1108_57) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1105_26(SuiDesigner$__Closure_1105_26 *  self, int  newcolor){
+static void  __fn___Closure_1200_26(SuiDesigner$__Closure_1200_26 *  self, int  newcolor){
 	URGC_VAR_CLEANUP_CLASS Orc$Integer*  tmpReturn_1 = NULL;
-	self->__var___Block_1090_60->self->setAttr(self->__var___Block_1090_60->self, self->__var___Block_1090_60->mf, Orc$mkInteger(&tmpReturn_1, newcolor) ) ;
+	self->__var___Block_1185_60->self->setAttr(self->__var___Block_1185_60->self, self->__var___Block_1185_60->mf, Orc$mkInteger(&tmpReturn_1, newcolor) ) ;
 }
 
-static void  __fini___Closure_1105_26(SuiDesigner$__Closure_1105_26 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1105_26, __var___Block_1090_60) , NULL) ;
+static void  __fini___Closure_1200_26(SuiDesigner$__Closure_1200_26 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1200_26, __var___Block_1185_60) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1105_26*  __make___Closure_1105_26(SuiDesigner$__Closure_1105_26 **  __outRef__, SuiDesigner$__Block_1090_60 *  __var___Block_1090_60){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1105_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1105_26) , __fini___Closure_1105_26) ));
-	self->invoke = __fn___Closure_1105_26;
+static SuiDesigner$__Closure_1200_26*  __make___Closure_1200_26(SuiDesigner$__Closure_1200_26 **  __outRef__, SuiDesigner$__Block_1185_60 *  __var___Block_1185_60){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1200_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1200_26) , __fini___Closure_1200_26) ));
+	self->invoke = __fn___Closure_1200_26;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1105_26, __var___Block_1090_60) , __var___Block_1090_60) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1200_26, __var___Block_1185_60) , __var___Block_1185_60) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1118_26(SuiDesigner$__Closure_1118_26 *  self, int  newcolor){
+static void  __fn___Closure_1213_26(SuiDesigner$__Closure_1213_26 *  self, int  newcolor){
 	SuiCore$Rgbaf nv = SuiCore$mkRgbafByInt(newcolor) ;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_1111_57->self->setAttr(self->__var___Block_1111_57->self, self->__var___Block_1111_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Rgbaf) , &nv) ) ;
+	self->__var___Block_1206_57->self->setAttr(self->__var___Block_1206_57->self, self->__var___Block_1206_57->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Rgbaf) , &nv) ) ;
 }
 
-static void  __fini___Closure_1118_26(SuiDesigner$__Closure_1118_26 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1118_26, __var___Block_1111_57) , NULL) ;
+static void  __fini___Closure_1213_26(SuiDesigner$__Closure_1213_26 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1213_26, __var___Block_1206_57) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1118_26*  __make___Closure_1118_26(SuiDesigner$__Closure_1118_26 **  __outRef__, SuiDesigner$__Block_1111_57 *  __var___Block_1111_57){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1118_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1118_26) , __fini___Closure_1118_26) ));
-	self->invoke = __fn___Closure_1118_26;
+static SuiDesigner$__Closure_1213_26*  __make___Closure_1213_26(SuiDesigner$__Closure_1213_26 **  __outRef__, SuiDesigner$__Block_1206_57 *  __var___Block_1206_57){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1213_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1213_26) , __fini___Closure_1213_26) ));
+	self->invoke = __fn___Closure_1213_26;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1118_26, __var___Block_1111_57) , __var___Block_1111_57) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1213_26, __var___Block_1206_57) , __var___Block_1206_57) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1132_26(SuiDesigner$__Closure_1132_26 *  self, int  newcolor){
+static void  __fn___Closure_1227_26(SuiDesigner$__Closure_1227_26 *  self, int  newcolor){
 	SuiCore$Rgba nv = SuiCore$mkRgbaByInt(newcolor) ;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_1 = NULL;
-	self->__var___Block_1125_56->self->setAttr(self->__var___Block_1125_56->self, self->__var___Block_1125_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Rgba) , &nv) ) ;
+	self->__var___Block_1220_56->self->setAttr(self->__var___Block_1220_56->self, self->__var___Block_1220_56->mf, Orc$mkStructObj(&tmpReturn_1, metaStructOf(SuiCore$Rgba) , &nv) ) ;
 }
 
-static void  __fini___Closure_1132_26(SuiDesigner$__Closure_1132_26 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1132_26, __var___Block_1125_56) , NULL) ;
+static void  __fini___Closure_1227_26(SuiDesigner$__Closure_1227_26 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1227_26, __var___Block_1220_56) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1132_26*  __make___Closure_1132_26(SuiDesigner$__Closure_1132_26 **  __outRef__, SuiDesigner$__Block_1125_56 *  __var___Block_1125_56){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1132_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1132_26) , __fini___Closure_1132_26) ));
-	self->invoke = __fn___Closure_1132_26;
+static SuiDesigner$__Closure_1227_26*  __make___Closure_1227_26(SuiDesigner$__Closure_1227_26 **  __outRef__, SuiDesigner$__Block_1220_56 *  __var___Block_1220_56){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1227_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1227_26) , __fini___Closure_1227_26) ));
+	self->invoke = __fn___Closure_1227_26;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1132_26, __var___Block_1125_56) , __var___Block_1125_56) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1227_26, __var___Block_1220_56) , __var___Block_1220_56) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1149_26(SuiDesigner$__Closure_1149_26 *  self, SuiDesigner$BezierEditView *  view){
+static void  __fn___Closure_1244_26(SuiDesigner$__Closure_1244_26 *  self, SuiDesigner$BezierEditView *  view){
 	SuiCore$Bezier nv = view->getBezier(view) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 	printf("bezier changed:%s\n", SuiCore$Bezier$toString(&tmpReturn_1, &nv) ->str) ;
 	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  tmpReturn_2 = NULL;
-	self->__var___Block_1139_58->self->setAttr(self->__var___Block_1139_58->self, self->__var___Block_1139_58->mf, Orc$mkStructObj(&tmpReturn_2, metaStructOf(SuiCore$Bezier) , &nv) ) ;
+	self->__var___Block_1234_58->self->setAttr(self->__var___Block_1234_58->self, self->__var___Block_1234_58->mf, Orc$mkStructObj(&tmpReturn_2, metaStructOf(SuiCore$Bezier) , &nv) ) ;
 }
 
-static void  __fini___Closure_1149_26(SuiDesigner$__Closure_1149_26 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1149_26, __var___Block_1139_58) , NULL) ;
+static void  __fini___Closure_1244_26(SuiDesigner$__Closure_1244_26 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1244_26, __var___Block_1234_58) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1149_26*  __make___Closure_1149_26(SuiDesigner$__Closure_1149_26 **  __outRef__, SuiDesigner$__Block_1139_58 *  __var___Block_1139_58){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1149_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1149_26) , __fini___Closure_1149_26) ));
-	self->invoke = __fn___Closure_1149_26;
+static SuiDesigner$__Closure_1244_26*  __make___Closure_1244_26(SuiDesigner$__Closure_1244_26 **  __outRef__, SuiDesigner$__Block_1234_58 *  __var___Block_1234_58){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1244_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1244_26) , __fini___Closure_1244_26) ));
+	self->invoke = __fn___Closure_1244_26;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1149_26, __var___Block_1139_58) , __var___Block_1139_58) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1244_26, __var___Block_1234_58) , __var___Block_1234_58) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1312_26(SuiDesigner$__Closure_1312_26 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o){
+static void  __fn___Closure_1422_26(SuiDesigner$__Closure_1422_26 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o){
 	URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_1 = NULL;
 	{
-		SuiView$DrawButton*  __scopeVar_1313_12 = SuiView$mkDrawButton(&tmpReturn_1, o, 0) , *o = __scopeVar_1313_12;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1313_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$DrawButton*  __scopeVar_1423_12 = SuiView$mkDrawButton(&tmpReturn_1, o, 0) , *o = __scopeVar_1423_12;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1423_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 		urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_2, "前置按钮") ) ;
 	}
 }
 
-static void  __fini___Closure_1312_26(SuiDesigner$__Closure_1312_26 *  self){
+static void  __fini___Closure_1422_26(SuiDesigner$__Closure_1422_26 *  self){
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1312_26*  __make___Closure_1312_26(SuiDesigner$__Closure_1312_26 **  __outRef__){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1312_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1312_26) , __fini___Closure_1312_26) ));
-	self->invoke = __fn___Closure_1312_26;
+static SuiDesigner$__Closure_1422_26*  __make___Closure_1422_26(SuiDesigner$__Closure_1422_26 **  __outRef__){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1422_26*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1422_26) , __fini___Closure_1422_26) ));
+	self->invoke = __fn___Closure_1422_26;
 	self->vtable = orc_Vtable_Closure_init() ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o){
+static void  __fn___Closure_1427_25(SuiDesigner$__Closure_1427_25 *  self, SuiDesigner$Insp *  insp, SuiCore$Node *  o){
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_1 = NULL;
 	{
-		SuiLayout$LayoutLinear*  __scopeVar_1318_12 = SuiLayout$layoutLinear(&tmpReturn_1, o, 0) , *o = __scopeVar_1318_12;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1318_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiLayout$LayoutLinear*  __scopeVar_1428_12 = SuiLayout$layoutLinear(&tmpReturn_1, o, 0) , *o = __scopeVar_1428_12;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1428_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		SuiLayout$LayoutLinear *  tmpThis_1 = NULL;
 		SuiLayout$LayoutLinear *  tmpThis_2 = NULL;
@@ -5223,19 +5896,19 @@ static void  __fn___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self, SuiDe
 		SuiCore$Inset$setVer(&((SuiCore$View * )o)->padding, 6) ;
 		URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_2 = NULL;
 		{
-			SuiView$DrawButton*  __scopeVar_1322_16 = SuiView$mkDrawButton(&tmpReturn_2, o, 0) , *o = __scopeVar_1322_16;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1322_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$DrawButton*  __scopeVar_1432_16 = SuiView$mkDrawButton(&tmpReturn_2, o, 0) , *o = __scopeVar_1432_16;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1432_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->width = 100;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
 			urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, text) , Orc$str(&tmpReturn_3, "提交") ) ;
-			URGC_VAR_CLEANUP SuiDesigner$__Closure_1325_32*  tmpReturn_4 = NULL;
-			urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_1325_32(&tmpReturn_4) ) ;
+			URGC_VAR_CLEANUP SuiDesigner$__Closure_1435_32*  tmpReturn_4 = NULL;
+			urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_1435_32(&tmpReturn_4) ) ;
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_5 = NULL;
 		{
-			SuiView$DrawButton*  __scopeVar_1329_16 = SuiView$mkDrawButton(&tmpReturn_5, o, 0) , *o = __scopeVar_1329_16;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1329_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$DrawButton*  __scopeVar_1439_16 = SuiView$mkDrawButton(&tmpReturn_5, o, 0) , *o = __scopeVar_1439_16;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1439_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->width = 100;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_6 = NULL;
@@ -5243,8 +5916,8 @@ static void  __fn___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self, SuiDe
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_7 = NULL;
 		{
-			SuiView$DrawButton*  __scopeVar_1333_16 = SuiView$mkDrawButton(&tmpReturn_7, o, 0) , *o = __scopeVar_1333_16;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1333_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$DrawButton*  __scopeVar_1443_16 = SuiView$mkDrawButton(&tmpReturn_7, o, 0) , *o = __scopeVar_1443_16;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1443_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->width = 100;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
@@ -5252,8 +5925,8 @@ static void  __fn___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self, SuiDe
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_9 = NULL;
 		{
-			SuiView$DrawButton*  __scopeVar_1337_16 = SuiView$mkDrawButton(&tmpReturn_9, o, 0) , *o = __scopeVar_1337_16;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1337_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$DrawButton*  __scopeVar_1447_16 = SuiView$mkDrawButton(&tmpReturn_9, o, 0) , *o = __scopeVar_1447_16;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1447_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			((SuiCore$View * )o)->width = 100;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_10 = NULL;
@@ -5262,230 +5935,230 @@ static void  __fn___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self, SuiDe
 	}
 }
 
-static void  __fini___Closure_1317_25(SuiDesigner$__Closure_1317_25 *  self){
+static void  __fini___Closure_1427_25(SuiDesigner$__Closure_1427_25 *  self){
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1317_25*  __make___Closure_1317_25(SuiDesigner$__Closure_1317_25 **  __outRef__){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1317_25*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1317_25) , __fini___Closure_1317_25) ));
-	self->invoke = __fn___Closure_1317_25;
+static SuiDesigner$__Closure_1427_25*  __make___Closure_1427_25(SuiDesigner$__Closure_1427_25 **  __outRef__){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1427_25*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1427_25) , __fini___Closure_1427_25) ));
+	self->invoke = __fn___Closure_1427_25;
 	self->vtable = orc_Vtable_Closure_init() ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1325_32(SuiDesigner$__Closure_1325_32 *  self, SuiCore$MouseEvent *  me){
+static void  __fn___Closure_1435_32(SuiDesigner$__Closure_1435_32 *  self, SuiCore$MouseEvent *  me){
 	SuiDialog$Toast_make("提交") ;
 }
 
-static void  __fini___Closure_1325_32(SuiDesigner$__Closure_1325_32 *  self){
+static void  __fini___Closure_1435_32(SuiDesigner$__Closure_1435_32 *  self){
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1325_32*  __make___Closure_1325_32(SuiDesigner$__Closure_1325_32 **  __outRef__){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1325_32*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1325_32) , __fini___Closure_1325_32) ));
-	self->invoke = __fn___Closure_1325_32;
+static SuiDesigner$__Closure_1435_32*  __make___Closure_1435_32(SuiDesigner$__Closure_1435_32 **  __outRef__){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1435_32*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1435_32) , __fini___Closure_1435_32) ));
+	self->invoke = __fn___Closure_1435_32;
 	self->vtable = orc_Vtable_Closure_init() ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1371_31(SuiDesigner$__Closure_1371_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1481_31(SuiDesigner$__Closure_1481_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_1360_68->v.x, nv) ;
-	self->__var___Block_1360_68->v.x = nv;
-	(*(self->__var___Block_1360_68->set))((void * )(self->__var___Block_1360_68->set), self->__var___Block_1360_68->v) ;
+	printf("set x:%f=>%f\n", self->__var___Block_1470_68->v.x, nv) ;
+	self->__var___Block_1470_68->v.x = nv;
+	(*(self->__var___Block_1470_68->set))((void * )(self->__var___Block_1470_68->set), self->__var___Block_1470_68->v) ;
 }
 
-static void  __fini___Closure_1371_31(SuiDesigner$__Closure_1371_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1371_31, __var___Block_1360_68) , NULL) ;
+static void  __fini___Closure_1481_31(SuiDesigner$__Closure_1481_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1481_31, __var___Block_1470_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1371_31*  __make___Closure_1371_31(SuiDesigner$__Closure_1371_31 **  __outRef__, SuiDesigner$__Block_1360_68 *  __var___Block_1360_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1371_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1371_31) , __fini___Closure_1371_31) ));
-	self->invoke = __fn___Closure_1371_31;
+static SuiDesigner$__Closure_1481_31*  __make___Closure_1481_31(SuiDesigner$__Closure_1481_31 **  __outRef__, SuiDesigner$__Block_1470_68 *  __var___Block_1470_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1481_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1481_31) , __fini___Closure_1481_31) ));
+	self->invoke = __fn___Closure_1481_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1371_31, __var___Block_1360_68) , __var___Block_1360_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1481_31, __var___Block_1470_68) , __var___Block_1470_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1389_31(SuiDesigner$__Closure_1389_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1499_31(SuiDesigner$__Closure_1499_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set y:%f=>%f\n", self->__var___Block_1360_68->v.y, nv) ;
-	self->__var___Block_1360_68->v.y = nv;
-	(*(self->__var___Block_1360_68->set))((void * )(self->__var___Block_1360_68->set), self->__var___Block_1360_68->v) ;
+	printf("set y:%f=>%f\n", self->__var___Block_1470_68->v.y, nv) ;
+	self->__var___Block_1470_68->v.y = nv;
+	(*(self->__var___Block_1470_68->set))((void * )(self->__var___Block_1470_68->set), self->__var___Block_1470_68->v) ;
 }
 
-static void  __fini___Closure_1389_31(SuiDesigner$__Closure_1389_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1389_31, __var___Block_1360_68) , NULL) ;
+static void  __fini___Closure_1499_31(SuiDesigner$__Closure_1499_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1499_31, __var___Block_1470_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1389_31*  __make___Closure_1389_31(SuiDesigner$__Closure_1389_31 **  __outRef__, SuiDesigner$__Block_1360_68 *  __var___Block_1360_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1389_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1389_31) , __fini___Closure_1389_31) ));
-	self->invoke = __fn___Closure_1389_31;
+static SuiDesigner$__Closure_1499_31*  __make___Closure_1499_31(SuiDesigner$__Closure_1499_31 **  __outRef__, SuiDesigner$__Block_1470_68 *  __var___Block_1470_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1499_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1499_31) , __fini___Closure_1499_31) ));
+	self->invoke = __fn___Closure_1499_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1389_31, __var___Block_1360_68) , __var___Block_1360_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1499_31, __var___Block_1470_68) , __var___Block_1470_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1414_31(SuiDesigner$__Closure_1414_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1524_31(SuiDesigner$__Closure_1524_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_1403_68->v.x, nv) ;
-	self->__var___Block_1403_68->v.x = nv;
-	(*(self->__var___Block_1403_68->set))((void * )(self->__var___Block_1403_68->set), self->__var___Block_1403_68->v) ;
+	printf("set x:%f=>%f\n", self->__var___Block_1513_68->v.x, nv) ;
+	self->__var___Block_1513_68->v.x = nv;
+	(*(self->__var___Block_1513_68->set))((void * )(self->__var___Block_1513_68->set), self->__var___Block_1513_68->v) ;
 }
 
-static void  __fini___Closure_1414_31(SuiDesigner$__Closure_1414_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1414_31, __var___Block_1403_68) , NULL) ;
+static void  __fini___Closure_1524_31(SuiDesigner$__Closure_1524_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1524_31, __var___Block_1513_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1414_31*  __make___Closure_1414_31(SuiDesigner$__Closure_1414_31 **  __outRef__, SuiDesigner$__Block_1403_68 *  __var___Block_1403_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1414_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1414_31) , __fini___Closure_1414_31) ));
-	self->invoke = __fn___Closure_1414_31;
+static SuiDesigner$__Closure_1524_31*  __make___Closure_1524_31(SuiDesigner$__Closure_1524_31 **  __outRef__, SuiDesigner$__Block_1513_68 *  __var___Block_1513_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1524_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1524_31) , __fini___Closure_1524_31) ));
+	self->invoke = __fn___Closure_1524_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1414_31, __var___Block_1403_68) , __var___Block_1403_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1524_31, __var___Block_1513_68) , __var___Block_1513_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1432_31(SuiDesigner$__Closure_1432_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1542_31(SuiDesigner$__Closure_1542_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set y:%f=>%f\n", self->__var___Block_1403_68->v.y, nv) ;
-	self->__var___Block_1403_68->v.y = nv;
-	(*(self->__var___Block_1403_68->set))((void * )(self->__var___Block_1403_68->set), self->__var___Block_1403_68->v) ;
+	printf("set y:%f=>%f\n", self->__var___Block_1513_68->v.y, nv) ;
+	self->__var___Block_1513_68->v.y = nv;
+	(*(self->__var___Block_1513_68->set))((void * )(self->__var___Block_1513_68->set), self->__var___Block_1513_68->v) ;
 }
 
-static void  __fini___Closure_1432_31(SuiDesigner$__Closure_1432_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1432_31, __var___Block_1403_68) , NULL) ;
+static void  __fini___Closure_1542_31(SuiDesigner$__Closure_1542_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1542_31, __var___Block_1513_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1432_31*  __make___Closure_1432_31(SuiDesigner$__Closure_1432_31 **  __outRef__, SuiDesigner$__Block_1403_68 *  __var___Block_1403_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1432_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1432_31) , __fini___Closure_1432_31) ));
-	self->invoke = __fn___Closure_1432_31;
+static SuiDesigner$__Closure_1542_31*  __make___Closure_1542_31(SuiDesigner$__Closure_1542_31 **  __outRef__, SuiDesigner$__Block_1513_68 *  __var___Block_1513_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1542_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1542_31) , __fini___Closure_1542_31) ));
+	self->invoke = __fn___Closure_1542_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1432_31, __var___Block_1403_68) , __var___Block_1403_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1542_31, __var___Block_1513_68) , __var___Block_1513_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1449_31(SuiDesigner$__Closure_1449_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1559_31(SuiDesigner$__Closure_1559_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_1403_68->v.z, nv) ;
-	self->__var___Block_1403_68->v.z = nv;
-	(*(self->__var___Block_1403_68->set))((void * )(self->__var___Block_1403_68->set), self->__var___Block_1403_68->v) ;
+	printf("set x:%f=>%f\n", self->__var___Block_1513_68->v.z, nv) ;
+	self->__var___Block_1513_68->v.z = nv;
+	(*(self->__var___Block_1513_68->set))((void * )(self->__var___Block_1513_68->set), self->__var___Block_1513_68->v) ;
 }
 
-static void  __fini___Closure_1449_31(SuiDesigner$__Closure_1449_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1449_31, __var___Block_1403_68) , NULL) ;
+static void  __fini___Closure_1559_31(SuiDesigner$__Closure_1559_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1559_31, __var___Block_1513_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1449_31*  __make___Closure_1449_31(SuiDesigner$__Closure_1449_31 **  __outRef__, SuiDesigner$__Block_1403_68 *  __var___Block_1403_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1449_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1449_31) , __fini___Closure_1449_31) ));
-	self->invoke = __fn___Closure_1449_31;
+static SuiDesigner$__Closure_1559_31*  __make___Closure_1559_31(SuiDesigner$__Closure_1559_31 **  __outRef__, SuiDesigner$__Block_1513_68 *  __var___Block_1513_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1559_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1559_31) , __fini___Closure_1559_31) ));
+	self->invoke = __fn___Closure_1559_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1449_31, __var___Block_1403_68) , __var___Block_1403_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1559_31, __var___Block_1513_68) , __var___Block_1513_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1472_31(SuiDesigner$__Closure_1472_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1582_31(SuiDesigner$__Closure_1582_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_1461_68->v.x, nv) ;
-	self->__var___Block_1461_68->v.x = nv;
-	(*(self->__var___Block_1461_68->set))((void * )(self->__var___Block_1461_68->set), self->__var___Block_1461_68->v) ;
+	printf("set x:%f=>%f\n", self->__var___Block_1571_68->v.x, nv) ;
+	self->__var___Block_1571_68->v.x = nv;
+	(*(self->__var___Block_1571_68->set))((void * )(self->__var___Block_1571_68->set), self->__var___Block_1571_68->v) ;
 }
 
-static void  __fini___Closure_1472_31(SuiDesigner$__Closure_1472_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1472_31, __var___Block_1461_68) , NULL) ;
+static void  __fini___Closure_1582_31(SuiDesigner$__Closure_1582_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1582_31, __var___Block_1571_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1472_31*  __make___Closure_1472_31(SuiDesigner$__Closure_1472_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1472_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1472_31) , __fini___Closure_1472_31) ));
-	self->invoke = __fn___Closure_1472_31;
+static SuiDesigner$__Closure_1582_31*  __make___Closure_1582_31(SuiDesigner$__Closure_1582_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1582_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1582_31) , __fini___Closure_1582_31) ));
+	self->invoke = __fn___Closure_1582_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1472_31, __var___Block_1461_68) , __var___Block_1461_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1582_31, __var___Block_1571_68) , __var___Block_1571_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1490_31(SuiDesigner$__Closure_1490_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1600_31(SuiDesigner$__Closure_1600_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set y:%f=>%f\n", self->__var___Block_1461_68->v.y, nv) ;
-	self->__var___Block_1461_68->v.y = nv;
-	(*(self->__var___Block_1461_68->set))((void * )(self->__var___Block_1461_68->set), self->__var___Block_1461_68->v) ;
+	printf("set y:%f=>%f\n", self->__var___Block_1571_68->v.y, nv) ;
+	self->__var___Block_1571_68->v.y = nv;
+	(*(self->__var___Block_1571_68->set))((void * )(self->__var___Block_1571_68->set), self->__var___Block_1571_68->v) ;
 }
 
-static void  __fini___Closure_1490_31(SuiDesigner$__Closure_1490_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1490_31, __var___Block_1461_68) , NULL) ;
+static void  __fini___Closure_1600_31(SuiDesigner$__Closure_1600_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1600_31, __var___Block_1571_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1490_31*  __make___Closure_1490_31(SuiDesigner$__Closure_1490_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1490_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1490_31) , __fini___Closure_1490_31) ));
-	self->invoke = __fn___Closure_1490_31;
+static SuiDesigner$__Closure_1600_31*  __make___Closure_1600_31(SuiDesigner$__Closure_1600_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1600_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1600_31) , __fini___Closure_1600_31) ));
+	self->invoke = __fn___Closure_1600_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1490_31, __var___Block_1461_68) , __var___Block_1461_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1600_31, __var___Block_1571_68) , __var___Block_1571_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1507_31(SuiDesigner$__Closure_1507_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1617_31(SuiDesigner$__Closure_1617_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set x:%f=>%f\n", self->__var___Block_1461_68->v.z, nv) ;
-	self->__var___Block_1461_68->v.z = nv;
-	(*(self->__var___Block_1461_68->set))((void * )(self->__var___Block_1461_68->set), self->__var___Block_1461_68->v) ;
+	printf("set x:%f=>%f\n", self->__var___Block_1571_68->v.z, nv) ;
+	self->__var___Block_1571_68->v.z = nv;
+	(*(self->__var___Block_1571_68->set))((void * )(self->__var___Block_1571_68->set), self->__var___Block_1571_68->v) ;
 }
 
-static void  __fini___Closure_1507_31(SuiDesigner$__Closure_1507_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1507_31, __var___Block_1461_68) , NULL) ;
+static void  __fini___Closure_1617_31(SuiDesigner$__Closure_1617_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1617_31, __var___Block_1571_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1507_31*  __make___Closure_1507_31(SuiDesigner$__Closure_1507_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1507_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1507_31) , __fini___Closure_1507_31) ));
-	self->invoke = __fn___Closure_1507_31;
+static SuiDesigner$__Closure_1617_31*  __make___Closure_1617_31(SuiDesigner$__Closure_1617_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1617_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1617_31) , __fini___Closure_1617_31) ));
+	self->invoke = __fn___Closure_1617_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1507_31, __var___Block_1461_68) , __var___Block_1461_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1617_31, __var___Block_1571_68) , __var___Block_1571_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1522_31(SuiDesigner$__Closure_1522_31 *  self, SuiView$EditText *  et){
+static void  __fn___Closure_1632_31(SuiDesigner$__Closure_1632_31 *  self, SuiView$EditText *  et){
 	double  nv = atof(et->value->str) ;
-	printf("set w:%f=>%f\n", self->__var___Block_1461_68->v.x, nv) ;
-	self->__var___Block_1461_68->v.w = nv;
-	(*(self->__var___Block_1461_68->set))((void * )(self->__var___Block_1461_68->set), self->__var___Block_1461_68->v) ;
+	printf("set w:%f=>%f\n", self->__var___Block_1571_68->v.x, nv) ;
+	self->__var___Block_1571_68->v.w = nv;
+	(*(self->__var___Block_1571_68->set))((void * )(self->__var___Block_1571_68->set), self->__var___Block_1571_68->v) ;
 }
 
-static void  __fini___Closure_1522_31(SuiDesigner$__Closure_1522_31 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1522_31, __var___Block_1461_68) , NULL) ;
+static void  __fini___Closure_1632_31(SuiDesigner$__Closure_1632_31 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1632_31, __var___Block_1571_68) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1522_31*  __make___Closure_1522_31(SuiDesigner$__Closure_1522_31 **  __outRef__, SuiDesigner$__Block_1461_68 *  __var___Block_1461_68){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1522_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1522_31) , __fini___Closure_1522_31) ));
-	self->invoke = __fn___Closure_1522_31;
+static SuiDesigner$__Closure_1632_31*  __make___Closure_1632_31(SuiDesigner$__Closure_1632_31 **  __outRef__, SuiDesigner$__Block_1571_68 *  __var___Block_1571_68){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1632_31*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1632_31) , __fini___Closure_1632_31) ));
+	self->invoke = __fn___Closure_1632_31;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1522_31, __var___Block_1461_68) , __var___Block_1461_68) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1632_31, __var___Block_1571_68) , __var___Block_1571_68) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_1564_38(SuiDesigner$__Closure_1564_38 *  self, SuiCore$Event *  e){
+static void  __fn___Closure_1674_38(SuiDesigner$__Closure_1674_38 *  self, SuiCore$Event *  e){
 	printf("收到事件:%s\n", orc_getVtableByObject(e) ->className) ;
-	printf("TestObj:%d %s. value:%f, isMale:%d\n", self->__var___Block_1546_31->obj->age, self->__var___Block_1546_31->obj->name->str, self->__var___Block_1546_31->obj->value, self->__var___Block_1546_31->obj->isMale) ;
-	printf("pos:%f,%f\n", self->__var___Block_1546_31->obj->pos.x, self->__var___Block_1546_31->obj->pos.y) ;
-	printf("rotation:%f,%f,%f\n", self->__var___Block_1546_31->obj->rotation.x, self->__var___Block_1546_31->obj->rotation.y, self->__var___Block_1546_31->obj->rotation.z) ;
-	printf("quat:%f,%f,%f,%f\n", self->__var___Block_1546_31->obj->quat.x, self->__var___Block_1546_31->obj->quat.y, self->__var___Block_1546_31->obj->quat.z, self->__var___Block_1546_31->obj->quat.w) ;
+	printf("TestObj:%d %s. value:%f, isMale:%d\n", self->__var___Block_1656_31->obj->age, self->__var___Block_1656_31->obj->name->str, self->__var___Block_1656_31->obj->value, self->__var___Block_1656_31->obj->isMale) ;
+	printf("pos:%f,%f\n", self->__var___Block_1656_31->obj->pos.x, self->__var___Block_1656_31->obj->pos.y) ;
+	printf("rotation:%f,%f,%f\n", self->__var___Block_1656_31->obj->rotation.x, self->__var___Block_1656_31->obj->rotation.y, self->__var___Block_1656_31->obj->rotation.z) ;
+	printf("quat:%f,%f,%f,%f\n", self->__var___Block_1656_31->obj->quat.x, self->__var___Block_1656_31->obj->quat.y, self->__var___Block_1656_31->obj->quat.z, self->__var___Block_1656_31->obj->quat.w) ;
 }
 
-static void  __fini___Closure_1564_38(SuiDesigner$__Closure_1564_38 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1564_38, __var___Block_1546_31) , NULL) ;
+static void  __fini___Closure_1674_38(SuiDesigner$__Closure_1674_38 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1674_38, __var___Block_1656_31) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_1564_38*  __make___Closure_1564_38(SuiDesigner$__Closure_1564_38 **  __outRef__, SuiDesigner$__Block_1546_31 *  __var___Block_1546_31){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_1564_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1564_38) , __fini___Closure_1564_38) ));
-	self->invoke = __fn___Closure_1564_38;
+static SuiDesigner$__Closure_1674_38*  __make___Closure_1674_38(SuiDesigner$__Closure_1674_38 **  __outRef__, SuiDesigner$__Block_1656_31 *  __var___Block_1656_31){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_1674_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_1674_38) , __fini___Closure_1674_38) ));
+	self->invoke = __fn___Closure_1674_38;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1564_38, __var___Block_1546_31) , __var___Block_1546_31) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_1674_38, __var___Block_1656_31) , __var___Block_1656_31) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

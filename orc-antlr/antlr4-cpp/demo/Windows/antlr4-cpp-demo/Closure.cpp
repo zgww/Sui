@@ -38,10 +38,22 @@ void CaptureBlockInfo::addCaptureVarInfos_once(std::shared_ptr<CaptureVarInfo> i
 std::string CaptureBlockInfo::goc_blockClassName()
 {
 	if (blockClassName.empty()) {
+		auto start = blockCtx->getStart(); 
+		if (start == nullptr) { //向for循环，如果有捕获 for中的变量，可能会产生新的block,新的block没有start
+			antlr4::tree::ParseTree* cur = blockCtx;
+			while (start == nullptr) {
+				auto parent = dynamic_cast<OrcRuleContext*>(cur->parent);
+				start = parent->getStart();
+				if (start != nullptr) {
+					break;
+				}
+				cur = parent;
+			}
+		}
 		blockClassName = std::format(
 			"__Block_{}_{}",
-			blockCtx->getStart()->getLine(),
-			blockCtx->getStart()->getCharPositionInLine()
+			start->getLine(),
+			start->getCharPositionInLine()
 		);
 	}
 	return blockClassName;

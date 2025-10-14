@@ -56,6 +56,7 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 #include "./Vbo_orc.h"
 #include "./Geometry_orc.h"
 #include "./Material_orc.h"
+#include "../SuiDesigner/Insp_orc.h"
 
 
 #ifdef __cplusplus
@@ -126,6 +127,8 @@ struct tagSgl$ModelLoader {
 	Sgl$Buffer*  faces ;
 	Orc$String*  path ;
 	Sgl$Obj3d*  modelRoot ;
+	Orc$List*  materialPaths ;
+	void  (*insp) (Sgl$ModelLoader *  self, SuiDesigner$Insp*  insp);
 	void  (*setPath) (Sgl$ModelLoader *  self, Orc$String*  path);
 	void  (*_load) (Sgl$ModelLoader *  self);
 	Sgl$Geometry*  (*buildGeometry) (Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);
@@ -136,6 +139,8 @@ void Sgl$ModelLoader_init(Sgl$ModelLoader *self, void *pOwner);
 Sgl$ModelLoader * Sgl$ModelLoader_new(void *pOwner);
 void Sgl$ModelLoader_fini(Sgl$ModelLoader *self);
 
+void  Sgl$ModelLoader$insp(Sgl$ModelLoader *  self, SuiDesigner$Insp*  insp);
+void  Sgl$ModelLoader$ctor(Sgl$ModelLoader *  self);
 void  Sgl$ModelLoader$setPath(Sgl$ModelLoader *  self, Orc$String*  path);
 extern void  Sgl$ModelLoader$_load(Sgl$ModelLoader *  self);
 Sgl$Geometry*  Sgl$ModelLoader$buildGeometry(Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);

@@ -258,7 +258,7 @@ class InspAttr{
 }
 class InspAttrColor extends InspAttr{
     void inspValue(Node*o, Object *obj, OrcMetaField *mf, Insp* insp){
-        mkColorPicker(o, 0).{
+        mkColorPicker(o, (long long)mf).{
             int* pColor = OrcMetaField_getIntPtr(mf, obj)
 
             o.backgroundColor = *pColor;
@@ -339,7 +339,7 @@ class InspAttrSelect extends InspAttr{
     InspOpts@ opts = new InspOpts()
 
     void inspValue(Node*o, Object *obj, OrcMetaField *mf, Insp* insp){
-        mkSelect(o,0).{
+        mkSelect(o, (long long)mf).{
             o.options = self.opts.getLabels()
             o.onChanged = ^void(int i, String@ label){
                 // Toast_make(str("on select:").addString(label).str)
@@ -351,6 +351,94 @@ class InspAttrSelect extends InspAttr{
     }
 }
 
+//数组型的insp
+class InspAttrList extends InspAttr{
+
+    void inspValue(Node*o, Object *obj, OrcMetaField *mf, Insp* insp){
+        layoutLinear(o, (long long)mf).{
+            o.column().aiStretch()
+            List* list = *((List**)OrcMetaField_getPtr(mf, obj))
+            mkDrawButton(o, (long long)mf).{
+                char tmp[100];
+                sprintf(tmp, "size:%d +", list == null ? 0 : list.size())
+                o.text = str(tmp)
+                o.onClick = ^void(MouseEvent*me){
+                    list.add(null)
+                    // insp.emitEventInspAttrChanged(self, mf, obj, list)
+                    insp.emitChanged()
+                }
+            }
+            if list != null {
+                for int i = 0; i < list.size(); i++ {
+                    int idx = i
+                    Object* obj = list.get(i)
+                    layoutLinear(o, 10000 + i).{
+                        mkDrawButton(o, 0).{
+                            o.text = str("-")
+                            o.onClick = ^void(MouseEvent*me){
+                                list.removeAt(idx)
+                                insp.emitChanged()
+                            }
+                        }
+                        mkDrawButton(o, 0).{
+                            o.text = str("obj:").add(Object_getClassName(obj)).addPtr(obj)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//数组型的insp
+class InspAttrMaterialList extends InspAttr{
+
+    void inspValue(Node*o, Object *obj, OrcMetaField *mf, Insp* insp){
+        layoutLinear(o, (long long)mf).{
+            o.column().aiStretch()
+            List* list = *((List**)OrcMetaField_getPtr(mf, obj))
+            mkDrawButton(o, (long long)mf).{
+                char tmp[100];
+                sprintf(tmp, "size:%d +", list == null ? 0 : list.size())
+                o.text = str(tmp)
+                o.onClick = ^void(MouseEvent*me){
+                    list.add(null)
+                    // insp.emitEventInspAttrChanged(self, mf, obj, list)
+                    insp.emitChanged()
+                }
+            }
+            if list != null {
+                for int i = 0; i < list.size(); i++ {
+                    int idx = i
+                    String* path = (String*)list.get(i)
+                    layoutLinear(o, 10000 + i).{
+                        mkDrawButton(o, 0).{
+                            o.text = str("-")
+                            o.onClick = ^void(MouseEvent*me){
+                                list.removeAt(idx)
+                                insp.emitChanged()
+                            }
+                        }
+                        mkDrawButton(o, 0).{
+                            o.text = path == null ? str("null"): path
+                            o.onClick = ^void(MouseEvent*me){
+                                FileChooser@ fc = new FileChooser()
+                                fc.dir.set("./")
+                                // fc.use_filterImage()
+                                fc.loadPaths()
+                                fc.onChoose = ^ void(String@ newpath){
+                                    list.set(idx, newpath)
+                                    insp.emitChanged()
+                                    // insp.setAttr(mf, newpath)
+                                }
+                                fc.showWindow()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 //将要检视的属性等信息收集起来，再统一渲染
 class InspNode extends Node{
@@ -518,9 +606,17 @@ class Insp {
             //函数可以被组织成按钮
             InspAttr* attr = self.getAttr(mf.name)
 
-            if attr && attr._ignore { 
-                mf = OrcMetaField_getNext(mf)
-                continue 
+            if attr {
+                if attr._ignore { //忽略
+                    mf = OrcMetaField_getNext(mf)
+                    continue 
+                }
+            }
+            else { //未配置attr, 则走默认的判断，是否忽略
+                if self.isSkipAttr(obj, mf) { 
+                    mf = OrcMetaField_getNext(mf)
+                    continue 
+                }
             }
 
             tmp.proc(mf, attr, self)
@@ -574,11 +670,10 @@ class Insp {
         }
     }
     void inspField(Object *obj, OrcMetaField *mf){
-        if self.isSkipAttr(obj, mf) { return }
+        InspAttr* attr = self.getAttr(mf.name)
 
         // String@ curKeyPath = str(keyPath.str).add(".").add(mf.name)
 
-        InspAttr* attr = self.getAttr(mf.name)
 
         Node *o = self.peekParent()
 
@@ -1192,13 +1287,28 @@ class Insp {
         }
 
 
+        // EventInspAttrChanged@ evt = new EventInspAttrChanged()
+        // // evt.key = str(mf.name)
+        // evt.inspAttr = attr
+        // evt.mf = mf
+        // evt.obj = self.obj
+        // evt.newValue = inspValue
+        // useEbus().emit(evt)
+        self.emitEventInspAttrChanged(attr, mf, self.obj, inspValue)
+    }
+    void emitChanged(){
+        EventANodeAttrChanged@ e = new EventANodeAttrChanged()
+        useEbus().emit(e)
+    }
+    void emitEventInspAttrChanged(InspAttr* attr, OrcMetaField *mf, Object* obj, Object* inspValue){
         EventInspAttrChanged@ evt = new EventInspAttrChanged()
         // evt.key = str(mf.name)
         evt.inspAttr = attr
         evt.mf = mf
-        evt.obj = self.obj
+        evt.obj = obj
         evt.newValue = inspValue
         useEbus().emit(evt)
+
     }
 
     // void buildInspItemTree(Object *obj){

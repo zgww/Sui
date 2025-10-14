@@ -17,6 +17,10 @@ typedef struct tagSuiDesigner$InspAttrFilePath SuiDesigner$InspAttrFilePath;
 typedef struct tagVtable_SuiDesigner$InspAttrFilePath Vtable_SuiDesigner$InspAttrFilePath;
 typedef struct tagSuiDesigner$InspAttrSelect SuiDesigner$InspAttrSelect;
 typedef struct tagVtable_SuiDesigner$InspAttrSelect Vtable_SuiDesigner$InspAttrSelect;
+typedef struct tagSuiDesigner$InspAttrList SuiDesigner$InspAttrList;
+typedef struct tagVtable_SuiDesigner$InspAttrList Vtable_SuiDesigner$InspAttrList;
+typedef struct tagSuiDesigner$InspAttrMaterialList SuiDesigner$InspAttrMaterialList;
+typedef struct tagVtable_SuiDesigner$InspAttrMaterialList Vtable_SuiDesigner$InspAttrMaterialList;
 typedef struct tagSuiDesigner$InspNode SuiDesigner$InspNode;
 typedef struct tagVtable_SuiDesigner$InspNode Vtable_SuiDesigner$InspNode;
 typedef struct tagSuiDesigner$InspAttrItem SuiDesigner$InspAttrItem;
@@ -340,6 +344,48 @@ void  SuiDesigner$InspAttrSelect$inspValue(SuiDesigner$InspAttrSelect *  self, S
 
 
 // 虚表
+struct tagVtable_SuiDesigner$InspAttrList {
+	Vtable_SuiDesigner$InspAttr super;
+};
+//虚表实例
+extern Vtable_SuiDesigner$InspAttrList _vtable_SuiDesigner$InspAttrList;
+
+// class refc:0
+struct tagSuiDesigner$InspAttrList {
+	SuiDesigner$InspAttr super; 
+	
+};
+Vtable_SuiDesigner$InspAttrList* Vtable_SuiDesigner$InspAttrList_init(Vtable_SuiDesigner$InspAttrList* pvt);
+void SuiDesigner$InspAttrList_init_fields(SuiDesigner$InspAttrList *self);
+void SuiDesigner$InspAttrList_init(SuiDesigner$InspAttrList *self, void *pOwner);
+SuiDesigner$InspAttrList * SuiDesigner$InspAttrList_new(void *pOwner);
+void SuiDesigner$InspAttrList_fini(SuiDesigner$InspAttrList *self);
+
+void  SuiDesigner$InspAttrList$inspValue(SuiDesigner$InspAttrList *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf, SuiDesigner$Insp *  insp);
+
+
+// 虚表
+struct tagVtable_SuiDesigner$InspAttrMaterialList {
+	Vtable_SuiDesigner$InspAttr super;
+};
+//虚表实例
+extern Vtable_SuiDesigner$InspAttrMaterialList _vtable_SuiDesigner$InspAttrMaterialList;
+
+// class refc:0
+struct tagSuiDesigner$InspAttrMaterialList {
+	SuiDesigner$InspAttr super; 
+	
+};
+Vtable_SuiDesigner$InspAttrMaterialList* Vtable_SuiDesigner$InspAttrMaterialList_init(Vtable_SuiDesigner$InspAttrMaterialList* pvt);
+void SuiDesigner$InspAttrMaterialList_init_fields(SuiDesigner$InspAttrMaterialList *self);
+void SuiDesigner$InspAttrMaterialList_init(SuiDesigner$InspAttrMaterialList *self, void *pOwner);
+SuiDesigner$InspAttrMaterialList * SuiDesigner$InspAttrMaterialList_new(void *pOwner);
+void SuiDesigner$InspAttrMaterialList_fini(SuiDesigner$InspAttrMaterialList *self);
+
+void  SuiDesigner$InspAttrMaterialList$inspValue(SuiDesigner$InspAttrMaterialList *  self, SuiCore$Node *  o, Object *  obj, OrcMetaField *  mf, SuiDesigner$Insp *  insp);
+
+
+// 虚表
 struct tagVtable_SuiDesigner$InspNode {
 	Vtable_SuiCore$Node super;
 };
@@ -447,6 +493,8 @@ struct tagSuiDesigner$Insp {
 	void  (**cbSetAttr)(void *  self, Object *  obj, OrcMetaField *  mf, Object *  inspValue);
 	void  (*setAttrDefault) (SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
 	void  (*setAttr) (SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
+	void  (*emitChanged) (SuiDesigner$Insp *  self);
+	void  (*emitEventInspAttrChanged) (SuiDesigner$Insp *  self, SuiDesigner$InspAttr *  attr, OrcMetaField *  mf, Object *  obj, Object *  inspValue);
 };
 Vtable_SuiDesigner$Insp* Vtable_SuiDesigner$Insp_init(Vtable_SuiDesigner$Insp* pvt);
 void SuiDesigner$Insp_init_fields(SuiDesigner$Insp *self);
@@ -483,6 +531,8 @@ bool  SuiDesigner$Insp$inspBezier(SuiDesigner$Insp *  self, SuiCore$Node *  o, O
 void  SuiDesigner$Insp$mkFieldName(SuiDesigner$Insp *  self, SuiCore$Node *  o, const char *  name);
 void  SuiDesigner$Insp$setAttrDefault(SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
 void  SuiDesigner$Insp$setAttr(SuiDesigner$Insp *  self, OrcMetaField *  mf, Object *  inspValue);
+void  SuiDesigner$Insp$emitChanged(SuiDesigner$Insp *  self);
+void  SuiDesigner$Insp$emitEventInspAttrChanged(SuiDesigner$Insp *  self, SuiDesigner$InspAttr *  attr, OrcMetaField *  mf, Object *  obj, Object *  inspValue);
 
 
 // 虚表

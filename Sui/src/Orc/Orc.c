@@ -99,6 +99,9 @@ Vtable_Object* Vtable_Object_init(Vtable_Object* pvt) {
 
 const char* Object_getClassName(Object* self)
 {
+    if (self == NULL){
+        return "Object";
+    }
     return self->vtable->className;
 }
 
