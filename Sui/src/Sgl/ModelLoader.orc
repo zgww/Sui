@@ -780,7 +780,6 @@ class ModelLoader extends Obj3d {
             // o.load("../asset/basic.matl.json")
             self.materialPaths.add(str("../asset/basic.matl.json"))
         // }
-
     }
 
     void setPath(String@ path){

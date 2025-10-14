@@ -402,8 +402,10 @@ class InspAttrMaterialList extends InspAttr{
                 o.text = str(tmp)
                 o.onClick = ^void(MouseEvent*me){
                     list.add(null)
+
+                    insp.setAttr(mf, list)
                     // insp.emitEventInspAttrChanged(self, mf, obj, list)
-                    insp.emitChanged()
+                    // insp.emitChanged()
                 }
             }
             if list != null {
@@ -415,7 +417,8 @@ class InspAttrMaterialList extends InspAttr{
                             o.text = str("-")
                             o.onClick = ^void(MouseEvent*me){
                                 list.removeAt(idx)
-                                insp.emitChanged()
+                                // insp.emitChanged()
+                                insp.setAttr(mf, list)
                             }
                         }
                         mkDrawButton(o, 0).{
@@ -427,7 +430,8 @@ class InspAttrMaterialList extends InspAttr{
                                 fc.loadPaths()
                                 fc.onChoose = ^ void(String@ newpath){
                                     list.set(idx, newpath)
-                                    insp.emitChanged()
+                                    // insp.emitChanged()
+                                    insp.setAttr(mf, list)
                                     // insp.setAttr(mf, newpath)
                                 }
                                 fc.showWindow()
@@ -1294,6 +1298,7 @@ class Insp {
         // evt.obj = self.obj
         // evt.newValue = inspValue
         // useEbus().emit(evt)
+        self.emitChanged()
         self.emitEventInspAttrChanged(attr, mf, self.obj, inspValue)
     }
     void emitChanged(){
