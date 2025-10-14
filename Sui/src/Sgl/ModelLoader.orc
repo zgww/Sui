@@ -129,7 +129,7 @@ class AssimpLoader {
                 Geometry* geom = (Geometry*)self.geometries.get(idx)
                 mesh.geometry = geom
                 new Material()~{
-                    o.load("../asset/basic.matl.json")
+                    o.load("../asset/basicSolid.matl.json")
                     mesh.material = o
                 }
             }

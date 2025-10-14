@@ -280,7 +280,7 @@ Sgl$Obj3d*  Sgl$AssimpLoader$buildNode(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoade
 				Sgl$Material*  o = Sgl$Material_new(&tmpNewOwner_2) ;
 				
 			
-				o->load(o, "../asset/basic.matl.json") ;
+				o->load(o, "../asset/basicSolid.matl.json") ;
 				urgc_set_field_class(mesh, (void * )offsetof(Sgl$Mesh, material) , o) ;
 			}
 		}

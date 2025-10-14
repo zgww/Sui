@@ -755,11 +755,11 @@ class HoroEditor extends Listener{
 
         Window@ win = new Window();
 
-        // if 1 {//加载模型
-        //     test_AssimpLoader()
-        //     win.close()
-        //     return;
-        // }
+        if 1 {//加载模型
+            test_AssimpLoader()
+            win.close()
+            return;
+        }
 
         // if 1 {//材质球生成
         //     testHoroMaterialIconCreator()
