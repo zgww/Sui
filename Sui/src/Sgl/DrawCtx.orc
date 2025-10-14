@@ -62,7 +62,7 @@ class DrawCtx {
     void drawLineGeometry(){
         self.lineGeometry.draw(self.lineMatl)
     }
-    void drawAxis(){
+    void mkAxis(){
         {
             //绘制坐标轴
             self.lineGeometry.{

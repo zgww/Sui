@@ -37,7 +37,7 @@ void Sgl$GeometryTorus_initMeta(Vtable_Sgl$GeometryTorus *pvt){
 	orc_metaField_primitive(&pNext, "tubularSegments", OrcMetaType_float, offsetof(Sgl$GeometryTorus, tubularSegments), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "arc", OrcMetaType_float, offsetof(Sgl$GeometryTorus, arc), 0, 0, 0, 0);//float
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryTorus, build));
+	
 }
 
 
@@ -96,7 +96,7 @@ void Sgl$GeometryTorus_init_fields(Sgl$GeometryTorus *self){
 	((Sgl$GeometryTorus*)self)->tubularSegments = 48;
 	((Sgl$GeometryTorus*)self)->arc = Orc$PI * 2;
     }
-	((Sgl$GeometryTorus*)self)->build = (void*)Sgl$GeometryTorus$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryTorus$build;
 }
 
 // init function

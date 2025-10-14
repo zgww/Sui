@@ -34,6 +34,7 @@ import * from "../Sgl/GeometryLine.orc"
 import * from "../Sgl/GeometrySphere.orc"
 import * from "../Sgl/Material.orc"
 import * from "../Sgl/PerspectiveCamera.orc"
+import * from "../Sgl/DrawCtx.orc"
 import * from "./SglEditCtx.orc"
 import * from "./SglGizmo.orc"
 import * from "./ANode.orc"
@@ -298,10 +299,9 @@ class ToolMgr {
     Scene@ scene
     Camera@ camera
     SglEditCtx@ editCtx 
+    DrawCtx@ drawCtx;
 
     HoroEditor@ editor
-
-
 
     void setTool(ToolBase* tool){
         if self.tool == tool{
@@ -333,6 +333,10 @@ class ToolMgr {
 
     void _reactGizmosForNode(Node* n){
         Node* o = self.gizmosView
+        //防止当前绘制用的camera的示意图标闪烁
+        if self.drawCtx && n == self.drawCtx.camera {
+            return;
+        }
         if n instanceof Obj3d {
             Obj3d* obj3d = (Obj3d*)n
             if n instanceof Light {

@@ -55,7 +55,7 @@ void Sgl$DrawCtx_initMeta(Vtable_Sgl$DrawCtx *pvt){
 
 	orc_metaField_method(&pNext, "addTransparentObj3dIfIsTransparent", offsetof(Sgl$DrawCtx, addTransparentObj3dIfIsTransparent));
 	orc_metaField_method(&pNext, "drawLineGeometry", offsetof(Sgl$DrawCtx, drawLineGeometry));
-	orc_metaField_method(&pNext, "drawAxis", offsetof(Sgl$DrawCtx, drawAxis));
+	orc_metaField_method(&pNext, "mkAxis", offsetof(Sgl$DrawCtx, mkAxis));
 	orc_metaField_method(&pNext, "collectLights", offsetof(Sgl$DrawCtx, collectLights));
 	orc_metaField_method(&pNext, "_collectLight", offsetof(Sgl$DrawCtx, _collectLight));
 	orc_metaField_method(&pNext, "tick", offsetof(Sgl$DrawCtx, tick));
@@ -144,7 +144,7 @@ void Sgl$DrawCtx_init_fields(Sgl$DrawCtx *self){
 	((Object*)self)->ctor = (void*)Sgl$DrawCtx$ctor;
 	((Sgl$DrawCtx*)self)->addTransparentObj3dIfIsTransparent = (void*)Sgl$DrawCtx$addTransparentObj3dIfIsTransparent;
 	((Sgl$DrawCtx*)self)->drawLineGeometry = (void*)Sgl$DrawCtx$drawLineGeometry;
-	((Sgl$DrawCtx*)self)->drawAxis = (void*)Sgl$DrawCtx$drawAxis;
+	((Sgl$DrawCtx*)self)->mkAxis = (void*)Sgl$DrawCtx$mkAxis;
 	((Sgl$DrawCtx*)self)->collectLights = (void*)Sgl$DrawCtx$collectLights;
 	((Sgl$DrawCtx*)self)->_collectLight = (void*)Sgl$DrawCtx$_collectLight;
 	((Sgl$DrawCtx*)self)->tick = (void*)Sgl$DrawCtx$tick;
@@ -213,7 +213,7 @@ void  Sgl$DrawCtx$drawLineGeometry(Sgl$DrawCtx *  self){
 }
 
 
-void  Sgl$DrawCtx$drawAxis(Sgl$DrawCtx *  self){
+void  Sgl$DrawCtx$mkAxis(Sgl$DrawCtx *  self){
 	{
 		{
 			Sgl$GeometryLine*  o = self->lineGeometry;
