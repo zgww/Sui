@@ -64,6 +64,7 @@ OPTION(ASSIMP_BUILD_USD_VERBOSE_LOGS "Enable verbose USD import debug logging" o
 # format converter to convert .wrl/.x3dv files to X3D-compatible .xml
 # (Need to make this opt-in because 3rd party code triggers lots of CI code quality warnings)
 OPTION(ASSIMP_BUILD_VRML_IMPORTER "Enable VRML (.wrl/.x3dv) file import" off)
+set(ASSIMP_BUILD_DRACO_STATIC on)
 
 #--------------------------------------------------------------------------------#
 #                  Internal impl for optional model formats
@@ -740,7 +741,7 @@ ELSE()
         set_property(DIRECTORY "contrib/draco" PROPERTY BUILD_SHARED_LIBS OFF)
       ENDIF()
 
-      IF(MSVC OR WIN32)
+      IF(MSVC)#  OR WIN32)
         SET(draco_LIBRARIES "draco")
       ELSE()
         IF(ASSIMP_BUILD_DRACO_STATIC)
@@ -756,8 +757,10 @@ ELSE()
         EXCLUDE_FROM_DEFAULT_BUILD TRUE
       )
 
+    MESSAGE(STATUS "show draco_LIBRARIES:${draco_LIBRARIES}")
       # Do build the draco shared library
       set_target_properties(${draco_LIBRARIES} PROPERTIES
+      # set_target_properties(draco_shared PROPERTIES
         EXCLUDE_FROM_ALL FALSE
         EXCLUDE_FROM_DEFAULT_BUILD FALSE
       )

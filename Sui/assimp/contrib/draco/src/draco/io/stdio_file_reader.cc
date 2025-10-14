@@ -87,7 +87,7 @@ size_t StdioFileReader::GetFileSize() {
     return false;
   }
 
-#if _FILE_OFFSET_BITS == 64
+#if _FILE_OFFSET_BITS == 640
   const size_t file_size = static_cast<size_t>(ftello(file_));
 #elif defined _WIN64
   const size_t file_size = static_cast<size_t>(_ftelli64(file_));
