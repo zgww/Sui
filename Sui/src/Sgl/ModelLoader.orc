@@ -14,6 +14,7 @@ import * from "../Sui/Core/Vec3.orc"
 import * from "../Sui/Core/Node.orc"
 import * from "../Sui/Core/Color.orc"
 import * from "../Sui/View/TreeView.orc"
+import * from "../Sui/View/Drag.orc"
 import * from "../Sui/View/TextView.orc"
 import * from "../Sui/View/SplitterView.orc"
 import * from "../Sui/View/ScrollArea.orc"
@@ -270,6 +271,16 @@ class AssimpLoader {
             self.rootObj3d.draw(fboView.drawCtx)
         }
     }
+    void onDragFboView(Drag* d){
+        if d.isDragging {
+            //旋转
+            if self.rootObj3d {
+                self.rootObj3d.rotation.y += d.deltaPos.x * 0.01;
+                self.rootObj3d.updateWorldTransformAndSubtree()
+                printf("旋转模型\n")
+            }
+        }
+    }
 
     void reactMetaData(Node* o, struct aiMetadata *mMetaData, int deep){
         for int i = 0; i < mMetaData.mNumProperties; i++{
@@ -366,6 +377,9 @@ class AssimpLoader {
                 win.setRootView(o)
 
                 mkFboView(o, 0).{
+                    o.drag.onDrag = ^void(Drag*d){
+                        self.onDragFboView(d)
+                    }
                     o.cbDraw = ^void(FboView* fboView){
                         self.drawFboView(fboView)
                     }

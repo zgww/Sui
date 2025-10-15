@@ -48,6 +48,7 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 #include "../Sui/Core/Node_orc.h"
 #include "../Sui/Core/Color_orc.h"
 #include "../Sui/View/TreeView_orc.h"
+#include "../Sui/View/Drag_orc.h"
 #include "../Sui/View/TextView_orc.h"
 #include "../Sui/View/SplitterView_orc.h"
 #include "../Sui/View/ScrollArea_orc.h"
@@ -90,6 +91,7 @@ struct tagSgl$AssimpLoader {
 	void  (*buildGeometries) (Sgl$AssimpLoader *  self);
 	Sgl$Obj3d*  (*buildNode) (Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self, Sgl$Obj3d *  parent, struct aiNode *  node, int  idx, int  deep);
 	void  (*drawFboView) (Sgl$AssimpLoader *  self, Sgl$FboView *  fboView);
+	void  (*onDragFboView) (Sgl$AssimpLoader *  self, SuiView$Drag *  d);
 	void  (*reactMetaData) (Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiMetadata *  mMetaData, int  deep);
 	Orc$String*  (*loadMaterialPropertyValueToString) (Orc$String **  __outRef__, Sgl$AssimpLoader *  self, struct aiMaterialProperty *  prop);
 	void  (*showWindow) (Sgl$AssimpLoader *  self);
@@ -110,6 +112,7 @@ void  Sgl$AssimpLoader$buildMaterials(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$buildGeometries(Sgl$AssimpLoader *  self);
 Sgl$Obj3d*  Sgl$AssimpLoader$buildNode(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self, Sgl$Obj3d *  parent, struct aiNode *  node, int  idx, int  deep);
 void  Sgl$AssimpLoader$drawFboView(Sgl$AssimpLoader *  self, Sgl$FboView *  fboView);
+void  Sgl$AssimpLoader$onDragFboView(Sgl$AssimpLoader *  self, SuiView$Drag *  d);
 void  Sgl$AssimpLoader$reactMetaData(Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiMetadata *  mMetaData, int  deep);
 Orc$String*  Sgl$AssimpLoader$loadMaterialPropertyValueToString(Orc$String **  __outRef__, Sgl$AssimpLoader *  self, struct aiMaterialProperty *  prop);
 void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self);

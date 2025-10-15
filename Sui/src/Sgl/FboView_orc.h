@@ -112,6 +112,7 @@ struct tagSgl$FboView {
 	Sgl$Mesh*  groundGrid ;
 	SuiView$Drag*  drag ;
 	void  (**cbDraw)(void *  self, Sgl$FboView *  s);
+	void  (*dragOrbit) (Sgl$FboView *  self, SuiView$Drag *  d);
 	void  (*mkBaseScene) (Sgl$FboView *  self);
 };
 Vtable_Sgl$FboView* Vtable_Sgl$FboView_init(Vtable_Sgl$FboView* pvt);
@@ -120,6 +121,7 @@ void Sgl$FboView_init(Sgl$FboView *self, void *pOwner);
 Sgl$FboView * Sgl$FboView_new(void *pOwner);
 void Sgl$FboView_fini(Sgl$FboView *self);
 
+void  Sgl$FboView$dragOrbit(Sgl$FboView *  self, SuiView$Drag *  d);
 void  Sgl$FboView$ctor(Sgl$FboView *  self);
 void  Sgl$FboView$draw_self(Sgl$FboView *  self, SuiCore$Canvas *  canvas);
 void  Sgl$FboView$onEvent(Sgl$FboView *  self, SuiCore$Event *  e);

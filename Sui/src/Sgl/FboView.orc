@@ -76,6 +76,17 @@ class FboView extends ImageView {
     Drag@ drag = new Drag()
     ^void (FboView* s) cbDraw
 
+    void dragOrbit(Drag*d){
+        Euler e
+        e.setFromVector3(self.camera.rotation, null)
+
+        e.reorder("YXZ")
+        e.y += d.deltaPos.x * 0.001
+        e.x += d.deltaPos.y * 0.001
+        e.reorder("XYZ")
+
+        self.camera.rotation.setFromEuler(e)
+    }
 
     void ctor(){
         super.ctor()
@@ -84,16 +95,7 @@ class FboView extends ImageView {
         self.drag.onDrag = ^void(Drag*d){
             if d.isDragging {
                 printf("dragging scene\n")
-                Euler e
-                e.setFromVector3(self.camera.rotation, null)
-
-                e.reorder("YXZ")
-                e.y += d.deltaPos.x * 0.001
-                e.x += d.deltaPos.y * 0.001
-                e.reorder("XYZ")
-
-                self.camera.rotation.setFromEuler(e)
-
+                self.dragOrbit(d)
                 // self.camera.rotation.y += d.deltaPos.x * 0.001
                 // self.camera.rotation.x += d.deltaPos.y * 0.001
             }

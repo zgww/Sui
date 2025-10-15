@@ -303,7 +303,7 @@ class DrawCtx {
         self.setLightsToMaterial(matl)
 
         //测试blinn-phong.fs
-        matl.setUniform3f("lightPos", 0, 500, 0)
+        matl.setUniform3f("lightPos", 300, 50, 0)
 
         Vec3 viewPos = self.camera.localToWorld(mkVec3(0, 0, 0))
         matl.setUniformVec3("viewPos", viewPos)
