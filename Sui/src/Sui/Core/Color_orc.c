@@ -109,6 +109,15 @@ SuiCore$Rgbaf SuiCore$mkRgbafByFloat4(float *  f4){
 	return SuiCore$mkRgbaf(f4[0], f4[1], f4[2], f4[3]) ; 
 }
 
+SuiCore$Rgbaf SuiCore$mkRgbaf0(){
+	SuiCore$Rgbaf ret;
+	ret.r = 0;
+	ret.g = 0;
+	ret.b = 0;
+	ret.a = 0;
+	return ret; 
+}
+
 SuiCore$Rgbaf SuiCore$mkRgbaf(float  r, float  g, float  b, float  a){
 	SuiCore$Rgbaf ret;
 	ret.r = r;
@@ -133,6 +142,15 @@ SuiCore$Rgba SuiCore$mkRgbaByFloat(float  r, float  g, float  b, float  a){
 	ret.g = (unsigned char )(g * 255.0);
 	ret.b = (unsigned char )(b * 255.0);
 	ret.a = (unsigned char )(a * 255.0);
+	return ret; 
+}
+
+SuiCore$Rgba SuiCore$mkRgba0(){
+	SuiCore$Rgba ret;
+	ret.r = 0;
+	ret.g = 0;
+	ret.b = 0;
+	ret.a = 0;
 	return ret; 
 }
 

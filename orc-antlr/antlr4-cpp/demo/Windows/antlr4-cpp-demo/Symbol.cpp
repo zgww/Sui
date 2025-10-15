@@ -5600,6 +5600,9 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 				throw std::format("find symbol definitionByName in visitType fail. typeName:{}", typeName);
 			}
 			typeName = def->fullname;
+			if (ctx->Struct()) {
+				return std::string("struct ") + typeName;
+			}
 			return typeName;
 		}
 		auto ret = visitChildrenReturnString(ctx);

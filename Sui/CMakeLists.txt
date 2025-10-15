@@ -244,7 +244,6 @@ file(GLOB src
     src/Sgl/GeometryFullscreenQuad_orc.c
 
     src/Sgl/ModelLoader_orc.c
-    src/Sgl/ModelLoader_extern.cpp
 
     src/Sgl/Tex2d_extern.cpp
     src/Sgl/Tex2d_orc.c

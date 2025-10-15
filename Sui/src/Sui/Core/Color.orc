@@ -63,6 +63,14 @@ Rgbaf mkRgbafByFloat4(float *f4){
         f4[3],
         )
 }
+Rgbaf mkRgbaf0(){
+    Rgbaf ret
+    ret.r = 0;
+    ret.g = 0;
+    ret.b = 0;
+    ret.a = 0;
+    return ret
+}
 Rgbaf mkRgbaf(float r, float g, float b, float a){
     Rgbaf ret
     ret.r = r;
@@ -92,6 +100,14 @@ Rgba mkRgbaByFloat(
     ret.b = (unsigned char )(b * 255.0)
     ret.a = (unsigned char )(a * 255.0)
     return ret;
+}
+Rgba mkRgba0(){
+    Rgba ret;
+    ret.r = 0
+    ret.g = 0
+    ret.b = 0
+    ret.a = 0
+    return ret
 }
 Rgba mkRgba(
     unsigned char r,

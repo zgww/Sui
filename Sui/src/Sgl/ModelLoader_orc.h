@@ -45,6 +45,7 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 #include "../Sui/Core/Window_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
 #include "../Sui/Core/Node_orc.h"
+#include "../Sui/Core/Color_orc.h"
 #include "../Sui/View/TreeView_orc.h"
 #include "../Sui/View/TextView_orc.h"
 #include "../Sui/View/SplitterView_orc.h"
@@ -82,11 +83,13 @@ struct tagSgl$AssimpLoader {
 	Sgl$Obj3d*  rootObj3d ;
 	Orc$List*  materials ;
 	Sgl$Obj3d*  (*buildSglTree) (Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self);
+	void  (*buildMaterials) (Sgl$AssimpLoader *  self);
 	Orc$List*  geometries ;
 	void  (*buildGeometries) (Sgl$AssimpLoader *  self);
 	Sgl$Obj3d*  (*buildNode) (Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self, Sgl$Obj3d *  parent, struct aiNode *  node, int  idx, int  deep);
 	void  (*drawFboView) (Sgl$AssimpLoader *  self, Sgl$FboView *  fboView);
 	void  (*reactMetaData) (Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiMetadata *  mMetaData, int  deep);
+	Orc$String*  (*loadMaterialPropertyValueToString) (Orc$String **  __outRef__, Sgl$AssimpLoader *  self, struct aiMaterialProperty *  prop);
 	void  (*showWindow) (Sgl$AssimpLoader *  self);
 	void  (*mkNodeTreeView) (Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);
 	void  (*load) (Sgl$AssimpLoader *  self, const char *  model_path);
@@ -101,10 +104,12 @@ void Sgl$AssimpLoader_fini(Sgl$AssimpLoader *self);
 
 void  Sgl$AssimpLoader$dtor(Sgl$AssimpLoader *  self);
 Sgl$Obj3d*  Sgl$AssimpLoader$buildSglTree(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self);
+void  Sgl$AssimpLoader$buildMaterials(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$buildGeometries(Sgl$AssimpLoader *  self);
 Sgl$Obj3d*  Sgl$AssimpLoader$buildNode(Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self, Sgl$Obj3d *  parent, struct aiNode *  node, int  idx, int  deep);
 void  Sgl$AssimpLoader$drawFboView(Sgl$AssimpLoader *  self, Sgl$FboView *  fboView);
 void  Sgl$AssimpLoader$reactMetaData(Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiMetadata *  mMetaData, int  deep);
+Orc$String*  Sgl$AssimpLoader$loadMaterialPropertyValueToString(Orc$String **  __outRef__, Sgl$AssimpLoader *  self, struct aiMaterialProperty *  prop);
 void  Sgl$AssimpLoader$showWindow(Sgl$AssimpLoader *  self);
 void  Sgl$AssimpLoader$mkNodeTreeView(Sgl$AssimpLoader *  self, SuiCore$Node *  o, struct aiNode *  node, int  idx, int  deep);
 void  Sgl$AssimpLoader$load(Sgl$AssimpLoader *  self, const char *  model_path);

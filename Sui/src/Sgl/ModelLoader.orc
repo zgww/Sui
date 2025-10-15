@@ -11,6 +11,7 @@ import * from "./Obj3d.orc"
 import * from "../Sui/Core/Window.orc"
 import * from "../Sui/Core/Vec3.orc"
 import * from "../Sui/Core/Node.orc"
+import * from "../Sui/Core/Color.orc"
 import * from "../Sui/View/TreeView.orc"
 import * from "../Sui/View/TextView.orc"
 import * from "../Sui/View/SplitterView.orc"
@@ -62,10 +63,70 @@ class AssimpLoader {
 
     Obj3d@ buildSglTree(){
         self.buildGeometries()
+        self.buildMaterials()
 
         self.rootObj3d = self.buildNode(null, self.scene.mRootNode, 0, 0)
         return self.rootObj3d
     }
+    void buildMaterials(){
+        self.materials.clear()
+        for int i = 0; i < self.scene.mNumMaterials; i++{
+            struct aiMaterial* aimtl = self.scene.mMaterials[i]
+            //转为blinn-phong光照模型
+            Material@ matl = new Material()
+            matl.load("../asset/blinn-phong.matl.json")
+            self.materials.add(matl)
+
+
+            //散射
+            Rgbaf clrDiffuse = mkRgbaf0();
+            Rgbaf clrEmissive = mkRgbaf0();
+            Rgbaf clrAmbient = mkRgbaf0();
+            Rgbaf clrSpecular = mkRgbaf0();
+            Rgbaf clrTransparent = mkRgbaf0();
+            Rgbaf clrReflective = mkRgbaf0();
+
+            int shadingModel = 0
+            float matShinpercent = 0.0
+            float matShininess = 0.0
+            float matRoughnessFactor = 0.0
+            float matTransparencyfactor = 0.0
+            float matOpacity = 0.0
+            float matReflectivity = 0.0
+            float matBumpscaling = 0.0
+            float matDisplacementscaling = 0.0
+            String@ texFile = str("") // 纹理路径
+            float texUvTrafo = 0.0//uv transform
+            int texUvwSrc = 0 // uv channel . 采用哪一套uv
+
+            //aiGetMaterial系列函数的参数 type/index,只对纹理有用。其他类型的值，都是0
+
+            aiGetMaterialColor(aimtl, "$clr.diffuse", 0, 0, (struct aiColor4D*)&clrDiffuse);
+            aiGetMaterialColor(aimtl, "$clr.emissive", 0, 0, (struct aiColor4D*)&clrEmissive);
+            aiGetMaterialColor(aimtl, "$clr.ambient", 0, 0, (struct aiColor4D*)&clrAmbient);
+            aiGetMaterialColor(aimtl, "$clr.specular", 0, 0, (struct aiColor4D*)&clrSpecular);
+            aiGetMaterialColor(aimtl, "$clr.transparent", 0, 0, (struct aiColor4D*)&clrTransparent);
+            aiGetMaterialColor(aimtl, "$clr.reflective", 0, 0, (struct aiColor4D*)&clrReflective);
+
+            aiGetMaterialInteger(aimtl, "$mat.shadingm", 0, 0, &shadingModel)
+            aiGetMaterialFloat(aimtl, "$mat.shinpercent", 0, 0, &matShinpercent)
+            aiGetMaterialFloat(aimtl, "$mat.shininess", 0, 0, &matShininess)
+            aiGetMaterialFloat(aimtl, "$mat.roughnessFactor", 0, 0, &matRoughnessFactor)
+            aiGetMaterialFloat(aimtl, "$mat.transparencyfactor", 0, 0, &matTransparencyfactor)
+            aiGetMaterialFloat(aimtl, "$mat.opacity", 0, 0, &matOpacity)
+            aiGetMaterialFloat(aimtl, "$mat.reflectivity", 0, 0, &matReflectivity)
+            aiGetMaterialFloat(aimtl, "$mat.bumpscaling", 0, 0, &matBumpscaling)
+            aiGetMaterialFloat(aimtl, "$mat.displacementscaling", 0, 0, &matDisplacementscaling)
+
+            //暂只支持一个纹理。。。
+            struct aiString aiTexFile;
+            aiTexFile.data[0] = 0;
+            if AI_SUCCESS == aiGetMaterialString(aimtl, "$tex.file", 1, 0, &aiTexFile){
+                texFile = str(aiTexFile.data)
+            }
+        }
+    }
+
     List@ geometries = new List()
     void buildGeometries(){
         self.geometries.clear()
@@ -202,6 +263,41 @@ class AssimpLoader {
         }
     }
 
+    String@ loadMaterialPropertyValueToString(struct aiMaterialProperty* prop){
+        char tmp[512];
+        tmp[0] = 0;
+
+        if prop.mType == aiPTI_Float {
+            for int i = 0; i < prop.mDataLength / 4; i++{
+                sprintf(tmp, "%s %f", tmp, *(((float*)prop.mData) + i));
+            }
+        }
+        else if prop.mType == aiPTI_Double {
+            for int i = 0; i < prop.mDataLength / 8; i++{
+                sprintf(tmp, "%s %f", tmp, *(((double*)prop.mData)) + i);
+            }
+        }
+        else if prop.mType == aiPTI_Integer {
+            for int i = 0; i < prop.mDataLength / 4; i++{
+                sprintf(tmp, "%s %d", tmp, *(((int*)prop.mData))+i);
+            }
+        }
+        else if prop.mType == aiPTI_String {
+            struct aiString* s = (struct aiString*)prop.mData;
+            sprintf(tmp, "%s%s", tmp, s->data);
+        }
+        else if prop.mType == aiPTI_Buffer {
+            sprintf(tmp, "ints:");
+            for int i = 0; i < prop.mDataLength / 4; i++{
+                sprintf(tmp, "%s %d", tmp, *(((int*)prop.mData)) + i);
+            }
+            sprintf(tmp, "%s floats:", tmp);
+            for int i = 0; i < prop.mDataLength / 4; i++{
+                sprintf(tmp, "%s %f", tmp, *(((float*)prop.mData)) + i);
+            }
+        }
+        return str(tmp)
+    }
 
     void showWindow(){
         new Window()~{
@@ -258,20 +354,21 @@ class AssimpLoader {
                         }
                         for int j = 0; j < e.mNumProperties; j++{
                             struct aiMaterialProperty *prop = e.mProperties[j]
-                            sprintf(tmp, "%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d ", j, prop.mKey.data, prop.mSemantic, prop.mIndex, prop.mDataLength, prop.mType);
-                            if prop.mType == aiPTI_Float {
-                                sprintf(tmp, "%s%f", tmp, *((float*)prop.mData));
-                            }
-                            else if prop.mType == aiPTI_Double {
-                                sprintf(tmp, "%s%f", tmp, *((double*)prop.mData));
-                            }
-                            else if prop.mType == aiPTI_Integer {
-                                sprintf(tmp, "%s%d", tmp, *((int*)prop.mData));
-                            }
-                            else if prop.mType == aiPTI_String {
-                                struct aiString* s = (struct aiString*)prop.mData;
-                                sprintf(tmp, "%s%s", tmp, s->data);
-                            }
+                            String@ value = self.loadMaterialPropertyValueToString(prop)
+                            sprintf(tmp, "%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d %s", j, prop.mKey.data, prop.mSemantic, prop.mIndex, prop.mDataLength, prop.mType, value.str);
+                            // if prop.mType == aiPTI_Float {
+                            //     sprintf(tmp, "%s%f", tmp, *((float*)prop.mData));
+                            // }
+                            // else if prop.mType == aiPTI_Double {
+                            //     sprintf(tmp, "%s%f", tmp, *((double*)prop.mData));
+                            // }
+                            // else if prop.mType == aiPTI_Integer {
+                            //     sprintf(tmp, "%s%d", tmp, *((int*)prop.mData));
+                            // }
+                            // else if prop.mType == aiPTI_String {
+                            //     struct aiString* s = (struct aiString*)prop.mData;
+                            //     sprintf(tmp, "%s%s", tmp, s->data);
+                            // }
                             // printf("\n")
                             mkTreeSelfCtrlView(o, (long long)e).{
                                 o.deep = 2
@@ -639,20 +736,21 @@ class AssimpLoader {
                 )
                 for int j = 0; j < e.mNumProperties; j++{
                     struct aiMaterialProperty *prop = e.mProperties[j]
-                    printf("\t\t%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d ", j, prop.mKey.data, prop.mSemantic, prop.mIndex, prop.mDataLength, prop.mType);
-                    if prop.mType == aiPTI_Float {
-                        printf("%f", *((float*)prop.mData));
-                    }
-                    else if prop.mType == aiPTI_Double {
-                        printf("%f", *((double*)prop.mData));
-                    }
-                    else if prop.mType == aiPTI_Integer {
-                        printf("%d", *((int*)prop.mData));
-                    }
-                    else if prop.mType == aiPTI_String {
-                        struct aiString* s = (struct aiString*)prop.mData;
-                        printf("%s", s->data);
-                    }
+                    String@ value = self.loadMaterialPropertyValueToString(prop)
+                    printf("\t\t%3d %s semantic:%d, iddx:%d, dataLength:%d type:%d %s", j, prop.mKey.data, prop.mSemantic, prop.mIndex, prop.mDataLength, prop.mType, value.str);
+                    // if prop.mType == aiPTI_Float {
+                    //     printf("%f", *((float*)prop.mData));
+                    // }
+                    // else if prop.mType == aiPTI_Double {
+                    //     printf("%f", *((double*)prop.mData));
+                    // }
+                    // else if prop.mType == aiPTI_Integer {
+                    //     printf("%d", *((int*)prop.mData));
+                    // }
+                    // else if prop.mType == aiPTI_String {
+                    //     struct aiString* s = (struct aiString*)prop.mData;
+                    //     printf("%s", s->data);
+                    // }
                     printf("\n")
                 }
             }

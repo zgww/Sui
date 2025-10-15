@@ -105,9 +105,11 @@ MetaStruct* SuiCore$Hsla_getOrInitMetaStruct();
 MetaStruct* SuiCore$Hsva_getOrInitMetaStruct();
 
 SuiCore$Rgbaf SuiCore$mkRgbafByFloat4(float *  f4);
+SuiCore$Rgbaf SuiCore$mkRgbaf0();
 SuiCore$Rgbaf SuiCore$mkRgbaf(float  r, float  g, float  b, float  a);
 SuiCore$Rgbaf SuiCore$mkRgbafByInt(int  color);
 SuiCore$Rgba SuiCore$mkRgbaByFloat(float  r, float  g, float  b, float  a);
+SuiCore$Rgba SuiCore$mkRgba0();
 SuiCore$Rgba SuiCore$mkRgba(unsigned char  r, unsigned char  g, unsigned char  b, unsigned char  a);
 SuiCore$Hsla SuiCore$mkHsla(float  h, float  s, float  l, unsigned char  a);
 SuiCore$Hsva SuiCore$mkHsva(float  h, float  s, float  v, unsigned char  a);
