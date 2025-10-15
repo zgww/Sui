@@ -59,6 +59,7 @@ void Sgl$Program_initMeta(Vtable_Sgl$Program *pvt){
 	orc_metaField_method(&pNext, "compile", offsetof(Sgl$Program, compile));
 	orc_metaField_method(&pNext, "compileByPathCstr", offsetof(Sgl$Program, compileByPathCstr));
 	orc_metaField_method(&pNext, "uniform1i", offsetof(Sgl$Program, uniform1i));
+	orc_metaField_method(&pNext, "uniform1f", offsetof(Sgl$Program, uniform1f));
 	orc_metaField_method(&pNext, "uniform2f", offsetof(Sgl$Program, uniform2f));
 	orc_metaField_method(&pNext, "uniform3f", offsetof(Sgl$Program, uniform3f));
 	orc_metaField_method(&pNext, "uniform4f", offsetof(Sgl$Program, uniform4f));
@@ -127,6 +128,7 @@ void Sgl$Program_init_fields(Sgl$Program *self){
 	((Sgl$Program*)self)->compile = (void*)Sgl$Program$compile;
 	((Sgl$Program*)self)->compileByPathCstr = (void*)Sgl$Program$compileByPathCstr;
 	((Sgl$Program*)self)->uniform1i = (void*)Sgl$Program$uniform1i;
+	((Sgl$Program*)self)->uniform1f = (void*)Sgl$Program$uniform1f;
 	((Sgl$Program*)self)->uniform2f = (void*)Sgl$Program$uniform2f;
 	((Sgl$Program*)self)->uniform3f = (void*)Sgl$Program$uniform3f;
 	((Sgl$Program*)self)->uniform4f = (void*)Sgl$Program$uniform4f;

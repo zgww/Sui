@@ -144,6 +144,7 @@ class AssimpLoader {
             matl.setUniform1f("reflectivity", matReflectivity)
             matl.setUniform1f("bumpscaling", matBumpscaling)
             matl.setUniform1f("displacementscaling", matDisplacementscaling)
+
             if texFile.notEmpty() {
                 String@ actualPath = Path_resolveRelativeFromFile(texFile.str, self.path.str)
                 matl.setUniformTex2dByPath("tex", actualPath.str)

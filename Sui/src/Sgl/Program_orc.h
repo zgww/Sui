@@ -66,6 +66,7 @@ struct tagSgl$Program {
 	bool  (*compile) (Sgl$Program *  self, const char *  vs, const char *  fs);
 	bool  (*compileByPathCstr) (Sgl$Program *  self, const char *  vsPath, const char *  fsPath);
 	void  (*uniform1i) (Sgl$Program *  self, const char *  key, int  i);
+	void  (*uniform1f) (Sgl$Program *  self, const char *  key, float  x);
 	void  (*uniform2f) (Sgl$Program *  self, const char *  key, float  x, float  y);
 	void  (*uniform3f) (Sgl$Program *  self, const char *  key, float  x, float  y, float  z);
 	void  (*uniform4f) (Sgl$Program *  self, const char *  key, float  x, float  y, float  z, float  w);
@@ -85,6 +86,7 @@ const char *  Sgl$Program$getFsPathCstr(Sgl$Program *  self);
 extern bool  Sgl$Program$compile(Sgl$Program *  self, const char *  vs, const char *  fs);
 bool  Sgl$Program$compileByPathCstr(Sgl$Program *  self, const char *  vsPath, const char *  fsPath);
 extern void  Sgl$Program$uniform1i(Sgl$Program *  self, const char *  key, int  i);
+extern void  Sgl$Program$uniform1f(Sgl$Program *  self, const char *  key, float  x);
 extern void  Sgl$Program$uniform2f(Sgl$Program *  self, const char *  key, float  x, float  y);
 extern void  Sgl$Program$uniform3f(Sgl$Program *  self, const char *  key, float  x, float  y, float  z);
 extern void  Sgl$Program$uniform4f(Sgl$Program *  self, const char *  key, float  x, float  y, float  z, float  w);

@@ -240,7 +240,12 @@ class UniformInfo {
                 }
             }
             else if self.kind == 3 {
-                if self.count == 2{
+                if self.count == 1{
+                    program.uniform1f(self.key.str, 
+                        self.floatValues[0],
+                    );
+                }
+                else if self.count == 2{
                     program.uniform2f(self.key.str, 
                         self.floatValues[0],
                         self.floatValues[1],

@@ -79,6 +79,11 @@ void  Sgl$Program$uniform1i(Sgl$Program *  self, const char *  key, int x)
     int loc = glGetUniformLocation(self->id, key);
     glUniform1i(loc, x);
 }
+void  Sgl$Program$uniform1f(Sgl$Program *  self, const char *  key, float  x)
+{
+    int loc = glGetUniformLocation(self->id, key);
+    glUniform1f(loc, x);
+}
 void  Sgl$Program$uniform2f(Sgl$Program *  self, const char *  key, float  x, float  y)
 {
     int loc = glGetUniformLocation(self->id, key);

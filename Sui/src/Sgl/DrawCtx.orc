@@ -301,6 +301,16 @@ class DrawCtx {
             0, 0
         )
         self.setLightsToMaterial(matl)
+
+        //测试blinn-phong.fs
+        matl.setUniform3f("lightPos", 0, 500, 0)
+
+        Vec3 viewPos = self.camera.localToWorld(mkVec3(0, 0, 0))
+        matl.setUniformVec3("viewPos", viewPos)
+        matl.setUniform1f("ambientStrength", 0.2)
+        matl.setUniform1f("specularStrength", 0.5)
+        matl.setUniform1f("shininess", 32.0)
+        matl.setUniform3f("lightColor", 1, 1, 1)
     }
 
     //设置灯光信息到材质上

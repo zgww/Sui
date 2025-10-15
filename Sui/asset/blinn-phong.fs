@@ -11,7 +11,7 @@ uniform float specularStrength;     // 镜面反射强度，例如 0.5
 uniform float shininess;            // 高光指数，例如 32.0
 uniform vec3 lightColor; //光照颜色
 
-// in vec4 oColor; //顶点色
+in vec4 oColor; //顶点色
 in vec3 oNormal;
 in vec3 FragPos; 
 
@@ -47,6 +47,7 @@ vec3 blinnPhong(){
     // 最终光照结果 = (环境 + 漫反射 + 镜面) * 纹理颜色
     vec3 result = (ambient + diffuse + specular) * objectColor;
 
+    // return objectColor;
     return result;
 }
 
@@ -61,4 +62,5 @@ void main() {
     // FragColor = vec4(vuv, 0.0, 1.0);
     // FragColor = c;
     FragColor = vec4(c, 1.0);
+    // FragColor = vec4(ambientStrength, 0.0, 0.0, 1.0);
 } 

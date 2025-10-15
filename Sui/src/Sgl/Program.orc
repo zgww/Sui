@@ -64,6 +64,8 @@ class Program{
     }
 
     extern void uniform1i(const char *key, int i);
+
+    extern void uniform1f(const char *key, float x);
     extern void uniform2f(const char *key, float x, float y);
     extern void uniform3f(const char *key, float x, float y, float z);
     extern void uniform4f(const char *key, float x, float y, float z, float w);
