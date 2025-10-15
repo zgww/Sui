@@ -148,6 +148,9 @@ class AssimpLoader {
                 String@ actualPath = Path_resolveRelativeFromFile(texFile.str, self.path.str)
                 matl.setUniformTex2dByPath("tex", actualPath.str)
                 // matl.setUniformTex2dByPath("tex", "./SpongeBob.png")
+                // matl.setUniformTex2dByPath("tex", "engineflare1.jpg")
+                // matl.setUniformTex2dByPath("tex", "SpiderTex.jpg")
+                // matl.setUniformTex2dByPath("tex", "SpiderTex2.png")
             }
         }
     }
