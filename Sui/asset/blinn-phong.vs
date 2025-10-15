@@ -10,7 +10,7 @@ uniform mat4 model;
 // varying vec4 oColor;
 out vec4 oColor;
 out vec3 oNormal;
-out vec3 FragPos; 
+out vec3 FragPos; //世界坐标
 
 out vec2 vuv; 
 
@@ -30,6 +30,8 @@ void main()
     oNormal = mat3(transpose(inverse(model))) * normal;
     //oNormal = mat3(model) * normal;  
     // FragPos = vec3(model * vec4(position, 1.0));
+
+    FragPos = vec3(model * vec4(position, 1.0));
 
     vuv = uv;
 }
