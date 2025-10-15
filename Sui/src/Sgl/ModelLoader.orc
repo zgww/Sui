@@ -155,6 +155,7 @@ class AssimpLoader {
             Buffer@ normals = new Buffer();
             Buffer@ uvs = new Buffer();
             Buffer@ faces = new Buffer();
+            Buffer@ colors = new Buffer();
             
             float scale = 1.0;
 
@@ -164,6 +165,25 @@ class AssimpLoader {
                 v3.x = mesh.mVertices[i].x / scale;
                 v3.y = mesh.mVertices[i].y / scale;
                 v3.z = mesh.mVertices[i].z / scale;
+
+                //目前只支持一套uv, 2个数字
+                struct aiVector3D *aiUvs = mesh.mTextureCoords[0]
+                if aiUvs != null {
+                    uvs.appendFloat2(
+                        aiUvs[i].x,
+                        aiUvs[i].y,
+                    )
+                }
+                struct aiColor4D *aiColors = mesh.mColors[0]
+                if aiColors != null {
+                    colors.appendFloat4(
+                        aiColors[i].r,
+                        aiColors[i].g,
+                        aiColors[i].b,
+                        aiColors[i].a,
+                    )
+                }
+
 
                 Vec3 n;
                 n.x = mesh.mNormals[i].x;
@@ -187,7 +207,7 @@ class AssimpLoader {
 
             g.setAttrByBuffer("position", vertices, 3)
             g.setAttrByBuffer("normal", normals, 3)
-            // g.setAttrByBuffer("color", color, 4)
+            g.setAttrByBuffer("color", colors, 4)
             g.setAttrByBuffer("uv", uvs, 2)
             g.setIboByBuffer(faces)
 
@@ -990,11 +1010,11 @@ class ModelLoader extends Obj3d {
 void test_AssimpLoader () {
     AssimpLoader@ l = new AssimpLoader()
     // l.load("duck.dae")
-    l.load("spider.fbx")
-    // l.load("spider.obj")
+    // l.load("spider.fbx")
+    l.load("spider.obj")
     l.showWindow()
     List@ mtls = new List()
-    l.mergedMaterials = mtls;
+    // l.mergedMaterials = mtls;
 
     new Material()~{
         o.load("../asset/basic.matl.json")

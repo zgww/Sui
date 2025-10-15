@@ -18,8 +18,8 @@ in vec2 vuv;
 
 void main() {
     // vec4 c = texture(tex, vuv);
-    // FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-    FragColor = color;
+    FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    // FragColor = color;
     FragColor = diffuse;
     // FragColor = (1.0 - c.a) * vec4(1.0, 1.0, 1.0, 1.0) + c.a * c ;
     // FragColor = vec4(1.0, 0.0, 0.0 , 1.0);
