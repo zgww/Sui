@@ -215,6 +215,12 @@ class FboView extends ImageView {
         //     l.position.set(0, 10, 0)
         //     self.scene.appendChild(l)
         // }
+        {
+            new PointLight()~{
+                o.position.set(0, 200, 0)
+                self.scene.appendChild(o)
+            }
+        }
         
         printf("Base scene and camera initialized\n")
     }

@@ -316,6 +316,16 @@ void  Sgl$FboView$mkBaseScene(Sgl$FboView *  self){
 	Sgl$Obj3d$updateWorldMatrixUptoRoot((Sgl$Obj3d * )self->camera) ;
 	((Sgl$Obj3d * )self->camera)->lookAt(self->camera, 0, 0, 0) ;
 	((SuiCore$Node * )self->scene)->appendChild(self->scene, self->camera) ;
+	{
+		URGC_VAR_CLEANUP_CLASS Sgl$PointLight*  tmpNewOwner_3 = NULL;
+		{
+			Sgl$PointLight*  o = Sgl$PointLight_new(&tmpNewOwner_3) ;
+			
+		
+			SuiCore$Vec3$set(&((Sgl$Obj3d * )o)->position, 0, 200, 0) ;
+			((SuiCore$Node * )self->scene)->appendChild(self->scene, o) ;
+		}
+	}
 	printf("Base scene and camera initialized\n") ;
 }
 

@@ -21,15 +21,6 @@
 		}, 
 		{
 			"__class":	"Sgl$UniformInfo",
-			"count":	4,
-			"key":	"lightColor",
-			"floatValues":	[1, 1, 1, 1],
-			"kind":	6,
-			"texIndex":	0
-		}
-		, 
-		{
-			"__class":	"Sgl$UniformInfo",
 			"count":1,
 			"key":	"ambientStrength",
 			"floatValues":	[0.3],

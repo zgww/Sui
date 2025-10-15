@@ -3,13 +3,22 @@ out vec4 FragColor;
 
 uniform sampler2D tex;
 
+struct PointLight {
+    vec3 position;
+    vec3 color;
+    float intensity;
+    float distance;
+    float decay;
+};
+
+uniform PointLight pointLight;
+
 uniform vec3 viewPos; // 相机位置
-uniform vec3 lightPos; // 灯光位置
+// uniform vec3 lightPos; // 灯光位置
 
 uniform float ambientStrength;      // 环境光强度，例如 0.1
 uniform float specularStrength;     // 镜面反射强度，例如 0.5
 uniform float shininess;            // 高光指数，例如 32.0
-uniform vec4 lightColor; //光照颜色
 
 in vec4 oColor; //顶点色
 in vec3 oNormal;
@@ -18,11 +27,12 @@ in vec3 FragPos;
 in vec2 vuv; 
 
 vec3 blinnPhong(){
+    vec3 lightColor = pointLight.color;
     // 归一化法线
     vec3 norm = normalize(oNormal);
 
     // 光照方向（从片段指向光源）
-    vec3 lightDir = normalize(lightPos - FragPos);
+    vec3 lightDir = normalize(pointLight.position - FragPos);
 
     // 观察方向（从片段指向相机）
     vec3 viewDir = normalize(viewPos - FragPos);
@@ -31,15 +41,15 @@ vec3 blinnPhong(){
     vec3 halfwayDir = normalize(lightDir + viewDir);
 
     // 环境光
-    vec3 ambient = ambientStrength * lightColor.rgb;
+    vec3 ambient = ambientStrength * lightColor;
 
     // 漫反射
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = diff * lightColor.rgb;
+    vec3 diffuse = diff * lightColor;
 
     // 镜面反射（Blinn-Phong）
     float spec = pow(max(dot(norm, halfwayDir), 0.0), shininess);
-    vec3 specular = specularStrength * spec * lightColor.rgb;
+    vec3 specular = specularStrength * spec * lightColor;
 
     // 从纹理采样物体基础颜色（漫反射颜色）
     vec3 objectColor = texture(tex, vuv).rgb;
