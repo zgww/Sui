@@ -1,6 +1,6 @@
 {
-	"vsPath":	"./basic.vs",
-	"fsPath":	"./basic.fs",
+	"vsPath":	"./blinn-phong.vs",
+	"fsPath":	"./blinn-phong.fs",
 	"__class":	"Sgl$Material",
 	"depthWrite": true,
 	"depthTest":	true,
@@ -23,7 +23,7 @@
 			"__class":	"Sgl$UniformInfo",
 			"count":	4,
 			"key":	"color",
-			"floatValues":	[0.5, 0.5, 0.5, 1],
+			"floatValues":	[0.5, 0.0, 0.0, 1],
 			"kind":	6,
 			"texIndex":	0
 		}, 

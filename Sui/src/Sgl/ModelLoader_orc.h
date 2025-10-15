@@ -82,6 +82,7 @@ struct tagSgl$AssimpLoader {
 	struct aiScene *  scene ;
 	Sgl$Obj3d*  rootObj3d ;
 	Orc$List*  materials ;
+	Orc$List*  mergedMaterials ;
 	Sgl$Obj3d*  (*buildSglTree) (Sgl$Obj3d **  __outRef__, Sgl$AssimpLoader *  self);
 	void  (*buildMaterials) (Sgl$AssimpLoader *  self);
 	Orc$List*  geometries ;
@@ -139,8 +140,8 @@ struct tagSgl$ModelLoader {
 	void  (*insp) (Sgl$ModelLoader *  self, SuiDesigner$Insp*  insp);
 	void  (*setMaterialPaths) (Sgl$ModelLoader *  self, Orc$List *  list);
 	void  (*updateMaterialSlots) (Sgl$ModelLoader *  self);
+	void  (*generateModelRoot) (Sgl$ModelLoader *  self);
 	void  (*setPath) (Sgl$ModelLoader *  self, Orc$String*  path);
-	Sgl$Geometry*  (*buildGeometry) (Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);
 };
 Vtable_Sgl$ModelLoader* Vtable_Sgl$ModelLoader_init(Vtable_Sgl$ModelLoader* pvt);
 void Sgl$ModelLoader_init_fields(Sgl$ModelLoader *self);
@@ -153,8 +154,8 @@ void  Sgl$ModelLoader$ctor(Sgl$ModelLoader *  self);
 void  Sgl$ModelLoader$setMaterialPaths(Sgl$ModelLoader *  self, Orc$List *  list);
 void  Sgl$ModelLoader$updateMaterialSlots(Sgl$ModelLoader *  self);
 void  Sgl$ModelLoader$onMounted(Sgl$ModelLoader *  self);
+void  Sgl$ModelLoader$generateModelRoot(Sgl$ModelLoader *  self);
 void  Sgl$ModelLoader$setPath(Sgl$ModelLoader *  self, Orc$String*  path);
-Sgl$Geometry*  Sgl$ModelLoader$buildGeometry(Sgl$Geometry **  __outRef__, Sgl$ModelLoader *  self);
 
 void  Sgl$test_AssimpLoader();
 

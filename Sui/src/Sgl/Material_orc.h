@@ -188,6 +188,7 @@ struct tagSgl$Material {
 	void  (*setUniform2f) (Sgl$Material *  self, const char *  key, float  x, float  y);
 	void  (*setUniform3f) (Sgl$Material *  self, const char *  key, float  x, float  y, float  z);
 	void  (*setUniform4f) (Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
+	void  (*setUniformRgbaf) (Sgl$Material *  self, const char *  key, SuiCore$Rgbaf c);
 	void  (*setUniformColor4f) (Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
 	void  (*setUniformColor4fByInt32Color) (Sgl$Material *  self, const char *  key, int  color);
 	void  (*setUniformVec2) (Sgl$Material *  self, const char *  key, SuiCore$Vec2 v);
@@ -225,6 +226,7 @@ void  Sgl$Material$setUniform1f(Sgl$Material *  self, const char *  key, float  
 void  Sgl$Material$setUniform2f(Sgl$Material *  self, const char *  key, float  x, float  y);
 void  Sgl$Material$setUniform3f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z);
 void  Sgl$Material$setUniform4f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
+void  Sgl$Material$setUniformRgbaf(Sgl$Material *  self, const char *  key, SuiCore$Rgbaf c);
 void  Sgl$Material$setUniformColor4f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w);
 void  Sgl$Material$setUniformColor4fByInt32Color(Sgl$Material *  self, const char *  key, int  color);
 void  Sgl$Material$setUniformVec2(Sgl$Material *  self, const char *  key, SuiCore$Vec2 v);

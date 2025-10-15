@@ -562,6 +562,9 @@ class Material{
         ui.floatValues[2] = z
         ui.floatValues[3] = w
     }
+    void setUniformRgbaf(const char *key, Rgbaf c){
+        self.setUniformColor4f(key, c.r, c.g, c.b, c.a)
+    }
     void setUniformColor4f(const char *key, float x, float y, float z, float w){
         UniformInfo@ ui = self.gocUniformInfo(key)
         ui.kind = 6

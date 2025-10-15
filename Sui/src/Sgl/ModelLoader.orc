@@ -53,6 +53,8 @@ class AssimpLoader {
     // List<Material>
     List@ materials = new List()
 
+    //融合后的材质。 ModelLoader 可以覆盖材质。
+    List@ mergedMaterials = null
 
     void dtor(){
         if self.scene {
@@ -124,6 +126,23 @@ class AssimpLoader {
             if AI_SUCCESS == aiGetMaterialString(aimtl, "$tex.file", 1, 0, &aiTexFile){
                 texFile = str(aiTexFile.data)
             }
+
+            //应用属性到材质
+            matl.setUniformRgbaf("diffuse", clrDiffuse)
+            matl.setUniformRgbaf("emissive", clrEmissive)
+            matl.setUniformRgbaf("ambient", clrAmbient)
+            matl.setUniformRgbaf("specular", clrSpecular)
+            matl.setUniformRgbaf("transparent", clrTransparent)
+            matl.setUniformRgbaf("reflective", clrReflective)
+
+            matl.setUniform1f("shinpercent", matShinpercent)
+            matl.setUniform1f("shininess", matShininess)
+            matl.setUniform1f("roughnessFactor", matRoughnessFactor)
+            matl.setUniform1f("transparencyfactor", matTransparencyfactor)
+            matl.setUniform1f("opacity", matOpacity)
+            matl.setUniform1f("reflectivity", matReflectivity)
+            matl.setUniform1f("bumpscaling", matBumpscaling)
+            matl.setUniform1f("displacementscaling", matDisplacementscaling)
         }
     }
 
@@ -189,10 +208,19 @@ class AssimpLoader {
                 int idx = node.mMeshes[0]
                 Geometry* geom = (Geometry*)self.geometries.get(idx)
                 mesh.geometry = geom
-                new Material()~{
-                    o.load("../asset/basicSolid.matl.json")
-                    mesh.material = o
+
+                struct aiMesh* aimesh = self.scene.mMeshes[idx]
+
+                Material* matl = self.materials.get(aimesh.mMaterialIndex)
+                if self.mergedMaterials {
+                    matl = self.mergedMaterials.get(aimesh.mMaterialIndex)
                 }
+                mesh.material = matl
+
+                // new Material()~{
+                //     o.load("../asset/basicSolid.matl.json")
+                //     mesh.material = o
+                // }
             }
 
             ret = mesh
@@ -890,11 +918,18 @@ class ModelLoader extends Obj3d {
         // new Material()~{
             // o.load("../asset/basic.matl.json")
             self.materialPaths.add(str("../asset/basic.matl.json"))
+            self.materialPaths.add(str("../asset/basic.matl.json"))
+            self.materialPaths.add(str("../asset/basic.matl.json"))
+            self.materialPaths.add(str("../asset/basic.matl.json"))
         // }
     }
     void setMaterialPaths(List* list){
         self.materialPaths = list
         self.updateMaterialSlots()
+
+        if self.modelRoot != null {//重建树
+            self.generateModelRoot()
+        }
     }
 
     void updateMaterialSlots(){
@@ -918,6 +953,20 @@ class ModelLoader extends Obj3d {
     }
     void onMounted(){
         self.updateMaterialSlots()
+        if self.loader {
+            self.loader.mergedMaterials = self._materialSlots
+        }
+        if self.modelRoot == null {
+            self.generateModelRoot()
+        }
+    }
+    void generateModelRoot(){
+        if self.modelRoot {
+            self.modelRoot.removeSelf()
+        }
+        self.modelRoot = self.loader.buildSglTree()
+        self.appendChild(self.modelRoot)
+        printNodeTree(self, 0)
     }
 
     void setPath(String@ path){
@@ -926,53 +975,15 @@ class ModelLoader extends Obj3d {
         // 调用加载器加载
         if path {
             AssimpLoader@ l = new AssimpLoader()
-            self.loader = l
-            l.load(self.path.str)
-            self.modelRoot = l.buildSglTree()
-            self.appendChild(self.modelRoot)
-            printNodeTree(self, 0)
+            self.loader.load(self.path.str)
 
-            // self._load()
-            // self.mesh.geometry = self.buildGeometry()
-            // new Material()~{
-            //     o.load("../asset/basic.matl.json")
-            //     self.mesh.material = o
-            // }
-            // self.appendChild(self.mesh)
+            //如果已经生成，说明是修改的。 需要重建
+            if self.modelRoot {
+                self.generateModelRoot()
+            }
         }
     }
 
-
-
-    Geometry@ buildGeometry(){
-        Geometry@ geo = new Geometry()
-        if self.vertices.size > 0{
-            Vbo@ vbo = new Vbo()
-            vbo.elementCount = 3;
-            vbo.arrayBuffer(self.vertices)
-            geo.setAttr("position", vbo)
-            printf("\tload %s:%s\n", "position", self.vertices.toFloatString().str);
-        }
-        if self.normals.size > 0{
-            Vbo@ vbo = new Vbo()
-            vbo.elementCount = 3;
-            vbo.arrayBuffer(self.normals)
-            geo.setAttr("normal", vbo)
-        }
-        if self.texCoords.size > 0{
-            Vbo@ vbo = new Vbo()
-            vbo.elementCount = 2;
-            vbo.arrayBuffer(self.texCoords)
-            geo.setAttr("texCoord", vbo)
-        }
-        if self.faces.size > 0 {
-            geo.ibo = new Vbo()
-            geo.ibo.elementBuffer(self.faces)
-            printf("\tload face:%s\n", self.faces.toIntString().str);
-        }
-
-        return geo
-    }
 
 }
 
@@ -982,6 +993,17 @@ void test_AssimpLoader () {
     l.load("spider.fbx")
     // l.load("spider.obj")
     l.showWindow()
+    List@ mtls = new List()
+    l.mergedMaterials = mtls;
+
+    new Material()~{
+        o.load("../asset/basic.matl.json")
+        mtls.add(o)
+        mtls.add(o)
+        mtls.add(o)
+        mtls.add(o)
+    }
+
     Obj3d@ root = l.buildSglTree()
     printNodeTree(root, 0)
 }
