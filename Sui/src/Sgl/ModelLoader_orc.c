@@ -299,20 +299,6 @@ void  Sgl$AssimpLoader$buildMaterials(Sgl$AssimpLoader *  self){
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 			urgc_set_var_class(&texFile, Orc$str(&tmpReturn_1, aiTexFile.data) ) ;
 		}
-		matl->setUniformRgbaf(matl, "diffuse", clrDiffuse) ;
-		matl->setUniformRgbaf(matl, "emissive", clrEmissive) ;
-		matl->setUniformRgbaf(matl, "ambient", clrAmbient) ;
-		matl->setUniformRgbaf(matl, "specular", clrSpecular) ;
-		matl->setUniformRgbaf(matl, "transparent", clrTransparent) ;
-		matl->setUniformRgbaf(matl, "reflective", clrReflective) ;
-		matl->setUniform1f(matl, "shinpercent", matShinpercent) ;
-		matl->setUniform1f(matl, "shininess", matShininess) ;
-		matl->setUniform1f(matl, "roughnessFactor", matRoughnessFactor) ;
-		matl->setUniform1f(matl, "transparencyfactor", matTransparencyfactor) ;
-		matl->setUniform1f(matl, "opacity", matOpacity) ;
-		matl->setUniform1f(matl, "reflectivity", matReflectivity) ;
-		matl->setUniform1f(matl, "bumpscaling", matBumpscaling) ;
-		matl->setUniform1f(matl, "displacementscaling", matDisplacementscaling) ;
 		if (Orc$String$notEmpty(texFile) ) {
 			URGC_VAR_CLEANUP_CLASS Orc$String*  actualPath = Orc$Path_resolveRelativeFromFile((actualPath = NULL,&actualPath), texFile->str, self->path->str) ;
 			matl->setUniformTex2dByPath(matl, "tex", actualPath->str) ;

@@ -9,7 +9,7 @@ uniform vec3 lightPos; // 灯光位置
 uniform float ambientStrength;      // 环境光强度，例如 0.1
 uniform float specularStrength;     // 镜面反射强度，例如 0.5
 uniform float shininess;            // 高光指数，例如 32.0
-uniform vec3 lightColor; //光照颜色
+uniform vec4 lightColor; //光照颜色
 
 in vec4 oColor; //顶点色
 in vec3 oNormal;
@@ -31,24 +31,29 @@ vec3 blinnPhong(){
     vec3 halfwayDir = normalize(lightDir + viewDir);
 
     // 环境光
-    vec3 ambient = ambientStrength * lightColor;
+    vec3 ambient = ambientStrength * lightColor.rgb;
 
     // 漫反射
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = diff * lightColor;
+    vec3 diffuse = diff * lightColor.rgb;
 
     // 镜面反射（Blinn-Phong）
     float spec = pow(max(dot(norm, halfwayDir), 0.0), shininess);
-    vec3 specular = specularStrength * spec * lightColor;
+    vec3 specular = specularStrength * spec * lightColor.rgb;
 
     // 从纹理采样物体基础颜色（漫反射颜色）
     vec3 objectColor = texture(tex, vuv).rgb;
 
     // 最终光照结果 = (环境 + 漫反射 + 镜面) * 纹理颜色
     vec3 result = (ambient + diffuse + specular) * objectColor;
+    // vec3 result2 = (ambient + diffuse + max(vec3(0, 0, 0), specular)) * objectColor;
 
+    // return result2;
     // return objectColor;
+    // return specular * objectColor;
+    // return ambient * objectColor;
     return result;
+    // return specular;
 }
 
 void main() {
@@ -63,4 +68,5 @@ void main() {
     // FragColor = c;
     FragColor = vec4(c, 1.0);
     // FragColor = vec4(ambientStrength, 0.0, 0.0, 1.0);
+    // FragColor = vec4(shininess , 0.0, 0.0, 1.0);
 } 

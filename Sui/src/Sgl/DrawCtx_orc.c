@@ -371,13 +371,9 @@ void  Sgl$DrawCtx$setMvpToMaterial(Sgl$DrawCtx *  self, Sgl$Obj3d *  obj3d, Sgl$
 void  Sgl$DrawCtx$setGlobalInfosToMaterial(Sgl$DrawCtx *  self, Sgl$Material *  matl){
 	matl->setUniform4f(matl, "time", self->passSec, self->dtSec, 0, 0) ;
 	self->setLightsToMaterial(self, matl) ;
-	matl->setUniform3f(matl, "lightPos", 300, 50, 0) ;
+	matl->setUniform3f(matl, "lightPos", 100, 150, 0) ;
 	SuiCore$Vec3 viewPos = ((Sgl$Obj3d * )self->camera)->localToWorld(self->camera, SuiCore$mkVec3(0, 0, 0) ) ;
 	matl->setUniformVec3(matl, "viewPos", viewPos) ;
-	matl->setUniform1f(matl, "ambientStrength", 0.2) ;
-	matl->setUniform1f(matl, "specularStrength", 0.5) ;
-	matl->setUniform1f(matl, "shininess", 32.0) ;
-	matl->setUniform3f(matl, "lightColor", 1, 1, 1) ;
 }
 
 

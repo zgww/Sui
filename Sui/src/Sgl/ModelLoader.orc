@@ -130,21 +130,21 @@ class AssimpLoader {
             }
 
             //应用属性到材质
-            matl.setUniformRgbaf("diffuse", clrDiffuse)
-            matl.setUniformRgbaf("emissive", clrEmissive)
-            matl.setUniformRgbaf("ambient", clrAmbient)
-            matl.setUniformRgbaf("specular", clrSpecular)
-            matl.setUniformRgbaf("transparent", clrTransparent)
-            matl.setUniformRgbaf("reflective", clrReflective)
+            // matl.setUniformRgbaf("diffuse", clrDiffuse)
+            // matl.setUniformRgbaf("emissive", clrEmissive)
+            // matl.setUniformRgbaf("ambient", clrAmbient)
+            // matl.setUniformRgbaf("specular", clrSpecular)
+            // matl.setUniformRgbaf("transparent", clrTransparent)
+            // matl.setUniformRgbaf("reflective", clrReflective)
 
-            matl.setUniform1f("shinpercent", matShinpercent)
-            matl.setUniform1f("shininess", matShininess)
-            matl.setUniform1f("roughnessFactor", matRoughnessFactor)
-            matl.setUniform1f("transparencyfactor", matTransparencyfactor)
-            matl.setUniform1f("opacity", matOpacity)
-            matl.setUniform1f("reflectivity", matReflectivity)
-            matl.setUniform1f("bumpscaling", matBumpscaling)
-            matl.setUniform1f("displacementscaling", matDisplacementscaling)
+            // matl.setUniform1f("shinpercent", matShinpercent)
+            // matl.setUniform1f("shininess", matShininess)
+            // matl.setUniform1f("roughnessFactor", matRoughnessFactor)
+            // matl.setUniform1f("transparencyfactor", matTransparencyfactor)
+            // matl.setUniform1f("opacity", matOpacity)
+            // matl.setUniform1f("reflectivity", matReflectivity)
+            // matl.setUniform1f("bumpscaling", matBumpscaling)
+            // matl.setUniform1f("displacementscaling", matDisplacementscaling)
 
             if texFile.notEmpty() {
                 String@ actualPath = Path_resolveRelativeFromFile(texFile.str, self.path.str)

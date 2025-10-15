@@ -14,14 +14,6 @@
 		{
 			"__class":	"Sgl$UniformInfo",
 			"count":	4,
-			"key":	"uColor",
-			"floatValues":	[0.93921570777893066, 0.12156862765550613, 0.63921570777893066, 1],
-			"kind":	6,
-			"texIndex":	0
-		}, 
-		{
-			"__class":	"Sgl$UniformInfo",
-			"count":	4,
 			"key":	"color",
 			"floatValues":	[0.5, 0.0, 0.0, 1],
 			"kind":	6,
@@ -30,27 +22,36 @@
 		{
 			"__class":	"Sgl$UniformInfo",
 			"count":	4,
-			"key":	"objColor",
-			"floatValues":	[0.000000023841858, 0.61176472902297974, 0.18431372940540314, 0.5],
+			"key":	"lightColor",
+			"floatValues":	[1, 1, 1, 1],
 			"kind":	6,
 			"texIndex":	0
 		}
 		, 
 		{
 			"__class":	"Sgl$UniformInfo",
-			"count":	3,
-			"key":	"lightPos",
-			"floatValues":	[-5.1999998092651367, 6, -6],
+			"count":1,
+			"key":	"ambientStrength",
+			"floatValues":	[0.3],
 			"kind":	3,
 			"texIndex":	0
-		},
+		}
+		, 
 		{
 			"__class":	"Sgl$UniformInfo",
-			"count":	0,
-			"key":	"texPath",
-			"floatValues":	[-5.1999998092651367, 6, -6],
-			"kind":	4,
-			"texPath":"./terrain.png",
+			"count":1,
+			"key":	"specularStrength",
+			"floatValues":	[0.9],
+			"kind":	3,
+			"texIndex":	0
+		}
+		, 
+		{
+			"__class":	"Sgl$UniformInfo",
+			"count":1,
+			"key":	"shininess",
+			"floatValues":	[32],
+			"kind":	3,
 			"texIndex":	0
 		}
 	]
