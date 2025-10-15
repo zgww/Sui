@@ -1035,10 +1035,10 @@ void test_AssimpLoader () {
     AssimpLoader@ l = new AssimpLoader()
     // l.load("duck.dae")
     // l.load("spider.fbx")
-    l.load("spider.obj")
+    l.load("obj/Fuel_B_Barrel.obj")
     l.showWindow()
     List@ mtls = new List()
-    // l.mergedMaterials = mtls;
+    l.mergedMaterials = mtls;
 
     new Material()~{
         o.load("../asset/basic.matl.json")

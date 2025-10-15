@@ -1328,9 +1328,10 @@ void  Sgl$ModelLoader$setPath(Sgl$ModelLoader *  self, Orc$String*  path){
 
 void  Sgl$test_AssimpLoader(){
 	URGC_VAR_CLEANUP_CLASS Sgl$AssimpLoader*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$AssimpLoader_new(&l) ));
-	l->load(l, "spider.obj") ;
+	l->load(l, "obj/Fuel_B_Barrel.obj") ;
 	l->showWindow(l) ;
 	URGC_VAR_CLEANUP_CLASS Orc$List*  mtls = (mtls=NULL,urgc_init_var_class((void**)&mtls, Orc$List_new(&mtls) ));
+	urgc_set_field_class(l, (void * )offsetof(Sgl$AssimpLoader, mergedMaterials) , mtls) ;
 	URGC_VAR_CLEANUP_CLASS Sgl$Material*  tmpNewOwner_1 = NULL;
 	{
 		Sgl$Material*  o = Sgl$Material_new(&tmpNewOwner_1) ;
