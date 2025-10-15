@@ -72,6 +72,16 @@ Orc$List*  Orc$Path_splitString(Orc$List **  __outRef__, Orc$String *  p){
 	return urgc_set_var_for_return_class((void ** )__outRef__, parts) ; 
 }
 
+bool  Orc$Path_isAbsolute(const char *  p){
+	if (Orc$String_startsWith(p, "/") ) {
+		return true; 
+	}
+	if (strlen(p)  >= 2 && p[1] == ':') {
+		return true; 
+	}
+	return false; 
+}
+
 Orc$String*  Orc$Path_toAbsolute(Orc$String **  __outRef__, const char *  p){
 	if (Orc$String_startsWith(p, "/") ) {
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
@@ -238,6 +248,10 @@ bool  Orc$Path_isUsualImage(const char *  path){
 
 Orc$String*  Orc$Path_resolveRelativeFromFile(Orc$String **  __outRef__, const char *  path, const char *  basefilepath){
 	if (path && basefilepath) {
+		if (Orc$Path_isAbsolute(path) ) {
+			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+			return urgc_set_var_for_return_class((void ** )__outRef__, Orc$str(&tmpReturn_1, path) ) ; 
+		}
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmp = Orc$Path_dirname((tmp = NULL,&tmp), basefilepath) ;
 		Orc$String$add(Orc$String$add(tmp, "/") , path) ;
 		URGC_VAR_CLEANUP_CLASS Orc$String*  ret = Orc$Path_normal((ret = NULL,&ret), tmp->str) ;

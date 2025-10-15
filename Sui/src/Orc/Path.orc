@@ -29,6 +29,8 @@ String@ Path_dirname(const char *s){
 }
 //计算[path]相对于[relFilePath]的相对路径
 //[relFilePath]是文件路径
+// 返回相对路径
+// 例： ("/a/b/c.png", "/a/b/d.json") => "c.png"
 String@ Path_relPathToFile(const char *path, const char *relFilePath){
     String@ abspath = Path_toAbsolute(path)
     String@ absTargetPath = Path_toAbsolute(relFilePath)
@@ -70,6 +72,16 @@ String@ Path_relPathToFile(const char *path, const char *relFilePath){
 List@ Path_splitString(String* p){
     List@ parts = p.splitByRe("/|\\\\")
     return parts
+}
+bool Path_isAbsolute(const char *p){
+    if String_startsWith(p, "/"){
+        return true
+    }
+    //windows 盘符
+    if strlen(p) >= 2 && p[1] == ':'{
+        return true
+    }
+    return false
 }
 
 //转为绝对路径
@@ -280,6 +292,11 @@ bool Path_isUsualImage(const char *path){
 }
 String@ Path_resolveRelativeFromFile(const char *path, const char *basefilepath){
     if path && basefilepath{
+        if Path_isAbsolute(path){
+            return str(path)
+        }
+
+
         String@ tmp = Path_dirname(basefilepath)
         tmp.add("/").add(path)
         String@ ret = Path_normal(tmp.str)

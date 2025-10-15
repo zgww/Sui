@@ -192,7 +192,7 @@ class FboView extends ImageView {
         
         // Position camera
         // self.camera.position = mkVec3(100, 300, 500)
-        self.camera.position = mkVec3(100, 200, 1000)
+        self.camera.position = mkVec3(100, 500, 500)
 
         self.camera.updateWorldMatrixUptoRoot()
         self.camera.lookAt(0, 0, 0)

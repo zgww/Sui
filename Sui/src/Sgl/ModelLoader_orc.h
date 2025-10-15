@@ -41,6 +41,7 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 //include  importHeadCode
 #include "../Orc/String_orc.h"
 #include "../Orc/List_orc.h"
+#include "../Orc/Path_orc.h"
 #include "./Obj3d_orc.h"
 #include "../Sui/Core/Window_orc.h"
 #include "../Sui/Core/Vec3_orc.h"

@@ -48,6 +48,7 @@ Orc$String*  Orc$Path_basename(Orc$String **  __outRef__, const char *  s);
 Orc$String*  Orc$Path_dirname(Orc$String **  __outRef__, const char *  s);
 Orc$String*  Orc$Path_relPathToFile(Orc$String **  __outRef__, const char *  path, const char *  relFilePath);
 Orc$List*  Orc$Path_splitString(Orc$List **  __outRef__, Orc$String *  p);
+bool  Orc$Path_isAbsolute(const char *  p);
 Orc$String*  Orc$Path_toAbsolute(Orc$String **  __outRef__, const char *  p);
 Orc$String*  Orc$Path_normal(Orc$String **  __outRef__, const char *  s);
 Orc$String*  Orc$Path_withBasename(Orc$String **  __outRef__, const char *  path, const char *  newbasename);

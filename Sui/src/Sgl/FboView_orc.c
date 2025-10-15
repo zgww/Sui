@@ -299,7 +299,7 @@ void  Sgl$FboView$mkBaseScene(Sgl$FboView *  self){
 	self->camera->aspect = 1.0;
 	self->camera->nearPlane = 100.1;
 	self->camera->farPlane = 5000;
-	((Sgl$Obj3d * )self->camera)->position = SuiCore$mkVec3(100, 200, 1000) ;
+	((Sgl$Obj3d * )self->camera)->position = SuiCore$mkVec3(100, 500, 500) ;
 	Sgl$Obj3d$updateWorldMatrixUptoRoot((Sgl$Obj3d * )self->camera) ;
 	((Sgl$Obj3d * )self->camera)->lookAt(self->camera, 0, 0, 0) ;
 	((SuiCore$Node * )self->scene)->appendChild(self->scene, self->camera) ;

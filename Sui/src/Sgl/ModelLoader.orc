@@ -7,6 +7,7 @@ package Sgl
 
 import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
+import * from "../Orc/Path.orc"
 import * from "./Obj3d.orc"
 import * from "../Sui/Core/Window.orc"
 import * from "../Sui/Core/Vec3.orc"
@@ -143,6 +144,11 @@ class AssimpLoader {
             matl.setUniform1f("reflectivity", matReflectivity)
             matl.setUniform1f("bumpscaling", matBumpscaling)
             matl.setUniform1f("displacementscaling", matDisplacementscaling)
+            if texFile.notEmpty() {
+                String@ actualPath = Path_resolveRelativeFromFile(texFile.str, self.path.str)
+                matl.setUniformTex2dByPath("tex", actualPath.str)
+                // matl.setUniformTex2dByPath("tex", "./SpongeBob.png")
+            }
         }
     }
 
