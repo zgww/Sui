@@ -163,6 +163,7 @@ Image@ loadImageByTex2d(Tex2d *tex){
 
     ret = new Image()
     ret._img = imgId
+    ret.data = tex
     imageMap.put(key.str, ret)
     return ret
 }

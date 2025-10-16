@@ -23,7 +23,9 @@ import * from "./Mesh.orc"
 import * from "./FboView.orc"
 import * from "./Buffer.orc"
 import * from "./Vbo.orc"
+import * from "./Tex2d.orc"
 import * from "./Geometry.orc"
+import * from "./SglSceneView.orc"
 import * from "./Material.orc"
 import * from "../SuiDesigner/Insp.orc"
 
@@ -180,6 +182,8 @@ class AssimpLoader {
                 //目前只支持一套uv, 2个数字
                 struct aiVector3D *aiUvs = mesh.mTextureCoords[0]
                 if aiUvs != null {
+                    struct aiVector3D *aiUv = aiUvs + i;
+
                     uvs.appendFloat2(
                         aiUvs[i].x,
                         aiUvs[i].y,
@@ -729,7 +733,7 @@ class AssimpLoader {
             model_path,
             aiProcess_Triangulate       |   // 三角化多边形
             aiProcess_GenNormals        |   // 如果没有法线则生成
-            aiProcess_FlipUVs           |   // 根据需要翻转 UV（OpenGL vs DirectX）
+            // aiProcess_FlipUVs           |   // 根据需要翻转 UV（OpenGL vs DirectX）
             aiProcess_JoinIdenticalVertices | // 合并重复顶点
             0
         );
@@ -1035,10 +1039,10 @@ void test_AssimpLoader () {
     AssimpLoader@ l = new AssimpLoader()
     // l.load("duck.dae")
     // l.load("spider.fbx")
-    l.load("obj/Fuel_B_Barrel.obj")
+    l.load("obj/Gold_Nugget_Large.obj")
     l.showWindow()
     List@ mtls = new List()
-    l.mergedMaterials = mtls;
+    // l.mergedMaterials = mtls;
 
     new Material()~{
         o.load("../asset/basic.matl.json")
@@ -1049,5 +1053,12 @@ void test_AssimpLoader () {
     }
 
     Obj3d@ root = l.buildSglTree()
+    root.scale.set(100, 100, 100)
+    root.updateWorldTransformAndSubtree()
     printNodeTree(root, 0)
+
+    Tex2d@ tex = new Tex2d()
+    tex.loadImageByPathCstr("./obj/resource_bits_texture.png")
+    // tex.loadImageByPathCstr("SpongeBob.png")
+    SglSceneView_showTextureWindow(tex, tex.width, tex.height)
 }

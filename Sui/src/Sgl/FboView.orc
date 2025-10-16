@@ -217,7 +217,7 @@ class FboView extends ImageView {
         // }
         {
             new PointLight()~{
-                o.position.set(0, 200, 0)
+                o.position.set(300, 300, 300)
                 self.scene.appendChild(o)
             }
         }

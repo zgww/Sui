@@ -338,6 +338,7 @@ SuiCore$Image*  Sgl$loadImageByTex2d(SuiCore$Image **  __outRef__, Sgl$Tex2d *  
 	URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpNewOwner_3 = NULL;
 	urgc_set_var_class(&ret, SuiCore$Image_new(&tmpNewOwner_3) ) ;
 	ret->_img = imgId;
+	urgc_set_field_class(ret, (void * )offsetof(SuiCore$Image, data) , tex) ;
 	imageMap->put(imageMap, key->str, ret) ;
 	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
 }

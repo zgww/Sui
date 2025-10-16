@@ -29,6 +29,7 @@ void SuiCore$Image_initMeta(Vtable_SuiCore$Image *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
 	orc_metaField_primitive(&pNext, "_img", OrcMetaType_int, offsetof(SuiCore$Image, _img), 0, 0, 0, 0);//int
+	orc_metaField_class(&pNext, "data", ((Vtable_Object*)Vtable_Object_init(0)), offsetof(SuiCore$Image, data), true, false, 1);
 
 	orc_metaField_method(&pNext, "size", offsetof(SuiCore$Image, size));
 	orc_metaField_method(&pNext, "width", offsetof(SuiCore$Image, width));
@@ -58,7 +59,7 @@ Vtable_SuiCore$Image* Vtable_SuiCore$Image_init(Vtable_SuiCore$Image* pvt){
 
     ((Vtable_Object*)pvt)->initMeta = (void*)SuiCore$Image_initMeta;
 
-    ((Vtable_Object*)pvt)->refc = 1;
+    ((Vtable_Object*)pvt)->refc = 0;
 
     return pvt;
 }
@@ -71,7 +72,7 @@ void SuiCore$Image_fini(SuiCore$Image *self){
     Object_fini((Object *)self);
 
     //字段释放
-	
+	urgc_fini_field_class(self, (void**)&((SuiCore$Image*)self)->data);
 
 }
 
@@ -86,6 +87,7 @@ void SuiCore$Image_init_fields(SuiCore$Image *self){
 	//fields
     {
 	((SuiCore$Image*)self)->_img = 0;
+	urgc_set_field_class(self, (void**)&((SuiCore$Image*)self)->data, NULL);
     }
 	((SuiCore$Image*)self)->size = (void*)SuiCore$Image$size;
 	((SuiCore$Image*)self)->width = (void*)SuiCore$Image$width;

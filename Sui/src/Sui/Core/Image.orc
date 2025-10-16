@@ -13,6 +13,8 @@ import * from "../../Sgl/Buffer.orc"
 
 class Image {
 	int _img = 0
+	// 如果是纹理，需要保持对纹理对象的引用
+	Object@ data
 
 	Vec2 size(){
 		return mkVec2(self.width(), self.height())

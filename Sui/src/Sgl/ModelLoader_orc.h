@@ -57,7 +57,9 @@ typedef struct tagVtable_Sgl$ModelLoader Vtable_Sgl$ModelLoader;
 #include "./FboView_orc.h"
 #include "./Buffer_orc.h"
 #include "./Vbo_orc.h"
+#include "./Tex2d_orc.h"
 #include "./Geometry_orc.h"
+#include "./SglSceneView_orc.h"
 #include "./Material_orc.h"
 #include "../SuiDesigner/Insp_orc.h"
 

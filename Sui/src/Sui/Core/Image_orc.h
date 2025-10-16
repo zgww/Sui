@@ -58,10 +58,11 @@ struct tagVtable_SuiCore$Image {
 //虚表实例
 extern Vtable_SuiCore$Image _vtable_SuiCore$Image;
 
-// class refc:1
+// class refc:0
 struct tagSuiCore$Image {
 	Object super; 
 	int  _img ;
+	Object*  data ;
 	SuiCore$Vec2 (*size) (SuiCore$Image *  self);
 	float  (*width) (SuiCore$Image *  self);
 	float  (*height) (SuiCore$Image *  self);

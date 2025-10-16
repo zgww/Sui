@@ -322,7 +322,7 @@ void  Sgl$FboView$mkBaseScene(Sgl$FboView *  self){
 			Sgl$PointLight*  o = Sgl$PointLight_new(&tmpNewOwner_3) ;
 			
 		
-			SuiCore$Vec3$set(&((Sgl$Obj3d * )o)->position, 0, 200, 0) ;
+			SuiCore$Vec3$set(&((Sgl$Obj3d * )o)->position, 300, 300, 300) ;
 			((SuiCore$Node * )self->scene)->appendChild(self->scene, o) ;
 		}
 	}
