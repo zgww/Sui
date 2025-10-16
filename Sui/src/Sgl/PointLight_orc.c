@@ -84,7 +84,7 @@ void Sgl$PointLight_init_fields(Sgl$PointLight *self){
     ((Object*)self)->fini = (void*)Sgl$PointLight_fini;
 	//fields
     {
-	((Sgl$PointLight*)self)->color = 0xffffff00;
+	((Sgl$PointLight*)self)->color = 0xffffffff;
 	((Sgl$PointLight*)self)->distance = 300;
 	((Sgl$PointLight*)self)->decay = 2;
     }

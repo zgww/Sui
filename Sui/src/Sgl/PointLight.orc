@@ -14,7 +14,7 @@ import * from "./Light.orc"
 
 class PointLight extends Light {
 
-    int color = 0xffffff00
+    int color = 0xffffffff
     float intensity
     float distance = 300
     float decay = 2

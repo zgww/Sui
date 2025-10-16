@@ -1041,7 +1041,7 @@ void test_AssimpLoader () {
     AssimpLoader@ l = new AssimpLoader()
     // l.load("duck.dae")
     // l.load("spider.fbx")
-    l.load("obj/Gold_Nugget_Large.obj")
+    l.load("obj/Silver_Bars_Stack_Large.obj")
     l.showWindow()
     List@ mtls = new List()
     // l.mergedMaterials = mtls;
