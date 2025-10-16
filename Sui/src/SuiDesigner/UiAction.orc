@@ -367,7 +367,8 @@ void UiAction_openFile(FileItem@ fi){
         l.showWindow()
         Obj3d@ root = l.buildSglTree()
 
-        root.scale.set(100, 100, 100)
+        float scale = 50
+        root.scale.set(scale, scale, scale)
         root.updateWorldTransformAndSubtree()
 
         printNodeTree(root, 0)
