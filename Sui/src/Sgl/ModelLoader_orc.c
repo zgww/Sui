@@ -1304,13 +1304,15 @@ void  Sgl$ModelLoader$onMounted(Sgl$ModelLoader *  self){
 
 
 void  Sgl$ModelLoader$generateModelRoot(Sgl$ModelLoader *  self){
-	if (self->modelRoot) {
-		((SuiCore$Node * )self->modelRoot)->removeSelf(self->modelRoot) ;
+	if (self->loader) {
+		if (self->modelRoot) {
+			((SuiCore$Node * )self->modelRoot)->removeSelf(self->modelRoot) ;
+		}
+		URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpReturn_1 = NULL;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$ModelLoader, modelRoot) , self->loader->buildSglTree(&tmpReturn_1, self->loader) ) ;
+		((SuiCore$Node * )self)->appendChild(self, self->modelRoot) ;
+		SuiCore$printNodeTree(self, 0) ;
 	}
-	URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpReturn_1 = NULL;
-	urgc_set_field_class(self, (void * )offsetof(Sgl$ModelLoader, modelRoot) , self->loader->buildSglTree(&tmpReturn_1, self->loader) ) ;
-	((SuiCore$Node * )self)->appendChild(self, self->modelRoot) ;
-	SuiCore$printNodeTree(self, 0) ;
 }
 
 
@@ -1349,9 +1351,6 @@ void  Sgl$test_AssimpLoader(){
 	SuiCore$Vec3$set(&root->scale, 100, 100, 100) ;
 	root->updateWorldTransformAndSubtree(root) ;
 	SuiCore$printNodeTree(root, 0) ;
-	URGC_VAR_CLEANUP_CLASS Sgl$Tex2d*  tex = (tex=NULL,urgc_init_var_class((void**)&tex, Sgl$Tex2d_new(&tex) ));
-	tex->loadImageByPathCstr(tex, "./obj/resource_bits_texture.png") ;
-	Sgl$SglSceneView_showTextureWindow(tex, tex->width, tex->height) ;
 }
 
 

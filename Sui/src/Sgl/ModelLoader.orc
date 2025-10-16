@@ -1009,12 +1009,14 @@ class ModelLoader extends Obj3d {
         }
     }
     void generateModelRoot(){
-        if self.modelRoot {
-            self.modelRoot.removeSelf()
+        if self.loader {
+            if self.modelRoot {
+                self.modelRoot.removeSelf()
+            }
+            self.modelRoot = self.loader.buildSglTree()
+            self.appendChild(self.modelRoot)
+            printNodeTree(self, 0)
         }
-        self.modelRoot = self.loader.buildSglTree()
-        self.appendChild(self.modelRoot)
-        printNodeTree(self, 0)
     }
 
     void setPath(String@ path){
@@ -1057,8 +1059,8 @@ void test_AssimpLoader () {
     root.updateWorldTransformAndSubtree()
     printNodeTree(root, 0)
 
-    Tex2d@ tex = new Tex2d()
-    tex.loadImageByPathCstr("./obj/resource_bits_texture.png")
-    // tex.loadImageByPathCstr("SpongeBob.png")
-    SglSceneView_showTextureWindow(tex, tex.width, tex.height)
+    // Tex2d@ tex = new Tex2d()
+    // tex.loadImageByPathCstr("./obj/resource_bits_texture.png")
+    // // tex.loadImageByPathCstr("SpongeBob.png")
+    // SglSceneView_showTextureWindow(tex, tex.width, tex.height)
 }
