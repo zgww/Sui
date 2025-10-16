@@ -338,7 +338,7 @@ void  Sgl$AssimpLoader$buildGeometries(Sgl$AssimpLoader *  self){
 			n.y = mesh->mNormals[i].y;
 			n.z = mesh->mNormals[i].z;
 			Sgl$Buffer$appendVec3(vertices, v3) ;
-			Sgl$Buffer$appendVec3(normals, v3) ;
+			Sgl$Buffer$appendVec3(normals, n) ;
 		}
 		for (unsigned int  i = 0; i < mesh->mNumFaces; i++) {
 			struct aiFace *  face = mesh->mFaces + i;

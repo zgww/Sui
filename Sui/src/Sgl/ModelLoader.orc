@@ -205,7 +205,7 @@ class AssimpLoader {
                 n.y = mesh.mNormals[i].y;
                 n.z = mesh.mNormals[i].z;
                 vertices.appendVec3(v3)
-                normals.appendVec3(v3)
+                normals.appendVec3(n)
             }
 
             // 处理索引
