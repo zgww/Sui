@@ -1248,14 +1248,6 @@ void  Sgl$ModelLoader$insp(Sgl$ModelLoader *  self, SuiDesigner$Insp*  insp){
 
 void  Sgl$ModelLoader$ctor(Sgl$ModelLoader *  self){
 	SuiCore$Listener$ctor(self) ;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
-	self->materialPaths->add(self->materialPaths, Orc$str(&tmpReturn_1, "../asset/basic.matl.json") ) ;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
-	self->materialPaths->add(self->materialPaths, Orc$str(&tmpReturn_2, "../asset/basic.matl.json") ) ;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-	self->materialPaths->add(self->materialPaths, Orc$str(&tmpReturn_3, "../asset/basic.matl.json") ) ;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
-	self->materialPaths->add(self->materialPaths, Orc$str(&tmpReturn_4, "../asset/basic.matl.json") ) ;
 }
 
 

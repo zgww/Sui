@@ -965,10 +965,12 @@ class ModelLoader extends Obj3d {
         super.ctor()
         // new Material()~{
             // o.load("../asset/basic.matl.json")
-            self.materialPaths.add(str("../asset/basic.matl.json"))
-            self.materialPaths.add(str("../asset/basic.matl.json"))
-            self.materialPaths.add(str("../asset/basic.matl.json"))
-            self.materialPaths.add(str("../asset/basic.matl.json"))
+
+            // self.materialPaths.add(str("../asset/basic.matl.json"))
+            // self.materialPaths.add(str("../asset/basic.matl.json"))
+            // self.materialPaths.add(str("../asset/basic.matl.json"))
+            // self.materialPaths.add(str("../asset/basic.matl.json"))
+
         // }
     }
     void setMaterialPaths(List* list){
