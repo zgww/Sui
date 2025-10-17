@@ -60,6 +60,34 @@ SuiCore$Plane *  SuiCore$Plane$setFromCoplanarPoints(SuiCore$Plane *  self, SuiC
 	return self; 
 }
 
+void  SuiCore$Plane$setByMatrixAndPlaneName(SuiCore$Plane *  self, Sgl$Mat worldTransform, const char *  planeName){
+	if (planeName != NULL) {
+		SuiCore$Vec3 tmpStructThis1;
+		SuiCore$Vec3 a = SuiCore$Vec3$applyMatrix4((tmpStructThis1 = SuiCore$mkVec3(0, 0, 0) ,&tmpStructThis1), worldTransform) ;
+		if (Orc$strEq(planeName, "XZ") ) {
+			SuiCore$Vec3 tmpStructThis2;
+			SuiCore$Vec3 b = SuiCore$Vec3$applyMatrix4((tmpStructThis2 = SuiCore$mkVec3(1, 0, 0) ,&tmpStructThis2), worldTransform) ;
+			SuiCore$Vec3 tmpStructThis3;
+			SuiCore$Vec3 c = SuiCore$Vec3$applyMatrix4((tmpStructThis3 = SuiCore$mkVec3(0, 0, 1) ,&tmpStructThis3), worldTransform) ;
+			SuiCore$Plane$setFromCoplanarPoints(self, a, b, c) ;
+		}
+		else if (Orc$strEq(planeName, "XY") ) {
+			SuiCore$Vec3 tmpStructThis4;
+			SuiCore$Vec3 b = SuiCore$Vec3$applyMatrix4((tmpStructThis4 = SuiCore$mkVec3(1, 0, 0) ,&tmpStructThis4), worldTransform) ;
+			SuiCore$Vec3 tmpStructThis5;
+			SuiCore$Vec3 c = SuiCore$Vec3$applyMatrix4((tmpStructThis5 = SuiCore$mkVec3(0, 1, 0) ,&tmpStructThis5), worldTransform) ;
+			SuiCore$Plane$setFromCoplanarPoints(self, a, b, c) ;
+		}
+		else if (Orc$strEq(planeName, "YZ") ) {
+			SuiCore$Vec3 tmpStructThis6;
+			SuiCore$Vec3 b = SuiCore$Vec3$applyMatrix4((tmpStructThis6 = SuiCore$mkVec3(0, 1, 0) ,&tmpStructThis6), worldTransform) ;
+			SuiCore$Vec3 tmpStructThis7;
+			SuiCore$Vec3 c = SuiCore$Vec3$applyMatrix4((tmpStructThis7 = SuiCore$mkVec3(0, 0, 1) ,&tmpStructThis7), worldTransform) ;
+			SuiCore$Plane$setFromCoplanarPoints(self, a, b, c) ;
+		}
+	}
+}
+
 SuiCore$Plane *  SuiCore$Plane$copy(SuiCore$Plane *  self, SuiCore$Plane plane){
 	SuiCore$Vec3$copy(&self->normal, plane.normal) ;
 	self->constant = plane.constant;

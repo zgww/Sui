@@ -63,7 +63,28 @@ extension Plane {
 		self.setFromNormalAndCoplanarPoint( normal, a );
 
 		return self;
+	}
 
+	//@param planeName:'XZ'|'XY'|'YZ'
+	void setByMatrixAndPlaneName(Mat worldTransform, const char *planeName){
+		if planeName != null {
+			Vec3 a = mkVec3(0, 0, 0).applyMatrix4(worldTransform)
+			if strEq(planeName, "XZ") {
+				Vec3 b = mkVec3(1, 0, 0).applyMatrix4(worldTransform)
+				Vec3 c = mkVec3(0, 0, 1).applyMatrix4(worldTransform)
+				self.setFromCoplanarPoints(a, b, c)
+			}
+			else if strEq(planeName, "XY") {
+				Vec3 b = mkVec3(1, 0, 0).applyMatrix4(worldTransform)
+				Vec3 c = mkVec3(0, 1, 0).applyMatrix4(worldTransform)
+				self.setFromCoplanarPoints(a, b, c)
+			}
+			else if strEq(planeName, "YZ") {
+				Vec3 b = mkVec3(0, 1, 0).applyMatrix4(worldTransform)
+				Vec3 c = mkVec3(0, 0, 1).applyMatrix4(worldTransform)
+				self.setFromCoplanarPoints(a, b, c)
+			}
+		}
 	}
 
 	Plane* copy(Plane plane ) {

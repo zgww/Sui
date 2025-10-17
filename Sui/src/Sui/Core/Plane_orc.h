@@ -70,6 +70,7 @@ SuiCore$Plane *  SuiCore$Plane$set(SuiCore$Plane *  self, SuiCore$Vec3 normal, f
 SuiCore$Plane *  SuiCore$Plane$setComponents(SuiCore$Plane *  self, float  x, float  y, float  z, float  w);
 SuiCore$Plane *  SuiCore$Plane$setFromNormalAndCoplanarPoint(SuiCore$Plane *  self, SuiCore$Vec3 normal, SuiCore$Vec3 point);
 SuiCore$Plane *  SuiCore$Plane$setFromCoplanarPoints(SuiCore$Plane *  self, SuiCore$Vec3 a, SuiCore$Vec3 b, SuiCore$Vec3 c);
+void  SuiCore$Plane$setByMatrixAndPlaneName(SuiCore$Plane *  self, Sgl$Mat worldTransform, const char *  planeName);
 SuiCore$Plane *  SuiCore$Plane$copy(SuiCore$Plane *  self, SuiCore$Plane plane);
 SuiCore$Plane *  SuiCore$Plane$normalizeLocal(SuiCore$Plane *  self);
 SuiCore$Plane *  SuiCore$Plane$negateLocal(SuiCore$Plane *  self);
