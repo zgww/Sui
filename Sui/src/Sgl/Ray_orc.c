@@ -170,7 +170,13 @@ Sgl$DistanceResult Sgl$Ray$distanceToPlane(Sgl$Ray *  self, SuiCore$Plane plane)
 		return r; 
 	}
 	float  t = -(SuiCore$Vec3$dot(&self->origin, plane.normal)  + plane.constant) / denominator;
-	r.distance = t >= 0 ? t : NULL;
+	if (t >= 0) {
+		r.distance = t;
+		r.succ = true;
+	}
+	else {
+		r.succ = false;
+	}
 	return r; 
 }
 
@@ -296,6 +302,21 @@ bool  Sgl$Ray$equals(Sgl$Ray *  self, Sgl$Ray ray){
 
 Sgl$Ray Sgl$Ray$clone(Sgl$Ray *  self){
 	return *self; 
+}
+
+void  Sgl$testRay(){
+	{
+		SuiCore$Plane plane;
+		Sgl$Mat m;
+		Sgl$Mat$identity(&m) ;
+		Sgl$Mat$makeTranslation(&m, 0, 0, -10) ;
+		SuiCore$Plane$setByMatrixAndPlaneName(&plane, m, "XY") ;
+		Sgl$Ray ray;
+		SuiCore$Vec3$set(&ray.origin, 10, 30, 100) ;
+		SuiCore$Vec3$set(&ray.direction, 0, 0, -100) ;
+		Sgl$IntersectResult r = Sgl$Ray$intersectPlane(&ray, plane) ;
+		printf("r:%d, %f,%f,%f\n", r.succ, r.point.x, r.point.y, r.point.z) ;
+	}
 }
 
 

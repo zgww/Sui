@@ -115,6 +115,7 @@ Sgl$IntersectResult Sgl$Ray$intersectTriangle(Sgl$Ray *  self, SuiCore$Vec3 a, S
 void  Sgl$Ray$applyMatrix4Local(Sgl$Ray *  self, Sgl$Mat matrix4);
 bool  Sgl$Ray$equals(Sgl$Ray *  self, Sgl$Ray ray);
 Sgl$Ray Sgl$Ray$clone(Sgl$Ray *  self);
+void  Sgl$testRay();
 
 
 

@@ -28,6 +28,7 @@ import * from "./Sui/Core/View.orc"
 import * from "./Sui/Core/Rect.orc"
 import * from "./Sui/Core/Vec2.orc"
 import * from "./Sui/Core/Plane.orc"
+import * from "./Sgl/Ray.orc"
 import * from "./Sui/Core/Inset.orc"
 import * from "./Sui/Core/Frame.orc"
 import * from "./Sui/Dialog/MessageDialog.orc"
@@ -1206,7 +1207,8 @@ int main(){
     //     o.showWindow()
     // }
 
-    testPlane()
+    // testPlane()
+    testRay()
 
     // new HoroEditor().{
     //     o.openProject("../DemoProject")

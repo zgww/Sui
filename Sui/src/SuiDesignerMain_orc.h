@@ -73,6 +73,7 @@ typedef struct tagVtable_Tmp2 Vtable_Tmp2;
 #include "./Sui/Core/Rect_orc.h"
 #include "./Sui/Core/Vec2_orc.h"
 #include "./Sui/Core/Plane_orc.h"
+#include "./Sgl/Ray_orc.h"
 #include "./Sui/Core/Inset_orc.h"
 #include "./Sui/Core/Frame_orc.h"
 #include "./Sui/Dialog/MessageDialog_orc.h"

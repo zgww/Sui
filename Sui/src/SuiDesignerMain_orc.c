@@ -29,6 +29,7 @@
 #include "./Sui/Core/Rect_orc.h"
 #include "./Sui/Core/Vec2_orc.h"
 #include "./Sui/Core/Plane_orc.h"
+#include "./Sgl/Ray_orc.h"
 #include "./Sui/Core/Inset_orc.h"
 #include "./Sui/Core/Frame_orc.h"
 #include "./Sui/Dialog/MessageDialog_orc.h"
@@ -76,37 +77,37 @@
 
 
 // static struct 
-typedef struct tag__Block_93_39 __Block_93_39;
+typedef struct tag__Block_94_39 __Block_94_39;
 
-typedef struct tag__Block_142_43 __Block_142_43;
+typedef struct tag__Block_143_43 __Block_143_43;
 
-typedef struct tag__Block_432_35 __Block_432_35;
+typedef struct tag__Block_433_35 __Block_433_35;
 
-typedef struct tag__Block_443_43 __Block_443_43;
+typedef struct tag__Block_444_43 __Block_444_43;
 
-typedef struct tag__Block_386_23 __Block_386_23;
+typedef struct tag__Block_387_23 __Block_387_23;
 
-typedef struct tag__Block_1140_16 __Block_1140_16;
+typedef struct tag__Block_1141_16 __Block_1141_16;
 
-typedef struct tag__Closure_onActive_99 __Closure_onActive_99;
+typedef struct tag__Closure_onActive_100 __Closure_onActive_100;
 
-typedef struct tag__Closure_223_28 __Closure_223_28;
+typedef struct tag__Closure_224_28 __Closure_224_28;
 
-typedef struct tag__Closure_447_44 __Closure_447_44;
+typedef struct tag__Closure_448_44 __Closure_448_44;
 
-typedef struct tag__Closure_451_39 __Closure_451_39;
+typedef struct tag__Closure_452_39 __Closure_452_39;
 
-typedef struct tag__Closure_482_39 __Closure_482_39;
+typedef struct tag__Closure_483_39 __Closure_483_39;
 
-typedef struct tag__Closure_524_49 __Closure_524_49;
+typedef struct tag__Closure_525_49 __Closure_525_49;
 
-typedef struct tag__Closure_557_52 __Closure_557_52;
+typedef struct tag__Closure_558_52 __Closure_558_52;
 
-typedef struct tag__Closure_say_1142 __Closure_say_1142;
+typedef struct tag__Closure_say_1143 __Closure_say_1143;
 
 
 
-struct tag__Block_93_39 {
+struct tag__Block_94_39 {
 	MenuBarCtrl*  self ;
 };
 
@@ -114,7 +115,7 @@ struct tag__Block_93_39 {
 
 
 
-struct tag__Block_142_43 {
+struct tag__Block_143_43 {
 	SuiView$MenuNativeItem*  o ;
 };
 
@@ -122,7 +123,7 @@ struct tag__Block_142_43 {
 
 
 
-struct tag__Block_432_35 {
+struct tag__Block_433_35 {
 	MenuBarCtrl*  group ;
 };
 
@@ -130,7 +131,7 @@ struct tag__Block_432_35 {
 
 
 
-struct tag__Block_443_43 {
+struct tag__Block_444_43 {
 	SuiView$MenuButton*  mbutton ;
 };
 
@@ -138,7 +139,7 @@ struct tag__Block_443_43 {
 
 
 
-struct tag__Block_386_23 {
+struct tag__Block_387_23 {
 	SuiDesigner$Theme *  t ;
 };
 
@@ -146,7 +147,7 @@ struct tag__Block_386_23 {
 
 
 
-struct tag__Block_1140_16 {
+struct tag__Block_1141_16 {
 	Tmp2*  a ;
 };
 
@@ -154,51 +155,51 @@ struct tag__Block_1140_16 {
 
 
 
-struct tag__Closure_onActive_99 {
-	void  (*invoke)(__Closure_onActive_99 *  self, SuiView$MenuNativeItem *  item);
+struct tag__Closure_onActive_100 {
+	void  (*invoke)(__Closure_onActive_100 *  self, SuiView$MenuNativeItem *  item);
 	Vtable_Object *  vtable ;
-	__Block_93_39*  __var___Block_93_39 ;
+	__Block_94_39*  __var___Block_94_39 ;
 };
 
 
 
 
 
-struct tag__Closure_223_28 {
-	void  (*invoke)(__Closure_223_28 *  self);
+struct tag__Closure_224_28 {
+	void  (*invoke)(__Closure_224_28 *  self);
 	Vtable_Object *  vtable ;
-	__Block_93_39*  __var___Block_93_39 ;
-	__Block_142_43*  __var___Block_142_43 ;
+	__Block_94_39*  __var___Block_94_39 ;
+	__Block_143_43*  __var___Block_143_43 ;
 };
 
 
 
 
 
-struct tag__Closure_447_44 {
-	void  (*invoke)(__Closure_447_44 *  self, SuiCore$MouseEvent *  me);
+struct tag__Closure_448_44 {
+	void  (*invoke)(__Closure_448_44 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	__Block_432_35*  __var___Block_432_35 ;
-	__Block_443_43*  __var___Block_443_43 ;
+	__Block_433_35*  __var___Block_433_35 ;
+	__Block_444_43*  __var___Block_444_43 ;
 };
 
 
 
 
 
-struct tag__Closure_451_39 {
-	void  (*invoke)(__Closure_451_39 *  self, SuiCore$MouseEvent *  me);
+struct tag__Closure_452_39 {
+	void  (*invoke)(__Closure_452_39 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
-	__Block_432_35*  __var___Block_432_35 ;
-	__Block_443_43*  __var___Block_443_43 ;
+	__Block_433_35*  __var___Block_433_35 ;
+	__Block_444_43*  __var___Block_444_43 ;
 };
 
 
 
 
 
-struct tag__Closure_482_39 {
-	void  (*invoke)(__Closure_482_39 *  self, SuiCore$MouseEvent *  me);
+struct tag__Closure_483_39 {
+	void  (*invoke)(__Closure_483_39 *  self, SuiCore$MouseEvent *  me);
 	Vtable_Object *  vtable ;
 };
 
@@ -206,30 +207,30 @@ struct tag__Closure_482_39 {
 
 
 
-struct tag__Closure_524_49 {
-	void  (*invoke)(__Closure_524_49 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o, int  kidIndex);
+struct tag__Closure_525_49 {
+	void  (*invoke)(__Closure_525_49 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o, int  kidIndex);
 	Vtable_Object *  vtable ;
-	__Block_386_23*  __var___Block_386_23 ;
+	__Block_387_23*  __var___Block_387_23 ;
 };
 
 
 
 
 
-struct tag__Closure_557_52 {
-	SuiCore$ViewBase *  (*invoke)(__Closure_557_52 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o);
+struct tag__Closure_558_52 {
+	SuiCore$ViewBase *  (*invoke)(__Closure_558_52 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o);
 	Vtable_Object *  vtable ;
-	__Block_386_23*  __var___Block_386_23 ;
+	__Block_387_23*  __var___Block_387_23 ;
 };
 
 
 
 
 
-struct tag__Closure_say_1142 {
-	void  (*invoke)(__Closure_say_1142 *  self);
+struct tag__Closure_say_1143 {
+	void  (*invoke)(__Closure_say_1143 *  self);
 	Vtable_Object *  vtable ;
-	__Block_1140_16*  __var___Block_1140_16 ;
+	__Block_1141_16*  __var___Block_1141_16 ;
 };
 
 
@@ -237,36 +238,36 @@ struct tag__Closure_say_1142 {
 
 
 // static function declaration
-static void  __finiBlock___Block_93_39(__Block_93_39 *  self);
-static void  __finiBlock___Block_142_43(__Block_142_43 *  self);
-static void  __finiBlock___Block_432_35(__Block_432_35 *  self);
-static void  __finiBlock___Block_443_43(__Block_443_43 *  self);
-static void  __finiBlock___Block_386_23(__Block_386_23 *  self);
-static void  __finiBlock___Block_1140_16(__Block_1140_16 *  self);
-static void  __fn___Closure_onActive_99(__Closure_onActive_99 *  self, SuiView$MenuNativeItem *  item);
-static void  __fini___Closure_onActive_99(__Closure_onActive_99 *  self);
-static __Closure_onActive_99*  __make___Closure_onActive_99(__Closure_onActive_99 **  __outRef__, __Block_93_39 *  __var___Block_93_39);
-static void  __fn___Closure_223_28(__Closure_223_28 *  self);
-static void  __fini___Closure_223_28(__Closure_223_28 *  self);
-static __Closure_223_28*  __make___Closure_223_28(__Closure_223_28 **  __outRef__, __Block_93_39 *  __var___Block_93_39, __Block_142_43 *  __var___Block_142_43);
-static void  __fn___Closure_447_44(__Closure_447_44 *  self, SuiCore$MouseEvent *  me);
-static void  __fini___Closure_447_44(__Closure_447_44 *  self);
-static __Closure_447_44*  __make___Closure_447_44(__Closure_447_44 **  __outRef__, __Block_432_35 *  __var___Block_432_35, __Block_443_43 *  __var___Block_443_43);
-static void  __fn___Closure_451_39(__Closure_451_39 *  self, SuiCore$MouseEvent *  me);
-static void  __fini___Closure_451_39(__Closure_451_39 *  self);
-static __Closure_451_39*  __make___Closure_451_39(__Closure_451_39 **  __outRef__, __Block_432_35 *  __var___Block_432_35, __Block_443_43 *  __var___Block_443_43);
-static void  __fn___Closure_482_39(__Closure_482_39 *  self, SuiCore$MouseEvent *  me);
-static void  __fini___Closure_482_39(__Closure_482_39 *  self);
-static __Closure_482_39*  __make___Closure_482_39(__Closure_482_39 **  __outRef__);
-static void  __fn___Closure_524_49(__Closure_524_49 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o, int  kidIndex);
-static void  __fini___Closure_524_49(__Closure_524_49 *  self);
-static __Closure_524_49*  __make___Closure_524_49(__Closure_524_49 **  __outRef__, __Block_386_23 *  __var___Block_386_23);
-static SuiCore$ViewBase *  __fn___Closure_557_52(__Closure_557_52 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o);
-static void  __fini___Closure_557_52(__Closure_557_52 *  self);
-static __Closure_557_52*  __make___Closure_557_52(__Closure_557_52 **  __outRef__, __Block_386_23 *  __var___Block_386_23);
-static void  __fn___Closure_say_1142(__Closure_say_1142 *  self);
-static void  __fini___Closure_say_1142(__Closure_say_1142 *  self);
-static __Closure_say_1142*  __make___Closure_say_1142(__Closure_say_1142 **  __outRef__, __Block_1140_16 *  __var___Block_1140_16);
+static void  __finiBlock___Block_94_39(__Block_94_39 *  self);
+static void  __finiBlock___Block_143_43(__Block_143_43 *  self);
+static void  __finiBlock___Block_433_35(__Block_433_35 *  self);
+static void  __finiBlock___Block_444_43(__Block_444_43 *  self);
+static void  __finiBlock___Block_387_23(__Block_387_23 *  self);
+static void  __finiBlock___Block_1141_16(__Block_1141_16 *  self);
+static void  __fn___Closure_onActive_100(__Closure_onActive_100 *  self, SuiView$MenuNativeItem *  item);
+static void  __fini___Closure_onActive_100(__Closure_onActive_100 *  self);
+static __Closure_onActive_100*  __make___Closure_onActive_100(__Closure_onActive_100 **  __outRef__, __Block_94_39 *  __var___Block_94_39);
+static void  __fn___Closure_224_28(__Closure_224_28 *  self);
+static void  __fini___Closure_224_28(__Closure_224_28 *  self);
+static __Closure_224_28*  __make___Closure_224_28(__Closure_224_28 **  __outRef__, __Block_94_39 *  __var___Block_94_39, __Block_143_43 *  __var___Block_143_43);
+static void  __fn___Closure_448_44(__Closure_448_44 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_448_44(__Closure_448_44 *  self);
+static __Closure_448_44*  __make___Closure_448_44(__Closure_448_44 **  __outRef__, __Block_433_35 *  __var___Block_433_35, __Block_444_43 *  __var___Block_444_43);
+static void  __fn___Closure_452_39(__Closure_452_39 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_452_39(__Closure_452_39 *  self);
+static __Closure_452_39*  __make___Closure_452_39(__Closure_452_39 **  __outRef__, __Block_433_35 *  __var___Block_433_35, __Block_444_43 *  __var___Block_444_43);
+static void  __fn___Closure_483_39(__Closure_483_39 *  self, SuiCore$MouseEvent *  me);
+static void  __fini___Closure_483_39(__Closure_483_39 *  self);
+static __Closure_483_39*  __make___Closure_483_39(__Closure_483_39 **  __outRef__);
+static void  __fn___Closure_525_49(__Closure_525_49 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o, int  kidIndex);
+static void  __fini___Closure_525_49(__Closure_525_49 *  self);
+static __Closure_525_49*  __make___Closure_525_49(__Closure_525_49 **  __outRef__, __Block_387_23 *  __var___Block_387_23);
+static SuiCore$ViewBase *  __fn___Closure_558_52(__Closure_558_52 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o);
+static void  __fini___Closure_558_52(__Closure_558_52 *  self);
+static __Closure_558_52*  __make___Closure_558_52(__Closure_558_52 **  __outRef__, __Block_387_23 *  __var___Block_387_23);
+static void  __fn___Closure_say_1143(__Closure_say_1143 *  self);
+static void  __fini___Closure_say_1143(__Closure_say_1143 *  self);
+static __Closure_say_1143*  __make___Closure_say_1143(__Closure_say_1143 **  __outRef__, __Block_1141_16 *  __var___Block_1141_16);
 
 
 URGC_VAR_CLEANUP_CLASS SuiView$DockLayout*  dockLayoutIns = NULL;
@@ -403,35 +404,35 @@ void  MenuBarCtrl$dtor(MenuBarCtrl *  self){
 void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(mbutton);
 
-	URGC_VAR_CLEANUP __Block_93_39*  __var___Block_93_39 = (__var___Block_93_39=NULL,urgc_init_var((void**)&__var___Block_93_39, orc_alloc_and_set_deleter(sizeof(__Block_93_39) , __finiBlock___Block_93_39) ));
-	urgc_set_field_class(__var___Block_93_39, (void * )offsetof(__Block_93_39, self) , self) ;
+	URGC_VAR_CLEANUP __Block_94_39*  __var___Block_94_39 = (__var___Block_94_39=NULL,urgc_init_var((void**)&__var___Block_94_39, orc_alloc_and_set_deleter(sizeof(__Block_94_39) , __finiBlock___Block_94_39) ));
+	urgc_set_field_class(__var___Block_94_39, (void * )offsetof(__Block_94_39, self) , self) ;
 	printf("set Trigging:%p\n", mbutton) ;
 	urgc_set_field_class(self, (void * )offsetof(MenuBarCtrl, curMenu) , mbutton) ;
 	urgc_set_field_class(self, (void * )offsetof(MenuBarCtrl, nextMenu) , NULL) ;
 	URGC_VAR_CLEANUP void  (**onActive)(void *  self, SuiView$MenuNativeItem *  item) = NULL;
-	URGC_VAR_CLEANUP __Closure_onActive_99*  tmpReturn_1 = NULL;
-	(urgc_set_var(&onActive, __make___Closure_onActive_99(&tmpReturn_1, __var___Block_93_39) ) );
+	URGC_VAR_CLEANUP __Closure_onActive_100*  tmpReturn_1 = NULL;
+	(urgc_set_var(&onActive, __make___Closure_onActive_100(&tmpReturn_1, __var___Block_94_39) ) );
 	URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_2 = NULL;
 	{
 		SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_2, NULL, NULL, NULL) ;
 		
 	
-		URGC_VAR_CLEANUP __Block_142_43*  __var___Block_142_43 = (__var___Block_142_43=NULL,urgc_init_var((void**)&__var___Block_142_43, orc_alloc_and_set_deleter(sizeof(__Block_142_43) , __finiBlock___Block_142_43) ));
-		urgc_set_field_class(__var___Block_142_43, (void * )offsetof(__Block_142_43, o) , o) ;
+		URGC_VAR_CLEANUP __Block_143_43*  __var___Block_143_43 = (__var___Block_143_43=NULL,urgc_init_var((void**)&__var___Block_143_43, orc_alloc_and_set_deleter(sizeof(__Block_143_43) , __finiBlock___Block_143_43) ));
+		urgc_set_field_class(__var___Block_143_43, (void * )offsetof(__Block_143_43, o) , o) ;
 		if (Orc$String$equals(mbutton->text, "文件") ) {
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_3 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_3, __var___Block_142_43->o, Orc$str(&tmpReturn_4, "新建场景") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_3, __var___Block_143_43->o, Orc$str(&tmpReturn_4, "新建场景") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_5 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_6 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_5, __var___Block_142_43->o, Orc$str(&tmpReturn_6, "打开场景") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_5, __var___Block_143_43->o, Orc$str(&tmpReturn_6, "打开场景") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_7 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_7, __var___Block_142_43->o, Orc$str(&tmpReturn_8, "保存场景") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_7, __var___Block_143_43->o, Orc$str(&tmpReturn_8, "保存场景") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_9 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_10 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_9, __var___Block_142_43->o, Orc$str(&tmpReturn_10, "最近打开") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_9, __var___Block_143_43->o, Orc$str(&tmpReturn_10, "最近打开") , onActive) ;
 				
 			
 				URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_11 = NULL;
@@ -443,114 +444,114 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			}
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_15 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_16 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_15, __var___Block_142_43->o, Orc$str(&tmpReturn_16, "另存为场景") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_15, __var___Block_143_43->o, Orc$str(&tmpReturn_16, "另存为场景") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_17 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_18 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_17, __var___Block_142_43->o, Orc$str(&tmpReturn_18, "保存所有场景") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_17, __var___Block_143_43->o, Orc$str(&tmpReturn_18, "保存所有场景") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_19 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_20 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_19, __var___Block_142_43->o, Orc$str(&tmpReturn_20, "关闭场景") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_19, __var___Block_143_43->o, Orc$str(&tmpReturn_20, "关闭场景") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_21 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_22 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_21, __var___Block_142_43->o, Orc$str(&tmpReturn_22, "重载已保存的场景") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_21, __var___Block_143_43->o, Orc$str(&tmpReturn_22, "重载已保存的场景") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_23 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_24 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_23, __var___Block_142_43->o, Orc$str(&tmpReturn_24, "设置") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_23, __var___Block_143_43->o, Orc$str(&tmpReturn_24, "设置") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_25 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_26 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_25, __var___Block_142_43->o, Orc$str(&tmpReturn_26, "退出") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_25, __var___Block_143_43->o, Orc$str(&tmpReturn_26, "退出") , onActive) ;
 		}
 		else if (Orc$String$equals(mbutton->text, "项目") ) {
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_27 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_28 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_27, __var___Block_142_43->o, Orc$str(&tmpReturn_28, "退出到项目列表") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_27, __var___Block_143_43->o, Orc$str(&tmpReturn_28, "退出到项目列表") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_29 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_30 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_29, __var___Block_142_43->o, Orc$str(&tmpReturn_30, "重新加载当前项目") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_29, __var___Block_143_43->o, Orc$str(&tmpReturn_30, "重新加载当前项目") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_31 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_32 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_31, __var___Block_142_43->o, Orc$str(&tmpReturn_32, "项目设置") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_31, __var___Block_143_43->o, Orc$str(&tmpReturn_32, "项目设置") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_33 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_34 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_33, __var___Block_142_43->o, Orc$str(&tmpReturn_34, "导出") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_33, __var___Block_143_43->o, Orc$str(&tmpReturn_34, "导出") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_35 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_36 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_35, __var___Block_142_43->o, Orc$str(&tmpReturn_36, "工具-孤立资源浏览器") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_35, __var___Block_143_43->o, Orc$str(&tmpReturn_36, "工具-孤立资源浏览器") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_37 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_38 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_37, __var___Block_142_43->o, Orc$str(&tmpReturn_38, "打开用户数据目录") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_37, __var___Block_143_43->o, Orc$str(&tmpReturn_38, "打开用户数据目录") , onActive) ;
 		}
 		else if (Orc$String$equals(mbutton->text, "帮助") ) {
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_39 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_40 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_39, __var___Block_142_43->o, Orc$str(&tmpReturn_40, "在线文档") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_39, __var___Block_143_43->o, Orc$str(&tmpReturn_40, "在线文档") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_41 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_42 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_41, __var___Block_142_43->o, Orc$str(&tmpReturn_42, "社区") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_41, __var___Block_143_43->o, Orc$str(&tmpReturn_42, "社区") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_43 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_44 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_43, __var___Block_142_43->o, Orc$str(&tmpReturn_44, "问与答") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_43, __var___Block_143_43->o, Orc$str(&tmpReturn_44, "问与答") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_45 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_46 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_45, __var___Block_142_43->o, Orc$str(&tmpReturn_46, "搜索帮助") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_45, __var___Block_143_43->o, Orc$str(&tmpReturn_46, "搜索帮助") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_47 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_48 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_47, __var___Block_142_43->o, Orc$str(&tmpReturn_48, "报告问题") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_47, __var___Block_143_43->o, Orc$str(&tmpReturn_48, "报告问题") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_49 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_50 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_49, __var___Block_142_43->o, Orc$str(&tmpReturn_50, "支持Sui开发") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_49, __var___Block_143_43->o, Orc$str(&tmpReturn_50, "支持Sui开发") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_51 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_52 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_51, __var___Block_142_43->o, Orc$str(&tmpReturn_52, "关于Sui") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_51, __var___Block_143_43->o, Orc$str(&tmpReturn_52, "关于Sui") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_53 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_54 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_53, __var___Block_142_43->o, Orc$str(&tmpReturn_54, "关于OrcLang") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_53, __var___Block_143_43->o, Orc$str(&tmpReturn_54, "关于OrcLang") , onActive) ;
 		}
 		else if (Orc$String$equals(mbutton->text, "调试") ) {
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_55 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_56 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_55, __var___Block_142_43->o, Orc$str(&tmpReturn_56, "运行预览") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_55, __var___Block_143_43->o, Orc$str(&tmpReturn_56, "运行预览") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_57 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_58 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_57, __var___Block_142_43->o, Orc$str(&tmpReturn_58, "使用远程调试器") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_57, __var___Block_143_43->o, Orc$str(&tmpReturn_58, "使用远程调试器") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_59 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_60 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_59, __var___Block_142_43->o, Orc$str(&tmpReturn_60, "显示网格") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_59, __var___Block_143_43->o, Orc$str(&tmpReturn_60, "显示网格") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_61 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_62 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_61, __var___Block_142_43->o, Orc$str(&tmpReturn_62, "显示路径") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_61, __var___Block_143_43->o, Orc$str(&tmpReturn_62, "显示路径") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_63 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_64 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_63, __var___Block_142_43->o, Orc$str(&tmpReturn_64, "显示避障") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_63, __var___Block_143_43->o, Orc$str(&tmpReturn_64, "显示避障") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_65 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_66 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_65, __var___Block_142_43->o, Orc$str(&tmpReturn_66, "显示碰撞区域") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_65, __var___Block_143_43->o, Orc$str(&tmpReturn_66, "显示碰撞区域") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_67 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_68 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_67, __var___Block_142_43->o, Orc$str(&tmpReturn_68, "附加到进程") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_67, __var___Block_143_43->o, Orc$str(&tmpReturn_68, "附加到进程") , onActive) ;
 		}
 		else if (Orc$String$equals(mbutton->text, "窗口") ) {
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_69 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_70 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_69, __var___Block_142_43->o, Orc$str(&tmpReturn_70, "NewWindow") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_69, __var___Block_143_43->o, Orc$str(&tmpReturn_70, "NewWindow") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_71 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_72 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_71, __var___Block_142_43->o, Orc$str(&tmpReturn_72, "MaxWindow") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_71, __var___Block_143_43->o, Orc$str(&tmpReturn_72, "MaxWindow") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_73 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_74 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_73, __var___Block_142_43->o, Orc$str(&tmpReturn_74, "重置布局") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_73, __var___Block_143_43->o, Orc$str(&tmpReturn_74, "重置布局") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_75 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_76 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_75, __var___Block_142_43->o, Orc$str(&tmpReturn_76, "保存布局") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_75, __var___Block_143_43->o, Orc$str(&tmpReturn_76, "保存布局") , onActive) ;
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_77 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_78 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_77, __var___Block_142_43->o, Orc$str(&tmpReturn_78, "加载布局") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_77, __var___Block_143_43->o, Orc$str(&tmpReturn_78, "加载布局") , onActive) ;
 		}
 		else if (Orc$String$equals(mbutton->text, "视图") ) {
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_79 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_80 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_79, __var___Block_142_43->o, Orc$str(&tmpReturn_80, "Node") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_79, __var___Block_143_43->o, Orc$str(&tmpReturn_80, "Node") , onActive) ;
 				
 			
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_81 = NULL;
@@ -559,7 +560,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_82 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_83 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_82, __var___Block_142_43->o, Orc$str(&tmpReturn_83, "ViewBase") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_82, __var___Block_143_43->o, Orc$str(&tmpReturn_83, "ViewBase") , onActive) ;
 				
 			
 				
@@ -567,7 +568,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_84 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_85 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_84, __var___Block_142_43->o, Orc$str(&tmpReturn_85, "View") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_84, __var___Block_143_43->o, Orc$str(&tmpReturn_85, "View") , onActive) ;
 				
 			
 				
@@ -575,7 +576,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_86 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_87 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_86, __var___Block_142_43->o, Orc$str(&tmpReturn_87, "Button") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_86, __var___Block_143_43->o, Orc$str(&tmpReturn_87, "Button") , onActive) ;
 				
 			
 				
@@ -583,7 +584,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_88 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_89 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_88, __var___Block_142_43->o, Orc$str(&tmpReturn_89, "Slider") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_88, __var___Block_143_43->o, Orc$str(&tmpReturn_89, "Slider") , onActive) ;
 				
 			
 				
@@ -591,7 +592,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_90 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_91 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_90, __var___Block_142_43->o, Orc$str(&tmpReturn_91, "Switch") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_90, __var___Block_143_43->o, Orc$str(&tmpReturn_91, "Switch") , onActive) ;
 				
 			
 				
@@ -599,7 +600,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_92 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_93 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_92, __var___Block_142_43->o, Orc$str(&tmpReturn_93, "ImageView") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_92, __var___Block_143_43->o, Orc$str(&tmpReturn_93, "ImageView") , onActive) ;
 				
 			
 				
@@ -607,7 +608,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_94 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_95 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_94, __var___Block_142_43->o, Orc$str(&tmpReturn_95, "TextView") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_94, __var___Block_143_43->o, Orc$str(&tmpReturn_95, "TextView") , onActive) ;
 				
 			
 				
@@ -615,7 +616,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_96 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_97 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_96, __var___Block_142_43->o, Orc$str(&tmpReturn_97, "EditText") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_96, __var___Block_143_43->o, Orc$str(&tmpReturn_97, "EditText") , onActive) ;
 				
 			
 				
@@ -623,13 +624,13 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_98 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_99 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_98, __var___Block_142_43->o, Orc$str(&tmpReturn_99, "ListView") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_98, __var___Block_143_43->o, Orc$str(&tmpReturn_99, "ListView") , onActive) ;
 				
 			
 				URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_100 = NULL;
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_101 = NULL;
 				{
-					SuiView$MenuNativeItem*  __scopeVar_203_20 = SuiView$mkMenuNativeItem(&tmpReturn_100, o, Orc$str(&tmpReturn_101, "TreeView") , onActive) , *o = __scopeVar_203_20;
+					SuiView$MenuNativeItem*  __scopeVar_204_20 = SuiView$mkMenuNativeItem(&tmpReturn_100, o, Orc$str(&tmpReturn_101, "TreeView") , onActive) , *o = __scopeVar_204_20;
 					
 				
 					
@@ -637,7 +638,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 				URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_102 = NULL;
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_103 = NULL;
 				{
-					SuiView$MenuNativeItem*  __scopeVar_204_20 = SuiView$mkMenuNativeItem(&tmpReturn_102, o, Orc$str(&tmpReturn_103, "TableView") , onActive) , *o = __scopeVar_204_20;
+					SuiView$MenuNativeItem*  __scopeVar_205_20 = SuiView$mkMenuNativeItem(&tmpReturn_102, o, Orc$str(&tmpReturn_103, "TableView") , onActive) , *o = __scopeVar_205_20;
 					
 				
 					
@@ -646,7 +647,7 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_104 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_105 = NULL;
 			{
-				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_104, __var___Block_142_43->o, Orc$str(&tmpReturn_105, "ProgressView") , onActive) ;
+				SuiView$MenuNativeItem*  o = SuiView$mkMenuNativeItem(&tmpReturn_104, __var___Block_143_43->o, Orc$str(&tmpReturn_105, "ProgressView") , onActive) ;
 				
 			
 				
@@ -655,13 +656,13 @@ void  MenuBarCtrl$showPopup(MenuBarCtrl *  self, SuiView$MenuButton*  mbutton){
 		else {
 			URGC_VAR_CLEANUP_CLASS SuiView$MenuNativeItem*  tmpReturn_106 = NULL;
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_107 = NULL;
-			SuiView$mkMenuNativeItem(&tmpReturn_106, __var___Block_142_43->o, Orc$str(&tmpReturn_107, "About") , onActive) ;
+			SuiView$mkMenuNativeItem(&tmpReturn_106, __var___Block_143_43->o, Orc$str(&tmpReturn_107, "About") , onActive) ;
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$MenuNative*  n = (n=NULL,urgc_init_var_class((void**)&n, SuiView$MenuNative_new(&n) ));
 		urgc_set_field_class(self, (void * )offsetof(MenuBarCtrl, popup) , n) ;
-		URGC_VAR_CLEANUP __Closure_223_28*  tmpReturn_108 = NULL;
-		urgc_set_field(n, (void * )offsetof(SuiView$MenuNative, cbOnDismiss) , __make___Closure_223_28(&tmpReturn_108, __var___Block_93_39, __var___Block_142_43) ) ;
-		n->create(n, __var___Block_142_43->o) ;
+		URGC_VAR_CLEANUP __Closure_224_28*  tmpReturn_108 = NULL;
+		urgc_set_field(n, (void * )offsetof(SuiView$MenuNative, cbOnDismiss) , __make___Closure_224_28(&tmpReturn_108, __var___Block_94_39, __var___Block_143_43) ) ;
+		n->create(n, __var___Block_143_43->o) ;
 		SuiCore$Rect r = ((SuiCore$ViewBase * )mbutton)->get_abs_rect(mbutton) ;
 		n->showAt(n, r.x, SuiCore$Rect$bottom(&r) ) ;
 	}
@@ -1215,19 +1216,19 @@ void  show_newWindow(Sui$Window *  parent){
 	
 		{
 			SuiCore$ViewBase*  o = win->rootView;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_362_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_363_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 			urgc_set_field_class(o, (void * )offsetof(SuiCore$Node, name) , Orc$str(&tmpReturn_1, "rootDiv") ) ;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_2 = NULL;
 			{
-				SuiLayout$LayoutLinear*  __scopeVar_364_12 = SuiLayout$layoutLinear(&tmpReturn_2, o, 0) , *o = __scopeVar_364_12;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_364_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinear*  __scopeVar_365_12 = SuiLayout$layoutLinear(&tmpReturn_2, o, 0) , *o = __scopeVar_365_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_365_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_3 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_365_16 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_365_16;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_365_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_366_16 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_366_16;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_366_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					SuiCore$Inset$setAll(&((SuiCore$View * )o)->margin, 10) ;
 					((SuiCore$View * )o)->backgroundColor = 0xffeecccc;
@@ -1236,8 +1237,8 @@ void  show_newWindow(Sui$Window *  parent){
 				}
 				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_5 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_370_16 = SuiView$mkTextView(&tmpReturn_5, o, 0) , *o = __scopeVar_370_16;
-					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_370_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+					SuiView$TextView*  __scopeVar_371_16 = SuiView$mkTextView(&tmpReturn_5, o, 0) , *o = __scopeVar_371_16;
+					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_371_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					SuiCore$Inset$setAll(&((SuiCore$View * )o)->margin, 10) ;
 					((SuiCore$View * )o)->backgroundColor = 0xffeecccc;
@@ -1255,7 +1256,7 @@ void  show_newWindow(Sui$Window *  parent){
 }
 
 void  startSuiDesigner(){
-	URGC_VAR_CLEANUP __Block_386_23*  __var___Block_386_23 = (__var___Block_386_23=NULL,urgc_init_var((void**)&__var___Block_386_23, orc_alloc_and_set_deleter(sizeof(__Block_386_23) , __finiBlock___Block_386_23) ));
+	URGC_VAR_CLEANUP __Block_387_23*  __var___Block_387_23 = (__var___Block_387_23=NULL,urgc_init_var((void**)&__var___Block_387_23, orc_alloc_and_set_deleter(sizeof(__Block_387_23) , __finiBlock___Block_387_23) ));
 	if (false) {
 		printf("testWindow  \n") ;
 		return ; 
@@ -1271,16 +1272,16 @@ void  startSuiDesigner(){
 	SuiDesigner$EditCtx *  tmpThis_2 = NULL;
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$EditCtx*  tmpReturn_4 = NULL;
 	(tmpThis_2 = SuiDesigner$EditCtx_ins(&tmpReturn_4) )->init(tmpThis_2) ;
-	__var___Block_386_23->t = SuiDesigner$themeIns() ;
+	__var___Block_387_23->t = SuiDesigner$themeIns() ;
 	URGC_VAR_CLEANUP_CLASS Sui$Window*  win = (win=NULL,urgc_init_var_class((void**)&win, Sui$Window_new(&win) ));
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpNewOwner_5 = NULL;
 	{
 		SuiLayout$LayoutLinear*  o = SuiLayout$LayoutLinear_new(&tmpNewOwner_5) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_406_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_407_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_6 = NULL;
 		urgc_set_field_class(o, (void * )offsetof(SuiLayout$LayoutLinear, direction) , Orc$str(&tmpReturn_6, "column") ) ;
-		((SuiCore$View * )o)->backgroundColor = __var___Block_386_23->t->bg1;
+		((SuiCore$View * )o)->backgroundColor = __var___Block_387_23->t->bg1;
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
 		urgc_set_field_class(o, (void * )offsetof(SuiLayout$LayoutLinear, alignItems) , Orc$str(&tmpReturn_7, "stretch") ) ;
 		win->setRootView(win, o) ;
@@ -1292,48 +1293,48 @@ void  startSuiDesigner(){
 		if (1) {
 			{
 				SuiCore$ViewBase*  o = win->rootView;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_420_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_421_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
 				urgc_set_field_class(o, (void * )offsetof(SuiCore$Node, name) , Orc$str(&tmpReturn_8, "rootDiv") ) ;
 				if (1) {
 					URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_9 = NULL;
 					{
-						SuiLayout$LayoutLinear*  __scopeVar_432_16 = SuiLayout$layoutLinear(&tmpReturn_9, o, 0) , *o = __scopeVar_432_16;
-						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_432_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+						SuiLayout$LayoutLinear*  __scopeVar_433_16 = SuiLayout$layoutLinear(&tmpReturn_9, o, 0) , *o = __scopeVar_433_16;
+						UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_433_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 					
-						URGC_VAR_CLEANUP __Block_432_35*  __var___Block_432_35 = (__var___Block_432_35=NULL,urgc_init_var((void**)&__var___Block_432_35, orc_alloc_and_set_deleter(sizeof(__Block_432_35) , __finiBlock___Block_432_35) ));
-						((SuiCore$View * )o)->backgroundColor = __var___Block_386_23->t->menubar_bg;
+						URGC_VAR_CLEANUP __Block_433_35*  __var___Block_433_35 = (__var___Block_433_35=NULL,urgc_init_var((void**)&__var___Block_433_35, orc_alloc_and_set_deleter(sizeof(__Block_433_35) , __finiBlock___Block_433_35) ));
+						((SuiCore$View * )o)->backgroundColor = __var___Block_387_23->t->menubar_bg;
 						SuiCore$Inset$setAxis(&((SuiCore$View * )o)->padding, 0, 6) ;
 						URGC_VAR_CLEANUP_CLASS Orc$String*  btnsStr = Orc$str((btnsStr = NULL,&btnsStr), "文件,项目,视图,调试,窗口,帮助") ;
 						URGC_VAR_CLEANUP_CLASS Orc$List*  btns = Orc$String$splitByRe((btns = NULL,&btns), btnsStr, ",") ;
 						URGC_VAR_CLEANUP_CLASS MenuBarCtrl*  tmpNewOwner_10 = NULL;
-						urgc_set_field_class(__var___Block_432_35, (void * )offsetof(__Block_432_35, group) , MenuBarCtrl_new(&tmpNewOwner_10) ) ;
-						urgc_set_field_class(__var___Block_432_35->group, (void * )offsetof(MenuBarCtrl, window) , win) ;
+						urgc_set_field_class(__var___Block_433_35, (void * )offsetof(__Block_433_35, group) , MenuBarCtrl_new(&tmpNewOwner_10) ) ;
+						urgc_set_field_class(__var___Block_433_35->group, (void * )offsetof(MenuBarCtrl, window) , win) ;
 						for (int  i = 0; i < btns->size(btns) ; i++) {
 							URGC_VAR_CLEANUP_CLASS Orc$String*  btn = (btn=NULL,urgc_init_var_class((void**)&btn, (Orc$String* )btns->get(btns, i) ));
 							URGC_VAR_CLEANUP_CLASS SuiView$MenuButton*  tmpReturn_11 = NULL;
 							{
-								SuiView$MenuButton*  __scopeVar_443_24 = SuiView$mkMenuButton(&tmpReturn_11, o, i) , *o = __scopeVar_443_24;
-								UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_443_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+								SuiView$MenuButton*  __scopeVar_444_24 = SuiView$mkMenuButton(&tmpReturn_11, o, i) , *o = __scopeVar_444_24;
+								UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_444_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 							
-								URGC_VAR_CLEANUP __Block_443_43*  __var___Block_443_43 = (__var___Block_443_43=NULL,urgc_init_var((void**)&__var___Block_443_43, orc_alloc_and_set_deleter(sizeof(__Block_443_43) , __finiBlock___Block_443_43) ));
-								urgc_set_field_class(__var___Block_443_43, (void * )offsetof(__Block_443_43, mbutton) , o) ;
+								URGC_VAR_CLEANUP __Block_444_43*  __var___Block_444_43 = (__var___Block_444_43=NULL,urgc_init_var((void**)&__var___Block_444_43, orc_alloc_and_set_deleter(sizeof(__Block_444_43) , __finiBlock___Block_444_43) ));
+								urgc_set_field_class(__var___Block_444_43, (void * )offsetof(__Block_444_43, mbutton) , o) ;
 								urgc_set_field_class(o, (void * )offsetof(SuiView$MenuButton, text) , btn) ;
-								URGC_VAR_CLEANUP __Closure_447_44*  tmpReturn_12 = NULL;
-								urgc_set_field(o, (void * )offsetof(SuiView$MenuButton, onMouseMove) , __make___Closure_447_44(&tmpReturn_12, __var___Block_432_35, __var___Block_443_43) ) ;
-								URGC_VAR_CLEANUP __Closure_451_39*  tmpReturn_13 = NULL;
-								urgc_set_field(o, (void * )offsetof(SuiView$MenuButton, onClick) , __make___Closure_451_39(&tmpReturn_13, __var___Block_432_35, __var___Block_443_43) ) ;
+								URGC_VAR_CLEANUP __Closure_448_44*  tmpReturn_12 = NULL;
+								urgc_set_field(o, (void * )offsetof(SuiView$MenuButton, onMouseMove) , __make___Closure_448_44(&tmpReturn_12, __var___Block_433_35, __var___Block_444_43) ) ;
+								URGC_VAR_CLEANUP __Closure_452_39*  tmpReturn_13 = NULL;
+								urgc_set_field(o, (void * )offsetof(SuiView$MenuButton, onClick) , __make___Closure_452_39(&tmpReturn_13, __var___Block_433_35, __var___Block_444_43) ) ;
 							}
 						}
 					}
 					if (1) {
 						URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_14 = NULL;
 						{
-							SuiLayout$LayoutLinear*  __scopeVar_462_16 = SuiLayout$layoutLinear(&tmpReturn_14, o, 0) , *o = __scopeVar_462_16;
-							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_462_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+							SuiLayout$LayoutLinear*  __scopeVar_463_16 = SuiLayout$layoutLinear(&tmpReturn_14, o, 0) , *o = __scopeVar_463_16;
+							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_463_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 						
-							((SuiCore$View * )o)->backgroundColor = __var___Block_386_23->t->toolbar_bg;
+							((SuiCore$View * )o)->backgroundColor = __var___Block_387_23->t->toolbar_bg;
 							SuiCore$Inset$setAll(&((SuiCore$View * )o)->padding, 6) ;
 							URGC_VAR_CLEANUP_CLASS Orc$String*  btnsStr = Orc$str((btnsStr = NULL,&btnsStr), "more,更多,购物车,profile_light,search,play,print,login,share,back,close,add,loading,refresh1,loading2,sub,upload,content_doc") ;
 							URGC_VAR_CLEANUP_CLASS Orc$List*  btns = Orc$String$splitByRe((btns = NULL,&btns), btnsStr, ",") ;
@@ -1341,16 +1342,16 @@ void  startSuiDesigner(){
 								URGC_VAR_CLEANUP_CLASS Orc$String*  btn = (btn=NULL,urgc_init_var_class((void**)&btn, (Orc$String* )btns->get(btns, i) ));
 								URGC_VAR_CLEANUP_CLASS SuiView$DrawButton*  tmpReturn_15 = NULL;
 								{
-									SuiView$DrawButton*  __scopeVar_473_24 = SuiView$mkDrawButton(&tmpReturn_15, o, i) , *o = __scopeVar_473_24;
-									UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_473_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
+									SuiView$DrawButton*  __scopeVar_474_24 = SuiView$mkDrawButton(&tmpReturn_15, o, i) , *o = __scopeVar_474_24;
+									UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_474_24 = ((SuiCore$Node*)o)->__exit__((void*)o);
 								
 									URGC_VAR_CLEANUP_CLASS Orc$String*  path = Orc$str((path = NULL,&path), "asset/icon/") ;
 									Orc$String$add(Orc$String$addString(path, btn) , ".png") ;
-									o->normalBg = __var___Block_386_23->t->toolbar_menubutton_bg;
-									o->hoverBg = __var___Block_386_23->t->toolbar_menubutton_bg_hover;
+									o->normalBg = __var___Block_387_23->t->toolbar_menubutton_bg;
+									o->hoverBg = __var___Block_387_23->t->toolbar_menubutton_bg_hover;
 									urgc_set_field_class(o, (void * )offsetof(SuiView$DrawButton, src) , path) ;
-									URGC_VAR_CLEANUP __Closure_482_39*  tmpReturn_16 = NULL;
-									urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_482_39(&tmpReturn_16) ) ;
+									URGC_VAR_CLEANUP __Closure_483_39*  tmpReturn_16 = NULL;
+									urgc_set_field(o, (void * )offsetof(SuiView$DrawButton, onClick) , __make___Closure_483_39(&tmpReturn_16) ) ;
 								}
 							}
 						}
@@ -1358,21 +1359,21 @@ void  startSuiDesigner(){
 					if (1) {
 						URGC_VAR_CLEANUP_CLASS SuiView$DockLayout*  tmpReturn_17 = NULL;
 						{
-							SuiView$DockLayout*  __scopeVar_508_16 = SuiView$dockLayout(&tmpReturn_17, o, 0) , *o = __scopeVar_508_16;
-							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_508_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+							SuiView$DockLayout*  __scopeVar_509_16 = SuiView$dockLayout(&tmpReturn_17, o, 0) , *o = __scopeVar_509_16;
+							UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_509_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 						
 							urgc_set_var_class(&dockLayoutIns, o) ;
-							o->tabHeadBg = __var___Block_386_23->t->dock_headbar_bg;
+							o->tabHeadBg = __var___Block_387_23->t->dock_headbar_bg;
 							((SuiCore$View * )o)->radius->setAll(((SuiCore$View * )o)->radius, 6) ;
 							((SuiCore$View * )o)->backgroundColor = 0x00000000;
 							((SuiCore$View * )o)->width = 100;
 							((SuiCore$View * )o)->height = 20;
 							((SuiCore$View * )o)->needClip = true;
 							if (((SuiCore$Node * )o)->isNewForReact) {
-								URGC_VAR_CLEANUP __Closure_524_49*  tmpReturn_18 = NULL;
-								urgc_set_field(o, (void * )offsetof(SuiView$DockLayout, cbRenderItemHeadView) , __make___Closure_524_49(&tmpReturn_18, __var___Block_386_23) ) ;
-								URGC_VAR_CLEANUP __Closure_557_52*  tmpReturn_19 = NULL;
-								urgc_set_field(o, (void * )offsetof(SuiView$DockLayout, cbRenderItemContentView) , __make___Closure_557_52(&tmpReturn_19, __var___Block_386_23) ) ;
+								URGC_VAR_CLEANUP __Closure_525_49*  tmpReturn_18 = NULL;
+								urgc_set_field(o, (void * )offsetof(SuiView$DockLayout, cbRenderItemHeadView) , __make___Closure_525_49(&tmpReturn_18, __var___Block_387_23) ) ;
+								URGC_VAR_CLEANUP __Closure_558_52*  tmpReturn_19 = NULL;
+								urgc_set_field(o, (void * )offsetof(SuiView$DockLayout, cbRenderItemContentView) , __make___Closure_558_52(&tmpReturn_19, __var___Block_387_23) ) ;
 								SuiView$DockItem *  root = o->root;
 								URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_20 = NULL;
 								URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_21 = NULL;
@@ -1384,7 +1385,7 @@ void  startSuiDesigner(){
 									URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_22 = NULL;
 									URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_23 = NULL;
 									{
-										SuiView$DockItem*  __scopeVar_620_28 = SuiView$mkDockItem(&tmpReturn_22, o, Orc$str(&tmpReturn_23, "hier") ) , *o = __scopeVar_620_28;
+										SuiView$DockItem*  __scopeVar_621_28 = SuiView$mkDockItem(&tmpReturn_22, o, Orc$str(&tmpReturn_23, "hier") ) , *o = __scopeVar_621_28;
 										
 									
 										o->intId = 0;
@@ -1399,14 +1400,14 @@ void  startSuiDesigner(){
 									URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_26 = NULL;
 									URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_27 = NULL;
 									{
-										SuiView$DockItem*  __scopeVar_638_28 = SuiView$mkDockItemTab(&tmpReturn_26, o, Orc$str(&tmpReturn_27, "center") ) , *o = __scopeVar_638_28;
+										SuiView$DockItem*  __scopeVar_639_28 = SuiView$mkDockItemTab(&tmpReturn_26, o, Orc$str(&tmpReturn_27, "center") ) , *o = __scopeVar_639_28;
 										
 									
 										o->intId = 10;
 										URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_28 = NULL;
 										URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_29 = NULL;
 										{
-											SuiView$DockItem*  __scopeVar_641_32 = SuiView$mkDockItem(&tmpReturn_28, o, Orc$str(&tmpReturn_29, "scene") ) , *o = __scopeVar_641_32;
+											SuiView$DockItem*  __scopeVar_642_32 = SuiView$mkDockItem(&tmpReturn_28, o, Orc$str(&tmpReturn_29, "scene") ) , *o = __scopeVar_642_32;
 											
 										
 											o->intId = 3;
@@ -1414,7 +1415,7 @@ void  startSuiDesigner(){
 										URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_30 = NULL;
 										URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_31 = NULL;
 										{
-											SuiView$DockItem*  __scopeVar_642_32 = SuiView$mkDockItem(&tmpReturn_30, o, Orc$str(&tmpReturn_31, "tab1") ) , *o = __scopeVar_642_32;
+											SuiView$DockItem*  __scopeVar_643_32 = SuiView$mkDockItem(&tmpReturn_30, o, Orc$str(&tmpReturn_31, "tab1") ) , *o = __scopeVar_643_32;
 											
 										
 											o->intId = 3;
@@ -1423,20 +1424,20 @@ void  startSuiDesigner(){
 									URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_32 = NULL;
 									URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_33 = NULL;
 									{
-										SuiView$DockItem*  __scopeVar_644_28 = SuiView$mkDockItemSplitter(&tmpReturn_32, o, Orc$str(&tmpReturn_33, "center") , true) , *o = __scopeVar_644_28;
+										SuiView$DockItem*  __scopeVar_645_28 = SuiView$mkDockItemSplitter(&tmpReturn_32, o, Orc$str(&tmpReturn_33, "center") , true) , *o = __scopeVar_645_28;
 										
 									
 										URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_34 = NULL;
 										URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_35 = NULL;
 										{
-											SuiView$DockItem*  __scopeVar_645_32 = SuiView$mkDockItemTab(&tmpReturn_34, o, Orc$str(&tmpReturn_35, "tab-project") ) , *o = __scopeVar_645_32;
+											SuiView$DockItem*  __scopeVar_646_32 = SuiView$mkDockItemTab(&tmpReturn_34, o, Orc$str(&tmpReturn_35, "tab-project") ) , *o = __scopeVar_646_32;
 											
 										
 											o->width = 150;
 											URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_36 = NULL;
 											URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_37 = NULL;
 											{
-												SuiView$DockItem*  __scopeVar_647_36 = SuiView$mkDockItem(&tmpReturn_36, o, Orc$str(&tmpReturn_37, "project") ) , *o = __scopeVar_647_36;
+												SuiView$DockItem*  __scopeVar_648_36 = SuiView$mkDockItem(&tmpReturn_36, o, Orc$str(&tmpReturn_37, "project") ) , *o = __scopeVar_648_36;
 												
 											
 												o->intId = 30;
@@ -1445,7 +1446,7 @@ void  startSuiDesigner(){
 										URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_38 = NULL;
 										URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_39 = NULL;
 										{
-											SuiView$DockItem*  __scopeVar_651_32 = SuiView$mkDockItem(&tmpReturn_38, o, Orc$str(&tmpReturn_39, "dir") ) , *o = __scopeVar_651_32;
+											SuiView$DockItem*  __scopeVar_652_32 = SuiView$mkDockItem(&tmpReturn_38, o, Orc$str(&tmpReturn_39, "dir") ) , *o = __scopeVar_652_32;
 											
 										
 											o->intId = 3;
@@ -1462,7 +1463,7 @@ void  startSuiDesigner(){
 									URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_42 = NULL;
 									URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_43 = NULL;
 									{
-										SuiView$DockItem*  __scopeVar_657_28 = SuiView$mkDockItem(&tmpReturn_42, o, Orc$str(&tmpReturn_43, "inspector") ) , *o = __scopeVar_657_28;
+										SuiView$DockItem*  __scopeVar_658_28 = SuiView$mkDockItem(&tmpReturn_42, o, Orc$str(&tmpReturn_43, "inspector") ) , *o = __scopeVar_658_28;
 										
 									
 										o->intId = 2;
@@ -1471,8 +1472,8 @@ void  startSuiDesigner(){
 							}
 							URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_44 = NULL;
 							{
-								SuiLayout$LayoutLinearCell*  __scopeVar_664_20 = SuiLayout$layoutLinearCell(&tmpReturn_44, o, 0) , *o = __scopeVar_664_20;
-								UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_664_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
+								SuiLayout$LayoutLinearCell*  __scopeVar_665_20 = SuiLayout$layoutLinearCell(&tmpReturn_44, o, 0) , *o = __scopeVar_665_20;
+								UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_665_20 = ((SuiCore$Node*)o)->__exit__((void*)o);
 							
 								o->grow = 1;
 							}
@@ -1722,48 +1723,48 @@ void  Tmp2$dtor(Tmp2 *  self){
 
 
 void  test_tmp2(){
-	URGC_VAR_CLEANUP __Block_1140_16*  __var___Block_1140_16 = (__var___Block_1140_16=NULL,urgc_init_var((void**)&__var___Block_1140_16, orc_alloc_and_set_deleter(sizeof(__Block_1140_16) , __finiBlock___Block_1140_16) ));
+	URGC_VAR_CLEANUP __Block_1141_16*  __var___Block_1141_16 = (__var___Block_1141_16=NULL,urgc_init_var((void**)&__var___Block_1141_16, orc_alloc_and_set_deleter(sizeof(__Block_1141_16) , __finiBlock___Block_1141_16) ));
 	URGC_VAR_CLEANUP_CLASS Tmp2*  tmpNewOwner_1 = NULL;
-	urgc_set_field_class(__var___Block_1140_16, (void * )offsetof(__Block_1140_16, a) , Tmp2_new(&tmpNewOwner_1) ) ;
+	urgc_set_field_class(__var___Block_1141_16, (void * )offsetof(__Block_1141_16, a) , Tmp2_new(&tmpNewOwner_1) ) ;
 	URGC_VAR_CLEANUP void  (**say)(void *  self) = NULL;
-	URGC_VAR_CLEANUP __Closure_say_1142*  tmpReturn_2 = NULL;
-	(urgc_set_var(&say, __make___Closure_say_1142(&tmpReturn_2, __var___Block_1140_16) ) );
-	__var___Block_1140_16->a->a = 323;
-	__var___Block_1140_16->a->print(__var___Block_1140_16->a) ;
+	URGC_VAR_CLEANUP __Closure_say_1143*  tmpReturn_2 = NULL;
+	(urgc_set_var(&say, __make___Closure_say_1143(&tmpReturn_2, __var___Block_1141_16) ) );
+	__var___Block_1141_16->a->a = 323;
+	__var___Block_1141_16->a->print(__var___Block_1141_16->a) ;
 	(*(say))((void * )(say)) ;
-	__var___Block_1140_16->a->print(__var___Block_1140_16->a) ;
+	__var___Block_1141_16->a->print(__var___Block_1141_16->a) ;
 }
 
-static void  __finiBlock___Block_93_39(__Block_93_39 *  self){
-	urgc_set_field_class(self, (void * )offsetof(__Block_93_39, self) , NULL) ;
+static void  __finiBlock___Block_94_39(__Block_94_39 *  self){
+	urgc_set_field_class(self, (void * )offsetof(__Block_94_39, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_142_43(__Block_142_43 *  self){
-	urgc_set_field_class(self, (void * )offsetof(__Block_142_43, o) , NULL) ;
+static void  __finiBlock___Block_143_43(__Block_143_43 *  self){
+	urgc_set_field_class(self, (void * )offsetof(__Block_143_43, o) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_432_35(__Block_432_35 *  self){
-	urgc_set_field_class(self, (void * )offsetof(__Block_432_35, group) , NULL) ;
+static void  __finiBlock___Block_433_35(__Block_433_35 *  self){
+	urgc_set_field_class(self, (void * )offsetof(__Block_433_35, group) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_443_43(__Block_443_43 *  self){
-	urgc_set_field_class(self, (void * )offsetof(__Block_443_43, mbutton) , NULL) ;
+static void  __finiBlock___Block_444_43(__Block_444_43 *  self){
+	urgc_set_field_class(self, (void * )offsetof(__Block_444_43, mbutton) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_386_23(__Block_386_23 *  self){
+static void  __finiBlock___Block_387_23(__Block_387_23 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_1140_16(__Block_1140_16 *  self){
-	urgc_set_field_class(self, (void * )offsetof(__Block_1140_16, a) , NULL) ;
+static void  __finiBlock___Block_1141_16(__Block_1141_16 *  self){
+	urgc_set_field_class(self, (void * )offsetof(__Block_1141_16, a) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_onActive_99(__Closure_onActive_99 *  self, SuiView$MenuNativeItem *  item){
+static void  __fn___Closure_onActive_100(__Closure_onActive_100 *  self, SuiView$MenuNativeItem *  item){
 	printf("\n\n========================================onActive menu:%s\n", item->label->str) ;
 	if (Orc$String$equals(item->label, "Close") ) {
 		exit(0) ;
@@ -1781,7 +1782,7 @@ static void  __fn___Closure_onActive_99(__Closure_onActive_99 *  self, SuiView$M
 		show_newWindow(NULL) ;
 	}
 	else if (Orc$String$equals(item->label, "MaxWindow") ) {
-		self->__var___Block_93_39->self->window->maximize(self->__var___Block_93_39->self->window) ;
+		self->__var___Block_94_39->self->window->maximize(self->__var___Block_94_39->self->window) ;
 	}
 	else if (Orc$String$equals(item->label, "SaveDockLayout") ) {
 		URGC_VAR_CLEANUP_CLASS Json$Json*  jo = dockLayoutIns->root->toJson((jo = NULL,&jo), dockLayoutIns->root) ;
@@ -1802,185 +1803,185 @@ static void  __fn___Closure_onActive_99(__Closure_onActive_99 *  self, SuiView$M
 	}
 }
 
-static void  __fini___Closure_onActive_99(__Closure_onActive_99 *  self){
-	urgc_set_field(self, (void * )offsetof(__Closure_onActive_99, __var___Block_93_39) , NULL) ;
+static void  __fini___Closure_onActive_100(__Closure_onActive_100 *  self){
+	urgc_set_field(self, (void * )offsetof(__Closure_onActive_100, __var___Block_94_39) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static __Closure_onActive_99*  __make___Closure_onActive_99(__Closure_onActive_99 **  __outRef__, __Block_93_39 *  __var___Block_93_39){
-	URGC_VAR_CLEANUP __Closure_onActive_99*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_onActive_99) , __fini___Closure_onActive_99) ));
-	self->invoke = __fn___Closure_onActive_99;
+static __Closure_onActive_100*  __make___Closure_onActive_100(__Closure_onActive_100 **  __outRef__, __Block_94_39 *  __var___Block_94_39){
+	URGC_VAR_CLEANUP __Closure_onActive_100*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_onActive_100) , __fini___Closure_onActive_100) ));
+	self->invoke = __fn___Closure_onActive_100;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(__Closure_onActive_99, __var___Block_93_39) , __var___Block_93_39) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_onActive_100, __var___Block_94_39) , __var___Block_94_39) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_223_28(__Closure_223_28 *  self){
-	printf("\ncbOnDismiss:%p\n\n", self->__var___Block_93_39->self) ;
-	self->__var___Block_93_39->self->onPopupDismiss(self->__var___Block_93_39->self) ;
-	urgc_set_field_class(self->__var___Block_142_43, (void * )offsetof(__Block_142_43, o) , NULL) ;
+static void  __fn___Closure_224_28(__Closure_224_28 *  self){
+	printf("\ncbOnDismiss:%p\n\n", self->__var___Block_94_39->self) ;
+	self->__var___Block_94_39->self->onPopupDismiss(self->__var___Block_94_39->self) ;
+	urgc_set_field_class(self->__var___Block_143_43, (void * )offsetof(__Block_143_43, o) , NULL) ;
 }
 
-static void  __fini___Closure_223_28(__Closure_223_28 *  self){
-	urgc_set_field(self, (void * )offsetof(__Closure_223_28, __var___Block_93_39) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(__Closure_223_28, __var___Block_142_43) , NULL) ;
+static void  __fini___Closure_224_28(__Closure_224_28 *  self){
+	urgc_set_field(self, (void * )offsetof(__Closure_224_28, __var___Block_94_39) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_224_28, __var___Block_143_43) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static __Closure_223_28*  __make___Closure_223_28(__Closure_223_28 **  __outRef__, __Block_93_39 *  __var___Block_93_39, __Block_142_43 *  __var___Block_142_43){
-	URGC_VAR_CLEANUP __Closure_223_28*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_223_28) , __fini___Closure_223_28) ));
-	self->invoke = __fn___Closure_223_28;
+static __Closure_224_28*  __make___Closure_224_28(__Closure_224_28 **  __outRef__, __Block_94_39 *  __var___Block_94_39, __Block_143_43 *  __var___Block_143_43){
+	URGC_VAR_CLEANUP __Closure_224_28*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_224_28) , __fini___Closure_224_28) ));
+	self->invoke = __fn___Closure_224_28;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(__Closure_223_28, __var___Block_93_39) , __var___Block_93_39) ;
-	urgc_set_field(self, (void * )offsetof(__Closure_223_28, __var___Block_142_43) , __var___Block_142_43) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_224_28, __var___Block_94_39) , __var___Block_94_39) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_224_28, __var___Block_143_43) , __var___Block_143_43) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_447_44(__Closure_447_44 *  self, SuiCore$MouseEvent *  me){
-	self->__var___Block_432_35->group->onmove(self->__var___Block_432_35->group, self->__var___Block_443_43->mbutton, me) ;
+static void  __fn___Closure_448_44(__Closure_448_44 *  self, SuiCore$MouseEvent *  me){
+	self->__var___Block_433_35->group->onmove(self->__var___Block_433_35->group, self->__var___Block_444_43->mbutton, me) ;
 }
 
-static void  __fini___Closure_447_44(__Closure_447_44 *  self){
-	urgc_set_field(self, (void * )offsetof(__Closure_447_44, __var___Block_432_35) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(__Closure_447_44, __var___Block_443_43) , NULL) ;
+static void  __fini___Closure_448_44(__Closure_448_44 *  self){
+	urgc_set_field(self, (void * )offsetof(__Closure_448_44, __var___Block_433_35) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_448_44, __var___Block_444_43) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static __Closure_447_44*  __make___Closure_447_44(__Closure_447_44 **  __outRef__, __Block_432_35 *  __var___Block_432_35, __Block_443_43 *  __var___Block_443_43){
-	URGC_VAR_CLEANUP __Closure_447_44*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_447_44) , __fini___Closure_447_44) ));
-	self->invoke = __fn___Closure_447_44;
+static __Closure_448_44*  __make___Closure_448_44(__Closure_448_44 **  __outRef__, __Block_433_35 *  __var___Block_433_35, __Block_444_43 *  __var___Block_444_43){
+	URGC_VAR_CLEANUP __Closure_448_44*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_448_44) , __fini___Closure_448_44) ));
+	self->invoke = __fn___Closure_448_44;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(__Closure_447_44, __var___Block_432_35) , __var___Block_432_35) ;
-	urgc_set_field(self, (void * )offsetof(__Closure_447_44, __var___Block_443_43) , __var___Block_443_43) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_448_44, __var___Block_433_35) , __var___Block_433_35) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_448_44, __var___Block_444_43) , __var___Block_444_43) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_451_39(__Closure_451_39 *  self, SuiCore$MouseEvent *  me){
-	self->__var___Block_432_35->group->onclick(self->__var___Block_432_35->group, self->__var___Block_443_43->mbutton, me) ;
+static void  __fn___Closure_452_39(__Closure_452_39 *  self, SuiCore$MouseEvent *  me){
+	self->__var___Block_433_35->group->onclick(self->__var___Block_433_35->group, self->__var___Block_444_43->mbutton, me) ;
 }
 
-static void  __fini___Closure_451_39(__Closure_451_39 *  self){
-	urgc_set_field(self, (void * )offsetof(__Closure_451_39, __var___Block_432_35) , NULL) ;
-	urgc_set_field(self, (void * )offsetof(__Closure_451_39, __var___Block_443_43) , NULL) ;
+static void  __fini___Closure_452_39(__Closure_452_39 *  self){
+	urgc_set_field(self, (void * )offsetof(__Closure_452_39, __var___Block_433_35) , NULL) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_452_39, __var___Block_444_43) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static __Closure_451_39*  __make___Closure_451_39(__Closure_451_39 **  __outRef__, __Block_432_35 *  __var___Block_432_35, __Block_443_43 *  __var___Block_443_43){
-	URGC_VAR_CLEANUP __Closure_451_39*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_451_39) , __fini___Closure_451_39) ));
-	self->invoke = __fn___Closure_451_39;
+static __Closure_452_39*  __make___Closure_452_39(__Closure_452_39 **  __outRef__, __Block_433_35 *  __var___Block_433_35, __Block_444_43 *  __var___Block_444_43){
+	URGC_VAR_CLEANUP __Closure_452_39*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_452_39) , __fini___Closure_452_39) ));
+	self->invoke = __fn___Closure_452_39;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(__Closure_451_39, __var___Block_432_35) , __var___Block_432_35) ;
-	urgc_set_field(self, (void * )offsetof(__Closure_451_39, __var___Block_443_43) , __var___Block_443_43) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_452_39, __var___Block_433_35) , __var___Block_433_35) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_452_39, __var___Block_444_43) , __var___Block_444_43) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_482_39(__Closure_482_39 *  self, SuiCore$MouseEvent *  me){
+static void  __fn___Closure_483_39(__Closure_483_39 *  self, SuiCore$MouseEvent *  me){
 	((SuiCore$Event * )me)->stopPropagation(me) ;
 }
 
-static void  __fini___Closure_482_39(__Closure_482_39 *  self){
+static void  __fini___Closure_483_39(__Closure_483_39 *  self){
 	urgc_free_later(self) ;
 }
 
-static __Closure_482_39*  __make___Closure_482_39(__Closure_482_39 **  __outRef__){
-	URGC_VAR_CLEANUP __Closure_482_39*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_482_39) , __fini___Closure_482_39) ));
-	self->invoke = __fn___Closure_482_39;
+static __Closure_483_39*  __make___Closure_483_39(__Closure_483_39 **  __outRef__){
+	URGC_VAR_CLEANUP __Closure_483_39*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_483_39) , __fini___Closure_483_39) ));
+	self->invoke = __fn___Closure_483_39;
 	self->vtable = orc_Vtable_Closure_init() ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_524_49(__Closure_524_49 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o, int  kidIndex){
+static void  __fn___Closure_525_49(__Closure_525_49 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o, int  kidIndex){
 	URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpItem = (tmpItem=NULL,urgc_init_var_class((void**)&tmpItem, item));
 	URGC_VAR_CLEANUP_CLASS SuiView$DockLayout*  tmpDock = (tmpDock=NULL,urgc_init_var_class((void**)&tmpDock, dockLayoutIns));
 	URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_1 = NULL;
 	{
-		SuiView$TextView*  __scopeVar_529_28 = SuiView$mkTextView(&tmpReturn_1, o, (long long )item) , *o = __scopeVar_529_28;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_529_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$TextView*  __scopeVar_530_28 = SuiView$mkTextView(&tmpReturn_1, o, (long long )item) , *o = __scopeVar_530_28;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_530_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 		urgc_set_field_class(o, (void * )offsetof(SuiCore$ViewBase, cursor) , Orc$str(&tmpReturn_2, "pointer") ) ;
 		o->setText(o, item->id) ;
-		o->color = self->__var___Block_386_23->t->dock_head_c;
+		o->color = self->__var___Block_387_23->t->dock_head_c;
 		((SuiCore$View * )o)->padding.top = 4;
 		SuiCore$Inset$setHor(&((SuiCore$View * )o)->padding, 8) ;
 		((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 0.0f, 0xffaeaeb2) ;
 		bool  active = item->parent->tabActiveIndex == kidIndex;
 		if (active) {
 			((SuiCore$View * )o)->border->t->w = 2.f;
-			((SuiCore$View * )o)->border->t->color = self->__var___Block_386_23->t->c_main;
+			((SuiCore$View * )o)->border->t->color = self->__var___Block_387_23->t->c_main;
 		}
 		if (kidIndex < item->parent->children->size(item->parent->children)  - 1) {
 			((SuiCore$View * )o)->border->r->w = 1.f;
 		}
-		((SuiCore$View * )o)->backgroundColor = active ? self->__var___Block_386_23->t->dock_head_bg_active : self->__var___Block_386_23->t->dock_head_bg;
+		((SuiCore$View * )o)->backgroundColor = active ? self->__var___Block_387_23->t->dock_head_bg_active : self->__var___Block_387_23->t->dock_head_bg;
 	}
 }
 
-static void  __fini___Closure_524_49(__Closure_524_49 *  self){
-	urgc_set_field(self, (void * )offsetof(__Closure_524_49, __var___Block_386_23) , NULL) ;
+static void  __fini___Closure_525_49(__Closure_525_49 *  self){
+	urgc_set_field(self, (void * )offsetof(__Closure_525_49, __var___Block_387_23) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static __Closure_524_49*  __make___Closure_524_49(__Closure_524_49 **  __outRef__, __Block_386_23 *  __var___Block_386_23){
-	URGC_VAR_CLEANUP __Closure_524_49*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_524_49) , __fini___Closure_524_49) ));
-	self->invoke = __fn___Closure_524_49;
+static __Closure_525_49*  __make___Closure_525_49(__Closure_525_49 **  __outRef__, __Block_387_23 *  __var___Block_387_23){
+	URGC_VAR_CLEANUP __Closure_525_49*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_525_49) , __fini___Closure_525_49) ));
+	self->invoke = __fn___Closure_525_49;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(__Closure_524_49, __var___Block_386_23) , __var___Block_386_23) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_525_49, __var___Block_387_23) , __var___Block_387_23) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static SuiCore$ViewBase *  __fn___Closure_557_52(__Closure_557_52 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o){
+static SuiCore$ViewBase *  __fn___Closure_558_52(__Closure_558_52 *  self, SuiView$DockItem *  item, SuiCore$ViewBase *  o){
 	if (Orc$String$equals(item->id, "project") ) {
 		URGC_VAR_CLEANUP_CLASS SuiDesigner$AssetDirTreeView*  tmpReturn_1 = NULL;
 		{
-			SuiDesigner$AssetDirTreeView*  __scopeVar_559_32 = SuiDesigner$mkAssetDirTreeView(&tmpReturn_1, o, (long long )item) , *o = __scopeVar_559_32;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_559_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiDesigner$AssetDirTreeView*  __scopeVar_560_32 = SuiDesigner$mkAssetDirTreeView(&tmpReturn_1, o, (long long )item) , *o = __scopeVar_560_32;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_560_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
-			((SuiCore$View * )o)->backgroundColor = self->__var___Block_386_23->t->dock_content_bg;
+			((SuiCore$View * )o)->backgroundColor = self->__var___Block_387_23->t->dock_content_bg;
 			return o; 
 		}
 	}
 	if (Orc$String$equals(item->id, "hier") ) {
 		URGC_VAR_CLEANUP_CLASS SuiDesigner$SceneHierView*  tmpReturn_2 = NULL;
 		{
-			SuiDesigner$SceneHierView*  __scopeVar_565_32 = SuiDesigner$mkSceneHierView(&tmpReturn_2, o, (long long )item) , *o = __scopeVar_565_32;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_565_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiDesigner$SceneHierView*  __scopeVar_566_32 = SuiDesigner$mkSceneHierView(&tmpReturn_2, o, (long long )item) , *o = __scopeVar_566_32;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_566_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
-			((SuiCore$View * )o)->backgroundColor = self->__var___Block_386_23->t->dock_content_bg;
+			((SuiCore$View * )o)->backgroundColor = self->__var___Block_387_23->t->dock_content_bg;
 			return o; 
 		}
 	}
 	if (Orc$String$equals(item->id, "inspector") ) {
 		URGC_VAR_CLEANUP_CLASS SuiDesigner$InspectorView*  tmpReturn_3 = NULL;
 		{
-			SuiDesigner$InspectorView*  __scopeVar_571_32 = SuiDesigner$mkInspectorView(&tmpReturn_3, o, (long long )item) , *o = __scopeVar_571_32;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_571_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiDesigner$InspectorView*  __scopeVar_572_32 = SuiDesigner$mkInspectorView(&tmpReturn_3, o, (long long )item) , *o = __scopeVar_572_32;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_572_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
-			((SuiCore$View * )o)->backgroundColor = self->__var___Block_386_23->t->dock_content_bg;
+			((SuiCore$View * )o)->backgroundColor = self->__var___Block_387_23->t->dock_content_bg;
 			return o; 
 		}
 	}
 	if (Orc$String$equals(item->id, "dir") ) {
 		URGC_VAR_CLEANUP_CLASS SuiDesigner$AssetDirView*  tmpReturn_4 = NULL;
 		{
-			SuiDesigner$AssetDirView*  __scopeVar_577_32 = SuiDesigner$mkAssetDirView(&tmpReturn_4, o, (long long )item) , *o = __scopeVar_577_32;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_577_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiDesigner$AssetDirView*  __scopeVar_578_32 = SuiDesigner$mkAssetDirView(&tmpReturn_4, o, (long long )item) , *o = __scopeVar_578_32;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_578_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
-			((SuiCore$View * )o)->backgroundColor = self->__var___Block_386_23->t->dock_content_bg;
+			((SuiCore$View * )o)->backgroundColor = self->__var___Block_387_23->t->dock_content_bg;
 			return o; 
 		}
 	}
 	if (Orc$String$equals(item->id, "scene") ) {
 		URGC_VAR_CLEANUP_CLASS SuiDesigner$SceneView*  tmpReturn_5 = NULL;
 		{
-			SuiDesigner$SceneView*  __scopeVar_583_32 = SuiDesigner$mkSceneView(&tmpReturn_5, o, (long long )item) , *o = __scopeVar_583_32;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_583_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiDesigner$SceneView*  __scopeVar_584_32 = SuiDesigner$mkSceneView(&tmpReturn_5, o, (long long )item) , *o = __scopeVar_584_32;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_584_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
-			((SuiCore$View * )o)->backgroundColor = self->__var___Block_386_23->t->dock_content_bg;
+			((SuiCore$View * )o)->backgroundColor = self->__var___Block_387_23->t->dock_content_bg;
 			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_6 = NULL;
 			{
-				SuiLayout$LayoutLinearCell*  __scopeVar_585_36 = SuiLayout$layoutLinearCell(&tmpReturn_6, o, 0) , *o = __scopeVar_585_36;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_585_36 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiLayout$LayoutLinearCell*  __scopeVar_586_36 = SuiLayout$layoutLinearCell(&tmpReturn_6, o, 0) , *o = __scopeVar_586_36;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_586_36 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				o->grow = 1;
 			}
@@ -1989,8 +1990,8 @@ static SuiCore$ViewBase *  __fn___Closure_557_52(__Closure_557_52 *  self, SuiVi
 	}
 	URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_7 = NULL;
 	{
-		SuiView$TextView*  __scopeVar_593_28 = SuiView$mkTextView(&tmpReturn_7, o, (long long )item) , *o = __scopeVar_593_28;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_593_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		SuiView$TextView*  __scopeVar_594_28 = SuiView$mkTextView(&tmpReturn_7, o, (long long )item) , *o = __scopeVar_594_28;
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_594_28 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->needClip = true;
 		printf("render dock content:%d, %s\n", item->intId, item->id->str) ;
@@ -2002,8 +2003,8 @@ static SuiCore$ViewBase *  __fn___Closure_557_52(__Closure_557_52 *  self, SuiVi
 		((SuiCore$View * )o)->backgroundColor = item->intId == 0 ? 0x53ff0000 : item->intId == 1 ? 0x53f0ff00 : item->intId == 2 ? 0x5330ffff : 0x5300ffff;
 		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_8 = NULL;
 		{
-			SuiLayout$LayoutLinearCell*  __scopeVar_609_32 = SuiLayout$layoutLinearCell(&tmpReturn_8, o, 0) , *o = __scopeVar_609_32;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_609_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiLayout$LayoutLinearCell*  __scopeVar_610_32 = SuiLayout$layoutLinearCell(&tmpReturn_8, o, 0) , *o = __scopeVar_610_32;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_610_32 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->grow = 1;
 		}
@@ -2011,34 +2012,34 @@ static SuiCore$ViewBase *  __fn___Closure_557_52(__Closure_557_52 *  self, SuiVi
 	}
 }
 
-static void  __fini___Closure_557_52(__Closure_557_52 *  self){
-	urgc_set_field(self, (void * )offsetof(__Closure_557_52, __var___Block_386_23) , NULL) ;
+static void  __fini___Closure_558_52(__Closure_558_52 *  self){
+	urgc_set_field(self, (void * )offsetof(__Closure_558_52, __var___Block_387_23) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static __Closure_557_52*  __make___Closure_557_52(__Closure_557_52 **  __outRef__, __Block_386_23 *  __var___Block_386_23){
-	URGC_VAR_CLEANUP __Closure_557_52*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_557_52) , __fini___Closure_557_52) ));
-	self->invoke = __fn___Closure_557_52;
+static __Closure_558_52*  __make___Closure_558_52(__Closure_558_52 **  __outRef__, __Block_387_23 *  __var___Block_387_23){
+	URGC_VAR_CLEANUP __Closure_558_52*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_558_52) , __fini___Closure_558_52) ));
+	self->invoke = __fn___Closure_558_52;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(__Closure_557_52, __var___Block_386_23) , __var___Block_386_23) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_558_52, __var___Block_387_23) , __var___Block_387_23) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_say_1142(__Closure_say_1142 *  self){
-	printf("say a.a:%d \n", self->__var___Block_1140_16->a->a) ;
-	self->__var___Block_1140_16->a->a = -1;
+static void  __fn___Closure_say_1143(__Closure_say_1143 *  self){
+	printf("say a.a:%d \n", self->__var___Block_1141_16->a->a) ;
+	self->__var___Block_1141_16->a->a = -1;
 }
 
-static void  __fini___Closure_say_1142(__Closure_say_1142 *  self){
-	urgc_set_field(self, (void * )offsetof(__Closure_say_1142, __var___Block_1140_16) , NULL) ;
+static void  __fini___Closure_say_1143(__Closure_say_1143 *  self){
+	urgc_set_field(self, (void * )offsetof(__Closure_say_1143, __var___Block_1141_16) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static __Closure_say_1142*  __make___Closure_say_1142(__Closure_say_1142 **  __outRef__, __Block_1140_16 *  __var___Block_1140_16){
-	URGC_VAR_CLEANUP __Closure_say_1142*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_say_1142) , __fini___Closure_say_1142) ));
-	self->invoke = __fn___Closure_say_1142;
+static __Closure_say_1143*  __make___Closure_say_1143(__Closure_say_1143 **  __outRef__, __Block_1141_16 *  __var___Block_1141_16){
+	URGC_VAR_CLEANUP __Closure_say_1143*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(__Closure_say_1143) , __fini___Closure_say_1143) ));
+	self->invoke = __fn___Closure_say_1143;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(__Closure_say_1142, __var___Block_1140_16) , __var___Block_1140_16) ;
+	urgc_set_field(self, (void * )offsetof(__Closure_say_1143, __var___Block_1141_16) , __var___Block_1141_16) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
@@ -2062,7 +2063,7 @@ int  testAudio(){
 int  main(){
 	urgc_start_process_thread() ;
 	windowInit() ;
-	SuiCore$testPlane() ;
+	Sgl$testRay() ;
 	SuiCore$App *  tmpThis_1 = NULL;
 	URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_1 = NULL;
 	(tmpThis_1 = SuiCore$App_use(&tmpReturn_1) )->runEventLoop(tmpThis_1) ;
@@ -2074,7 +2075,7 @@ void  testTransparency(){
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutAlign*  tmpNewOwner_1 = NULL;
 	{
 		SuiLayout$LayoutAlign*  o = SuiLayout$LayoutAlign_new(&tmpNewOwner_1) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1258_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1260_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = 0x33afafff;
 		SuiCore$Vec2$set(&o->anchor, 0.5, 0.5) ;
@@ -2082,8 +2083,8 @@ void  testTransparency(){
 		urgc_set_field_class(win, (void * )offsetof(Sui$Window, rootView) , o) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmpReturn_2 = NULL;
 		{
-			SuiCore$View*  __scopeVar_1265_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1265_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1265_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiCore$View*  __scopeVar_1267_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1267_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1267_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->backgroundColor = 0xffefefff;
 			o->width = 100;
@@ -2091,8 +2092,8 @@ void  testTransparency(){
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_3 = NULL;
 		{
-			SuiView$TextView*  __scopeVar_1270_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1270_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1270_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$TextView*  __scopeVar_1272_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1272_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1272_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 			o->setText(o, Orc$str(&tmpReturn_4, "你好呀， Sui") ) ;

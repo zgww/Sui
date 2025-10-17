@@ -298,7 +298,14 @@ extension Ray {
 
 		// Return if the ray never intersects the plane
 
-		r.distance = t >= 0 ? t : null;
+		if t >= 0 { //射线有方向性
+			r.distance = t//t >= 0 ? t : null;
+			r.succ = true
+		}
+		else {
+			r.succ = false;
+		}
+
 		return r
 	}
 
@@ -500,4 +507,21 @@ extension Ray {
         return *self
 	}
 
+}
+
+void testRay(){
+	{
+		Plane plane;
+		Mat m;
+		m.identity()
+		m.makeTranslation(0, 0, -10)
+		plane.setByMatrixAndPlaneName(m, "XY")
+
+		Ray ray;
+		ray.origin.set(10, 30, 100)
+		ray.direction.set(0, 0, -100)
+
+		IntersectResult r = ray.intersectPlane(plane)
+		printf("r:%d, %f,%f,%f\n", r.succ, r.point.x, r.point.y, r.point.z)
+	}
 }
