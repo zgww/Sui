@@ -17,17 +17,17 @@
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
 						"x":	220,
-						"y":	100,
-						"z":	0
+						"y":	300,
+						"z":	300
 					},
 					"rotation":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	2,
+						"x":	0,
 						"y":	0,
-						"z":	1
+						"z":	0
 					}
 				},
-				"tag":	"Sgl$Light",
+				"tag":	"Sgl$PointLight",
 				"children":	[]
 			}, {
 				"attrs":	{
