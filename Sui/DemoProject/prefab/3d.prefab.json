@@ -45,8 +45,16 @@
 				},
 				"tag":	"Sgl$Mesh",
 				"children":	[]
-			}, {
+			}, 
+			{
 				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100.1865234375,
+						"y":	0,
+						"z":	0.86083984375
+					},
+					"path":	"spider.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]

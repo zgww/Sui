@@ -248,7 +248,10 @@ class AssimpLoader {
 
                 Material* matl = self.materials.get(aimesh.mMaterialIndex)
                 if self.mergedMaterials {
-                    matl = self.mergedMaterials.get(aimesh.mMaterialIndex)
+                    Material* overrideMatl = self.mergedMaterials.get(aimesh.mMaterialIndex)
+                    if overrideMatl {
+                        matl = overrideMatl
+                    }
                 }
                 mesh.material = matl
 
@@ -977,7 +980,7 @@ class ModelLoader extends Obj3d {
         self.materialPaths = list
         self.updateMaterialSlots()
 
-        if self.modelRoot != null {//重建树
+        if self.mounted {//重建树
             self.generateModelRoot()
         }
     }
@@ -1029,8 +1032,8 @@ class ModelLoader extends Obj3d {
             self.loader = new AssimpLoader()
             self.loader.load(self.path.str)
 
-            //如果已经生成，说明是修改的。 需要重建
-            if self.modelRoot {
+            //已经在场景里了
+            if self.mounted {
                 self.generateModelRoot()
             }
         }
