@@ -190,6 +190,21 @@ extension Plane {
 	// 	return self;
 
 	// }
+	Plane* applyMatrix4Local(Mat matrix) {
+
+		Mat3 normalMatrix// = optionalNormalMatrix || _normalMatrix.getNormalMatrix( matrix );
+		normalMatrix.getNormalMatrixLocal(matrix)
+
+		Vec3 referencePoint = self.coplanarPoint( ).applyMatrix4( matrix );
+
+		Vec3 normal = self.normal.applyMatrix3( normalMatrix ).normalize();
+
+		self.constant = -referencePoint.dot( normal );
+
+		return this;
+
+	}
+
 
 	Plane* translate(Vec3 offset ) {
 

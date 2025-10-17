@@ -77,6 +77,7 @@ float  SuiCore$Plane$distanceToPoint(SuiCore$Plane *  self, SuiCore$Vec3 point);
 float  SuiCore$Plane$distanceToSphere(SuiCore$Plane *  self, Sgl$Sphere sphere);
 SuiCore$Vec3 SuiCore$Plane$projectPoint(SuiCore$Plane *  self, SuiCore$Vec3 point);
 SuiCore$Vec3 SuiCore$Plane$coplanarPoint(SuiCore$Plane *  self);
+SuiCore$Plane *  SuiCore$Plane$applyMatrix4Local(SuiCore$Plane *  self, Sgl$Mat matrix);
 SuiCore$Plane *  SuiCore$Plane$translate(SuiCore$Plane *  self, SuiCore$Vec3 offset);
 bool  SuiCore$Plane$equals(SuiCore$Plane *  self, SuiCore$Plane plane);
 SuiCore$Plane SuiCore$Plane$clone(SuiCore$Plane *  self);

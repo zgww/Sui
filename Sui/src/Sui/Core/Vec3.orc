@@ -226,6 +226,11 @@ extension Vec3 {
 
 	// }
 
+	Vec3 applyMatrix3(Mat3 m ) {
+		Vec3 r = *self;
+		r.applyMatrix3Local(m)
+		return r
+	}
 	Vec3* applyMatrix3Local(Mat3 m ) {
 
 		float x = self.x
@@ -437,11 +442,15 @@ extension Vec3 {
 		return self.scale( 1 / len )
 	}
 
+	//跟Normal一样？
+	Vec3 normalize() {
+		Vec3 r = *self
+		r.normalizeLocal()
+		return r
+	}
 	Vec3* normalizeLocal() {
-
 		float l = self.length()
 		return self.divideScalarLocal( eqFloat(l, 0) ? 1 : l);
-
 	}
 
 	Vec3* setLength(float length ) {

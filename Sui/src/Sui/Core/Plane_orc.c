@@ -99,6 +99,17 @@ SuiCore$Vec3 SuiCore$Plane$coplanarPoint(SuiCore$Plane *  self){
 	return target; 
 }
 
+SuiCore$Plane *  SuiCore$Plane$applyMatrix4Local(SuiCore$Plane *  self, Sgl$Mat matrix){
+	SuiCore$Mat3 normalMatrix;
+	SuiCore$Mat3$getNormalMatrixLocal(&normalMatrix, matrix) ;
+	SuiCore$Vec3 tmpStructThis1;
+	SuiCore$Vec3 referencePoint = SuiCore$Vec3$applyMatrix4((tmpStructThis1 = SuiCore$Plane$coplanarPoint(self) ,&tmpStructThis1), matrix) ;
+	SuiCore$Vec3 tmpStructThis2;
+	SuiCore$Vec3 normal = SuiCore$Vec3$normalize((tmpStructThis2 = SuiCore$Vec3$applyMatrix3(&self->normal, normalMatrix) ,&tmpStructThis2)) ;
+	self->constant = -SuiCore$Vec3$dot(&referencePoint, normal) ;
+	return this; 
+}
+
 SuiCore$Plane *  SuiCore$Plane$translate(SuiCore$Plane *  self, SuiCore$Vec3 offset){
 	self->constant -= SuiCore$Vec3$dot(&offset, self->normal) ;
 	return self; 

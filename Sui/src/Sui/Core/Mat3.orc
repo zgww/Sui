@@ -195,7 +195,7 @@ extension Mat3 {
 
 	}
 
-	Mat3* getNormalMatrix(Mat matrix4 ) {
+	Mat3* getNormalMatrixLocal(Mat matrix4 ) {
 
 		return self.setFromMatrix4( matrix4 ).invertLocal().transposeLocal();
 	}
