@@ -20,6 +20,8 @@ import * from "../Sui/Core/Node.orc"
 import * from "../Sui/Dialog/Toast.orc"
 import * from "../Sui/Core/Vec3.orc"
 import * from "../Sui/Core/Vec2.orc"
+import * from "../Sui/Core/Plane.orc"
+import * from "../Sgl/Ray.orc"
 import * from "../Sgl/Scene.orc"
 import * from "../Sgl/Camera.orc"
 import * from "../Sgl/Raycaster.orc"
@@ -28,6 +30,7 @@ import * from "../Sgl/Light.orc"
 import * from "../Sgl/SpotLight.orc"
 import * from "../Sgl/PointLight.orc"
 import * from "../Sgl/Mesh.orc"
+import * from "../Sgl/Mat.orc"
 import * from "../Sgl/Billboard.orc"
 import * from "../Sgl/GeometryBox.orc"
 import * from "../Sgl/GeometryLine.orc"
@@ -61,11 +64,32 @@ class ToolBase {
     }
     void reactGizmo(Obj3d* gizmoScene){
     }
-    void onEvent(Event* e) {
-    }
+    void onEvent(Event* e) { }
     void draw2d(Canvas *canvas){
     }
     void reactGizmosView(Node* o){
+    }
+}
+
+class ToolDropModelLoader extends ToolBase {
+    void onEvent(Event* e) {
+        if e instanceof MouseEvent {
+            MouseEvent *me = (MouseEvent*)e
+            if me.button == 1 && me.isClickInBubble(){
+                Ray ray = self.mgr.camera.mkRay(me.ndcPos)
+                Plane plane;
+                Mat m;
+                m.identity()
+                // m.makeTranslation(0, 0, -10)
+                plane.setByMatrixAndPlaneName(m, "XZ")
+
+                IntersectResult r = ray.intersectPlane(plane)
+                if r.succ {
+                    printf("drop model at %s\n", r.point.toString().str)
+                }
+            }
+        }
+
     }
 }
 

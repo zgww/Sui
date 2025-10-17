@@ -1,6 +1,8 @@
 
 typedef struct tagSuiDesigner$ToolBase SuiDesigner$ToolBase;
 typedef struct tagVtable_SuiDesigner$ToolBase Vtable_SuiDesigner$ToolBase;
+typedef struct tagSuiDesigner$ToolDropModelLoader SuiDesigner$ToolDropModelLoader;
+typedef struct tagVtable_SuiDesigner$ToolDropModelLoader Vtable_SuiDesigner$ToolDropModelLoader;
 typedef struct tagSuiDesigner$ToolSelect SuiDesigner$ToolSelect;
 typedef struct tagVtable_SuiDesigner$ToolSelect Vtable_SuiDesigner$ToolSelect;
 typedef struct tagSuiDesigner$ToolMgr SuiDesigner$ToolMgr;
@@ -54,6 +56,8 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../Sui/Dialog/Toast_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
 #include "../Sui/Core/Vec2_orc.h"
+#include "../Sui/Core/Plane_orc.h"
+#include "../Sgl/Ray_orc.h"
 #include "../Sgl/Scene_orc.h"
 #include "../Sgl/Camera_orc.h"
 #include "../Sgl/Raycaster_orc.h"
@@ -62,6 +66,7 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../Sgl/SpotLight_orc.h"
 #include "../Sgl/PointLight_orc.h"
 #include "../Sgl/Mesh_orc.h"
+#include "../Sgl/Mat_orc.h"
 #include "../Sgl/Billboard_orc.h"
 #include "../Sgl/GeometryBox_orc.h"
 #include "../Sgl/GeometryLine_orc.h"
@@ -113,6 +118,27 @@ void  SuiDesigner$ToolBase$reactGizmo(SuiDesigner$ToolBase *  self, Sgl$Obj3d * 
 void  SuiDesigner$ToolBase$onEvent(SuiDesigner$ToolBase *  self, SuiCore$Event *  e);
 void  SuiDesigner$ToolBase$draw2d(SuiDesigner$ToolBase *  self, SuiCore$Canvas *  canvas);
 void  SuiDesigner$ToolBase$reactGizmosView(SuiDesigner$ToolBase *  self, SuiCore$Node *  o);
+
+
+// 虚表
+struct tagVtable_SuiDesigner$ToolDropModelLoader {
+	Vtable_SuiDesigner$ToolBase super;
+};
+//虚表实例
+extern Vtable_SuiDesigner$ToolDropModelLoader _vtable_SuiDesigner$ToolDropModelLoader;
+
+// class refc:0
+struct tagSuiDesigner$ToolDropModelLoader {
+	SuiDesigner$ToolBase super; 
+	
+};
+Vtable_SuiDesigner$ToolDropModelLoader* Vtable_SuiDesigner$ToolDropModelLoader_init(Vtable_SuiDesigner$ToolDropModelLoader* pvt);
+void SuiDesigner$ToolDropModelLoader_init_fields(SuiDesigner$ToolDropModelLoader *self);
+void SuiDesigner$ToolDropModelLoader_init(SuiDesigner$ToolDropModelLoader *self, void *pOwner);
+SuiDesigner$ToolDropModelLoader * SuiDesigner$ToolDropModelLoader_new(void *pOwner);
+void SuiDesigner$ToolDropModelLoader_fini(SuiDesigner$ToolDropModelLoader *self);
+
+void  SuiDesigner$ToolDropModelLoader$onEvent(SuiDesigner$ToolDropModelLoader *  self, SuiCore$Event *  e);
 
 
 // 虚表
