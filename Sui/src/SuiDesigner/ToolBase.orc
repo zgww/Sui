@@ -112,11 +112,12 @@ class ToolDropModelLoader extends ToolBase {
                         ANode@ anode = UiAct_addViewToSelectedOrRoot(self.mgr.editor, 
                             Vtable_getClassName(ModelLoader))
                         if anode {
-                            StructObj@ obj = mkStructObj(
-                                metaStructOf(Vec3),
-                                &r.point
-                            )
-                            anode.setAttrValueObject("position", obj)
+                            StructObj@ positionObj = mkVec3StructObj(r.point)
+                            anode.setAttrValueObject("position", positionObj)
+                            
+                            StructObj@ scaleObj = mkVec3StructObj3f(100, 100, 100)
+                            anode.setAttrValueObject("scale", scaleObj)
+
                             anode.setAttrValueObject("path", relpath)
                         }
                     }

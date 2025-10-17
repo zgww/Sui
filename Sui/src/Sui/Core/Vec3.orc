@@ -6,6 +6,7 @@ package SuiCore
 
 import * from "../../Orc/String.orc"
 import * from "../../Orc/Math.orc"
+import * from "../../Orc/Number.orc"
 import * from "../../Sgl/Mat.orc"
 
 import * from "./Mat3.orc"
@@ -887,6 +888,23 @@ Vec3 mkVec3(float x, float y, float z){
 	v.y = y
 	v.z = z
 	return v;
+}
+
+StructObj@ mkVec3StructObj(Vec3 v){
+	StructObj@ obj = mkStructObj(
+		metaStructOf(Vec3),
+		&v
+	)
+	return obj
+}
+
+StructObj@ mkVec3StructObj3f(float x, float y, float z){
+	Vec3 v = mkVec3(x, y, z)
+	StructObj@ obj = mkStructObj(
+		metaStructOf(Vec3),
+		&v
+	)
+	return obj
 }
 
 

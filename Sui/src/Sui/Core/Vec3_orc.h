@@ -44,6 +44,7 @@ struct tagSuiCore$Vec3 {
 //include  importHeadCode
 #include "../../Orc/String_orc.h"
 #include "../../Orc/Math_orc.h"
+#include "../../Orc/Number_orc.h"
 #include "../../Sgl/Mat_orc.h"
 #include "./Mat3_orc.h"
 #define INCLUDE_ONLY_TYPE
@@ -150,6 +151,8 @@ SuiCore$Vec3 SuiCore$Vec3$clamp(SuiCore$Vec3 *  self, SuiCore$Vec3 min, SuiCore$
 SuiCore$Vec3 SuiCore$Vec3$clampScalar(SuiCore$Vec3 *  self, float  minVal, float  maxVal);
 SuiCore$Vec3 SuiCore$Vec3$clampLength(SuiCore$Vec3 *  self, float  min, float  max);
 SuiCore$Vec3 SuiCore$mkVec3(float  x, float  y, float  z);
+Orc$StructObj*  SuiCore$mkVec3StructObj(Orc$StructObj **  __outRef__, SuiCore$Vec3 v);
+Orc$StructObj*  SuiCore$mkVec3StructObj3f(Orc$StructObj **  __outRef__, float  x, float  y, float  z);
 void  SuiCore$testVec3();
 
 

@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "../../Orc/String_orc.h"
 #include "../../Orc/Math_orc.h"
+#include "../../Orc/Number_orc.h"
 #include "../../Sgl/Mat_orc.h"
 #include "./Mat3_orc.h"
 #include "./Euler_orc.h"
@@ -595,6 +596,17 @@ SuiCore$Vec3 SuiCore$mkVec3(float  x, float  y, float  z){
 	v.y = y;
 	v.z = z;
 	return v; 
+}
+
+Orc$StructObj*  SuiCore$mkVec3StructObj(Orc$StructObj **  __outRef__, SuiCore$Vec3 v){
+	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  obj = Orc$mkStructObj((obj = NULL,&obj), metaStructOf(SuiCore$Vec3) , &v) ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, obj) ; 
+}
+
+Orc$StructObj*  SuiCore$mkVec3StructObj3f(Orc$StructObj **  __outRef__, float  x, float  y, float  z){
+	SuiCore$Vec3 v = SuiCore$mkVec3(x, y, z) ;
+	URGC_VAR_CLEANUP_CLASS Orc$StructObj*  obj = Orc$mkStructObj((obj = NULL,&obj), metaStructOf(SuiCore$Vec3) , &v) ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, obj) ; 
 }
 
 void  SuiCore$testVec3(){
