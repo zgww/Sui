@@ -1208,12 +1208,12 @@ int main(){
     // }
 
     // testPlane()
-    testRay()
+    // testRay()
 
-    // new HoroEditor().{
-    //     o.openProject("../DemoProject")
-    //     // o.showWindow()
-    // }
+    new HoroEditor().{
+        o.openProject("../DemoProject")
+        // o.showWindow()
+    }
 
     // testAudio();
     // testMath();

@@ -506,7 +506,6 @@ extension Ray {
 	Ray clone() {
         return *self
 	}
-
 }
 
 void testRay(){

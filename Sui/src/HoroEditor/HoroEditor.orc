@@ -577,50 +577,50 @@ class HoroEditor extends Listener{
                     // self.addTileLayer()
                 }
             }
-            mkDrawButton(o, 0).{ o.isActive = true; o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/setting.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi1");};o.isActive = true; o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/setting.png"); }
 
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/project.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/open-door.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/collapse.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/expand.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/add.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/delete.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/bezier.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/user.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/shortcut.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/project.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/open-door.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/collapse.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/expand.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/add.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/delete.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/bezier.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/user.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/shortcut.png"); }
 
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/file-open.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/save.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/print.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/play.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/pause.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/apps.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-left.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-center.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-right.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/file-open.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/save.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/print.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/play.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/pause.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/apps.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-left.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-center.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-right.png"); }
 
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-top.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-middle.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-bottom.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-top.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-middle.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/align-bottom.png"); }
 
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/download.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/download.png"); }
 
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/sort-a-to-z.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/sort-z-to-a.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/filter.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/search.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/sort-a-to-z.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/sort-z-to-a.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/filter.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/search.png"); }
 
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/node.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/cube.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/text-view.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/edit-text.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/image-view.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/button.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/node.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/cube.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/text-view.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/edit-text.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/image-view.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/button.png"); }
 
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/directory.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/camera.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/light.png"); }
-            mkDrawButton(o, 0).{ o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/path.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/directory.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/camera.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/light.png"); }
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/path.png"); }
 
 
         }
