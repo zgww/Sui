@@ -7,6 +7,7 @@ package Sgl
 import * from "../Orc/String.orc"
 import * from "../Orc/Math.orc"
 import * from "../Sui/Core/Vec3.orc"
+import * from "../Sui/Core/Plane.orc"
 import type * from "./Sphere.orc"
 import type * from "./Box3.orc"
 import * from "./Mat.orc"
@@ -17,6 +18,10 @@ import * from "./Mat.orc"
 struct Ray {
     Vec3 origin
     Vec3 direction
+}
+struct DistanceResult {
+	float distance;
+	bool succ
 }
 struct IntersectResult {
 	Vec3 point
@@ -268,46 +273,45 @@ extension Ray {
 		return self.distanceSqToPoint( sphere.center ) <= ( sphere.radius * sphere.radius );
 	}
 
-	// distanceToPlane( plane ) {
+	DistanceResult distanceToPlane(Plane plane ) {
+		DistanceResult r
 
-	// 	const denominator = plane.normal.dot( self.direction );
+		float denominator = plane.normal.dot( self.direction );
 
-	// 	if ( denominator === 0 ) {
+		if eqFloat( denominator, 0 ) {
 
-	// 		// line is coplanar, return origin
-	// 		if ( plane.distanceToPoint( self.origin ) === 0 ) {
+			// line is coplanar, return origin
+			if ( eqFloat(plane.distanceToPoint( self.origin ),  0) ) {
+				r.distance = 0
+				r.succ = true
+				return r;
+			}
 
-	// 			return 0;
+			// Null is preferable to undefined since undefined means.... it is undefined
 
-	// 		}
+			r.succ = false
+			return r;
 
-	// 		// Null is preferable to undefined since undefined means.... it is undefined
+		}
 
-	// 		return null;
+		float t = - ( self.origin.dot( plane.normal ) + plane.constant ) / denominator;
 
-	// 	}
+		// Return if the ray never intersects the plane
 
-	// 	const t = - ( self.origin.dot( plane.normal ) + plane.constant ) / denominator;
+		r.distance = t >= 0 ? t : null;
+		return r
+	}
 
-	// 	// Return if the ray never intersects the plane
+	IntersectResult intersectPlane(Plane plane) {
+		DistanceResult t = self.distanceToPlane( plane );
 
-	// 	return t >= 0 ? t : null;
+		if !t.succ { //说明平行
+			return  mkIntersectResultFail();
+		}
 
-	// }
-
-	// intersectPlane( plane, target ) {
-
-	// 	const t = self.distanceToPlane( plane );
-
-	// 	if ( t === null ) {
-
-	// 		return null;
-
-	// 	}
-
-	// 	return self.at( t, target );
-
-	// }
+		Vec3 p = self.at(t.distance);
+		return mkIntersectResult(p)
+	}
 
 	// intersectsPlane( plane ) {
 

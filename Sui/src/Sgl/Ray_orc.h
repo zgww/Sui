@@ -1,5 +1,6 @@
 
 typedef struct tagSgl$Ray Sgl$Ray;
+typedef struct tagSgl$DistanceResult Sgl$DistanceResult;
 typedef struct tagSgl$IntersectResult Sgl$IntersectResult;
 
 
@@ -38,6 +39,12 @@ struct tagSgl$Ray {
 };
 
 
+struct tagSgl$DistanceResult {
+	float  distance ;
+	bool  succ ;
+};
+
+
 struct tagSgl$IntersectResult {
 	SuiCore$Vec3 point ;
 	bool  succ ;
@@ -57,6 +64,7 @@ struct tagSgl$IntersectResult {
 #include "../Orc/String_orc.h"
 #include "../Orc/Math_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
+#include "../Sui/Core/Plane_orc.h"
 #define INCLUDE_ONLY_TYPE
 #include "./Sphere_orc.h"
 #undef INCLUDE_ONLY_TYPE
@@ -79,6 +87,11 @@ MetaStruct* Sgl$Ray_getOrInitMetaStruct();
 
 
 //结构体元数据获取即初始化
+MetaStruct* Sgl$DistanceResult_getOrInitMetaStruct();
+
+
+
+//结构体元数据获取即初始化
 MetaStruct* Sgl$IntersectResult_getOrInitMetaStruct();
 
 Sgl$IntersectResult Sgl$mkIntersectResult(SuiCore$Vec3 point);
@@ -94,6 +107,8 @@ float  Sgl$Ray$distanceToPoint(Sgl$Ray *  self, SuiCore$Vec3 point);
 float  Sgl$Ray$distanceSqToPoint(Sgl$Ray *  self, SuiCore$Vec3 point);
 Sgl$IntersectResult Sgl$Ray$intersectSphere(Sgl$Ray *  self, Sgl$Sphere sphere, SuiCore$Vec3 result);
 bool  Sgl$Ray$intersectsSphere(Sgl$Ray *  self, Sgl$Sphere sphere);
+Sgl$DistanceResult Sgl$Ray$distanceToPlane(Sgl$Ray *  self, SuiCore$Plane plane);
+Sgl$IntersectResult Sgl$Ray$intersectPlane(Sgl$Ray *  self, SuiCore$Plane plane);
 Sgl$IntersectResult Sgl$Ray$intersectBox(Sgl$Ray *  self, Sgl$Box3 box);
 bool  Sgl$Ray$intersectsBox(Sgl$Ray *  self, Sgl$Box3 box);
 Sgl$IntersectResult Sgl$Ray$intersectTriangle(Sgl$Ray *  self, SuiCore$Vec3 a, SuiCore$Vec3 b, SuiCore$Vec3 c, bool  backfaceCulling);

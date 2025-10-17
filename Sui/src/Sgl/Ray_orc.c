@@ -7,6 +7,7 @@
 #include "../Orc/String_orc.h"
 #include "../Orc/Math_orc.h"
 #include "../Sui/Core/Vec3_orc.h"
+#include "../Sui/Core/Plane_orc.h"
 #include "./Sphere_orc.h"
 #include "./Box3_orc.h"
 #include "./Mat_orc.h"
@@ -29,6 +30,20 @@ MetaStruct* Sgl$Ray_getOrInitMetaStruct(){
 
 		orc_metaField_struct(&pNext, "origin", SuiCore$Vec3_getOrInitMetaStruct(), offsetof(Sgl$Ray, origin), false, false, 0);
 		orc_metaField_struct(&pNext, "direction", SuiCore$Vec3_getOrInitMetaStruct(), offsetof(Sgl$Ray, direction), false, false, 0);
+    }
+	return meta;
+}
+
+// get or init meta 
+MetaStruct* Sgl$DistanceResult_getOrInitMetaStruct(){
+    static MetaStruct *meta = NULL;
+    if (meta == NULL){
+        //init
+        orc_initMetaStruct(&meta, "Sgl$DistanceResult", sizeof( Sgl$DistanceResult ));
+        OrcMetaField **pNext = &meta->headMetaField;
+
+		orc_metaField_primitive(&pNext, "distance", OrcMetaType_float, offsetof(Sgl$DistanceResult, distance), 0, 0, 0, 0);//float
+		orc_metaField_primitive(&pNext, "succ", OrcMetaType_bool, offsetof(Sgl$DistanceResult, succ), 0, 0, 0, 0);//bool
     }
 	return meta;
 }
@@ -140,6 +155,32 @@ Sgl$IntersectResult Sgl$Ray$intersectSphere(Sgl$Ray *  self, Sgl$Sphere sphere, 
 
 bool  Sgl$Ray$intersectsSphere(Sgl$Ray *  self, Sgl$Sphere sphere){
 	return Sgl$Ray$distanceSqToPoint(self, sphere.center)  <= (sphere.radius * sphere.radius); 
+}
+
+Sgl$DistanceResult Sgl$Ray$distanceToPlane(Sgl$Ray *  self, SuiCore$Plane plane){
+	Sgl$DistanceResult r;
+	float  denominator = SuiCore$Vec3$dot(&plane.normal, self->direction) ;
+	if (Orc$eqFloat(denominator, 0) ) {
+		if (Orc$eqFloat(SuiCore$Plane$distanceToPoint(&plane, self->origin) , 0) ) {
+			r.distance = 0;
+			r.succ = true;
+			return r; 
+		}
+		r.succ = false;
+		return r; 
+	}
+	float  t = -(SuiCore$Vec3$dot(&self->origin, plane.normal)  + plane.constant) / denominator;
+	r.distance = t >= 0 ? t : NULL;
+	return r; 
+}
+
+Sgl$IntersectResult Sgl$Ray$intersectPlane(Sgl$Ray *  self, SuiCore$Plane plane){
+	Sgl$DistanceResult t = Sgl$Ray$distanceToPlane(self, plane) ;
+	if (!t.succ) {
+		return Sgl$mkIntersectResultFail() ; 
+	}
+	SuiCore$Vec3 p = Sgl$Ray$at(self, t.distance) ;
+	return Sgl$mkIntersectResult(p) ; 
 }
 
 Sgl$IntersectResult Sgl$Ray$intersectBox(Sgl$Ray *  self, Sgl$Box3 box){
