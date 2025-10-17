@@ -180,6 +180,7 @@ struct tagHoroEditor$HoroEditor {
 	SuiDesigner$ToolMgr*  toolMgr ;
 	SuiDesigner$SglGizmo*  sglGizmo ;
 	HoroEditor$Horo3dSceneView*  sceneView ;
+	SuiDesigner$AssetDirView*  dirView ;
 	SuiCore$View*  gizmosView ;
 	void  (*selectByNode) (HoroEditor$HoroEditor *  self, SuiCore$Node *  n);
 	void  (*onSceneEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);

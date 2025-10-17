@@ -36,6 +36,7 @@ import * from "../EventFileItemChanged.orc"
 
 
 class SelectFileItems {
+    // <FileItem@>
     List@ list = new List()
     ^List@ () getAll = null
     ^void () onChanged
@@ -52,6 +53,13 @@ class SelectFileItems {
             self.onChanged()
         }
     }
+    FileItem* getIfOnlyOne(){
+        if self.list.size() == 1 {
+            return (FileItem*)self.list.get(0)
+        }
+        return null
+    }
+
 
     void selectMulti(FileItem@ fi, bool ctrl, bool shift){
         if !ctrl && !shift {

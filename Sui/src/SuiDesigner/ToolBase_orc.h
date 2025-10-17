@@ -77,7 +77,10 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "./SglEditCtx_orc.h"
 #include "./SglGizmo_orc.h"
 #include "./ANode_orc.h"
+#include "../SuiDesigner/Asset/AssetDirView_orc.h"
+#include "../SuiDesigner/FileItem_orc.h"
 #include "../HoroEditor/HoroEditor_orc.h"
+#include "../Sgl/ModelLoader_orc.h"
 
 
 #ifdef __cplusplus

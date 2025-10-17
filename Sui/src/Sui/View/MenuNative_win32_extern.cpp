@@ -26,7 +26,7 @@ static void _create_menu(HMENU parent, SuiView$MenuNativeItem* item) {
         if (kidsSize > 0){
             HMENU kid_menu = CreatePopupMenu();
             _create_menu(kid_menu, kid);
-            AppendMenuW(parent, MF_POPUP|MF_STRING, (UINT)kid_menu, label);
+            AppendMenuW(parent, MF_POPUP|MF_STRING, (UINT_PTR)kid_menu, label);
         } else { //叶子菜单
             AppendMenuW(parent, MF_STRING, kid->commandId, label);
         }

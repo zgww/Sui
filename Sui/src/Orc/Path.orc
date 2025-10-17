@@ -27,6 +27,52 @@ String@ Path_dirname(const char *s){
     String@ ret = tmp.substringByByteRange(0, idx)
     return ret
 }
+String@ Path_relPathToCwd(const char *path){
+    String@ cwd = Path_getcwd();
+    return Path_relPathToDir(path, cwd.str)
+}
+//计算[path]相对于[relFilePath]的相对路径
+//[relFilePath]是文件路径
+// 返回相对路径
+// 例： ("/a/b/c.png", "/a/b/d.json") => "c.png"
+String@ Path_relPathToDir(const char *path, const char *relDirPath){
+    String@ abspath = Path_toAbsolute(path)
+    String@ absTargetPath = Path_toAbsolute(relDirPath)
+
+    List@ parts = abspath.splitByRe("/|\\\\")
+    List@ targetParts = absTargetPath.splitByRe("/|\\\\")
+
+    int l0 = parts.size()
+    int l1 = targetParts.size()
+    int minl = minInt(l0, l1)
+    int samel = minl//如果前缀都相同
+    //计算共同组成长度
+    for int i = 0; i < minl; i++{
+        String* a = (String*)parts.get(i)
+        String* b = (String*)targetParts.get(i)
+        if !a.equalsString(b){
+            samel = i;
+            break
+        }
+    }
+
+
+    
+    List@ segs = new List()
+    //去掉共同点。 从不同点开始， 
+    //添加'..'; 和relPathToFile的主要是 -0,还是-1
+    for int i = samel; i < l1 - 0 ; i++{
+        segs.add(str(".."))
+    }
+    //添加不同点
+    for int i = samel; i < l0; i++{
+        String* part = (String*)parts.get(i)
+        segs.add(part)
+    }
+    String@ result = String_join(segs, "/")
+    return result;
+}
+
 //计算[path]相对于[relFilePath]的相对路径
 //[relFilePath]是文件路径
 // 返回相对路径
@@ -41,7 +87,7 @@ String@ Path_relPathToFile(const char *path, const char *relFilePath){
     int l0 = parts.size()
     int l1 = targetParts.size()
     int minl = minInt(l0, l1)
-    int samel = 0
+    int samel = minl
     //计算共同组成长度
     for int i = 0; i < minl; i++{
         String* a = (String*)parts.get(i)
@@ -270,6 +316,7 @@ extern void Path_setcwd(const char *path);
 //取得执行文件的路径
 extern String@ Path_getExecutionPath();
 
+// 解码相对路径。 相对于.exe目录
 String@ Path_resolveFromExecutionDir(const char *path){
     static String@ exeDir = null
     if exeDir == null{
@@ -290,6 +337,7 @@ bool Path_isUsualImage(const char *path){
     || String_endsWith(path, ".jpeg")
 
 }
+// 解码相对路径， 相对于basefilepath 文件路径
 String@ Path_resolveRelativeFromFile(const char *path, const char *basefilepath){
     if path && basefilepath{
         if Path_isAbsolute(path){

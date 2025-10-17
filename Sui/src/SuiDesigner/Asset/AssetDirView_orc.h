@@ -88,6 +88,7 @@ struct tagSuiDesigner$SelectFileItems {
 	void  (**onChanged)(void *  self);
 	void  (*select) (SuiDesigner$SelectFileItems *  self, SuiDesigner$FileItem*  fi);
 	void  (*fire_onChanged) (SuiDesigner$SelectFileItems *  self);
+	SuiDesigner$FileItem *  (*getIfOnlyOne) (SuiDesigner$SelectFileItems *  self);
 	void  (*selectMulti) (SuiDesigner$SelectFileItems *  self, SuiDesigner$FileItem*  fi, bool  ctrl, bool  shift);
 };
 Vtable_SuiDesigner$SelectFileItems* Vtable_SuiDesigner$SelectFileItems_init(Vtable_SuiDesigner$SelectFileItems* pvt);
@@ -98,6 +99,7 @@ void SuiDesigner$SelectFileItems_fini(SuiDesigner$SelectFileItems *self);
 
 void  SuiDesigner$SelectFileItems$select(SuiDesigner$SelectFileItems *  self, SuiDesigner$FileItem*  fi);
 void  SuiDesigner$SelectFileItems$fire_onChanged(SuiDesigner$SelectFileItems *  self);
+SuiDesigner$FileItem *  SuiDesigner$SelectFileItems$getIfOnlyOne(SuiDesigner$SelectFileItems *  self);
 void  SuiDesigner$SelectFileItems$selectMulti(SuiDesigner$SelectFileItems *  self, SuiDesigner$FileItem*  fi, bool  ctrl, bool  shift);
 
 extern SuiDesigner$AssetDirView*  SuiDesigner$curAssetDirView;

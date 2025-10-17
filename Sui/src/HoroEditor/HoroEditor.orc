@@ -137,6 +137,7 @@ class HoroEditor extends Listener{
     SglGizmo@ sglGizmo = new SglGizmo()
 
     Horo3dSceneView@ sceneView
+    AssetDirView@ dirView
 
     View@ gizmosView
 
@@ -482,6 +483,7 @@ class HoroEditor extends Listener{
                     }
                     if (item.id.equals("dir")){
                         mkAssetDirView(o, (long long)item).{
+                            self.dirView = o
                             o.backgroundColor = t.dock_content_bg
                             return o
                         }

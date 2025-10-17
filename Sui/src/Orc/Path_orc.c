@@ -37,6 +37,42 @@ Orc$String*  Orc$Path_dirname(Orc$String **  __outRef__, const char *  s){
 	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
 }
 
+Orc$String*  Orc$Path_relPathToCwd(Orc$String **  __outRef__, const char *  path){
+	URGC_VAR_CLEANUP_CLASS Orc$String*  cwd = Orc$Path_getcwd((cwd = NULL,&cwd)) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+	return urgc_set_var_for_return_class((void ** )__outRef__, Orc$Path_relPathToDir(&tmpReturn_1, path, cwd->str) ) ; 
+}
+
+Orc$String*  Orc$Path_relPathToDir(Orc$String **  __outRef__, const char *  path, const char *  relDirPath){
+	URGC_VAR_CLEANUP_CLASS Orc$String*  abspath = Orc$Path_toAbsolute((abspath = NULL,&abspath), path) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  absTargetPath = Orc$Path_toAbsolute((absTargetPath = NULL,&absTargetPath), relDirPath) ;
+	URGC_VAR_CLEANUP_CLASS Orc$List*  parts = Orc$String$splitByRe((parts = NULL,&parts), abspath, "/|\\\\") ;
+	URGC_VAR_CLEANUP_CLASS Orc$List*  targetParts = Orc$String$splitByRe((targetParts = NULL,&targetParts), absTargetPath, "/|\\\\") ;
+	int  l0 = parts->size(parts) ;
+	int  l1 = targetParts->size(targetParts) ;
+	int  minl = Orc$minInt(l0, l1) ;
+	int  samel = minl;
+	for (int  i = 0; i < minl; i++) {
+		Orc$String *  a = (Orc$String * )parts->get(parts, i) ;
+		Orc$String *  b = (Orc$String * )targetParts->get(targetParts, i) ;
+		if (!Orc$String$equalsString(a, b) ) {
+			samel = i;
+			break;
+		}
+	}
+	URGC_VAR_CLEANUP_CLASS Orc$List*  segs = (segs=NULL,urgc_init_var_class((void**)&segs, Orc$List_new(&segs) ));
+	for (int  i = samel; i < l1 - 0; i++) {
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+		segs->add(segs, Orc$str(&tmpReturn_1, "..") ) ;
+	}
+	for (int  i = samel; i < l0; i++) {
+		Orc$String *  part = (Orc$String * )parts->get(parts, i) ;
+		segs->add(segs, part) ;
+	}
+	URGC_VAR_CLEANUP_CLASS Orc$String*  result = Orc$String_join((result = NULL,&result), segs, "/") ;
+	return urgc_set_var_for_return_class((void ** )__outRef__, result) ; 
+}
+
 Orc$String*  Orc$Path_relPathToFile(Orc$String **  __outRef__, const char *  path, const char *  relFilePath){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  abspath = Orc$Path_toAbsolute((abspath = NULL,&abspath), path) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  absTargetPath = Orc$Path_toAbsolute((absTargetPath = NULL,&absTargetPath), relFilePath) ;
@@ -45,7 +81,7 @@ Orc$String*  Orc$Path_relPathToFile(Orc$String **  __outRef__, const char *  pat
 	int  l0 = parts->size(parts) ;
 	int  l1 = targetParts->size(targetParts) ;
 	int  minl = Orc$minInt(l0, l1) ;
-	int  samel = 0;
+	int  samel = minl;
 	for (int  i = 0; i < minl; i++) {
 		Orc$String *  a = (Orc$String * )parts->get(parts, i) ;
 		Orc$String *  b = (Orc$String * )targetParts->get(targetParts, i) ;

@@ -41,8 +41,11 @@ import * from "../Sgl/DrawCtx.orc"
 import * from "./SglEditCtx.orc"
 import * from "./SglGizmo.orc"
 import * from "./ANode.orc"
+import * from "../SuiDesigner/Asset/AssetDirView.orc"
+import * from "../SuiDesigner/FileItem.orc"
 
 import * from "../HoroEditor/HoroEditor.orc"
+import * from "../Sgl/ModelLoader.orc"
 
 
 
@@ -76,6 +79,7 @@ class ToolDropModelLoader extends ToolBase {
         if e instanceof MouseEvent {
             MouseEvent *me = (MouseEvent*)e
             if me.button == 1 && me.isClickInBubble(){
+
                 Ray ray = self.mgr.camera.mkRay(me.ndcPos)
                 Plane plane;
                 Mat m;
@@ -86,6 +90,26 @@ class ToolDropModelLoader extends ToolBase {
                 IntersectResult r = ray.intersectPlane(plane)
                 if r.succ {
                     printf("drop model at %s\n", r.point.toString().str)
+                }
+
+
+                SelectFileItems@ items =  self.mgr.editor.dirView.selectFileItems
+                FileItem* item = items.getIfOnlyOne()
+                if item != null {
+                    String@ relpath = Path_relPathToCwd(item.path.str)
+                    printf("当前选中的fileitem为:%s; 相对路径为:%s\n",
+                        item.path.str,
+                        relpath.str,
+                    )
+                    if item.path.endsWith(".obj") 
+                    || item.path.endsWith(".fbx") 
+                    {
+                        ModelLoader@ l = new ModelLoader()
+                        l.setPath(relpath.str)
+                    }
+                }
+                else {
+                    printf("当前未选中FileItem\n")
                 }
             }
         }

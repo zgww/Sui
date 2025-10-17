@@ -46,6 +46,8 @@ extern "C"{
 //代码内容
 Orc$String*  Orc$Path_basename(Orc$String **  __outRef__, const char *  s);
 Orc$String*  Orc$Path_dirname(Orc$String **  __outRef__, const char *  s);
+Orc$String*  Orc$Path_relPathToCwd(Orc$String **  __outRef__, const char *  path);
+Orc$String*  Orc$Path_relPathToDir(Orc$String **  __outRef__, const char *  path, const char *  relDirPath);
 Orc$String*  Orc$Path_relPathToFile(Orc$String **  __outRef__, const char *  path, const char *  relFilePath);
 Orc$List*  Orc$Path_splitString(Orc$List **  __outRef__, Orc$String *  p);
 bool  Orc$Path_isAbsolute(const char *  p);
