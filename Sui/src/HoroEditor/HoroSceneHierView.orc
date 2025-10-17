@@ -132,7 +132,7 @@ class HoroSceneHierView extends LayoutLinear {
             // MessageDialog_alert(item.cmd.str, "tip")
             // Toast_make(viewName.str)
             // UiAction_addView(anode, viewName)
-            UiAct_addView(self.editor, anode, viewName)
+            UiAct_addView(self.editor, anode, viewName.str)
             return
         }
         if item.cmd.equals("RenameView"){

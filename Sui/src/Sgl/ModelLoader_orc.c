@@ -1321,7 +1321,8 @@ void  Sgl$ModelLoader$setPath(Sgl$ModelLoader *  self, Orc$String*  path){
 
 	urgc_set_field_class(self, (void * )offsetof(Sgl$ModelLoader, path) , path) ;
 	if (path) {
-		URGC_VAR_CLEANUP_CLASS Sgl$AssimpLoader*  l = (l=NULL,urgc_init_var_class((void**)&l, Sgl$AssimpLoader_new(&l) ));
+		URGC_VAR_CLEANUP_CLASS Sgl$AssimpLoader*  tmpNewOwner_1 = NULL;
+		urgc_set_field_class(self, (void * )offsetof(Sgl$ModelLoader, loader) , Sgl$AssimpLoader_new(&tmpNewOwner_1) ) ;
 		self->loader->load(self->loader, self->path->str) ;
 		if (self->modelRoot) {
 			self->generateModelRoot(self) ;

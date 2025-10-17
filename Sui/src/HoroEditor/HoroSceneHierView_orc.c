@@ -450,7 +450,8 @@ void  HoroEditor$HoroSceneHierView$_routeRightMenu(HoroEditor$HoroSceneHierView 
 	}
 	if (Orc$String$startsWith(item->cmd, "AddView/") ) {
 		URGC_VAR_CLEANUP_CLASS Orc$String*  viewName = Orc$Path_basename((viewName = NULL,&viewName), item->cmd->str) ;
-		HoroEditor$UiAct_addView(self->editor, anode, viewName) ;
+		URGC_VAR_CLEANUP_CLASS SuiDesigner$ANode*  tmpReturn_1 = NULL;
+		HoroEditor$UiAct_addView(&tmpReturn_1, self->editor, anode, viewName->str) ;
 		return ; 
 	}
 	if (Orc$String$equals(item->cmd, "RenameView") ) {
@@ -460,8 +461,8 @@ void  HoroEditor$HoroSceneHierView$_routeRightMenu(HoroEditor$HoroSceneHierView 
 	if (Orc$String$equals(item->cmd, "DeleteView") ) {
 		anode->removeSelf(anode) ;
 		SuiCore$Emitter *  tmpThis_1 = NULL;
-		URGC_VAR_CLEANUP_CLASS HoroEditor$EventHoroSceneChanged*  tmpNewOwner_1 = NULL;
-		(tmpThis_1 = SuiCore$useEbus() )->emit(tmpThis_1, HoroEditor$EventHoroSceneChanged_new(&tmpNewOwner_1) ) ;
+		URGC_VAR_CLEANUP_CLASS HoroEditor$EventHoroSceneChanged*  tmpNewOwner_2 = NULL;
+		(tmpThis_1 = SuiCore$useEbus() )->emit(tmpThis_1, HoroEditor$EventHoroSceneChanged_new(&tmpNewOwner_2) ) ;
 		return ; 
 	}
 	else if (Orc$String$equals(item->cmd, "LocateView") ) {

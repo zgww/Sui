@@ -256,7 +256,7 @@ void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, S
 	if (self->fbo) {
 		SuiCore$Vec2 fboSize = self->fbo->getSize(self->fbo) ;
 		self->camera->aspect = fboSize.x / fboSize.y;
-		self->fbo->startDraw(self->fbo, 0.0, 0.0, 0.0, 1.0, true, true, true) ;
+		self->fbo->startDraw(self->fbo, 1.0, 1.0, 1.0, 1.0, true, true, true) ;
 		self->drawCtx->frameSize = fboSize;
 		self->drawCtx->draw(self->drawCtx, self->scene, self->camera) ;
 		((Sgl$Obj3d * )self->groundGrid)->draw(self->groundGrid, self->drawCtx) ;

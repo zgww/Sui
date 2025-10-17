@@ -22,6 +22,7 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 
 #include <stdio.h>
 #include <string.h>
+#include "../Orc/Orc.h"
 
 
 
@@ -44,6 +45,7 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../Orc/String_orc.h"
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
+#include "../Orc/Number_orc.h"
 #include "../Orc/Path_orc.h"
 #include "../Sui/Core/Event_orc.h"
 #include "../Sui/View/Drag_orc.h"
@@ -80,6 +82,7 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../SuiDesigner/Asset/AssetDirView_orc.h"
 #include "../SuiDesigner/FileItem_orc.h"
 #include "../HoroEditor/HoroEditor_orc.h"
+#include "../HoroEditor/UiAct_orc.h"
 #include "../Sgl/ModelLoader_orc.h"
 
 

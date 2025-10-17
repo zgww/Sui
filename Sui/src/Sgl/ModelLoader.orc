@@ -1024,7 +1024,7 @@ class ModelLoader extends Obj3d {
 
         // 调用加载器加载
         if path {
-            AssimpLoader@ l = new AssimpLoader()
+            self.loader = new AssimpLoader()
             self.loader.load(self.path.str)
 
             //如果已经生成，说明是修改的。 需要重建

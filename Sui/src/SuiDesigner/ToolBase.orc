@@ -3,10 +3,12 @@ package SuiDesigner
 #include <stdio.h>
 #include <string.h>
 
+#include "../Orc/Orc.h"
 
 import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
 import * from "../Orc/Map.orc"
+import * from "../Orc/Number.orc"
 import * from "../Orc/Path.orc"
 import * from "../Sui/Core/Event.orc"
 import * from "../Sui/View/Drag.orc"
@@ -45,6 +47,7 @@ import * from "../SuiDesigner/Asset/AssetDirView.orc"
 import * from "../SuiDesigner/FileItem.orc"
 
 import * from "../HoroEditor/HoroEditor.orc"
+import * from "../HoroEditor/UiAct.orc"
 import * from "../Sgl/ModelLoader.orc"
 
 
@@ -104,8 +107,18 @@ class ToolDropModelLoader extends ToolBase {
                     if item.path.endsWith(".obj") 
                     || item.path.endsWith(".fbx") 
                     {
-                        ModelLoader@ l = new ModelLoader()
-                        l.setPath(relpath.str)
+                        // ModelLoader@ l = new ModelLoader()
+                        // l.setPath(relpath.str)
+                        ANode@ anode = UiAct_addViewToSelectedOrRoot(self.mgr.editor, 
+                            Vtable_getClassName(ModelLoader))
+                        if anode {
+                            StructObj@ obj = mkStructObj(
+                                metaStructOf(Vec3),
+                                &r.point
+                            )
+                            anode.setAttrValueObject("position", obj)
+                            anode.setAttrValueObject("path", relpath)
+                        }
                     }
                 }
                 else {

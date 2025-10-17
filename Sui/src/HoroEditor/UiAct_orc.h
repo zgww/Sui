@@ -66,7 +66,8 @@ extern "C"{
 //代码内容
 void  HoroEditor$UiAct_createPrefab3d(SuiDesigner$FileItem*  parent);
 void  HoroEditor$UiAct_savePrefab(HoroEditor$HoroEditor *  editor);
-void  HoroEditor$UiAct_addView(HoroEditor$HoroEditor *  editor, SuiDesigner$ANode*  anode, Orc$String*  viewName);
+SuiDesigner$ANode*  HoroEditor$UiAct_addViewToSelectedOrRoot(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditor *  editor, const char *  viewName);
+SuiDesigner$ANode*  HoroEditor$UiAct_addView(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditor *  editor, SuiDesigner$ANode*  anode, const char *  viewName);
 void  HoroEditor$UiAct_createGeometry(SuiDesigner$FileItem*  parent, Orc$String*  cmd);
 
 

@@ -79,19 +79,33 @@ void UiAct_savePrefab(HoroEditor* editor){
         Toast_make(tmp)
     }
 }
-void UiAct_addView(HoroEditor* editor, ANode@ anode, String@ viewName){
+ANode@ UiAct_addViewToSelectedOrRoot(HoroEditor* editor, const char *viewName){
+    ANode* sel = editor.editCtx.state.getFirstSelected()
+    if sel == null {
+        sel = editor.editCtx.getRoot()
+    }
+    return UiAct_addView(editor, sel, viewName)
+}
+ANode@ UiAct_addView(HoroEditor* editor, ANode@ anode, const char *viewName){
+    // if anode == null {
+    //     anode = editor.editCtx.getRoot()
+    // }
+    if anode == null {
+        Toast_make("当前无节点,无法addView")
+        return null
+    }
     if !anode.node {
         Toast_make("node is null")
-        return 
+        return  null
     }
-    NodeRegisterInfo@ info = NodeLib_use().findByClassName(viewName.str);
+    NodeRegisterInfo@ info = NodeLib_use().findByClassName(viewName);
     if !info {
         Toast_make("未找到节点类")
-        return
+        return null
     }
 
     new ANode().{
-        o.tag = viewName
+        o.tag = str(viewName)
         anode.appendChild(o)
         
         o.updateSubTreeNodes()
@@ -100,6 +114,7 @@ void UiAct_addView(HoroEditor* editor, ANode@ anode, String@ viewName){
             o.anode = anode
             o.emitToEbus()
         }
+        return o
     }
 
     
