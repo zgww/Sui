@@ -45,8 +45,7 @@
 				},
 				"tag":	"Sgl$Mesh",
 				"children":	[]
-			}, 
-			{
+			}, {
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
@@ -55,6 +54,186 @@
 						"z":	0.86083984375
 					},
 					"path":	"spider.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	372.31039428710938,
+						"y":	0,
+						"z":	456.919921875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/bench.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-51.72821044921875,
+						"y":	0,
+						"z":	489.51101684570312
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/bench.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-519.7996826171875,
+						"y":	0,
+						"z":	366.76025390625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/bench.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	712.1304931640625,
+						"y":	0,
+						"z":	-402.403076171875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/coffin.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-565.9212646484375,
+						"y":	0,
+						"z":	-274.597900390625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/coffin.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-368.90692138671875,
+						"y":	0,
+						"z":	297.0291748046875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/candle_triple.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	712.15167236328125,
+						"y":	3.0517578125e-05,
+						"z":	98.918212890625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence_broken.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	577.48583984375,
+						"y":	0,
+						"z":	445.97027587890625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence_broken.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-151.01033020019531,
+						"y":	0,
+						"z":	314.88848876953125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence_broken.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-348.122802734375,
+						"y":	0,
+						"z":	493.4814453125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence_broken.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
