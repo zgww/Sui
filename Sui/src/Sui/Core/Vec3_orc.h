@@ -89,6 +89,7 @@ SuiCore$Vec3 *  SuiCore$Vec3$subVectorsLocal(SuiCore$Vec3 *  self, SuiCore$Vec3 
 SuiCore$Vec3 *  SuiCore$Vec3$multiplyLocal(SuiCore$Vec3 *  self, SuiCore$Vec3 v);
 SuiCore$Vec3 *  SuiCore$Vec3$multiplyScalarLocal(SuiCore$Vec3 *  self, float  scalar);
 SuiCore$Vec3 *  SuiCore$Vec3$multiplyVectorsLocal(SuiCore$Vec3 *  self, SuiCore$Vec3 a, SuiCore$Vec3 b);
+SuiCore$Vec3 SuiCore$Vec3$applyMatrix3(SuiCore$Vec3 *  self, SuiCore$Mat3 m);
 SuiCore$Vec3 *  SuiCore$Vec3$applyMatrix3Local(SuiCore$Vec3 *  self, SuiCore$Mat3 m);
 SuiCore$Vec3 *  SuiCore$Vec3$applyNormalMatrixLocal(SuiCore$Vec3 *  self, SuiCore$Mat3 m);
 SuiCore$Vec3 SuiCore$Vec3$applyMatrix4(SuiCore$Vec3 *  self, Sgl$Mat m);
@@ -108,6 +109,7 @@ float  SuiCore$Vec3$lengthSq(SuiCore$Vec3 *  self);
 float  SuiCore$Vec3$length(SuiCore$Vec3 *  self);
 float  SuiCore$Vec3$manhattanLength(SuiCore$Vec3 *  self);
 SuiCore$Vec3 SuiCore$Vec3$normal(SuiCore$Vec3 *  self);
+SuiCore$Vec3 SuiCore$Vec3$normalize(SuiCore$Vec3 *  self);
 SuiCore$Vec3 *  SuiCore$Vec3$normalizeLocal(SuiCore$Vec3 *  self);
 SuiCore$Vec3 *  SuiCore$Vec3$setLength(SuiCore$Vec3 *  self, float  length);
 SuiCore$Vec3 SuiCore$Vec3$lerp(SuiCore$Vec3 *  self, SuiCore$Vec3 b, float  ratio);

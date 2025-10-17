@@ -67,7 +67,7 @@ SuiCore$Mat3 *  SuiCore$Mat3$multiplyScalarLocal(SuiCore$Mat3 *  self, float  s)
 float  SuiCore$Mat3$determinant(SuiCore$Mat3 *  self);
 SuiCore$Mat3 *  SuiCore$Mat3$invertLocal(SuiCore$Mat3 *  self);
 SuiCore$Mat3 *  SuiCore$Mat3$transposeLocal(SuiCore$Mat3 *  self);
-SuiCore$Mat3 *  SuiCore$Mat3$getNormalMatrix(SuiCore$Mat3 *  self, Sgl$Mat matrix4);
+SuiCore$Mat3 *  SuiCore$Mat3$getNormalMatrixLocal(SuiCore$Mat3 *  self, Sgl$Mat matrix4);
 SuiCore$Mat3 *  SuiCore$Mat3$transposeIntoArray(SuiCore$Mat3 *  self, float *  r);
 SuiCore$Mat3 *  SuiCore$Mat3$setUvTransform(SuiCore$Mat3 *  self, float  tx, float  ty, float  sx, float  sy, float  rotation, float  cx, float  cy);
 SuiCore$Mat3 *  SuiCore$Mat3$scaleLocal(SuiCore$Mat3 *  self, float  sx, float  sy);

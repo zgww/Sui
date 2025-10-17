@@ -280,7 +280,7 @@ void  SuiView$ScrollModel$on_wheel_event(SuiView$ScrollModel *  self, SuiCore$Wh
 		float  max_top = scroll_size.y - client_size.y;
 		self->scroll_top = Orc$clampInt(self->scroll_top - evt->deltaY * Orc$minFloat(ScrollView_delta_factor, client_size.y / 2.0f) , 0.0f, Orc$maxInt(0.0f, max_top) ) ;
 	}
-	printf("ScrollModel 更新 scroll:%d, %d; delta:%d, shift:%d\n", self->scroll_left, self->scroll_top, evt->deltaY, ((SuiCore$MouseEvent * )evt)->shift) ;
+	printf("ScrollModel 更新 scroll:%f, %f; delta:%d, shift:%d\n", self->scroll_left, self->scroll_top, evt->deltaY, ((SuiCore$MouseEvent * )evt)->shift) ;
 }
 
 
@@ -888,9 +888,9 @@ static void  __fn___Closure_378_21(SuiView$__Closure_378_21 *  self, SuiView$Dra
 		float  fullSize = ((SuiCore$ViewBase * )self->__var___Block_374_12->self)->frame.width;
 		float  barPos = model->get_h_pos(model, fullSize) ;
 		float  newBarPos = barPos + d->deltaPos.x;
-		printf("newBarPos:%f. delta:%f left:%d\n", newBarPos, d->deltaPos.x, model->scroll_left) ;
+		printf("newBarPos:%f. delta:%f left:%f\n", newBarPos, d->deltaPos.x, model->scroll_left) ;
 		model->scroll_left = model->calc_scroll_left_by_bar_pos(model, fullSize, newBarPos) ;
-		printf("\tnew left:%d\n", model->scroll_left) ;
+		printf("\tnew left:%f\n", model->scroll_left) ;
 	}
 	model->clampScrollOffsetValid(model) ;
 	self->__var___Block_374_12->self->scrollArea->fireScrollChanged(self->__var___Block_374_12->self->scrollArea) ;

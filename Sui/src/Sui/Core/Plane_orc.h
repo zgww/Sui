@@ -82,6 +82,7 @@ SuiCore$Plane *  SuiCore$Plane$applyMatrix4Local(SuiCore$Plane *  self, Sgl$Mat 
 SuiCore$Plane *  SuiCore$Plane$translate(SuiCore$Plane *  self, SuiCore$Vec3 offset);
 bool  SuiCore$Plane$equals(SuiCore$Plane *  self, SuiCore$Plane plane);
 SuiCore$Plane SuiCore$Plane$clone(SuiCore$Plane *  self);
+void  SuiCore$testPlane();
 
 
 

@@ -66,9 +66,9 @@ void  SuiCore$Plane$setByMatrixAndPlaneName(SuiCore$Plane *  self, Sgl$Mat world
 		SuiCore$Vec3 a = SuiCore$Vec3$applyMatrix4((tmpStructThis1 = SuiCore$mkVec3(0, 0, 0) ,&tmpStructThis1), worldTransform) ;
 		if (Orc$strEq(planeName, "XZ") ) {
 			SuiCore$Vec3 tmpStructThis2;
-			SuiCore$Vec3 b = SuiCore$Vec3$applyMatrix4((tmpStructThis2 = SuiCore$mkVec3(1, 0, 0) ,&tmpStructThis2), worldTransform) ;
+			SuiCore$Vec3 b = SuiCore$Vec3$applyMatrix4((tmpStructThis2 = SuiCore$mkVec3(0, 0, 1) ,&tmpStructThis2), worldTransform) ;
 			SuiCore$Vec3 tmpStructThis3;
-			SuiCore$Vec3 c = SuiCore$Vec3$applyMatrix4((tmpStructThis3 = SuiCore$mkVec3(0, 0, 1) ,&tmpStructThis3), worldTransform) ;
+			SuiCore$Vec3 c = SuiCore$Vec3$applyMatrix4((tmpStructThis3 = SuiCore$mkVec3(1, 0, 0) ,&tmpStructThis3), worldTransform) ;
 			SuiCore$Plane$setFromCoplanarPoints(self, a, b, c) ;
 		}
 		else if (Orc$strEq(planeName, "XY") ) {
@@ -135,7 +135,7 @@ SuiCore$Plane *  SuiCore$Plane$applyMatrix4Local(SuiCore$Plane *  self, Sgl$Mat 
 	SuiCore$Vec3 tmpStructThis2;
 	SuiCore$Vec3 normal = SuiCore$Vec3$normalize((tmpStructThis2 = SuiCore$Vec3$applyMatrix3(&self->normal, normalMatrix) ,&tmpStructThis2)) ;
 	self->constant = -SuiCore$Vec3$dot(&referencePoint, normal) ;
-	return this; 
+	return self; 
 }
 
 SuiCore$Plane *  SuiCore$Plane$translate(SuiCore$Plane *  self, SuiCore$Vec3 offset){
@@ -149,6 +149,25 @@ bool  SuiCore$Plane$equals(SuiCore$Plane *  self, SuiCore$Plane plane){
 
 SuiCore$Plane SuiCore$Plane$clone(SuiCore$Plane *  self){
 	return *self; 
+}
+
+void  SuiCore$testPlane(){
+	{
+		SuiCore$Plane plane;
+		Sgl$Mat m;
+		Sgl$Mat$identity(&m) ;
+		SuiCore$Plane$setByMatrixAndPlaneName(&plane, m, "YZ") ;
+		float  dis = SuiCore$Plane$distanceToPoint(&plane, SuiCore$mkVec3(1000, 100, 10) ) ;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+		printf("yz:%f, normal:%s, dis:%f\n", plane.constant, SuiCore$Vec3$toString(&tmpReturn_1, &plane.normal) ->str, dis) ;
+		SuiCore$Plane$setByMatrixAndPlaneName(&plane, m, "XZ") ;
+		dis = SuiCore$Plane$distanceToPoint(&plane, SuiCore$mkVec3(1000, 100, 10) ) ;
+		printf("xz:%f, normal:%f,%f,%f dis:%f\n", plane.constant, plane.normal.x, plane.normal.y, plane.normal.z, dis) ;
+		SuiCore$Plane$setByMatrixAndPlaneName(&plane, m, "XY") ;
+		dis = SuiCore$Plane$distanceToPoint(&plane, SuiCore$mkVec3(1000, 100, 10) ) ;
+		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
+		printf("xy:%f, normal:%s, dis:%f\n", plane.constant, SuiCore$Vec3$toString(&tmpReturn_2, &plane.normal) ->str, dis) ;
+	}
 }
 
 

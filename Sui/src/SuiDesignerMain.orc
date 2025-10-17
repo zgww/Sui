@@ -27,6 +27,7 @@ import * from "./Sui/Core/MouseEvent.orc"
 import * from "./Sui/Core/View.orc"
 import * from "./Sui/Core/Rect.orc"
 import * from "./Sui/Core/Vec2.orc"
+import * from "./Sui/Core/Plane.orc"
 import * from "./Sui/Core/Inset.orc"
 import * from "./Sui/Core/Frame.orc"
 import * from "./Sui/Dialog/MessageDialog.orc"
@@ -1205,10 +1206,12 @@ int main(){
     //     o.showWindow()
     // }
 
-    new HoroEditor().{
-        o.openProject("../DemoProject")
-        // o.showWindow()
-    }
+    testPlane()
+
+    // new HoroEditor().{
+    //     o.openProject("../DemoProject")
+    //     // o.showWindow()
+    // }
 
     // testAudio();
     // testMath();

@@ -191,7 +191,7 @@ SuiCore$Mat3 *  SuiCore$Mat3$transposeLocal(SuiCore$Mat3 *  self){
 	return self; 
 }
 
-SuiCore$Mat3 *  SuiCore$Mat3$getNormalMatrix(SuiCore$Mat3 *  self, Sgl$Mat matrix4){
+SuiCore$Mat3 *  SuiCore$Mat3$getNormalMatrixLocal(SuiCore$Mat3 *  self, Sgl$Mat matrix4){
 	return SuiCore$Mat3$transposeLocal(SuiCore$Mat3$invertLocal(SuiCore$Mat3$setFromMatrix4(self, matrix4) ) ) ; 
 }
 

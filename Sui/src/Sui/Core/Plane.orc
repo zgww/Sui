@@ -70,8 +70,8 @@ extension Plane {
 		if planeName != null {
 			Vec3 a = mkVec3(0, 0, 0).applyMatrix4(worldTransform)
 			if strEq(planeName, "XZ") {
-				Vec3 b = mkVec3(1, 0, 0).applyMatrix4(worldTransform)
-				Vec3 c = mkVec3(0, 0, 1).applyMatrix4(worldTransform)
+				Vec3 b = mkVec3(0, 0, 1).applyMatrix4(worldTransform)
+				Vec3 c = mkVec3(1, 0, 0).applyMatrix4(worldTransform)
 				self.setFromCoplanarPoints(a, b, c)
 			}
 			else if strEq(planeName, "XY") {
@@ -222,7 +222,7 @@ extension Plane {
 
 		self.constant = -referencePoint.dot( normal );
 
-		return this;
+		return self;
 
 	}
 
@@ -248,4 +248,23 @@ extension Plane {
 
 	}
 
+}
+
+void testPlane {
+	{
+		Plane plane;
+		Mat m;
+		m.identity()
+		plane.setByMatrixAndPlaneName(m, "YZ")
+		float dis = plane.distanceToPoint(mkVec3(1000, 100, 10))
+		printf("yz:%f, normal:%s, dis:%f\n", plane.constant, plane.normal.toString().str, dis)
+
+		plane.setByMatrixAndPlaneName(m, "XZ")
+		dis = plane.distanceToPoint(mkVec3(1000, 100, 10))
+		printf("xz:%f, normal:%f,%f,%f dis:%f\n", plane.constant, plane.normal.x, plane.normal.y, plane.normal.z, dis)
+
+		plane.setByMatrixAndPlaneName(m, "XY")
+		dis = plane.distanceToPoint(mkVec3(1000, 100, 10))
+		printf("xy:%f, normal:%s, dis:%f\n", plane.constant, plane.normal.toString().str, dis)
+	}
 }

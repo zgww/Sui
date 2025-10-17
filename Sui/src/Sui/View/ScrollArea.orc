@@ -86,7 +86,7 @@ class ScrollModel {
 				maxInt(0.0f, max_top)
 			);
 		}
-		printf("ScrollModel 更新 scroll:%d, %d; delta:%d, shift:%d\n"
+		printf("ScrollModel 更新 scroll:%f, %f; delta:%d, shift:%d\n"
 			, self.scroll_left, self.scroll_top
 			, evt->deltaY, evt->shift
 		);
@@ -392,9 +392,9 @@ class ScrollBar extends View{
 				float fullSize = self.frame.width
 				float barPos = model.get_h_pos(fullSize) 
 				float newBarPos = barPos + d.deltaPos.x
-				printf("newBarPos:%f. delta:%f left:%d\n", newBarPos, d.deltaPos.x, model.scroll_left);
+				printf("newBarPos:%f. delta:%f left:%f\n", newBarPos, d.deltaPos.x, model.scroll_left);
 				model.scroll_left = model.calc_scroll_left_by_bar_pos(fullSize, newBarPos)
-				printf("\tnew left:%d\n",  model.scroll_left);
+				printf("\tnew left:%f\n",  model.scroll_left);
 			}
 
 			model.clampScrollOffsetValid()

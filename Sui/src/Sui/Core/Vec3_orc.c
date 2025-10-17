@@ -185,6 +185,12 @@ SuiCore$Vec3 *  SuiCore$Vec3$multiplyVectorsLocal(SuiCore$Vec3 *  self, SuiCore$
 	return self; 
 }
 
+SuiCore$Vec3 SuiCore$Vec3$applyMatrix3(SuiCore$Vec3 *  self, SuiCore$Mat3 m){
+	SuiCore$Vec3 r = *self;
+	SuiCore$Vec3$applyMatrix3Local(&r, m) ;
+	return r; 
+}
+
 SuiCore$Vec3 *  SuiCore$Vec3$applyMatrix3Local(SuiCore$Vec3 *  self, SuiCore$Mat3 m){
 	float  x = self->x;
 	float  y = self->y;
@@ -311,6 +317,12 @@ SuiCore$Vec3 SuiCore$Vec3$normal(SuiCore$Vec3 *  self){
 		len = 1;
 	}
 	return SuiCore$Vec3$scale(self, 1 / len) ; 
+}
+
+SuiCore$Vec3 SuiCore$Vec3$normalize(SuiCore$Vec3 *  self){
+	SuiCore$Vec3 r = *self;
+	SuiCore$Vec3$normalizeLocal(&r) ;
+	return r; 
 }
 
 SuiCore$Vec3 *  SuiCore$Vec3$normalizeLocal(SuiCore$Vec3 *  self){
