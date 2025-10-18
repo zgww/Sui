@@ -153,6 +153,7 @@ void Sgl$RgbaPixelsReader_initMeta(Vtable_Sgl$RgbaPixelsReader *pvt){
 
 	orc_metaField_method(&pNext, "readFromColorAttachment", offsetof(Sgl$RgbaPixelsReader, readFromColorAttachment));
 	orc_metaField_method(&pNext, "read", offsetof(Sgl$RgbaPixelsReader, read));
+	orc_metaField_method(&pNext, "flipY", offsetof(Sgl$RgbaPixelsReader, flipY));
 }
 
 
@@ -214,6 +215,7 @@ void Sgl$RgbaPixelsReader_init_fields(Sgl$RgbaPixelsReader *self){
     }
 	((Sgl$RgbaPixelsReader*)self)->readFromColorAttachment = (void*)Sgl$RgbaPixelsReader$readFromColorAttachment;
 	((Sgl$RgbaPixelsReader*)self)->read = (void*)Sgl$RgbaPixelsReader$read;
+	((Sgl$RgbaPixelsReader*)self)->flipY = (void*)Sgl$RgbaPixelsReader$flipY;
 }
 
 // init function
@@ -264,6 +266,25 @@ unsigned char *  Sgl$RgbaPixelsReader$read(Sgl$RgbaPixelsReader *  self, int  x,
 	self->h = h;
 	glReadPixels(x, y, w, h, GL_RGBA, GL_UNSIGNED_BYTE, self->buffer->data) ;
 	return (unsigned char * )self->buffer->data; 
+}
+
+
+void  Sgl$RgbaPixelsReader$flipY(Sgl$RgbaPixelsReader *  self){
+	int  hh = self->h / 2;
+	int  rowBytes = self->w * 4;
+	for (int  y = 0; y < hh; y++) {
+		for (int  x = 0; x < self->w; x++) {
+			int  y2 = self->h - 1 - y;
+			int  a = y * rowBytes + x * 4;
+			int  b = y2 * rowBytes + x * 4;
+			for (int  j = 0; j < 4; j++) {
+				unsigned char  acomp = self->buffer->data[a + j];
+				unsigned char  bcomp = self->buffer->data[b + j];
+				self->buffer->data[a + j] = bcomp;
+				self->buffer->data[b + j] = acomp;
+			}
+		}
+	}
 }
 
 

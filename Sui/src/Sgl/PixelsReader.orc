@@ -55,4 +55,23 @@ class RgbaPixelsReader {
             self.buffer.data)
         return (unsigned char *)self.buffer.data
     }
+    //上下翻转.因为glReadPixels读出来的图片原点是在左下角
+    void flipY(){
+        int hh = self.h / 2
+        int rowBytes = self.w * 4
+
+        for int y = 0; y < hh; y++{
+            for int x = 0; x < self.w; x++{
+                int y2 = self.h - 1 - y
+                int a = y * rowBytes + x * 4
+                int b = y2 * rowBytes + x * 4
+                for int j = 0; j < 4; j++{
+                    unsigned char acomp = self.buffer.data[a + j]
+                    unsigned char bcomp = self.buffer.data[b + j]
+                    self.buffer.data[a + j] = bcomp
+                    self.buffer.data[b + j] = acomp
+                }
+            }
+        }
+    }
 }

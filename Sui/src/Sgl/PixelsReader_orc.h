@@ -89,6 +89,7 @@ struct tagSgl$RgbaPixelsReader {
 	int  h ;
 	unsigned char *  (*readFromColorAttachment) (Sgl$RgbaPixelsReader *  self, int  attachmentIndex, int  x, int  y, int  w, int  h);
 	unsigned char *  (*read) (Sgl$RgbaPixelsReader *  self, int  x, int  y, int  w, int  h);
+	void  (*flipY) (Sgl$RgbaPixelsReader *  self);
 };
 Vtable_Sgl$RgbaPixelsReader* Vtable_Sgl$RgbaPixelsReader_init(Vtable_Sgl$RgbaPixelsReader* pvt);
 void Sgl$RgbaPixelsReader_init_fields(Sgl$RgbaPixelsReader *self);
@@ -98,6 +99,7 @@ void Sgl$RgbaPixelsReader_fini(Sgl$RgbaPixelsReader *self);
 
 unsigned char *  Sgl$RgbaPixelsReader$readFromColorAttachment(Sgl$RgbaPixelsReader *  self, int  attachmentIndex, int  x, int  y, int  w, int  h);
 unsigned char *  Sgl$RgbaPixelsReader$read(Sgl$RgbaPixelsReader *  self, int  x, int  y, int  w, int  h);
+void  Sgl$RgbaPixelsReader$flipY(Sgl$RgbaPixelsReader *  self);
 
 
 

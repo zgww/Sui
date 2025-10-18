@@ -95,7 +95,7 @@
 #include "./UiAct_orc.h"
 #include "./Horo2dSceneView_orc.h"
 #include "./HoroGeometryPreviewView_orc.h"
-#include "./HoroMaterialIcon_orc.h"
+#include "./HoroIconMgr_orc.h"
 
 
 // static struct 
@@ -2047,6 +2047,10 @@ void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const cha
 	SuiDesigner$registerNodes() ;
 	Orc$Path_setcwd(path) ;
 	URGC_VAR_CLEANUP_CLASS Sui$Window*  win = (win=NULL,urgc_init_var_class((void**)&win, Sui$Window_new(&win) ));
+	if (1) {
+		HoroEditor$testHoroModelIconCreator() ;
+		return ; 
+	}
 	URGC_VAR_CLEANUP_CLASS Orc$String*  abspath = Orc$Path_toAbsolute((abspath = NULL,&abspath), path) ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  cwd = Orc$Path_getcwd((cwd = NULL,&cwd)) ;
 	printf("打开项目。 项目路径为:%s. cwd:%s", abspath->str, cwd->str) ;

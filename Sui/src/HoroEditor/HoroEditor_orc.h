@@ -131,7 +131,7 @@ typedef struct tagVtable_HoroEditor$HoroEditor Vtable_HoroEditor$HoroEditor;
 #include "./UiAct_orc.h"
 #include "./Horo2dSceneView_orc.h"
 #include "./HoroGeometryPreviewView_orc.h"
-#include "./HoroMaterialIcon_orc.h"
+#include "./HoroIconMgr_orc.h"
 
 
 #ifdef __cplusplus

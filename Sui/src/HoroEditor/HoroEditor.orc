@@ -98,7 +98,7 @@ import * from "./HoroInspView.orc"
 import * from "./UiAct.orc"
 import * from "./Horo2dSceneView.orc"
 import * from "./HoroGeometryPreviewView.orc"
-import * from "./HoroMaterialIcon.orc"
+import * from "./HoroIconMgr.orc"
 
 
 static DockLayout@ dockLayoutIns = null
@@ -764,6 +764,10 @@ class HoroEditor extends Listener{
         //     return;
         // }
 
+        if 1 {//模型图标生成
+            testHoroModelIconCreator()
+            return;
+        }
         // if 1 {//材质球生成
         //     testHoroMaterialIconCreator()
         //     return;
