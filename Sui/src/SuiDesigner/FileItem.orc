@@ -115,13 +115,20 @@ class FileItem {
             for (int i = 0; i < l; i++){
                 String@ kidPath = (String@)paths.get(i)
 
+
                 FileItem @kid = new FileItem()
                 kid.setPath(kidPath)
+
+                // .xx 隐藏目录
+                if kid.filename.startsWith("."){
+                    continue
+                }
+
 
                 self.appendChild(kid)
 
                 //判断 目录且不是 '.xxx' 隐藏目录
-                if kid.isDirectory && !kid.filename.startsWith(".") {
+                if kid.isDirectory  {
                     kid.loadSubtree()
                 }
             }
