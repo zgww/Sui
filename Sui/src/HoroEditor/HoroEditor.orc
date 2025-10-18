@@ -140,6 +140,7 @@ class HoroEditor extends Listener{
     AssetDirView@ dirView
 
     View@ gizmosView
+    OutlineFx@ outlineFx = new OutlineFx()
 
     // HoroIconMgr@ iconMgr = new HoroIconMgr()
 
@@ -178,7 +179,7 @@ class HoroEditor extends Listener{
 
         if sel && sel instanceof Obj3d{
             //绘制outline
-            // self.outlineFx.draw(self.sceneView.drawCtx, sel, self.sceneView.fbo)
+            self.outlineFx.draw(self.sceneView.drawCtx, sel, self.sceneView.fbo)
         }
 
         self.toolMgr.scene  = self.sceneView.scene
@@ -359,6 +360,9 @@ class HoroEditor extends Listener{
                     printf("\n\n========================================onActive menu:%s\n", item.label.str)
                     if item.label.equals("退出"){
                         exit(0);
+                    }
+                    if item.label.equals("Outline"){
+                        self.showOutline()
                     }
                     if item.label.equals("保存场景"){
                         UiAct_savePrefab(self)
@@ -719,9 +723,43 @@ class HoroEditor extends Listener{
             }
         }
     }
+    void showOutline(){
+        // self.outlineFx.init()
+
+        // Toast_make("outline")
+        self.sceneView.drawCtx.{
+            ANode* selANode = (ANode*)self.editCtx.state.getFirstSelected()
+            Node* sel = selANode == null ? null : selANode.node
+
+            if sel instanceof Obj3d {
+                self.outlineFx.updateFbo(o.frameSize)
+                self.outlineFx.drawMask(o, (Obj3d*)sel)
+
+                self.outlineFx.fboEdge.startDraw(0, 0, 0, 0, true, true, true)
+                self.outlineFx.drawFxQuad()
+                self.outlineFx.fboEdge.endDraw()
+
+
+                SglSceneView_showTextureWindow(
+                    self.outlineFx.fbo.tex2d
+                    , o.frameSize.width(), o.frameSize.height() );
+
+                SglSceneView_showTextureWindow(
+                    self.outlineFx.fboEdge.tex2d
+                    , o.frameSize.width(), o.frameSize.height() );
+            }
+            else {
+                Toast_make("当前未选中Obj3d")
+            }
+        }
+    }
+
 
     void showWindow(){
         self.win = new Window() //先创建窗口，初始化opengl环境
+
+
+        self.outlineFx.init()
 
 
 

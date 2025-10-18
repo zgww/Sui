@@ -182,6 +182,7 @@ struct tagHoroEditor$HoroEditor {
 	HoroEditor$Horo3dSceneView*  sceneView ;
 	SuiDesigner$AssetDirView*  dirView ;
 	SuiCore$View*  gizmosView ;
+	Sgl$OutlineFx*  outlineFx ;
 	void  (*selectByNode) (HoroEditor$HoroEditor *  self, SuiCore$Node *  n);
 	void  (*onSceneEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 	void  (*_afterDrawScene) (HoroEditor$HoroEditor *  self);
@@ -194,6 +195,7 @@ struct tagHoroEditor$HoroEditor {
 	void  (*reactToolbar) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 	void  (*react) (HoroEditor$HoroEditor *  self);
 	void  (*onWindowEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
+	void  (*showOutline) (HoroEditor$HoroEditor *  self);
 	void  (*showWindow) (HoroEditor$HoroEditor *  self);
 	void  (*openProject) (HoroEditor$HoroEditor *  self, const char *  path);
 };
@@ -218,6 +220,7 @@ void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCo
 void  HoroEditor$HoroEditor$reactToolbar(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 void  HoroEditor$HoroEditor$react(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$onWindowEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
+void  HoroEditor$HoroEditor$showOutline(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const char *  path);
 
