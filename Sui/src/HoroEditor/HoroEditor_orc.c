@@ -1224,8 +1224,8 @@ void  HoroEditor$HoroEditor$ctor(HoroEditor$HoroEditor *  self){
 	SuiDesigner$Project *  tmpThis_1 = NULL;
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$Project*  tmpReturn_4 = NULL;
 	(tmpThis_1 = SuiDesigner$Project_ins(&tmpReturn_4) )->init(tmpThis_1, projectDirPath->str) ;
-	URGC_VAR_CLEANUP_CLASS SuiDesigner$ToolDropModelLoader*  tmpNewOwner_5 = NULL;
-	self->toolMgr->setTool(self->toolMgr, SuiDesigner$ToolDropModelLoader_new(&tmpNewOwner_5) ) ;
+	URGC_VAR_CLEANUP_CLASS SuiDesigner$ToolSelect*  tmpNewOwner_5 = NULL;
+	self->toolMgr->setTool(self->toolMgr, SuiDesigner$ToolSelect_new(&tmpNewOwner_5) ) ;
 	SuiCore$Emitter *  tmpThis_2 = NULL;
 	(tmpThis_2 = SuiCore$useEbus() )->addListener(tmpThis_2, self) ;
 }

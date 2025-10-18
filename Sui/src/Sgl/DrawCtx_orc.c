@@ -53,6 +53,7 @@ void Sgl$DrawCtx_initMeta(Vtable_Sgl$DrawCtx *pvt){
 	orc_metaField_class(&pNext, "lineGeometry", ((Vtable_Object*)Vtable_Sgl$GeometryLine_init(0)), offsetof(Sgl$DrawCtx, lineGeometry), true, false, 1);
 	orc_metaField_class(&pNext, "transparentObj3ds", ((Vtable_Object*)Vtable_Orc$PointerArray_init(0)), offsetof(Sgl$DrawCtx, transparentObj3ds), true, false, 1);
 
+	orc_metaField_method(&pNext, "clearDepth", offsetof(Sgl$DrawCtx, clearDepth));
 	orc_metaField_method(&pNext, "addTransparentObj3dIfIsTransparent", offsetof(Sgl$DrawCtx, addTransparentObj3dIfIsTransparent));
 	orc_metaField_method(&pNext, "drawLineGeometry", offsetof(Sgl$DrawCtx, drawLineGeometry));
 	orc_metaField_method(&pNext, "mkAxis", offsetof(Sgl$DrawCtx, mkAxis));
@@ -142,6 +143,7 @@ void Sgl$DrawCtx_init_fields(Sgl$DrawCtx *self){
 	urgc_set_field(self, (void**)&((Sgl$DrawCtx*)self)->cbAfterDraw, NULL);
     }
 	((Object*)self)->ctor = (void*)Sgl$DrawCtx$ctor;
+	((Sgl$DrawCtx*)self)->clearDepth = (void*)Sgl$DrawCtx$clearDepth;
 	((Sgl$DrawCtx*)self)->addTransparentObj3dIfIsTransparent = (void*)Sgl$DrawCtx$addTransparentObj3dIfIsTransparent;
 	((Sgl$DrawCtx*)self)->drawLineGeometry = (void*)Sgl$DrawCtx$drawLineGeometry;
 	((Sgl$DrawCtx*)self)->mkAxis = (void*)Sgl$DrawCtx$mkAxis;
@@ -196,6 +198,12 @@ Sgl$DrawCtx * Sgl$DrawCtx_new(void *pOwner){
 void  Sgl$DrawCtx$ctor(Sgl$DrawCtx *  self){
 	self->depthMatl->load(self->depthMatl, "../asset/depth.matl.json") ;
 	self->lineMatl->load(self->lineMatl, "../asset/line.matl.json") ;
+}
+
+
+void  Sgl$DrawCtx$clearDepth(Sgl$DrawCtx *  self){
+	glClearDepth(1.0) ;
+	glClear(GL_DEPTH_BUFFER_BIT) ;
 }
 
 
@@ -371,7 +379,6 @@ void  Sgl$DrawCtx$setMvpToMaterial(Sgl$DrawCtx *  self, Sgl$Obj3d *  obj3d, Sgl$
 void  Sgl$DrawCtx$setGlobalInfosToMaterial(Sgl$DrawCtx *  self, Sgl$Material *  matl){
 	matl->setUniform4f(matl, "time", self->passSec, self->dtSec, 0, 0) ;
 	self->setLightsToMaterial(self, matl) ;
-	matl->setUniform3f(matl, "lightPos", 100, 150, 0) ;
 	SuiCore$Vec3 viewPos = ((Sgl$Obj3d * )self->camera)->localToWorld(self->camera, SuiCore$mkVec3(0, 0, 0) ) ;
 	matl->setUniformVec3(matl, "viewPos", viewPos) ;
 }

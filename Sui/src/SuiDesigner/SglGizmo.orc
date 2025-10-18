@@ -120,17 +120,19 @@ class SglGizmo {
 
     void draw(DrawCtx* ctx){
         self.camera = ctx.camera
+        ctx.clearDepth()
 
         ctx.tick(self.scene)
 
         self.scene.updateWorldTransformAndSubtree()
+
         self.scene.draw(ctx)
 
-        ctx.lineGeometry.{
-            o.color = 0xffff00ff
-            o.moveTo(0, 0, 0)
-            o.lineTo(100, 10000, 0)
-        }
+        // ctx.lineGeometry.{
+        //     o.color = 0xff000000
+        //     o.moveTo(0, 0, 0)
+        //     o.lineTo(100, 10000, 0)
+        // }
     }
 }
 
@@ -144,12 +146,13 @@ Obj3d@ SglGizmo_translate(Obj3d* o, long long key, Obj3d@ target){
             geom.color = 0xff0000ff; geom.moveTo(0, 0, 0); geom.lineTo(0, 0, w);
             o.geometry = geom
             o.material = new Material()
-            o.material.load("../asset/line.matl.json")
+            o.material.load("../asset/gizmo.matl.json")
         }
         target._world_transform.decompose(
             &o.position,
             &o.quaternion,
-            &o.scale,
+            // &o.scale,
+            null,
         )
 
 
@@ -219,7 +222,8 @@ Obj3d@ SglGizmo_rotate(Obj3d* o, long long key, Obj3d@ target){
         target._world_transform.decompose(
             &o.position,
             &o.quaternion,
-            &o.scale,
+            // &o.scale,
+            null,
         )
         o.rotation = o.quaternion.toVec3AsEuler(null)
 
@@ -287,11 +291,12 @@ Obj3d@ SglGizmo_scale(Obj3d* o, long long key, Obj3d@ target){
             o.material = new Material()
             o.material.load("../asset/line.matl.json")
         }
-        Vec3 tmpScale;
+        // Vec3 tmpScale;
         target._world_transform.decompose(
             &o.position,
             &o.quaternion,
-            &tmpScale,
+            // &tmpScale,
+            null,
         )
 
 
@@ -376,7 +381,7 @@ Mesh@ SglGizmo_box(Obj3d* o, long long key,  float size, Vec3 pos, int color){
     mkMesh(o, key ? key: (long long)__builtin_return_address(0)).{
         if o.isNewForReact{
             o.material = new Material()
-            o.material.load("../asset/basic.matl.json")
+            o.material.load("../asset/gizmoFace.matl.json")
             GeometryBox@ box = new GeometryBox()
             box.width = size
             box.height = size
@@ -398,7 +403,7 @@ Mesh@ SglGizmo_cone(Obj3d* o, long long key,  float size, Vec3 pos, int color){
     mkMesh(o, key ? key: (long long)__builtin_return_address(0)).{
         if o.isNewForReact{
             o.material = new Material()
-            o.material.load("../asset/basic.matl.json")
+            o.material.load("../asset/gizmoFace.matl.json")
             GeometryCone@ cone = new GeometryCone()
             cone.height = size
             cone.radiusBottom = size / 4.0
@@ -425,7 +430,7 @@ Mesh@ SglGizmo_torus(Obj3d* o, long long key,  float size, Vec3 pos, int color){
     mkMesh(o, key ? key: (long long)__builtin_return_address(0)).{
         if o.isNewForReact{
             o.material = new Material()
-            o.material.load("../asset/basic.matl.json")
+            o.material.load("../asset/gizmoFace.matl.json")
             GeometryTorus@ cone = new GeometryTorus()
 
             // cone.height = size

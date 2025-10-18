@@ -51,6 +51,11 @@ class DrawCtx {
         self.lineMatl.load("../asset/line.matl.json")
     }
 
+    void clearDepth(){
+        glClearDepth(1.0)
+        glClear(GL_DEPTH_BUFFER_BIT)
+    }
+
     bool addTransparentObj3dIfIsTransparent(Obj3d* obj3d, Material *matl){
         if matl && matl.transparent {
             self.transparentObj3ds.add(obj3d)

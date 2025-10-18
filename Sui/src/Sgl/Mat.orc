@@ -730,9 +730,11 @@ extension Mat {
 		float det = self.determinant();
 		if ( det < 0 ) {sx = - sx;}
 
-		position.x = te[ 12 ];
-		position.y = te[ 13 ];
-		position.z = te[ 14 ];
+		if position != null {
+			position.x = te[ 12 ];
+			position.y = te[ 13 ];
+			position.z = te[ 14 ];
+		}
 
 		// scale the rotation part
 		_m1.copy(* self );
@@ -753,11 +755,15 @@ extension Mat {
 		_m1.data[ 9 ] *= invSZ;
 		_m1.data[ 10 ] *= invSZ;
 
-		quaternion.setFromRotationMatrix( _m1 );
+		if quaternion != null {
+			quaternion.setFromRotationMatrix( _m1 );
+		}
 
-		scale.x = sx;
-		scale.y = sy;
-		scale.z = sz;
+		if scale != null {
+			scale.x = sx;
+			scale.y = sy;
+			scale.z = sz;
+		}
 
 		return self;
 	}

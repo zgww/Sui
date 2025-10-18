@@ -85,6 +85,7 @@ struct tagSgl$DrawCtx {
 	Sgl$GeometryLine*  lineGeometry ;
 	Orc$PointerArray*  transparentObj3ds ;
 	void  (**cbAfterDraw)(void *  self);
+	void  (*clearDepth) (Sgl$DrawCtx *  self);
 	bool  (*addTransparentObj3dIfIsTransparent) (Sgl$DrawCtx *  self, Sgl$Obj3d *  obj3d, Sgl$Material *  matl);
 	void  (*drawLineGeometry) (Sgl$DrawCtx *  self);
 	void  (*mkAxis) (Sgl$DrawCtx *  self);
@@ -108,6 +109,7 @@ Sgl$DrawCtx * Sgl$DrawCtx_new(void *pOwner);
 void Sgl$DrawCtx_fini(Sgl$DrawCtx *self);
 
 void  Sgl$DrawCtx$ctor(Sgl$DrawCtx *  self);
+void  Sgl$DrawCtx$clearDepth(Sgl$DrawCtx *  self);
 bool  Sgl$DrawCtx$addTransparentObj3dIfIsTransparent(Sgl$DrawCtx *  self, Sgl$Obj3d *  obj3d, Sgl$Material *  matl);
 void  Sgl$DrawCtx$drawLineGeometry(Sgl$DrawCtx *  self);
 void  Sgl$DrawCtx$mkAxis(Sgl$DrawCtx *  self);

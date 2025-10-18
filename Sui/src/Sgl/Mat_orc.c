@@ -599,9 +599,11 @@ Sgl$Mat *  Sgl$Mat$decompose(Sgl$Mat *  self, SuiCore$Vec3 *  position, SuiCore$
 	if (det < 0) {
 		sx = -sx;
 	}
-	position->x = te[12];
-	position->y = te[13];
-	position->z = te[14];
+	if (position != NULL) {
+		position->x = te[12];
+		position->y = te[13];
+		position->z = te[14];
+	}
 	Sgl$Mat$copy(&_m1, *self) ;
 	float  invSX = 1 / sx;
 	float  invSY = 1 / sy;
@@ -615,10 +617,14 @@ Sgl$Mat *  Sgl$Mat$decompose(Sgl$Mat *  self, SuiCore$Vec3 *  position, SuiCore$
 	_m1.data[8] *= invSZ;
 	_m1.data[9] *= invSZ;
 	_m1.data[10] *= invSZ;
-	SuiCore$Quaternion$setFromRotationMatrix(quaternion, _m1) ;
-	scale->x = sx;
-	scale->y = sy;
-	scale->z = sz;
+	if (quaternion != NULL) {
+		SuiCore$Quaternion$setFromRotationMatrix(quaternion, _m1) ;
+	}
+	if (scale != NULL) {
+		scale->x = sx;
+		scale->y = sy;
+		scale->z = sz;
+	}
 	return self; 
 }
 

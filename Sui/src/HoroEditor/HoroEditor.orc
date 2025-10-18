@@ -219,8 +219,8 @@ class HoroEditor extends Listener{
         printf("projectDirPath:%s\n", projectDirPath.str)
         Project_ins().init(projectDirPath.str)
 
-        // self.toolMgr.setTool(new ToolSelect())
-        self.toolMgr.setTool(new ToolDropModelLoader())
+        self.toolMgr.setTool(new ToolSelect())
+        // self.toolMgr.setTool(new ToolDropModelLoader())
         useEbus().addListener(self)
     }
     void dtor(){

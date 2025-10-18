@@ -135,6 +135,7 @@ class Horo3dSceneView extends ImageView {
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
 
+            // self.drawCtx.clearDepth()
             self.groundGrid.draw(self.drawCtx)
             self.drawCtx.mkAxis()
             self.drawCtx.drawLineGeometry()
