@@ -12,6 +12,8 @@ import * from "../Sui/Core/Node.orc"
 import * from "./DrawCtx.orc"
 import * from "./Material.orc"
 import * from "./Vao.orc"
+import * from "./ModelLoader.orc"
+import * from "./Mesh.orc"
 import * from "./Scene.orc"
 import * from "./GeometryFullscreenQuad.orc"
 
@@ -81,7 +83,10 @@ class OutlineFx {
         if n instanceof Scene {
             return;
         }
-        if n instanceof Obj3d {
+        if n instanceof Mesh 
+        || n instanceof ModelLoader
+        
+        {
             Obj3d* obj3d = (Obj3d*)n
             //TODO 此处VAO会重复绑定
             obj3d.drawSelfRaw(self.ctx, self.vao, self.maskMatl)

@@ -11,6 +11,8 @@
 #include "./DrawCtx_orc.h"
 #include "./Material_orc.h"
 #include "./Vao_orc.h"
+#include "./ModelLoader_orc.h"
+#include "./Mesh_orc.h"
 #include "./Scene_orc.h"
 #include "./GeometryFullscreenQuad_orc.h"
 
@@ -205,7 +207,7 @@ void  Sgl$OutlineFx$_drawObj(Sgl$OutlineFx *  self, SuiCore$Node *  n){
 	if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Scene_init(NULL))) {
 		return ; 
 	}
-	if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
+	if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Mesh_init(NULL)) || Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$ModelLoader_init(NULL))) {
 		Sgl$Obj3d *  obj3d = (Sgl$Obj3d * )n;
 		obj3d->drawSelfRaw(obj3d, self->ctx, self->vao, self->maskMatl) ;
 	}

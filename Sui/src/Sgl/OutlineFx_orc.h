@@ -43,6 +43,8 @@ typedef struct tagVtable_Sgl$OutlineFx Vtable_Sgl$OutlineFx;
 #include "./DrawCtx_orc.h"
 #include "./Material_orc.h"
 #include "./Vao_orc.h"
+#include "./ModelLoader_orc.h"
+#include "./Mesh_orc.h"
 #include "./Scene_orc.h"
 #include "./GeometryFullscreenQuad_orc.h"
 
