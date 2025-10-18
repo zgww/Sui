@@ -989,7 +989,7 @@ void Sgl$Material_init_fields(Sgl$Material *self){
 	//fields
     {
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
-	urgc_set_field_class(self, (void**)&((Sgl$Material*)self)->path, Orc$str(&tmpReturn_1, "test.matl.json") );
+	urgc_set_field_class(self, (void**)&((Sgl$Material*)self)->path, Orc$str(&tmpReturn_1, "test??.matl.json") );
 	urgc_set_field_class(self, (void**)&((Sgl$Material*)self)->program, NULL);
 	((Sgl$Material*)self)->depthTest = false;
 	((Sgl$Material*)self)->depthWrite = true;

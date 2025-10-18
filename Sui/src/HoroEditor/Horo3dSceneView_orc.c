@@ -228,7 +228,7 @@ void  HoroEditor$Horo3dSceneView$ctor(HoroEditor$Horo3dSceneView *  self){
 		urgc_set_field_class(self->groundGrid, (void * )offsetof(Sgl$Mesh, geometry) , geom) ;
 		URGC_VAR_CLEANUP_CLASS Sgl$Material*  matl = (matl=NULL,urgc_init_var_class((void**)&matl, Sgl$Material_new(&matl) ));
 		URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
-		matl->load(matl, Orc$Path_resolveFromExecutionDir(&tmpReturn_2, "../asset/basic.matl.json") ->str) ;
+		matl->load(matl, Orc$Path_resolveFromExecutionDir(&tmpReturn_2, "../asset/basicWire.matl.json") ->str) ;
 		urgc_set_field_class(self->groundGrid, (void * )offsetof(Sgl$Mesh, material) , matl) ;
 	}
 }
@@ -256,7 +256,7 @@ void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, S
 	if (self->fbo) {
 		SuiCore$Vec2 fboSize = self->fbo->getSize(self->fbo) ;
 		self->camera->aspect = fboSize.x / fboSize.y;
-		self->fbo->startDraw(self->fbo, 1.0, 1.0, 1.0, 1.0, true, true, true) ;
+		self->fbo->startDraw(self->fbo, 0.0, 0.0, 0.0, 0.0, true, true, true) ;
 		self->drawCtx->frameSize = fboSize;
 		self->drawCtx->draw(self->drawCtx, self->scene, self->camera) ;
 		((Sgl$Obj3d * )self->groundGrid)->draw(self->groundGrid, self->drawCtx) ;

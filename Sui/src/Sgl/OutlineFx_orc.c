@@ -7,9 +7,11 @@
 #include "./Fbo_orc.h"
 #include "./Buffer_orc.h"
 #include "./Obj3d_orc.h"
+#include "../Sui/Core/Node_orc.h"
 #include "./DrawCtx_orc.h"
 #include "./Material_orc.h"
 #include "./Vao_orc.h"
+#include "./Scene_orc.h"
 #include "./GeometryFullscreenQuad_orc.h"
 
 
@@ -35,11 +37,13 @@ void Sgl$OutlineFx_initMeta(Vtable_Sgl$OutlineFx *pvt){
 	orc_metaField_class(&pNext, "vao", ((Vtable_Object*)Vtable_Sgl$Vao_init(0)), offsetof(Sgl$OutlineFx, vao), true, false, 1);
 	orc_metaField_class(&pNext, "vaoQuad", ((Vtable_Object*)Vtable_Sgl$Vao_init(0)), offsetof(Sgl$OutlineFx, vaoQuad), true, false, 1);
 	orc_metaField_class(&pNext, "fsQuad", ((Vtable_Object*)Vtable_Sgl$GeometryFullscreenQuad_init(0)), offsetof(Sgl$OutlineFx, fsQuad), true, false, 1);
+	orc_metaField_class(&pNext, "ctx", ((Vtable_Object*)Vtable_Sgl$DrawCtx_init(0)), offsetof(Sgl$OutlineFx, ctx), false, true, 1);
 
 	orc_metaField_method(&pNext, "init", offsetof(Sgl$OutlineFx, init));
 	orc_metaField_method(&pNext, "needUpdateFbo", offsetof(Sgl$OutlineFx, needUpdateFbo));
 	orc_metaField_method(&pNext, "updateFbo", offsetof(Sgl$OutlineFx, updateFbo));
 	orc_metaField_method(&pNext, "drawMask", offsetof(Sgl$OutlineFx, drawMask));
+	orc_metaField_method(&pNext, "_drawObj", offsetof(Sgl$OutlineFx, _drawObj));
 	orc_metaField_method(&pNext, "drawFxQuad", offsetof(Sgl$OutlineFx, drawFxQuad));
 	orc_metaField_method(&pNext, "draw", offsetof(Sgl$OutlineFx, draw));
 }
@@ -117,6 +121,7 @@ void Sgl$OutlineFx_init_fields(Sgl$OutlineFx *self){
 	((Sgl$OutlineFx*)self)->needUpdateFbo = (void*)Sgl$OutlineFx$needUpdateFbo;
 	((Sgl$OutlineFx*)self)->updateFbo = (void*)Sgl$OutlineFx$updateFbo;
 	((Sgl$OutlineFx*)self)->drawMask = (void*)Sgl$OutlineFx$drawMask;
+	((Sgl$OutlineFx*)self)->_drawObj = (void*)Sgl$OutlineFx$_drawObj;
 	((Sgl$OutlineFx*)self)->drawFxQuad = (void*)Sgl$OutlineFx$drawFxQuad;
 	((Sgl$OutlineFx*)self)->draw = (void*)Sgl$OutlineFx$draw;
 }
@@ -158,7 +163,7 @@ Sgl$OutlineFx * Sgl$OutlineFx_new(void *pOwner){
 void  Sgl$OutlineFx$init(Sgl$OutlineFx *  self){
 	self->maskMatl->load(self->maskMatl, "../asset/outlineMask.matl.json") ;
 	self->drawMatl->load(self->drawMatl, "../asset/outlineDraw.matl.json") ;
-	self->fsQuad->build(self->fsQuad) ;
+	((Sgl$Geometry * )self->fsQuad)->build(self->fsQuad) ;
 }
 
 
@@ -190,8 +195,20 @@ void  Sgl$OutlineFx$updateFbo(Sgl$OutlineFx *  self, SuiCore$Vec2 size){
 
 void  Sgl$OutlineFx$drawMask(Sgl$OutlineFx *  self, Sgl$DrawCtx *  ctx, Sgl$Obj3d *  obj3d){
 	self->fbo->startDraw(self->fbo, 0.0, 0.0, 0.0, 0.0, true, true, true) ;
-	obj3d->drawSelfRaw(obj3d, ctx, self->vao, self->maskMatl) ;
+	self->ctx = ctx;
+	SuiCore$Node$walk((SuiCore$Node * )obj3d, self->_drawObj, self) ;
 	self->fbo->endDraw(self->fbo) ;
+}
+
+
+void  Sgl$OutlineFx$_drawObj(Sgl$OutlineFx *  self, SuiCore$Node *  n){
+	if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Scene_init(NULL))) {
+		return ; 
+	}
+	if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
+		Sgl$Obj3d *  obj3d = (Sgl$Obj3d * )n;
+		obj3d->drawSelfRaw(obj3d, self->ctx, self->vao, self->maskMatl) ;
+	}
 }
 
 

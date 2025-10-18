@@ -50,8 +50,10 @@ void main() {
         FragColor = lineC * vec4(d, d, d, 1.0);
     }
     else {
+        // FragColor = vec4(0.0, 0.0, 0.0, 1.0);
         FragColor = lineC * vec4(d, d, d, 0.0);
     }
+    // FragColor = vec4(0.0, 0.0, 0.0, 0.0);
 
 
 

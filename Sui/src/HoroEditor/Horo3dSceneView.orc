@@ -95,7 +95,7 @@ class Horo3dSceneView extends ImageView {
             self.groundGrid.geometry = geom
 
             Material@ matl = new Material()
-            matl.load(Path_resolveFromExecutionDir("../asset/basic.matl.json").str)
+            matl.load(Path_resolveFromExecutionDir("../asset/basicWire.matl.json").str)
             self.groundGrid.material = matl
         }
 
@@ -130,7 +130,7 @@ class Horo3dSceneView extends ImageView {
             Vec2 fboSize = self.fbo.getSize()
             self.camera.aspect = fboSize.x / fboSize.y
             //绘制fbo
-            self.fbo.startDraw(1.0, 1.0, 1.0, 1.0, true, true, true)
+            self.fbo.startDraw(0.0, 0.0, 0.0, 0.0, true, true, true)
 
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)

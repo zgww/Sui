@@ -68,7 +68,6 @@ extern Vtable_Sgl$GeometryFullscreenQuad _vtable_Sgl$GeometryFullscreenQuad;
 struct tagSgl$GeometryFullscreenQuad {
 	Sgl$Geometry super; 
 	float  z ;
-	void  (*build) (Sgl$GeometryFullscreenQuad *  self);
 };
 Vtable_Sgl$GeometryFullscreenQuad* Vtable_Sgl$GeometryFullscreenQuad_init(Vtable_Sgl$GeometryFullscreenQuad* pvt);
 void Sgl$GeometryFullscreenQuad_init_fields(Sgl$GeometryFullscreenQuad *self);

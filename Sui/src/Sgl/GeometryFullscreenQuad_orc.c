@@ -36,7 +36,7 @@ void Sgl$GeometryFullscreenQuad_initMeta(Vtable_Sgl$GeometryFullscreenQuad *pvt)
 	
 	orc_metaField_primitive(&pNext, "z", OrcMetaType_float, offsetof(Sgl$GeometryFullscreenQuad, z), 0, 0, 0, 0);//float
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryFullscreenQuad, build));
+	
 }
 
 
@@ -91,7 +91,7 @@ void Sgl$GeometryFullscreenQuad_init_fields(Sgl$GeometryFullscreenQuad *self){
     {
 	((Sgl$GeometryFullscreenQuad*)self)->z = 0;
     }
-	((Sgl$GeometryFullscreenQuad*)self)->build = (void*)Sgl$GeometryFullscreenQuad$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryFullscreenQuad$build;
 }
 
 // init function

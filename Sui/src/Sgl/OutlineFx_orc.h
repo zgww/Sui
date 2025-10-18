@@ -39,9 +39,11 @@ typedef struct tagVtable_Sgl$OutlineFx Vtable_Sgl$OutlineFx;
 #include "./Fbo_orc.h"
 #include "./Buffer_orc.h"
 #include "./Obj3d_orc.h"
+#include "../Sui/Core/Node_orc.h"
 #include "./DrawCtx_orc.h"
 #include "./Material_orc.h"
 #include "./Vao_orc.h"
+#include "./Scene_orc.h"
 #include "./GeometryFullscreenQuad_orc.h"
 
 
@@ -72,6 +74,8 @@ struct tagSgl$OutlineFx {
 	bool  (*needUpdateFbo) (Sgl$OutlineFx *  self, SuiCore$Vec2 targetSize);
 	void  (*updateFbo) (Sgl$OutlineFx *  self, SuiCore$Vec2 size);
 	void  (*drawMask) (Sgl$OutlineFx *  self, Sgl$DrawCtx *  ctx, Sgl$Obj3d *  obj3d);
+	Sgl$DrawCtx *  ctx ;
+	void  (*_drawObj) (Sgl$OutlineFx *  self, SuiCore$Node *  n);
 	void  (*drawFxQuad) (Sgl$OutlineFx *  self);
 	void  (*draw) (Sgl$OutlineFx *  self, Sgl$DrawCtx *  ctx, Sgl$Obj3d *  obj3d, Sgl$Fbo *  targetFbo);
 };
@@ -85,6 +89,7 @@ void  Sgl$OutlineFx$init(Sgl$OutlineFx *  self);
 bool  Sgl$OutlineFx$needUpdateFbo(Sgl$OutlineFx *  self, SuiCore$Vec2 targetSize);
 void  Sgl$OutlineFx$updateFbo(Sgl$OutlineFx *  self, SuiCore$Vec2 size);
 void  Sgl$OutlineFx$drawMask(Sgl$OutlineFx *  self, Sgl$DrawCtx *  ctx, Sgl$Obj3d *  obj3d);
+void  Sgl$OutlineFx$_drawObj(Sgl$OutlineFx *  self, SuiCore$Node *  n);
 void  Sgl$OutlineFx$drawFxQuad(Sgl$OutlineFx *  self);
 void  Sgl$OutlineFx$draw(Sgl$OutlineFx *  self, Sgl$DrawCtx *  ctx, Sgl$Obj3d *  obj3d, Sgl$Fbo *  targetFbo);
 

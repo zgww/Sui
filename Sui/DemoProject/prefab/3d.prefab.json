@@ -41,7 +41,8 @@
 						"x":	110,
 						"y":	0,
 						"z":	0
-					}
+					},
+					"geometryPath":"Geometry/box2.geometry.json"
 				},
 				"tag":	"Sgl$Mesh",
 				"children":	[]

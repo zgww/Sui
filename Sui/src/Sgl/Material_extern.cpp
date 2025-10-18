@@ -21,7 +21,7 @@ void  Sgl$Material$prepareDraw(Sgl$Material *  self){
     else glDisable(GL_DEPTH_TEST);
 
     // glDepthMask(false);
-    // glDepthMask(self->depthWrite);
+    glDepthMask(self->depthWrite);
 
     if (self->blend) glEnable(GL_BLEND);
     else glDisable(GL_BLEND);

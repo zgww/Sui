@@ -762,7 +762,6 @@ class HoroEditor extends Listener{
         self.outlineFx.init()
 
 
-
         self.win.{
             o.cbOnEvent = ^void (Event*e){
                 self.onWindowEvent(e)
@@ -839,6 +838,7 @@ class HoroEditor extends Listener{
 
         // self.editCtx.openPrefab("prefab/button.prefab.json")
         // self.editCtx.openPrefab("prefab/login.prefab.json")
+        // self.editCtx.openPrefab("prefab/3dbase.prefab.json")
         self.editCtx.openPrefab("prefab/3d.prefab.json")
 
 

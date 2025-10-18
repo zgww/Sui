@@ -391,7 +391,7 @@ void  HoroEditor$HoroModelIconCreator$saveAsPng(HoroEditor$HoroModelIconCreator 
 void  HoroEditor$HoroModelIconCreator$draw(HoroEditor$HoroModelIconCreator *  self){
 	SuiCore$Vec2 fboSize = self->fbo->getSize(self->fbo) ;
 	self->camera->aspect = fboSize.x / fboSize.y;
-	self->fbo->startDraw(self->fbo, 1.0, 10.0, 1.0, 0.0, true, true, true) ;
+	self->fbo->startDraw(self->fbo, 1.0, 1.0, 1.0, 0.0, true, true, true) ;
 	self->drawCtx->frameSize = fboSize;
 	self->drawCtx->draw(self->drawCtx, self->scene, self->camera) ;
 	self->fbo->endDraw(self->fbo) ;

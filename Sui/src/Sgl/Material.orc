@@ -296,7 +296,7 @@ class UniformInfo {
 //主类
 class Material{
     //材质文件的路径
-    String@ path = str("test.matl.json")
+    String@ path = str("test??.matl.json")
     Program@ program
 
     bool depthTest = false;

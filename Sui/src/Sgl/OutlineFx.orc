@@ -8,9 +8,11 @@ import * from "./Tex2d.orc"
 import * from "./Fbo.orc"
 import * from "./Buffer.orc"
 import * from "./Obj3d.orc"
+import * from "../Sui/Core/Node.orc"
 import * from "./DrawCtx.orc"
 import * from "./Material.orc"
 import * from "./Vao.orc"
+import * from "./Scene.orc"
 import * from "./GeometryFullscreenQuad.orc"
 
 
@@ -69,9 +71,23 @@ class OutlineFx {
     }
     void drawMask(DrawCtx *ctx, Obj3d* obj3d){
         self.fbo.startDraw(0.0, 0.0, 0.0, 0.0, true, true, true)
-        obj3d.drawSelfRaw(ctx, self.vao, self.maskMatl)
+        self.ctx = ctx;
+        // obj3d.drawSelfRaw(ctx, self.vao, self.maskMatl)
+        obj3d.walk(self._drawObj, self)
         self.fbo.endDraw()
     }
+    DrawCtx* ctx;
+    void _drawObj(Node* n){
+        if n instanceof Scene {
+            return;
+        }
+        if n instanceof Obj3d {
+            Obj3d* obj3d = (Obj3d*)n
+            //TODO 此处VAO会重复绑定
+            obj3d.drawSelfRaw(self.ctx, self.vao, self.maskMatl)
+        }
+    }
+
     void drawFxQuad(){
         self.drawMatl.setUniformTex2d("tex", self.fbo.tex2d)
         self.drawMatl.setUniformVec2("texSize", self.fbo.getSize())

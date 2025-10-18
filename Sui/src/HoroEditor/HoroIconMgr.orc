@@ -175,7 +175,7 @@ class HoroModelIconCreator{
         Vec2 fboSize = self.fbo.getSize()
         self.camera.aspect = fboSize.x / fboSize.y
         //绘制fbo
-        self.fbo.startDraw(1.0,10.0, 1.0, 0.0, true, true, true)
+        self.fbo.startDraw(1.0,1.0, 1.0, 0.0, true, true, true)
         self.drawCtx.frameSize = fboSize
         self.drawCtx.draw(self.scene, self.camera)
         self.fbo.endDraw()

@@ -1,0 +1,51 @@
+{
+	"version":	"0.0.3",
+	"root":	{
+		"attrs":	{
+			"name":	"根结点",
+			"rotation":	{
+				"__struct":	"SuiCore$Vec3",
+				"x":	0,
+				"y":	0,
+				"z":	0
+			}
+		},
+		"tag":	"Sgl$Obj3d",
+		"children":	[{
+				"attrs":	{
+					"name":	"灯光",
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	220,
+						"y":	300,
+						"z":	300
+					},
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	0,
+						"z":	0
+					}
+				},
+				"tag":	"Sgl$PointLight",
+				"children":	[]
+			}, {
+				"attrs":	{
+				},
+				"tag":	"Sgl$Camera",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	110,
+						"y":	0,
+						"z":	0
+					},
+					"geometryPath":"Geometry/box2.geometry.json"
+				},
+				"tag":	"Sgl$Mesh",
+				"children":	[]
+			}]
+	}
+}
