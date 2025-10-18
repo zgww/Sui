@@ -252,7 +252,7 @@ void  SuiDesigner$FileItem$loadSubtree(SuiDesigner$FileItem *  self){
 			URGC_VAR_CLEANUP_CLASS SuiDesigner$FileItem*  kid = (kid=NULL,urgc_init_var_class((void**)&kid, SuiDesigner$FileItem_new(&kid) ));
 			kid->setPath(kid, kidPath) ;
 			self->appendChild(self, kid) ;
-			if (kid->isDirectory) {
+			if (kid->isDirectory && !Orc$String$startsWith(kid->filename, ".") ) {
 				kid->loadSubtree(kid) ;
 			}
 		}

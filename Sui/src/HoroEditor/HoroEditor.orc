@@ -141,6 +141,8 @@ class HoroEditor extends Listener{
 
     View@ gizmosView
 
+    // HoroIconMgr@ iconMgr = new HoroIconMgr()
+
 
     void selectByNode(Node* n){
         ANode@ vnode = self.editCtx.findANodeByNode(n)
@@ -764,10 +766,18 @@ class HoroEditor extends Listener{
         //     return;
         // }
 
-        if 1 {//模型图标生成
-            testHoroModelIconCreator()
-            return;
-        }
+        // if 1 {//模型图标生成
+        //     testHoroModelIconCreator()
+        //     return;
+        // }
+        // if 1 {//模型图标生成
+        //     testHoroGeometryJsonIconCreator()
+        //     return;
+        // }
+        // if 1 {//模型图标管理
+        //     testHoroIconMgr()
+        //     return;
+        // }
         // if 1 {//材质球生成
         //     testHoroMaterialIconCreator()
         //     return;

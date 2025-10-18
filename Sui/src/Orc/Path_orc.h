@@ -64,6 +64,7 @@ bool  Orc$Path_isFile(const char *  path);
 extern bool  Orc$Path_isDirectory(const char *  path);
 extern bool  Orc$Path_mkdirs(const char *  dirpath);
 extern bool  Orc$Path_exists(const char *  path);
+bool  Orc$Path_mkdirsByFilePath(const char *  filepath);
 Orc$String*  Orc$Path_append(Orc$String **  __outRef__, const char *  path, const char *  path2);
 bool  Orc$Path_copyToDir(const char *  src, const char *  dir);
 bool  Orc$Path_moveToDir(const char *  src, const char *  dir);

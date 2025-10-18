@@ -212,6 +212,11 @@ bool  Orc$Path_isFile(const char *  path){
 	return ret; 
 }
 
+bool  Orc$Path_mkdirsByFilePath(const char *  filepath){
+	URGC_VAR_CLEANUP_CLASS Orc$String*  dirpath = Orc$Path_dirname((dirpath = NULL,&dirpath), filepath) ;
+	return Orc$Path_mkdirs(dirpath->str) ; 
+}
+
 Orc$String*  Orc$Path_append(Orc$String **  __outRef__, const char *  path, const char *  path2){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  ret = Orc$str((ret = NULL,&ret), path) ;
 	Orc$String$add(Orc$String$add(ret, "/") , path2) ;

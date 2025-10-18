@@ -123,8 +123,9 @@ Image@ loadImage(const char *path){
 	// int id = nvgCreateImage(vg, acpPath.str, NVG_IMAGE_REPEATX|NVG_IMAGE_REPEATY);
 	// Image@ ret = new Image()
 	// ret._img = id
-
-	cache.put(path, ret);
+	if ret {
+		cache.put(path, ret);
+	}
 
 	return ret
 }

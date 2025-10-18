@@ -284,6 +284,8 @@ file(GLOB src
     src/HoroEditor/HoroGeometryPreviewView_orc.c
     src/HoroEditor/HoroIconMgr_orc.c
 
+    src/Orc/Md5.c
+
     # src/testTgfx.cpp
 
     # src/Orc/*.c

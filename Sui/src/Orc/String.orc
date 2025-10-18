@@ -1,6 +1,7 @@
 package Orc
 
 #include "./Orc.h"
+#include "./Md5.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -159,7 +160,7 @@ bool String_endsWithIgnoreCase(const char *s, const char *find){
         return false
     }
     const char *tmp = s + slen - findlen;
-    bool ok = stricmp(tmp, find) == 0
+    bool ok = _stricmp(tmp, find) == 0
     return ok
 }
 bool String_endsWith(const char *s, const char *find){
@@ -549,6 +550,9 @@ extension String {
     bool endsWith(const char *find){ 
         return String_endsWith(self.str, find)
     }
+    bool endsWithIgnoreCase(const char *find){ 
+        return String_endsWithIgnoreCase(self.str, find)
+    }
 }
 
 struct PrintStyle {
@@ -682,6 +686,14 @@ void testOk(bool ok, const char *msg){
     }
 }
 
+String@ String_md5(const char *s){
+    char md5bin[100];
+    char out[100];
+    // char *path = "halloween/obj/fence.obj";
+    MD5Buffer(s, strlen(s), (unsigned char *)md5bin);
+    MD5String((unsigned char *)md5bin, (char*)out);
+    return str(out)
+}
 
 
 void testStr() {

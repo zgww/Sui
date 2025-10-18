@@ -134,7 +134,10 @@ SuiCore$Image*  SuiCore$Canvas$createImageRGBA(SuiCore$Image **  __outRef__, Sui
 SuiCore$Image*  SuiCore$Canvas$createImage(SuiCore$Image **  __outRef__, SuiCore$Canvas *  self, const char *  path){
 	URGC_VAR_CLEANUP_CLASS SuiCore$Image*  img = (img=NULL,urgc_init_var_class((void**)&img, SuiCore$Image_new(&img) ));
 	img->_img = SuiCore$Canvas$_createImage(self, path) ;
-	return urgc_set_var_for_return_class((void ** )__outRef__, img) ; 
+	if (img->_img) {
+		return urgc_set_var_for_return_class((void ** )__outRef__, img) ; 
+	}
+	return urgc_set_var_for_return_class((void ** )__outRef__, NULL) ; 
 }
 
 

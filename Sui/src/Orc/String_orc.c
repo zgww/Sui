@@ -2,6 +2,7 @@
 #include "String_orc.h" 
 
 #include "./Orc.h"
+#include "./Md5.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -178,7 +179,7 @@ bool  Orc$String_endsWithIgnoreCase(const char *  s, const char *  find){
 		return false; 
 	}
 	const char *  tmp = s + slen - findlen;
-	bool  ok = stricmp(tmp, find)  == 0;
+	bool  ok = _stricmp(tmp, find)  == 0;
 	return ok; 
 }
 
@@ -555,6 +556,10 @@ bool  Orc$String$endsWith(Orc$String *  self, const char *  find){
 	return Orc$String_endsWith(self->str, find) ; 
 }
 
+bool  Orc$String$endsWithIgnoreCase(Orc$String *  self, const char *  find){
+	return Orc$String_endsWithIgnoreCase(self->str, find) ; 
+}
+
 
 // get or init meta 
 MetaStruct* Orc$PrintStyle_getOrInitMetaStruct(){
@@ -692,6 +697,15 @@ void  Orc$testOk(bool  ok, const char *  msg){
 	}
 }
 
+Orc$String*  Orc$String_md5(Orc$String **  __outRef__, const char *  s){
+	char  md5bin[100];
+	char  out[100];
+	MD5Buffer(s, strlen(s) , (unsigned char * )md5bin) ;
+	MD5String((unsigned char * )md5bin, (char * )out) ;
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+	return urgc_set_var_for_return_class((void ** )__outRef__, Orc$str(&tmpReturn_1, out) ) ; 
+}
+
 void  Orc$testStr(){
 	URGC_VAR_CLEANUP_CLASS Orc$String*  s = Orc$str((s = NULL,&s), "你好吗") ;
 	Orc$String$add(s, "添加的字符串") ;
@@ -733,7 +747,7 @@ void  Orc$testStr(){
 		Orc$PrintStyle tmpStructThis1;
 		{
 			Orc$PrintStyle *  o = Orc$PrintStyle$red((tmpStructThis1 = Orc$mkPrintStyle() ,&tmpStructThis1)) ;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_735_8 = o->__exit__(o);
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_747_8 = o->__exit__(o);
 		
 			printf("hi") ;
 		}

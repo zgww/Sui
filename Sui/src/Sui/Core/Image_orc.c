@@ -215,7 +215,9 @@ SuiCore$Image*  SuiCore$loadImage(SuiCore$Image **  __outRef__, const char *  pa
 	SuiCore$Canvas *  canvas = SuiCore$Global_getCanvas() ;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  acpPath = Orc$String_toActiveCodePage((acpPath = NULL,&acpPath), path) ;
 	URGC_VAR_CLEANUP_CLASS SuiCore$Image*  ret = SuiCore$Canvas$createImage((ret = NULL,&ret), canvas, acpPath->str) ;
-	cache->put(cache, path, ret) ;
+	if (ret) {
+		cache->put(cache, path, ret) ;
+	}
 	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
 }
 

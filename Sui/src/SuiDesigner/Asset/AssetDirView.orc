@@ -28,6 +28,7 @@ import * from "../FileItem.orc"
 import * from "../UiAction.orc"
 import * from "../../HoroEditor/UiAct.orc"
 import * from "../../HoroEditor/HoroGeometryPreviewView.orc"
+import * from "../../HoroEditor/HoroIconMgr.orc"
 import * from "../Theme.orc"
 import * from "../Project.orc"
 import * from "../EventANodeChanged.orc"
@@ -410,7 +411,11 @@ class AssetDirView extends LayoutLinear {
             }
 
             mkImageView(o, 0).{
-                if fi.path.endsWith(".png"){
+                if HoroIconMgr_checkPath(fi.path) {
+                    // o._img = 
+                    o._img = insHoroIconMgr().load(fi.path)
+                }
+                else if fi.path.endsWith(".png"){
                     o.setSrc(fi.path)
                 }
                 else if fi.path.endsWith(".prefab.json"){

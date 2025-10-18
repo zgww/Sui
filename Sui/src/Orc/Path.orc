@@ -231,6 +231,11 @@ extern bool Path_isDirectory(const char *path);
 extern bool Path_mkdirs(const char *dirpath);
 extern bool Path_exists(const char *path);
 
+bool Path_mkdirsByFilePath(const char *filepath){
+    String@ dirpath = Path_dirname(filepath)
+    return Path_mkdirs(dirpath.str)
+}
+
 String@ Path_append(const char *path, const char *path2){
     String@ ret = str(path)
     ret.add("/").add(path2)

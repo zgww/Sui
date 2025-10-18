@@ -9,8 +9,8 @@
 	"heightSegments":	4,
 	"center":	{
 		"__struct":	"SuiCore$Vec3",
-		"x":	110,
-		"y":	110,
+		"x":	0,
+		"y":	0,
 		"z":	0
 	}
 }

@@ -154,7 +154,10 @@ extension Canvas {
     Image@ createImage(const char *path){
         Image@ img = new Image()
         img._img = self._createImage(path)
-        return img
+        if img._img {
+            return img
+        }
+        return null
     }
 
 }

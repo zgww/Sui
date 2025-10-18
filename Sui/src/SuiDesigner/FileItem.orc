@@ -120,7 +120,8 @@ class FileItem {
 
                 self.appendChild(kid)
 
-                if (kid.isDirectory){
+                //判断 目录且不是 '.xxx' 隐藏目录
+                if kid.isDirectory && !kid.filename.startsWith(".") {
                     kid.loadSubtree()
                 }
             }

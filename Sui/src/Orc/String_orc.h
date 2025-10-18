@@ -16,6 +16,7 @@ typedef struct tagOrc$PrintStyle Orc$PrintStyle;
 #include <stdlib.h>
 
 #include "./Orc.h"
+#include "./Md5.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -145,6 +146,7 @@ bool  Orc$String$empty(Orc$String *  self);
 bool  Orc$String$notEmpty(Orc$String *  self);
 bool  Orc$String$startsWith(Orc$String *  self, const char *  find);
 bool  Orc$String$endsWith(Orc$String *  self, const char *  find);
+bool  Orc$String$endsWithIgnoreCase(Orc$String *  self, const char *  find);
 
 
 //结构体元数据获取即初始化
@@ -170,6 +172,7 @@ Orc$PrintStyle Orc$mkPrintStyle();
 void  Orc$PrintStyle_exit(Orc$ScopeData *  scopeData);
 Orc$String*  Orc$Object$toString(Orc$String **  __outRef__, Object *  self);
 void  Orc$testOk(bool  ok, const char *  msg);
+Orc$String*  Orc$String_md5(Orc$String **  __outRef__, const char *  s);
 void  Orc$testStr();
 
 

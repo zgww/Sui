@@ -3,6 +3,8 @@ typedef struct tagHoroEditor$HoroMaterialIconCreator HoroEditor$HoroMaterialIcon
 typedef struct tagVtable_HoroEditor$HoroMaterialIconCreator Vtable_HoroEditor$HoroMaterialIconCreator;
 typedef struct tagHoroEditor$HoroModelIconCreator HoroEditor$HoroModelIconCreator;
 typedef struct tagVtable_HoroEditor$HoroModelIconCreator Vtable_HoroEditor$HoroModelIconCreator;
+typedef struct tagHoroEditor$HoroGeometryJsonIconCreator HoroEditor$HoroGeometryJsonIconCreator;
+typedef struct tagVtable_HoroEditor$HoroGeometryJsonIconCreator Vtable_HoroEditor$HoroGeometryJsonIconCreator;
 typedef struct tagHoroEditor$HoroIconMgr HoroEditor$HoroIconMgr;
 typedef struct tagVtable_HoroEditor$HoroIconMgr Vtable_HoroEditor$HoroIconMgr;
 
@@ -19,6 +21,7 @@ typedef struct tagVtable_HoroEditor$HoroIconMgr Vtable_HoroEditor$HoroIconMgr;
 #include <stdlib.h>
 
 #include <stdio.h>
+#include <string.h>
 
 
 
@@ -61,6 +64,7 @@ typedef struct tagVtable_HoroEditor$HoroIconMgr Vtable_HoroEditor$HoroIconMgr;
 #include "../Sgl/SglSceneView_orc.h"
 #include "../Sgl/PixelsReader_orc.h"
 #include "../Sgl/ModelLoader_orc.h"
+#include "./HoroGeometryPreviewView_orc.h"
 
 
 #ifdef __cplusplus
@@ -85,7 +89,8 @@ struct tagHoroEditor$HoroMaterialIconCreator {
 	Sgl$Scene*  scene ;
 	Sgl$PerspectiveCamera*  camera ;
 	Orc$String*  materialPath ;
-	void  (*create) (HoroEditor$HoroMaterialIconCreator *  self, const char *  materialPath);
+	Orc$String*  savePath ;
+	void  (*create) (HoroEditor$HoroMaterialIconCreator *  self, Orc$String *  materialPath);
 	void  (*showTextureWindow) (HoroEditor$HoroMaterialIconCreator *  self);
 	void  (*saveAsPng) (HoroEditor$HoroMaterialIconCreator *  self, const char *  path);
 	void  (*draw) (HoroEditor$HoroMaterialIconCreator *  self);
@@ -97,7 +102,7 @@ void HoroEditor$HoroMaterialIconCreator_init(HoroEditor$HoroMaterialIconCreator 
 HoroEditor$HoroMaterialIconCreator * HoroEditor$HoroMaterialIconCreator_new(void *pOwner);
 void HoroEditor$HoroMaterialIconCreator_fini(HoroEditor$HoroMaterialIconCreator *self);
 
-void  HoroEditor$HoroMaterialIconCreator$create(HoroEditor$HoroMaterialIconCreator *  self, const char *  materialPath);
+void  HoroEditor$HoroMaterialIconCreator$create(HoroEditor$HoroMaterialIconCreator *  self, Orc$String *  materialPath);
 void  HoroEditor$HoroMaterialIconCreator$showTextureWindow(HoroEditor$HoroMaterialIconCreator *  self);
 void  HoroEditor$HoroMaterialIconCreator$saveAsPng(HoroEditor$HoroMaterialIconCreator *  self, const char *  path);
 void  HoroEditor$HoroMaterialIconCreator$draw(HoroEditor$HoroMaterialIconCreator *  self);
@@ -120,7 +125,8 @@ struct tagHoroEditor$HoroModelIconCreator {
 	Sgl$Scene*  scene ;
 	Sgl$PerspectiveCamera*  camera ;
 	Orc$String*  modelPath ;
-	void  (*create) (HoroEditor$HoroModelIconCreator *  self, const char *  modelPath);
+	Orc$String*  savePath ;
+	void  (*create) (HoroEditor$HoroModelIconCreator *  self, Orc$String *  modelPath);
 	void  (*showTextureWindow) (HoroEditor$HoroModelIconCreator *  self);
 	void  (*saveAsPng) (HoroEditor$HoroModelIconCreator *  self, const char *  path);
 	void  (*draw) (HoroEditor$HoroModelIconCreator *  self);
@@ -132,12 +138,49 @@ void HoroEditor$HoroModelIconCreator_init(HoroEditor$HoroModelIconCreator *self,
 HoroEditor$HoroModelIconCreator * HoroEditor$HoroModelIconCreator_new(void *pOwner);
 void HoroEditor$HoroModelIconCreator_fini(HoroEditor$HoroModelIconCreator *self);
 
-void  HoroEditor$HoroModelIconCreator$create(HoroEditor$HoroModelIconCreator *  self, const char *  modelPath);
+void  HoroEditor$HoroModelIconCreator$create(HoroEditor$HoroModelIconCreator *  self, Orc$String *  modelPath);
 void  HoroEditor$HoroModelIconCreator$showTextureWindow(HoroEditor$HoroModelIconCreator *  self);
 void  HoroEditor$HoroModelIconCreator$saveAsPng(HoroEditor$HoroModelIconCreator *  self, const char *  path);
 void  HoroEditor$HoroModelIconCreator$draw(HoroEditor$HoroModelIconCreator *  self);
 void  HoroEditor$HoroModelIconCreator$mkScene(HoroEditor$HoroModelIconCreator *  self);
 
+
+// 虚表
+struct tagVtable_HoroEditor$HoroGeometryJsonIconCreator {
+	Vtable_Object super;
+};
+//虚表实例
+extern Vtable_HoroEditor$HoroGeometryJsonIconCreator _vtable_HoroEditor$HoroGeometryJsonIconCreator;
+
+// class refc:0
+struct tagHoroEditor$HoroGeometryJsonIconCreator {
+	Object super; 
+	Sgl$Fbo*  fbo ;
+	SuiCore$Vec2 size ;
+	Sgl$DrawCtx*  drawCtx ;
+	Sgl$Scene*  scene ;
+	Sgl$PerspectiveCamera*  camera ;
+	Orc$String*  modelPath ;
+	Orc$String*  savePath ;
+	void  (*create) (HoroEditor$HoroGeometryJsonIconCreator *  self, Orc$String *  modelPath);
+	void  (*showTextureWindow) (HoroEditor$HoroGeometryJsonIconCreator *  self);
+	void  (*saveAsPng) (HoroEditor$HoroGeometryJsonIconCreator *  self, const char *  path);
+	void  (*draw) (HoroEditor$HoroGeometryJsonIconCreator *  self);
+	void  (*mkScene) (HoroEditor$HoroGeometryJsonIconCreator *  self);
+};
+Vtable_HoroEditor$HoroGeometryJsonIconCreator* Vtable_HoroEditor$HoroGeometryJsonIconCreator_init(Vtable_HoroEditor$HoroGeometryJsonIconCreator* pvt);
+void HoroEditor$HoroGeometryJsonIconCreator_init_fields(HoroEditor$HoroGeometryJsonIconCreator *self);
+void HoroEditor$HoroGeometryJsonIconCreator_init(HoroEditor$HoroGeometryJsonIconCreator *self, void *pOwner);
+HoroEditor$HoroGeometryJsonIconCreator * HoroEditor$HoroGeometryJsonIconCreator_new(void *pOwner);
+void HoroEditor$HoroGeometryJsonIconCreator_fini(HoroEditor$HoroGeometryJsonIconCreator *self);
+
+void  HoroEditor$HoroGeometryJsonIconCreator$create(HoroEditor$HoroGeometryJsonIconCreator *  self, Orc$String *  modelPath);
+void  HoroEditor$HoroGeometryJsonIconCreator$showTextureWindow(HoroEditor$HoroGeometryJsonIconCreator *  self);
+void  HoroEditor$HoroGeometryJsonIconCreator$saveAsPng(HoroEditor$HoroGeometryJsonIconCreator *  self, const char *  path);
+void  HoroEditor$HoroGeometryJsonIconCreator$draw(HoroEditor$HoroGeometryJsonIconCreator *  self);
+void  HoroEditor$HoroGeometryJsonIconCreator$mkScene(HoroEditor$HoroGeometryJsonIconCreator *  self);
+
+bool  HoroEditor$HoroIconMgr_checkPath(Orc$String *  path);
 
 // 虚表
 struct tagVtable_HoroEditor$HoroIconMgr {
@@ -146,10 +189,11 @@ struct tagVtable_HoroEditor$HoroIconMgr {
 //虚表实例
 extern Vtable_HoroEditor$HoroIconMgr _vtable_HoroEditor$HoroIconMgr;
 
-// class refc:1
+// class refc:0
 struct tagHoroEditor$HoroIconMgr {
 	Object super; 
-	SuiCore$Image *  (*request) (HoroEditor$HoroIconMgr *  self, const char *  path);
+	Orc$Map*  cache ;
+	SuiCore$Image *  (*load) (HoroEditor$HoroIconMgr *  self, Orc$String *  path);
 };
 Vtable_HoroEditor$HoroIconMgr* Vtable_HoroEditor$HoroIconMgr_init(Vtable_HoroEditor$HoroIconMgr* pvt);
 void HoroEditor$HoroIconMgr_init_fields(HoroEditor$HoroIconMgr *self);
@@ -157,10 +201,13 @@ void HoroEditor$HoroIconMgr_init(HoroEditor$HoroIconMgr *self, void *pOwner);
 HoroEditor$HoroIconMgr * HoroEditor$HoroIconMgr_new(void *pOwner);
 void HoroEditor$HoroIconMgr_fini(HoroEditor$HoroIconMgr *self);
 
-SuiCore$Image *  HoroEditor$HoroIconMgr$request(HoroEditor$HoroIconMgr *  self, const char *  path);
+SuiCore$Image *  HoroEditor$HoroIconMgr$load(HoroEditor$HoroIconMgr *  self, Orc$String *  path);
 
+HoroEditor$HoroIconMgr *  HoroEditor$insHoroIconMgr();
 void  HoroEditor$testHoroMaterialIconCreator();
 void  HoroEditor$testHoroModelIconCreator();
+void  HoroEditor$testHoroGeometryJsonIconCreator();
+void  HoroEditor$testHoroIconMgr();
 
 
 
