@@ -329,9 +329,15 @@ static void  __fn___Closure_68_27(HoroEditor$__Closure_68_27 *  self, SuiView$Dr
 		}
 		if (d->mouseDownButton == 3) {
 			printf("drag xz:%f,%f\n", d->deltaPos.x, d->deltaPos.y) ;
-			SuiCore$Vec3 newPos = ((Sgl$Obj3d * )self->__var___Block_66_15->self->camera)->localToWorld(self->__var___Block_66_15->self->camera, SuiCore$mkVec3(d->deltaPos.x, 0, d->deltaPos.y) ) ;
-			Sgl$Obj3d *  tmpThis_1 = NULL;
-			SuiCore$Vec3 newcampos = (tmpThis_1 = Sgl$Obj3d$getParentObj3d((Sgl$Obj3d * )self->__var___Block_66_15->self->camera) )->worldToLocal(tmpThis_1, newPos) ;
+			Sgl$Mat yrot = Sgl$Mat$extractYRotationMatrix(&((Sgl$Obj3d * )self->__var___Block_66_15->self->camera)->_world_transform) ;
+			SuiCore$Vec3 move = SuiCore$mkVec3(d->deltaPos.x, 0, d->deltaPos.y) ;
+			SuiCore$Vec3$applyMatrix4Local(&move, yrot) ;
+			SuiCore$Vec3 tmpStructThis1;
+			SuiCore$Vec3 newPos = SuiCore$Vec3$add((tmpStructThis1 = ((Sgl$Obj3d * )self->__var___Block_66_15->self->camera)->localToWorld(self->__var___Block_66_15->self->camera, SuiCore$mkVec3(0, 0, 0) ) ,&tmpStructThis1), move) ;
+			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
+			printf("newPos:%s\n", SuiCore$Vec3$toString(&tmpReturn_1, &newPos) ->str) ;
+			Sgl$Obj3d *  tmpThis_2 = NULL;
+			SuiCore$Vec3 newcampos = (tmpThis_2 = Sgl$Obj3d$getParentObj3d((Sgl$Obj3d * )self->__var___Block_66_15->self->camera) )->worldToLocal(tmpThis_2, newPos) ;
 			((Sgl$Obj3d * )self->__var___Block_66_15->self->camera)->position = newcampos;
 		}
 	}

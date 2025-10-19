@@ -13,6 +13,7 @@ import * from "./Mat3.orc"
 import type * from "./Euler.orc"
 import type * from "./Color.orc"
 import type * from "./Spherical.orc"
+import type * from "./Quaternion.orc"
 
 
 
@@ -274,27 +275,31 @@ extension Vec3 {
 
 	}
 
-	// Vec3* applyQuaternion( q ) {
+	Vec3* applyQuaternionLocal(Quaternion q ) {
 
-	// 	const x = self.x, y = self.y, z = self.z;
-	// 	const qx = q.x, qy = q.y, qz = q.z, qw = q.w;
+		float x = self.x
+		float y = self.y
+		float z = self.z;
+		float qx = q.x
+		float qy = q.y
+		float qz = q.z
+		float qw = q.w;
 
-	// 	// calculate quat * vector
+		// calculate quat * vector
 
-	// 	const ix = qw * x + qy * z - qz * y;
-	// 	const iy = qw * y + qz * x - qx * z;
-	// 	const iz = qw * z + qx * y - qy * x;
-	// 	const iw = - qx * x - qy * y - qz * z;
+		float ix = qw * x + qy * z - qz * y;
+		float iy = qw * y + qz * x - qx * z;
+		float iz = qw * z + qx * y - qy * x;
+		float iw = - qx * x - qy * y - qz * z;
 
-	// 	// calculate result * inverse quat
+		// calculate result * inverse quat
 
-	// 	self.x = ix * qw + iw * - qx + iy * - qz - iz * - qy;
-	// 	self.y = iy * qw + iw * - qy + iz * - qx - ix * - qz;
-	// 	self.z = iz * qw + iw * - qz + ix * - qy - iy * - qx;
+		self.x = ix * qw + iw * - qx + iy * - qz - iz * - qy;
+		self.y = iy * qw + iw * - qy + iz * - qx - ix * - qz;
+		self.z = iz * qw + iw * - qz + ix * - qy - iy * - qx;
 
-	// 	return self;
-
-	// }
+		return self;
+	}
 
 	// Vec3* project( camera ) {
 	// 	return self.applyMatrix4( camera.matrixWorldInverse ).applyMatrix4( camera.projectionMatrix );

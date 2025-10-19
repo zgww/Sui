@@ -62,6 +62,7 @@ Sgl$Mat Sgl$Mat$clone(Sgl$Mat *  self);
 Sgl$Mat *  Sgl$Mat$copy(Sgl$Mat *  self, Sgl$Mat m);
 Sgl$Mat *  Sgl$Mat$copyPosition(Sgl$Mat *  self, Sgl$Mat m);
 Sgl$Mat *  Sgl$Mat$setFromMatrix3(Sgl$Mat *  self, SuiCore$Mat3 m);
+Sgl$Mat Sgl$Mat$extractYRotationMatrix(Sgl$Mat *  self);
 Sgl$Mat *  Sgl$Mat$extractBasis(Sgl$Mat *  self, SuiCore$Vec3 *  xAxis, SuiCore$Vec3 *  yAxis, SuiCore$Vec3 *  zAxis);
 Sgl$Mat *  Sgl$Mat$makeBasis(Sgl$Mat *  self, SuiCore$Vec3 xAxis, SuiCore$Vec3 yAxis, SuiCore$Vec3 zAxis);
 Sgl$Mat *  Sgl$Mat$extractRotationLocal(Sgl$Mat *  self, Sgl$Mat m);

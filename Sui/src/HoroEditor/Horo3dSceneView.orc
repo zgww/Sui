@@ -80,11 +80,22 @@ class Horo3dSceneView extends ImageView {
                 }
                 if d.mouseDownButton == 3 {//右键在相机本地xz平面平移视角
                     printf("drag xz:%f,%f\n", d.deltaPos.x, d.deltaPos.y)
-                    Vec3 newPos = self.camera.localToWorld(mkVec3(
+                    Mat yrot = self.camera._world_transform.extractYRotationMatrix()
+                    Vec3 move = mkVec3(
                         d.deltaPos.x,
                         0, 
                         d.deltaPos.y,
-                        ))
+                    )
+                    move.applyMatrix4Local(yrot) //得到世界空间下的 平移向量
+                    // 得到新的世界坐标
+                    Vec3 newPos = self.camera.localToWorld(mkVec3(0, 0, 0)).add(move)
+                    printf("newPos:%s\n", newPos.toString().str)
+
+                    // Vec3 newPos = self.camera.localToWorld(mkVec3(
+                    //     d.deltaPos.x,
+                    //     0, 
+                    //     d.deltaPos.y,
+                    //     ))
                     Vec3 newcampos = self.camera.getParentObj3d().worldToLocal(newPos)
                     self.camera.position = newcampos
                 }

@@ -103,6 +103,22 @@ extension Mat {
 
 	}
 
+	// 提取y轴旋转矩阵.适用于相机xz漫游
+	Mat extractYRotationMatrix(){
+		Quaternion q
+		self.decompose(null, &q, null) 
+		Vec3 forward = mkVec3(0, 0, -1)
+		forward.applyQuaternionLocal(q)
+		forward.y = 0 // 
+		forward.normalizeLocal()
+
+		Quaternion q2
+		q2.setFromUnitVectors(mkVec3(0, 0, -1), forward)
+		Mat ret
+		ret.makeRotationFromQuaternion(q2)
+		return ret;
+	}
+
 	Mat* extractBasis(Vec3 *xAxis, Vec3 *yAxis, Vec3 *zAxis ) {
 
 		xAxis.setFromMatrixColumn( *self, 0 );

@@ -12,6 +12,7 @@
 #include "./Euler_orc.h"
 #include "./Color_orc.h"
 #include "./Spherical_orc.h"
+#include "./Quaternion_orc.h"
 
 
 // static struct 
@@ -222,6 +223,24 @@ SuiCore$Vec3 *  SuiCore$Vec3$applyMatrix4Local(SuiCore$Vec3 *  self, Sgl$Mat m){
 	self->x = (e[0] * x + e[4] * y + e[8] * z + e[12]) * w;
 	self->y = (e[1] * x + e[5] * y + e[9] * z + e[13]) * w;
 	self->z = (e[2] * x + e[6] * y + e[10] * z + e[14]) * w;
+	return self; 
+}
+
+SuiCore$Vec3 *  SuiCore$Vec3$applyQuaternionLocal(SuiCore$Vec3 *  self, SuiCore$Quaternion q){
+	float  x = self->x;
+	float  y = self->y;
+	float  z = self->z;
+	float  qx = q.x;
+	float  qy = q.y;
+	float  qz = q.z;
+	float  qw = q.w;
+	float  ix = qw * x + qy * z - qz * y;
+	float  iy = qw * y + qz * x - qx * z;
+	float  iz = qw * z + qx * y - qy * x;
+	float  iw = -qx * x - qy * y - qz * z;
+	self->x = ix * qw + iw * -qx + iy * -qz - iz * -qy;
+	self->y = iy * qw + iw * -qy + iz * -qx - ix * -qz;
+	self->z = iz * qw + iw * -qz + ix * -qy - iy * -qx;
 	return self; 
 }
 

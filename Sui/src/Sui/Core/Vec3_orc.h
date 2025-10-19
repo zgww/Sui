@@ -56,6 +56,9 @@ struct tagSuiCore$Vec3 {
 #define INCLUDE_ONLY_TYPE
 #include "./Spherical_orc.h"
 #undef INCLUDE_ONLY_TYPE
+#define INCLUDE_ONLY_TYPE
+#include "./Quaternion_orc.h"
+#undef INCLUDE_ONLY_TYPE
 
 
 #ifdef __cplusplus
@@ -95,6 +98,7 @@ SuiCore$Vec3 *  SuiCore$Vec3$applyMatrix3Local(SuiCore$Vec3 *  self, SuiCore$Mat
 SuiCore$Vec3 *  SuiCore$Vec3$applyNormalMatrixLocal(SuiCore$Vec3 *  self, SuiCore$Mat3 m);
 SuiCore$Vec3 SuiCore$Vec3$applyMatrix4(SuiCore$Vec3 *  self, Sgl$Mat m);
 SuiCore$Vec3 *  SuiCore$Vec3$applyMatrix4Local(SuiCore$Vec3 *  self, Sgl$Mat m);
+SuiCore$Vec3 *  SuiCore$Vec3$applyQuaternionLocal(SuiCore$Vec3 *  self, SuiCore$Quaternion q);
 SuiCore$Vec3 *  SuiCore$Vec3$transformDirectionLocal(SuiCore$Vec3 *  self, Sgl$Mat m);
 SuiCore$Vec3 *  SuiCore$Vec3$divideLocal(SuiCore$Vec3 *  self, SuiCore$Vec3 v);
 SuiCore$Vec3 *  SuiCore$Vec3$divideScalarLocal(SuiCore$Vec3 *  self, float  scalar);

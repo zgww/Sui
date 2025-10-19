@@ -97,6 +97,20 @@ Sgl$Mat *  Sgl$Mat$setFromMatrix3(Sgl$Mat *  self, SuiCore$Mat3 m){
 	return self; 
 }
 
+Sgl$Mat Sgl$Mat$extractYRotationMatrix(Sgl$Mat *  self){
+	SuiCore$Quaternion q;
+	Sgl$Mat$decompose(self, NULL, &q, NULL) ;
+	SuiCore$Vec3 forward = SuiCore$mkVec3(0, 0, -1) ;
+	SuiCore$Vec3$applyQuaternionLocal(&forward, q) ;
+	forward.y = 0;
+	SuiCore$Vec3$normalizeLocal(&forward) ;
+	SuiCore$Quaternion q2;
+	SuiCore$Quaternion$setFromUnitVectors(&q2, SuiCore$mkVec3(0, 0, -1) , forward) ;
+	Sgl$Mat ret;
+	Sgl$Mat$makeRotationFromQuaternion(&ret, q2) ;
+	return ret; 
+}
+
 Sgl$Mat *  Sgl$Mat$extractBasis(Sgl$Mat *  self, SuiCore$Vec3 *  xAxis, SuiCore$Vec3 *  yAxis, SuiCore$Vec3 *  zAxis){
 	SuiCore$Vec3$setFromMatrixColumn(xAxis, *self, 0) ;
 	SuiCore$Vec3$setFromMatrixColumn(yAxis, *self, 1) ;
