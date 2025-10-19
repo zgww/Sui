@@ -279,7 +279,10 @@ void  HoroEditor$Horo3dSceneView$onEvent(HoroEditor$Horo3dSceneView *  self, Sui
 	if (Orc_instanceof((Object*)e, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
 		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
 		if (me->isWheel) {
-			
+			SuiCore$WheelEvent *  we = (SuiCore$WheelEvent * )e;
+			SuiCore$Vec3 newPos = ((Sgl$Obj3d * )self->camera)->localToWorld(self->camera, SuiCore$mkVec3(0, 0, -we->deltaY) ) ;
+			Sgl$Obj3d *  tmpThis_1 = NULL;
+			((Sgl$Obj3d * )self->camera)->position = (tmpThis_1 = Sgl$Obj3d$getParentObj3d((Sgl$Obj3d * )self->camera) )->worldToLocal(tmpThis_1, newPos) ;
 		}
 		if ((me->button == 1 || me->button == 3) && me->isMouseDown && ((SuiCore$ViewEvent * )me)->isBubble(me) ) {
 			self->drag->onMouseDown(self->drag, me) ;

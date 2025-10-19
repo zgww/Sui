@@ -172,7 +172,17 @@ class Horo3dSceneView extends ImageView {
     void onEvent(Event *e){
         if e instanceof MouseEvent {
             MouseEvent *me = (MouseEvent*)e
-            if me.isWheel {}
+            if me.isWheel {
+                WheelEvent *we = (WheelEvent*)e
+                //在z轴前进
+                Vec3 newPos = self.camera.localToWorld(mkVec3(
+                    0, 
+                    0,
+                    -we.deltaY
+                    ))
+                self.camera.position = self.camera.getParentObj3d().worldToLocal(newPos)
+
+            }
             if 
                 (me.button == 1 || me.button == 3)
                 && me.isMouseDown && me.isBubble()
