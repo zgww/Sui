@@ -289,6 +289,22 @@ void  Sgl$Obj3d$lookAt(Sgl$Obj3d *  self, float  x, float  y, float  z){
 
 
 
+void  Sgl$Obj3d$translateWorldPosition(Sgl$Obj3d *  self, SuiCore$Vec3 delta){
+	SuiCore$Vec3 wp = self->localToWorld(self, SuiCore$mkVec3(0, 0, 0) ) ;
+	SuiCore$Vec3$addLocal(&wp, delta) ;
+	Sgl$Obj3d$setWorldPosition(self, wp) ;
+}
+
+void  Sgl$Obj3d$setWorldPosition(Sgl$Obj3d *  self, SuiCore$Vec3 v3){
+	Sgl$Obj3d *  p = Sgl$Obj3d$getParentObj3d(self) ;
+	if (p) {
+		self->position = p->worldToLocal(p, v3) ;
+	}
+	else {
+		self->position = v3;
+	}
+}
+
 Sgl$Obj3d *  Sgl$Obj3d$getParentObj3d(Sgl$Obj3d *  self){
 	if (Orc_instanceof((Object*)((SuiCore$Node * )self)->parent, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
 		return (Sgl$Obj3d * )((SuiCore$Node * )self)->parent; 

@@ -136,7 +136,7 @@ class SglGizmo {
     }
 }
 
-Obj3d@ SglGizmo_translate(Obj3d* o, long long key, Obj3d@ target){
+Obj3d@ SglGizmo_translate(Obj3d* o, long long key, Obj3d@ target, bool spaceWorld){
     mkMesh(o, key ? key: (long long)__builtin_return_address(0)).{
         float w = 100;
         if o.isNewForReact {
@@ -148,12 +148,19 @@ Obj3d@ SglGizmo_translate(Obj3d* o, long long key, Obj3d@ target){
             o.material = new Material()
             o.material.load("../asset/gizmo.matl.json")
         }
-        target._world_transform.decompose(
-            &o.position,
-            &o.quaternion,
-            // &o.scale,
-            null,
-        )
+        if spaceWorld{ //世界空间
+            target._world_transform.decompose( &o.position, null, null)
+            o.rotation.set(0, 0, 0)
+        }
+        else { //本地空间
+            target._world_transform.decompose(
+                &o.position,
+                &o.quaternion,
+                // &o.scale,
+                null,
+            )
+            o.rotation = o.quaternion.toVec3AsEuler(null)
+        }
 
 
         ^void cbOnEvent(Event *e){
@@ -169,16 +176,39 @@ Obj3d@ SglGizmo_translate(Obj3d* o, long long key, Obj3d@ target){
                         drag.onDrag = ^void(Drag *d){
                             if d.isDragging {
                                 printf("dragging...%s %f\n", mesh.name.str, d.deltaPos.x)
+                                Mat rot;
+                                rot.extractRotationLocal(target._world_transform)
 
                                 if mesh.name.equals("xArrow"){
-                                    //改为与面求交点
-                                    target.position.x += d.deltaPos.x
+                                    if spaceWorld{
+                                        target.translateWorldPosition(mkVec3(d.deltaPos.x, 0, 0))
+                                    }
+                                    else {
+                                        //改为与面求交点
+                                        Vec3 move = mkVec3(d.deltaPos.x, 0, 0)
+                                        move.applyMatrix4Local(rot)
+                                        target.position.addLocal(move)
+                                    }
                                 }
                                 else if mesh.name.equals("yArrow"){
-                                    target.position.y += d.deltaPos.x
+                                    if spaceWorld{
+                                        target.translateWorldPosition(mkVec3(0, d.deltaPos.x, 0))
+                                    }
+                                    else {
+                                        Vec3 move = mkVec3(0, d.deltaPos.x, 0)
+                                        move.applyMatrix4Local(rot)
+                                        target.position.addLocal(move)
+                                    }
                                 }
                                 else if mesh.name.equals("zArrow"){
-                                    target.position.z += d.deltaPos.x
+                                    if spaceWorld{
+                                        target.translateWorldPosition(mkVec3(0, 0, d.deltaPos.x))
+                                    }
+                                    else {
+                                        Vec3 move = mkVec3(0, 0, d.deltaPos.x)
+                                        move.applyMatrix4Local(rot)
+                                        target.position.addLocal(move)
+                                    }
                                 }
                             }
                         }

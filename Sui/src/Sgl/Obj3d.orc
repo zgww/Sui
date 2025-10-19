@@ -166,6 +166,20 @@ class Obj3d extends Node {
     }
 }
 extension Obj3d {
+    void translateWorldPosition(Vec3 delta){
+        Vec3 wp = self.localToWorld(mkVec3(0, 0, 0))
+        wp.addLocal(delta)
+        self.setWorldPosition(wp)
+    }
+    void setWorldPosition(Vec3 v3){
+        Obj3d* p = self.getParentObj3d()
+        if p {
+            self.position = p.worldToLocal(v3)
+        }
+        else {
+            self.position = v3
+        }
+    }
     Obj3d* getParentObj3d(){
         if self.parent instanceof Obj3d {
             return (Obj3d*)self.parent

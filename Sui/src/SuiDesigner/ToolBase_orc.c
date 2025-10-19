@@ -725,7 +725,7 @@ void  SuiDesigner$ToolSelect$reactGizmo(SuiDesigner$ToolSelect *  self, Sgl$Obj3
 	if (Orc_instanceof((Object*)obj3d, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
 		if (self->isModeTranslate(self) ) {
 			URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpReturn_2 = NULL;
-			SuiDesigner$SglGizmo_translate(&tmpReturn_2, o, 0, obj3d) ;
+			SuiDesigner$SglGizmo_translate(&tmpReturn_2, o, 0, obj3d, self->spaceWorld) ;
 		}
 		else if (self->isModeScale(self) ) {
 			URGC_VAR_CLEANUP_CLASS Sgl$Obj3d*  tmpReturn_3 = NULL;
