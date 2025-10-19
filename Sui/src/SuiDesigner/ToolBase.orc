@@ -16,6 +16,7 @@ import * from "../Sui/View/Drag.orc"
 import * from "../Sui/Core/View.orc"
 import * from "../Sui/View/ViewBuilder.orc"
 import * from "../Sui/View/ImageView.orc"
+import * from "../Sui/View/Button.orc"
 import * from "../Sui/Core/Canvas.orc"
 import * from "../Sui/Core/MouseEvent.orc"
 import * from "../Sui/Core/Node.orc"
@@ -135,6 +136,52 @@ class ToolSelect extends ToolBase{
 
     Vec3 leftPos = mkVec3(-200, 0, -200)
     Drag@ drag= new Drag()
+
+    String@ mode = str("translate")
+    bool spaceWorld = false
+
+    bool isModeTranslate(){
+        return self.mode.equals("translate")
+    }
+    bool isModeRotate(){
+        return self.mode.equals("rotate")
+    }
+    bool isModeScale(){
+        return self.mode.equals("scale")
+    }
+    void reactSpaceButton(DrawButton* o){
+
+        o.onClick=^void(MouseEvent*e){
+            self.spaceWorld = !self.spaceWorld
+            self.mgr.editor.invalidReact.invalid()
+            // Toast_make("hi1");
+        };o.normalBg = 0; 
+        o.src = Path_resolveFromExecutionDir(
+            self.spaceWorld
+            ?  "../asset/icon-light/space-world.png"
+            :  "../asset/icon-light/space-local.png"
+        );
+    }
+    void reactModeButton(DrawButton* o, const char *mode){
+        o.isActive = self.mode.equals(mode)
+        o.normalBg = 0; 
+        o.onClick = ^void(MouseEvent*e){
+            self.mode.set(mode)
+            self.mgr.editor.invalidReact.invalid()
+            // Toast_make(str("hi mode:").add(mode).str)
+        }
+
+
+        if strEq(mode, "translate"){
+            o.src = Path_resolveFromExecutionDir("../asset/icon-light/translate.png"); 
+        }
+        if strEq(mode, "rotate"){
+            o.src = Path_resolveFromExecutionDir("../asset/icon-light/rotate.png"); 
+        }
+        if strEq(mode, "scale"){
+            o.src = Path_resolveFromExecutionDir("../asset/icon-light/scale.png"); 
+        }
+    }
 
     void onEnable(){
         printf("onEnable ToolSelect\n.");
@@ -263,9 +310,15 @@ class ToolSelect extends ToolBase{
 
         Obj3d *obj3d = self.mgr.selectNode 
         if obj3d instanceof Obj3d {
-            // SglGizmo_scale(o, 0, obj3d);
-            // SglGizmo_rotate(o, 0, obj3d);
-            SglGizmo_translate(o, 0, obj3d);
+            if self.isModeTranslate(){
+                SglGizmo_translate(o, 0, obj3d);
+            }
+            else if self.isModeScale(){
+                SglGizmo_scale(o, 0, obj3d);
+            }
+            else if self.isModeRotate(){
+                SglGizmo_rotate(o, 0, obj3d);
+            }
         }
 
 

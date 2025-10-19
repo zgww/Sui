@@ -178,6 +178,7 @@ struct tagHoroEditor$HoroEditor {
 	SuiView$Drag*  drag ;
 	HoroEditor$HoroEditorSceneViewCallback*  viewCb ;
 	SuiDesigner$ToolMgr*  toolMgr ;
+	SuiDesigner$ToolSelect*  toolSelect ;
 	SuiDesigner$SglGizmo*  sglGizmo ;
 	HoroEditor$Horo3dSceneView*  sceneView ;
 	SuiDesigner$AssetDirView*  dirView ;

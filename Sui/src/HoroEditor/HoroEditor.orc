@@ -134,6 +134,7 @@ class HoroEditor extends Listener{
 
 
     ToolMgr@ toolMgr = new ToolMgr()
+    ToolSelect@ toolSelect = new ToolSelect()
     SglGizmo@ sglGizmo = new SglGizmo()
 
     Horo3dSceneView@ sceneView
@@ -219,7 +220,7 @@ class HoroEditor extends Listener{
         printf("projectDirPath:%s\n", projectDirPath.str)
         Project_ins().init(projectDirPath.str)
 
-        self.toolMgr.setTool(new ToolSelect())
+        self.toolMgr.setTool(self.toolSelect)
         // self.toolMgr.setTool(new ToolDropModelLoader())
         useEbus().addListener(self)
     }
@@ -586,7 +587,12 @@ class HoroEditor extends Listener{
                     // self.addTileLayer()
                 }
             }
-            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi1");};o.isActive = true; o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/setting.png"); }
+            mkDrawButton(o, 0).{ self.toolSelect.reactModeButton(o, "translate") }
+            mkDrawButton(o, 0).{ self.toolSelect.reactModeButton(o, "rotate") }
+            mkDrawButton(o, 0).{ self.toolSelect.reactModeButton(o, "scale") }
+            mkDrawButton(o, 0).{ self.toolSelect.reactSpaceButton(o) }
+
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi1");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/setting.png"); }
 
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/project.png"); }
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/open-door.png"); }

@@ -52,6 +52,7 @@ typedef struct tagVtable_SuiDesigner$ToolMgr Vtable_SuiDesigner$ToolMgr;
 #include "../Sui/Core/View_orc.h"
 #include "../Sui/View/ViewBuilder_orc.h"
 #include "../Sui/View/ImageView_orc.h"
+#include "../Sui/View/Button_orc.h"
 #include "../Sui/Core/Canvas_orc.h"
 #include "../Sui/Core/MouseEvent_orc.h"
 #include "../Sui/Core/Node_orc.h"
@@ -159,6 +160,13 @@ struct tagSuiDesigner$ToolSelect {
 	SuiDesigner$ToolBase super; 
 	SuiCore$Vec3 leftPos ;
 	SuiView$Drag*  drag ;
+	Orc$String*  mode ;
+	bool  spaceWorld ;
+	bool  (*isModeTranslate) (SuiDesigner$ToolSelect *  self);
+	bool  (*isModeRotate) (SuiDesigner$ToolSelect *  self);
+	bool  (*isModeScale) (SuiDesigner$ToolSelect *  self);
+	void  (*reactSpaceButton) (SuiDesigner$ToolSelect *  self, SuiView$DrawButton *  o);
+	void  (*reactModeButton) (SuiDesigner$ToolSelect *  self, SuiView$DrawButton *  o, const char *  mode);
 };
 Vtable_SuiDesigner$ToolSelect* Vtable_SuiDesigner$ToolSelect_init(Vtable_SuiDesigner$ToolSelect* pvt);
 void SuiDesigner$ToolSelect_init_fields(SuiDesigner$ToolSelect *self);
@@ -166,6 +174,11 @@ void SuiDesigner$ToolSelect_init(SuiDesigner$ToolSelect *self, void *pOwner);
 SuiDesigner$ToolSelect * SuiDesigner$ToolSelect_new(void *pOwner);
 void SuiDesigner$ToolSelect_fini(SuiDesigner$ToolSelect *self);
 
+bool  SuiDesigner$ToolSelect$isModeTranslate(SuiDesigner$ToolSelect *  self);
+bool  SuiDesigner$ToolSelect$isModeRotate(SuiDesigner$ToolSelect *  self);
+bool  SuiDesigner$ToolSelect$isModeScale(SuiDesigner$ToolSelect *  self);
+void  SuiDesigner$ToolSelect$reactSpaceButton(SuiDesigner$ToolSelect *  self, SuiView$DrawButton *  o);
+void  SuiDesigner$ToolSelect$reactModeButton(SuiDesigner$ToolSelect *  self, SuiView$DrawButton *  o, const char *  mode);
 void  SuiDesigner$ToolSelect$onEnable(SuiDesigner$ToolSelect *  self);
 void  SuiDesigner$ToolSelect$onDisable(SuiDesigner$ToolSelect *  self);
 void  SuiDesigner$ToolSelect$draw2d(SuiDesigner$ToolSelect *  self, SuiCore$Canvas *  canvas);
