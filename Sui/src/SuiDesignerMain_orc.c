@@ -2063,16 +2063,15 @@ int  testAudio(){
 int  main(){
 	urgc_start_process_thread() ;
 	windowInit() ;
-	URGC_VAR_CLEANUP_CLASS HoroEditor$HoroEditor*  tmpNewOwner_1 = NULL;
 	{
-		HoroEditor$HoroEditor*  o = HoroEditor$HoroEditor_new(&tmpNewOwner_1) ;
+		HoroEditor$HoroEditor *  o = HoroEditor$insHoroEditor() ;
 		
 	
 		o->openProject(o, "../DemoProject") ;
 	}
 	SuiCore$App *  tmpThis_1 = NULL;
-	URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_2 = NULL;
-	(tmpThis_1 = SuiCore$App_use(&tmpReturn_2) )->runEventLoop(tmpThis_1) ;
+	URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_1 = NULL;
+	(tmpThis_1 = SuiCore$App_use(&tmpReturn_1) )->runEventLoop(tmpThis_1) ;
 	return 0; 
 }
 

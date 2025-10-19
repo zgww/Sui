@@ -1210,7 +1210,7 @@ int main(){
     // testPlane()
     // testRay()
 
-    new HoroEditor().{
+    insHoroEditor().{
         o.openProject("../DemoProject")
         // o.showWindow()
     }

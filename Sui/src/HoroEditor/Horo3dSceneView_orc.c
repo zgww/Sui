@@ -257,11 +257,13 @@ void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, S
 	if (self->fbo) {
 		SuiCore$Vec2 fboSize = self->fbo->getSize(self->fbo) ;
 		self->camera->aspect = fboSize.x / fboSize.y;
-		self->fbo->startDraw(self->fbo, 0.0, 0.0, 0.0, 0.0, true, true, true) ;
+		self->fbo->startDraw(self->fbo, 0.2, 0.2, 0.2, 0.0, true, true, true) ;
 		self->drawCtx->clearDepth(self->drawCtx) ;
 		self->drawCtx->frameSize = fboSize;
 		self->drawCtx->draw(self->drawCtx, self->scene, self->camera) ;
-		((Sgl$Obj3d * )self->groundGrid)->draw(self->groundGrid, self->drawCtx) ;
+		if (self->editor && self->editor->showGroundGrid) {
+			((Sgl$Obj3d * )self->groundGrid)->draw(self->groundGrid, self->drawCtx) ;
+		}
 		if (self->cbAfterDraw) {
 			(*(self->cbAfterDraw))((void * )(self->cbAfterDraw)) ;
 		}
@@ -323,7 +325,7 @@ static void  __fn___Closure_68_27(HoroEditor$__Closure_68_27 *  self, SuiView$Dr
 			SuiCore$Euler$setFromVector3(&e, ((Sgl$Obj3d * )self->__var___Block_66_15->self->camera)->rotation, NULL) ;
 			SuiCore$Euler$reorder(&e, "YXZ") ;
 			e.y += d->deltaPos.x * 0.001;
-			e.x += d->deltaPos.y * 0.001;
+			e.x += d->deltaPos.y * -0.001;
 			SuiCore$Euler$reorder(&e, "XYZ") ;
 			SuiCore$Vec3$setFromEuler(&((Sgl$Obj3d * )self->__var___Block_66_15->self->camera)->rotation, e) ;
 		}

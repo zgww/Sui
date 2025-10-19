@@ -135,6 +135,7 @@ class HoroEditor extends Listener{
 
     ToolMgr@ toolMgr = new ToolMgr()
     ToolSelect@ toolSelect = new ToolSelect()
+    ToolDropModelLoader@ toolDropModelLoader = new ToolDropModelLoader()
     SglGizmo@ sglGizmo = new SglGizmo()
 
     Horo3dSceneView@ sceneView
@@ -142,6 +143,9 @@ class HoroEditor extends Listener{
 
     View@ gizmosView
     OutlineFx@ outlineFx = new OutlineFx()
+
+
+    bool showGroundGrid = true
 
     // HoroIconMgr@ iconMgr = new HoroIconMgr()
 
@@ -276,7 +280,7 @@ class HoroEditor extends Listener{
                 self._afterDrawScene()
             }
 
-            o.backgroundColor = 0x00ffffff
+            o.backgroundColor = 0xff000000
             o.setImageMode(Cover)
             if o.isNewForReact {
                 o.mkBaseScene()
@@ -571,6 +575,14 @@ class HoroEditor extends Listener{
             layoutLinearCell(o, 0)
         }
     }
+    void reactTool(DrawButton *o, ToolBase* tool){
+        o.isActive = self.toolMgr.tool == tool
+        o.normalBg = 0;
+        o.onClick = ^void(MouseEvent*me){
+            self.toolMgr.setTool(tool)
+            self.invalidReact.invalid()
+        }
+    }
 
     void reactToolbar(Node*o){
         layoutLinear(o, 0).{
@@ -591,6 +603,15 @@ class HoroEditor extends Listener{
             mkDrawButton(o, 0).{ self.toolSelect.reactModeButton(o, "rotate") }
             mkDrawButton(o, 0).{ self.toolSelect.reactModeButton(o, "scale") }
             mkDrawButton(o, 0).{ self.toolSelect.reactSpaceButton(o) }
+
+            mkDrawButton(o, 0).{ self.reactTool(o, self.toolSelect); o.src = Path_resolveFromExecutionDir("../asset/icon-light/select.png"); }
+            mkDrawButton(o, 0).{ self.reactTool(o, self.toolDropModelLoader); o.src = Path_resolveFromExecutionDir("../asset/icon-light/cube.png"); }
+
+            //是否显示地面网格
+            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*me){
+                self.showGroundGrid = !self.showGroundGrid
+                self.invalidReact.invalid()
+            }; o.isActive = self.showGroundGrid; o.src = Path_resolveFromExecutionDir("../asset/icon-light/grid.png"); }
 
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi1");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/setting.png"); }
 
@@ -626,7 +647,6 @@ class HoroEditor extends Listener{
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/search.png"); }
 
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/node.png"); }
-            mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/cube.png"); }
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/text-view.png"); }
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/edit-text.png"); }
             mkDrawButton(o, 0).{ o.onClick=^void(MouseEvent*e){Toast_make("hi");};o.normalBg = 0; o.src = Path_resolveFromExecutionDir("../asset/icon-light/image-view.png"); }
@@ -851,4 +871,11 @@ class HoroEditor extends Listener{
         self.showWindow()
         win.close()
     }
+}
+HoroEditor* insHoroEditor(){
+    static HoroEditor@ ins = null
+    if ins == null {
+        ins = new HoroEditor()
+    }
+    return ins
 }

@@ -74,7 +74,7 @@ class Horo3dSceneView extends ImageView {
 
                     e.reorder("YXZ")
                     e.y += d.deltaPos.x * 0.001
-                    e.x += d.deltaPos.y * 0.001
+                    e.x += d.deltaPos.y * -0.001
                     e.reorder("XYZ")
                     self.camera.rotation.setFromEuler(e)
                 }
@@ -155,13 +155,16 @@ class Horo3dSceneView extends ImageView {
             self.camera.aspect = fboSize.x / fboSize.y
 
             //绘制fbo
-            self.fbo.startDraw(0.0, 0.0, 0.0, 0.0, true, true, true)
+            self.fbo.startDraw(0.2, 0.2, 0.2, 0.0, true, true, true)
             self.drawCtx.clearDepth()
 
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
 
-            self.groundGrid.draw(self.drawCtx)
+
+            if self.editor && self.editor.showGroundGrid {
+                self.groundGrid.draw(self.drawCtx)
+            }
 
             if self.cbAfterDraw{
                 self.cbAfterDraw()

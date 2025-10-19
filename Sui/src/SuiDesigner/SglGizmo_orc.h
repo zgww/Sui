@@ -56,8 +56,10 @@ typedef struct tagVtable_SuiDesigner$SglGizmo Vtable_SuiDesigner$SglGizmo;
 #include "../Sui/View/Drag_orc.h"
 #include "../Sgl/PerspectiveCamera_orc.h"
 #include "../Sgl/Ray_orc.h"
+#include "../Sgl/Mat_orc.h"
 #include "../Sgl/Raycaster_orc.h"
 #include "../Sgl/Billboard_orc.h"
+#include "../HoroEditor/UiAct_orc.h"
 
 
 #ifdef __cplusplus

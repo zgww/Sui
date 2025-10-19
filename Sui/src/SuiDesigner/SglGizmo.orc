@@ -25,8 +25,10 @@ import * from "../Sui/Core/Vec3.orc"
 import * from "../Sui/View/Drag.orc"
 import * from "../Sgl/PerspectiveCamera.orc"
 import * from "../Sgl/Ray.orc"
+import * from "../Sgl/Mat.orc"
 import * from "../Sgl/Raycaster.orc"
 import * from "../Sgl/Billboard.orc"
+import * from "../HoroEditor/UiAct.orc"
 
 
 
@@ -189,6 +191,7 @@ Obj3d@ SglGizmo_translate(Obj3d* o, long long key, Obj3d@ target, bool spaceWorl
                                         move.applyMatrix4Local(rot)
                                         target.position.addLocal(move)
                                     }
+
                                 }
                                 else if mesh.name.equals("yArrow"){
                                     if spaceWorld{
@@ -210,6 +213,9 @@ Obj3d@ SglGizmo_translate(Obj3d* o, long long key, Obj3d@ target, bool spaceWorl
                                         target.position.addLocal(move)
                                     }
                                 }
+                            }
+                            if d.isDragEnd {
+                                UiAct_setANodeAttrVec3ByNode(target, "position", target.position)
                             }
                         }
                         drag.onMouseDown(me)
@@ -283,6 +289,9 @@ Obj3d@ SglGizmo_rotate(Obj3d* o, long long key, Obj3d@ target){
                                     target.rotation.z += d.deltaPos.x / 180.0 * PI
                                 }
                             }
+                            if d.isDragEnd{
+                                UiAct_setANodeAttrVec3ByNode(target, "rotation", target.rotation)
+                            }
                         }
                         drag.onMouseDown(me)
                     }
@@ -353,6 +362,9 @@ Obj3d@ SglGizmo_scale(Obj3d* o, long long key, Obj3d@ target){
                                 else if mesh.name.equals("zCube"){
                                     target.scale.z += d.deltaPos.x
                                 }
+                            }
+                            if d.isDragEnd{
+                                UiAct_setANodeAttrVec3ByNode(target, "scale", target.scale)
                             }
                         }
                         drag.onMouseDown(me)

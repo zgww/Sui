@@ -39,6 +39,7 @@
 #include "../Orc/List_orc.h"
 #include "../Orc/Map_orc.h"
 #include "../Orc/Path_orc.h"
+#include "../Orc/Number_orc.h"
 #include "../Json/Json_orc.h"
 #include "./HoroEditCtx_orc.h"
 #include "./HoroEditor_orc.h"
@@ -49,6 +50,8 @@
 #include "../SuiDesigner/Prefab_orc.h"
 #include "../SuiDesigner/EventFileItemChanged_orc.h"
 #include "../Sui/Core/NodeLib_orc.h"
+#include "../Sui/Core/Node_orc.h"
+#include "../Sui/Core/Vec3_orc.h"
 #include "../Sui/Dialog/Toast_orc.h"
 #include "../Sui/Dialog/MessageDialog_orc.h"
 #include "../Sgl/Obj3d_orc.h"
@@ -69,6 +72,8 @@ void  HoroEditor$UiAct_savePrefab(HoroEditor$HoroEditor *  editor);
 SuiDesigner$ANode*  HoroEditor$UiAct_addViewToSelectedOrRoot(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditor *  editor, const char *  viewName);
 SuiDesigner$ANode*  HoroEditor$UiAct_addView(SuiDesigner$ANode **  __outRef__, HoroEditor$HoroEditor *  editor, SuiDesigner$ANode*  anode, const char *  viewName);
 void  HoroEditor$UiAct_createGeometry(SuiDesigner$FileItem*  parent, Orc$String*  cmd);
+void  HoroEditor$UiAct_setANodeAttrByNode(SuiCore$Node *  n, const char *  key, Object *  obj);
+void  HoroEditor$UiAct_setANodeAttrVec3ByNode(SuiCore$Node *  n, const char *  key, SuiCore$Vec3 v3);
 
 
 

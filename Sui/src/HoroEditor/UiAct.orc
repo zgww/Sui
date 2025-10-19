@@ -9,6 +9,7 @@ import * from "../Orc/String.orc"
 import * from "../Orc/List.orc"
 import * from "../Orc/Map.orc"
 import * from "../Orc/Path.orc"
+import * from "../Orc/Number.orc"
 
 import * from "../Json/Json.orc"
 
@@ -23,6 +24,8 @@ import * from "../SuiDesigner/Prefab.orc"
 import * from "../SuiDesigner/EventFileItemChanged.orc"
 
 import * from "../Sui/Core/NodeLib.orc"
+import * from "../Sui/Core/Node.orc"
+import * from "../Sui/Core/Vec3.orc"
 
 import * from "../Sui/Dialog/Toast.orc"
 import * from "../Sui/Dialog/MessageDialog.orc"
@@ -170,4 +173,14 @@ void UiAct_createGeometry(FileItem@ parent, String@ cmd){
             }
         }
     })
+}
+
+void UiAct_setANodeAttrByNode(Node* n, const char *key, Object* obj){
+    HoroEditor* editor = insHoroEditor()
+    ANode@ anode = editor.editCtx.findANodeByNode(n)
+    anode.setAttrValueObject(key, obj)
+}
+void UiAct_setANodeAttrVec3ByNode(Node* n, const char *key, Vec3 v3){
+    StructObj@ structObj = mkVec3StructObj(v3)
+    UiAct_setANodeAttrByNode(n, key, structObj)
 }

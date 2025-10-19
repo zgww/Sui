@@ -16,16 +16,17 @@
 					"name":	"灯光",
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	220,
-						"y":	300,
-						"z":	300
+						"x":	1187,
+						"y":	931,
+						"z":	525
 					},
 					"rotation":	{
 						"__struct":	"SuiCore$Vec3",
 						"x":	0,
 						"y":	0,
 						"z":	0
-					}
+					},
+					"color":	-9349787
 				},
 				"tag":	"Sgl$PointLight",
 				"children":	[]
@@ -38,23 +39,131 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	110,
+						"x":	908.99652099609375,
 						"y":	0,
+						"z":	146.63916015625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/crypt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	927.571044921875,
+						"y":	0,
+						"z":	1686.6387939453125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/arch_gate.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1322.545166015625,
+						"y":	0,
+						"z":	1654.4793701171875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1730.1588134765625,
+						"y":	0,
+						"z":	1635.986572265625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	538.47955322265625,
+						"y":	0,
+						"z":	1659.1507568359375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	150.99856567382812,
+						"y":	0,
+						"z":	1646.5081787109375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-16.576198577880859,
+						"y":	0,
+						"z":	1448.4344482421875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	1.5358896255493164,
 						"z":	0
-					},
-					"geometryPath":"Geometry/box2.geometry.json"
-				},
-				"tag":	"Sgl$Mesh",
-				"children":	[]
-			}, {
-				"attrs":	{
-					"position":	{
-						"__struct":	"SuiCore$Vec3",
-						"x":	100.1865234375,
-						"y":	0,
-						"z":	0.86083984375
-					},
-					"path":	"spider.obj"
+					}
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -62,9 +171,471 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	372.31039428710938,
+						"x":	-17.966827392578125,
 						"y":	0,
-						"z":	456.919921875
+						"z":	986.9835205078125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	1.5533429384231567,
+						"z":	0
+					}
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-9.737762451171875,
+						"y":	0,
+						"z":	544.0439453125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	-1.5533456802368164,
+						"z":	0
+					}
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1923.670654296875,
+						"y":	0,
+						"z":	1361.4620361328125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	-1.6929699182510376,
+						"z":	0
+					}
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1943.480224609375,
+						"y":	0,
+						"z":	991.0958251953125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	1.4660770893096924,
+						"z":	0
+					}
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1970.121337890625,
+						"y":	0,
+						"z":	599.18310546875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/fence.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	1.5009835958480835,
+						"z":	0
+					}
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	411.982177734375,
+						"y":	-0.000244140625,
+						"z":	-61.288818359375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_orange_large.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-108.5634765625,
+						"y":	0,
+						"z":	78.218017578125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_orange_large.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1679.689697265625,
+						"y":	0,
+						"z":	-584.671875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_yellow_large.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1686.214111328125,
+						"y":	-0.000244140625,
+						"z":	-120.64453125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_yellow_medium.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2024.2791748046875,
+						"y":	0,
+						"z":	-308.43701171875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_orange_small.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	8.318603515625,
+						"y":	0,
+						"z":	-248.10205078125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_yellow_small.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	138.18392944335938,
+						"y":	0,
+						"z":	186.935791015625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_yellow_medium.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	89.075439453125,
+						"y":	0,
+						"z":	1025.5538330078125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_orange_large.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	235.3428955078125,
+						"y":	0,
+						"z":	573.05078125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/grave_A_destroyed.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	247.02609252929688,
+						"y":	0,
+						"z":	1873.15625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/post_lantern.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2150.2333984375,
+						"y":	0,
+						"z":	563.133056640625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_dead_large.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1843.343994140625,
+						"y":	0,
+						"z":	1452.3858642578125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_dead_large.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	82.9732666015625,
+						"y":	0,
+						"z":	1488.780517578125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_dead_medium.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-232.94818115234375,
+						"y":	0,
+						"z":	31.73095703125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_dead_medium.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1551.08984375,
+						"y":	0,
+						"z":	221.771728515625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/shrine.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1358.3480224609375,
+						"y":	0,
+						"z":	339.48828125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_dead_large_decorated.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	272.90289306640625,
+						"y":	0,
+						"z":	1212.6304931640625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/plaque_candles.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	-141.34320068359375,
+						"y":	0,
+						"z":	1845.351318359375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt_grave.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1618.9588623046875,
+						"y":	0,
+						"z":	548.595947265625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/coffin_decorated.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	294.16705322265625,
+						"y":	-0.0001220703125,
+						"z":	1394.89892578125
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -80,9 +651,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	-51.72821044921875,
+						"x":	453.7193603515625,
 						"y":	0,
-						"z":	489.51101684570312
+						"z":	1224.0611572265625
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -90,7 +661,13 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/bench.obj"
+					"path":	"halloween/obj/bench.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	1.6057029962539673,
+						"z":	0
+					}
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -98,9 +675,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	-519.7996826171875,
-						"y":	0,
-						"z":	366.76025390625
+						"x":	2073.76025390625,
+						"y":	0.0001220703125,
+						"z":	1704.6231689453125
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -108,7 +685,13 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/bench.obj"
+					"path":	"halloween/obj/bench.obj",
+					"rotation":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	0,
+						"y":	0.83775800466537476,
+						"z":	0
+					}
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -116,9 +699,207 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	712.1304931640625,
+						"x":	253.69633483886719,
+						"y":	0.0001220703125,
+						"z":	1773.3785400390625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/pumpkin_orange_jackolantern.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2014.435546875,
 						"y":	0,
-						"z":	-402.403076171875
+						"z":	-30.58935546875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/pumpkin_orange_jackolantern.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2102.02734375,
+						"y":	0,
+						"z":	209.4111328125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/pumpkin_orange_jackolantern.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1598.5968017578125,
+						"y":	-0.0001220703125,
+						"z":	1224.8883056640625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/bench_decorated.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1585.3037109375,
+						"y":	-0.0001220703125,
+						"z":	1082.566650390625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/grave_A.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1837.268310546875,
+						"y":	0,
+						"z":	1744.3525390625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/pumpkin_yellow.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1769.0712890625,
+						"y":	0,
+						"z":	1750.6669921875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/pumpkin_orange_jackolantern.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1846.046142578125,
+						"y":	0,
+						"z":	1805.0050048828125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/pumpkin_orange.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2082.621826171875,
+						"y":	0,
+						"z":	1117.662109375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/tree_pine_yellow_small.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1941.882080078125,
+						"y":	0,
+						"z":	1726.400146484375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/gravemarker_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	129.69464111328125,
+						"y":	0,
+						"z":	1779.2908935546875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/pumpkin_orange.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	423.27362060546875,
+						"y":	0,
+						"z":	1837.4520263671875
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -134,9 +915,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	-565.9212646484375,
+						"x":	390.54107666015625,
 						"y":	0,
-						"z":	-274.597900390625
+						"z":	1861.324951171875
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -144,7 +925,7 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/coffin.obj"
+					"path":	"halloween/obj/coffin_lid.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -152,9 +933,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	-368.90692138671875,
+						"x":	257.37982177734375,
 						"y":	0,
-						"z":	297.0291748046875
+						"z":	1926.719970703125
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -162,7 +943,7 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/candle_triple.obj"
+					"path":	"halloween/obj/post_lantern_lantern.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -170,9 +951,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	712.15167236328125,
-						"y":	3.0517578125e-05,
-						"z":	98.918212890625
+						"x":	509.757080078125,
+						"y":	0,
+						"z":	2010.505126953125
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -180,7 +961,7 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/fence_broken.obj"
+					"path":	"halloween/obj/lantern_standing.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -188,9 +969,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	577.48583984375,
+						"x":	815.0830078125,
 						"y":	0,
-						"z":	445.97027587890625
+						"z":	671.7578125
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -198,7 +979,7 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/fence_broken.obj"
+					"path":	"halloween/obj/floor_dirt.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -206,9 +987,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	-151.01033020019531,
+						"x":	882.03729248046875,
 						"y":	0,
-						"z":	314.88848876953125
+						"z":	1047.7269287109375
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -216,7 +997,7 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/fence_broken.obj"
+					"path":	"halloween/obj/floor_dirt.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]
@@ -224,9 +1005,9 @@
 				"attrs":	{
 					"position":	{
 						"__struct":	"SuiCore$Vec3",
-						"x":	-348.122802734375,
+						"x":	976.0841064453125,
 						"y":	0,
-						"z":	493.4814453125
+						"z":	1445.0936279296875
 					},
 					"scale":	{
 						"__struct":	"SuiCore$Vec3",
@@ -234,7 +1015,1267 @@
 						"y":	100,
 						"z":	100
 					},
-					"path":	"halloween/obj/fence_broken.obj"
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1016.1270141601562,
+						"y":	0,
+						"z":	1844.467529296875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1421.868408203125,
+						"y":	0,
+						"z":	1850.499267578125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1818.369873046875,
+						"y":	0,
+						"z":	1853.13671875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2213.62939453125,
+						"y":	0,
+						"z":	1849.6181640625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2168.9697265625,
+						"y":	0,
+						"z":	1448.4520263671875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1775.47900390625,
+						"y":	0,
+						"z":	1449.23046875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1375.9224853515625,
+						"y":	0,
+						"z":	1452.3167724609375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1288.86767578125,
+						"y":	0,
+						"z":	1052.492919921875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1688.200927734375,
+						"y":	0,
+						"z":	1053.0498046875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2079.22021484375,
+						"y":	0,
+						"z":	1049.3365478515625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2007.458251953125,
+						"y":	0,
+						"z":	653.36767578125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1610.7978515625,
+						"y":	0,
+						"z":	659.67431640625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1216.622314453125,
+						"y":	0,
+						"z":	662.083984375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	425.3372802734375,
+						"y":	0,
+						"z":	716.01953125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	499.77972412109375,
+						"y":	0,
+						"z":	1091.7154541015625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	572.83880615234375,
+						"y":	0,
+						"z":	1474.7783203125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	645.7432861328125,
+						"y":	0,
+						"z":	1846.20263671875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	253.73468017578125,
+						"y":	0,
+						"z":	1847.47900390625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	950.7540283203125,
+						"y":	0,
+						"z":	2260.985107421875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	173.57000732421875,
+						"y":	0,
+						"z":	1463.55419921875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	49.0780029296875,
+						"y":	0,
+						"z":	687.089111328125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	37.6611328125,
+						"y":	0,
+						"z":	306.11767578125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	97.71197509765625,
+						"y":	0,
+						"z":	1065.6134033203125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	419.16793823242188,
+						"y":	0,
+						"z":	344.0419921875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	422.54434204101562,
+						"y":	0,
+						"z":	-73.93994140625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1412.410888671875,
+						"y":	0,
+						"z":	257.689208984375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1417.890380859375,
+						"y":	0,
+						"z":	-158.19775390625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1811.2060546875,
+						"y":	-0.000244140625,
+						"z":	261.932373046875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2199.48828125,
+						"y":	0.000244140625,
+						"z":	261.278564453125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	2211.39892578125,
+						"y":	0,
+						"z":	-152.289794921875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1815.7493896484375,
+						"y":	-0.000244140625,
+						"z":	-169.91455078125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	22.23101806640625,
+						"y":	-0.000244140625,
+						"z":	-102.947021484375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	939.5108642578125,
+						"y":	0,
+						"z":	2423.87939453125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/floor_dirt_small.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	947.4354248046875,
+						"y":	0,
+						"z":	2137.280029296875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_A.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	948.71282958984375,
+						"y":	0,
+						"z":	1946.6143798828125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_A.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	944.8485107421875,
+						"y":	0,
+						"z":	1761.4530029296875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_A.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	959.36993408203125,
+						"y":	0,
+						"z":	1498.0296630859375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	979.01507568359375,
+						"y":	0,
+						"z":	1166.455810546875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1010.3226318359375,
+						"y":	0,
+						"z":	982.173583984375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	982.470703125,
+						"y":	0,
+						"z":	756.810302734375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	256.91302490234375,
+						"y":	0,
+						"z":	806.302490234375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	319.16696166992188,
+						"y":	0,
+						"z":	954.9190673828125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	483.39920043945312,
+						"y":	0,
+						"z":	817.710693359375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	475.0806884765625,
+						"y":	0,
+						"z":	947.6397705078125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	704.01727294921875,
+						"y":	0,
+						"z":	797.6939697265625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	699.8270263671875,
+						"y":	0,
+						"z":	928.5732421875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	892.51025390625,
+						"y":	0,
+						"z":	892.3748779296875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1122.4739990234375,
+						"y":	0,
+						"z":	740.16015625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1143.510986328125,
+						"y":	0,
+						"z":	928.0189208984375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1174.396484375,
+						"y":	0,
+						"z":	1146.9935302734375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1126.8365478515625,
+						"y":	0,
+						"z":	1246.4586181640625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	775.49005126953125,
+						"y":	0,
+						"z":	1082.63671875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	787.7705078125,
+						"y":	0,
+						"z":	1272.4365234375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	788.427001953125,
+						"y":	0,
+						"z":	1413.4752197265625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1030.6534423828125,
+						"y":	0,
+						"z":	1397.7813720703125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	741.84332275390625,
+						"y":	0,
+						"z":	1773.5050048828125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	793.12255859375,
+						"y":	0,
+						"z":	2028.505615234375
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	940.72216796875,
+						"y":	0,
+						"z":	1293.486572265625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1051.2115478515625,
+						"y":	0,
+						"z":	1847.022216796875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	770.2144775390625,
+						"y":	0,
+						"z":	1845.650634765625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1077.0782470703125,
+						"y":	0,
+						"z":	2085.67236328125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	855.046142578125,
+						"y":	0,
+						"z":	639.57373046875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1114.20703125,
+						"y":	0,
+						"z":	2001.436279296875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	857.57757568359375,
+						"y":	0,
+						"z":	1594.6767578125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1039.5455322265625,
+						"y":	0,
+						"z":	1556.6014404296875
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_B.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	862.163330078125,
+						"y":	0,
+						"z":	582.55322265625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_D.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1051.765869140625,
+						"y":	0,
+						"z":	536.448486328125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_D.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	957.22711181640625,
+						"y":	0,
+						"z":	605.6934814453125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_D.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	862.33599853515625,
+						"y":	0,
+						"z":	607.4649658203125
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_D.obj"
+				},
+				"tag":	"Sgl$ModelLoader",
+				"children":	[]
+			}, {
+				"attrs":	{
+					"position":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	1031.3590087890625,
+						"y":	0,
+						"z":	570.986572265625
+					},
+					"scale":	{
+						"__struct":	"SuiCore$Vec3",
+						"x":	100,
+						"y":	100,
+						"z":	100
+					},
+					"path":	"halloween/obj/path_D.obj"
 				},
 				"tag":	"Sgl$ModelLoader",
 				"children":	[]

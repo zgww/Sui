@@ -179,11 +179,13 @@ struct tagHoroEditor$HoroEditor {
 	HoroEditor$HoroEditorSceneViewCallback*  viewCb ;
 	SuiDesigner$ToolMgr*  toolMgr ;
 	SuiDesigner$ToolSelect*  toolSelect ;
+	SuiDesigner$ToolDropModelLoader*  toolDropModelLoader ;
 	SuiDesigner$SglGizmo*  sglGizmo ;
 	HoroEditor$Horo3dSceneView*  sceneView ;
 	SuiDesigner$AssetDirView*  dirView ;
 	SuiCore$View*  gizmosView ;
 	Sgl$OutlineFx*  outlineFx ;
+	bool  showGroundGrid ;
 	void  (*selectByNode) (HoroEditor$HoroEditor *  self, SuiCore$Node *  n);
 	void  (*onSceneEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
 	void  (*_afterDrawScene) (HoroEditor$HoroEditor *  self);
@@ -193,6 +195,7 @@ struct tagHoroEditor$HoroEditor {
 	void  (*reactGizmosView) (HoroEditor$HoroEditor *  self);
 	void  (*reactMenubar) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 	void  (*reactDocklayout) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
+	void  (*reactTool) (HoroEditor$HoroEditor *  self, SuiView$DrawButton *  o, SuiDesigner$ToolBase *  tool);
 	void  (*reactToolbar) (HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 	void  (*react) (HoroEditor$HoroEditor *  self);
 	void  (*onWindowEvent) (HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
@@ -218,6 +221,7 @@ SuiCore$ViewBase *  HoroEditor$HoroEditor$reactScene(HoroEditor$HoroEditor *  se
 void  HoroEditor$HoroEditor$reactGizmosView(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$reactMenubar(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
+void  HoroEditor$HoroEditor$reactTool(HoroEditor$HoroEditor *  self, SuiView$DrawButton *  o, SuiDesigner$ToolBase *  tool);
 void  HoroEditor$HoroEditor$reactToolbar(HoroEditor$HoroEditor *  self, SuiCore$Node *  o);
 void  HoroEditor$HoroEditor$react(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$onWindowEvent(HoroEditor$HoroEditor *  self, SuiCore$Event *  e);
@@ -225,6 +229,7 @@ void  HoroEditor$HoroEditor$showOutline(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self);
 void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const char *  path);
 
+HoroEditor$HoroEditor *  HoroEditor$insHoroEditor();
 
 
 
