@@ -289,6 +289,13 @@ void  Sgl$Obj3d$lookAt(Sgl$Obj3d *  self, float  x, float  y, float  z){
 
 
 
+Sgl$Obj3d *  Sgl$Obj3d$getParentObj3d(Sgl$Obj3d *  self){
+	if (Orc_instanceof((Object*)((SuiCore$Node * )self)->parent, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
+		return (Sgl$Obj3d * )((SuiCore$Node * )self)->parent; 
+	}
+	return NULL; 
+}
+
 SuiCore$Vec3 Sgl$Obj3d$applyRotationToVec3(Sgl$Obj3d *  self, SuiCore$Vec3 v3){
 	Sgl$Mat rot;
 	Sgl$Mat$extractRotationLocal(&rot, self->_world_transform) ;

@@ -116,8 +116,8 @@ class Drag extends Listener{
         self.onMouseDown(e)
     }
 
-    void onMouseDownIf(Event *e){
-    }
+    // void onMouseDownIf(Event *e){
+    // }
     void onMouseDown(Event *e){
         MouseEvent* me = (MouseEvent*)e;
         if me == null || !(me instanceof MouseEvent) {

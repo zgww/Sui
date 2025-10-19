@@ -41,7 +41,6 @@ void SuiView$Drag_initMeta(Vtable_SuiView$Drag *pvt){
 
 	orc_metaField_method(&pNext, "setStatus", offsetof(SuiView$Drag, setStatus));
 	orc_metaField_method(&pNext, "onMouseDown_byPrefer", offsetof(SuiView$Drag, onMouseDown_byPrefer));
-	orc_metaField_method(&pNext, "onMouseDownIf", offsetof(SuiView$Drag, onMouseDownIf));
 	orc_metaField_method(&pNext, "onMouseDown", offsetof(SuiView$Drag, onMouseDown));
 }
 
@@ -110,7 +109,6 @@ void SuiView$Drag_init_fields(SuiView$Drag *self){
 	((Object*)self)->dtor = (void*)SuiView$Drag$dtor;
 	((SuiView$Drag*)self)->setStatus = (void*)SuiView$Drag$setStatus;
 	((SuiView$Drag*)self)->onMouseDown_byPrefer = (void*)SuiView$Drag$onMouseDown_byPrefer;
-	((SuiView$Drag*)self)->onMouseDownIf = (void*)SuiView$Drag$onMouseDownIf;
 	((SuiView$Drag*)self)->onMouseDown = (void*)SuiView$Drag$onMouseDown;
 	((SuiCore$Listener*)self)->onListenerEvent = (void*)SuiView$Drag$onListenerEvent;
 }
@@ -198,11 +196,6 @@ void  SuiView$Drag$onMouseDown_byPrefer(SuiView$Drag *  self, SuiCore$Event *  e
 		return ; 
 	}
 	self->onMouseDown(self, e) ;
-}
-
-
-void  SuiView$Drag$onMouseDownIf(SuiView$Drag *  self, SuiCore$Event *  e){
-	
 }
 
 

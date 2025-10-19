@@ -15,6 +15,10 @@ void  Sgl$deleteFrameBuffer(GLuint id){
 
 void  Sgl$Fbo$bind(Sgl$Fbo *  self){
     glBindFramebuffer(GL_FRAMEBUFFER, self->id);
+    // SuiCore$Vec2 s = self->getSize(self);
+    // int w = s.x;
+    // int h = s.y;
+    // glViewport(0, 0, w, h);
 }
 void  Sgl$Fbo$unbind(Sgl$Fbo *  self){
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -90,6 +94,7 @@ void  Sgl$Rbo$gen(Sgl$Rbo *  self){
 }
 void  Sgl$Rbo$bind(Sgl$Rbo *  self){
     glBindRenderbuffer(GL_RENDERBUFFER, self->id);
+
 }
 void  Sgl$Rbo$unbind(Sgl$Rbo *  self){
     glBindRenderbuffer(GL_RENDERBUFFER, 0);

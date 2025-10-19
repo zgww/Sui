@@ -74,7 +74,6 @@ struct tagSuiView$Drag {
 	int  mouseDownButton ;
 	void  (*setStatus) (SuiView$Drag *  self, const char *  status);
 	void  (*onMouseDown_byPrefer) (SuiView$Drag *  self, SuiCore$Event *  e, int  button, bool  cap, bool  bubble);
-	void  (*onMouseDownIf) (SuiView$Drag *  self, SuiCore$Event *  e);
 	void  (*onMouseDown) (SuiView$Drag *  self, SuiCore$Event *  e);
 };
 Vtable_SuiView$Drag* Vtable_SuiView$Drag_init(Vtable_SuiView$Drag* pvt);
@@ -86,7 +85,6 @@ void SuiView$Drag_fini(SuiView$Drag *self);
 void  SuiView$Drag$dtor(SuiView$Drag *  self);
 void  SuiView$Drag$setStatus(SuiView$Drag *  self, const char *  status);
 void  SuiView$Drag$onMouseDown_byPrefer(SuiView$Drag *  self, SuiCore$Event *  e, int  button, bool  cap, bool  bubble);
-void  SuiView$Drag$onMouseDownIf(SuiView$Drag *  self, SuiCore$Event *  e);
 void  SuiView$Drag$onMouseDown(SuiView$Drag *  self, SuiCore$Event *  e);
 void  SuiView$Drag$onListenerEvent(SuiView$Drag *  self, SuiCore$Event *  ev);
 

@@ -62,19 +62,32 @@ class Horo3dSceneView extends ImageView {
     float scale = 0.02
     
     Mesh@ groundGrid = new Mesh()
+    ^void() cbAfterDraw
     void ctor(){
         super.ctor()
         self.drag.onDrag = ^void(Drag*d){
             if d.isDragging {
-                printf("dragging scene\n")
-                Euler e
-                e.setFromVector3(self.camera.rotation, null)
+                if d.mouseDownButton == 1 {//左键旋转视角
+                    printf("dragging scene\n")
+                    Euler e
+                    e.setFromVector3(self.camera.rotation, null)
 
-                e.reorder("YXZ")
-                e.y += d.deltaPos.x * 0.001
-                e.x += d.deltaPos.y * 0.001
-                e.reorder("XYZ")
-                self.camera.rotation.setFromEuler(e)
+                    e.reorder("YXZ")
+                    e.y += d.deltaPos.x * 0.001
+                    e.x += d.deltaPos.y * 0.001
+                    e.reorder("XYZ")
+                    self.camera.rotation.setFromEuler(e)
+                }
+                if d.mouseDownButton == 3 {//右键在相机本地xz平面平移视角
+                    printf("drag xz:%f,%f\n", d.deltaPos.x, d.deltaPos.y)
+                    Vec3 newPos = self.camera.localToWorld(mkVec3(
+                        d.deltaPos.x,
+                        0, 
+                        d.deltaPos.y,
+                        ))
+                    Vec3 newcampos = self.camera.getParentObj3d().worldToLocal(newPos)
+                    self.camera.position = newcampos
+                }
 
                 // self.camera.rotation.y += d.deltaPos.x * 0.001
                 // self.camera.rotation.x += d.deltaPos.y * 0.001
@@ -129,16 +142,24 @@ class Horo3dSceneView extends ImageView {
         if self.fbo {
             Vec2 fboSize = self.fbo.getSize()
             self.camera.aspect = fboSize.x / fboSize.y
+
             //绘制fbo
             self.fbo.startDraw(0.0, 0.0, 0.0, 0.0, true, true, true)
+            self.drawCtx.clearDepth()
 
             self.drawCtx.frameSize = fboSize
             self.drawCtx.draw(self.scene, self.camera)
 
-            // self.drawCtx.clearDepth()
             self.groundGrid.draw(self.drawCtx)
+
+            if self.cbAfterDraw{
+                self.cbAfterDraw()
+            }
+            // self.drawCtx.clearDepth()
+
             self.drawCtx.mkAxis()
             self.drawCtx.drawLineGeometry()
+
 
             self.fbo.endDraw()
 
@@ -151,7 +172,11 @@ class Horo3dSceneView extends ImageView {
     void onEvent(Event *e){
         if e instanceof MouseEvent {
             MouseEvent *me = (MouseEvent*)e
-            if me.button == 1 && me.isMouseDown && me.isBubble() {
+            if me.isWheel {}
+            if 
+                (me.button == 1 || me.button == 3)
+                && me.isMouseDown && me.isBubble()
+             {
                 self.drag.onMouseDown(me)
             }
         }

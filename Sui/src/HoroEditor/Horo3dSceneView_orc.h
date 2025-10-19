@@ -103,6 +103,7 @@ struct tagHoroEditor$Horo3dSceneView {
 	float  rotateY ;
 	float  scale ;
 	Sgl$Mesh*  groundGrid ;
+	void  (**cbAfterDraw)(void *  self);
 	void  (*mkBaseScene) (HoroEditor$Horo3dSceneView *  self);
 };
 Vtable_HoroEditor$Horo3dSceneView* Vtable_HoroEditor$Horo3dSceneView_init(Vtable_HoroEditor$Horo3dSceneView* pvt);

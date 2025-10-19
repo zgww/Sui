@@ -166,6 +166,12 @@ class Obj3d extends Node {
     }
 }
 extension Obj3d {
+    Obj3d* getParentObj3d(){
+        if self.parent instanceof Obj3d {
+            return (Obj3d*)self.parent
+        }
+        return null
+    }
     //本地方向矢量转世界坐标下的方向矢量
     //只应用旋转
     Vec3 applyRotationToVec3(Vec3 v3){

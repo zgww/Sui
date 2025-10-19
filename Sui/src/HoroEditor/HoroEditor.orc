@@ -272,7 +272,7 @@ class HoroEditor extends Listener{
             }
             self.sceneView = o
 
-            o.drawCtx.cbAfterDraw = ^void(){
+            o.cbAfterDraw = ^void(){
                 self._afterDrawScene()
             }
 
