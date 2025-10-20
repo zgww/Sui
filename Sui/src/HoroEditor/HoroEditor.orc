@@ -179,8 +179,15 @@ class HoroEditor extends Listener{
         }
     }
     void _afterDrawScene(){
+		static int i = 0;
+		i ++;
+		if i % 10 == 0 {
+			printf("引用计数对象数:%d\n", orc_getRefcObjCount());
+		}
+
+
         ANode* selANode = (ANode*)self.editCtx.state.getFirstSelected()
-        Node* sel = selANode == null ? null : selANode.node
+        Node* sel = selANode == null ? null : (Node*)selANode.node
 
         if sel && sel instanceof Obj3d{
             //绘制outline
@@ -662,7 +669,7 @@ class HoroEditor extends Listener{
     }
 
     void react(){
-        // printf("react SpriteSheetEditor\n")
+        printf("react HoroEditor\n")
         Theme* t = themeIns()
         self.win.rootView.{
             self.reactMenubar(o)

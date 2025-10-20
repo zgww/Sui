@@ -705,6 +705,34 @@ void * urgc_init_var_class(void **pvar, Object* p){
 //统计使用引用计数对象的数量
 static int refcObjCount = 0;
 int orc_getRefcObjCount(){
+    // DWORD numHeaps = GetProcessHeaps(0, NULL);
+    // HANDLE *heaps = calloc(numHeaps, sizeof(HANDLE*));
+
+    // if (GetProcessHeaps(numHeaps, heaps) != numHeaps) {
+    //     printf("Failed to get heap handles\n");
+    // }
+    // else {
+
+    //     HEAP_SUMMARY summ = {0};
+
+    //     for (DWORD i = 0; i < numHeaps; ++i) {
+    //         HANDLE hHeap = heaps[i];
+    //         HEAP_SUMMARY cur = {0};
+    //         HeapSummary(hHeap, 0, &cur);
+    //         summ.cbAllocated+= cur.cbAllocated;
+    //         summ.cbCommitted+= cur.cbCommitted;
+    //         summ.cbReserved+= cur.cbReserved;
+    //         summ.cbMaxReserve+= cur.cbMaxReserve;
+    //     }
+
+    //     printf("HEAP summary:%lu:\n", numHeaps);
+    //     printf("\t分配:%lld\n", summ.cbAllocated);
+    //     printf("\t提交:%lld\n", summ.cbCommitted);
+    //     printf("\t保留:%lld\n", summ.cbReserved);
+    //     printf("\t最大:%lld\n", summ.cbMaxReserve);
+    // }
+    // free(heaps);
+
     return refcObjCount;
 }
 //加引用计数

@@ -102,6 +102,7 @@ void Sgl$StructArrayBase_init_fields(Sgl$StructArrayBase *self){
 	((Sgl$StructArrayBase*)self)->capacity = 0;
 	((Sgl$StructArrayBase*)self)->elementSize = 1;
     }
+	((Object*)self)->dtor = (void*)Sgl$StructArrayBase$dtor;
 	((Sgl$StructArrayBase*)self)->getPtrData = (void*)Sgl$StructArrayBase$getPtrData;
 	((Sgl$StructArrayBase*)self)->getRaw = (void*)Sgl$StructArrayBase$getRaw;
 	((Sgl$StructArrayBase*)self)->equalsRaw = (void*)Sgl$StructArrayBase$equalsRaw;
@@ -151,6 +152,16 @@ Sgl$StructArrayBase * Sgl$StructArrayBase_new(void *pOwner){
 
 
 // class members
+void  Sgl$StructArrayBase$dtor(Sgl$StructArrayBase *  self){
+	void **  pdata = self->getPtrData(self) ;
+	if (pdata != NULL && (*pdata) != NULL) {
+		void *  data = *pdata;
+		free(data) ;
+		*pdata = NULL;
+	}
+}
+
+
 void **  Sgl$StructArrayBase$getPtrData(Sgl$StructArrayBase *  self){
 	return NULL; 
 }

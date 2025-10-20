@@ -148,6 +148,7 @@ class AssetDirTreeView extends LayoutLinear {
         }
     }
     void react(){
+        printf("AssetDirTreeView.react\n")
         Theme* t = themeIns()
         self.direction = str("column")
         self.alignItems = str("stretch")

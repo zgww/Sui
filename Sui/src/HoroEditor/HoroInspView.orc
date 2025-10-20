@@ -91,6 +91,7 @@ class HoroInspView extends LayoutLinear{
 
 
     void react(){
+        printf("HoroInspView.react\n")
         self.direction = str("column")
         self.alignItems = str("stretch")
         // self.backgroundColor = 0x0

@@ -21,6 +21,15 @@ class StructArrayBase{
     int capacity = 0
     int elementSize = 1
 
+    void dtor(){
+        void **pdata = self.getPtrData()
+        if pdata != null && (*pdata) != null{
+            void *data = *pdata;
+            free(data);
+            *pdata = null
+            // self.data = null
+        }
+    }
     //需要继承
     void **getPtrData(){
         return null

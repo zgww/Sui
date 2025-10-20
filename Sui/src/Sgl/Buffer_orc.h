@@ -113,6 +113,7 @@ void Sgl$StructArrayBase_init(Sgl$StructArrayBase *self, void *pOwner);
 Sgl$StructArrayBase * Sgl$StructArrayBase_new(void *pOwner);
 void Sgl$StructArrayBase_fini(Sgl$StructArrayBase *self);
 
+void  Sgl$StructArrayBase$dtor(Sgl$StructArrayBase *  self);
 void **  Sgl$StructArrayBase$getPtrData(Sgl$StructArrayBase *  self);
 char *  Sgl$StructArrayBase$getRaw(Sgl$StructArrayBase *  self);
 bool  Sgl$StructArrayBase$equalsRaw(Sgl$StructArrayBase *  self, char *  a, char *  b);

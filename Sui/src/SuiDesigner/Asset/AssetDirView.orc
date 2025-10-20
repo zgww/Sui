@@ -143,6 +143,7 @@ class AssetDirView extends LayoutLinear {
         useEbus().removeListener(self)
     }
     void react(){
+        printf("AssetDirView.react\n")
         Theme* t = themeIns()
 
         self.direction = str("column")

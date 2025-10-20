@@ -244,6 +244,7 @@ class HoroSceneHierView extends LayoutLinear {
         }
     }
     void react(int xxx){
+        printf("HoroSceneHierView.react\n")
         Theme* t = themeIns()
         self.direction = str("column")
         self.alignItems = str("stretch")
