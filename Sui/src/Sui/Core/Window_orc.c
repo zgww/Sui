@@ -218,7 +218,7 @@ void Sui$Window_init(Sui$Window *self, void *pOwner){
 // new function
 Sui$Window * Sui$Window_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sui$Window *self = calloc(1, sizeof(Sui$Window));
+    Sui$Window *self = ORC_CALLOC(1, sizeof(Sui$Window));
 	
     Sui$Window_init(self, pOwner);
     return self;
@@ -437,7 +437,7 @@ void Sui$DragCrossWindowIndicator_init(Sui$DragCrossWindowIndicator *self, void 
 // new function
 Sui$DragCrossWindowIndicator * Sui$DragCrossWindowIndicator_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sui$DragCrossWindowIndicator *self = calloc(1, sizeof(Sui$DragCrossWindowIndicator));
+    Sui$DragCrossWindowIndicator *self = ORC_CALLOC(1, sizeof(Sui$DragCrossWindowIndicator));
 	
     Sui$DragCrossWindowIndicator_init(self, pOwner);
     return self;

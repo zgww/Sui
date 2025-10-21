@@ -109,7 +109,7 @@ void SuiDialog$FileDialog_init(SuiDialog$FileDialog *self, void *pOwner){
 // new function
 SuiDialog$FileDialog * SuiDialog$FileDialog_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDialog$FileDialog *self = calloc(1, sizeof(SuiDialog$FileDialog));
+    SuiDialog$FileDialog *self = ORC_CALLOC(1, sizeof(SuiDialog$FileDialog));
 	
     SuiDialog$FileDialog_init(self, pOwner);
     return self;

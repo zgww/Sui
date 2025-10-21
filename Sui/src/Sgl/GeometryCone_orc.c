@@ -118,7 +118,7 @@ void Sgl$GeometryCone_init(Sgl$GeometryCone *self, void *pOwner){
 // new function
 Sgl$GeometryCone * Sgl$GeometryCone_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryCone *self = calloc(1, sizeof(Sgl$GeometryCone));
+    Sgl$GeometryCone *self = ORC_CALLOC(1, sizeof(Sgl$GeometryCone));
 	
     Sgl$GeometryCone_init(self, pOwner);
     return self;

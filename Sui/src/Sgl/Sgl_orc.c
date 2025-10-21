@@ -119,7 +119,7 @@ void Sgl$Sgl_init(Sgl$Sgl *self, void *pOwner){
 // new function
 Sgl$Sgl * Sgl$Sgl_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Sgl *self = calloc(1, sizeof(Sgl$Sgl));
+    Sgl$Sgl *self = ORC_CALLOC(1, sizeof(Sgl$Sgl));
 	
     Sgl$Sgl_init(self, pOwner);
     return self;
@@ -245,7 +245,7 @@ void Sgl$Test_init(Sgl$Test *self, void *pOwner){
 // new function
 Sgl$Test * Sgl$Test_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Test *self = calloc(1, sizeof(Sgl$Test));
+    Sgl$Test *self = ORC_CALLOC(1, sizeof(Sgl$Test));
 	
     Sgl$Test_init(self, pOwner);
     return self;
@@ -418,7 +418,7 @@ void Sgl$TestDraw_init(Sgl$TestDraw *self, void *pOwner){
 // new function
 Sgl$TestDraw * Sgl$TestDraw_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$TestDraw *self = calloc(1, sizeof(Sgl$TestDraw));
+    Sgl$TestDraw *self = ORC_CALLOC(1, sizeof(Sgl$TestDraw));
 	
     Sgl$TestDraw_init(self, pOwner);
     return self;

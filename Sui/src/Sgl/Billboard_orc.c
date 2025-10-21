@@ -137,7 +137,7 @@ void Sgl$Billboard_init(Sgl$Billboard *self, void *pOwner){
 // new function
 Sgl$Billboard * Sgl$Billboard_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Billboard *self = calloc(1, sizeof(Sgl$Billboard));
+    Sgl$Billboard *self = ORC_CALLOC(1, sizeof(Sgl$Billboard));
 	
     Sgl$Billboard_init(self, pOwner);
     return self;

@@ -111,7 +111,7 @@ void Sgl$Light_init(Sgl$Light *self, void *pOwner){
 // new function
 Sgl$Light * Sgl$Light_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Light *self = calloc(1, sizeof(Sgl$Light));
+    Sgl$Light *self = ORC_CALLOC(1, sizeof(Sgl$Light));
 	
     Sgl$Light_init(self, pOwner);
     return self;

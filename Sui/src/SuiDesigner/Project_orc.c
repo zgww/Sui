@@ -134,7 +134,7 @@ void SuiDesigner$Project_init(SuiDesigner$Project *self, void *pOwner){
 // new function
 SuiDesigner$Project * SuiDesigner$Project_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Project *self = calloc(1, sizeof(SuiDesigner$Project));
+    SuiDesigner$Project *self = ORC_CALLOC(1, sizeof(SuiDesigner$Project));
 	
     SuiDesigner$Project_init(self, pOwner);
     return self;

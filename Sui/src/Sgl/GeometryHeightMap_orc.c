@@ -157,7 +157,7 @@ void Sgl$GeometryHeightMap_init(Sgl$GeometryHeightMap *self, void *pOwner){
 // new function
 Sgl$GeometryHeightMap * Sgl$GeometryHeightMap_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryHeightMap *self = calloc(1, sizeof(Sgl$GeometryHeightMap));
+    Sgl$GeometryHeightMap *self = ORC_CALLOC(1, sizeof(Sgl$GeometryHeightMap));
 	
     Sgl$GeometryHeightMap_init(self, pOwner);
     return self;

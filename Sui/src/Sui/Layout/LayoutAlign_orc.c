@@ -123,7 +123,7 @@ void SuiLayout$LayoutAlignPositionCell_init(SuiLayout$LayoutAlignPositionCell *s
 // new function
 SuiLayout$LayoutAlignPositionCell * SuiLayout$LayoutAlignPositionCell_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutAlignPositionCell *self = calloc(1, sizeof(SuiLayout$LayoutAlignPositionCell));
+    SuiLayout$LayoutAlignPositionCell *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutAlignPositionCell));
 	
     SuiLayout$LayoutAlignPositionCell_init(self, pOwner);
     return self;
@@ -249,7 +249,7 @@ void SuiLayout$LayoutAlignCell_init(SuiLayout$LayoutAlignCell *self, void *pOwne
 // new function
 SuiLayout$LayoutAlignCell * SuiLayout$LayoutAlignCell_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutAlignCell *self = calloc(1, sizeof(SuiLayout$LayoutAlignCell));
+    SuiLayout$LayoutAlignCell *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutAlignCell));
 	
     SuiLayout$LayoutAlignCell_init(self, pOwner);
     return self;
@@ -431,7 +431,7 @@ void SuiLayout$LayoutAlign_init(SuiLayout$LayoutAlign *self, void *pOwner){
 // new function
 SuiLayout$LayoutAlign * SuiLayout$LayoutAlign_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutAlign *self = calloc(1, sizeof(SuiLayout$LayoutAlign));
+    SuiLayout$LayoutAlign *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutAlign));
 	
     SuiLayout$LayoutAlign_init(self, pOwner);
     return self;

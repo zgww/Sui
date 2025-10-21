@@ -111,7 +111,7 @@ void SuiCore$Event_init(SuiCore$Event *self, void *pOwner){
 // new function
 SuiCore$Event * SuiCore$Event_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Event *self = calloc(1, sizeof(SuiCore$Event));
+    SuiCore$Event *self = ORC_CALLOC(1, sizeof(SuiCore$Event));
 	
     SuiCore$Event_init(self, pOwner);
     return self;

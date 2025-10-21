@@ -128,7 +128,7 @@ void SuiDesigner$ChessBgViewCallback_init(SuiDesigner$ChessBgViewCallback *self,
 // new function
 SuiDesigner$ChessBgViewCallback * SuiDesigner$ChessBgViewCallback_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ChessBgViewCallback *self = calloc(1, sizeof(SuiDesigner$ChessBgViewCallback));
+    SuiDesigner$ChessBgViewCallback *self = ORC_CALLOC(1, sizeof(SuiDesigner$ChessBgViewCallback));
 	
     SuiDesigner$ChessBgViewCallback_init(self, pOwner);
     return self;

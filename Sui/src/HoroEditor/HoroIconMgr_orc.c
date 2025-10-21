@@ -157,7 +157,7 @@ void HoroEditor$HoroMaterialIconCreator_init(HoroEditor$HoroMaterialIconCreator 
 // new function
 HoroEditor$HoroMaterialIconCreator * HoroEditor$HoroMaterialIconCreator_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroMaterialIconCreator *self = calloc(1, sizeof(HoroEditor$HoroMaterialIconCreator));
+    HoroEditor$HoroMaterialIconCreator *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroMaterialIconCreator));
 	
     HoroEditor$HoroMaterialIconCreator_init(self, pOwner);
     return self;
@@ -356,7 +356,7 @@ void HoroEditor$HoroModelIconCreator_init(HoroEditor$HoroModelIconCreator *self,
 // new function
 HoroEditor$HoroModelIconCreator * HoroEditor$HoroModelIconCreator_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroModelIconCreator *self = calloc(1, sizeof(HoroEditor$HoroModelIconCreator));
+    HoroEditor$HoroModelIconCreator *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroModelIconCreator));
 	
     HoroEditor$HoroModelIconCreator_init(self, pOwner);
     return self;
@@ -554,7 +554,7 @@ void HoroEditor$HoroGeometryJsonIconCreator_init(HoroEditor$HoroGeometryJsonIcon
 // new function
 HoroEditor$HoroGeometryJsonIconCreator * HoroEditor$HoroGeometryJsonIconCreator_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroGeometryJsonIconCreator *self = calloc(1, sizeof(HoroEditor$HoroGeometryJsonIconCreator));
+    HoroEditor$HoroGeometryJsonIconCreator *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroGeometryJsonIconCreator));
 	
     HoroEditor$HoroGeometryJsonIconCreator_init(self, pOwner);
     return self;
@@ -738,7 +738,7 @@ void HoroEditor$HoroIconMgr_init(HoroEditor$HoroIconMgr *self, void *pOwner){
 // new function
 HoroEditor$HoroIconMgr * HoroEditor$HoroIconMgr_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroIconMgr *self = calloc(1, sizeof(HoroEditor$HoroIconMgr));
+    HoroEditor$HoroIconMgr *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroIconMgr));
 	
     HoroEditor$HoroIconMgr_init(self, pOwner);
     return self;

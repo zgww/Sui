@@ -125,7 +125,7 @@ void SuiLayout$RowWrap_init(SuiLayout$RowWrap *self, void *pOwner){
 // new function
 SuiLayout$RowWrap * SuiLayout$RowWrap_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$RowWrap *self = calloc(1, sizeof(SuiLayout$RowWrap));
+    SuiLayout$RowWrap *self = ORC_CALLOC(1, sizeof(SuiLayout$RowWrap));
 	
     SuiLayout$RowWrap_init(self, pOwner);
     return self;

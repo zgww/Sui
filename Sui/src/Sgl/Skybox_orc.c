@@ -172,7 +172,7 @@ void Sgl$Skybox_init(Sgl$Skybox *self, void *pOwner){
 // new function
 Sgl$Skybox * Sgl$Skybox_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Skybox *self = calloc(1, sizeof(Sgl$Skybox));
+    Sgl$Skybox *self = ORC_CALLOC(1, sizeof(Sgl$Skybox));
 	
     Sgl$Skybox_init(self, pOwner);
     return self;

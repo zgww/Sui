@@ -116,7 +116,7 @@ void Sgl$DepthFloatPixlesReader_init(Sgl$DepthFloatPixlesReader *self, void *pOw
 // new function
 Sgl$DepthFloatPixlesReader * Sgl$DepthFloatPixlesReader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$DepthFloatPixlesReader *self = calloc(1, sizeof(Sgl$DepthFloatPixlesReader));
+    Sgl$DepthFloatPixlesReader *self = ORC_CALLOC(1, sizeof(Sgl$DepthFloatPixlesReader));
 	
     Sgl$DepthFloatPixlesReader_init(self, pOwner);
     return self;
@@ -244,7 +244,7 @@ void Sgl$RgbaPixelsReader_init(Sgl$RgbaPixelsReader *self, void *pOwner){
 // new function
 Sgl$RgbaPixelsReader * Sgl$RgbaPixelsReader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$RgbaPixelsReader *self = calloc(1, sizeof(Sgl$RgbaPixelsReader));
+    Sgl$RgbaPixelsReader *self = ORC_CALLOC(1, sizeof(Sgl$RgbaPixelsReader));
 	
     Sgl$RgbaPixelsReader_init(self, pOwner);
     return self;

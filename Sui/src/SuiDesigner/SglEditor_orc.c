@@ -663,7 +663,7 @@ void SuiDesigner3d$SglEditorSceneViewCallback_init(SuiDesigner3d$SglEditorSceneV
 // new function
 SuiDesigner3d$SglEditorSceneViewCallback * SuiDesigner3d$SglEditorSceneViewCallback_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d$SglEditorSceneViewCallback *self = calloc(1, sizeof(SuiDesigner3d$SglEditorSceneViewCallback));
+    SuiDesigner3d$SglEditorSceneViewCallback *self = ORC_CALLOC(1, sizeof(SuiDesigner3d$SglEditorSceneViewCallback));
 	
     SuiDesigner3d$SglEditorSceneViewCallback_init(self, pOwner);
     return self;
@@ -868,7 +868,7 @@ void SuiDesigner3d$SglEditor_init(SuiDesigner3d$SglEditor *self, void *pOwner){
 // new function
 SuiDesigner3d$SglEditor * SuiDesigner3d$SglEditor_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d$SglEditor *self = calloc(1, sizeof(SuiDesigner3d$SglEditor));
+    SuiDesigner3d$SglEditor *self = ORC_CALLOC(1, sizeof(SuiDesigner3d$SglEditor));
 	
     SuiDesigner3d$SglEditor_init(self, pOwner);
     return self;

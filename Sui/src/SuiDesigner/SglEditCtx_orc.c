@@ -169,7 +169,7 @@ void SuiDesigner$EventSglSceneChanged_init(SuiDesigner$EventSglSceneChanged *sel
 // new function
 SuiDesigner$EventSglSceneChanged * SuiDesigner$EventSglSceneChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EventSglSceneChanged *self = calloc(1, sizeof(SuiDesigner$EventSglSceneChanged));
+    SuiDesigner$EventSglSceneChanged *self = ORC_CALLOC(1, sizeof(SuiDesigner$EventSglSceneChanged));
 	
     SuiDesigner$EventSglSceneChanged_init(self, pOwner);
     return self;
@@ -273,7 +273,7 @@ void SuiDesigner$EventSglSelectedChanged_init(SuiDesigner$EventSglSelectedChange
 // new function
 SuiDesigner$EventSglSelectedChanged * SuiDesigner$EventSglSelectedChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EventSglSelectedChanged *self = calloc(1, sizeof(SuiDesigner$EventSglSelectedChanged));
+    SuiDesigner$EventSglSelectedChanged *self = ORC_CALLOC(1, sizeof(SuiDesigner$EventSglSelectedChanged));
 	
     SuiDesigner$EventSglSelectedChanged_init(self, pOwner);
     return self;
@@ -393,7 +393,7 @@ void SuiDesigner$SglEditCtx_init(SuiDesigner$SglEditCtx *self, void *pOwner){
 // new function
 SuiDesigner$SglEditCtx * SuiDesigner$SglEditCtx_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SglEditCtx *self = calloc(1, sizeof(SuiDesigner$SglEditCtx));
+    SuiDesigner$SglEditCtx *self = ORC_CALLOC(1, sizeof(SuiDesigner$SglEditCtx));
 	
     SuiDesigner$SglEditCtx_init(self, pOwner);
     return self;

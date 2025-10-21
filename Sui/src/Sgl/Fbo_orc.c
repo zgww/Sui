@@ -222,7 +222,7 @@ void Sgl$Fbo_init(Sgl$Fbo *self, void *pOwner){
 // new function
 Sgl$Fbo * Sgl$Fbo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Fbo *self = calloc(1, sizeof(Sgl$Fbo));
+    Sgl$Fbo *self = ORC_CALLOC(1, sizeof(Sgl$Fbo));
 	
     Sgl$Fbo_init(self, pOwner);
     return self;
@@ -459,7 +459,7 @@ void Sgl$Rbo_init(Sgl$Rbo *self, void *pOwner){
 // new function
 Sgl$Rbo * Sgl$Rbo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Rbo *self = calloc(1, sizeof(Sgl$Rbo));
+    Sgl$Rbo *self = ORC_CALLOC(1, sizeof(Sgl$Rbo));
 	
     Sgl$Rbo_init(self, pOwner);
     return self;

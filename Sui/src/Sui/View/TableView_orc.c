@@ -123,7 +123,7 @@ void SuiView$TableViewColumn_init(SuiView$TableViewColumn *self, void *pOwner){
 // new function
 SuiView$TableViewColumn * SuiView$TableViewColumn_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TableViewColumn *self = calloc(1, sizeof(SuiView$TableViewColumn));
+    SuiView$TableViewColumn *self = ORC_CALLOC(1, sizeof(SuiView$TableViewColumn));
 	
     SuiView$TableViewColumn_init(self, pOwner);
     return self;
@@ -258,7 +258,7 @@ void SuiView$TableView_init(SuiView$TableView *self, void *pOwner){
 // new function
 SuiView$TableView * SuiView$TableView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TableView *self = calloc(1, sizeof(SuiView$TableView));
+    SuiView$TableView *self = ORC_CALLOC(1, sizeof(SuiView$TableView));
 	
     SuiView$TableView_init(self, pOwner);
     return self;

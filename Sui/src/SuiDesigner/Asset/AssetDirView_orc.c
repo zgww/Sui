@@ -250,7 +250,7 @@ void SuiDesigner$SelectFileItems_init(SuiDesigner$SelectFileItems *self, void *p
 // new function
 SuiDesigner$SelectFileItems * SuiDesigner$SelectFileItems_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SelectFileItems *self = calloc(1, sizeof(SuiDesigner$SelectFileItems));
+    SuiDesigner$SelectFileItems *self = ORC_CALLOC(1, sizeof(SuiDesigner$SelectFileItems));
 	
     SuiDesigner$SelectFileItems_init(self, pOwner);
     return self;
@@ -438,7 +438,7 @@ void SuiDesigner$AssetDirView_init(SuiDesigner$AssetDirView *self, void *pOwner)
 // new function
 SuiDesigner$AssetDirView * SuiDesigner$AssetDirView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$AssetDirView *self = calloc(1, sizeof(SuiDesigner$AssetDirView));
+    SuiDesigner$AssetDirView *self = ORC_CALLOC(1, sizeof(SuiDesigner$AssetDirView));
 	
     SuiDesigner$AssetDirView_init(self, pOwner);
     return self;

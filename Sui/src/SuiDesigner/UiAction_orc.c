@@ -410,7 +410,7 @@ void SuiDesigner$ClipboardForANodes_init(SuiDesigner$ClipboardForANodes *self, v
 // new function
 SuiDesigner$ClipboardForANodes * SuiDesigner$ClipboardForANodes_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ClipboardForANodes *self = calloc(1, sizeof(SuiDesigner$ClipboardForANodes));
+    SuiDesigner$ClipboardForANodes *self = ORC_CALLOC(1, sizeof(SuiDesigner$ClipboardForANodes));
 	
     SuiDesigner$ClipboardForANodes_init(self, pOwner);
     return self;

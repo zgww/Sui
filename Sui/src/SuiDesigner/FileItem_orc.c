@@ -148,7 +148,7 @@ void SuiDesigner$FileItem_init(SuiDesigner$FileItem *self, void *pOwner){
 // new function
 SuiDesigner$FileItem * SuiDesigner$FileItem_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$FileItem *self = calloc(1, sizeof(SuiDesigner$FileItem));
+    SuiDesigner$FileItem *self = ORC_CALLOC(1, sizeof(SuiDesigner$FileItem));
 	
     SuiDesigner$FileItem_init(self, pOwner);
     return self;

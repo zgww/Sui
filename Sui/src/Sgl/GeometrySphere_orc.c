@@ -130,7 +130,7 @@ void Sgl$GeometrySphere_init(Sgl$GeometrySphere *self, void *pOwner){
 // new function
 Sgl$GeometrySphere * Sgl$GeometrySphere_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometrySphere *self = calloc(1, sizeof(Sgl$GeometrySphere));
+    Sgl$GeometrySphere *self = ORC_CALLOC(1, sizeof(Sgl$GeometrySphere));
 	
     Sgl$GeometrySphere_init(self, pOwner);
     return self;

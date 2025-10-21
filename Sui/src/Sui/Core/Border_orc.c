@@ -127,7 +127,7 @@ void SuiCore$Border_init(SuiCore$Border *self, void *pOwner){
 // new function
 SuiCore$Border * SuiCore$Border_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Border *self = calloc(1, sizeof(SuiCore$Border));
+    SuiCore$Border *self = ORC_CALLOC(1, sizeof(SuiCore$Border));
 	
     SuiCore$Border_init(self, pOwner);
     return self;

@@ -3,7 +3,6 @@
 #include <string.h>
 #include "./Orc.h"
 
-#include <Windows.h>
 #include "Orc/Orc.h"
 #include "UrgcDll/urgc_api.h"
 #include "./ScopeData_orc.h"
@@ -29,7 +28,7 @@ Vtable_Object *orc_Vtable_Closure_init(){
 }
 
 OrcMetaField * orc_newMetaField(OrcMetaField ***pNext){
-    OrcMetaField *cur = calloc(1, sizeof(OrcMetaField));
+    OrcMetaField *cur = ORC_CALLOC(1, sizeof(OrcMetaField));
     **pNext = cur;
     *pNext = &cur->next;
     return cur;
@@ -47,7 +46,7 @@ void Object_initMeta(Vtable_Object *pvt){
 }
 
 void orc_initMetaStruct(MetaStruct **pmeta, const char *name, int size){
-    *pmeta = calloc(1, sizeof(MetaStruct));
+    *pmeta = ORC_CALLOC(1, sizeof(MetaStruct));
     MetaStruct *meta = *pmeta;
     meta->flag[0] = 'M';
     meta->flag[1] = 'T';
@@ -167,7 +166,7 @@ void Object_init(Object* self, void *pOwner) {
 }
 Object* Object_new(void *pOwner) {
 	if (pOwner == NULL){ return NULL;}
-    Object* a = calloc(1, sizeof(Object));
+    Object* a = ORC_CALLOC(1, sizeof(Object));
     Object_init(a, pOwner);
 
     return a;
@@ -203,7 +202,7 @@ static void _orc_free(void *p){
 //有bug, 闭包对block的引用，没有解引用。。。看来闭包还是要先转为class来实现更完整，也更容易
 void *orc_alloc_and_set_deleter(int size, void *deleter){
 // void *orc_malloc_closure(int size){
-    void *ret = calloc(1, size <= 0 ? 4 : size);
+    void *ret = ORC_CALLOC(1, size <= 0 ? 4 : size);
 
     if (deleter != NULL){
         urgc_set_deleter(ret, deleter);

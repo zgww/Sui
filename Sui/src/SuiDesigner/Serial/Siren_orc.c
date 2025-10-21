@@ -152,7 +152,7 @@ void SuiDesigner$ReflectionSerializer_init(SuiDesigner$ReflectionSerializer *sel
 // new function
 SuiDesigner$ReflectionSerializer * SuiDesigner$ReflectionSerializer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ReflectionSerializer *self = calloc(1, sizeof(SuiDesigner$ReflectionSerializer));
+    SuiDesigner$ReflectionSerializer *self = ORC_CALLOC(1, sizeof(SuiDesigner$ReflectionSerializer));
 	
     SuiDesigner$ReflectionSerializer_init(self, pOwner);
     return self;
@@ -606,7 +606,7 @@ void SuiDesigner$ReflectionDeserializer_init(SuiDesigner$ReflectionDeserializer 
 // new function
 SuiDesigner$ReflectionDeserializer * SuiDesigner$ReflectionDeserializer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ReflectionDeserializer *self = calloc(1, sizeof(SuiDesigner$ReflectionDeserializer));
+    SuiDesigner$ReflectionDeserializer *self = ORC_CALLOC(1, sizeof(SuiDesigner$ReflectionDeserializer));
 	
     SuiDesigner$ReflectionDeserializer_init(self, pOwner);
     return self;

@@ -123,7 +123,7 @@ void Sgl$GeometryCircle_init(Sgl$GeometryCircle *self, void *pOwner){
 // new function
 Sgl$GeometryCircle * Sgl$GeometryCircle_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryCircle *self = calloc(1, sizeof(Sgl$GeometryCircle));
+    Sgl$GeometryCircle *self = ORC_CALLOC(1, sizeof(Sgl$GeometryCircle));
 	
     Sgl$GeometryCircle_init(self, pOwner);
     return self;

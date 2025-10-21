@@ -680,7 +680,7 @@ void SuiDesigner3d$W3eEditor_init(SuiDesigner3d$W3eEditor *self, void *pOwner){
 // new function
 SuiDesigner3d$W3eEditor * SuiDesigner3d$W3eEditor_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d$W3eEditor *self = calloc(1, sizeof(SuiDesigner3d$W3eEditor));
+    SuiDesigner3d$W3eEditor *self = ORC_CALLOC(1, sizeof(SuiDesigner3d$W3eEditor));
 	
     SuiDesigner3d$W3eEditor_init(self, pOwner);
     return self;

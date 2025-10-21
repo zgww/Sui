@@ -207,7 +207,7 @@ void SuiCore$ViewBase_init(SuiCore$ViewBase *self, void *pOwner){
 // new function
 SuiCore$ViewBase * SuiCore$ViewBase_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$ViewBase *self = calloc(1, sizeof(SuiCore$ViewBase));
+    SuiCore$ViewBase *self = ORC_CALLOC(1, sizeof(SuiCore$ViewBase));
 	
     SuiCore$ViewBase_init(self, pOwner);
     return self;

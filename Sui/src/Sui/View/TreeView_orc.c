@@ -245,7 +245,7 @@ void SuiView$TreeState_init(SuiView$TreeState *self, void *pOwner){
 // new function
 SuiView$TreeState * SuiView$TreeState_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TreeState *self = calloc(1, sizeof(SuiView$TreeState));
+    SuiView$TreeState *self = ORC_CALLOC(1, sizeof(SuiView$TreeState));
 	
     SuiView$TreeState_init(self, pOwner);
     return self;
@@ -522,7 +522,7 @@ void SuiView$TreeView_init(SuiView$TreeView *self, void *pOwner){
 // new function
 SuiView$TreeView * SuiView$TreeView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TreeView *self = calloc(1, sizeof(SuiView$TreeView));
+    SuiView$TreeView *self = ORC_CALLOC(1, sizeof(SuiView$TreeView));
 	
     SuiView$TreeView_init(self, pOwner);
     return self;
@@ -703,7 +703,7 @@ void SuiView$TreeSelfCtrlView_init(SuiView$TreeSelfCtrlView *self, void *pOwner)
 // new function
 SuiView$TreeSelfCtrlView * SuiView$TreeSelfCtrlView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TreeSelfCtrlView *self = calloc(1, sizeof(SuiView$TreeSelfCtrlView));
+    SuiView$TreeSelfCtrlView *self = ORC_CALLOC(1, sizeof(SuiView$TreeSelfCtrlView));
 	
     SuiView$TreeSelfCtrlView_init(self, pOwner);
     return self;

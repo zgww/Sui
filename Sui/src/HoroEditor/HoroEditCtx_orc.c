@@ -239,7 +239,7 @@ void HoroEditor$EventHoroSceneChanged_init(HoroEditor$EventHoroSceneChanged *sel
 // new function
 HoroEditor$EventHoroSceneChanged * HoroEditor$EventHoroSceneChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$EventHoroSceneChanged *self = calloc(1, sizeof(HoroEditor$EventHoroSceneChanged));
+    HoroEditor$EventHoroSceneChanged *self = ORC_CALLOC(1, sizeof(HoroEditor$EventHoroSceneChanged));
 	
     HoroEditor$EventHoroSceneChanged_init(self, pOwner);
     return self;
@@ -343,7 +343,7 @@ void HoroEditor$EventHoroSelectedChanged_init(HoroEditor$EventHoroSelectedChange
 // new function
 HoroEditor$EventHoroSelectedChanged * HoroEditor$EventHoroSelectedChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$EventHoroSelectedChanged *self = calloc(1, sizeof(HoroEditor$EventHoroSelectedChanged));
+    HoroEditor$EventHoroSelectedChanged *self = ORC_CALLOC(1, sizeof(HoroEditor$EventHoroSelectedChanged));
 	
     HoroEditor$EventHoroSelectedChanged_init(self, pOwner);
     return self;
@@ -476,7 +476,7 @@ void HoroEditor$HoroEditCtx_init(HoroEditor$HoroEditCtx *self, void *pOwner){
 // new function
 HoroEditor$HoroEditCtx * HoroEditor$HoroEditCtx_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroEditCtx *self = calloc(1, sizeof(HoroEditor$HoroEditCtx));
+    HoroEditor$HoroEditCtx *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroEditCtx));
 	
     HoroEditor$HoroEditCtx_init(self, pOwner);
     return self;

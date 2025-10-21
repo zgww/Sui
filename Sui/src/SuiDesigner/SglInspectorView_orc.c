@@ -148,7 +148,7 @@ void SuiDesigner$SglInspectorView_init(SuiDesigner$SglInspectorView *self, void 
 // new function
 SuiDesigner$SglInspectorView * SuiDesigner$SglInspectorView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SglInspectorView *self = calloc(1, sizeof(SuiDesigner$SglInspectorView));
+    SuiDesigner$SglInspectorView *self = ORC_CALLOC(1, sizeof(SuiDesigner$SglInspectorView));
 	
     SuiDesigner$SglInspectorView_init(self, pOwner);
     return self;

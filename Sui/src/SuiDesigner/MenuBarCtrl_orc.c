@@ -203,7 +203,7 @@ void SuiDesigner$MenuBarCtrl_init(SuiDesigner$MenuBarCtrl *self, void *pOwner){
 // new function
 SuiDesigner$MenuBarCtrl * SuiDesigner$MenuBarCtrl_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$MenuBarCtrl *self = calloc(1, sizeof(SuiDesigner$MenuBarCtrl));
+    SuiDesigner$MenuBarCtrl *self = ORC_CALLOC(1, sizeof(SuiDesigner$MenuBarCtrl));
 	
     SuiDesigner$MenuBarCtrl_init(self, pOwner);
     return self;

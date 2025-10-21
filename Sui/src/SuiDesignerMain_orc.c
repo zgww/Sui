@@ -388,7 +388,7 @@ void MenuBarCtrl_init(MenuBarCtrl *self, void *pOwner){
 // new function
 MenuBarCtrl * MenuBarCtrl_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    MenuBarCtrl *self = calloc(1, sizeof(MenuBarCtrl));
+    MenuBarCtrl *self = ORC_CALLOC(1, sizeof(MenuBarCtrl));
 	
     MenuBarCtrl_init(self, pOwner);
     return self;
@@ -827,7 +827,7 @@ void Tmp_init(Tmp *self, void *pOwner){
 // new function
 Tmp * Tmp_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Tmp *self = calloc(1, sizeof(Tmp));
+    Tmp *self = ORC_CALLOC(1, sizeof(Tmp));
 	
     Tmp_init(self, pOwner);
     return self;
@@ -952,7 +952,7 @@ void TmpListener_init(TmpListener *self, void *pOwner){
 // new function
 TmpListener * TmpListener_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    TmpListener *self = calloc(1, sizeof(TmpListener));
+    TmpListener *self = ORC_CALLOC(1, sizeof(TmpListener));
 	
     TmpListener_init(self, pOwner);
     return self;
@@ -1071,7 +1071,7 @@ void TmpListener2_init(TmpListener2 *self, void *pOwner){
 // new function
 TmpListener2 * TmpListener2_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    TmpListener2 *self = calloc(1, sizeof(TmpListener2));
+    TmpListener2 *self = ORC_CALLOC(1, sizeof(TmpListener2));
 	
     TmpListener2_init(self, pOwner);
     return self;
@@ -1189,7 +1189,7 @@ void ClickListener_init(ClickListener *self, void *pOwner){
 // new function
 ClickListener * ClickListener_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    ClickListener *self = calloc(1, sizeof(ClickListener));
+    ClickListener *self = ORC_CALLOC(1, sizeof(ClickListener));
 	
     ClickListener_init(self, pOwner);
     return self;
@@ -1590,7 +1590,7 @@ void Tmp3_init(Tmp3 *self, void *pOwner){
 // new function
 Tmp3 * Tmp3_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Tmp3 *self = calloc(1, sizeof(Tmp3));
+    Tmp3 *self = ORC_CALLOC(1, sizeof(Tmp3));
 	
     Tmp3_init(self, pOwner);
     return self;
@@ -1698,7 +1698,7 @@ void Tmp2_init(Tmp2 *self, void *pOwner){
 // new function
 Tmp2 * Tmp2_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Tmp2 *self = calloc(1, sizeof(Tmp2));
+    Tmp2 *self = ORC_CALLOC(1, sizeof(Tmp2));
 	
     Tmp2_init(self, pOwner);
     return self;

@@ -111,7 +111,7 @@ void SuiCore$FocusEvent_init(SuiCore$FocusEvent *self, void *pOwner){
 // new function
 SuiCore$FocusEvent * SuiCore$FocusEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$FocusEvent *self = calloc(1, sizeof(SuiCore$FocusEvent));
+    SuiCore$FocusEvent *self = ORC_CALLOC(1, sizeof(SuiCore$FocusEvent));
 	
     SuiCore$FocusEvent_init(self, pOwner);
     return self;
@@ -232,7 +232,7 @@ void SuiCore$Focus_init(SuiCore$Focus *self, void *pOwner){
 // new function
 SuiCore$Focus * SuiCore$Focus_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Focus *self = calloc(1, sizeof(SuiCore$Focus));
+    SuiCore$Focus *self = ORC_CALLOC(1, sizeof(SuiCore$Focus));
 	
     SuiCore$Focus_init(self, pOwner);
     return self;

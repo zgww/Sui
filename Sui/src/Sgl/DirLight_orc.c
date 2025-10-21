@@ -115,7 +115,7 @@ void Sgl$DirLight_init(Sgl$DirLight *self, void *pOwner){
 // new function
 Sgl$DirLight * Sgl$DirLight_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$DirLight *self = calloc(1, sizeof(Sgl$DirLight));
+    Sgl$DirLight *self = ORC_CALLOC(1, sizeof(Sgl$DirLight));
 	
     Sgl$DirLight_init(self, pOwner);
     return self;

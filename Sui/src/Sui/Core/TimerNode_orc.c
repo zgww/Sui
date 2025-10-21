@@ -106,7 +106,7 @@ void SuiCore$TimerNode_init(SuiCore$TimerNode *self, void *pOwner){
 // new function
 SuiCore$TimerNode * SuiCore$TimerNode_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$TimerNode *self = calloc(1, sizeof(SuiCore$TimerNode));
+    SuiCore$TimerNode *self = ORC_CALLOC(1, sizeof(SuiCore$TimerNode));
 	
     SuiCore$TimerNode_init(self, pOwner);
     return self;

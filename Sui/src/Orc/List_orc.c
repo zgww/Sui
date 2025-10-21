@@ -158,7 +158,7 @@ void Orc$List_init(Orc$List *self, void *pOwner){
 // new function
 Orc$List * Orc$List_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$List *self = calloc(1, sizeof(Orc$List));
+    Orc$List *self = ORC_CALLOC(1, sizeof(Orc$List));
 	
     Orc$List_init(self, pOwner);
     return self;
@@ -430,7 +430,7 @@ void Orc$PointerArray_init(Orc$PointerArray *self, void *pOwner){
 // new function
 Orc$PointerArray * Orc$PointerArray_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$PointerArray *self = calloc(1, sizeof(Orc$PointerArray));
+    Orc$PointerArray *self = ORC_CALLOC(1, sizeof(Orc$PointerArray));
 	
     Orc$PointerArray_init(self, pOwner);
     return self;

@@ -108,7 +108,7 @@ void SuiCore$Canvas_init(SuiCore$Canvas *self, void *pOwner){
 // new function
 SuiCore$Canvas * SuiCore$Canvas_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Canvas *self = calloc(1, sizeof(SuiCore$Canvas));
+    SuiCore$Canvas *self = ORC_CALLOC(1, sizeof(SuiCore$Canvas));
 	
     SuiCore$Canvas_init(self, pOwner);
     return self;

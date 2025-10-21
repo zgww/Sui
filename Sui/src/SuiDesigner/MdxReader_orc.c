@@ -187,7 +187,7 @@ void SuiDesigner3d_w3e$MdxSeqPlayer_init(SuiDesigner3d_w3e$MdxSeqPlayer *self, v
 // new function
 SuiDesigner3d_w3e$MdxSeqPlayer * SuiDesigner3d_w3e$MdxSeqPlayer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$MdxSeqPlayer *self = calloc(1, sizeof(SuiDesigner3d_w3e$MdxSeqPlayer));
+    SuiDesigner3d_w3e$MdxSeqPlayer *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$MdxSeqPlayer));
 	
     SuiDesigner3d_w3e$MdxSeqPlayer_init(self, pOwner);
     return self;
@@ -402,7 +402,7 @@ void SuiDesigner3d_w3e$FaceFX_init(SuiDesigner3d_w3e$FaceFX *self, void *pOwner)
 // new function
 SuiDesigner3d_w3e$FaceFX * SuiDesigner3d_w3e$FaceFX_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$FaceFX *self = calloc(1, sizeof(SuiDesigner3d_w3e$FaceFX));
+    SuiDesigner3d_w3e$FaceFX *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$FaceFX));
 	
     SuiDesigner3d_w3e$FaceFX_init(self, pOwner);
     return self;
@@ -507,7 +507,7 @@ void SuiDesigner3d_w3e$LayerTexture_init(SuiDesigner3d_w3e$LayerTexture *self, v
 // new function
 SuiDesigner3d_w3e$LayerTexture * SuiDesigner3d_w3e$LayerTexture_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$LayerTexture *self = calloc(1, sizeof(SuiDesigner3d_w3e$LayerTexture));
+    SuiDesigner3d_w3e$LayerTexture *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$LayerTexture));
 	
     SuiDesigner3d_w3e$LayerTexture_init(self, pOwner);
     return self;
@@ -637,7 +637,7 @@ void SuiDesigner3d_w3e$Layer_init(SuiDesigner3d_w3e$Layer *self, void *pOwner){
 // new function
 SuiDesigner3d_w3e$Layer * SuiDesigner3d_w3e$Layer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$Layer *self = calloc(1, sizeof(SuiDesigner3d_w3e$Layer));
+    SuiDesigner3d_w3e$Layer *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$Layer));
 	
     SuiDesigner3d_w3e$Layer_init(self, pOwner);
     return self;
@@ -744,7 +744,7 @@ void SuiDesigner3d_w3e$MdxMaterial_init(SuiDesigner3d_w3e$MdxMaterial *self, voi
 // new function
 SuiDesigner3d_w3e$MdxMaterial * SuiDesigner3d_w3e$MdxMaterial_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$MdxMaterial *self = calloc(1, sizeof(SuiDesigner3d_w3e$MdxMaterial));
+    SuiDesigner3d_w3e$MdxMaterial *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$MdxMaterial));
 	
     SuiDesigner3d_w3e$MdxMaterial_init(self, pOwner);
     return self;
@@ -879,7 +879,7 @@ void SuiDesigner3d_w3e$Sequence_init(SuiDesigner3d_w3e$Sequence *self, void *pOw
 // new function
 SuiDesigner3d_w3e$Sequence * SuiDesigner3d_w3e$Sequence_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$Sequence *self = calloc(1, sizeof(SuiDesigner3d_w3e$Sequence));
+    SuiDesigner3d_w3e$Sequence *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$Sequence));
 	
     SuiDesigner3d_w3e$Sequence_init(self, pOwner);
     return self;
@@ -994,7 +994,7 @@ void SuiDesigner3d_w3e$GlobalSeq_init(SuiDesigner3d_w3e$GlobalSeq *self, void *p
 // new function
 SuiDesigner3d_w3e$GlobalSeq * SuiDesigner3d_w3e$GlobalSeq_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$GlobalSeq *self = calloc(1, sizeof(SuiDesigner3d_w3e$GlobalSeq));
+    SuiDesigner3d_w3e$GlobalSeq *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$GlobalSeq));
 	
     SuiDesigner3d_w3e$GlobalSeq_init(self, pOwner);
     return self;
@@ -1108,7 +1108,7 @@ void SuiDesigner3d_w3e$TextureData_init(SuiDesigner3d_w3e$TextureData *self, voi
 // new function
 SuiDesigner3d_w3e$TextureData * SuiDesigner3d_w3e$TextureData_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$TextureData *self = calloc(1, sizeof(SuiDesigner3d_w3e$TextureData));
+    SuiDesigner3d_w3e$TextureData *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$TextureData));
 	
     SuiDesigner3d_w3e$TextureData_init(self, pOwner);
     return self;
@@ -1258,7 +1258,7 @@ void SuiDesigner3d_w3e$GeosetGroup_init(SuiDesigner3d_w3e$GeosetGroup *self, voi
 // new function
 SuiDesigner3d_w3e$GeosetGroup * SuiDesigner3d_w3e$GeosetGroup_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$GeosetGroup *self = calloc(1, sizeof(SuiDesigner3d_w3e$GeosetGroup));
+    SuiDesigner3d_w3e$GeosetGroup *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$GeosetGroup));
 	
     SuiDesigner3d_w3e$GeosetGroup_init(self, pOwner);
     return self;
@@ -1362,7 +1362,7 @@ void SuiDesigner3d_w3e$CornEmitter_init(SuiDesigner3d_w3e$CornEmitter *self, voi
 // new function
 SuiDesigner3d_w3e$CornEmitter * SuiDesigner3d_w3e$CornEmitter_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$CornEmitter *self = calloc(1, sizeof(SuiDesigner3d_w3e$CornEmitter));
+    SuiDesigner3d_w3e$CornEmitter *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$CornEmitter));
 	
     SuiDesigner3d_w3e$CornEmitter_init(self, pOwner);
     return self;
@@ -1469,7 +1469,7 @@ void SuiDesigner3d_w3e$CollisionShape_init(SuiDesigner3d_w3e$CollisionShape *sel
 // new function
 SuiDesigner3d_w3e$CollisionShape * SuiDesigner3d_w3e$CollisionShape_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$CollisionShape *self = calloc(1, sizeof(SuiDesigner3d_w3e$CollisionShape));
+    SuiDesigner3d_w3e$CollisionShape *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$CollisionShape));
 	
     SuiDesigner3d_w3e$CollisionShape_init(self, pOwner);
     return self;
@@ -1575,7 +1575,7 @@ void SuiDesigner3d_w3e$MdxBone_init(SuiDesigner3d_w3e$MdxBone *self, void *pOwne
 // new function
 SuiDesigner3d_w3e$MdxBone * SuiDesigner3d_w3e$MdxBone_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$MdxBone *self = calloc(1, sizeof(SuiDesigner3d_w3e$MdxBone));
+    SuiDesigner3d_w3e$MdxBone *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$MdxBone));
 	
     SuiDesigner3d_w3e$MdxBone_init(self, pOwner);
     return self;
@@ -1707,7 +1707,7 @@ void SuiDesigner3d_w3e$MdxLight_init(SuiDesigner3d_w3e$MdxLight *self, void *pOw
 // new function
 SuiDesigner3d_w3e$MdxLight * SuiDesigner3d_w3e$MdxLight_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$MdxLight *self = calloc(1, sizeof(SuiDesigner3d_w3e$MdxLight));
+    SuiDesigner3d_w3e$MdxLight *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$MdxLight));
 	
     SuiDesigner3d_w3e$MdxLight_init(self, pOwner);
     return self;
@@ -1811,7 +1811,7 @@ void SuiDesigner3d_w3e$TrackValue_init(SuiDesigner3d_w3e$TrackValue *self, void 
 // new function
 SuiDesigner3d_w3e$TrackValue * SuiDesigner3d_w3e$TrackValue_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$TrackValue *self = calloc(1, sizeof(SuiDesigner3d_w3e$TrackValue));
+    SuiDesigner3d_w3e$TrackValue *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$TrackValue));
 	
     SuiDesigner3d_w3e$TrackValue_init(self, pOwner);
     return self;
@@ -1923,7 +1923,7 @@ void SuiDesigner3d_w3e$TrackInt_init(SuiDesigner3d_w3e$TrackInt *self, void *pOw
 // new function
 SuiDesigner3d_w3e$TrackInt * SuiDesigner3d_w3e$TrackInt_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$TrackInt *self = calloc(1, sizeof(SuiDesigner3d_w3e$TrackInt));
+    SuiDesigner3d_w3e$TrackInt *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$TrackInt));
 	
     SuiDesigner3d_w3e$TrackInt_init(self, pOwner);
     return self;
@@ -2037,7 +2037,7 @@ void SuiDesigner3d_w3e$TrackFloat_init(SuiDesigner3d_w3e$TrackFloat *self, void 
 // new function
 SuiDesigner3d_w3e$TrackFloat * SuiDesigner3d_w3e$TrackFloat_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$TrackFloat *self = calloc(1, sizeof(SuiDesigner3d_w3e$TrackFloat));
+    SuiDesigner3d_w3e$TrackFloat *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$TrackFloat));
 	
     SuiDesigner3d_w3e$TrackFloat_init(self, pOwner);
     return self;
@@ -2151,7 +2151,7 @@ void SuiDesigner3d_w3e$TrackVec3_init(SuiDesigner3d_w3e$TrackVec3 *self, void *p
 // new function
 SuiDesigner3d_w3e$TrackVec3 * SuiDesigner3d_w3e$TrackVec3_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$TrackVec3 *self = calloc(1, sizeof(SuiDesigner3d_w3e$TrackVec3));
+    SuiDesigner3d_w3e$TrackVec3 *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$TrackVec3));
 	
     SuiDesigner3d_w3e$TrackVec3_init(self, pOwner);
     return self;
@@ -2265,7 +2265,7 @@ void SuiDesigner3d_w3e$TrackQuat_init(SuiDesigner3d_w3e$TrackQuat *self, void *p
 // new function
 SuiDesigner3d_w3e$TrackQuat * SuiDesigner3d_w3e$TrackQuat_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$TrackQuat *self = calloc(1, sizeof(SuiDesigner3d_w3e$TrackQuat));
+    SuiDesigner3d_w3e$TrackQuat *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$TrackQuat));
 	
     SuiDesigner3d_w3e$TrackQuat_init(self, pOwner);
     return self;
@@ -2458,7 +2458,7 @@ void SuiDesigner3d_w3e$TrackHeader_init(SuiDesigner3d_w3e$TrackHeader *self, voi
 // new function
 SuiDesigner3d_w3e$TrackHeader * SuiDesigner3d_w3e$TrackHeader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$TrackHeader *self = calloc(1, sizeof(SuiDesigner3d_w3e$TrackHeader));
+    SuiDesigner3d_w3e$TrackHeader *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$TrackHeader));
 	
     SuiDesigner3d_w3e$TrackHeader_init(self, pOwner);
     return self;
@@ -2617,7 +2617,7 @@ void SuiDesigner3d_w3e$MdxNode_init(SuiDesigner3d_w3e$MdxNode *self, void *pOwne
 // new function
 SuiDesigner3d_w3e$MdxNode * SuiDesigner3d_w3e$MdxNode_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$MdxNode *self = calloc(1, sizeof(SuiDesigner3d_w3e$MdxNode));
+    SuiDesigner3d_w3e$MdxNode *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$MdxNode));
 	
     SuiDesigner3d_w3e$MdxNode_init(self, pOwner);
     return self;
@@ -2729,7 +2729,7 @@ void SuiDesigner3d_w3e$Attachment_init(SuiDesigner3d_w3e$Attachment *self, void 
 // new function
 SuiDesigner3d_w3e$Attachment * SuiDesigner3d_w3e$Attachment_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$Attachment *self = calloc(1, sizeof(SuiDesigner3d_w3e$Attachment));
+    SuiDesigner3d_w3e$Attachment *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$Attachment));
 	
     SuiDesigner3d_w3e$Attachment_init(self, pOwner);
     return self;
@@ -2839,7 +2839,7 @@ void SuiDesigner3d_w3e$EventObject_init(SuiDesigner3d_w3e$EventObject *self, voi
 // new function
 SuiDesigner3d_w3e$EventObject * SuiDesigner3d_w3e$EventObject_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$EventObject *self = calloc(1, sizeof(SuiDesigner3d_w3e$EventObject));
+    SuiDesigner3d_w3e$EventObject *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$EventObject));
 	
     SuiDesigner3d_w3e$EventObject_init(self, pOwner);
     return self;
@@ -2950,7 +2950,7 @@ void SuiDesigner3d_w3e$GeosetAnimation_init(SuiDesigner3d_w3e$GeosetAnimation *s
 // new function
 SuiDesigner3d_w3e$GeosetAnimation * SuiDesigner3d_w3e$GeosetAnimation_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$GeosetAnimation *self = calloc(1, sizeof(SuiDesigner3d_w3e$GeosetAnimation));
+    SuiDesigner3d_w3e$GeosetAnimation *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$GeosetAnimation));
 	
     SuiDesigner3d_w3e$GeosetAnimation_init(self, pOwner);
     return self;
@@ -3065,7 +3065,7 @@ void SuiDesigner3d_w3e$Geoset_init(SuiDesigner3d_w3e$Geoset *self, void *pOwner)
 // new function
 SuiDesigner3d_w3e$Geoset * SuiDesigner3d_w3e$Geoset_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$Geoset *self = calloc(1, sizeof(SuiDesigner3d_w3e$Geoset));
+    SuiDesigner3d_w3e$Geoset *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$Geoset));
 	
     SuiDesigner3d_w3e$Geoset_init(self, pOwner);
     return self;
@@ -3292,7 +3292,7 @@ void SuiDesigner3d_w3e$MdxReader_init(SuiDesigner3d_w3e$MdxReader *self, void *p
 // new function
 SuiDesigner3d_w3e$MdxReader * SuiDesigner3d_w3e$MdxReader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$MdxReader *self = calloc(1, sizeof(SuiDesigner3d_w3e$MdxReader));
+    SuiDesigner3d_w3e$MdxReader *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$MdxReader));
 	
     SuiDesigner3d_w3e$MdxReader_init(self, pOwner);
     return self;
@@ -4328,7 +4328,7 @@ void SuiDesigner3d_w3e$MkMdx_init(SuiDesigner3d_w3e$MkMdx *self, void *pOwner){
 // new function
 SuiDesigner3d_w3e$MkMdx * SuiDesigner3d_w3e$MkMdx_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$MkMdx *self = calloc(1, sizeof(SuiDesigner3d_w3e$MkMdx));
+    SuiDesigner3d_w3e$MkMdx *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$MkMdx));
 	
     SuiDesigner3d_w3e$MkMdx_init(self, pOwner);
     return self;

@@ -122,7 +122,7 @@ void SuiView$Checkbox_init(SuiView$Checkbox *self, void *pOwner){
 // new function
 SuiView$Checkbox * SuiView$Checkbox_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Checkbox *self = calloc(1, sizeof(SuiView$Checkbox));
+    SuiView$Checkbox *self = ORC_CALLOC(1, sizeof(SuiView$Checkbox));
 	
     SuiView$Checkbox_init(self, pOwner);
     return self;

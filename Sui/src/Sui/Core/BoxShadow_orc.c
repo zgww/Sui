@@ -112,7 +112,7 @@ void SuiCore$BoxShadow_init(SuiCore$BoxShadow *self, void *pOwner){
 // new function
 SuiCore$BoxShadow * SuiCore$BoxShadow_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$BoxShadow *self = calloc(1, sizeof(SuiCore$BoxShadow));
+    SuiCore$BoxShadow *self = ORC_CALLOC(1, sizeof(SuiCore$BoxShadow));
 	
     SuiCore$BoxShadow_init(self, pOwner);
     return self;

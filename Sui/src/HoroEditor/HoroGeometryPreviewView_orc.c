@@ -315,7 +315,7 @@ void HoroEditor$HoroGeometryPreviewView_init(HoroEditor$HoroGeometryPreviewView 
 // new function
 HoroEditor$HoroGeometryPreviewView * HoroEditor$HoroGeometryPreviewView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroGeometryPreviewView *self = calloc(1, sizeof(HoroEditor$HoroGeometryPreviewView));
+    HoroEditor$HoroGeometryPreviewView *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroGeometryPreviewView));
 	
     HoroEditor$HoroGeometryPreviewView_init(self, pOwner);
     return self;

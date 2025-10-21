@@ -124,7 +124,7 @@ void Sgl$GeometryPlane_init(Sgl$GeometryPlane *self, void *pOwner){
 // new function
 Sgl$GeometryPlane * Sgl$GeometryPlane_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryPlane *self = calloc(1, sizeof(Sgl$GeometryPlane));
+    Sgl$GeometryPlane *self = ORC_CALLOC(1, sizeof(Sgl$GeometryPlane));
 	
     Sgl$GeometryPlane_init(self, pOwner);
     return self;

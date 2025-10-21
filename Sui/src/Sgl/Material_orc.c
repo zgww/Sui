@@ -695,7 +695,7 @@ void Sgl$UniformInfo_init(Sgl$UniformInfo *self, void *pOwner){
 // new function
 Sgl$UniformInfo * Sgl$UniformInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$UniformInfo *self = calloc(1, sizeof(Sgl$UniformInfo));
+    Sgl$UniformInfo *self = ORC_CALLOC(1, sizeof(Sgl$UniformInfo));
 	
     Sgl$UniformInfo_init(self, pOwner);
     return self;
@@ -1070,7 +1070,7 @@ void Sgl$Material_init(Sgl$Material *self, void *pOwner){
 // new function
 Sgl$Material * Sgl$Material_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Material *self = calloc(1, sizeof(Sgl$Material));
+    Sgl$Material *self = ORC_CALLOC(1, sizeof(Sgl$Material));
 	
     Sgl$Material_init(self, pOwner);
     return self;
@@ -1549,7 +1549,7 @@ void Sgl$MaterialInsp_init(Sgl$MaterialInsp *self, void *pOwner){
 // new function
 Sgl$MaterialInsp * Sgl$MaterialInsp_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$MaterialInsp *self = calloc(1, sizeof(Sgl$MaterialInsp));
+    Sgl$MaterialInsp *self = ORC_CALLOC(1, sizeof(Sgl$MaterialInsp));
 	
     Sgl$MaterialInsp_init(self, pOwner);
     return self;
@@ -1917,7 +1917,7 @@ void Sgl$UniformMeta_init(Sgl$UniformMeta *self, void *pOwner){
 // new function
 Sgl$UniformMeta * Sgl$UniformMeta_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$UniformMeta *self = calloc(1, sizeof(Sgl$UniformMeta));
+    Sgl$UniformMeta *self = ORC_CALLOC(1, sizeof(Sgl$UniformMeta));
 	
     Sgl$UniformMeta_init(self, pOwner);
     return self;
@@ -2040,7 +2040,7 @@ void Sgl$ShaderMeta_init(Sgl$ShaderMeta *self, void *pOwner){
 // new function
 Sgl$ShaderMeta * Sgl$ShaderMeta_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$ShaderMeta *self = calloc(1, sizeof(Sgl$ShaderMeta));
+    Sgl$ShaderMeta *self = ORC_CALLOC(1, sizeof(Sgl$ShaderMeta));
 	
     Sgl$ShaderMeta_init(self, pOwner);
     return self;
@@ -2246,7 +2246,7 @@ void Sgl$MaterialPreviewView_init(Sgl$MaterialPreviewView *self, void *pOwner){
 // new function
 Sgl$MaterialPreviewView * Sgl$MaterialPreviewView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$MaterialPreviewView *self = calloc(1, sizeof(Sgl$MaterialPreviewView));
+    Sgl$MaterialPreviewView *self = ORC_CALLOC(1, sizeof(Sgl$MaterialPreviewView));
 	
     Sgl$MaterialPreviewView_init(self, pOwner);
     return self;

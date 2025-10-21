@@ -162,7 +162,7 @@ void Sgl$GeometryLine_init(Sgl$GeometryLine *self, void *pOwner){
 // new function
 Sgl$GeometryLine * Sgl$GeometryLine_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryLine *self = calloc(1, sizeof(Sgl$GeometryLine));
+    Sgl$GeometryLine *self = ORC_CALLOC(1, sizeof(Sgl$GeometryLine));
 	
     Sgl$GeometryLine_init(self, pOwner);
     return self;

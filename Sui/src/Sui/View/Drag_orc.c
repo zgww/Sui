@@ -139,7 +139,7 @@ void SuiView$Drag_init(SuiView$Drag *self, void *pOwner){
 // new function
 SuiView$Drag * SuiView$Drag_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Drag *self = calloc(1, sizeof(SuiView$Drag));
+    SuiView$Drag *self = ORC_CALLOC(1, sizeof(SuiView$Drag));
 	
     SuiView$Drag_init(self, pOwner);
     return self;

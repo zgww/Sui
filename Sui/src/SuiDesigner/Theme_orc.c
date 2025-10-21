@@ -214,7 +214,7 @@ void SuiDesigner$Theme_init(SuiDesigner$Theme *self, void *pOwner){
 // new function
 SuiDesigner$Theme * SuiDesigner$Theme_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Theme *self = calloc(1, sizeof(SuiDesigner$Theme));
+    SuiDesigner$Theme *self = ORC_CALLOC(1, sizeof(SuiDesigner$Theme));
 	
     SuiDesigner$Theme_init(self, pOwner);
     return self;

@@ -154,7 +154,7 @@ void SuiView$Switch_init(SuiView$Switch *self, void *pOwner){
 // new function
 SuiView$Switch * SuiView$Switch_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Switch *self = calloc(1, sizeof(SuiView$Switch));
+    SuiView$Switch *self = ORC_CALLOC(1, sizeof(SuiView$Switch));
 	
     SuiView$Switch_init(self, pOwner);
     return self;

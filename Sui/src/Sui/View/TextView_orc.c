@@ -132,7 +132,7 @@ void SuiView$TextLineInfo_init(SuiView$TextLineInfo *self, void *pOwner){
 // new function
 SuiView$TextLineInfo * SuiView$TextLineInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TextLineInfo *self = calloc(1, sizeof(SuiView$TextLineInfo));
+    SuiView$TextLineInfo *self = ORC_CALLOC(1, sizeof(SuiView$TextLineInfo));
 	
     SuiView$TextLineInfo_init(self, pOwner);
     return self;
@@ -311,7 +311,7 @@ void SuiView$TextLayout_init(SuiView$TextLayout *self, void *pOwner){
 // new function
 SuiView$TextLayout * SuiView$TextLayout_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TextLayout *self = calloc(1, sizeof(SuiView$TextLayout));
+    SuiView$TextLayout *self = ORC_CALLOC(1, sizeof(SuiView$TextLayout));
 	
     SuiView$TextLayout_init(self, pOwner);
     return self;
@@ -716,7 +716,7 @@ void SuiView$TextView_init(SuiView$TextView *self, void *pOwner){
 // new function
 SuiView$TextView * SuiView$TextView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TextView *self = calloc(1, sizeof(SuiView$TextView));
+    SuiView$TextView *self = ORC_CALLOC(1, sizeof(SuiView$TextView));
 	
     SuiView$TextView_init(self, pOwner);
     return self;

@@ -926,7 +926,7 @@ void SuiDesigner$Tile_init(SuiDesigner$Tile *self, void *pOwner){
 // new function
 SuiDesigner$Tile * SuiDesigner$Tile_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Tile *self = calloc(1, sizeof(SuiDesigner$Tile));
+    SuiDesigner$Tile *self = ORC_CALLOC(1, sizeof(SuiDesigner$Tile));
 	
     SuiDesigner$Tile_init(self, pOwner);
     return self;
@@ -1032,7 +1032,7 @@ void SuiDesigner$SpecialTile_init(SuiDesigner$SpecialTile *self, void *pOwner){
 // new function
 SuiDesigner$SpecialTile * SuiDesigner$SpecialTile_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SpecialTile *self = calloc(1, sizeof(SuiDesigner$SpecialTile));
+    SuiDesigner$SpecialTile *self = ORC_CALLOC(1, sizeof(SuiDesigner$SpecialTile));
 	
     SuiDesigner$SpecialTile_init(self, pOwner);
     return self;
@@ -1152,7 +1152,7 @@ void SuiDesigner$RuleInfo_init(SuiDesigner$RuleInfo *self, void *pOwner){
 // new function
 SuiDesigner$RuleInfo * SuiDesigner$RuleInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$RuleInfo *self = calloc(1, sizeof(SuiDesigner$RuleInfo));
+    SuiDesigner$RuleInfo *self = ORC_CALLOC(1, sizeof(SuiDesigner$RuleInfo));
 	
     SuiDesigner$RuleInfo_init(self, pOwner);
     return self;
@@ -1352,7 +1352,7 @@ void SuiDesigner$AutoTile_init(SuiDesigner$AutoTile *self, void *pOwner){
 // new function
 SuiDesigner$AutoTile * SuiDesigner$AutoTile_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$AutoTile *self = calloc(1, sizeof(SuiDesigner$AutoTile));
+    SuiDesigner$AutoTile *self = ORC_CALLOC(1, sizeof(SuiDesigner$AutoTile));
 	
     SuiDesigner$AutoTile_init(self, pOwner);
     return self;
@@ -1589,7 +1589,7 @@ void SuiDesigner$RandomTile_init(SuiDesigner$RandomTile *self, void *pOwner){
 // new function
 SuiDesigner$RandomTile * SuiDesigner$RandomTile_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$RandomTile *self = calloc(1, sizeof(SuiDesigner$RandomTile));
+    SuiDesigner$RandomTile *self = ORC_CALLOC(1, sizeof(SuiDesigner$RandomTile));
 	
     SuiDesigner$RandomTile_init(self, pOwner);
     return self;
@@ -1711,7 +1711,7 @@ void SuiDesigner$AnimTile_init(SuiDesigner$AnimTile *self, void *pOwner){
 // new function
 SuiDesigner$AnimTile * SuiDesigner$AnimTile_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$AnimTile *self = calloc(1, sizeof(SuiDesigner$AnimTile));
+    SuiDesigner$AnimTile *self = ORC_CALLOC(1, sizeof(SuiDesigner$AnimTile));
 	
     SuiDesigner$AnimTile_init(self, pOwner);
     return self;
@@ -1870,7 +1870,7 @@ void SuiDesigner$Tileset_init(SuiDesigner$Tileset *self, void *pOwner){
 // new function
 SuiDesigner$Tileset * SuiDesigner$Tileset_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Tileset *self = calloc(1, sizeof(SuiDesigner$Tileset));
+    SuiDesigner$Tileset *self = ORC_CALLOC(1, sizeof(SuiDesigner$Tileset));
 	
     SuiDesigner$Tileset_init(self, pOwner);
     return self;
@@ -2054,7 +2054,7 @@ void SuiDesigner$Layer_init(SuiDesigner$Layer *self, void *pOwner){
 // new function
 SuiDesigner$Layer * SuiDesigner$Layer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Layer *self = calloc(1, sizeof(SuiDesigner$Layer));
+    SuiDesigner$Layer *self = ORC_CALLOC(1, sizeof(SuiDesigner$Layer));
 	
     SuiDesigner$Layer_init(self, pOwner);
     return self;
@@ -2171,7 +2171,7 @@ void SuiDesigner$TileLayer_init(SuiDesigner$TileLayer *self, void *pOwner){
 // new function
 SuiDesigner$TileLayer * SuiDesigner$TileLayer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$TileLayer *self = calloc(1, sizeof(SuiDesigner$TileLayer));
+    SuiDesigner$TileLayer *self = ORC_CALLOC(1, sizeof(SuiDesigner$TileLayer));
 	
     SuiDesigner$TileLayer_init(self, pOwner);
     return self;
@@ -2311,7 +2311,7 @@ void SuiDesigner$TileMap_init(SuiDesigner$TileMap *self, void *pOwner){
 // new function
 SuiDesigner$TileMap * SuiDesigner$TileMap_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$TileMap *self = calloc(1, sizeof(SuiDesigner$TileMap));
+    SuiDesigner$TileMap *self = ORC_CALLOC(1, sizeof(SuiDesigner$TileMap));
 	
     SuiDesigner$TileMap_init(self, pOwner);
     return self;
@@ -2483,7 +2483,7 @@ void SuiDesigner$ElapsedMs_init(SuiDesigner$ElapsedMs *self, void *pOwner){
 // new function
 SuiDesigner$ElapsedMs * SuiDesigner$ElapsedMs_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ElapsedMs *self = calloc(1, sizeof(SuiDesigner$ElapsedMs));
+    SuiDesigner$ElapsedMs *self = ORC_CALLOC(1, sizeof(SuiDesigner$ElapsedMs));
 	
     SuiDesigner$ElapsedMs_init(self, pOwner);
     return self;
@@ -2637,7 +2637,7 @@ void SuiDesigner$TileMapEditView_init(SuiDesigner$TileMapEditView *self, void *p
 // new function
 SuiDesigner$TileMapEditView * SuiDesigner$TileMapEditView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$TileMapEditView *self = calloc(1, sizeof(SuiDesigner$TileMapEditView));
+    SuiDesigner$TileMapEditView *self = ORC_CALLOC(1, sizeof(SuiDesigner$TileMapEditView));
 	
     SuiDesigner$TileMapEditView_init(self, pOwner);
     return self;
@@ -2941,7 +2941,7 @@ void SuiDesigner$SceneViewCb_init(SuiDesigner$SceneViewCb *self, void *pOwner){
 // new function
 SuiDesigner$SceneViewCb * SuiDesigner$SceneViewCb_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SceneViewCb *self = calloc(1, sizeof(SuiDesigner$SceneViewCb));
+    SuiDesigner$SceneViewCb *self = ORC_CALLOC(1, sizeof(SuiDesigner$SceneViewCb));
 	
     SuiDesigner$SceneViewCb_init(self, pOwner);
     return self;
@@ -3091,7 +3091,7 @@ void SuiDesigner$SceneCtrl_init(SuiDesigner$SceneCtrl *self, void *pOwner){
 // new function
 SuiDesigner$SceneCtrl * SuiDesigner$SceneCtrl_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SceneCtrl *self = calloc(1, sizeof(SuiDesigner$SceneCtrl));
+    SuiDesigner$SceneCtrl *self = ORC_CALLOC(1, sizeof(SuiDesigner$SceneCtrl));
 	
     SuiDesigner$SceneCtrl_init(self, pOwner);
     return self;
@@ -3406,7 +3406,7 @@ void SuiDesigner$TileEditor_init(SuiDesigner$TileEditor *self, void *pOwner){
 // new function
 SuiDesigner$TileEditor * SuiDesigner$TileEditor_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$TileEditor *self = calloc(1, sizeof(SuiDesigner$TileEditor));
+    SuiDesigner$TileEditor *self = ORC_CALLOC(1, sizeof(SuiDesigner$TileEditor));
 	
     SuiDesigner$TileEditor_init(self, pOwner);
     return self;

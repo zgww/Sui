@@ -113,7 +113,7 @@ void SuiDesigner$DrawDegreeItem_init(SuiDesigner$DrawDegreeItem *self, void *pOw
 // new function
 SuiDesigner$DrawDegreeItem * SuiDesigner$DrawDegreeItem_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$DrawDegreeItem *self = calloc(1, sizeof(SuiDesigner$DrawDegreeItem));
+    SuiDesigner$DrawDegreeItem *self = ORC_CALLOC(1, sizeof(SuiDesigner$DrawDegreeItem));
 	
     SuiDesigner$DrawDegreeItem_init(self, pOwner);
     return self;
@@ -243,7 +243,7 @@ void SuiDesigner$DrawDegree_init(SuiDesigner$DrawDegree *self, void *pOwner){
 // new function
 SuiDesigner$DrawDegree * SuiDesigner$DrawDegree_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$DrawDegree *self = calloc(1, sizeof(SuiDesigner$DrawDegree));
+    SuiDesigner$DrawDegree *self = ORC_CALLOC(1, sizeof(SuiDesigner$DrawDegree));
 	
     SuiDesigner$DrawDegree_init(self, pOwner);
     return self;

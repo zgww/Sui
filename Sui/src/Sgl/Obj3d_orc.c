@@ -164,7 +164,7 @@ void Sgl$Obj3d_init(Sgl$Obj3d *self, void *pOwner){
 // new function
 Sgl$Obj3d * Sgl$Obj3d_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Obj3d *self = calloc(1, sizeof(Sgl$Obj3d));
+    Sgl$Obj3d *self = ORC_CALLOC(1, sizeof(Sgl$Obj3d));
 	
     Sgl$Obj3d_init(self, pOwner);
     return self;

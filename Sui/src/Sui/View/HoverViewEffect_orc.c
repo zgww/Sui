@@ -189,7 +189,7 @@ void SuiView$HoverViewEffect_init(SuiView$HoverViewEffect *self, void *pOwner){
 // new function
 SuiView$HoverViewEffect * SuiView$HoverViewEffect_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$HoverViewEffect *self = calloc(1, sizeof(SuiView$HoverViewEffect));
+    SuiView$HoverViewEffect *self = ORC_CALLOC(1, sizeof(SuiView$HoverViewEffect));
 	
     SuiView$HoverViewEffect_init(self, pOwner);
     return self;

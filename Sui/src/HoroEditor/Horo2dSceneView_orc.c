@@ -344,7 +344,7 @@ void HoroEditor$Horo2dSceneView_init(HoroEditor$Horo2dSceneView *self, void *pOw
 // new function
 HoroEditor$Horo2dSceneView * HoroEditor$Horo2dSceneView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$Horo2dSceneView *self = calloc(1, sizeof(HoroEditor$Horo2dSceneView));
+    HoroEditor$Horo2dSceneView *self = ORC_CALLOC(1, sizeof(HoroEditor$Horo2dSceneView));
 	
     HoroEditor$Horo2dSceneView_init(self, pOwner);
     return self;

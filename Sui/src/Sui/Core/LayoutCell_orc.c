@@ -111,7 +111,7 @@ void SuiCore$LayoutCell_init(SuiCore$LayoutCell *self, void *pOwner){
 // new function
 SuiCore$LayoutCell * SuiCore$LayoutCell_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$LayoutCell *self = calloc(1, sizeof(SuiCore$LayoutCell));
+    SuiCore$LayoutCell *self = ORC_CALLOC(1, sizeof(SuiCore$LayoutCell));
 	
     SuiCore$LayoutCell_init(self, pOwner);
     return self;

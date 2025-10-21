@@ -187,7 +187,7 @@ void Sgl$SglSceneView_init(Sgl$SglSceneView *self, void *pOwner){
 // new function
 Sgl$SglSceneView * Sgl$SglSceneView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$SglSceneView *self = calloc(1, sizeof(Sgl$SglSceneView));
+    Sgl$SglSceneView *self = ORC_CALLOC(1, sizeof(Sgl$SglSceneView));
 	
     Sgl$SglSceneView_init(self, pOwner);
     return self;
@@ -421,7 +421,7 @@ void Sgl$DepthTexturePreview_init(Sgl$DepthTexturePreview *self, void *pOwner){
 // new function
 Sgl$DepthTexturePreview * Sgl$DepthTexturePreview_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$DepthTexturePreview *self = calloc(1, sizeof(Sgl$DepthTexturePreview));
+    Sgl$DepthTexturePreview *self = ORC_CALLOC(1, sizeof(Sgl$DepthTexturePreview));
 	
     Sgl$DepthTexturePreview_init(self, pOwner);
     return self;

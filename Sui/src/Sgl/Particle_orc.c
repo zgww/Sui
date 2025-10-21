@@ -130,7 +130,7 @@ void Sgl$Particle_init(Sgl$Particle *self, void *pOwner){
 // new function
 Sgl$Particle * Sgl$Particle_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Particle *self = calloc(1, sizeof(Sgl$Particle));
+    Sgl$Particle *self = ORC_CALLOC(1, sizeof(Sgl$Particle));
 	
     Sgl$Particle_init(self, pOwner);
     return self;
@@ -329,7 +329,7 @@ void Sgl$ParticleEmitter_init(Sgl$ParticleEmitter *self, void *pOwner){
 // new function
 Sgl$ParticleEmitter * Sgl$ParticleEmitter_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$ParticleEmitter *self = calloc(1, sizeof(Sgl$ParticleEmitter));
+    Sgl$ParticleEmitter *self = ORC_CALLOC(1, sizeof(Sgl$ParticleEmitter));
 	
     Sgl$ParticleEmitter_init(self, pOwner);
     return self;

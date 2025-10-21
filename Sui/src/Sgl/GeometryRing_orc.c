@@ -128,7 +128,7 @@ void Sgl$GeometryRing_init(Sgl$GeometryRing *self, void *pOwner){
 // new function
 Sgl$GeometryRing * Sgl$GeometryRing_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryRing *self = calloc(1, sizeof(Sgl$GeometryRing));
+    Sgl$GeometryRing *self = ORC_CALLOC(1, sizeof(Sgl$GeometryRing));
 	
     Sgl$GeometryRing_init(self, pOwner);
     return self;

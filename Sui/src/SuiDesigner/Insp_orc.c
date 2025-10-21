@@ -1291,7 +1291,7 @@ void SuiDesigner$EventInspAttrChanged_init(SuiDesigner$EventInspAttrChanged *sel
 // new function
 SuiDesigner$EventInspAttrChanged * SuiDesigner$EventInspAttrChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EventInspAttrChanged *self = calloc(1, sizeof(SuiDesigner$EventInspAttrChanged));
+    SuiDesigner$EventInspAttrChanged *self = ORC_CALLOC(1, sizeof(SuiDesigner$EventInspAttrChanged));
 	
     SuiDesigner$EventInspAttrChanged_init(self, pOwner);
     return self;
@@ -1396,7 +1396,7 @@ void SuiDesigner$InspOpt_init(SuiDesigner$InspOpt *self, void *pOwner){
 // new function
 SuiDesigner$InspOpt * SuiDesigner$InspOpt_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspOpt *self = calloc(1, sizeof(SuiDesigner$InspOpt));
+    SuiDesigner$InspOpt *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspOpt));
 	
     SuiDesigner$InspOpt_init(self, pOwner);
     return self;
@@ -1505,7 +1505,7 @@ void SuiDesigner$InspOpts_init(SuiDesigner$InspOpts *self, void *pOwner){
 // new function
 SuiDesigner$InspOpts * SuiDesigner$InspOpts_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspOpts *self = calloc(1, sizeof(SuiDesigner$InspOpts));
+    SuiDesigner$InspOpts *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspOpts));
 	
     SuiDesigner$InspOpts_init(self, pOwner);
     return self;
@@ -1732,7 +1732,7 @@ void SuiDesigner$InspAttr_init(SuiDesigner$InspAttr *self, void *pOwner){
 // new function
 SuiDesigner$InspAttr * SuiDesigner$InspAttr_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttr *self = calloc(1, sizeof(SuiDesigner$InspAttr));
+    SuiDesigner$InspAttr *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttr));
 	
     SuiDesigner$InspAttr_init(self, pOwner);
     return self;
@@ -1856,7 +1856,7 @@ void SuiDesigner$InspAttrColor_init(SuiDesigner$InspAttrColor *self, void *pOwne
 // new function
 SuiDesigner$InspAttrColor * SuiDesigner$InspAttrColor_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttrColor *self = calloc(1, sizeof(SuiDesigner$InspAttrColor));
+    SuiDesigner$InspAttrColor *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttrColor));
 	
     SuiDesigner$InspAttrColor_init(self, pOwner);
     return self;
@@ -1977,7 +1977,7 @@ void SuiDesigner$InspAttrImageSrc_init(SuiDesigner$InspAttrImageSrc *self, void 
 // new function
 SuiDesigner$InspAttrImageSrc * SuiDesigner$InspAttrImageSrc_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttrImageSrc *self = calloc(1, sizeof(SuiDesigner$InspAttrImageSrc));
+    SuiDesigner$InspAttrImageSrc *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttrImageSrc));
 	
     SuiDesigner$InspAttrImageSrc_init(self, pOwner);
     return self;
@@ -2118,7 +2118,7 @@ void SuiDesigner$InspAttrFilePath_init(SuiDesigner$InspAttrFilePath *self, void 
 // new function
 SuiDesigner$InspAttrFilePath * SuiDesigner$InspAttrFilePath_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttrFilePath *self = calloc(1, sizeof(SuiDesigner$InspAttrFilePath));
+    SuiDesigner$InspAttrFilePath *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttrFilePath));
 	
     SuiDesigner$InspAttrFilePath_init(self, pOwner);
     return self;
@@ -2254,7 +2254,7 @@ void SuiDesigner$InspAttrSelect_init(SuiDesigner$InspAttrSelect *self, void *pOw
 // new function
 SuiDesigner$InspAttrSelect * SuiDesigner$InspAttrSelect_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttrSelect *self = calloc(1, sizeof(SuiDesigner$InspAttrSelect));
+    SuiDesigner$InspAttrSelect *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttrSelect));
 	
     SuiDesigner$InspAttrSelect_init(self, pOwner);
     return self;
@@ -2376,7 +2376,7 @@ void SuiDesigner$InspAttrList_init(SuiDesigner$InspAttrList *self, void *pOwner)
 // new function
 SuiDesigner$InspAttrList * SuiDesigner$InspAttrList_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttrList *self = calloc(1, sizeof(SuiDesigner$InspAttrList));
+    SuiDesigner$InspAttrList *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttrList));
 	
     SuiDesigner$InspAttrList_init(self, pOwner);
     return self;
@@ -2539,7 +2539,7 @@ void SuiDesigner$InspAttrMaterialList_init(SuiDesigner$InspAttrMaterialList *sel
 // new function
 SuiDesigner$InspAttrMaterialList * SuiDesigner$InspAttrMaterialList_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttrMaterialList *self = calloc(1, sizeof(SuiDesigner$InspAttrMaterialList));
+    SuiDesigner$InspAttrMaterialList *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttrMaterialList));
 	
     SuiDesigner$InspAttrMaterialList_init(self, pOwner);
     return self;
@@ -2705,7 +2705,7 @@ void SuiDesigner$InspNode_init(SuiDesigner$InspNode *self, void *pOwner){
 // new function
 SuiDesigner$InspNode * SuiDesigner$InspNode_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspNode *self = calloc(1, sizeof(SuiDesigner$InspNode));
+    SuiDesigner$InspNode *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspNode));
 	
     SuiDesigner$InspNode_init(self, pOwner);
     return self;
@@ -2809,7 +2809,7 @@ void SuiDesigner$InspAttrItem_init(SuiDesigner$InspAttrItem *self, void *pOwner)
 // new function
 SuiDesigner$InspAttrItem * SuiDesigner$InspAttrItem_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspAttrItem *self = calloc(1, sizeof(SuiDesigner$InspAttrItem));
+    SuiDesigner$InspAttrItem *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspAttrItem));
 	
     SuiDesigner$InspAttrItem_init(self, pOwner);
     return self;
@@ -2913,7 +2913,7 @@ void SuiDesigner$InspPanel_init(SuiDesigner$InspPanel *self, void *pOwner){
 // new function
 SuiDesigner$InspPanel * SuiDesigner$InspPanel_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspPanel *self = calloc(1, sizeof(SuiDesigner$InspPanel));
+    SuiDesigner$InspPanel *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspPanel));
 	
     SuiDesigner$InspPanel_init(self, pOwner);
     return self;
@@ -3092,7 +3092,7 @@ void SuiDesigner$Insp_init(SuiDesigner$Insp *self, void *pOwner){
 // new function
 SuiDesigner$Insp * SuiDesigner$Insp_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Insp *self = calloc(1, sizeof(SuiDesigner$Insp));
+    SuiDesigner$Insp *self = ORC_CALLOC(1, sizeof(SuiDesigner$Insp));
 	
     SuiDesigner$Insp_init(self, pOwner);
     return self;
@@ -4184,7 +4184,7 @@ void SuiDesigner$InspLibItem_init(SuiDesigner$InspLibItem *self, void *pOwner){
 // new function
 SuiDesigner$InspLibItem * SuiDesigner$InspLibItem_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspLibItem *self = calloc(1, sizeof(SuiDesigner$InspLibItem));
+    SuiDesigner$InspLibItem *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspLibItem));
 	
     SuiDesigner$InspLibItem_init(self, pOwner);
     return self;
@@ -4298,7 +4298,7 @@ void SuiDesigner$InspLib_init(SuiDesigner$InspLib *self, void *pOwner){
 // new function
 SuiDesigner$InspLib * SuiDesigner$InspLib_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspLib *self = calloc(1, sizeof(SuiDesigner$InspLib));
+    SuiDesigner$InspLib *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspLib));
 	
     SuiDesigner$InspLib_init(self, pOwner);
     return self;
@@ -4434,7 +4434,7 @@ void SuiDesigner$TestObjSuper_init(SuiDesigner$TestObjSuper *self, void *pOwner)
 // new function
 SuiDesigner$TestObjSuper * SuiDesigner$TestObjSuper_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$TestObjSuper *self = calloc(1, sizeof(SuiDesigner$TestObjSuper));
+    SuiDesigner$TestObjSuper *self = ORC_CALLOC(1, sizeof(SuiDesigner$TestObjSuper));
 	
     SuiDesigner$TestObjSuper_init(self, pOwner);
     return self;
@@ -4571,7 +4571,7 @@ void SuiDesigner$TestObj_init(SuiDesigner$TestObj *self, void *pOwner){
 // new function
 SuiDesigner$TestObj * SuiDesigner$TestObj_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$TestObj *self = calloc(1, sizeof(SuiDesigner$TestObj));
+    SuiDesigner$TestObj *self = ORC_CALLOC(1, sizeof(SuiDesigner$TestObj));
 	
     SuiDesigner$TestObj_init(self, pOwner);
     return self;

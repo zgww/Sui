@@ -152,7 +152,7 @@ void Sgl$Mesh_init(Sgl$Mesh *self, void *pOwner){
 // new function
 Sgl$Mesh * Sgl$Mesh_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Mesh *self = calloc(1, sizeof(Sgl$Mesh));
+    Sgl$Mesh *self = ORC_CALLOC(1, sizeof(Sgl$Mesh));
 	
     Sgl$Mesh_init(self, pOwner);
     return self;

@@ -132,7 +132,7 @@ void SuiDesigner$BiJsonExporter_init(SuiDesigner$BiJsonExporter *self, void *pOw
 // new function
 SuiDesigner$BiJsonExporter * SuiDesigner$BiJsonExporter_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$BiJsonExporter *self = calloc(1, sizeof(SuiDesigner$BiJsonExporter));
+    SuiDesigner$BiJsonExporter *self = ORC_CALLOC(1, sizeof(SuiDesigner$BiJsonExporter));
 	
     SuiDesigner$BiJsonExporter_init(self, pOwner);
     return self;
@@ -250,7 +250,7 @@ void SuiDesigner$User_init(SuiDesigner$User *self, void *pOwner){
 // new function
 SuiDesigner$User * SuiDesigner$User_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$User *self = calloc(1, sizeof(SuiDesigner$User));
+    SuiDesigner$User *self = ORC_CALLOC(1, sizeof(SuiDesigner$User));
 	
     SuiDesigner$User_init(self, pOwner);
     return self;
@@ -364,7 +364,7 @@ void SuiDesigner$User2_init(SuiDesigner$User2 *self, void *pOwner){
 // new function
 SuiDesigner$User2 * SuiDesigner$User2_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$User2 *self = calloc(1, sizeof(SuiDesigner$User2));
+    SuiDesigner$User2 *self = ORC_CALLOC(1, sizeof(SuiDesigner$User2));
 	
     SuiDesigner$User2_init(self, pOwner);
     return self;
@@ -491,7 +491,7 @@ void SuiDesigner$TestBi_init(SuiDesigner$TestBi *self, void *pOwner){
 // new function
 SuiDesigner$TestBi * SuiDesigner$TestBi_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$TestBi *self = calloc(1, sizeof(SuiDesigner$TestBi));
+    SuiDesigner$TestBi *self = ORC_CALLOC(1, sizeof(SuiDesigner$TestBi));
 	
     SuiDesigner$TestBi_init(self, pOwner);
     return self;

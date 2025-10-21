@@ -216,7 +216,7 @@ void SuiDesigner$GizmoRectView_init(SuiDesigner$GizmoRectView *self, void *pOwne
 // new function
 SuiDesigner$GizmoRectView * SuiDesigner$GizmoRectView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$GizmoRectView *self = calloc(1, sizeof(SuiDesigner$GizmoRectView));
+    SuiDesigner$GizmoRectView *self = ORC_CALLOC(1, sizeof(SuiDesigner$GizmoRectView));
 	
     SuiDesigner$GizmoRectView_init(self, pOwner);
     return self;

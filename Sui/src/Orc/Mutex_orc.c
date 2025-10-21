@@ -115,7 +115,7 @@ void Orc$Mutex_init(Orc$Mutex *self, void *pOwner){
 // new function
 Orc$Mutex * Orc$Mutex_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Mutex *self = calloc(1, sizeof(Orc$Mutex));
+    Orc$Mutex *self = ORC_CALLOC(1, sizeof(Orc$Mutex));
 	
     Orc$Mutex_init(self, pOwner);
     return self;

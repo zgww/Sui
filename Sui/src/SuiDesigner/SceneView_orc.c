@@ -311,7 +311,7 @@ void SuiDesigner$ImageChessBg_init(SuiDesigner$ImageChessBg *self, void *pOwner)
 // new function
 SuiDesigner$ImageChessBg * SuiDesigner$ImageChessBg_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ImageChessBg *self = calloc(1, sizeof(SuiDesigner$ImageChessBg));
+    SuiDesigner$ImageChessBg *self = ORC_CALLOC(1, sizeof(SuiDesigner$ImageChessBg));
 	
     SuiDesigner$ImageChessBg_init(self, pOwner);
     return self;
@@ -475,7 +475,7 @@ void SuiDesigner$SceneTransform_init(SuiDesigner$SceneTransform *self, void *pOw
 // new function
 SuiDesigner$SceneTransform * SuiDesigner$SceneTransform_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SceneTransform *self = calloc(1, sizeof(SuiDesigner$SceneTransform));
+    SuiDesigner$SceneTransform *self = ORC_CALLOC(1, sizeof(SuiDesigner$SceneTransform));
 	
     SuiDesigner$SceneTransform_init(self, pOwner);
     return self;
@@ -675,7 +675,7 @@ void SuiDesigner$SceneView_init(SuiDesigner$SceneView *self, void *pOwner){
 // new function
 SuiDesigner$SceneView * SuiDesigner$SceneView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SceneView *self = calloc(1, sizeof(SuiDesigner$SceneView));
+    SuiDesigner$SceneView *self = ORC_CALLOC(1, sizeof(SuiDesigner$SceneView));
 	
     SuiDesigner$SceneView_init(self, pOwner);
     return self;

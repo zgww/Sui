@@ -128,7 +128,7 @@ void Sgl$SkinMesh_init(Sgl$SkinMesh *self, void *pOwner){
 // new function
 Sgl$SkinMesh * Sgl$SkinMesh_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$SkinMesh *self = calloc(1, sizeof(Sgl$SkinMesh));
+    Sgl$SkinMesh *self = ORC_CALLOC(1, sizeof(Sgl$SkinMesh));
 	
     Sgl$SkinMesh_init(self, pOwner);
     return self;

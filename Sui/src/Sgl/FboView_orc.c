@@ -208,7 +208,7 @@ void Sgl$FboView_init(Sgl$FboView *self, void *pOwner){
 // new function
 Sgl$FboView * Sgl$FboView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$FboView *self = calloc(1, sizeof(Sgl$FboView));
+    Sgl$FboView *self = ORC_CALLOC(1, sizeof(Sgl$FboView));
 	
     Sgl$FboView_init(self, pOwner);
     return self;

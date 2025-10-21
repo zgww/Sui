@@ -151,7 +151,7 @@ void SuiView$ImageModeCalc_init(SuiView$ImageModeCalc *self, void *pOwner){
 // new function
 SuiView$ImageModeCalc * SuiView$ImageModeCalc_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ImageModeCalc *self = calloc(1, sizeof(SuiView$ImageModeCalc));
+    SuiView$ImageModeCalc *self = ORC_CALLOC(1, sizeof(SuiView$ImageModeCalc));
 	
     SuiView$ImageModeCalc_init(self, pOwner);
     return self;
@@ -338,7 +338,7 @@ void SuiView$ImageView_init(SuiView$ImageView *self, void *pOwner){
 // new function
 SuiView$ImageView * SuiView$ImageView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ImageView *self = calloc(1, sizeof(SuiView$ImageView));
+    SuiView$ImageView *self = ORC_CALLOC(1, sizeof(SuiView$ImageView));
 	
     SuiView$ImageView_init(self, pOwner);
     return self;

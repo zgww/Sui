@@ -241,7 +241,7 @@ void Json$Json_init(Json$Json *self, void *pOwner){
 // new function
 Json$Json * Json$Json_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Json$Json *self = calloc(1, sizeof(Json$Json));
+    Json$Json *self = ORC_CALLOC(1, sizeof(Json$Json));
 	
     Json$Json_init(self, pOwner);
     return self;

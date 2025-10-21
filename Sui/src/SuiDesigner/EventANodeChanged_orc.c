@@ -107,7 +107,7 @@ void SuiDesigner$EventToEbus_init(SuiDesigner$EventToEbus *self, void *pOwner){
 // new function
 SuiDesigner$EventToEbus * SuiDesigner$EventToEbus_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EventToEbus *self = calloc(1, sizeof(SuiDesigner$EventToEbus));
+    SuiDesigner$EventToEbus *self = ORC_CALLOC(1, sizeof(SuiDesigner$EventToEbus));
 	
     SuiDesigner$EventToEbus_init(self, pOwner);
     return self;
@@ -217,7 +217,7 @@ void SuiDesigner$EventANodeChanged_init(SuiDesigner$EventANodeChanged *self, voi
 // new function
 SuiDesigner$EventANodeChanged * SuiDesigner$EventANodeChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EventANodeChanged *self = calloc(1, sizeof(SuiDesigner$EventANodeChanged));
+    SuiDesigner$EventANodeChanged *self = ORC_CALLOC(1, sizeof(SuiDesigner$EventANodeChanged));
 	
     SuiDesigner$EventANodeChanged_init(self, pOwner);
     return self;
@@ -321,7 +321,7 @@ void SuiDesigner$EventANodeAttrChanged_init(SuiDesigner$EventANodeAttrChanged *s
 // new function
 SuiDesigner$EventANodeAttrChanged * SuiDesigner$EventANodeAttrChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EventANodeAttrChanged *self = calloc(1, sizeof(SuiDesigner$EventANodeAttrChanged));
+    SuiDesigner$EventANodeAttrChanged *self = ORC_CALLOC(1, sizeof(SuiDesigner$EventANodeAttrChanged));
 	
     SuiDesigner$EventANodeAttrChanged_init(self, pOwner);
     return self;

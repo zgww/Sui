@@ -187,7 +187,7 @@ void Sgl$DrawCtx_init(Sgl$DrawCtx *self, void *pOwner){
 // new function
 Sgl$DrawCtx * Sgl$DrawCtx_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$DrawCtx *self = calloc(1, sizeof(Sgl$DrawCtx));
+    Sgl$DrawCtx *self = ORC_CALLOC(1, sizeof(Sgl$DrawCtx));
 	
     Sgl$DrawCtx_init(self, pOwner);
     return self;

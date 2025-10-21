@@ -123,7 +123,7 @@ void SuiDesigner$ProjectInfo_init(SuiDesigner$ProjectInfo *self, void *pOwner){
 // new function
 SuiDesigner$ProjectInfo * SuiDesigner$ProjectInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ProjectInfo *self = calloc(1, sizeof(SuiDesigner$ProjectInfo));
+    SuiDesigner$ProjectInfo *self = ORC_CALLOC(1, sizeof(SuiDesigner$ProjectInfo));
 	
     SuiDesigner$ProjectInfo_init(self, pOwner);
     return self;
@@ -267,7 +267,7 @@ void SuiDesigner$ProjectMgr_init(SuiDesigner$ProjectMgr *self, void *pOwner){
 // new function
 SuiDesigner$ProjectMgr * SuiDesigner$ProjectMgr_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ProjectMgr *self = calloc(1, sizeof(SuiDesigner$ProjectMgr));
+    SuiDesigner$ProjectMgr *self = ORC_CALLOC(1, sizeof(SuiDesigner$ProjectMgr));
 	
     SuiDesigner$ProjectMgr_init(self, pOwner);
     return self;

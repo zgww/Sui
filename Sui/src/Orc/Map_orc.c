@@ -121,7 +121,7 @@ void Orc$Map_init(Orc$Map *self, void *pOwner){
 // new function
 Orc$Map * Orc$Map_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Map *self = calloc(1, sizeof(Orc$Map));
+    Orc$Map *self = ORC_CALLOC(1, sizeof(Orc$Map));
 	
     Orc$Map_init(self, pOwner);
     return self;

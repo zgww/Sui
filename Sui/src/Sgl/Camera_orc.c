@@ -133,7 +133,7 @@ void Sgl$Camera_init(Sgl$Camera *self, void *pOwner){
 // new function
 Sgl$Camera * Sgl$Camera_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Camera *self = calloc(1, sizeof(Sgl$Camera));
+    Sgl$Camera *self = ORC_CALLOC(1, sizeof(Sgl$Camera));
 	
     Sgl$Camera_init(self, pOwner);
     return self;

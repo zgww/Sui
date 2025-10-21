@@ -147,7 +147,7 @@ void SuiView$MenuNativeItem_init(SuiView$MenuNativeItem *self, void *pOwner){
 // new function
 SuiView$MenuNativeItem * SuiView$MenuNativeItem_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$MenuNativeItem *self = calloc(1, sizeof(SuiView$MenuNativeItem));
+    SuiView$MenuNativeItem *self = ORC_CALLOC(1, sizeof(SuiView$MenuNativeItem));
 	
     SuiView$MenuNativeItem_init(self, pOwner);
     return self;
@@ -305,7 +305,7 @@ void SuiView$MenuNative_init(SuiView$MenuNative *self, void *pOwner){
 // new function
 SuiView$MenuNative * SuiView$MenuNative_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$MenuNative *self = calloc(1, sizeof(SuiView$MenuNative));
+    SuiView$MenuNative *self = ORC_CALLOC(1, sizeof(SuiView$MenuNative));
 	
     SuiView$MenuNative_init(self, pOwner);
     return self;

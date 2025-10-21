@@ -269,7 +269,7 @@ void SuiView$Selection_init(SuiView$Selection *self, void *pOwner){
 // new function
 SuiView$Selection * SuiView$Selection_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Selection *self = calloc(1, sizeof(SuiView$Selection));
+    SuiView$Selection *self = ORC_CALLOC(1, sizeof(SuiView$Selection));
 	
     SuiView$Selection_init(self, pOwner);
     return self;
@@ -517,7 +517,7 @@ void SuiView$Caret_init(SuiView$Caret *self, void *pOwner){
 // new function
 SuiView$Caret * SuiView$Caret_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Caret *self = calloc(1, sizeof(SuiView$Caret));
+    SuiView$Caret *self = ORC_CALLOC(1, sizeof(SuiView$Caret));
 	
     SuiView$Caret_init(self, pOwner);
     return self;
@@ -805,7 +805,7 @@ void SuiView$EditText_init(SuiView$EditText *self, void *pOwner){
 // new function
 SuiView$EditText * SuiView$EditText_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$EditText *self = calloc(1, sizeof(SuiView$EditText));
+    SuiView$EditText *self = ORC_CALLOC(1, sizeof(SuiView$EditText));
 	
     SuiView$EditText_init(self, pOwner);
     return self;

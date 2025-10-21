@@ -306,7 +306,7 @@ void SuiDesigner$SglGizmo_init(SuiDesigner$SglGizmo *self, void *pOwner){
 // new function
 SuiDesigner$SglGizmo * SuiDesigner$SglGizmo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SglGizmo *self = calloc(1, sizeof(SuiDesigner$SglGizmo));
+    SuiDesigner$SglGizmo *self = ORC_CALLOC(1, sizeof(SuiDesigner$SglGizmo));
 	
     SuiDesigner$SglGizmo_init(self, pOwner);
     return self;

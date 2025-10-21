@@ -105,7 +105,7 @@ void SuiView$Menu_init(SuiView$Menu *self, void *pOwner){
 // new function
 SuiView$Menu * SuiView$Menu_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Menu *self = calloc(1, sizeof(SuiView$Menu));
+    SuiView$Menu *self = ORC_CALLOC(1, sizeof(SuiView$Menu));
 	
     SuiView$Menu_init(self, pOwner);
     return self;

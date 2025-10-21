@@ -380,7 +380,7 @@ void HoroEditor$HoroSceneHierView_init(HoroEditor$HoroSceneHierView *self, void 
 // new function
 HoroEditor$HoroSceneHierView * HoroEditor$HoroSceneHierView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroSceneHierView *self = calloc(1, sizeof(HoroEditor$HoroSceneHierView));
+    HoroEditor$HoroSceneHierView *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroSceneHierView));
 	
     HoroEditor$HoroSceneHierView_init(self, pOwner);
     return self;

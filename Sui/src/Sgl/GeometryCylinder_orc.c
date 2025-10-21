@@ -150,7 +150,7 @@ void Sgl$GeometryCylinder_init(Sgl$GeometryCylinder *self, void *pOwner){
 // new function
 Sgl$GeometryCylinder * Sgl$GeometryCylinder_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryCylinder *self = calloc(1, sizeof(Sgl$GeometryCylinder));
+    Sgl$GeometryCylinder *self = ORC_CALLOC(1, sizeof(Sgl$GeometryCylinder));
 	
     Sgl$GeometryCylinder_init(self, pOwner);
     return self;

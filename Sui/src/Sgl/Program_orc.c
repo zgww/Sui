@@ -162,7 +162,7 @@ void Sgl$Program_init(Sgl$Program *self, void *pOwner){
 // new function
 Sgl$Program * Sgl$Program_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Program *self = calloc(1, sizeof(Sgl$Program));
+    Sgl$Program *self = ORC_CALLOC(1, sizeof(Sgl$Program));
 	
     Sgl$Program_init(self, pOwner);
     return self;

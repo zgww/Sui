@@ -4,8 +4,11 @@
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdint>
+#include <heapapi.h>
+#include <malloc.h>
 #include <mutex>
 #endif
+#include <Windows.h>
 
 #include <iostream>
 #include <algorithm>
@@ -74,19 +77,36 @@ static std::vector<void*> free_ing_list;
 static std::mutex free_later_mutex;
 
 //批量延迟删除
-static void do_free_later(){
-	{
-		//防止锁住太久
-		std::lock_guard<std::mutex> g(free_later_mutex);
-		//交换
-		free_later_list.swap(free_ing_list);
-	}
-	for (auto p : free_ing_list){
-		free(p);
-	}
-	free_ing_list.clear();
-}
+static void do_free_later();
 
+static void printHeapSummary(){
+    DWORD numHeaps = GetProcessHeaps(0, NULL);
+    HANDLE *heaps = reinterpret_cast<HANDLE*>(calloc(numHeaps, sizeof(HANDLE)));
+
+    if (GetProcessHeaps(numHeaps, heaps) != numHeaps) {
+        printf("Failed to get heap handles\n");
+    }
+    else {
+
+        HEAP_SUMMARY summ = {0};
+
+        for (DWORD i = 0; i < numHeaps; ++i) {
+            HANDLE hHeap = heaps[i];
+            HEAP_SUMMARY cur = {0};
+            HeapSummary(hHeap, 0, &cur);
+            summ.cbAllocated+= cur.cbAllocated;
+            summ.cbCommitted+= cur.cbCommitted;
+            summ.cbReserved+= cur.cbReserved;
+            summ.cbMaxReserve+= cur.cbMaxReserve;
+        }
+
+        printf("HEAP summary:%lu:\n", numHeaps);
+        printf("\t分配:%lld\n", summ.cbAllocated);
+        printf("\t提交:%lld\n", summ.cbCommitted);
+        printf("\t保留:%lld\n", summ.cbReserved);
+        printf("\t最大:%lld\n", summ.cbMaxReserve);
+    }
+}
 /*
  入引用管理
  */
@@ -760,6 +780,12 @@ void Urgc::process_on_thread()
 			// report_type_cnts();
 			// report("usage");
 			// printf(" event list size:%d,\n", size );
+		}
+		if (i % 100 == 0){
+			auto size = HeapCompact(GetProcessHeap(), 0);
+			printf("_heapmin:%d; size:%lld\n",_heapmin(), size); //归还内存给操作系统
+
+			printHeapSummary();
 		}
 
 		long long sleepMs = 40 - costMs;
@@ -1668,10 +1694,47 @@ void Urgc::record_target_ref_event(RefEventItem& item){
 
 //用于DEFER_DELETE
 void urgc_defer_free(void *p){
+	// HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	// HeapFree(heap, 0, *(void**)p);
+
 	free(*((void**)p));
 }
 
 void urgc_free_later(void *p){
 	std::lock_guard<std::mutex> g(free_later_mutex);
 	free_later_list.push_back(p);
+}
+void *urgc_calloc(int count, int eleSize){
+
+
+    // 创建自己的堆（可选）
+    HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	int size = count * eleSize;
+    // 分配
+    void* ptr = HeapAlloc(heap, HEAP_ZERO_MEMORY, size);
+	// memset(ptr, 0, size);
+
+
+    // return calloc(count, eleSize);
+    return ptr;
+}
+static void do_free_later(){
+	{
+		//防止锁住太久
+		std::lock_guard<std::mutex> g(free_later_mutex);
+		//交换
+		free_later_list.swap(free_ing_list);
+	}
+
+	HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	for (auto p : free_ing_list){
+		// free(p);
+		HeapFree(heap, 0, p);
+	}
+	free_ing_list.clear();
+}
+void urgc_doFree(void *p){
+	HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	HeapFree(heap, 0, p);
+	// free(p);
 }

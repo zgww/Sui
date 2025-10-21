@@ -478,7 +478,7 @@ void SuiDesigner$InspectorOption_init(SuiDesigner$InspectorOption *self, void *p
 // new function
 SuiDesigner$InspectorOption * SuiDesigner$InspectorOption_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspectorOption *self = calloc(1, sizeof(SuiDesigner$InspectorOption));
+    SuiDesigner$InspectorOption *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspectorOption));
 	
     SuiDesigner$InspectorOption_init(self, pOwner);
     return self;
@@ -604,7 +604,7 @@ void SuiDesigner$InspectorAttrInfo_init(SuiDesigner$InspectorAttrInfo *self, voi
 // new function
 SuiDesigner$InspectorAttrInfo * SuiDesigner$InspectorAttrInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InspectorAttrInfo *self = calloc(1, sizeof(SuiDesigner$InspectorAttrInfo));
+    SuiDesigner$InspectorAttrInfo *self = ORC_CALLOC(1, sizeof(SuiDesigner$InspectorAttrInfo));
 	
     SuiDesigner$InspectorAttrInfo_init(self, pOwner);
     return self;
@@ -796,7 +796,7 @@ void SuiDesigner$Inspector_init(SuiDesigner$Inspector *self, void *pOwner){
 // new function
 SuiDesigner$Inspector * SuiDesigner$Inspector_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Inspector *self = calloc(1, sizeof(SuiDesigner$Inspector));
+    SuiDesigner$Inspector *self = ORC_CALLOC(1, sizeof(SuiDesigner$Inspector));
 	
     SuiDesigner$Inspector_init(self, pOwner);
     return self;

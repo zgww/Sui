@@ -125,7 +125,7 @@ void Sgl$GeometryLathe_init(Sgl$GeometryLathe *self, void *pOwner){
 // new function
 Sgl$GeometryLathe * Sgl$GeometryLathe_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryLathe *self = calloc(1, sizeof(Sgl$GeometryLathe));
+    Sgl$GeometryLathe *self = ORC_CALLOC(1, sizeof(Sgl$GeometryLathe));
 	
     Sgl$GeometryLathe_init(self, pOwner);
     return self;

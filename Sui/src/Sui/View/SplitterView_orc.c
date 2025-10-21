@@ -155,7 +155,7 @@ void SuiView$SplitterView_init(SuiView$SplitterView *self, void *pOwner){
 // new function
 SuiView$SplitterView * SuiView$SplitterView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$SplitterView *self = calloc(1, sizeof(SuiView$SplitterView));
+    SuiView$SplitterView *self = ORC_CALLOC(1, sizeof(SuiView$SplitterView));
 	
     SuiView$SplitterView_init(self, pOwner);
     return self;

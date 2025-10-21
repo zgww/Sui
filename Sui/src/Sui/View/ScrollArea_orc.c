@@ -241,7 +241,7 @@ void SuiView$ScrollModel_init(SuiView$ScrollModel *self, void *pOwner){
 // new function
 SuiView$ScrollModel * SuiView$ScrollModel_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ScrollModel *self = calloc(1, sizeof(SuiView$ScrollModel));
+    SuiView$ScrollModel *self = ORC_CALLOC(1, sizeof(SuiView$ScrollModel));
 	
     SuiView$ScrollModel_init(self, pOwner);
     return self;
@@ -468,7 +468,7 @@ void SuiView$ScrollArea_init(SuiView$ScrollArea *self, void *pOwner){
 // new function
 SuiView$ScrollArea * SuiView$ScrollArea_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ScrollArea *self = calloc(1, sizeof(SuiView$ScrollArea));
+    SuiView$ScrollArea *self = ORC_CALLOC(1, sizeof(SuiView$ScrollArea));
 	
     SuiView$ScrollArea_init(self, pOwner);
     return self;
@@ -721,7 +721,7 @@ void SuiView$ScrollBar_init(SuiView$ScrollBar *self, void *pOwner){
 // new function
 SuiView$ScrollBar * SuiView$ScrollBar_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ScrollBar *self = calloc(1, sizeof(SuiView$ScrollBar));
+    SuiView$ScrollBar *self = ORC_CALLOC(1, sizeof(SuiView$ScrollBar));
 	
     SuiView$ScrollBar_init(self, pOwner);
     return self;

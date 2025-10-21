@@ -155,7 +155,7 @@ void SuiView$SystemTrayIcon_init(SuiView$SystemTrayIcon *self, void *pOwner){
 // new function
 SuiView$SystemTrayIcon * SuiView$SystemTrayIcon_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$SystemTrayIcon *self = calloc(1, sizeof(SuiView$SystemTrayIcon));
+    SuiView$SystemTrayIcon *self = ORC_CALLOC(1, sizeof(SuiView$SystemTrayIcon));
 	
     SuiView$SystemTrayIcon_init(self, pOwner);
     return self;

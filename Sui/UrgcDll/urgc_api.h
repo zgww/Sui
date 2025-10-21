@@ -110,6 +110,8 @@ LayoutLinear已释放，现在要释放view,
 URGC_DLLAPI void urgc_free_later(void *p);
 
 URGC_DLLAPI void urgc_report_sources_of(void *p);
+URGC_DLLAPI void *urgc_calloc(int count, int eleSize);
+URGC_DLLAPI void urgc_doFree(void *p);
 
 #ifdef __cplusplus
 }

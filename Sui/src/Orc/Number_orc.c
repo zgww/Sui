@@ -116,7 +116,7 @@ void Orc$Number_init(Orc$Number *self, void *pOwner){
 // new function
 Orc$Number * Orc$Number_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Number *self = calloc(1, sizeof(Orc$Number));
+    Orc$Number *self = ORC_CALLOC(1, sizeof(Orc$Number));
 	
     Orc$Number_init(self, pOwner);
     return self;
@@ -250,7 +250,7 @@ void Orc$Integer_init(Orc$Integer *self, void *pOwner){
 // new function
 Orc$Integer * Orc$Integer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Integer *self = calloc(1, sizeof(Orc$Integer));
+    Orc$Integer *self = ORC_CALLOC(1, sizeof(Orc$Integer));
 	
     Orc$Integer_init(self, pOwner);
     return self;
@@ -384,7 +384,7 @@ void Orc$Boolean_init(Orc$Boolean *self, void *pOwner){
 // new function
 Orc$Boolean * Orc$Boolean_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Boolean *self = calloc(1, sizeof(Orc$Boolean));
+    Orc$Boolean *self = ORC_CALLOC(1, sizeof(Orc$Boolean));
 	
     Orc$Boolean_init(self, pOwner);
     return self;
@@ -518,7 +518,7 @@ void Orc$Float_init(Orc$Float *self, void *pOwner){
 // new function
 Orc$Float * Orc$Float_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Float *self = calloc(1, sizeof(Orc$Float));
+    Orc$Float *self = ORC_CALLOC(1, sizeof(Orc$Float));
 	
     Orc$Float_init(self, pOwner);
     return self;
@@ -652,7 +652,7 @@ void Orc$Double_init(Orc$Double *self, void *pOwner){
 // new function
 Orc$Double * Orc$Double_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Double *self = calloc(1, sizeof(Orc$Double));
+    Orc$Double *self = ORC_CALLOC(1, sizeof(Orc$Double));
 	
     Orc$Double_init(self, pOwner);
     return self;
@@ -783,7 +783,7 @@ void Orc$StructObj_init(Orc$StructObj *self, void *pOwner){
 // new function
 Orc$StructObj * Orc$StructObj_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$StructObj *self = calloc(1, sizeof(Orc$StructObj));
+    Orc$StructObj *self = ORC_CALLOC(1, sizeof(Orc$StructObj));
 	
     Orc$StructObj_init(self, pOwner);
     return self;

@@ -578,7 +578,7 @@ void SuiDesigner$SpriteSheetPlayerView_init(SuiDesigner$SpriteSheetPlayerView *s
 // new function
 SuiDesigner$SpriteSheetPlayerView * SuiDesigner$SpriteSheetPlayerView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SpriteSheetPlayerView *self = calloc(1, sizeof(SuiDesigner$SpriteSheetPlayerView));
+    SuiDesigner$SpriteSheetPlayerView *self = ORC_CALLOC(1, sizeof(SuiDesigner$SpriteSheetPlayerView));
 	
     SuiDesigner$SpriteSheetPlayerView_init(self, pOwner);
     return self;
@@ -783,7 +783,7 @@ void SuiDesigner$SpriteSheetFrameCoord_init(SuiDesigner$SpriteSheetFrameCoord *s
 // new function
 SuiDesigner$SpriteSheetFrameCoord * SuiDesigner$SpriteSheetFrameCoord_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SpriteSheetFrameCoord *self = calloc(1, sizeof(SuiDesigner$SpriteSheetFrameCoord));
+    SuiDesigner$SpriteSheetFrameCoord *self = ORC_CALLOC(1, sizeof(SuiDesigner$SpriteSheetFrameCoord));
 	
     SuiDesigner$SpriteSheetFrameCoord_init(self, pOwner);
     return self;
@@ -912,7 +912,7 @@ void SuiDesigner$SpriteSheetAnim_init(SuiDesigner$SpriteSheetAnim *self, void *p
 // new function
 SuiDesigner$SpriteSheetAnim * SuiDesigner$SpriteSheetAnim_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SpriteSheetAnim *self = calloc(1, sizeof(SuiDesigner$SpriteSheetAnim));
+    SuiDesigner$SpriteSheetAnim *self = ORC_CALLOC(1, sizeof(SuiDesigner$SpriteSheetAnim));
 	
     SuiDesigner$SpriteSheetAnim_init(self, pOwner);
     return self;
@@ -1074,7 +1074,7 @@ void SuiDesigner$SpriteSheetInfo_init(SuiDesigner$SpriteSheetInfo *self, void *p
 // new function
 SuiDesigner$SpriteSheetInfo * SuiDesigner$SpriteSheetInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SpriteSheetInfo *self = calloc(1, sizeof(SuiDesigner$SpriteSheetInfo));
+    SuiDesigner$SpriteSheetInfo *self = ORC_CALLOC(1, sizeof(SuiDesigner$SpriteSheetInfo));
 	
     SuiDesigner$SpriteSheetInfo_init(self, pOwner);
     return self;
@@ -1269,7 +1269,7 @@ void SuiDesigner$SpriteSheetEditor_init(SuiDesigner$SpriteSheetEditor *self, voi
 // new function
 SuiDesigner$SpriteSheetEditor * SuiDesigner$SpriteSheetEditor_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SpriteSheetEditor *self = calloc(1, sizeof(SuiDesigner$SpriteSheetEditor));
+    SuiDesigner$SpriteSheetEditor *self = ORC_CALLOC(1, sizeof(SuiDesigner$SpriteSheetEditor));
 	
     SuiDesigner$SpriteSheetEditor_init(self, pOwner);
     return self;

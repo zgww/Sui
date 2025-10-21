@@ -231,7 +231,7 @@ void Sgl$AssimpLoader_init(Sgl$AssimpLoader *self, void *pOwner){
 // new function
 Sgl$AssimpLoader * Sgl$AssimpLoader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$AssimpLoader *self = calloc(1, sizeof(Sgl$AssimpLoader));
+    Sgl$AssimpLoader *self = ORC_CALLOC(1, sizeof(Sgl$AssimpLoader));
 	
     Sgl$AssimpLoader_init(self, pOwner);
     return self;
@@ -1228,7 +1228,7 @@ void Sgl$ModelLoader_init(Sgl$ModelLoader *self, void *pOwner){
 // new function
 Sgl$ModelLoader * Sgl$ModelLoader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$ModelLoader *self = calloc(1, sizeof(Sgl$ModelLoader));
+    Sgl$ModelLoader *self = ORC_CALLOC(1, sizeof(Sgl$ModelLoader));
 	
     Sgl$ModelLoader_init(self, pOwner);
     return self;

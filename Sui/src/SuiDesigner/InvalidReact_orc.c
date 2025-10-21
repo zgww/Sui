@@ -160,7 +160,7 @@ void SuiDesigner$InvalidReact_init(SuiDesigner$InvalidReact *self, void *pOwner)
 // new function
 SuiDesigner$InvalidReact * SuiDesigner$InvalidReact_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$InvalidReact *self = calloc(1, sizeof(SuiDesigner$InvalidReact));
+    SuiDesigner$InvalidReact *self = ORC_CALLOC(1, sizeof(SuiDesigner$InvalidReact));
 	
     SuiDesigner$InvalidReact_init(self, pOwner);
     return self;

@@ -306,7 +306,7 @@ void SuiDesigner$AssetDirTreeView_init(SuiDesigner$AssetDirTreeView *self, void 
 // new function
 SuiDesigner$AssetDirTreeView * SuiDesigner$AssetDirTreeView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$AssetDirTreeView *self = calloc(1, sizeof(SuiDesigner$AssetDirTreeView));
+    SuiDesigner$AssetDirTreeView *self = ORC_CALLOC(1, sizeof(SuiDesigner$AssetDirTreeView));
 	
     SuiDesigner$AssetDirTreeView_init(self, pOwner);
     return self;

@@ -117,7 +117,7 @@ void Sgl$GeometryRect_init(Sgl$GeometryRect *self, void *pOwner){
 // new function
 Sgl$GeometryRect * Sgl$GeometryRect_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryRect *self = calloc(1, sizeof(Sgl$GeometryRect));
+    Sgl$GeometryRect *self = ORC_CALLOC(1, sizeof(Sgl$GeometryRect));
 	
     Sgl$GeometryRect_init(self, pOwner);
     return self;

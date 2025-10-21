@@ -154,7 +154,7 @@ void Sgl$OutlineFx_init(Sgl$OutlineFx *self, void *pOwner){
 // new function
 Sgl$OutlineFx * Sgl$OutlineFx_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$OutlineFx *self = calloc(1, sizeof(Sgl$OutlineFx));
+    Sgl$OutlineFx *self = ORC_CALLOC(1, sizeof(Sgl$OutlineFx));
 	
     Sgl$OutlineFx_init(self, pOwner);
     return self;

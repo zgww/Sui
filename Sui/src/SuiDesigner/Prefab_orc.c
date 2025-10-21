@@ -131,7 +131,7 @@ void SuiDesigner$Prefab_init(SuiDesigner$Prefab *self, void *pOwner){
 // new function
 SuiDesigner$Prefab * SuiDesigner$Prefab_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$Prefab *self = calloc(1, sizeof(SuiDesigner$Prefab));
+    SuiDesigner$Prefab *self = ORC_CALLOC(1, sizeof(SuiDesigner$Prefab));
 	
     SuiDesigner$Prefab_init(self, pOwner);
     return self;

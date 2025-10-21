@@ -111,7 +111,7 @@ void SuiCore$NodeRegisterInfo_init(SuiCore$NodeRegisterInfo *self, void *pOwner)
 // new function
 SuiCore$NodeRegisterInfo * SuiCore$NodeRegisterInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$NodeRegisterInfo *self = calloc(1, sizeof(SuiCore$NodeRegisterInfo));
+    SuiCore$NodeRegisterInfo *self = ORC_CALLOC(1, sizeof(SuiCore$NodeRegisterInfo));
 	
     SuiCore$NodeRegisterInfo_init(self, pOwner);
     return self;
@@ -235,7 +235,7 @@ void SuiCore$NodeLib_init(SuiCore$NodeLib *self, void *pOwner){
 // new function
 SuiCore$NodeLib * SuiCore$NodeLib_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$NodeLib *self = calloc(1, sizeof(SuiCore$NodeLib));
+    SuiCore$NodeLib *self = ORC_CALLOC(1, sizeof(SuiCore$NodeLib));
 	
     SuiCore$NodeLib_init(self, pOwner);
     return self;

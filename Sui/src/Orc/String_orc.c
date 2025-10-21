@@ -121,7 +121,7 @@ void Orc$String_init(Orc$String *self, void *pOwner){
 // new function
 Orc$String * Orc$String_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$String *self = calloc(1, sizeof(Orc$String));
+    Orc$String *self = ORC_CALLOC(1, sizeof(Orc$String));
 	
     Orc$String_init(self, pOwner);
     return self;

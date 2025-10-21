@@ -120,7 +120,7 @@ void SuiCore$Image_init(SuiCore$Image *self, void *pOwner){
 // new function
 SuiCore$Image * SuiCore$Image_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Image *self = calloc(1, sizeof(SuiCore$Image));
+    SuiCore$Image *self = ORC_CALLOC(1, sizeof(SuiCore$Image));
 	
     SuiCore$Image_init(self, pOwner);
     return self;

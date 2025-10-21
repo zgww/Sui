@@ -320,7 +320,7 @@ void SuiDesigner$SglSceneHierView_init(SuiDesigner$SglSceneHierView *self, void 
 // new function
 SuiDesigner$SglSceneHierView * SuiDesigner$SglSceneHierView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$SglSceneHierView *self = calloc(1, sizeof(SuiDesigner$SglSceneHierView));
+    SuiDesigner$SglSceneHierView *self = ORC_CALLOC(1, sizeof(SuiDesigner$SglSceneHierView));
 	
     SuiDesigner$SglSceneHierView_init(self, pOwner);
     return self;

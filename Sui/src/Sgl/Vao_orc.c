@@ -157,7 +157,7 @@ void Sgl$Vao_init(Sgl$Vao *self, void *pOwner){
 // new function
 Sgl$Vao * Sgl$Vao_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Vao *self = calloc(1, sizeof(Sgl$Vao));
+    Sgl$Vao *self = ORC_CALLOC(1, sizeof(Sgl$Vao));
 	
     Sgl$Vao_init(self, pOwner);
     return self;

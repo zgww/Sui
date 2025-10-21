@@ -123,7 +123,7 @@ void HoroEditor$ImageChessBg_init(HoroEditor$ImageChessBg *self, void *pOwner){
 // new function
 HoroEditor$ImageChessBg * HoroEditor$ImageChessBg_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$ImageChessBg *self = calloc(1, sizeof(HoroEditor$ImageChessBg));
+    HoroEditor$ImageChessBg *self = ORC_CALLOC(1, sizeof(HoroEditor$ImageChessBg));
 	
     HoroEditor$ImageChessBg_init(self, pOwner);
     return self;

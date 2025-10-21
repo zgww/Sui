@@ -109,7 +109,7 @@ void SuiCore$Edge_init(SuiCore$Edge *self, void *pOwner){
 // new function
 SuiCore$Edge * SuiCore$Edge_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Edge *self = calloc(1, sizeof(SuiCore$Edge));
+    SuiCore$Edge *self = ORC_CALLOC(1, sizeof(SuiCore$Edge));
 	
     SuiCore$Edge_init(self, pOwner);
     return self;

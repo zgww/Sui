@@ -198,7 +198,7 @@ void Sgl$Tex2d_init(Sgl$Tex2d *self, void *pOwner){
 // new function
 Sgl$Tex2d * Sgl$Tex2d_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Tex2d *self = calloc(1, sizeof(Sgl$Tex2d));
+    Sgl$Tex2d *self = ORC_CALLOC(1, sizeof(Sgl$Tex2d));
 	
     Sgl$Tex2d_init(self, pOwner);
     return self;

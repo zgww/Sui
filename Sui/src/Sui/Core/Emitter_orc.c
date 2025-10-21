@@ -123,7 +123,7 @@ void SuiCore$Listener_init(SuiCore$Listener *self, void *pOwner){
 // new function
 SuiCore$Listener * SuiCore$Listener_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Listener *self = calloc(1, sizeof(SuiCore$Listener));
+    SuiCore$Listener *self = ORC_CALLOC(1, sizeof(SuiCore$Listener));
 	
     SuiCore$Listener_init(self, pOwner);
     return self;
@@ -250,7 +250,7 @@ void SuiCore$Emitter_init(SuiCore$Emitter *self, void *pOwner){
 // new function
 SuiCore$Emitter * SuiCore$Emitter_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Emitter *self = calloc(1, sizeof(SuiCore$Emitter));
+    SuiCore$Emitter *self = ORC_CALLOC(1, sizeof(SuiCore$Emitter));
 	
     SuiCore$Emitter_init(self, pOwner);
     return self;

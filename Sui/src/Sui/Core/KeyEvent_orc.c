@@ -111,7 +111,7 @@ void SuiCore$TextEventBase_init(SuiCore$TextEventBase *self, void *pOwner){
 // new function
 SuiCore$TextEventBase * SuiCore$TextEventBase_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$TextEventBase *self = calloc(1, sizeof(SuiCore$TextEventBase));
+    SuiCore$TextEventBase *self = ORC_CALLOC(1, sizeof(SuiCore$TextEventBase));
 	
     SuiCore$TextEventBase_init(self, pOwner);
     return self;
@@ -234,7 +234,7 @@ void SuiCore$TextEditingEvent_init(SuiCore$TextEditingEvent *self, void *pOwner)
 // new function
 SuiCore$TextEditingEvent * SuiCore$TextEditingEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$TextEditingEvent *self = calloc(1, sizeof(SuiCore$TextEditingEvent));
+    SuiCore$TextEditingEvent *self = ORC_CALLOC(1, sizeof(SuiCore$TextEditingEvent));
 	
     SuiCore$TextEditingEvent_init(self, pOwner);
     return self;
@@ -371,7 +371,7 @@ void SuiCore$TextInputEvent_init(SuiCore$TextInputEvent *self, void *pOwner){
 // new function
 SuiCore$TextInputEvent * SuiCore$TextInputEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$TextInputEvent *self = calloc(1, sizeof(SuiCore$TextInputEvent));
+    SuiCore$TextInputEvent *self = ORC_CALLOC(1, sizeof(SuiCore$TextInputEvent));
 	
     SuiCore$TextInputEvent_init(self, pOwner);
     return self;
@@ -503,7 +503,7 @@ void SuiCore$KeyEvent_init(SuiCore$KeyEvent *self, void *pOwner){
 // new function
 SuiCore$KeyEvent * SuiCore$KeyEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$KeyEvent *self = calloc(1, sizeof(SuiCore$KeyEvent));
+    SuiCore$KeyEvent *self = ORC_CALLOC(1, sizeof(SuiCore$KeyEvent));
 	
     SuiCore$KeyEvent_init(self, pOwner);
     return self;
@@ -632,7 +632,7 @@ void SuiCore$WindowFocusEvent_init(SuiCore$WindowFocusEvent *self, void *pOwner)
 // new function
 SuiCore$WindowFocusEvent * SuiCore$WindowFocusEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$WindowFocusEvent *self = calloc(1, sizeof(SuiCore$WindowFocusEvent));
+    SuiCore$WindowFocusEvent *self = ORC_CALLOC(1, sizeof(SuiCore$WindowFocusEvent));
 	
     SuiCore$WindowFocusEvent_init(self, pOwner);
     return self;

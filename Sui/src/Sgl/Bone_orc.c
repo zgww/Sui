@@ -122,7 +122,7 @@ void Sgl$Bone_init(Sgl$Bone *self, void *pOwner){
 // new function
 Sgl$Bone * Sgl$Bone_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Bone *self = calloc(1, sizeof(Sgl$Bone));
+    Sgl$Bone *self = ORC_CALLOC(1, sizeof(Sgl$Bone));
 	
     Sgl$Bone_init(self, pOwner);
     return self;
@@ -245,7 +245,7 @@ void Sgl$Skeleton_init(Sgl$Skeleton *self, void *pOwner){
 // new function
 Sgl$Skeleton * Sgl$Skeleton_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Skeleton *self = calloc(1, sizeof(Sgl$Skeleton));
+    Sgl$Skeleton *self = ORC_CALLOC(1, sizeof(Sgl$Skeleton));
 	
     Sgl$Skeleton_init(self, pOwner);
     return self;

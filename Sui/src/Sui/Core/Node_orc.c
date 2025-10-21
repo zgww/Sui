@@ -154,7 +154,7 @@ void SuiCore$InnerReact_init(SuiCore$InnerReact *self, void *pOwner){
 // new function
 SuiCore$InnerReact * SuiCore$InnerReact_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$InnerReact *self = calloc(1, sizeof(SuiCore$InnerReact));
+    SuiCore$InnerReact *self = ORC_CALLOC(1, sizeof(SuiCore$InnerReact));
 	
     SuiCore$InnerReact_init(self, pOwner);
     return self;
@@ -341,7 +341,7 @@ void SuiCore$Node_init(SuiCore$Node *self, void *pOwner){
 // new function
 SuiCore$Node * SuiCore$Node_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Node *self = calloc(1, sizeof(SuiCore$Node));
+    SuiCore$Node *self = ORC_CALLOC(1, sizeof(SuiCore$Node));
 	
     SuiCore$Node_init(self, pOwner);
     return self;

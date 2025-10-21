@@ -123,7 +123,7 @@ void Sgl$GeometryCapsule_init(Sgl$GeometryCapsule *self, void *pOwner){
 // new function
 Sgl$GeometryCapsule * Sgl$GeometryCapsule_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryCapsule *self = calloc(1, sizeof(Sgl$GeometryCapsule));
+    Sgl$GeometryCapsule *self = ORC_CALLOC(1, sizeof(Sgl$GeometryCapsule));
 	
     Sgl$GeometryCapsule_init(self, pOwner);
     return self;

@@ -114,7 +114,7 @@ void Sgl$SpotLight_init(Sgl$SpotLight *self, void *pOwner){
 // new function
 Sgl$SpotLight * Sgl$SpotLight_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$SpotLight *self = calloc(1, sizeof(Sgl$SpotLight));
+    Sgl$SpotLight *self = ORC_CALLOC(1, sizeof(Sgl$SpotLight));
 	
     Sgl$SpotLight_init(self, pOwner);
     return self;

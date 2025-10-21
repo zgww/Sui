@@ -170,7 +170,7 @@ void HoroEditor$SceneTransform_init(HoroEditor$SceneTransform *self, void *pOwne
 // new function
 HoroEditor$SceneTransform * HoroEditor$SceneTransform_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$SceneTransform *self = calloc(1, sizeof(HoroEditor$SceneTransform));
+    HoroEditor$SceneTransform *self = ORC_CALLOC(1, sizeof(HoroEditor$SceneTransform));
 	
     HoroEditor$SceneTransform_init(self, pOwner);
     return self;

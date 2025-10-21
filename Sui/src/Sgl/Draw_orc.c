@@ -131,7 +131,7 @@ void Sgl$Draw_init(Sgl$Draw *self, void *pOwner){
 // new function
 Sgl$Draw * Sgl$Draw_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Draw *self = calloc(1, sizeof(Sgl$Draw));
+    Sgl$Draw *self = ORC_CALLOC(1, sizeof(Sgl$Draw));
 	
     Sgl$Draw_init(self, pOwner);
     return self;
@@ -337,7 +337,7 @@ void Sgl$ObjLoader_init(Sgl$ObjLoader *self, void *pOwner){
 // new function
 Sgl$ObjLoader * Sgl$ObjLoader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$ObjLoader *self = calloc(1, sizeof(Sgl$ObjLoader));
+    Sgl$ObjLoader *self = ORC_CALLOC(1, sizeof(Sgl$ObjLoader));
 	
     Sgl$ObjLoader_init(self, pOwner);
     return self;

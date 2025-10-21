@@ -174,7 +174,7 @@ void Sgl$Vbo_init(Sgl$Vbo *self, void *pOwner){
 // new function
 Sgl$Vbo * Sgl$Vbo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Vbo *self = calloc(1, sizeof(Sgl$Vbo));
+    Sgl$Vbo *self = ORC_CALLOC(1, sizeof(Sgl$Vbo));
 	
     Sgl$Vbo_init(self, pOwner);
     return self;

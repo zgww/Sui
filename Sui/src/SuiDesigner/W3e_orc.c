@@ -179,7 +179,7 @@ void SuiDesigner3d_w3e$W3eCorner_init(SuiDesigner3d_w3e$W3eCorner *self, void *p
 // new function
 SuiDesigner3d_w3e$W3eCorner * SuiDesigner3d_w3e$W3eCorner_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$W3eCorner *self = calloc(1, sizeof(SuiDesigner3d_w3e$W3eCorner));
+    SuiDesigner3d_w3e$W3eCorner *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$W3eCorner));
 	
     SuiDesigner3d_w3e$W3eCorner_init(self, pOwner);
     return self;
@@ -340,7 +340,7 @@ void SuiDesigner3d_w3e$W3e_init(SuiDesigner3d_w3e$W3e *self, void *pOwner){
 // new function
 SuiDesigner3d_w3e$W3e * SuiDesigner3d_w3e$W3e_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner3d_w3e$W3e *self = calloc(1, sizeof(SuiDesigner3d_w3e$W3e));
+    SuiDesigner3d_w3e$W3e *self = ORC_CALLOC(1, sizeof(SuiDesigner3d_w3e$W3e));
 	
     SuiDesigner3d_w3e$W3e_init(self, pOwner);
     return self;

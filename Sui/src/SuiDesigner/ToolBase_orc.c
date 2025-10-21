@@ -315,7 +315,7 @@ void SuiDesigner$ToolBase_init(SuiDesigner$ToolBase *self, void *pOwner){
 // new function
 SuiDesigner$ToolBase * SuiDesigner$ToolBase_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ToolBase *self = calloc(1, sizeof(SuiDesigner$ToolBase));
+    SuiDesigner$ToolBase *self = ORC_CALLOC(1, sizeof(SuiDesigner$ToolBase));
 	
     SuiDesigner$ToolBase_init(self, pOwner);
     return self;
@@ -449,7 +449,7 @@ void SuiDesigner$ToolDropModelLoader_init(SuiDesigner$ToolDropModelLoader *self,
 // new function
 SuiDesigner$ToolDropModelLoader * SuiDesigner$ToolDropModelLoader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ToolDropModelLoader *self = calloc(1, sizeof(SuiDesigner$ToolDropModelLoader));
+    SuiDesigner$ToolDropModelLoader *self = ORC_CALLOC(1, sizeof(SuiDesigner$ToolDropModelLoader));
 	
     SuiDesigner$ToolDropModelLoader_init(self, pOwner);
     return self;
@@ -614,7 +614,7 @@ void SuiDesigner$ToolSelect_init(SuiDesigner$ToolSelect *self, void *pOwner){
 // new function
 SuiDesigner$ToolSelect * SuiDesigner$ToolSelect_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ToolSelect *self = calloc(1, sizeof(SuiDesigner$ToolSelect));
+    SuiDesigner$ToolSelect *self = ORC_CALLOC(1, sizeof(SuiDesigner$ToolSelect));
 	
     SuiDesigner$ToolSelect_init(self, pOwner);
     return self;
@@ -926,7 +926,7 @@ void SuiDesigner$ToolMgr_init(SuiDesigner$ToolMgr *self, void *pOwner){
 // new function
 SuiDesigner$ToolMgr * SuiDesigner$ToolMgr_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ToolMgr *self = calloc(1, sizeof(SuiDesigner$ToolMgr));
+    SuiDesigner$ToolMgr *self = ORC_CALLOC(1, sizeof(SuiDesigner$ToolMgr));
 	
     SuiDesigner$ToolMgr_init(self, pOwner);
     return self;

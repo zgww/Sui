@@ -250,7 +250,7 @@ void SuiCore$Timer_init(SuiCore$Timer *self, void *pOwner){
 // new function
 SuiCore$Timer * SuiCore$Timer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Timer *self = calloc(1, sizeof(SuiCore$Timer));
+    SuiCore$Timer *self = ORC_CALLOC(1, sizeof(SuiCore$Timer));
 	
     SuiCore$Timer_init(self, pOwner);
     return self;
@@ -433,7 +433,7 @@ void SuiCore$TimerMgr_init(SuiCore$TimerMgr *self, void *pOwner){
 // new function
 SuiCore$TimerMgr * SuiCore$TimerMgr_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$TimerMgr *self = calloc(1, sizeof(SuiCore$TimerMgr));
+    SuiCore$TimerMgr *self = ORC_CALLOC(1, sizeof(SuiCore$TimerMgr));
 	
     SuiCore$TimerMgr_init(self, pOwner);
     return self;
@@ -714,7 +714,7 @@ void SuiCore$AnimStep_init(SuiCore$AnimStep *self, void *pOwner){
 // new function
 SuiCore$AnimStep * SuiCore$AnimStep_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$AnimStep *self = calloc(1, sizeof(SuiCore$AnimStep));
+    SuiCore$AnimStep *self = ORC_CALLOC(1, sizeof(SuiCore$AnimStep));
 	
     SuiCore$AnimStep_init(self, pOwner);
     return self;
@@ -899,7 +899,7 @@ void SuiCore$TimerTestEnt_init(SuiCore$TimerTestEnt *self, void *pOwner){
 // new function
 SuiCore$TimerTestEnt * SuiCore$TimerTestEnt_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$TimerTestEnt *self = calloc(1, sizeof(SuiCore$TimerTestEnt));
+    SuiCore$TimerTestEnt *self = ORC_CALLOC(1, sizeof(SuiCore$TimerTestEnt));
 	
     SuiCore$TimerTestEnt_init(self, pOwner);
     return self;

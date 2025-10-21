@@ -137,7 +137,7 @@ void Sgl$PerspectiveCamera_init(Sgl$PerspectiveCamera *self, void *pOwner){
 // new function
 Sgl$PerspectiveCamera * Sgl$PerspectiveCamera_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$PerspectiveCamera *self = calloc(1, sizeof(Sgl$PerspectiveCamera));
+    Sgl$PerspectiveCamera *self = ORC_CALLOC(1, sizeof(Sgl$PerspectiveCamera));
 	
     Sgl$PerspectiveCamera_init(self, pOwner);
     return self;

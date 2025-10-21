@@ -144,7 +144,7 @@ void SuiView$Button_init(SuiView$Button *self, void *pOwner){
 // new function
 SuiView$Button * SuiView$Button_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Button *self = calloc(1, sizeof(SuiView$Button));
+    SuiView$Button *self = ORC_CALLOC(1, sizeof(SuiView$Button));
 	
     SuiView$Button_init(self, pOwner);
     return self;
@@ -372,7 +372,7 @@ void SuiView$DrawButton_init(SuiView$DrawButton *self, void *pOwner){
 // new function
 SuiView$DrawButton * SuiView$DrawButton_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$DrawButton *self = calloc(1, sizeof(SuiView$DrawButton));
+    SuiView$DrawButton *self = ORC_CALLOC(1, sizeof(SuiView$DrawButton));
 	
     SuiView$DrawButton_init(self, pOwner);
     return self;
@@ -572,7 +572,7 @@ void SuiView$MenuButton_init(SuiView$MenuButton *self, void *pOwner){
 // new function
 SuiView$MenuButton * SuiView$MenuButton_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$MenuButton *self = calloc(1, sizeof(SuiView$MenuButton));
+    SuiView$MenuButton *self = ORC_CALLOC(1, sizeof(SuiView$MenuButton));
 	
     SuiView$MenuButton_init(self, pOwner);
     return self;

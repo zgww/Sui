@@ -108,7 +108,7 @@ void SuiDesigner$EventFileItemChanged_init(SuiDesigner$EventFileItemChanged *sel
 // new function
 SuiDesigner$EventFileItemChanged * SuiDesigner$EventFileItemChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EventFileItemChanged *self = calloc(1, sizeof(SuiDesigner$EventFileItemChanged));
+    SuiDesigner$EventFileItemChanged *self = ORC_CALLOC(1, sizeof(SuiDesigner$EventFileItemChanged));
 	
     SuiDesigner$EventFileItemChanged_init(self, pOwner);
     return self;

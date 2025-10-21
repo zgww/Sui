@@ -136,7 +136,7 @@ void Sgl$GeometryBox_init(Sgl$GeometryBox *self, void *pOwner){
 // new function
 Sgl$GeometryBox * Sgl$GeometryBox_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryBox *self = calloc(1, sizeof(Sgl$GeometryBox));
+    Sgl$GeometryBox *self = ORC_CALLOC(1, sizeof(Sgl$GeometryBox));
 	
     Sgl$GeometryBox_init(self, pOwner);
     return self;

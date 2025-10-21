@@ -114,7 +114,7 @@ void SuiCore$Cursor_init(SuiCore$Cursor *self, void *pOwner){
 // new function
 SuiCore$Cursor * SuiCore$Cursor_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Cursor *self = calloc(1, sizeof(SuiCore$Cursor));
+    SuiCore$Cursor *self = ORC_CALLOC(1, sizeof(SuiCore$Cursor));
 	
     SuiCore$Cursor_init(self, pOwner);
     return self;

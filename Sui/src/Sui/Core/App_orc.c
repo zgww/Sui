@@ -118,7 +118,7 @@ void SuiCore$AppEventLoopMessage_init(SuiCore$AppEventLoopMessage *self, void *p
 // new function
 SuiCore$AppEventLoopMessage * SuiCore$AppEventLoopMessage_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$AppEventLoopMessage *self = calloc(1, sizeof(SuiCore$AppEventLoopMessage));
+    SuiCore$AppEventLoopMessage *self = ORC_CALLOC(1, sizeof(SuiCore$AppEventLoopMessage));
 	
     SuiCore$AppEventLoopMessage_init(self, pOwner);
     return self;
@@ -261,7 +261,7 @@ void SuiCore$App_init(SuiCore$App *self, void *pOwner){
 // new function
 SuiCore$App * SuiCore$App_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$App *self = calloc(1, sizeof(SuiCore$App));
+    SuiCore$App *self = ORC_CALLOC(1, sizeof(SuiCore$App));
 	
     SuiCore$App_init(self, pOwner);
     return self;

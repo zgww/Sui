@@ -152,7 +152,7 @@ void Sgl$Raycaster_init(Sgl$Raycaster *self, void *pOwner){
 // new function
 Sgl$Raycaster * Sgl$Raycaster_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Raycaster *self = calloc(1, sizeof(Sgl$Raycaster));
+    Sgl$Raycaster *self = ORC_CALLOC(1, sizeof(Sgl$Raycaster));
 	
     Sgl$Raycaster_init(self, pOwner);
     return self;

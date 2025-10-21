@@ -209,7 +209,7 @@ void SuiView$Select_init(SuiView$Select *self, void *pOwner){
 // new function
 SuiView$Select * SuiView$Select_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Select *self = calloc(1, sizeof(SuiView$Select));
+    SuiView$Select *self = ORC_CALLOC(1, sizeof(SuiView$Select));
 	
     SuiView$Select_init(self, pOwner);
     return self;

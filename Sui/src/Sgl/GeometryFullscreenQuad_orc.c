@@ -120,7 +120,7 @@ void Sgl$GeometryFullscreenQuad_init(Sgl$GeometryFullscreenQuad *self, void *pOw
 // new function
 Sgl$GeometryFullscreenQuad * Sgl$GeometryFullscreenQuad_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryFullscreenQuad *self = calloc(1, sizeof(Sgl$GeometryFullscreenQuad));
+    Sgl$GeometryFullscreenQuad *self = ORC_CALLOC(1, sizeof(Sgl$GeometryFullscreenQuad));
 	
     Sgl$GeometryFullscreenQuad_init(self, pOwner);
     return self;

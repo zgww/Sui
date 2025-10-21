@@ -153,7 +153,7 @@ void SuiView$ProgressView_init(SuiView$ProgressView *self, void *pOwner){
 // new function
 SuiView$ProgressView * SuiView$ProgressView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ProgressView *self = calloc(1, sizeof(SuiView$ProgressView));
+    SuiView$ProgressView *self = ORC_CALLOC(1, sizeof(SuiView$ProgressView));
 	
     SuiView$ProgressView_init(self, pOwner);
     return self;

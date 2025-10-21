@@ -186,7 +186,7 @@ void SuiView$Panel_init(SuiView$Panel *self, void *pOwner){
 // new function
 SuiView$Panel * SuiView$Panel_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Panel *self = calloc(1, sizeof(SuiView$Panel));
+    SuiView$Panel *self = ORC_CALLOC(1, sizeof(SuiView$Panel));
 	
     SuiView$Panel_init(self, pOwner);
     return self;
@@ -383,7 +383,7 @@ void SuiView$Panel2_init(SuiView$Panel2 *self, void *pOwner){
 // new function
 SuiView$Panel2 * SuiView$Panel2_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Panel2 *self = calloc(1, sizeof(SuiView$Panel2));
+    SuiView$Panel2 *self = ORC_CALLOC(1, sizeof(SuiView$Panel2));
 	
     SuiView$Panel2_init(self, pOwner);
     return self;

@@ -114,7 +114,7 @@ void SuiCore$Radius_init(SuiCore$Radius *self, void *pOwner){
 // new function
 SuiCore$Radius * SuiCore$Radius_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$Radius *self = calloc(1, sizeof(SuiCore$Radius));
+    SuiCore$Radius *self = ORC_CALLOC(1, sizeof(SuiCore$Radius));
 	
     SuiCore$Radius_init(self, pOwner);
     return self;

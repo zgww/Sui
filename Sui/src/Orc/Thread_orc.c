@@ -143,7 +143,7 @@ void Orc$Thread_init(Orc$Thread *self, void *pOwner){
 // new function
 Orc$Thread * Orc$Thread_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Orc$Thread *self = calloc(1, sizeof(Orc$Thread));
+    Orc$Thread *self = ORC_CALLOC(1, sizeof(Orc$Thread));
 	
     Orc$Thread_init(self, pOwner);
     return self;

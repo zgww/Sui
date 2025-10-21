@@ -250,7 +250,7 @@ void SuiDesigner$BezierEditView_init(SuiDesigner$BezierEditView *self, void *pOw
 // new function
 SuiDesigner$BezierEditView * SuiDesigner$BezierEditView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$BezierEditView *self = calloc(1, sizeof(SuiDesigner$BezierEditView));
+    SuiDesigner$BezierEditView *self = ORC_CALLOC(1, sizeof(SuiDesigner$BezierEditView));
 	
     SuiDesigner$BezierEditView_init(self, pOwner);
     return self;

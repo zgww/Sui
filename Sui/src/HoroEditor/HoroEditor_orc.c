@@ -1017,7 +1017,7 @@ void HoroEditor$HoroEditorSceneViewCallback_init(HoroEditor$HoroEditorSceneViewC
 // new function
 HoroEditor$HoroEditorSceneViewCallback * HoroEditor$HoroEditorSceneViewCallback_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroEditorSceneViewCallback *self = calloc(1, sizeof(HoroEditor$HoroEditorSceneViewCallback));
+    HoroEditor$HoroEditorSceneViewCallback *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroEditorSceneViewCallback));
 	
     HoroEditor$HoroEditorSceneViewCallback_init(self, pOwner);
     return self;
@@ -1211,7 +1211,7 @@ void HoroEditor$HoroEditor_init(HoroEditor$HoroEditor *self, void *pOwner){
 // new function
 HoroEditor$HoroEditor * HoroEditor$HoroEditor_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroEditor *self = calloc(1, sizeof(HoroEditor$HoroEditor));
+    HoroEditor$HoroEditor *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroEditor));
 	
     HoroEditor$HoroEditor_init(self, pOwner);
     return self;

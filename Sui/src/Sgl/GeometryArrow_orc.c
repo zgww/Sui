@@ -145,7 +145,7 @@ void Sgl$GeometryArrow_init(Sgl$GeometryArrow *self, void *pOwner){
 // new function
 Sgl$GeometryArrow * Sgl$GeometryArrow_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryArrow *self = calloc(1, sizeof(Sgl$GeometryArrow));
+    Sgl$GeometryArrow *self = ORC_CALLOC(1, sizeof(Sgl$GeometryArrow));
 	
     Sgl$GeometryArrow_init(self, pOwner);
     return self;

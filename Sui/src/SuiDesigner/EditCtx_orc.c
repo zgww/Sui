@@ -179,7 +179,7 @@ void SuiDesigner$EditEventBase_init(SuiDesigner$EditEventBase *self, void *pOwne
 // new function
 SuiDesigner$EditEventBase * SuiDesigner$EditEventBase_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EditEventBase *self = calloc(1, sizeof(SuiDesigner$EditEventBase));
+    SuiDesigner$EditEventBase *self = ORC_CALLOC(1, sizeof(SuiDesigner$EditEventBase));
 	
     SuiDesigner$EditEventBase_init(self, pOwner);
     return self;
@@ -283,7 +283,7 @@ void SuiDesigner$EditEventSelectedChanged_init(SuiDesigner$EditEventSelectedChan
 // new function
 SuiDesigner$EditEventSelectedChanged * SuiDesigner$EditEventSelectedChanged_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EditEventSelectedChanged *self = calloc(1, sizeof(SuiDesigner$EditEventSelectedChanged));
+    SuiDesigner$EditEventSelectedChanged *self = ORC_CALLOC(1, sizeof(SuiDesigner$EditEventSelectedChanged));
 	
     SuiDesigner$EditEventSelectedChanged_init(self, pOwner);
     return self;
@@ -413,7 +413,7 @@ void SuiDesigner$EditCtx_init(SuiDesigner$EditCtx *self, void *pOwner){
 // new function
 SuiDesigner$EditCtx * SuiDesigner$EditCtx_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$EditCtx *self = calloc(1, sizeof(SuiDesigner$EditCtx));
+    SuiDesigner$EditCtx *self = ORC_CALLOC(1, sizeof(SuiDesigner$EditCtx));
 	
     SuiDesigner$EditCtx_init(self, pOwner);
     return self;

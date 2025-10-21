@@ -172,7 +172,7 @@ void SuiView$Slider_init(SuiView$Slider *self, void *pOwner){
 // new function
 SuiView$Slider * SuiView$Slider_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$Slider *self = calloc(1, sizeof(SuiView$Slider));
+    SuiView$Slider *self = ORC_CALLOC(1, sizeof(SuiView$Slider));
 	
     SuiView$Slider_init(self, pOwner);
     return self;

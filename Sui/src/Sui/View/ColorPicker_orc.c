@@ -157,7 +157,7 @@ void SuiView$ColorPicker_init(SuiView$ColorPicker *self, void *pOwner){
 // new function
 SuiView$ColorPicker * SuiView$ColorPicker_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ColorPicker *self = calloc(1, sizeof(SuiView$ColorPicker));
+    SuiView$ColorPicker *self = ORC_CALLOC(1, sizeof(SuiView$ColorPicker));
 	
     SuiView$ColorPicker_init(self, pOwner);
     return self;

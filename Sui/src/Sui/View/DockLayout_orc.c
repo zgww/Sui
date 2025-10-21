@@ -310,7 +310,7 @@ void SuiView$DockItem_init(SuiView$DockItem *self, void *pOwner){
 // new function
 SuiView$DockItem * SuiView$DockItem_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$DockItem *self = calloc(1, sizeof(SuiView$DockItem));
+    SuiView$DockItem *self = ORC_CALLOC(1, sizeof(SuiView$DockItem));
 	
     SuiView$DockItem_init(self, pOwner);
     return self;
@@ -664,7 +664,7 @@ void SuiView$DockLayout_init(SuiView$DockLayout *self, void *pOwner){
 // new function
 SuiView$DockLayout * SuiView$DockLayout_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$DockLayout *self = calloc(1, sizeof(SuiView$DockLayout));
+    SuiView$DockLayout *self = ORC_CALLOC(1, sizeof(SuiView$DockLayout));
 	
     SuiView$DockLayout_init(self, pOwner);
     return self;
@@ -1353,7 +1353,7 @@ void SuiView$DockSplitterView_init(SuiView$DockSplitterView *self, void *pOwner)
 // new function
 SuiView$DockSplitterView * SuiView$DockSplitterView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$DockSplitterView *self = calloc(1, sizeof(SuiView$DockSplitterView));
+    SuiView$DockSplitterView *self = ORC_CALLOC(1, sizeof(SuiView$DockSplitterView));
 	
     SuiView$DockSplitterView_init(self, pOwner);
     return self;

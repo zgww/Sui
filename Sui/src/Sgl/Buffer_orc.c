@@ -144,7 +144,7 @@ void Sgl$StructArrayBase_init(Sgl$StructArrayBase *self, void *pOwner){
 // new function
 Sgl$StructArrayBase * Sgl$StructArrayBase_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$StructArrayBase *self = calloc(1, sizeof(Sgl$StructArrayBase));
+    Sgl$StructArrayBase *self = ORC_CALLOC(1, sizeof(Sgl$StructArrayBase));
 	
     Sgl$StructArrayBase_init(self, pOwner);
     return self;
@@ -389,7 +389,7 @@ void Sgl$CharArray_init(Sgl$CharArray *self, void *pOwner){
 // new function
 Sgl$CharArray * Sgl$CharArray_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$CharArray *self = calloc(1, sizeof(Sgl$CharArray));
+    Sgl$CharArray *self = ORC_CALLOC(1, sizeof(Sgl$CharArray));
 	
     Sgl$CharArray_init(self, pOwner);
     return self;
@@ -557,7 +557,7 @@ void Sgl$ShortArray_init(Sgl$ShortArray *self, void *pOwner){
 // new function
 Sgl$ShortArray * Sgl$ShortArray_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$ShortArray *self = calloc(1, sizeof(Sgl$ShortArray));
+    Sgl$ShortArray *self = ORC_CALLOC(1, sizeof(Sgl$ShortArray));
 	
     Sgl$ShortArray_init(self, pOwner);
     return self;
@@ -716,7 +716,7 @@ void Sgl$FloatArray_init(Sgl$FloatArray *self, void *pOwner){
 // new function
 Sgl$FloatArray * Sgl$FloatArray_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$FloatArray *self = calloc(1, sizeof(Sgl$FloatArray));
+    Sgl$FloatArray *self = ORC_CALLOC(1, sizeof(Sgl$FloatArray));
 	
     Sgl$FloatArray_init(self, pOwner);
     return self;
@@ -880,7 +880,7 @@ void Sgl$MatArray_init(Sgl$MatArray *self, void *pOwner){
 // new function
 Sgl$MatArray * Sgl$MatArray_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$MatArray *self = calloc(1, sizeof(Sgl$MatArray));
+    Sgl$MatArray *self = ORC_CALLOC(1, sizeof(Sgl$MatArray));
 	
     Sgl$MatArray_init(self, pOwner);
     return self;
@@ -1042,7 +1042,7 @@ void Sgl$Vec4Array_init(Sgl$Vec4Array *self, void *pOwner){
 // new function
 Sgl$Vec4Array * Sgl$Vec4Array_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Vec4Array *self = calloc(1, sizeof(Sgl$Vec4Array));
+    Sgl$Vec4Array *self = ORC_CALLOC(1, sizeof(Sgl$Vec4Array));
 	
     Sgl$Vec4Array_init(self, pOwner);
     return self;
@@ -1201,7 +1201,7 @@ void Sgl$Vec3Array_init(Sgl$Vec3Array *self, void *pOwner){
 // new function
 Sgl$Vec3Array * Sgl$Vec3Array_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Vec3Array *self = calloc(1, sizeof(Sgl$Vec3Array));
+    Sgl$Vec3Array *self = ORC_CALLOC(1, sizeof(Sgl$Vec3Array));
 	
     Sgl$Vec3Array_init(self, pOwner);
     return self;
@@ -1376,7 +1376,7 @@ void Sgl$Vec2Array_init(Sgl$Vec2Array *self, void *pOwner){
 // new function
 Sgl$Vec2Array * Sgl$Vec2Array_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Vec2Array *self = calloc(1, sizeof(Sgl$Vec2Array));
+    Sgl$Vec2Array *self = ORC_CALLOC(1, sizeof(Sgl$Vec2Array));
 	
     Sgl$Vec2Array_init(self, pOwner);
     return self;
@@ -1527,7 +1527,7 @@ void Sgl$IntArray_init(Sgl$IntArray *self, void *pOwner){
 // new function
 Sgl$IntArray * Sgl$IntArray_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$IntArray *self = calloc(1, sizeof(Sgl$IntArray));
+    Sgl$IntArray *self = ORC_CALLOC(1, sizeof(Sgl$IntArray));
 	
     Sgl$IntArray_init(self, pOwner);
     return self;
@@ -1792,7 +1792,7 @@ void Sgl$Buffer_init(Sgl$Buffer *self, void *pOwner){
 // new function
 Sgl$Buffer * Sgl$Buffer_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Buffer *self = calloc(1, sizeof(Sgl$Buffer));
+    Sgl$Buffer *self = ORC_CALLOC(1, sizeof(Sgl$Buffer));
 	
     Sgl$Buffer_init(self, pOwner);
     return self;
@@ -2137,7 +2137,7 @@ void Sgl$BufferReader_init(Sgl$BufferReader *self, void *pOwner){
 // new function
 Sgl$BufferReader * Sgl$BufferReader_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$BufferReader *self = calloc(1, sizeof(Sgl$BufferReader));
+    Sgl$BufferReader *self = ORC_CALLOC(1, sizeof(Sgl$BufferReader));
 	
     Sgl$BufferReader_init(self, pOwner);
     return self;

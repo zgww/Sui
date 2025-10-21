@@ -270,7 +270,7 @@ void SuiView$ColorPalete_init(SuiView$ColorPalete *self, void *pOwner){
 // new function
 SuiView$ColorPalete * SuiView$ColorPalete_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ColorPalete *self = calloc(1, sizeof(SuiView$ColorPalete));
+    SuiView$ColorPalete *self = ORC_CALLOC(1, sizeof(SuiView$ColorPalete));
 	
     SuiView$ColorPalete_init(self, pOwner);
     return self;
@@ -529,7 +529,7 @@ void SuiView$ColorView_init(SuiView$ColorView *self, void *pOwner){
 // new function
 SuiView$ColorView * SuiView$ColorView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$ColorView *self = calloc(1, sizeof(SuiView$ColorView));
+    SuiView$ColorView *self = ORC_CALLOC(1, sizeof(SuiView$ColorView));
 	
     SuiView$ColorView_init(self, pOwner);
     return self;

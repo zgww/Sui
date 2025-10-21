@@ -117,7 +117,7 @@ void Sgl$PointLight_init(Sgl$PointLight *self, void *pOwner){
 // new function
 Sgl$PointLight * Sgl$PointLight_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$PointLight *self = calloc(1, sizeof(Sgl$PointLight));
+    Sgl$PointLight *self = ORC_CALLOC(1, sizeof(Sgl$PointLight));
 	
     Sgl$PointLight_init(self, pOwner);
     return self;

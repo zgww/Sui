@@ -125,7 +125,7 @@ void Sgl$GeometryTorus_init(Sgl$GeometryTorus *self, void *pOwner){
 // new function
 Sgl$GeometryTorus * Sgl$GeometryTorus_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeometryTorus *self = calloc(1, sizeof(Sgl$GeometryTorus));
+    Sgl$GeometryTorus *self = ORC_CALLOC(1, sizeof(Sgl$GeometryTorus));
 	
     Sgl$GeometryTorus_init(self, pOwner);
     return self;

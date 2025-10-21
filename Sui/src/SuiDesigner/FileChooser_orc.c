@@ -217,7 +217,7 @@ void SuiDesigner$FileChooser_init(SuiDesigner$FileChooser *self, void *pOwner){
 // new function
 SuiDesigner$FileChooser * SuiDesigner$FileChooser_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$FileChooser *self = calloc(1, sizeof(SuiDesigner$FileChooser));
+    SuiDesigner$FileChooser *self = ORC_CALLOC(1, sizeof(SuiDesigner$FileChooser));
 	
     SuiDesigner$FileChooser_init(self, pOwner);
     return self;

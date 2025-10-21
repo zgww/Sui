@@ -118,7 +118,7 @@ void Sgl$GeoAttr_init(Sgl$GeoAttr *self, void *pOwner){
 // new function
 Sgl$GeoAttr * Sgl$GeoAttr_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$GeoAttr *self = calloc(1, sizeof(Sgl$GeoAttr));
+    Sgl$GeoAttr *self = ORC_CALLOC(1, sizeof(Sgl$GeoAttr));
 	
     Sgl$GeoAttr_init(self, pOwner);
     return self;
@@ -255,7 +255,7 @@ void Sgl$Geometry_init(Sgl$Geometry *self, void *pOwner){
 // new function
 Sgl$Geometry * Sgl$Geometry_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Geometry *self = calloc(1, sizeof(Sgl$Geometry));
+    Sgl$Geometry *self = ORC_CALLOC(1, sizeof(Sgl$Geometry));
 	
     Sgl$Geometry_init(self, pOwner);
     return self;

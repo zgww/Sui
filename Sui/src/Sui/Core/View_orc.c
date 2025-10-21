@@ -130,7 +130,7 @@ void SuiCore$ViewCallback_init(SuiCore$ViewCallback *self, void *pOwner){
 // new function
 SuiCore$ViewCallback * SuiCore$ViewCallback_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$ViewCallback *self = calloc(1, sizeof(SuiCore$ViewCallback));
+    SuiCore$ViewCallback *self = ORC_CALLOC(1, sizeof(SuiCore$ViewCallback));
 	
     SuiCore$ViewCallback_init(self, pOwner);
     return self;
@@ -350,7 +350,7 @@ void SuiCore$View_init(SuiCore$View *self, void *pOwner){
 // new function
 SuiCore$View * SuiCore$View_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$View *self = calloc(1, sizeof(SuiCore$View));
+    SuiCore$View *self = ORC_CALLOC(1, sizeof(SuiCore$View));
 	
     SuiCore$View_init(self, pOwner);
     return self;

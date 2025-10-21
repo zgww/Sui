@@ -206,7 +206,7 @@ void SuiView$TestPlaceView_init(SuiView$TestPlaceView *self, void *pOwner){
 // new function
 SuiView$TestPlaceView * SuiView$TestPlaceView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiView$TestPlaceView *self = calloc(1, sizeof(SuiView$TestPlaceView));
+    SuiView$TestPlaceView *self = ORC_CALLOC(1, sizeof(SuiView$TestPlaceView));
 	
     SuiView$TestPlaceView_init(self, pOwner);
     return self;

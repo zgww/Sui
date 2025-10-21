@@ -5967,7 +5967,7 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 		auto vtableInstance = std::format(R"(Vtable_{} _vtable_{};)", ctx->fullname, ctx->fullname);
 		auto newFunc = std::format(R"({} * {}_new(void *pOwner){{
 	if (pOwner == NULL){{ return NULL;}}
-    {} *self = calloc(1, sizeof({}));
+    {} *self = ORC_CALLOC(1, sizeof({}));
 	
     {}_init(self, pOwner);
     return self;

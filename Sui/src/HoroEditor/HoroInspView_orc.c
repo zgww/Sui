@@ -166,7 +166,7 @@ void HoroEditor$HoroInspView_init(HoroEditor$HoroInspView *self, void *pOwner){
 // new function
 HoroEditor$HoroInspView * HoroEditor$HoroInspView_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    HoroEditor$HoroInspView *self = calloc(1, sizeof(HoroEditor$HoroInspView));
+    HoroEditor$HoroInspView *self = ORC_CALLOC(1, sizeof(HoroEditor$HoroInspView));
 	
     HoroEditor$HoroInspView_init(self, pOwner);
     return self;

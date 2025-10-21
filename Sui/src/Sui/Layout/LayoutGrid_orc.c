@@ -127,7 +127,7 @@ void SuiLayout$LayoutGridItem_init(SuiLayout$LayoutGridItem *self, void *pOwner)
 // new function
 SuiLayout$LayoutGridItem * SuiLayout$LayoutGridItem_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutGridItem *self = calloc(1, sizeof(SuiLayout$LayoutGridItem));
+    SuiLayout$LayoutGridItem *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutGridItem));
 	
     SuiLayout$LayoutGridItem_init(self, pOwner);
     return self;
@@ -235,7 +235,7 @@ void SuiLayout$LayoutGridRowInfo_init(SuiLayout$LayoutGridRowInfo *self, void *p
 // new function
 SuiLayout$LayoutGridRowInfo * SuiLayout$LayoutGridRowInfo_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutGridRowInfo *self = calloc(1, sizeof(SuiLayout$LayoutGridRowInfo));
+    SuiLayout$LayoutGridRowInfo *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutGridRowInfo));
 	
     SuiLayout$LayoutGridRowInfo_init(self, pOwner);
     return self;
@@ -343,7 +343,7 @@ void SuiLayout$LayoutGridOccupyCell_init(SuiLayout$LayoutGridOccupyCell *self, v
 // new function
 SuiLayout$LayoutGridOccupyCell * SuiLayout$LayoutGridOccupyCell_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutGridOccupyCell *self = calloc(1, sizeof(SuiLayout$LayoutGridOccupyCell));
+    SuiLayout$LayoutGridOccupyCell *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutGridOccupyCell));
 	
     SuiLayout$LayoutGridOccupyCell_init(self, pOwner);
     return self;
@@ -449,7 +449,7 @@ void SuiLayout$LayoutGridCell_init(SuiLayout$LayoutGridCell *self, void *pOwner)
 // new function
 SuiLayout$LayoutGridCell * SuiLayout$LayoutGridCell_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutGridCell *self = calloc(1, sizeof(SuiLayout$LayoutGridCell));
+    SuiLayout$LayoutGridCell *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutGridCell));
 	
     SuiLayout$LayoutGridCell_init(self, pOwner);
     return self;
@@ -588,7 +588,7 @@ void SuiLayout$LayoutGrid_init(SuiLayout$LayoutGrid *self, void *pOwner){
 // new function
 SuiLayout$LayoutGrid * SuiLayout$LayoutGrid_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutGrid *self = calloc(1, sizeof(SuiLayout$LayoutGrid));
+    SuiLayout$LayoutGrid *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutGrid));
 	
     SuiLayout$LayoutGrid_init(self, pOwner);
     return self;

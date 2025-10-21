@@ -124,7 +124,7 @@ void Sgl$Scene_init(Sgl$Scene *self, void *pOwner){
 // new function
 Sgl$Scene * Sgl$Scene_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    Sgl$Scene *self = calloc(1, sizeof(Sgl$Scene));
+    Sgl$Scene *self = ORC_CALLOC(1, sizeof(Sgl$Scene));
 	
     Sgl$Scene_init(self, pOwner);
     return self;

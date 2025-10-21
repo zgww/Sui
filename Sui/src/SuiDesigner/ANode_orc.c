@@ -284,7 +284,7 @@ void SuiDesigner$ANodeAttr_init(SuiDesigner$ANodeAttr *self, void *pOwner){
 // new function
 SuiDesigner$ANodeAttr * SuiDesigner$ANodeAttr_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ANodeAttr *self = calloc(1, sizeof(SuiDesigner$ANodeAttr));
+    SuiDesigner$ANodeAttr *self = ORC_CALLOC(1, sizeof(SuiDesigner$ANodeAttr));
 	
     SuiDesigner$ANodeAttr_init(self, pOwner);
     return self;
@@ -456,7 +456,7 @@ void SuiDesigner$ANode_init(SuiDesigner$ANode *self, void *pOwner){
 // new function
 SuiDesigner$ANode * SuiDesigner$ANode_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiDesigner$ANode *self = calloc(1, sizeof(SuiDesigner$ANode));
+    SuiDesigner$ANode *self = ORC_CALLOC(1, sizeof(SuiDesigner$ANode));
 	
     SuiDesigner$ANode_init(self, pOwner);
     return self;

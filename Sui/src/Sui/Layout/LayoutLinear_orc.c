@@ -119,7 +119,7 @@ void SuiLayout$LayoutLinearCell_init(SuiLayout$LayoutLinearCell *self, void *pOw
 // new function
 SuiLayout$LayoutLinearCell * SuiLayout$LayoutLinearCell_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutLinearCell *self = calloc(1, sizeof(SuiLayout$LayoutLinearCell));
+    SuiLayout$LayoutLinearCell *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutLinearCell));
 	
     SuiLayout$LayoutLinearCell_init(self, pOwner);
     return self;
@@ -289,7 +289,7 @@ void SuiLayout$LayoutLinear_init(SuiLayout$LayoutLinear *self, void *pOwner){
 // new function
 SuiLayout$LayoutLinear * SuiLayout$LayoutLinear_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiLayout$LayoutLinear *self = calloc(1, sizeof(SuiLayout$LayoutLinear));
+    SuiLayout$LayoutLinear *self = ORC_CALLOC(1, sizeof(SuiLayout$LayoutLinear));
 	
     SuiLayout$LayoutLinear_init(self, pOwner);
     return self;

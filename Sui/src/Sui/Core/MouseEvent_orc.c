@@ -120,7 +120,7 @@ void SuiCore$ViewEvent_init(SuiCore$ViewEvent *self, void *pOwner){
 // new function
 SuiCore$ViewEvent * SuiCore$ViewEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$ViewEvent *self = calloc(1, sizeof(SuiCore$ViewEvent));
+    SuiCore$ViewEvent *self = ORC_CALLOC(1, sizeof(SuiCore$ViewEvent));
 	
     SuiCore$ViewEvent_init(self, pOwner);
     return self;
@@ -279,7 +279,7 @@ void SuiCore$MouseEvent_init(SuiCore$MouseEvent *self, void *pOwner){
 // new function
 SuiCore$MouseEvent * SuiCore$MouseEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$MouseEvent *self = calloc(1, sizeof(SuiCore$MouseEvent));
+    SuiCore$MouseEvent *self = ORC_CALLOC(1, sizeof(SuiCore$MouseEvent));
 	
     SuiCore$MouseEvent_init(self, pOwner);
     return self;
@@ -411,7 +411,7 @@ void SuiCore$MouseEnterEvent_init(SuiCore$MouseEnterEvent *self, void *pOwner){
 // new function
 SuiCore$MouseEnterEvent * SuiCore$MouseEnterEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$MouseEnterEvent *self = calloc(1, sizeof(SuiCore$MouseEnterEvent));
+    SuiCore$MouseEnterEvent *self = ORC_CALLOC(1, sizeof(SuiCore$MouseEnterEvent));
 	
     SuiCore$MouseEnterEvent_init(self, pOwner);
     return self;
@@ -515,7 +515,7 @@ void SuiCore$MouseLeaveEvent_init(SuiCore$MouseLeaveEvent *self, void *pOwner){
 // new function
 SuiCore$MouseLeaveEvent * SuiCore$MouseLeaveEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$MouseLeaveEvent *self = calloc(1, sizeof(SuiCore$MouseLeaveEvent));
+    SuiCore$MouseLeaveEvent *self = ORC_CALLOC(1, sizeof(SuiCore$MouseLeaveEvent));
 	
     SuiCore$MouseLeaveEvent_init(self, pOwner);
     return self;
@@ -621,7 +621,7 @@ void SuiCore$WheelEvent_init(SuiCore$WheelEvent *self, void *pOwner){
 // new function
 SuiCore$WheelEvent * SuiCore$WheelEvent_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$WheelEvent *self = calloc(1, sizeof(SuiCore$WheelEvent));
+    SuiCore$WheelEvent *self = ORC_CALLOC(1, sizeof(SuiCore$WheelEvent));
 	
     SuiCore$WheelEvent_init(self, pOwner);
     return self;
@@ -725,7 +725,7 @@ void SuiCore$MouseEventListener_init(SuiCore$MouseEventListener *self, void *pOw
 // new function
 SuiCore$MouseEventListener * SuiCore$MouseEventListener_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$MouseEventListener *self = calloc(1, sizeof(SuiCore$MouseEventListener));
+    SuiCore$MouseEventListener *self = ORC_CALLOC(1, sizeof(SuiCore$MouseEventListener));
 	
     SuiCore$MouseEventListener_init(self, pOwner);
     return self;
@@ -842,7 +842,7 @@ void SuiCore$HoverSentive_init(SuiCore$HoverSentive *self, void *pOwner){
 // new function
 SuiCore$HoverSentive * SuiCore$HoverSentive_new(void *pOwner){
 	if (pOwner == NULL){ return NULL;}
-    SuiCore$HoverSentive *self = calloc(1, sizeof(SuiCore$HoverSentive));
+    SuiCore$HoverSentive *self = ORC_CALLOC(1, sizeof(SuiCore$HoverSentive));
 	
     SuiCore$HoverSentive_init(self, pOwner);
     return self;
