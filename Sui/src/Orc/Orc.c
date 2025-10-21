@@ -748,6 +748,9 @@ void orc_delRefc(Object *p){
     int refc = atomic_load(&p->refCount);
     // printf("减引用计数至%d， 释放内存:%p %s\n", refc, p, p->vtable->className);
     if (refc <= 0){//释放
+        //  if (strcmp(p->vtable->className, "Orc$String") == 0){
+        //     printf("string减引用计数至0， 释放内存:%p %s\n", p, p->vtable->className);
+        //  }
         orc_delete(p);
         refcObjCount--;
     }

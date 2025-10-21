@@ -19,10 +19,10 @@
 
 #define URGC_NEW_VAR(TYPE, VAR, INIT) URGC_VAR_CLEANUP TYPE VAR = (TYPE) urgc_init_var_class((void**)&VAR, INIT)
 #define URGC_RETURN_CLASS(VAR) urgc_set_var_for_return_class((void**)__outRef__, (Object*)VAR)
-#define URGC_REF_ARG_WITH_CLEANUP_CLASS(value) URGC_VAR_CLEANUP void* ARG_SCOPE() = urgc_init_var_class(&ARG_SCOPE(), (value))
 
 // 类有另外的cleanup。 因为有refc
 #define URGC_VAR_CLEANUP_CLASS  __attribute__((cleanup(urgc_refvar_cleanup_class)))
+#define URGC_REF_ARG_WITH_CLEANUP_CLASS(value) __attribute__((cleanup(urgc_refvar_cleanup_class))) void* ARG_SCOPE() = (ARG_SCOPE() = NULL, urgc_init_var_class(&ARG_SCOPE(), (value)))
 
 #define metaStructOf(name) name##_getOrInitMetaStruct()
 

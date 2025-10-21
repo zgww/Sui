@@ -323,18 +323,11 @@ extern String@ Path_getExecutionPath();
 
 // 解码相对路径。 相对于.exe目录
 String@ Path_resolveFromExecutionDir(const char *path){
-    // static 
-    // if exeDir == null{
-        // exeDir = Path_dirname(Path_getExecutionPath().str)
-        // exeDir = str("../build")
-    // }
-
-    // String@ ret = str(exeDir.str).add("/").add(path)
-    // String@ exeDir2 = null
-    String@ ret = str("../build")
-    ret.add("/")
-    ret.add(path)
-    String@ exeDir = null
+    static String@ exeDir = null
+    if exeDir == null{
+        exeDir = Path_dirname(Path_getExecutionPath().str)
+    }
+    String@ ret = str(exeDir.str).add("/").add(path)
     return ret
 }
 

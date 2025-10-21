@@ -33,7 +33,7 @@ Project$User* Project$User$returnRef(Project$User * * __outRef__, Project$User *
 	#define __ARG_SCOPE(b) __argScope##b
 	#define _ARG_SCOPE(a) __ARG_SCOPE(a)
 	#define ARG_SCOPE() _ARG_SCOPE(__LINE__)
-	#define URGC_REF_ARG_WITH_CLEANUP(value) URGC_VAR_CLEANUP void* ARG_SCOPE() = urgc_init_var(&ARG_SCOPE(), (value))
+	#define URGC_REF_ARG_WITH_CLEANUP(value) URGC_VAR_CLEANUP void* ARG_SCOPE() = (ARG_SCOPE() = NULL, urgc_init_var(&ARG_SCOPE(), (value)))
 
 	#define DEFER_FREE  __attribute__((cleanup(urgc_defer_free)))
 	#define DEFER(fn)  __attribute__((cleanup(fn)))
