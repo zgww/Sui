@@ -459,6 +459,7 @@ class ToolMgr {
                     // printf("gizmos:%p\n", o)
                     o.setSrc(Path_resolveFromExecutionDir("../asset/gizmo/light.png"))
                     // o.height = 32
+
                     o.width = 32
                     o.setImageMode(WidthFix)
 
