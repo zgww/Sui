@@ -3,6 +3,7 @@
 
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#include <atomic>
 #include <cstdint>
 #include <heapapi.h>
 #include <malloc.h>
@@ -72,6 +73,7 @@ static Urgc *_urgc = new Urgc(); //不释放。防止程序结束时，无序提
 Urgc& urgc = *_urgc;
 //static unsigned long ROOT_REF = -1l;
 
+static std::atomic_int memcnt = 0;
 static std::vector<void*> free_later_list;
 static std::vector<void*> free_ing_list;
 static std::mutex free_later_mutex;
@@ -753,8 +755,10 @@ void Urgc::process_on_thread()
 			// /*
 			if (costMs >= 20){
 				int objCount = target_in_ref_mgr.size();
-				printf("T%lld#%5d-%4d 处理事件[%d]结束, 耗时:%lld ms %lldms. cost ref:%d,%lldus, deref:%d, %lldus guard:%d, %lldus degurad:%d, %lldus setDeleter:%d, %lldus\n", 
-					ms3, objCount, delete_cnt,
+				int _memcnt = memcnt.load();;
+
+				printf("T%lld#%5d-%4dI%d 处理事件[%d]结束, 耗时:%lld ms %lldms. cost ref:%d,%lldus, deref:%d, %lldus guard:%d, %lldus degurad:%d, %lldus setDeleter:%d, %lldus\n", 
+					ms3, objCount, delete_cnt, _memcnt,
 					count, ms2 - ms, ms3 - ms2, 
 					refCount, refCostUs, 
 					derefCount, derefCostUs, 
@@ -1714,6 +1718,7 @@ void *urgc_calloc(int count, int eleSize){
 	int size = count * eleSize;
     // 分配
     void* ptr = HeapAlloc(heap, HEAP_ZERO_MEMORY, size);
+	memcnt.fetch_add(1);
 	// memset(ptr, 0, size);
 
 
@@ -1732,6 +1737,7 @@ static void do_free_later(){
 	for (auto p : free_ing_list){
 		// free(p);
 		HeapFree(heap, 0, p);
+		memcnt.fetch_add(-1);
 	}
 	free_ing_list.clear();
 }
@@ -1739,4 +1745,5 @@ void urgc_doFree(void *p){
 	HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
 	HeapFree(heap, 0, p);
 	// free(p);
+	memcnt.fetch_add(-1);
 }
