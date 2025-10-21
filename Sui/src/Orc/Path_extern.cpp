@@ -2,7 +2,9 @@
 #include "Orc/Orc.h"
 #include <chrono>
 #include <ratio>
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#endif
 
 #include "./Path_orc.h"
 #include "Naga/Utf8Util.h"
@@ -119,7 +121,7 @@ Orc$List* Orc$Path_list(Orc$List * * __outRef__, char const * path){
 	if (std::filesystem::exists(p)) {
 		for (auto& it : std::filesystem::directory_iterator(p)) {
 			auto kidPath = toutf8(it.path().wstring());
-			URGC_VAR_CLEANUP Orc$String* ret = NULL;// Orc$String_new();
+			URGC_VAR_CLEANUP_CLASS Orc$String* ret = NULL;// Orc$String_new();
 			Orc$Path_normal(&ret, kidPath.c_str());
 			//ret->add(ret, kidPath.c_str());
 			list->add(list, (Object*)ret);

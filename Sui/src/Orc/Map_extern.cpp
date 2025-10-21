@@ -102,7 +102,7 @@ Orc$List* Orc$Map$keys(Orc$Map * self){
 
     auto& map = *getData(self);
     for (auto& it : map) {
-        URGC_VAR_CLEANUP Orc$String* str = NULL;
+        URGC_VAR_CLEANUP_CLASS Orc$String* str = NULL;
         Orc$str(&str, it.first.c_str());
         self->cachedKeys->add(self->cachedKeys, (Object*)str);
     }
