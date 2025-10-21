@@ -89,10 +89,12 @@ static void printHeapSummary(){
     else {
 
         HEAP_SUMMARY summ = {0};
+		summ.cb = sizeof(summ); // ← 必须设置！
 
         for (DWORD i = 0; i < numHeaps; ++i) {
             HANDLE hHeap = heaps[i];
             HEAP_SUMMARY cur = {0};
+			cur.cb = sizeof(cur); // ← 必须设置！
             HeapSummary(hHeap, 0, &cur);
             summ.cbAllocated+= cur.cbAllocated;
             summ.cbCommitted+= cur.cbCommitted;
@@ -101,10 +103,10 @@ static void printHeapSummary(){
         }
 
         printf("HEAP summary:%lu:\n", numHeaps);
-        printf("\t分配:%lld\n", summ.cbAllocated);
-        printf("\t提交:%lld\n", summ.cbCommitted);
-        printf("\t保留:%lld\n", summ.cbReserved);
-        printf("\t最大:%lld\n", summ.cbMaxReserve);
+        printf("\t分配:%lld\n", summ.cbAllocated / 1024 / 1024);
+        printf("\t提交:%lld\n", summ.cbCommitted / 1024 / 1024);
+        printf("\t保留:%lld\n", summ.cbReserved / 1024 / 1024);
+        printf("\t最大:%lld\n", summ.cbMaxReserve / 1024 / 1024);
     }
 }
 /*
