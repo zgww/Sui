@@ -32,7 +32,7 @@ void Sgl$GeometryRect_initMeta(Vtable_Sgl$GeometryRect *pvt){
 	orc_metaField_primitive(&pNext, "width", OrcMetaType_float, offsetof(Sgl$GeometryRect, width), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "height", OrcMetaType_float, offsetof(Sgl$GeometryRect, height), 0, 0, 0, 0);//float
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryRect, build));
+	
 }
 
 
@@ -88,7 +88,7 @@ void Sgl$GeometryRect_init_fields(Sgl$GeometryRect *self){
 	((Sgl$GeometryRect*)self)->width = 100;
 	((Sgl$GeometryRect*)self)->height = 100;
     }
-	((Sgl$GeometryRect*)self)->build = (void*)Sgl$GeometryRect$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryRect$build;
 }
 
 // init function

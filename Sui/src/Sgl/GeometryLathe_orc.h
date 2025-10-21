@@ -69,7 +69,6 @@ struct tagSgl$GeometryLathe {
 	float  phiStart ;
 	float  phiLength ;
 	Sgl$Vec3Array*  points ;
-	void  (*build) (Sgl$GeometryLathe *  self);
 };
 Vtable_Sgl$GeometryLathe* Vtable_Sgl$GeometryLathe_init(Vtable_Sgl$GeometryLathe* pvt);
 void Sgl$GeometryLathe_init_fields(Sgl$GeometryLathe *self);

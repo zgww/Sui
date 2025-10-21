@@ -43,7 +43,6 @@ void Sgl$GeometryArrow_initMeta(Vtable_Sgl$GeometryArrow *pvt){
 	orc_metaField_class(&pNext, "nmlBuf", ((Vtable_Object*)Vtable_Sgl$Buffer_init(0)), offsetof(Sgl$GeometryArrow, nmlBuf), true, false, 1);
 	orc_metaField_class(&pNext, "face", ((Vtable_Object*)Vtable_Sgl$Buffer_init(0)), offsetof(Sgl$GeometryArrow, face), true, false, 1);
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryArrow, build));
 	orc_metaField_method(&pNext, "buildTorso", offsetof(Sgl$GeometryArrow, buildTorso));
 	orc_metaField_method(&pNext, "buildCone", offsetof(Sgl$GeometryArrow, buildCone));
 }
@@ -114,7 +113,7 @@ void Sgl$GeometryArrow_init_fields(Sgl$GeometryArrow *self){
 	URGC_VAR_CLEANUP_CLASS Sgl$Buffer*  tmpNewOwner_3 = NULL;
 	urgc_set_field_class(self, (void**)&((Sgl$GeometryArrow*)self)->face, Sgl$Buffer_new(&tmpNewOwner_3) );
     }
-	((Sgl$GeometryArrow*)self)->build = (void*)Sgl$GeometryArrow$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryArrow$build;
 	((Sgl$GeometryArrow*)self)->buildTorso = (void*)Sgl$GeometryArrow$buildTorso;
 	((Sgl$GeometryArrow*)self)->buildCone = (void*)Sgl$GeometryArrow$buildCone;
 }

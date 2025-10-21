@@ -34,6 +34,7 @@ void Orc$Map$dtor(Orc$Map* self) {
 }
 void Orc$Map$put(Orc$Map* self, char const* key, Object* ele) {
     auto& map = *getData(self);
+    
 
     //auto deleter = [](void* p) {
     //    //auto tmp = (GcObj*)p;
@@ -48,6 +49,8 @@ void Orc$Map$put(Orc$Map* self, char const* key, Object* ele) {
     if (old == ele) {
         return;
     }
+
+    self->dirty = true;
 
 
     if (old != nullptr) {
@@ -81,15 +84,29 @@ int Orc$Map$size(Orc$Map* self) {
 
 
 
-Orc$List* Orc$Map$keys(Orc$List * *__outRef__, Orc$Map * self){
-    NEW_CLASS_VAR( Orc$List, list);
+Orc$List* Orc$Map$keys(Orc$Map * self){
+    if (!self->dirty && self->cachedKeys != nullptr){
+        return self->cachedKeys;
+        // return (Orc$List*)urgc_set_var_for_return_class((void**)__outRef__, (Object*)list);
+    }
+    self->dirty = false;
+
+    if (self->cachedKeys == NULL){
+        NEW_CLASS_VAR( Orc$List, list);
+        urgc_set_field_class(self, (void ** )offsetof(Orc$Map, cachedKeys) , (Object*)list);
+        // Orc$List_new(&self->cachedKeys); 这写法有问题
+    }
+    else {
+        self->cachedKeys->clear(self->cachedKeys);
+    }
 
     auto& map = *getData(self);
     for (auto& it : map) {
         URGC_VAR_CLEANUP Orc$String* str = NULL;
         Orc$str(&str, it.first.c_str());
-        list->add(list, (Object*)str);
+        self->cachedKeys->add(self->cachedKeys, (Object*)str);
     }
 
-    return (Orc$List*)urgc_set_var_for_return_class((void**)__outRef__, (Object*)list);
+    // return (Orc$List*)urgc_set_var_for_return_class((void**)__outRef__, (Object*)list);
+    return self->cachedKeys;
 }

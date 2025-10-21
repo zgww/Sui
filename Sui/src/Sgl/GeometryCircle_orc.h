@@ -68,7 +68,6 @@ struct tagSgl$GeometryCircle {
 	int  segments ;
 	float  thetaStart ;
 	float  thetaLength ;
-	void  (*build) (Sgl$GeometryCircle *  self);
 };
 Vtable_Sgl$GeometryCircle* Vtable_Sgl$GeometryCircle_init(Vtable_Sgl$GeometryCircle* pvt);
 void Sgl$GeometryCircle_init_fields(Sgl$GeometryCircle *self);

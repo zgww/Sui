@@ -18,6 +18,9 @@ class Map {
 
     extern Object* get(const char *key)
 
+    bool dirty = true
+    List@ cachedKeys
+
     void clear(){
         List@ keys = self.keys()
         int l = keys.size();
@@ -28,7 +31,7 @@ class Map {
     }
 
     // //List<String>@
-    extern List@ keys()
+    extern List* keys()
 
     extern int size()
     

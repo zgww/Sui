@@ -348,7 +348,7 @@ void  Sgl$ParticleEmitter$build(Sgl$ParticleEmitter *  self){
 		Sgl$GeometryRect*  o = Sgl$GeometryRect_new(&tmpNewOwner_1) ;
 		
 	
-		o->build(o) ;
+		((Sgl$Geometry * )o)->build(o) ;
 		urgc_set_field_class(self, (void * )offsetof(Sgl$ParticleEmitter, geometry) , o) ;
 		Sgl$GeoAttr *  attr = self->geometry->gocInstanceAttr(self->geometry, "insPos") ;
 		attr->vbo->setInstancedRender(attr->vbo, 3, self->particles->size(self->particles) ) ;

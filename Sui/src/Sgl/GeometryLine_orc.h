@@ -86,7 +86,6 @@ struct tagSgl$GeometryLine {
 	void  (*appendVertexAndColor) (Sgl$GeometryLine *  self, SuiCore$Vec3 pos, int  color);
 	void  (*updateBuffer) (Sgl$GeometryLine *  self);
 	void  (*draw) (Sgl$GeometryLine *  self, Sgl$Material *  matl);
-	void  (*build) (Sgl$GeometryLine *  self);
 	void  (*buildSpotLightHelper) (Sgl$GeometryLine *  self, Sgl$SpotLight *  sl);
 	void  (*buildCameraHelper) (Sgl$GeometryLine *  self, Sgl$Camera *  camera);
 };

@@ -21,6 +21,8 @@ Vtable_Orc$Map _vtable_Orc$Map;
 void Orc$Map_initMeta(Vtable_Orc$Map *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
+	orc_metaField_primitive(&pNext, "dirty", OrcMetaType_bool, offsetof(Orc$Map, dirty), 0, 0, 0, 0);//bool
+	orc_metaField_class(&pNext, "cachedKeys", ((Vtable_Object*)Vtable_Orc$List_init(0)), offsetof(Orc$Map, cachedKeys), true, false, 1);
 	orc_metaField_primitive(&pNext, "data", OrcMetaType_void, offsetof(Orc$Map, data), 0, 0, 1, 1);//void
 
 	orc_metaField_method(&pNext, "put", offsetof(Orc$Map, put));
@@ -68,7 +70,7 @@ void Orc$Map_fini(Orc$Map *self){
     Object_fini((Object *)self);
 
     //字段释放
-	
+	urgc_fini_field_class(self, (void**)&((Orc$Map*)self)->cachedKeys);
 
 }
 
@@ -82,7 +84,8 @@ void Orc$Map_init_fields(Orc$Map *self){
     ((Object*)self)->fini = (void*)Orc$Map_fini;
 	//fields
     {
-	
+	((Orc$Map*)self)->dirty = true;
+	urgc_set_field_class(self, (void**)&((Orc$Map*)self)->cachedKeys, NULL);
     }
 	((Object*)self)->ctor = (void*)Orc$Map$ctor;
 	((Object*)self)->dtor = (void*)Orc$Map$dtor;
@@ -135,7 +138,7 @@ bool  Orc$Map$has(Orc$Map *  self, const char *  key){
 
 
 void  Orc$Map$clear(Orc$Map *  self){
-	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = self->keys((keys = NULL,&keys), self) ;
+	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, self->keys(self) ));
 	int  l = keys->size(keys) ;
 	for (int  i = 0; i < l; i++) {
 		URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, (Orc$String* )keys->get(keys, i) ));

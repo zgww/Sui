@@ -186,7 +186,7 @@ Json$Json*  SuiDesigner$ReflectionSerializer$serializeObject(Json$Json **  __out
 	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$Map_init(NULL))) {
 		URGC_VAR_CLEANUP_CLASS Json$Json*  mapJson = Json$Json_mkObject((mapJson = NULL,&mapJson)) ;
 		Orc$Map *  map = (Orc$Map * )obj;
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = map->keys((keys = NULL,&keys), map) ;
+		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, map->keys(map) ));
 		int  size = keys->size(keys) ;
 		for (int  i = 0; i < size; i++) {
 			Orc$String *  key = (Orc$String * )keys->get(keys, i) ;

@@ -90,8 +90,10 @@ static cJSON * toCJson(Json$Json* self){
         }
 
         auto obj = cJSON_CreateObject();
-        URGC_VAR_CLEANUP_CLASS Orc$List* keys = NULL;
-        self->map->keys(&keys, self->map);
+        // URGC_VAR_CLEANUP_CLASS Orc$List* keys = NULL;
+        // self->map->keys(&keys, self->map);
+
+        Orc$List* keys = self->map->keys(self->map);
 
         for (int i = 0, l = keys->size(keys); i < l; i++){
             Orc$String* key = (Orc$String*)keys->get(keys, i);

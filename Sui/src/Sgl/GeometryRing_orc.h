@@ -71,7 +71,6 @@ struct tagSgl$GeometryRing {
 	int  phiSegments ;
 	float  thetaStart ;
 	float  thetaLength ;
-	void  (*build) (Sgl$GeometryRing *  self);
 };
 Vtable_Sgl$GeometryRing* Vtable_Sgl$GeometryRing_init(Vtable_Sgl$GeometryRing* pvt);
 void Sgl$GeometryRing_init_fields(Sgl$GeometryRing *self);

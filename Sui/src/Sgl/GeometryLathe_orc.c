@@ -37,7 +37,7 @@ void Sgl$GeometryLathe_initMeta(Vtable_Sgl$GeometryLathe *pvt){
 	orc_metaField_primitive(&pNext, "phiLength", OrcMetaType_float, offsetof(Sgl$GeometryLathe, phiLength), 0, 0, 0, 0);//float
 	orc_metaField_class(&pNext, "points", ((Vtable_Object*)Vtable_Sgl$Vec3Array_init(0)), offsetof(Sgl$GeometryLathe, points), true, false, 1);
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryLathe, build));
+	
 }
 
 
@@ -96,7 +96,7 @@ void Sgl$GeometryLathe_init_fields(Sgl$GeometryLathe *self){
 	URGC_VAR_CLEANUP_CLASS Sgl$Vec3Array*  tmpNewOwner_1 = NULL;
 	urgc_set_field_class(self, (void**)&((Sgl$GeometryLathe*)self)->points, Sgl$Vec3Array_new(&tmpNewOwner_1) );
     }
-	((Sgl$GeometryLathe*)self)->build = (void*)Sgl$GeometryLathe$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryLathe$build;
 }
 
 // init function

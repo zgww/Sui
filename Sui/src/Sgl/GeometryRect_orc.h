@@ -64,7 +64,6 @@ struct tagSgl$GeometryRect {
 	Sgl$Geometry super; 
 	float  width ;
 	float  height ;
-	void  (*build) (Sgl$GeometryRect *  self);
 };
 Vtable_Sgl$GeometryRect* Vtable_Sgl$GeometryRect_init(Vtable_Sgl$GeometryRect* pvt);
 void Sgl$GeometryRect_init_fields(Sgl$GeometryRect *self);

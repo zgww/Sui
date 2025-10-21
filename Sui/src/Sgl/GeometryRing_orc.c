@@ -39,7 +39,7 @@ void Sgl$GeometryRing_initMeta(Vtable_Sgl$GeometryRing *pvt){
 	orc_metaField_primitive(&pNext, "thetaStart", OrcMetaType_float, offsetof(Sgl$GeometryRing, thetaStart), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "thetaLength", OrcMetaType_float, offsetof(Sgl$GeometryRing, thetaLength), 0, 0, 0, 0);//float
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryRing, build));
+	
 }
 
 
@@ -99,7 +99,7 @@ void Sgl$GeometryRing_init_fields(Sgl$GeometryRing *self){
 	((Sgl$GeometryRing*)self)->thetaStart = 0.0;
 	((Sgl$GeometryRing*)self)->thetaLength = 3.141592653589793 * 2;
     }
-	((Sgl$GeometryRing*)self)->build = (void*)Sgl$GeometryRing$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryRing$build;
 }
 
 // init function

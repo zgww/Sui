@@ -54,7 +54,6 @@ void Sgl$GeometryLine_initMeta(Vtable_Sgl$GeometryLine *pvt){
 	orc_metaField_method(&pNext, "appendVertexAndColor", offsetof(Sgl$GeometryLine, appendVertexAndColor));
 	orc_metaField_method(&pNext, "updateBuffer", offsetof(Sgl$GeometryLine, updateBuffer));
 	orc_metaField_method(&pNext, "draw", offsetof(Sgl$GeometryLine, draw));
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryLine, build));
 	orc_metaField_method(&pNext, "buildSpotLightHelper", offsetof(Sgl$GeometryLine, buildSpotLightHelper));
 	orc_metaField_method(&pNext, "buildCameraHelper", offsetof(Sgl$GeometryLine, buildCameraHelper));
 }
@@ -131,7 +130,7 @@ void Sgl$GeometryLine_init_fields(Sgl$GeometryLine *self){
 	((Sgl$GeometryLine*)self)->appendVertexAndColor = (void*)Sgl$GeometryLine$appendVertexAndColor;
 	((Sgl$GeometryLine*)self)->updateBuffer = (void*)Sgl$GeometryLine$updateBuffer;
 	((Sgl$GeometryLine*)self)->draw = (void*)Sgl$GeometryLine$draw;
-	((Sgl$GeometryLine*)self)->build = (void*)Sgl$GeometryLine$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryLine$build;
 	((Sgl$GeometryLine*)self)->buildSpotLightHelper = (void*)Sgl$GeometryLine$buildSpotLightHelper;
 	((Sgl$GeometryLine*)self)->buildCameraHelper = (void*)Sgl$GeometryLine$buildCameraHelper;
 }

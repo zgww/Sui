@@ -729,7 +729,7 @@ void  SuiCore$Node$clearUnusedKids(SuiCore$Node *  self){
 	SuiCore$Node *  n = self;
 	URGC_VAR_CLEANUP_CLASS Orc$Map*  unused = SuiCore$get_unusedMapForReact((unused = NULL,&unused), n) ;
 	URGC_VAR_CLEANUP_CLASS Orc$Map*  map = SuiCore$get_mapForReact((map = NULL,&map), n) ;
-	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = unused->keys((keys = NULL,&keys), unused) ;
+	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, unused->keys(unused) ));
 	int  l = keys->size(keys) ;
 	bool  needRmOutKids = self->hasInnerReact && self->outKids && !SuiCore$Node$isInInnerReact(self) ;
 	for (int  i = 0; i < l; i++) {

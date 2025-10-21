@@ -406,12 +406,11 @@ int  Json$Json$keySize(Json$Json *  self){
 Orc$List*  Json$Json$keys(Orc$List **  __outRef__, Json$Json *  self){
 	if (self->kind == 4) {
 		if (self->map != NULL) {
-			URGC_VAR_CLEANUP_CLASS Orc$List*  tmpReturn_1 = NULL;
-			return urgc_set_var_for_return_class((void ** )__outRef__, self->map->keys(&tmpReturn_1, self->map) ) ; 
+			return urgc_set_var_for_return_class((void ** )__outRef__, self->map->keys(self->map) ) ; 
 		}
 	}
-	URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_2 = NULL;
-	return urgc_set_var_for_return_class((void ** )__outRef__, Orc$List_new(&tmpNewOwner_2) ) ; 
+	URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_1 = NULL;
+	return urgc_set_var_for_return_class((void ** )__outRef__, Orc$List_new(&tmpNewOwner_1) ) ; 
 }
 
 
@@ -928,7 +927,7 @@ Json$Json*  Json$Json_toJson(Json$Json **  __outRef__, Object *  obj){
 	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$Map_init(NULL))) {
 		URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_mkObject((jo = NULL,&jo)) ;
 		Orc$Map *  m = (Orc$Map * )obj;
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = m->keys((keys = NULL,&keys), m) ;
+		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, m->keys(m) ));
 		int  l = keys->size(keys) ;
 		for (int  i = 0; i < l; i++) {
 			Orc$String *  key = (Orc$String * )keys->get(keys, i) ;

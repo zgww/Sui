@@ -75,7 +75,6 @@ struct tagSgl$GeometryArrow {
 	Sgl$Buffer*  vtxBuf ;
 	Sgl$Buffer*  nmlBuf ;
 	Sgl$Buffer*  face ;
-	void  (*build) (Sgl$GeometryArrow *  self);
 	void  (*buildTorso) (Sgl$GeometryArrow *  self);
 	void  (*buildCone) (Sgl$GeometryArrow *  self);
 };

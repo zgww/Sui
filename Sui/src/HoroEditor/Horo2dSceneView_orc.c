@@ -550,7 +550,7 @@ void  HoroEditor$Horo2dSceneView$reactGizmos(HoroEditor$Horo2dSceneView *  self)
 	Object *  prevfirst = NULL;
 	int  prevSize = self->gizmoRoot->_unusedMapForReact->size(self->gizmoRoot->_unusedMapForReact) ;
 	if (self->gizmoRoot->_unusedMapForReact->size(self->gizmoRoot->_unusedMapForReact)  > 0) {
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = self->gizmoRoot->_unusedMapForReact->keys((keys = NULL,&keys), self->gizmoRoot->_unusedMapForReact) ;
+		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, self->gizmoRoot->_unusedMapForReact->keys(self->gizmoRoot->_unusedMapForReact) ));
 		URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, keys->get(keys, 0) ));
 		prevfirst = self->gizmoRoot->_unusedMapForReact->get(self->gizmoRoot->_unusedMapForReact, key->str) ;
 	}
@@ -580,7 +580,7 @@ void  HoroEditor$Horo2dSceneView$reactGizmos(HoroEditor$Horo2dSceneView *  self)
 	}
 	Object *  first = NULL;
 	if (self->gizmoRoot->_unusedMapForReact->size(self->gizmoRoot->_unusedMapForReact)  > 0) {
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = self->gizmoRoot->_unusedMapForReact->keys((keys = NULL,&keys), self->gizmoRoot->_unusedMapForReact) ;
+		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, self->gizmoRoot->_unusedMapForReact->keys(self->gizmoRoot->_unusedMapForReact) ));
 		URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, keys->get(keys, 0) ));
 		first = self->gizmoRoot->_unusedMapForReact->get(self->gizmoRoot->_unusedMapForReact, key->str) ;
 	}

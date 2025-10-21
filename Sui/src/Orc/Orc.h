@@ -27,6 +27,7 @@
 #define metaStructOf(name) name##_getOrInitMetaStruct()
 
 #define ORC_CALLOC urgc_calloc
+// #define ORC_CALLOC calloc
 
 #ifdef __cplusplus
 extern "C"{

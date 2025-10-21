@@ -58,8 +58,10 @@ struct tagOrc$Map {
 	void  (*del) (Orc$Map *  self, const char *  key);
 	bool  (*has) (Orc$Map *  self, const char *  key);
 	Object *  (*get) (Orc$Map *  self, const char *  key);
+	bool  dirty ;
+	Orc$List*  cachedKeys ;
 	void  (*clear) (Orc$Map *  self);
-	Orc$List*  (*keys) (Orc$List **  __outRef__, Orc$Map *  self);
+	Orc$List *  (*keys) (Orc$Map *  self);
 	int  (*size) (Orc$Map *  self);
 	void *  data ;
 };
@@ -76,7 +78,7 @@ extern void  Orc$Map$del(Orc$Map *  self, const char *  key);
 bool  Orc$Map$has(Orc$Map *  self, const char *  key);
 extern Object *  Orc$Map$get(Orc$Map *  self, const char *  key);
 void  Orc$Map$clear(Orc$Map *  self);
-extern Orc$List*  Orc$Map$keys(Orc$List **  __outRef__, Orc$Map *  self);
+extern Orc$List *  Orc$Map$keys(Orc$Map *  self);
 extern int  Orc$Map$size(Orc$Map *  self);
 
 void  Orc$Map_test();

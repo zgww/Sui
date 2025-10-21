@@ -42,7 +42,7 @@ void SuiDesigner$BiJsonExporter_initMeta(Vtable_SuiDesigner$BiJsonExporter *pvt)
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
 	orc_metaField_class(&pNext, "obj", ((Vtable_Object*)Vtable_Object_init(0)), offsetof(SuiDesigner$BiJsonExporter, obj), false, true, 1);
-	orc_metaField_plainStruct(&pNext, "jo", sizeof(cJSON), offsetof(SuiDesigner$BiJsonExporter, jo), false, true, 1);
+	orc_metaField_plainStruct(&pNext, "jo", sizeof(struct cJSON), offsetof(SuiDesigner$BiJsonExporter, jo), false, true, 1);
 
 	orc_metaField_method(&pNext, "exportFieldByOrcMetaField", offsetof(SuiDesigner$BiJsonExporter, exportFieldByOrcMetaField));
 	orc_metaField_method(&pNext, "exportField", offsetof(SuiDesigner$BiJsonExporter, exportField));

@@ -788,9 +788,8 @@ void Urgc::process_on_thread()
 			// printf(" event list size:%d,\n", size );
 		}
 		if (i % 100 == 0){
-			auto size = HeapCompact(GetProcessHeap(), 0);
-			printf("_heapmin:%d; size:%lld\n",_heapmin(), size); //归还内存给操作系统
-
+			// auto size = HeapCompact(GetProcessHeap(), 0);
+			// printf("_heapmin:%d; size:%lld\n",_heapmin(), size); //归还内存给操作系统
 			printHeapSummary();
 		}
 
@@ -1714,16 +1713,16 @@ void *urgc_calloc(int count, int eleSize){
 
 
     // 创建自己的堆（可选）
-    HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
-	int size = count * eleSize;
-    // 分配
-    void* ptr = HeapAlloc(heap, HEAP_ZERO_MEMORY, size);
+    // HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	// int size = count * eleSize;
+    // // 分配
+    // void* ptr = HeapAlloc(heap, HEAP_ZERO_MEMORY, size);
+
 	memcnt.fetch_add(1);
-	// memset(ptr, 0, size);
 
 
-    // return calloc(count, eleSize);
-    return ptr;
+    return calloc(count, eleSize);
+    // return ptr;
 }
 static void do_free_later(){
 	{
@@ -1733,17 +1732,17 @@ static void do_free_later(){
 		free_later_list.swap(free_ing_list);
 	}
 
-	HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	// HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
 	for (auto p : free_ing_list){
-		// free(p);
-		HeapFree(heap, 0, p);
+		free(p);
+		// HeapFree(heap, 0, p);
 		memcnt.fetch_add(-1);
 	}
 	free_ing_list.clear();
 }
 void urgc_doFree(void *p){
-	HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
-	HeapFree(heap, 0, p);
-	// free(p);
+	// HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	// HeapFree(heap, 0, p);
+	free(p);
 	memcnt.fetch_add(-1);
 }

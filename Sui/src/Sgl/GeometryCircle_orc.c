@@ -36,7 +36,7 @@ void Sgl$GeometryCircle_initMeta(Vtable_Sgl$GeometryCircle *pvt){
 	orc_metaField_primitive(&pNext, "thetaStart", OrcMetaType_float, offsetof(Sgl$GeometryCircle, thetaStart), 0, 0, 0, 0);//float
 	orc_metaField_primitive(&pNext, "thetaLength", OrcMetaType_float, offsetof(Sgl$GeometryCircle, thetaLength), 0, 0, 0, 0);//float
 
-	orc_metaField_method(&pNext, "build", offsetof(Sgl$GeometryCircle, build));
+	
 }
 
 
@@ -94,7 +94,7 @@ void Sgl$GeometryCircle_init_fields(Sgl$GeometryCircle *self){
 	((Sgl$GeometryCircle*)self)->thetaStart = 0.0;
 	((Sgl$GeometryCircle*)self)->thetaLength = 3.141592653589793 * 2;
     }
-	((Sgl$GeometryCircle*)self)->build = (void*)Sgl$GeometryCircle$build;
+	((Sgl$Geometry*)self)->build = (void*)Sgl$GeometryCircle$build;
 }
 
 // init function
