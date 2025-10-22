@@ -15,7 +15,7 @@ class Radius {
 	float bl = 0.f
 	float br = 0.f
 	void dtor(){
-		printf("释放Radius:%f,%f,%f,%f\n", self.tl, self.tr, self.bl, self.br)
+		// printf("释放Radius:%f,%f,%f,%f\n", self.tl, self.tr, self.bl, self.br)
 	}
 
     void setAll(float r){

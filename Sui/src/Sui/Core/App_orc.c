@@ -298,6 +298,9 @@ void  SuiCore$App$eachWindow(SuiCore$App *  self, void  (**onWin)(void *  self, 
 void  SuiCore$App$removeWindow(SuiCore$App *  self, Sui$Window *  win){
 	SuiCore$HoverSentive *  tmpThis_1 = NULL;
 	(tmpThis_1 = SuiCore$sinsHoverSentive() )->clear(tmpThis_1) ;
+	if (win->onClosed) {
+		(*(win->onClosed))((void * )(win->onClosed), win) ;
+	}
 	self->windows->remove(self->windows, win) ;
 	((SuiCore$Node * )win->rootView)->dissolveSubtree(win->rootView) ;
 	win->setRootView(win, NULL) ;
@@ -416,7 +419,7 @@ void  SuiCore$App_onDestroyWindow(long long  id){
 	Sui$Window *  tmp = NULL;
 	{
 		URGC_VAR_CLEANUP_CLASS SuiCore$App*  app = SuiCore$App_use((app = NULL,&app)) ;
-		URGC_VAR_CLEANUP_CLASS Sui$Window*  win = (win=NULL,urgc_init_var_class((void**)&win, app->findWindowById(app, id) ));
+		Sui$Window *  win = app->findWindowById(app, id) ;
 		tmp = win;
 		if (!win) {
 			return ; 

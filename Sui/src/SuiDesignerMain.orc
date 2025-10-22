@@ -1210,9 +1210,14 @@ int main(){
     // testPlane()
     // testRay()
 
-    insHoroEditor().{
-        o.openProject("../DemoProject")
-        // o.showWindow()
+    {
+
+        insHoroEditor().{
+            // Time_sleepMs(1000)
+            // urgc_report_sources_of(o)
+            o.openProject("../DemoProject")
+            // o.showWindow()
+        }
     }
 
     // testAudio();

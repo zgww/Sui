@@ -18,7 +18,7 @@ class LayoutLinearCell extends LayoutCell {
 	float grow = 1.f //默认1
 	String@ alignSelf = str("")
 	void dtor(){
-		printf(".LayoutLinearCell\n")
+		// printf(".LayoutLinearCell\n")
 	}
 }
 

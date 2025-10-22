@@ -123,7 +123,7 @@ SuiCore$Radius * SuiCore$Radius_new(void *pOwner){
 
 // class members
 void  SuiCore$Radius$dtor(SuiCore$Radius *  self){
-	printf("释放Radius:%f,%f,%f,%f\n", self->tl, self->tr, self->bl, self->br) ;
+	
 }
 
 

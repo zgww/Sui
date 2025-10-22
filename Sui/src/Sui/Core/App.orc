@@ -48,7 +48,14 @@ class App{
     void removeWindow(Window *win){
         sinsHoverSentive().clear()
 
+        // EventWindowClosed@ e = new EventWindowClosed()
+        // win.emit(e)
+        if win.onClosed {
+            win.onClosed(win)
+        }
+
         self.windows.remove(win)
+
 
         win.rootView.dissolveSubtree()
         win.setRootView(null)
@@ -56,6 +63,8 @@ class App{
 
         if (self.windows.size() == 0){
             printf("App.windows.size == 0\n")
+
+            // getchar();
             self.quit()
         }
     }
@@ -175,7 +184,7 @@ void App_onDestroyWindow(long long id){
     Window* tmp = null
     {
         App@ app = App_use()
-        Window@ win = app.findWindowById(id)
+        Window* win = app.findWindowById(id)
         tmp = win;
 
         if (!win){

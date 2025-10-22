@@ -24,6 +24,8 @@ import * from "./Focus.orc"
 import * from "./Fps.orc"
 import * from "./Canvas.orc"
 
+// class EventWindowClosed extends Event{
+// }
 
 //用法
 //Window@ win = new Window()
@@ -44,6 +46,8 @@ class Window extends Emitter{
 
     // 无边框
     bool borderless = false;
+
+    ^void(Window* win) onClosed
 
 
  

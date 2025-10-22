@@ -128,7 +128,7 @@ SuiLayout$LayoutLinearCell * SuiLayout$LayoutLinearCell_new(void *pOwner){
 
 // class members
 void  SuiLayout$LayoutLinearCell$dtor(SuiLayout$LayoutLinearCell *  self){
-	printf(".LayoutLinearCell\n") ;
+	
 }
 
 

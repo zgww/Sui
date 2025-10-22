@@ -24,6 +24,8 @@
 #include "Urgc.h"
 #include "urgc_api.h"
 
+// #define USE_FREE 
+
 
 //有timer/多线程资源加载，必须用锁？后续可以改为每个线程自己一个队列，就不用锁了
 //开不开锁，好像基本没有影响.之前测试多了2Ms，似乎是加载资源时，每个资源创建了一个线程，所以慢?
@@ -791,6 +793,13 @@ void Urgc::process_on_thread()
 			// auto size = HeapCompact(GetProcessHeap(), 0);
 			// printf("_heapmin:%d; size:%lld\n",_heapmin(), size); //归还内存给操作系统
 			printHeapSummary();
+			// urgc.report("");
+				int objCount = target_in_ref_mgr.size();
+				int _memcnt = memcnt.load();;
+
+				printf("#%5d-%4dI%d \n", 
+					 objCount, delete_cnt, _memcnt
+				);
 		}
 
 		long long sleepMs = 40 - costMs;
@@ -1697,12 +1706,14 @@ void Urgc::record_target_ref_event(RefEventItem& item){
 	}	
 }
 
-//用于DEFER_DELETE
+//用于DEFER_DELETE. 没有用到
 void urgc_defer_free(void *p){
+	free(*((void**)p));
+	// #ifdef USE_FREE
+	// #else
 	// HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
 	// HeapFree(heap, 0, *(void**)p);
-
-	free(*((void**)p));
+	// #endif
 }
 
 void urgc_free_later(void *p){
@@ -1711,19 +1722,19 @@ void urgc_free_later(void *p){
 	free_later_list.push_back(p);
 }
 void *urgc_calloc(int count, int eleSize){
-
-
-    // 创建自己的堆（可选）
-    // HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
-	// int size = count * eleSize;
-    // // 分配
-    // void* ptr = HeapAlloc(heap, HEAP_ZERO_MEMORY, size);
-
 	memcnt.fetch_add(1);
 
 
-    return calloc(count, eleSize);
-    // return ptr;
+	#ifdef USE_FREE
+		return calloc(count, eleSize);
+	#else
+		// 创建自己的堆（可选）
+		HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+		int size = count * eleSize;
+		// 分配
+		void* ptr = HeapAlloc(heap, HEAP_ZERO_MEMORY, size);
+		return ptr;
+	#endif
 }
 static void do_free_later(){
 	{
@@ -1733,17 +1744,29 @@ static void do_free_later(){
 		free_later_list.swap(free_ing_list);
 	}
 
-	// HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	#ifdef USE_FREE
+	#else
+		HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+	#endif
 	for (auto p : free_ing_list){
-		free(p);
-		// HeapFree(heap, 0, p);
+		#ifdef USE_FREE
+			free(p);
+		#else
+			HeapFree(heap, 0, p);
+		#endif
 		memcnt.fetch_add(-1);
 	}
 	free_ing_list.clear();
 }
 void urgc_doFree(void *p){
-	// HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
-	// HeapFree(heap, 0, p);
-	free(p);
+	#ifdef USE_FREE
+		free(p);
+	#else
+		HANDLE heap = GetProcessHeap(); // 或 HeapCreate(0, 0, 0);
+		HeapFree(heap, 0, p);
+	#endif
 	memcnt.fetch_add(-1);
+}
+void urgc_report(const char *title){
+	urgc.report(title);
 }

@@ -17,7 +17,7 @@
 
 #define NEW_CLASS_VAR(TYPE, VAR) URGC_VAR_CLEANUP TYPE* VAR = (VAR=NULL,TYPE##_new(&VAR))
 
-#define URGC_NEW_VAR(TYPE, VAR, INIT) URGC_VAR_CLEANUP TYPE VAR = (TYPE) urgc_init_var_class((void**)&VAR, INIT)
+// #define URGC_NEW_VAR(TYPE, VAR, INIT) URGC_VAR_CLEANUP TYPE VAR = (VAR=NULL, (TYPE) urgc_init_var_class((void**)&VAR, INIT))
 #define URGC_RETURN_CLASS(VAR) urgc_set_var_for_return_class((void**)__outRef__, (Object*)VAR)
 
 // 类有另外的cleanup。 因为有refc

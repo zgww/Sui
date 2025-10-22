@@ -83,6 +83,7 @@ struct tagSui$Window {
 	SuiCore$ViewBase*  rootView ;
 	SuiCore$Canvas*  canvas ;
 	bool  borderless ;
+	void  (**onClosed)(void *  self, Sui$Window *  win);
 	void *  data ;
 	void  (*setTransparent) (Sui$Window *  self);
 	void  (*setRootView) (Sui$Window *  self, SuiCore$ViewBase *  v);
