@@ -138,10 +138,10 @@ bool  Orc$Map$has(Orc$Map *  self, const char *  key){
 
 
 void  Orc$Map$clear(Orc$Map *  self){
-	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, self->keys(self) ));
+	Orc$List *  keys = self->keys(self) ;
 	int  l = keys->size(keys) ;
 	for (int  i = 0; i < l; i++) {
-		URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, (Orc$String* )keys->get(keys, i) ));
+		Orc$String *  key = (Orc$String * )keys->get(keys, i) ;
 		self->del(self, key->str) ;
 	}
 }

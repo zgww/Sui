@@ -162,7 +162,7 @@ class App{
         
     }
     void init(){
-        TimerMgr@ mgr = insTimerMgr()
+        TimerMgr* mgr = insTimerMgr()
         mgr.startThreadTick()
     }
     

@@ -46,7 +46,7 @@ class Timer{
         self.remainMs = self.intervalMs
         self.alive = true
 
-        TimerMgr@ mgr = insTimerMgr()
+        TimerMgr* mgr = insTimerMgr()
         mgr.addItemOnce(self)
     }
 
@@ -200,7 +200,7 @@ class TimerMgr {
         t.start()
     }
 }
-TimerMgr@ insTimerMgr(){
+TimerMgr* insTimerMgr(){
     static TimerMgr@ mgr = null
     if (mgr == null){
         mgr = new TimerMgr();
@@ -392,7 +392,7 @@ class TimerTestEnt {
     }
 }
 void testTimer(){
-    TimerMgr@ mgr = insTimerMgr()
+    TimerMgr* mgr = insTimerMgr()
     mgr.startThreadTickAndFire()
     Timer@ t = mkTimerTimeout(^void(){
         printf("timeout after 5s\n");

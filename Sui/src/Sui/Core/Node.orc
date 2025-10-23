@@ -314,14 +314,14 @@ void node_exit(ScopeData  *scopeData){
     n.clearUnusedKids();
 }
 
-Map@ get_mapForReact(Node* n){
+Map* get_mapForReact(Node* n){
     if (!n._mapForReact){
         n._mapForReact = new Map()
     }
     return n._mapForReact
 }
 
-Map@ get_unusedMapForReact(Node* n){
+Map* get_unusedMapForReact(Node* n){
     if (!n._unusedMapForReact){
         n._unusedMapForReact = new Map()
     }
@@ -422,10 +422,10 @@ extension Node{
     void clearUnusedKids(){
         Node* n = self
         //遍历 _unusedMapForReact， 删除节点， 清空map
-        Map@ unused = get_unusedMapForReact(n)
-        Map@ map = get_mapForReact(n)
+        Map* unused = get_unusedMapForReact(n)
+        Map* map = get_mapForReact(n)
 
-        List@ keys = unused.keys()
+        List* keys = unused.keys()
         //删除未使用的节点
         int l = keys.size()
         bool needRmOutKids = self.hasInnerReact 
@@ -433,8 +433,8 @@ extension Node{
             && !self.isInInnerReact() // innerReact期间，不需要对outKids做任何操作. outKids的更新只在react(即out react)期间
 
         for (int i = 0; i < l; i++){
-            String@ key = (String@)keys.get(i);
-            Node @unusedNode = (Node*)unused.get(key.str)
+            String* key = (String*)keys.get(i);
+            Node *unusedNode = (Node*)unused.get(key.str)
             unusedNode.removeSelf()
 
             // printf("remove unusedNode:%p[%s]\n", unusedNode, unusedNode.name.str);
@@ -451,8 +451,16 @@ extension Node{
         unused.clear()
 
         //交换
-        n._mapForReact = unused
-        n._unusedMapForReact = map
+        // Map@ tmp = map; //由于下行代码，会导致_mapForReact被释放，所以需要有引用保留map
+        // n._mapForReact = unused
+        // n._unusedMapForReact = map
+
+        //引用关系没有变化，不用生成引用变化事件
+        Map** pMapForReact = &n._mapForReact;
+        Map** pUnusedMapForReact = &n._unusedMapForReact;
+        *pMapForReact = unused;
+        *pUnusedMapForReact = map;
+
         //重置位置
         n._appendIndexForReact = 0
     }

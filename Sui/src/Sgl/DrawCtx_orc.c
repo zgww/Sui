@@ -40,7 +40,7 @@ Vtable_Sgl$DrawCtx _vtable_Sgl$DrawCtx;
 void Sgl$DrawCtx_initMeta(Vtable_Sgl$DrawCtx *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
-	orc_metaField_class(&pNext, "lights", ((Vtable_Object*)Vtable_Orc$List_init(0)), offsetof(Sgl$DrawCtx, lights), true, false, 1);
+	orc_metaField_class(&pNext, "lights", ((Vtable_Object*)Vtable_Orc$PointerArray_init(0)), offsetof(Sgl$DrawCtx, lights), true, false, 1);
 	orc_metaField_class(&pNext, "scene", ((Vtable_Object*)Vtable_Sgl$Scene_init(0)), offsetof(Sgl$DrawCtx, scene), false, true, 1);
 	orc_metaField_class(&pNext, "camera", ((Vtable_Object*)Vtable_Sgl$Camera_init(0)), offsetof(Sgl$DrawCtx, camera), false, true, 1);
 	orc_metaField_struct(&pNext, "frameSize", SuiCore$Vec2_getOrInitMetaStruct(), offsetof(Sgl$DrawCtx, frameSize), false, false, 0);
@@ -125,8 +125,8 @@ void Sgl$DrawCtx_init_fields(Sgl$DrawCtx *self){
     ((Object*)self)->fini = (void*)Sgl$DrawCtx_fini;
 	//fields
     {
-	URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_1 = NULL;
-	urgc_set_field_class(self, (void**)&((Sgl$DrawCtx*)self)->lights, Orc$List_new(&tmpNewOwner_1) );
+	URGC_VAR_CLEANUP_CLASS Orc$PointerArray*  tmpNewOwner_1 = NULL;
+	urgc_set_field_class(self, (void**)&((Sgl$DrawCtx*)self)->lights, Orc$PointerArray_new(&tmpNewOwner_1) );
 	((Sgl$DrawCtx*)self)->frameSize = SuiCore$mkVec2(500, 500) ;
 	((Sgl$DrawCtx*)self)->prevTickMs = 0;
 	((Sgl$DrawCtx*)self)->dtMs = 0;

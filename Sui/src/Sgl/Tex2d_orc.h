@@ -128,7 +128,7 @@ extern void  Sgl$Tex2d$initForDepth24Stencil8Attachment(Sgl$Tex2d *  self, int  
 bool  Sgl$Tex2d$loadImageByPathCstr(Sgl$Tex2d *  self, const char *  path);
 
 Sgl$Tex2d*  Sgl$mkTex2dByPathCstr(Sgl$Tex2d **  __outRef__, const char *  path);
-SuiCore$Image*  Sgl$loadImageByTex2d(SuiCore$Image **  __outRef__, Sgl$Tex2d *  tex);
+SuiCore$Image *  Sgl$loadImageByTex2d(Sgl$Tex2d *  tex);
 extern int  Sgl$__nvglCreateImageFromTexId(int  texId, int  w, int  h, bool  flipY);
 extern void  Sgl$deleteTexture(GLuint id);
 

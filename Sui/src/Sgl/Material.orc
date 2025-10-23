@@ -486,7 +486,7 @@ class Material{
         }
         return null
     }
-    UniformInfo@ gocUniformInfo(const char *key){
+    UniformInfo* gocUniformInfo(const char *key){
         int l = self.uniforms.size()
         for int i = 0; i < l; i++{
             UniformInfo* ui = (UniformInfo*)self.uniforms.get(i)
@@ -515,43 +515,43 @@ class Material{
         ui.texPath = rel
     }
     UniformInfo* setUniformTex2d(const char *key, Tex2d* tex ){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 4
         ui.tex = tex
         // ui.texIndex = activeIndex
         return ui
     }
     void setUniformMatArray(const char *key, MatArray@ matArray){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 5
         ui.matArray = matArray
     }
     void setUniformMat4(const char *key, Mat mat){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 1
         ui.mat = mat
     }
     void setUniform1i(const char *key, int v){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 2
         ui.count = 1
         ui.intValues[0] = v
     }
     void setUniform1f(const char *key, float v){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 3
         ui.count = 1
         ui.floatValues[0] = v
     }
     void setUniform2f(const char *key, float x, float y){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 3
         ui.count = 2
         ui.floatValues[0] = x
         ui.floatValues[1] = y
     }
     void setUniform3f(const char *key, float x, float y, float z){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 3
         ui.count = 3
         ui.floatValues[0] = x
@@ -559,7 +559,7 @@ class Material{
         ui.floatValues[2] = z
     }
     void setUniform4f(const char *key, float x, float y, float z, float w){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 3
         ui.count = 4
         ui.floatValues[0] = x
@@ -571,7 +571,7 @@ class Material{
         self.setUniformColor4f(key, c.r, c.g, c.b, c.a)
     }
     void setUniformColor4f(const char *key, float x, float y, float z, float w){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 6
         ui.count = 4
         ui.floatValues[0] = x
@@ -590,14 +590,14 @@ class Material{
         )
     }
     void setUniformVec2(const char *key, Vec2 v){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 3
         ui.count = 2
         ui.floatValues[0] = v.x
         ui.floatValues[1] = v.y
     }
     void setUniformVec3(const char *key, Vec3 v3){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 3
         ui.count = 3
         ui.floatValues[0] = v3.x
@@ -605,7 +605,7 @@ class Material{
         ui.floatValues[2] = v3.z
     }
     void setUniformVec4(const char *key, Vec4 v){
-        UniformInfo@ ui = self.gocUniformInfo(key)
+        UniformInfo* ui = self.gocUniformInfo(key)
         ui.kind = 3
         ui.count = 4
         ui.floatValues[0] = v.x

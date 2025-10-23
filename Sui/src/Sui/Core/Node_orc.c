@@ -619,20 +619,20 @@ void  SuiCore$node_exit(Orc$ScopeData *  scopeData){
 	SuiCore$Node$clearUnusedKids(n) ;
 }
 
-Orc$Map*  SuiCore$get_mapForReact(Orc$Map **  __outRef__, SuiCore$Node *  n){
+Orc$Map *  SuiCore$get_mapForReact(SuiCore$Node *  n){
 	if (!n->_mapForReact) {
 		URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpNewOwner_1 = NULL;
 		urgc_set_field_class(n, (void * )offsetof(SuiCore$Node, _mapForReact) , Orc$Map_new(&tmpNewOwner_1) ) ;
 	}
-	return urgc_set_var_for_return_class((void ** )__outRef__, n->_mapForReact) ; 
+	return n->_mapForReact; 
 }
 
-Orc$Map*  SuiCore$get_unusedMapForReact(Orc$Map **  __outRef__, SuiCore$Node *  n){
+Orc$Map *  SuiCore$get_unusedMapForReact(SuiCore$Node *  n){
 	if (!n->_unusedMapForReact) {
 		URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpNewOwner_1 = NULL;
 		urgc_set_field_class(n, (void * )offsetof(SuiCore$Node, _unusedMapForReact) , Orc$Map_new(&tmpNewOwner_1) ) ;
 	}
-	return urgc_set_var_for_return_class((void ** )__outRef__, n->_unusedMapForReact) ; 
+	return n->_unusedMapForReact; 
 }
 
 void  SuiCore$clearInnerUnusedKids(SuiCore$Node *  n){
@@ -727,37 +727,37 @@ void  SuiCore$Node$end(SuiCore$Node *  self){
 
 void  SuiCore$Node$clearUnusedKids(SuiCore$Node *  self){
 	SuiCore$Node *  n = self;
-	URGC_VAR_CLEANUP_CLASS Orc$Map*  unused = SuiCore$get_unusedMapForReact((unused = NULL,&unused), n) ;
-	URGC_VAR_CLEANUP_CLASS Orc$Map*  map = SuiCore$get_mapForReact((map = NULL,&map), n) ;
-	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, unused->keys(unused) ));
+	Orc$Map *  unused = SuiCore$get_unusedMapForReact(n) ;
+	Orc$Map *  map = SuiCore$get_mapForReact(n) ;
+	Orc$List *  keys = unused->keys(unused) ;
 	int  l = keys->size(keys) ;
 	bool  needRmOutKids = self->hasInnerReact && self->outKids && !SuiCore$Node$isInInnerReact(self) ;
 	for (int  i = 0; i < l; i++) {
-		URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, (Orc$String* )keys->get(keys, i) ));
-		URGC_VAR_CLEANUP_CLASS SuiCore$Node*  unusedNode = (unusedNode=NULL,urgc_init_var_class((void**)&unusedNode, (SuiCore$Node * )unused->get(unused, key->str) ));
+		Orc$String *  key = (Orc$String * )keys->get(keys, i) ;
+		SuiCore$Node *  unusedNode = (SuiCore$Node * )unused->get(unused, key->str) ;
 		unusedNode->removeSelf(unusedNode) ;
 		if (needRmOutKids) {
 			int  cnt = self->outKids->removeAll(self->outKids, unusedNode) ;
 		}
 	}
 	unused->clear(unused) ;
-	urgc_set_field_class(n, (void * )offsetof(SuiCore$Node, _mapForReact) , unused) ;
-	urgc_set_field_class(n, (void * )offsetof(SuiCore$Node, _unusedMapForReact) , map) ;
+	Orc$Map **  pMapForReact = &n->_mapForReact;
+	Orc$Map **  pUnusedMapForReact = &n->_unusedMapForReact;
+	*pMapForReact = unused;
+	*pUnusedMapForReact = map;
 	n->_appendIndexForReact = 0;
 }
 
 void  SuiCore$Node$placeKid(SuiCore$Node *  self, SuiCore$Node *  n){
 	SuiCore$Node *  parent = self;
-	URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpReturn_1 = NULL;
-	Orc$Map *  unusedMap = SuiCore$get_unusedMapForReact(&tmpReturn_1, parent) ;
-	URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpReturn_2 = NULL;
-	Orc$Map *  map = SuiCore$get_mapForReact(&tmpReturn_2, parent) ;
+	Orc$Map *  unusedMap = SuiCore$get_unusedMapForReact(parent) ;
+	Orc$Map *  map = SuiCore$get_mapForReact(parent) ;
 	unusedMap->del(unusedMap, n->key) ;
 	map->put(map, n->key, n) ;
 	if (parent->hasInnerReact && !SuiCore$Node$isInInnerReact(parent) ) {
 		if (parent->outKids == NULL) {
-			URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_3 = NULL;
-			urgc_set_field_class(parent, (void * )offsetof(SuiCore$Node, outKids) , Orc$List_new(&tmpNewOwner_3) ) ;
+			URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_1 = NULL;
+			urgc_set_field_class(parent, (void * )offsetof(SuiCore$Node, outKids) , Orc$List_new(&tmpNewOwner_1) ) ;
 		}
 		parent->outKids->insert(parent->outKids, n, parent->_appendIndexForReact) ;
 	}

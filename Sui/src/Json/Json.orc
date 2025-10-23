@@ -339,11 +339,11 @@ class Json {
             return
         }
         if jo.isObject(){
-            List@ keys = jo.keys()
+            List* keys = jo.keys()
             int l = keys.size()
             for int i = 0; i < l; i++ {
-                String@ key = (String@)keys.get(i)
-                Json@ item = jo.get(key.str)
+                String* key = (String*)keys.get(i)
+                Json* item = jo.get(key.str)
                 self.put(key.str, item)
             }
             return
@@ -562,7 +562,7 @@ Json@ Json_toJson(Object* obj){
     if obj instanceof Map{
         Json@ jo = Json_mkObject()
         Map* m = (Map*)obj;
-        List@ keys = m.keys()
+        List* keys = m.keys()
         int l = keys.size()
         for int i = 0; i < l; i++{
             String* key = (String*)keys.get(i)

@@ -686,11 +686,13 @@ void  Json$Json$mergeToSelf(Json$Json *  self, Json$Json*  jo){
 		return ; 
 	}
 	if (jo->isObject(jo) ) {
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = jo->keys((keys = NULL,&keys), jo) ;
+		URGC_VAR_CLEANUP_CLASS Orc$List*  tmpReturn_1 = NULL;
+		Orc$List *  keys = jo->keys(&tmpReturn_1, jo) ;
 		int  l = keys->size(keys) ;
 		for (int  i = 0; i < l; i++) {
-			URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, (Orc$String* )keys->get(keys, i) ));
-			URGC_VAR_CLEANUP_CLASS Json$Json*  item = jo->get((item = NULL,&item), jo, key->str) ;
+			Orc$String *  key = (Orc$String * )keys->get(keys, i) ;
+			URGC_VAR_CLEANUP_CLASS Json$Json*  tmpReturn_2 = NULL;
+			Json$Json *  item = jo->get(&tmpReturn_2, jo, key->str) ;
 			self->put(self, key->str, item) ;
 		}
 		return ; 
@@ -927,7 +929,7 @@ Json$Json*  Json$Json_toJson(Json$Json **  __outRef__, Object *  obj){
 	if (Orc_instanceof((Object*)obj, (Vtable_Object*)Vtable_Orc$Map_init(NULL))) {
 		URGC_VAR_CLEANUP_CLASS Json$Json*  jo = Json$Json_mkObject((jo = NULL,&jo)) ;
 		Orc$Map *  m = (Orc$Map * )obj;
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, m->keys(m) ));
+		Orc$List *  keys = m->keys(m) ;
 		int  l = keys->size(keys) ;
 		for (int  i = 0; i < l; i++) {
 			Orc$String *  key = (Orc$String * )keys->get(keys, i) ;

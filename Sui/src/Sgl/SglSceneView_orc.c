@@ -228,8 +228,7 @@ void  Sgl$SglSceneView$draw_self(Sgl$SglSceneView *  self, SuiCore$Canvas *  can
 		self->drawCtx->frameSize = fboSize;
 		self->drawCtx->draw(self->drawCtx, self->scene, self->camera) ;
 		self->fbo->endDraw(self->fbo) ;
-		URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_2 = NULL;
-		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(&tmpReturn_2, self->fbo->tex2d) ) ;
+		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(self->fbo->tex2d) ) ;
 	}
 	SuiView$ImageView$draw_self(self, canvas) ;
 }
@@ -302,8 +301,7 @@ void  Sgl$SglSceneView_showTextureWindow(Sgl$Tex2d *  tex, int  w, int  h){
 			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_328_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			urgc_set_field_class(win, (void * )offsetof(Sui$Window, rootView) , iv) ;
-			URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_2 = NULL;
-			urgc_set_field_class(iv, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(&tmpReturn_2, tex) ) ;
+			urgc_set_field_class(iv, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(tex) ) ;
 		}
 		o->setTitle(o, "纹理预览") ;
 		o->setSize(o, w, h) ;

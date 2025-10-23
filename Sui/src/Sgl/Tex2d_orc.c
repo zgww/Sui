@@ -322,25 +322,26 @@ Sgl$Tex2d*  Sgl$mkTex2dByPathCstr(Sgl$Tex2d **  __outRef__, const char *  path){
 	return urgc_set_var_for_return_class((void ** )__outRef__, r) ; 
 }
 
-SuiCore$Image*  Sgl$loadImageByTex2d(SuiCore$Image **  __outRef__, Sgl$Tex2d *  tex){
+SuiCore$Image *  Sgl$loadImageByTex2d(Sgl$Tex2d *  tex){
 	static URGC_VAR_CLEANUP_CLASS Orc$Map*  imageMap = NULL;
 	if (!imageMap) {
 		URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpNewOwner_1 = NULL;
 		urgc_set_var_class(&imageMap, Orc$Map_new(&tmpNewOwner_1) ) ;
 	}
-	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
-	URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, Orc$String$addi(Orc$str(&tmpReturn_2, "") , tex->id) ));
-	URGC_VAR_CLEANUP_CLASS SuiCore$Image*  ret = (ret=NULL,urgc_init_var_class((void**)&ret, (SuiCore$Image* )imageMap->get(imageMap, key->str) ));
+	char  key[128];
+	sprintf(key, "%d", tex->id) ;
+	SuiCore$Image *  ret = (SuiCore$Image* )imageMap->get(imageMap, key) ;
 	if (ret) {
-		return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
+		return ret; 
 	}
 	int  imgId = Sgl$__nvglCreateImageFromTexId(tex->id, tex->width, tex->height, true) ;
-	URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpNewOwner_3 = NULL;
-	urgc_set_var_class(&ret, SuiCore$Image_new(&tmpNewOwner_3) ) ;
-	ret->_img = imgId;
-	urgc_set_field_class(ret, (void * )offsetof(SuiCore$Image, data) , tex) ;
-	imageMap->put(imageMap, key->str, ret) ;
-	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
+	{
+		URGC_VAR_CLEANUP_CLASS SuiCore$Image*  ret = (ret=NULL,urgc_init_var_class((void**)&ret, SuiCore$Image_new(&ret) ));
+		ret->_img = imgId;
+		urgc_set_field_class(ret, (void * )offsetof(SuiCore$Image, data) , tex) ;
+		imageMap->put(imageMap, key, ret) ;
+		return ret; 
+	}
 }
 
 

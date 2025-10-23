@@ -142,6 +142,7 @@ Vtable_SuiLayout$LayoutLinear _vtable_SuiLayout$LayoutLinear;
 void SuiLayout$LayoutLinear_initMeta(Vtable_SuiLayout$LayoutLinear *pvt){
     OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
 	
+	orc_metaField_class(&pNext, "growNodes", ((Vtable_Object*)Vtable_Orc$PointerArray_init(0)), offsetof(SuiLayout$LayoutLinear, growNodes), true, false, 1);
 	orc_metaField_class(&pNext, "direction", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(SuiLayout$LayoutLinear, direction), true, false, 1);
 	orc_metaField_class(&pNext, "justifyContent", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(SuiLayout$LayoutLinear, justifyContent), true, false, 1);
 	orc_metaField_class(&pNext, "alignItems", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(SuiLayout$LayoutLinear, alignItems), true, false, 1);
@@ -210,6 +211,7 @@ void SuiLayout$LayoutLinear_fini(SuiLayout$LayoutLinear *self){
     SuiCore$View_fini((SuiCore$View *)self);
 
     //字段释放
+	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->growNodes);
 	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->direction);
 	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->justifyContent);
 	urgc_fini_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->alignItems);
@@ -226,12 +228,14 @@ void SuiLayout$LayoutLinear_init_fields(SuiLayout$LayoutLinear *self){
     ((Object*)self)->fini = (void*)SuiLayout$LayoutLinear_fini;
 	//fields
     {
-	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
-	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->direction, Orc$str(&tmpReturn_1, "row") );
+	URGC_VAR_CLEANUP_CLASS Orc$PointerArray*  tmpNewOwner_1 = NULL;
+	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->growNodes, Orc$PointerArray_new(&tmpNewOwner_1) );
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
-	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->justifyContent, Orc$str(&tmpReturn_2, "start") );
+	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->direction, Orc$str(&tmpReturn_2, "row") );
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->alignItems, Orc$str(&tmpReturn_3, "center") );
+	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->justifyContent, Orc$str(&tmpReturn_3, "start") );
+	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
+	urgc_set_field_class(self, (void**)&((SuiLayout$LayoutLinear*)self)->alignItems, Orc$str(&tmpReturn_4, "center") );
 	((SuiLayout$LayoutLinear*)self)->maxCrossSize = 0.f;
     }
 	((SuiLayout$LayoutLinear*)self)->isMax_in_maxOrStretch = (void*)SuiLayout$LayoutLinear$isMax_in_maxOrStretch;
@@ -575,7 +579,8 @@ bool  SuiLayout$LayoutLinear$layout_mainInf(SuiLayout$LayoutLinear *  self, SuiC
 bool  SuiLayout$LayoutLinear$layout_mainLimit(SuiLayout$LayoutLinear *  self, SuiCore$Frame *  ctx){
 	bool  isHor = self->calcIsHor(self) ;
 	float  maxMain = isHor ? ctx->maxWidth : ctx->maxHeight;
-	URGC_VAR_CLEANUP_CLASS Orc$PointerArray*  growNodes = (growNodes=NULL,urgc_init_var_class((void**)&growNodes, Orc$PointerArray_new(&growNodes) ));
+	self->growNodes->clear(self->growNodes) ;
+	Orc$PointerArray *  growNodes = self->growNodes;
 	float  sumGrow = 0.f;
 	float  plainMainSum = 0.f;
 	float  crossMinContraints = 0.f;

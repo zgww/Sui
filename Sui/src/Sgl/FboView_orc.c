@@ -285,8 +285,7 @@ void  Sgl$FboView$draw_self(Sgl$FboView *  self, SuiCore$Canvas *  canvas){
 		}
 		((Sgl$Obj3d * )self->groundGrid)->draw(self->groundGrid, self->drawCtx) ;
 		self->fbo->endDraw(self->fbo) ;
-		URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_2 = NULL;
-		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(&tmpReturn_2, self->fbo->tex2d) ) ;
+		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(self->fbo->tex2d) ) ;
 	}
 	SuiView$ImageView$draw_self(self, canvas) ;
 }

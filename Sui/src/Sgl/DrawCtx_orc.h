@@ -72,7 +72,7 @@ extern Vtable_Sgl$DrawCtx _vtable_Sgl$DrawCtx;
 // class refc:0
 struct tagSgl$DrawCtx {
 	Object super; 
-	Orc$List*  lights ;
+	Orc$PointerArray*  lights ;
 	Sgl$Scene *  scene ;
 	Sgl$Camera *  camera ;
 	SuiCore$Vec2 frameSize ;

@@ -330,12 +330,17 @@ class LayoutLinear extends View {
 
 		return true;
 	}
+	PointerArray@ growNodes = new PointerArray(); //自适应的nodes
+
 	bool layout_mainLimit(Frame* ctx){
 		bool isHor = self.calcIsHor();
 		float maxMain = isHor ? ctx->maxWidth : ctx->maxHeight;
 
 		// List@ growNodes = new List(); //自适应的nodes
-		PointerArray@ growNodes = new PointerArray(); //自适应的nodes
+		// PointerArray@ growNodes = new PointerArray(); //自适应的nodes
+		self.growNodes.clear()
+		PointerArray* growNodes = self.growNodes
+
 
 		float sumGrow = 0.f;//总权重 
 		float plainMainSum = 0.f; //非grow的主轴合长

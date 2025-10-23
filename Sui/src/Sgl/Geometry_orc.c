@@ -377,7 +377,7 @@ Sgl$GeoAttr *  Sgl$Geometry$gocAttr(Sgl$Geometry *  self, const char *  key){
 
 
 bool  Sgl$Geometry$bindVertexAttribs(Sgl$Geometry *  self, Sgl$Material *  matl){
-	URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, self->attrs->keys(self->attrs) ));
+	Orc$List *  keys = self->attrs->keys(self->attrs) ;
 	int  l = keys->size(keys) ;
 	for (int  i = 0; i < l; i++) {
 		Orc$String *  key = (Orc$String * )keys->get(keys, i) ;

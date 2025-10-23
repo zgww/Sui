@@ -162,8 +162,8 @@ Orc$String*  SuiCore$Node$toString(Orc$String **  __outRef__, SuiCore$Node *  se
 Orc$ScopeData SuiCore$Node$__exit__(SuiCore$Node *  self);
 
 void  SuiCore$node_exit(Orc$ScopeData *  scopeData);
-Orc$Map*  SuiCore$get_mapForReact(Orc$Map **  __outRef__, SuiCore$Node *  n);
-Orc$Map*  SuiCore$get_unusedMapForReact(Orc$Map **  __outRef__, SuiCore$Node *  n);
+Orc$Map *  SuiCore$get_mapForReact(SuiCore$Node *  n);
+Orc$Map *  SuiCore$get_unusedMapForReact(SuiCore$Node *  n);
 void  SuiCore$clearInnerUnusedKids(SuiCore$Node *  n);
 void  SuiCore$printNodesTree(Orc$List *  nodes, int  tab);
 void  SuiCore$printNodeTree(SuiCore$Node *  n, int  tab);

@@ -129,7 +129,7 @@ void  SuiCore$TimerMgr$clearDeadTimers(SuiCore$TimerMgr *  self);
 void  SuiCore$TimerMgr$startThreadTick(SuiCore$TimerMgr *  self);
 void  SuiCore$TimerMgr$startThreadTickAndFire(SuiCore$TimerMgr *  self);
 
-SuiCore$TimerMgr*  SuiCore$insTimerMgr(SuiCore$TimerMgr **  __outRef__);
+SuiCore$TimerMgr *  SuiCore$insTimerMgr();
 SuiCore$Timer*  SuiCore$mkTimerTimeout(SuiCore$Timer **  __outRef__, void  (**fn)(void *  self), int  milliSecond);
 SuiCore$Timer*  SuiCore$mkTimerInterval(SuiCore$Timer **  __outRef__, void  (**fn)(void *  self), int  milliSecond);
 SuiCore$Timer*  SuiCore$mkTimerInterval_noStart(SuiCore$Timer **  __outRef__, void  (**fn)(void *  self), int  milliSecond);

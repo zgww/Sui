@@ -98,6 +98,7 @@ struct tagSuiLayout$LayoutLinear {
 	float  (*getCrossMaxConstraint) (SuiLayout$LayoutLinear *  self, SuiCore$Frame *  kidCtx, bool  isHor);
 	void  (*update_maxCrossSize) (SuiLayout$LayoutLinear *  self, SuiCore$Frame *  kidCtx, bool  isHor);
 	bool  (*layout_mainInf) (SuiLayout$LayoutLinear *  self, SuiCore$Frame *  ctx);
+	Orc$PointerArray*  growNodes ;
 	bool  (*layout_mainLimit) (SuiLayout$LayoutLinear *  self, SuiCore$Frame *  ctx);
 	Orc$String*  direction ;
 	Orc$String*  justifyContent ;

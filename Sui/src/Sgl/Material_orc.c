@@ -1231,18 +1231,18 @@ Sgl$UniformInfo*  Sgl$Material$getUniformInfo(Sgl$UniformInfo **  __outRef__, Sg
 }
 
 
-Sgl$UniformInfo*  Sgl$Material$gocUniformInfo(Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key){
+Sgl$UniformInfo *  Sgl$Material$gocUniformInfo(Sgl$Material *  self, const char *  key){
 	int  l = self->uniforms->size(self->uniforms) ;
 	for (int  i = 0; i < l; i++) {
 		Sgl$UniformInfo *  ui = (Sgl$UniformInfo * )self->uniforms->get(self->uniforms, i) ;
 		if (Orc$String$equals(ui->key, key) ) {
-			return urgc_set_var_for_return_class((void ** )__outRef__, ui) ; 
+			return ui; 
 		}
 	}
 	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ret = (ret=NULL,urgc_init_var_class((void**)&ret, Sgl$UniformInfo_new(&ret) ));
 	Orc$String$set(ret->key, key) ;
 	self->uniforms->add(self->uniforms, ret) ;
-	return urgc_set_var_for_return_class((void ** )__outRef__, ret) ; 
+	return ret; 
 }
 
 
@@ -1257,7 +1257,7 @@ void  Sgl$Material$setUniformTex2dByPath(Sgl$Material *  self, const char *  key
 
 
 Sgl$UniformInfo *  Sgl$Material$setUniformTex2d(Sgl$Material *  self, const char *  key, Sgl$Tex2d *  tex){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 4;
 	urgc_set_field_class(ui, (void * )offsetof(Sgl$UniformInfo, tex) , tex) ;
 	return ui; 
@@ -1267,21 +1267,21 @@ Sgl$UniformInfo *  Sgl$Material$setUniformTex2d(Sgl$Material *  self, const char
 void  Sgl$Material$setUniformMatArray(Sgl$Material *  self, const char *  key, Sgl$MatArray*  matArray){
 	URGC_REF_ARG_WITH_CLEANUP_CLASS(matArray);
 
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 5;
 	urgc_set_field_class(ui, (void * )offsetof(Sgl$UniformInfo, matArray) , matArray) ;
 }
 
 
 void  Sgl$Material$setUniformMat4(Sgl$Material *  self, const char *  key, Sgl$Mat mat){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 1;
 	ui->mat = mat;
 }
 
 
 void  Sgl$Material$setUniform1i(Sgl$Material *  self, const char *  key, int  v){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 2;
 	ui->count = 1;
 	ui->intValues[0] = v;
@@ -1289,7 +1289,7 @@ void  Sgl$Material$setUniform1i(Sgl$Material *  self, const char *  key, int  v)
 
 
 void  Sgl$Material$setUniform1f(Sgl$Material *  self, const char *  key, float  v){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 3;
 	ui->count = 1;
 	ui->floatValues[0] = v;
@@ -1297,7 +1297,7 @@ void  Sgl$Material$setUniform1f(Sgl$Material *  self, const char *  key, float  
 
 
 void  Sgl$Material$setUniform2f(Sgl$Material *  self, const char *  key, float  x, float  y){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 3;
 	ui->count = 2;
 	ui->floatValues[0] = x;
@@ -1306,7 +1306,7 @@ void  Sgl$Material$setUniform2f(Sgl$Material *  self, const char *  key, float  
 
 
 void  Sgl$Material$setUniform3f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 3;
 	ui->count = 3;
 	ui->floatValues[0] = x;
@@ -1316,7 +1316,7 @@ void  Sgl$Material$setUniform3f(Sgl$Material *  self, const char *  key, float  
 
 
 void  Sgl$Material$setUniform4f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 3;
 	ui->count = 4;
 	ui->floatValues[0] = x;
@@ -1332,7 +1332,7 @@ void  Sgl$Material$setUniformRgbaf(Sgl$Material *  self, const char *  key, SuiC
 
 
 void  Sgl$Material$setUniformColor4f(Sgl$Material *  self, const char *  key, float  x, float  y, float  z, float  w){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 6;
 	ui->count = 4;
 	ui->floatValues[0] = x;
@@ -1349,7 +1349,7 @@ void  Sgl$Material$setUniformColor4fByInt32Color(Sgl$Material *  self, const cha
 
 
 void  Sgl$Material$setUniformVec2(Sgl$Material *  self, const char *  key, SuiCore$Vec2 v){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 3;
 	ui->count = 2;
 	ui->floatValues[0] = v.x;
@@ -1358,7 +1358,7 @@ void  Sgl$Material$setUniformVec2(Sgl$Material *  self, const char *  key, SuiCo
 
 
 void  Sgl$Material$setUniformVec3(Sgl$Material *  self, const char *  key, SuiCore$Vec3 v3){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 3;
 	ui->count = 3;
 	ui->floatValues[0] = v3.x;
@@ -1368,7 +1368,7 @@ void  Sgl$Material$setUniformVec3(Sgl$Material *  self, const char *  key, SuiCo
 
 
 void  Sgl$Material$setUniformVec4(Sgl$Material *  self, const char *  key, SuiCore$Vec4 v){
-	URGC_VAR_CLEANUP_CLASS Sgl$UniformInfo*  ui = self->gocUniformInfo((ui = NULL,&ui), self, key) ;
+	Sgl$UniformInfo *  ui = self->gocUniformInfo(self, key) ;
 	ui->kind = 3;
 	ui->count = 4;
 	ui->floatValues[0] = v.x;
@@ -2291,8 +2291,7 @@ void  Sgl$MaterialPreviewView$draw_self(Sgl$MaterialPreviewView *  self, SuiCore
 		self->fbo->startDraw(self->fbo, 0.0, 0.0, 0.0, 1.0, true, true, true) ;
 		self->drawObj->draw(self->drawObj) ;
 		self->fbo->endDraw(self->fbo) ;
-		URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_2 = NULL;
-		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(&tmpReturn_2, self->fbo->tex2d) ) ;
+		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(self->fbo->tex2d) ) ;
 	}
 	SuiView$ImageView$draw_self(self, canvas) ;
 }
@@ -2772,8 +2771,7 @@ static void  __fn___Closure_826_48(Sgl$__Closure_826_48 *  self, SuiCore$Node * 
 					((SuiCore$View * )o)->height = 60;
 					((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0x33333333) ;
 					o->setImageMode(o, SuiView$Contain) ;
-					URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_40 = NULL;
-					urgc_set_field_class(o, (void * )offsetof(SuiView$ImageView, _img) , __var___Block_828_57->ui && __var___Block_828_57->ui->tex ? Sgl$loadImageByTex2d(&tmpReturn_40, __var___Block_828_57->ui->tex)  : NULL) ;
+					urgc_set_field_class(o, (void * )offsetof(SuiView$ImageView, _img) , __var___Block_828_57->ui && __var___Block_828_57->ui->tex ? Sgl$loadImageByTex2d(__var___Block_828_57->ui->tex)  : NULL) ;
 				}
 			}
 		}
@@ -3155,30 +3153,29 @@ static void  __fn___Closure_1099_48(Sgl$__Closure_1099_48 *  self, SuiCore$Node 
 					((SuiCore$View * )o)->height = 60;
 					((SuiCore$View * )o)->border->setAll(((SuiCore$View * )o)->border, 1, 0x33333333) ;
 					o->setImageMode(o, SuiView$Contain) ;
-					URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_5 = NULL;
-					urgc_set_field_class(o, (void * )offsetof(SuiView$ImageView, _img) , ui->tex ? Sgl$loadImageByTex2d(&tmpReturn_5, ui->tex)  : NULL) ;
+					urgc_set_field_class(o, (void * )offsetof(SuiView$ImageView, _img) , ui->tex ? Sgl$loadImageByTex2d(ui->tex)  : NULL) ;
 				}
 			}
 		}
 		else {
-			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_6 = NULL;
+			URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpReturn_5 = NULL;
 			{
-				SuiLayout$LayoutLinear*  __scopeVar_1127_40 = SuiLayout$layoutLinear(&tmpReturn_6, o, (long long )ui) , *o = __scopeVar_1127_40;
+				SuiLayout$LayoutLinear*  __scopeVar_1127_40 = SuiLayout$layoutLinear(&tmpReturn_5, o, (long long )ui) , *o = __scopeVar_1127_40;
 				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1127_40 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				((SuiCore$View * )o)->border->b->set(((SuiCore$View * )o)->border->b, 1, 0x33000000) ;
-				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_7 = NULL;
+				URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_6 = NULL;
 				{
-					SuiView$TextView*  __scopeVar_1129_44 = SuiView$mkTextView(&tmpReturn_7, o, 0) , *o = __scopeVar_1129_44;
+					SuiView$TextView*  __scopeVar_1129_44 = SuiView$mkTextView(&tmpReturn_6, o, 0) , *o = __scopeVar_1129_44;
 					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1129_44 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					((SuiCore$View * )o)->width = 100;
-					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
-					o->setText(o, Orc$String$add(Orc$String$addString(Orc$str(&tmpReturn_8, "") , ui->key) , ":") ) ;
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_7 = NULL;
+					o->setText(o, Orc$String$add(Orc$String$addString(Orc$str(&tmpReturn_7, "") , ui->key) , ":") ) ;
 				}
-				URGC_VAR_CLEANUP_CLASS SuiView$ColorPicker*  tmpReturn_9 = NULL;
+				URGC_VAR_CLEANUP_CLASS SuiView$ColorPicker*  tmpReturn_8 = NULL;
 				{
-					SuiView$ColorPicker*  __scopeVar_1133_44 = SuiView$mkColorPicker(&tmpReturn_9, o, o) , *o = __scopeVar_1133_44;
+					SuiView$ColorPicker*  __scopeVar_1133_44 = SuiView$mkColorPicker(&tmpReturn_8, o, o) , *o = __scopeVar_1133_44;
 					UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1133_44 = ((SuiCore$Node*)o)->__exit__((void*)o);
 				
 					

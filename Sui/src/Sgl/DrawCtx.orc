@@ -25,7 +25,7 @@ import * from "../Sui/Core/Color.orc"
 
 //渲染上下文
 class DrawCtx {
-    List@ lights = new List()
+    PointerArray@ lights = new PointerArray()
     // List@ cameras = new List()
 
     Scene *scene 

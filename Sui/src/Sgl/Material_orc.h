@@ -178,7 +178,7 @@ struct tagSgl$Material {
 	void  (*setMvp) (Sgl$Material *  self, Sgl$Mat model, Sgl$Mat view, Sgl$Mat projection);
 	void  (*updateUniforms) (Sgl$Material *  self);
 	Sgl$UniformInfo*  (*getUniformInfo) (Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
-	Sgl$UniformInfo*  (*gocUniformInfo) (Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
+	Sgl$UniformInfo *  (*gocUniformInfo) (Sgl$Material *  self, const char *  key);
 	void  (*setUniformTex2dByPath) (Sgl$Material *  self, const char *  key, const char *  path);
 	Sgl$UniformInfo *  (*setUniformTex2d) (Sgl$Material *  self, const char *  key, Sgl$Tex2d *  tex);
 	void  (*setUniformMatArray) (Sgl$Material *  self, const char *  key, Sgl$MatArray*  matArray);
@@ -216,7 +216,7 @@ void  Sgl$Material$updateMvp(Sgl$Material *  self);
 void  Sgl$Material$setMvp(Sgl$Material *  self, Sgl$Mat model, Sgl$Mat view, Sgl$Mat projection);
 void  Sgl$Material$updateUniforms(Sgl$Material *  self);
 Sgl$UniformInfo*  Sgl$Material$getUniformInfo(Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
-Sgl$UniformInfo*  Sgl$Material$gocUniformInfo(Sgl$UniformInfo **  __outRef__, Sgl$Material *  self, const char *  key);
+Sgl$UniformInfo *  Sgl$Material$gocUniformInfo(Sgl$Material *  self, const char *  key);
 void  Sgl$Material$setUniformTex2dByPath(Sgl$Material *  self, const char *  key, const char *  path);
 Sgl$UniformInfo *  Sgl$Material$setUniformTex2d(Sgl$Material *  self, const char *  key, Sgl$Tex2d *  tex);
 void  Sgl$Material$setUniformMatArray(Sgl$Material *  self, const char *  key, Sgl$MatArray*  matArray);

@@ -24,7 +24,7 @@
 #include "Urgc.h"
 #include "urgc_api.h"
 
-// #define USE_FREE 
+#define USE_FREE 
 
 
 //有timer/多线程资源加载，必须用锁？后续可以改为每个线程自己一个队列，就不用锁了
@@ -755,7 +755,7 @@ void Urgc::process_on_thread()
 			costMs = ms3 - ms;
 
 			// /*
-			if (costMs >= 7){
+			if (costMs >= 1){
 				int objCount = target_in_ref_mgr.size();
 				int _memcnt = memcnt.load();;
 

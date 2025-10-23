@@ -514,10 +514,8 @@ void  HoroEditor$Horo2dSceneView$react(HoroEditor$Horo2dSceneView *  self){
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  v = SuiView$mkView((v = NULL,&v), o, 0) ;
 		urgc_set_field_class(self, (void * )offsetof(HoroEditor$Horo2dSceneView, gizmoRoot) , v) ;
 		Orc$String$set(((SuiCore$ViewBase * )v)->hitTestType, "onlychildren") ;
-		URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpReturn_1 = NULL;
-		SuiCore$get_unusedMapForReact(&tmpReturn_1, v) ;
-		URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpReturn_2 = NULL;
-		SuiCore$get_mapForReact(&tmpReturn_2, v) ;
+		SuiCore$get_unusedMapForReact(v) ;
+		SuiCore$get_mapForReact(v) ;
 		v->backgroundColor = 0x0000ff00;
 		SuiCore$Node$endReact((SuiCore$Node * )v) ;
 	}
@@ -550,8 +548,8 @@ void  HoroEditor$Horo2dSceneView$reactGizmos(HoroEditor$Horo2dSceneView *  self)
 	Object *  prevfirst = NULL;
 	int  prevSize = self->gizmoRoot->_unusedMapForReact->size(self->gizmoRoot->_unusedMapForReact) ;
 	if (self->gizmoRoot->_unusedMapForReact->size(self->gizmoRoot->_unusedMapForReact)  > 0) {
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, self->gizmoRoot->_unusedMapForReact->keys(self->gizmoRoot->_unusedMapForReact) ));
-		URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, keys->get(keys, 0) ));
+		Orc$List *  keys = self->gizmoRoot->_unusedMapForReact->keys(self->gizmoRoot->_unusedMapForReact) ;
+		Orc$String *  key = keys->get(keys, 0) ;
 		prevfirst = self->gizmoRoot->_unusedMapForReact->get(self->gizmoRoot->_unusedMapForReact, key->str) ;
 	}
 	{
@@ -580,8 +578,8 @@ void  HoroEditor$Horo2dSceneView$reactGizmos(HoroEditor$Horo2dSceneView *  self)
 	}
 	Object *  first = NULL;
 	if (self->gizmoRoot->_unusedMapForReact->size(self->gizmoRoot->_unusedMapForReact)  > 0) {
-		URGC_VAR_CLEANUP_CLASS Orc$List*  keys = (keys=NULL,urgc_init_var_class((void**)&keys, self->gizmoRoot->_unusedMapForReact->keys(self->gizmoRoot->_unusedMapForReact) ));
-		URGC_VAR_CLEANUP_CLASS Orc$String*  key = (key=NULL,urgc_init_var_class((void**)&key, keys->get(keys, 0) ));
+		Orc$List *  keys = self->gizmoRoot->_unusedMapForReact->keys(self->gizmoRoot->_unusedMapForReact) ;
+		Orc$String *  key = keys->get(keys, 0) ;
 		first = self->gizmoRoot->_unusedMapForReact->get(self->gizmoRoot->_unusedMapForReact, key->str) ;
 	}
 }

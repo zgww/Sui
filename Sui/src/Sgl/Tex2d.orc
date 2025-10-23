@@ -148,24 +148,29 @@ Tex2d@ mkTex2dByPathCstr(const char *path){
     return r
 }
 
-Image@ loadImageByTex2d(Tex2d *tex){
+Image* loadImageByTex2d(Tex2d *tex){
     static Map@ imageMap = null
     if !imageMap {
         imageMap = new Map()
     }
-    String@ key = str("").addi(tex.id)
-    Image@ ret = (Image@)imageMap.get(key.str)
+
+    char key[128];
+    sprintf(key, "%d", tex.id)
+    // String@ key = str("").addi(tex.id)
+    Image* ret = (Image@)imageMap.get(key)
     if ret {
         return ret;
     }
 
     int imgId = __nvglCreateImageFromTexId(tex.id, tex.width, tex.height, true)
 
-    ret = new Image()
-    ret._img = imgId
-    ret.data = tex
-    imageMap.put(key.str, ret)
-    return ret
+    {
+        Image@ ret = new Image()
+        ret._img = imgId
+        ret.data = tex
+        imageMap.put(key, ret)
+        return ret
+    }
 }
 extern int __nvglCreateImageFromTexId(
     int texId, int w, int h, bool flipY)

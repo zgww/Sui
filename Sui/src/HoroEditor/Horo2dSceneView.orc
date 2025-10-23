@@ -331,8 +331,8 @@ class Horo2dSceneView extends View {
         Object* prevfirst = null
         int prevSize = self.gizmoRoot._unusedMapForReact.size()
         if self.gizmoRoot._unusedMapForReact.size() > 0 {
-            List@ keys = self.gizmoRoot._unusedMapForReact.keys()
-            String@ key = keys.get(0)
+            List* keys = self.gizmoRoot._unusedMapForReact.keys()
+            String* key = keys.get(0)
             prevfirst = self.gizmoRoot._unusedMapForReact.get(key.str)
         } 
         self.gizmoRoot.{
@@ -382,8 +382,8 @@ class Horo2dSceneView extends View {
         }
         Object* first = null
         if self.gizmoRoot._unusedMapForReact.size() > 0 {
-            List@ keys = self.gizmoRoot._unusedMapForReact.keys()
-            String@ key = keys.get(0)
+            List* keys = self.gizmoRoot._unusedMapForReact.keys()
+            String* key = keys.get(0)
             first = self.gizmoRoot._unusedMapForReact.get(key.str)
         } 
         // urgc_report_sources_of(inner);

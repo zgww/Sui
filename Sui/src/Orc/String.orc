@@ -14,7 +14,7 @@ import type * from "./Number.orc"
 
 //字符串需要用对象管理起来
 //直接用char@ xx = ""  会导致内存异常释放
-class String {
+class refc String {
     char *str = NULL
     // -1表示为脏，未赋值
     int _charSize = -1

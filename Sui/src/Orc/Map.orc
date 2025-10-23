@@ -22,10 +22,10 @@ class Map {
     List@ cachedKeys
 
     void clear(){
-        List@ keys = self.keys()
+        List* keys = self.keys()
         int l = keys.size();
         for (int i = 0; i < l; i++){
-            String@ key = (String@)keys.get(i)
+            String* key = (String*)keys.get(i)
             self.del(key.str)
         }
     }

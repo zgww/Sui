@@ -392,14 +392,13 @@ void  SuiCore$App$processMessageList(SuiCore$App *  self){
 		printf("process AppEventLoopMessage %p\n", msg) ;
 	}
 	SuiCore$TimerMgr *  tmpThis_1 = NULL;
-	URGC_VAR_CLEANUP_CLASS SuiCore$TimerMgr*  tmpReturn_1 = NULL;
-	(tmpThis_1 = SuiCore$insTimerMgr(&tmpReturn_1) )->fire(tmpThis_1) ;
+	(tmpThis_1 = SuiCore$insTimerMgr() )->fire(tmpThis_1) ;
 	SuiCore$tickAnimationFrames() ;
 }
 
 
 void  SuiCore$App$init(SuiCore$App *  self){
-	URGC_VAR_CLEANUP_CLASS SuiCore$TimerMgr*  mgr = SuiCore$insTimerMgr((mgr = NULL,&mgr)) ;
+	SuiCore$TimerMgr *  mgr = SuiCore$insTimerMgr() ;
 	mgr->startThreadTick(mgr) ;
 }
 

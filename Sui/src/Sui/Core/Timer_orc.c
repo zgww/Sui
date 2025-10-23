@@ -275,7 +275,7 @@ void  SuiCore$Timer$start(SuiCore$Timer *  self){
 	}
 	self->remainMs = self->intervalMs;
 	self->alive = true;
-	URGC_VAR_CLEANUP_CLASS SuiCore$TimerMgr*  mgr = SuiCore$insTimerMgr((mgr = NULL,&mgr)) ;
+	SuiCore$TimerMgr *  mgr = SuiCore$insTimerMgr() ;
 	mgr->addItemOnce(mgr, self) ;
 }
 
@@ -526,14 +526,14 @@ void  SuiCore$TimerMgr$startThreadTickAndFire(SuiCore$TimerMgr *  self){
 
 
 
-SuiCore$TimerMgr*  SuiCore$insTimerMgr(SuiCore$TimerMgr **  __outRef__){
+SuiCore$TimerMgr *  SuiCore$insTimerMgr(){
 	static URGC_VAR_CLEANUP_CLASS SuiCore$TimerMgr*  mgr = NULL;
 	if (mgr == NULL) {
 		URGC_VAR_CLEANUP_CLASS SuiCore$TimerMgr*  tmpNewOwner_1 = NULL;
 		urgc_set_var_class(&mgr, SuiCore$TimerMgr_new(&tmpNewOwner_1) ) ;
 		printf("==========实例化TimerMgr:%p\n", mgr) ;
 	}
-	return urgc_set_var_for_return_class((void ** )__outRef__, mgr) ; 
+	return mgr; 
 }
 
 SuiCore$Timer*  SuiCore$mkTimerTimeout(SuiCore$Timer **  __outRef__, void  (**fn)(void *  self), int  milliSecond){
@@ -914,7 +914,7 @@ void  SuiCore$TimerTestEnt$dtor(SuiCore$TimerTestEnt *  self){
 
 
 void  SuiCore$testTimer(){
-	URGC_VAR_CLEANUP_CLASS SuiCore$TimerMgr*  mgr = SuiCore$insTimerMgr((mgr = NULL,&mgr)) ;
+	SuiCore$TimerMgr *  mgr = SuiCore$insTimerMgr() ;
 	mgr->startThreadTickAndFire(mgr) ;
 	URGC_VAR_CLEANUP SuiCore$__Closure_397_30*  tmpReturn_1 = NULL;
 	URGC_VAR_CLEANUP_CLASS SuiCore$Timer*  t = SuiCore$mkTimerTimeout((t = NULL,&t), __make___Closure_397_30(&tmpReturn_1) , 5000) ;

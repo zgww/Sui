@@ -153,7 +153,7 @@ class Geometry {
     // }
 
     bool bindVertexAttribs(Material *matl){
-        List@ keys = self.attrs.keys()
+        List* keys = self.attrs.keys()
         int l = keys.size()
         for int i = 0; i < l; i++{
             String* key = (String*)keys.get(i)

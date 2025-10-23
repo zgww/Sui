@@ -57,10 +57,8 @@ static SuiView$__Closure_207_22*  __make___Closure_207_22(SuiView$__Closure_207_
 SuiCore$Node*  SuiView$gocNode(SuiCore$Node **  __outRef__, void *  sp, SuiCore$Node *  parent, Vtable_Object *  vt){
 	char  key[32];
 	snprintf(key, 32, "%p", sp) ;
-	URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpReturn_1 = NULL;
-	Orc$Map *  map = SuiCore$get_mapForReact(&tmpReturn_1, parent) ;
-	URGC_VAR_CLEANUP_CLASS Orc$Map*  tmpReturn_2 = NULL;
-	Orc$Map *  unusedMap = SuiCore$get_unusedMapForReact(&tmpReturn_2, parent) ;
+	Orc$Map *  map = SuiCore$get_mapForReact(parent) ;
+	Orc$Map *  unusedMap = SuiCore$get_unusedMapForReact(parent) ;
 	SuiCore$View *  n = (SuiCore$View * )unusedMap->get(unusedMap, key) ;
 	if (!n) {
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmp = NULL;
@@ -75,8 +73,8 @@ SuiCore$Node*  SuiView$gocNode(SuiCore$Node **  __outRef__, void *  sp, SuiCore$
 	unusedMap->del(unusedMap, key) ;
 	if (parent->hasInnerReact && !SuiCore$Node$isInInnerReact(parent) ) {
 		if (parent->outKids == NULL) {
-			URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_3 = NULL;
-			urgc_set_field_class(parent, (void * )offsetof(SuiCore$Node, outKids) , Orc$List_new(&tmpNewOwner_3) ) ;
+			URGC_VAR_CLEANUP_CLASS Orc$List*  tmpNewOwner_1 = NULL;
+			urgc_set_field_class(parent, (void * )offsetof(SuiCore$Node, outKids) , Orc$List_new(&tmpNewOwner_1) ) ;
 		}
 		if (((SuiCore$Node * )n)->isNewForReact) {
 			parent->outKids->insert(parent->outKids, n, parent->_appendIndexForReact) ;

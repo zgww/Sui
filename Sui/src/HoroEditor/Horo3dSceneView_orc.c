@@ -270,8 +270,7 @@ void  HoroEditor$Horo3dSceneView$draw_self(HoroEditor$Horo3dSceneView *  self, S
 		self->drawCtx->mkAxis(self->drawCtx) ;
 		self->drawCtx->drawLineGeometry(self->drawCtx) ;
 		self->fbo->endDraw(self->fbo) ;
-		URGC_VAR_CLEANUP_CLASS SuiCore$Image*  tmpReturn_2 = NULL;
-		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(&tmpReturn_2, self->fbo->tex2d) ) ;
+		urgc_set_field_class(self, (void * )offsetof(SuiView$ImageView, _img) , Sgl$loadImageByTex2d(self->fbo->tex2d) ) ;
 	}
 	SuiView$ImageView$draw_self(self, canvas) ;
 }
