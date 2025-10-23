@@ -452,6 +452,7 @@ class ToolMgr {
         if self.drawCtx && n == self.drawCtx.camera {
             return;
         }
+        // if 1 {return}
         if n instanceof Obj3d {
             Obj3d* obj3d = (Obj3d*)n
             if n instanceof Light {
@@ -469,13 +470,20 @@ class ToolMgr {
                     o.frame.x = clientSize.width() * (clientPos.x + 1.0 ) / 2.0 - o.frame.width / 2.0
                     o.frame.y = clientSize.height() * (1.0 - (clientPos.y + 1.0) / 2.0) - o.frame.height / 2.0
 
-                    o.cbOnEvent = ^void(Event*e){
-                        if e instanceof MouseEvent {
-                            MouseEvent* me = (MouseEvent*)e
-                            if me.button == 1 && me.isClick() {
-                                printf("click light\n")
+                    // 这里有性能陷阱。因为会遍历节点。所以如果节点很多时，_reactGizmosForNode
+                    // 会执行非常多次。 由于闭包存在对n的引用，所以每次执行此函数，都会创建闭包，
+                    // 所有会有大量的内存分配和引用事件
+                    if o.isNewForReact {
+                        Node* tmpn = n
+                        ToolMgr@ mgr = self
+                        o.cbOnEvent = ^void(Event*e){
+                            if e instanceof MouseEvent {
+                                MouseEvent* me = (MouseEvent*)e
+                                if me.button == 1 && me.isClick() {
+                                    printf("click light\n")
 
-                                self.editor.selectByNode(n)
+                                    mgr.editor.selectByNode(tmpn)
+                                }
                             }
                         }
                     }
@@ -495,12 +503,16 @@ class ToolMgr {
 
                     o.frame.x = clientSize.width() * (clientPos.x + 1.0 ) / 2.0 - o.frame.width / 2.0
                     o.frame.y = clientSize.height() * (1.0 - (clientPos.y + 1.0) / 2.0) - o.frame.height / 2.0
-                    o.cbOnEvent = ^void(Event*e){
-                        if e instanceof MouseEvent {
-                            MouseEvent* me = (MouseEvent*)e
-                            if me.button == 1 && me.isClick() {
-                                printf("click camera\n")
-                                self.editor.selectByNode(n)
+                    if o.isNewForReact {
+                        Node* tmpn = n
+                        ToolMgr@ mgr = self
+                        o.cbOnEvent = ^void(Event*e){
+                            if e instanceof MouseEvent {
+                                MouseEvent* me = (MouseEvent*)e
+                                if me.button == 1 && me.isClick() {
+                                    printf("click camera\n")
+                                    mgr.editor.selectByNode(tmpn)
+                                }
                             }
                         }
                     }

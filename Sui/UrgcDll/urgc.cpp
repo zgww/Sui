@@ -755,7 +755,7 @@ void Urgc::process_on_thread()
 			costMs = ms3 - ms;
 
 			// /*
-			if (costMs >= 20){
+			if (costMs >= 7){
 				int objCount = target_in_ref_mgr.size();
 				int _memcnt = memcnt.load();;
 

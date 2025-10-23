@@ -58,7 +58,9 @@ typedef struct tagSuiDesigner$__Block_186_19 SuiDesigner$__Block_186_19;
 
 typedef struct tagSuiDesigner$__Block_260_29 SuiDesigner$__Block_260_29;
 
-typedef struct tagSuiDesigner$__Block_449_37 SuiDesigner$__Block_449_37;
+typedef struct tagSuiDesigner$__Block_476_39 SuiDesigner$__Block_476_39;
+
+typedef struct tagSuiDesigner$__Block_506_39 SuiDesigner$__Block_506_39;
 
 typedef struct tagSuiDesigner$__Closure_154_18 SuiDesigner$__Closure_154_18;
 
@@ -68,9 +70,9 @@ typedef struct tagSuiDesigner$__Closure_188_28 SuiDesigner$__Closure_188_28;
 
 typedef struct tagSuiDesigner$__Closure_cbOnEvent_278 SuiDesigner$__Closure_cbOnEvent_278;
 
-typedef struct tagSuiDesigner$__Closure_472_34 SuiDesigner$__Closure_472_34;
+typedef struct tagSuiDesigner$__Closure_479_38 SuiDesigner$__Closure_479_38;
 
-typedef struct tagSuiDesigner$__Closure_498_34 SuiDesigner$__Closure_498_34;
+typedef struct tagSuiDesigner$__Closure_509_38 SuiDesigner$__Closure_509_38;
 
 
 
@@ -108,9 +110,18 @@ struct tagSuiDesigner$__Block_260_29 {
 
 
 
-struct tagSuiDesigner$__Block_449_37 {
-	SuiDesigner$ToolMgr*  self ;
-	SuiCore$Node *  n ;
+struct tagSuiDesigner$__Block_476_39 {
+	SuiDesigner$ToolMgr*  mgr ;
+	SuiCore$Node *  tmpn ;
+};
+
+
+
+
+
+struct tagSuiDesigner$__Block_506_39 {
+	SuiDesigner$ToolMgr*  mgr ;
+	SuiCore$Node *  tmpn ;
 };
 
 
@@ -157,20 +168,20 @@ struct tagSuiDesigner$__Closure_cbOnEvent_278 {
 
 
 
-struct tagSuiDesigner$__Closure_472_34 {
-	void  (*invoke)(SuiDesigner$__Closure_472_34 *  self, SuiCore$Event *  e);
+struct tagSuiDesigner$__Closure_479_38 {
+	void  (*invoke)(SuiDesigner$__Closure_479_38 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_449_37*  __var___Block_449_37 ;
+	SuiDesigner$__Block_476_39*  __var___Block_476_39 ;
 };
 
 
 
 
 
-struct tagSuiDesigner$__Closure_498_34 {
-	void  (*invoke)(SuiDesigner$__Closure_498_34 *  self, SuiCore$Event *  e);
+struct tagSuiDesigner$__Closure_509_38 {
+	void  (*invoke)(SuiDesigner$__Closure_509_38 *  self, SuiCore$Event *  e);
 	Vtable_Object *  vtable ;
-	SuiDesigner$__Block_449_37*  __var___Block_449_37 ;
+	SuiDesigner$__Block_506_39*  __var___Block_506_39 ;
 };
 
 
@@ -182,7 +193,8 @@ static void  __finiBlock___Block_152_40(SuiDesigner$__Block_152_40 *  self);
 static void  __finiBlock___Block_165_57(SuiDesigner$__Block_165_57 *  self);
 static void  __finiBlock___Block_186_19(SuiDesigner$__Block_186_19 *  self);
 static void  __finiBlock___Block_260_29(SuiDesigner$__Block_260_29 *  self);
-static void  __finiBlock___Block_449_37(SuiDesigner$__Block_449_37 *  self);
+static void  __finiBlock___Block_476_39(SuiDesigner$__Block_476_39 *  self);
+static void  __finiBlock___Block_506_39(SuiDesigner$__Block_506_39 *  self);
 static void  __fn___Closure_154_18(SuiDesigner$__Closure_154_18 *  self, SuiCore$MouseEvent *  e);
 static void  __fini___Closure_154_18(SuiDesigner$__Closure_154_18 *  self);
 static SuiDesigner$__Closure_154_18*  __make___Closure_154_18(SuiDesigner$__Closure_154_18 **  __outRef__, SuiDesigner$__Block_152_40 *  __var___Block_152_40);
@@ -195,12 +207,12 @@ static SuiDesigner$__Closure_188_28*  __make___Closure_188_28(SuiDesigner$__Clos
 static void  __fn___Closure_cbOnEvent_278(SuiDesigner$__Closure_cbOnEvent_278 *  self, SuiCore$Event *  e);
 static void  __fini___Closure_cbOnEvent_278(SuiDesigner$__Closure_cbOnEvent_278 *  self);
 static SuiDesigner$__Closure_cbOnEvent_278*  __make___Closure_cbOnEvent_278(SuiDesigner$__Closure_cbOnEvent_278 **  __outRef__, SuiDesigner$__Block_260_29 *  __var___Block_260_29);
-static void  __fn___Closure_472_34(SuiDesigner$__Closure_472_34 *  self, SuiCore$Event *  e);
-static void  __fini___Closure_472_34(SuiDesigner$__Closure_472_34 *  self);
-static SuiDesigner$__Closure_472_34*  __make___Closure_472_34(SuiDesigner$__Closure_472_34 **  __outRef__, SuiDesigner$__Block_449_37 *  __var___Block_449_37);
-static void  __fn___Closure_498_34(SuiDesigner$__Closure_498_34 *  self, SuiCore$Event *  e);
-static void  __fini___Closure_498_34(SuiDesigner$__Closure_498_34 *  self);
-static SuiDesigner$__Closure_498_34*  __make___Closure_498_34(SuiDesigner$__Closure_498_34 **  __outRef__, SuiDesigner$__Block_449_37 *  __var___Block_449_37);
+static void  __fn___Closure_479_38(SuiDesigner$__Closure_479_38 *  self, SuiCore$Event *  e);
+static void  __fini___Closure_479_38(SuiDesigner$__Closure_479_38 *  self);
+static SuiDesigner$__Closure_479_38*  __make___Closure_479_38(SuiDesigner$__Closure_479_38 **  __outRef__, SuiDesigner$__Block_476_39 *  __var___Block_476_39);
+static void  __fn___Closure_509_38(SuiDesigner$__Closure_509_38 *  self, SuiCore$Event *  e);
+static void  __fini___Closure_509_38(SuiDesigner$__Closure_509_38 *  self);
+static SuiDesigner$__Closure_509_38*  __make___Closure_509_38(SuiDesigner$__Closure_509_38 **  __outRef__, SuiDesigner$__Block_506_39 *  __var___Block_506_39);
 
 
 
@@ -969,20 +981,17 @@ void  SuiDesigner$ToolMgr$reactGizmo(SuiDesigner$ToolMgr *  self, SuiDesigner$Sg
 
 
 void  SuiDesigner$ToolMgr$_reactGizmosForNode(SuiDesigner$ToolMgr *  self, SuiCore$Node *  n){
-	URGC_VAR_CLEANUP SuiDesigner$__Block_449_37*  __var___Block_449_37 = (__var___Block_449_37=NULL,urgc_init_var((void**)&__var___Block_449_37, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_449_37) , __finiBlock___Block_449_37) ));
-	__var___Block_449_37->n = n;
-	urgc_set_field_class(__var___Block_449_37, (void * )offsetof(SuiDesigner$__Block_449_37, self) , self) ;
 	SuiCore$Node *  o = self->gizmosView;
-	if (self->drawCtx && __var___Block_449_37->n == self->drawCtx->camera) {
+	if (self->drawCtx && n == self->drawCtx->camera) {
 		return ; 
 	}
-	if (Orc_instanceof((Object*)__var___Block_449_37->n, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
-		Sgl$Obj3d *  obj3d = (Sgl$Obj3d * )__var___Block_449_37->n;
-		if (Orc_instanceof((Object*)__var___Block_449_37->n, (Vtable_Object*)Vtable_Sgl$Light_init(NULL))) {
+	if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Obj3d_init(NULL))) {
+		Sgl$Obj3d *  obj3d = (Sgl$Obj3d * )n;
+		if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Light_init(NULL))) {
 			URGC_VAR_CLEANUP_CLASS SuiView$ImageView*  tmpReturn_1 = NULL;
 			{
-				SuiView$ImageView*  __scopeVar_458_16 = SuiView$mkImageView(&tmpReturn_1, o, (long long )__var___Block_449_37->n) , *o = __scopeVar_458_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_458_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$ImageView*  __scopeVar_459_16 = SuiView$mkImageView(&tmpReturn_1, o, (long long )n) , *o = __scopeVar_459_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_459_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_2 = NULL;
 				o->setSrc(o, Orc$Path_resolveFromExecutionDir(&tmpReturn_2, "../asset/gizmo/light.png") ) ;
@@ -993,15 +1002,20 @@ void  SuiDesigner$ToolMgr$_reactGizmosForNode(SuiDesigner$ToolMgr *  self, SuiCo
 				SuiCore$Vec2 clientSize = SuiCore$Frame$getSize(&((SuiCore$ViewBase * )self->editCtx->sceneView)->frame) ;
 				((SuiCore$ViewBase * )o)->frame.x = SuiCore$Vec2$width(&clientSize)  * (clientPos.x + 1.0) / 2.0 - ((SuiCore$ViewBase * )o)->frame.width / 2.0;
 				((SuiCore$ViewBase * )o)->frame.y = SuiCore$Vec2$height(&clientSize)  * (1.0 - (clientPos.y + 1.0) / 2.0) - ((SuiCore$ViewBase * )o)->frame.height / 2.0;
-				URGC_VAR_CLEANUP SuiDesigner$__Closure_472_34*  tmpReturn_3 = NULL;
-				urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_472_34(&tmpReturn_3, __var___Block_449_37) ) ;
+				if (((SuiCore$Node * )o)->isNewForReact) {
+					URGC_VAR_CLEANUP SuiDesigner$__Block_476_39*  __var___Block_476_39 = (__var___Block_476_39=NULL,urgc_init_var((void**)&__var___Block_476_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_476_39) , __finiBlock___Block_476_39) ));
+					__var___Block_476_39->tmpn = n;
+					urgc_set_field_class(__var___Block_476_39, (void * )offsetof(SuiDesigner$__Block_476_39, mgr) , self) ;
+					URGC_VAR_CLEANUP SuiDesigner$__Closure_479_38*  tmpReturn_3 = NULL;
+					urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_479_38(&tmpReturn_3, __var___Block_476_39) ) ;
+				}
 			}
 		}
-		else if (Orc_instanceof((Object*)__var___Block_449_37->n, (Vtable_Object*)Vtable_Sgl$Camera_init(NULL))) {
+		else if (Orc_instanceof((Object*)n, (Vtable_Object*)Vtable_Sgl$Camera_init(NULL))) {
 			URGC_VAR_CLEANUP_CLASS SuiView$ImageView*  tmpReturn_4 = NULL;
 			{
-				SuiView$ImageView*  __scopeVar_485_16 = SuiView$mkImageView(&tmpReturn_4, o, (long long )__var___Block_449_37->n) , *o = __scopeVar_485_16;
-				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_485_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
+				SuiView$ImageView*  __scopeVar_493_16 = SuiView$mkImageView(&tmpReturn_4, o, (long long )n) , *o = __scopeVar_493_16;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_493_16 = ((SuiCore$Node*)o)->__exit__((void*)o);
 			
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_5 = NULL;
 				o->setSrc(o, Orc$Path_resolveFromExecutionDir(&tmpReturn_5, "../asset/gizmo/camera.png") ) ;
@@ -1012,8 +1026,13 @@ void  SuiDesigner$ToolMgr$_reactGizmosForNode(SuiDesigner$ToolMgr *  self, SuiCo
 				SuiCore$Vec2 clientSize = SuiCore$Frame$getSize(&((SuiCore$ViewBase * )self->editCtx->sceneView)->frame) ;
 				((SuiCore$ViewBase * )o)->frame.x = SuiCore$Vec2$width(&clientSize)  * (clientPos.x + 1.0) / 2.0 - ((SuiCore$ViewBase * )o)->frame.width / 2.0;
 				((SuiCore$ViewBase * )o)->frame.y = SuiCore$Vec2$height(&clientSize)  * (1.0 - (clientPos.y + 1.0) / 2.0) - ((SuiCore$ViewBase * )o)->frame.height / 2.0;
-				URGC_VAR_CLEANUP SuiDesigner$__Closure_498_34*  tmpReturn_6 = NULL;
-				urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_498_34(&tmpReturn_6, __var___Block_449_37) ) ;
+				if (((SuiCore$Node * )o)->isNewForReact) {
+					URGC_VAR_CLEANUP SuiDesigner$__Block_506_39*  __var___Block_506_39 = (__var___Block_506_39=NULL,urgc_init_var((void**)&__var___Block_506_39, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Block_506_39) , __finiBlock___Block_506_39) ));
+					__var___Block_506_39->tmpn = n;
+					urgc_set_field_class(__var___Block_506_39, (void * )offsetof(SuiDesigner$__Block_506_39, mgr) , self) ;
+					URGC_VAR_CLEANUP SuiDesigner$__Closure_509_38*  tmpReturn_6 = NULL;
+					urgc_set_field(o, (void * )offsetof(SuiCore$Emitter, cbOnEvent) , __make___Closure_509_38(&tmpReturn_6, __var___Block_506_39) ) ;
+				}
 			}
 		}
 	}
@@ -1057,8 +1076,13 @@ static void  __finiBlock___Block_260_29(SuiDesigner$__Block_260_29 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_449_37(SuiDesigner$__Block_449_37 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_449_37, self) , NULL) ;
+static void  __finiBlock___Block_476_39(SuiDesigner$__Block_476_39 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_476_39, mgr) , NULL) ;
+	return urgc_free_later(self) ; 
+}
+
+static void  __finiBlock___Block_506_39(SuiDesigner$__Block_506_39 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiDesigner$__Block_506_39, mgr) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
@@ -1142,49 +1166,49 @@ static SuiDesigner$__Closure_cbOnEvent_278*  __make___Closure_cbOnEvent_278(SuiD
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_472_34(SuiDesigner$__Closure_472_34 *  self, SuiCore$Event *  e){
+static void  __fn___Closure_479_38(SuiDesigner$__Closure_479_38 *  self, SuiCore$Event *  e){
 	if (Orc_instanceof((Object*)e, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
 		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
 		if (me->button == 1 && me->isClick(me) ) {
 			printf("click light\n") ;
-			self->__var___Block_449_37->self->editor->selectByNode(self->__var___Block_449_37->self->editor, self->__var___Block_449_37->n) ;
+			self->__var___Block_476_39->mgr->editor->selectByNode(self->__var___Block_476_39->mgr->editor, self->__var___Block_476_39->tmpn) ;
 		}
 	}
 }
 
-static void  __fini___Closure_472_34(SuiDesigner$__Closure_472_34 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_472_34, __var___Block_449_37) , NULL) ;
+static void  __fini___Closure_479_38(SuiDesigner$__Closure_479_38 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_479_38, __var___Block_476_39) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_472_34*  __make___Closure_472_34(SuiDesigner$__Closure_472_34 **  __outRef__, SuiDesigner$__Block_449_37 *  __var___Block_449_37){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_472_34*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_472_34) , __fini___Closure_472_34) ));
-	self->invoke = __fn___Closure_472_34;
+static SuiDesigner$__Closure_479_38*  __make___Closure_479_38(SuiDesigner$__Closure_479_38 **  __outRef__, SuiDesigner$__Block_476_39 *  __var___Block_476_39){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_479_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_479_38) , __fini___Closure_479_38) ));
+	self->invoke = __fn___Closure_479_38;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_472_34, __var___Block_449_37) , __var___Block_449_37) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_479_38, __var___Block_476_39) , __var___Block_476_39) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_498_34(SuiDesigner$__Closure_498_34 *  self, SuiCore$Event *  e){
+static void  __fn___Closure_509_38(SuiDesigner$__Closure_509_38 *  self, SuiCore$Event *  e){
 	if (Orc_instanceof((Object*)e, (Vtable_Object*)Vtable_SuiCore$MouseEvent_init(NULL))) {
 		SuiCore$MouseEvent *  me = (SuiCore$MouseEvent * )e;
 		if (me->button == 1 && me->isClick(me) ) {
 			printf("click camera\n") ;
-			self->__var___Block_449_37->self->editor->selectByNode(self->__var___Block_449_37->self->editor, self->__var___Block_449_37->n) ;
+			self->__var___Block_506_39->mgr->editor->selectByNode(self->__var___Block_506_39->mgr->editor, self->__var___Block_506_39->tmpn) ;
 		}
 	}
 }
 
-static void  __fini___Closure_498_34(SuiDesigner$__Closure_498_34 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_498_34, __var___Block_449_37) , NULL) ;
+static void  __fini___Closure_509_38(SuiDesigner$__Closure_509_38 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_509_38, __var___Block_506_39) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiDesigner$__Closure_498_34*  __make___Closure_498_34(SuiDesigner$__Closure_498_34 **  __outRef__, SuiDesigner$__Block_449_37 *  __var___Block_449_37){
-	URGC_VAR_CLEANUP SuiDesigner$__Closure_498_34*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_498_34) , __fini___Closure_498_34) ));
-	self->invoke = __fn___Closure_498_34;
+static SuiDesigner$__Closure_509_38*  __make___Closure_509_38(SuiDesigner$__Closure_509_38 **  __outRef__, SuiDesigner$__Block_506_39 *  __var___Block_506_39){
+	URGC_VAR_CLEANUP SuiDesigner$__Closure_509_38*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiDesigner$__Closure_509_38) , __fini___Closure_509_38) ));
+	self->invoke = __fn___Closure_509_38;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_498_34, __var___Block_449_37) , __var___Block_449_37) ;
+	urgc_set_field(self, (void * )offsetof(SuiDesigner$__Closure_509_38, __var___Block_506_39) , __var___Block_506_39) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
