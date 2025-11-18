@@ -67,6 +67,7 @@ file(GLOB src
     src/nanovg/*.c  
     src/nanovg/*.cpp
 
+    src/Audio/AudioFile_extern.cpp
 
     src/Sui/Dialog/*.c  
     src/Sui/Dialog/*.cpp
