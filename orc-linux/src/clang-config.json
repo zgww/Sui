@@ -1,0 +1,3 @@
+{
+    "flags":"-I../assimp/include -I../assimp/build/include -I../build/assimp/include"
+}
