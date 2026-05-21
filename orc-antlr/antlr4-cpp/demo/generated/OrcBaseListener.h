@@ -171,6 +171,9 @@ public:
   virtual void enterBreakStatement(OrcParser::BreakStatementContext * /*ctx*/) override { }
   virtual void exitBreakStatement(OrcParser::BreakStatementContext * /*ctx*/) override { }
 
+  virtual void enterThrowStatement(OrcParser::ThrowStatementContext * /*ctx*/) override { }
+  virtual void exitThrowStatement(OrcParser::ThrowStatementContext * /*ctx*/) override { }
+
   virtual void enterReturnStatement(OrcParser::ReturnStatementContext * /*ctx*/) override { }
   virtual void exitReturnStatement(OrcParser::ReturnStatementContext * /*ctx*/) override { }
 
@@ -185,6 +188,15 @@ public:
 
   virtual void enterSelectionStatement(OrcParser::SelectionStatementContext * /*ctx*/) override { }
   virtual void exitSelectionStatement(OrcParser::SelectionStatementContext * /*ctx*/) override { }
+
+  virtual void enterTryStatement(OrcParser::TryStatementContext * /*ctx*/) override { }
+  virtual void exitTryStatement(OrcParser::TryStatementContext * /*ctx*/) override { }
+
+  virtual void enterCatchClause(OrcParser::CatchClauseContext * /*ctx*/) override { }
+  virtual void exitCatchClause(OrcParser::CatchClauseContext * /*ctx*/) override { }
+
+  virtual void enterFinallyClause(OrcParser::FinallyClauseContext * /*ctx*/) override { }
+  virtual void exitFinallyClause(OrcParser::FinallyClauseContext * /*ctx*/) override { }
 
   virtual void enterBlock(OrcParser::BlockContext * /*ctx*/) override { }
   virtual void exitBlock(OrcParser::BlockContext * /*ctx*/) override { }

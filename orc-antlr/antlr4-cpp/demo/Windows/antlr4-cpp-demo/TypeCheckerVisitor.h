@@ -24,11 +24,11 @@ class TypeError {
 public:
 	std::string message;
 	Range range;
-	//ÔÝ²»ÓÃ
+	//ï¿½Ý²ï¿½ï¿½ï¿½
 	std::string type;
 };
 
-//ÀàÐÍ¼ì²éÆ÷
+//ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½
 class TypeCheckerVisitor : public ReturnStringVisitor
 {
 public:
@@ -41,13 +41,13 @@ public:
 	bool doCheck(tree::ParseTree* tree);
 	std::string buildErrorWithLine(std::string errmsg, OrcRuleContext* tree);
 
-	//ÅÐ¶ÏÊÇ·ñÓÐ
+	//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½
 	bool isAssignable_byClassDefinition(
 		std::shared_ptr< SymbolDefinitionClass> left,
 		std::shared_ptr< SymbolDefinitionClass> right
 	);
 
-	//ÅÐ¶ÏÀàÐÍÊÇ·ñ¿ÉÒÔ¸³Öµ
+	//ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ô¸ï¿½Öµ
 	bool isAssignableByType(
 		std::shared_ptr<SymbolType> left,
 		std::shared_ptr<SymbolType> right,
@@ -63,7 +63,7 @@ public:
 	bool isOr_number_pointer_ref_array(OrcParser::SingleExpressionContext* ctx);
 	bool isOr_pointer_ref_array(OrcParser::SingleExpressionContext* ctx);
 
-	//ÀàÐÍÊÇ·ñÓÐ¶¨Òå
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
 	bool isTypeNameDefined(std::string typeName);
 
 
@@ -107,8 +107,8 @@ public:
 
 
 	/*
-	- µ÷ÓÃ¸¸Àà·½·¨ super.fn() = > super_fn_fullname(self)    ~~×ªÎªÈ«¾Öº¯Êý
-	- µ÷ÓÃÀ©Õ¹·½·¨ a.b() = > fullname_b(a)        ~~×ªÎªÈ«¾Öº¯Êý
+	- ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½à·½ï¿½ï¿½ super.fn() = > super_fn_fullname(self)    ~~×ªÎªÈ«ï¿½Öºï¿½ï¿½ï¿½
+	- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ a.b() = > fullname_b(a)        ~~×ªÎªÈ«ï¿½Öºï¿½ï¿½ï¿½
 	*/
 	virtual std::any visitCallExpression(OrcParser::CallExpressionContext* ctx) override;
 
@@ -132,10 +132,14 @@ public:
 
 	virtual std::any visitCastExpression(OrcParser::CastExpressionContext* ctx) override;
 
-	// ?? ±í´ïÊ½£¬ÔÝ²»Ö§³Ö
+	// ?? ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ý²ï¿½Ö§ï¿½ï¿½
 	//virtual std::any visitCoalesceExpression(OrcParser::CoalesceExpressionContext* ctx) override;
 
 	virtual std::any visitVarDeclaration(OrcParser::VarDeclarationContext* ctx) override;
+
+	virtual std::any visitThrowStatement(OrcParser::ThrowStatementContext* ctx) override;
+
+	virtual std::any visitTryStatement(OrcParser::TryStatementContext* ctx) override;
 
 	virtual std::any visitReturnStatement(OrcParser::ReturnStatementContext* ctx) override;
 
@@ -154,7 +158,7 @@ public:
 
 	//virtual std::any visitMethodDeclaration(OrcParser::MethodDeclarationContext* ctx) override;
 
-	//Éú³Éº¯ÊýÉùÃ÷
+	//ï¿½ï¿½ï¿½Éºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	virtual std::any visitFunctionDefinition(OrcParser::FunctionDefinitionContext* ctx) override;
 
 

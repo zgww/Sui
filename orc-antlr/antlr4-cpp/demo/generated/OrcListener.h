@@ -169,6 +169,9 @@ public:
   virtual void enterBreakStatement(OrcParser::BreakStatementContext *ctx) = 0;
   virtual void exitBreakStatement(OrcParser::BreakStatementContext *ctx) = 0;
 
+  virtual void enterThrowStatement(OrcParser::ThrowStatementContext *ctx) = 0;
+  virtual void exitThrowStatement(OrcParser::ThrowStatementContext *ctx) = 0;
+
   virtual void enterReturnStatement(OrcParser::ReturnStatementContext *ctx) = 0;
   virtual void exitReturnStatement(OrcParser::ReturnStatementContext *ctx) = 0;
 
@@ -183,6 +186,15 @@ public:
 
   virtual void enterSelectionStatement(OrcParser::SelectionStatementContext *ctx) = 0;
   virtual void exitSelectionStatement(OrcParser::SelectionStatementContext *ctx) = 0;
+
+  virtual void enterTryStatement(OrcParser::TryStatementContext *ctx) = 0;
+  virtual void exitTryStatement(OrcParser::TryStatementContext *ctx) = 0;
+
+  virtual void enterCatchClause(OrcParser::CatchClauseContext *ctx) = 0;
+  virtual void exitCatchClause(OrcParser::CatchClauseContext *ctx) = 0;
+
+  virtual void enterFinallyClause(OrcParser::FinallyClauseContext *ctx) = 0;
+  virtual void exitFinallyClause(OrcParser::FinallyClauseContext *ctx) = 0;
 
   virtual void enterBlock(OrcParser::BlockContext *ctx) = 0;
   virtual void exitBlock(OrcParser::BlockContext *ctx) = 0;

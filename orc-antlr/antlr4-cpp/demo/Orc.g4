@@ -158,9 +158,11 @@ statement
     | block
     | continueStatement
     | breakStatement
+    | throwStatement
     | selectionStatement
     | returnStatement
     | iterationStatement
+    | tryStatement
     | singleExpression eos
     | emptyStatement
     ;
@@ -171,6 +173,10 @@ continueStatement
 
 breakStatement
     : Break eos
+    ;
+
+throwStatement
+    : Throw singleExpression eos
     ;
 
 returnStatement
@@ -194,6 +200,19 @@ forCondition
 
 selectionStatement
     : 'if' singleExpression block ('else if' singleExpression block)* ('else' block)?
+    ;
+
+tryStatement
+    : Try block catchClause+ finallyClause?
+    | Try block finallyClause
+    ;
+
+catchClause
+    : Catch '(' ref Id? ')' block
+    ;
+
+finallyClause
+    : Finally block
     ;
 
 block
@@ -391,8 +410,14 @@ New
     ;
 
 // Var        : 'var';
-// Catch      : 'catch';
-// Finally    : 'finally';
+Catch
+    : 'catch'
+    ;
+
+Finally
+    : 'finally'
+    ;
+
 Return
     : 'return'
     ;
@@ -426,10 +451,16 @@ If
     : 'if'
     ;
 
-// Throw      : 'throw';
+Throw
+    : 'throw'
+    ;
+
 // Delete     : 'delete';
 // In         : 'in';
-// Try        : 'try';
+Try
+    : 'try'
+    ;
+
 // As         : 'as';
 From
     : 'from'

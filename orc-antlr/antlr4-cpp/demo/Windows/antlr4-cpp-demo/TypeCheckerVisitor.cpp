@@ -51,8 +51,8 @@ static bool isNullLiteral(OrcParser::SingleExpressionContext* rightExpr) {
 bool TypeCheckerVisitor::isAssignable(std::shared_ptr<SymbolType> left,  OrcParser::SingleExpressionContext* rightExpr,
 	std::shared_ptr<SymbolSpace> leftSpace)
 {
-	//ÌØÊâÇé¿öµÄ´¦Àí
-	// null ¸³Öµ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+	// null ï¿½ï¿½Öµ
 
 	if (isNullLiteral(rightExpr)) {
 		auto ref = std::dynamic_pointer_cast<SymbolTypeRef>(left);
@@ -66,7 +66,7 @@ bool TypeCheckerVisitor::isAssignable(std::shared_ptr<SymbolType> left,  OrcPars
 		return false;
 	}
 
-	//¶ÔÀàµÄÒýÓÃ. Vtable_Object* xx = Checkbox;
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. Vtable_Object* xx = Checkbox;
 
 
 
@@ -105,10 +105,10 @@ bool TypeCheckerVisitor::isOr_number_pointer_ref_array(OrcParser::SingleExpressi
 	auto info = ast_calcSymbolTypeOfExpressionResult(ctx, space);
 	if (info) {
 		auto typePrimitiveType = std::dynamic_pointer_cast<SymbolTypePrimitiveType>(info->type);
-		if (typePrimitiveType) { //»ù±¾ÀàÐÍ
+		if (typePrimitiveType) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			return true;
 		}
-		//Ö¸Õë»òÕßÒýÓÃ
+		//Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		auto typePointer = std::dynamic_pointer_cast<SymbolTypePointer>(info->type);
 		auto typeRef = std::dynamic_pointer_cast<SymbolTypeRef>(info->type);
 		auto typeArr = std::dynamic_pointer_cast<SymbolTypeArray>(info->type);
@@ -123,7 +123,7 @@ bool TypeCheckerVisitor::isOr_pointer_ref_array(OrcParser::SingleExpressionConte
 {
 	auto info = ast_calcSymbolTypeOfExpressionResult(ctx, space);
 	if (info && info->type) {
-		//Ö¸Õë»òÕßÒýÓÃ
+		//Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		auto typePointer = std::dynamic_pointer_cast<SymbolTypePointer>(info->type);
 		auto typeRef = std::dynamic_pointer_cast<SymbolTypeRef>(info->type);
 		auto typeArr = std::dynamic_pointer_cast<SymbolTypeArray>(info->type);
@@ -136,7 +136,7 @@ bool TypeCheckerVisitor::isOr_pointer_ref_array(OrcParser::SingleExpressionConte
 
 bool TypeCheckerVisitor::isTypeNameDefined(std::string typeName)
 {
-	//¶ÔÓÚClosureÏÈ¿ªÌØÀý
+	//ï¿½ï¿½ï¿½ï¿½Closureï¿½È¿ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (typeName == "Closure") {
 		return true;
 	}
@@ -144,7 +144,7 @@ bool TypeCheckerVisitor::isTypeNameDefined(std::string typeName)
 		return true;
 	}
 
-	//¼ì²éÀàÐÍÊÇ·ñ´æÔÚ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	auto typeSymDef = space->findSymbolDefinitionByName_includeImports(typeName);
 	if (!typeSymDef) {
 		//addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", typeName));
@@ -175,7 +175,7 @@ std::any TypeCheckerVisitor::visitChildren(antlr4::tree::ParseTree* node)
 
 std::any TypeCheckerVisitor::visitLogicalAndExpression(OrcParser::LogicalAndExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍ: Ö¸Õë¡¢ÒýÓÃ¡¢Êý×Ö¡¢bool
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: Ö¸ï¿½ë¡¢ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½bool
 	if (!isOr_number_pointer_ref_array(ctx->singleExpression(0))) {
 		isOr_number_pointer_ref_array(ctx->singleExpression(0));
 		addTypeErrorByParseTree(ctx, "not number|pointer|ref|array type");
@@ -193,7 +193,7 @@ std::any TypeCheckerVisitor::visitLogicalAndExpression(OrcParser::LogicalAndExpr
 
 std::any TypeCheckerVisitor::visitLogicalOrExpression(OrcParser::LogicalOrExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍ: Ö¸Õë¡¢ÒýÓÃ¡¢Êý×Ö¡¢bool
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: Ö¸ï¿½ë¡¢ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½bool
 	if (!isOr_number_pointer_ref_array(ctx->singleExpression(0))) {
 		addTypeErrorByParseTree(ctx, "not number|pointer|ref|array type");
 		throw buildErrorWithLine("not number|pointer|ref|array type", ctx);
@@ -209,21 +209,21 @@ std::any TypeCheckerVisitor::visitLogicalOrExpression(OrcParser::LogicalOrExpres
 
 std::any TypeCheckerVisitor::visitMemberDotExpression(OrcParser::MemberDotExpressionContext* ctx)
 {
-	//¼ì²é³ÉÔ±´æÔÚ
+	//ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 	auto ret = visitChildren(ctx);
 	return ret;
 }
 
 std::any TypeCheckerVisitor::visitMemberIndexExpression(OrcParser::MemberIndexExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÊÇÊý×é»òÕßÖ¸Õë
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 	auto ret = visitChildren(ctx);
 	return ret;
 }
 
 std::any TypeCheckerVisitor::visitPreIncrementExpression(OrcParser::PreIncrementExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression());
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -231,7 +231,7 @@ std::any TypeCheckerVisitor::visitPreIncrementExpression(OrcParser::PreIncrement
 
 std::any TypeCheckerVisitor::visitNotExpression(OrcParser::NotExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ,boolÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,boolï¿½ï¿½ï¿½ï¿½
 	if (
 		!isOr_number_pointer_ref_array(ctx->singleExpression())) {
 		isOr_number_pointer_ref_array(ctx->singleExpression());
@@ -244,7 +244,7 @@ std::any TypeCheckerVisitor::visitNotExpression(OrcParser::NotExpressionContext*
 
 std::any TypeCheckerVisitor::visitPreDecreaseExpression(OrcParser::PreDecreaseExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression());
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -263,7 +263,7 @@ std::any TypeCheckerVisitor::visitThisExpression(OrcParser::ThisExpressionContex
 
 std::any TypeCheckerVisitor::visitUnaryMinusExpression(OrcParser::UnaryMinusExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression());
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -271,14 +271,14 @@ std::any TypeCheckerVisitor::visitUnaryMinusExpression(OrcParser::UnaryMinusExpr
 
 std::any TypeCheckerVisitor::visitAssignmentExpression(OrcParser::AssignmentExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
 	auto ret = visitChildren(ctx);
 	return ret;
 }
 
 std::any TypeCheckerVisitor::visitPostDecreaseExpression(OrcParser::PostDecreaseExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression());
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -293,7 +293,7 @@ std::any TypeCheckerVisitor::visitInstanceofExpression(OrcParser::InstanceofExpr
 
 std::any TypeCheckerVisitor::visitUnaryPlusExpression(OrcParser::UnaryPlusExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression());
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -301,7 +301,7 @@ std::any TypeCheckerVisitor::visitUnaryPlusExpression(OrcParser::UnaryPlusExpres
 
 std::any TypeCheckerVisitor::visitBitXOrExpression(OrcParser::BitXOrExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression(0));
 	checkIsNumber(ctx->singleExpression(1));
 	auto ret = visitChildren(ctx);
@@ -310,14 +310,14 @@ std::any TypeCheckerVisitor::visitBitXOrExpression(OrcParser::BitXOrExpressionCo
 
 std::any TypeCheckerVisitor::visitSuperExpression(OrcParser::SuperExpressionContext* ctx)
 {
-	//¼ì²é
+	//ï¿½ï¿½ï¿½
 	auto ret = visitChildren(ctx);
 	return ret;
 }
 
 std::any TypeCheckerVisitor::visitMultiplicativeExpression(OrcParser::MultiplicativeExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression(0));
 	checkIsNumber(ctx->singleExpression(1));
 	auto ret = visitChildren(ctx);
@@ -326,7 +326,7 @@ std::any TypeCheckerVisitor::visitMultiplicativeExpression(OrcParser::Multiplica
 
 std::any TypeCheckerVisitor::visitCallExpression(OrcParser::CallExpressionContext* ctx)
 {
-	//¼ì²éÊÇº¯Êý
+	//ï¿½ï¿½ï¿½ï¿½Çºï¿½ï¿½ï¿½
 	auto fnInfo = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
 	auto symFnType = std::dynamic_pointer_cast<SymbolTypeFunction>(fnInfo->type);
 	auto closureType = std::dynamic_pointer_cast<SymbolTypeClosure>(fnInfo->type);
@@ -336,7 +336,7 @@ std::any TypeCheckerVisitor::visitCallExpression(OrcParser::CallExpressionContex
 		addTypeErrorByParseTree(ctx, "not a function or closure");
 		throw buildErrorWithLine("not a function or closure", ctx);
 	}
-	//Èç¹û²ÎÊýÊÇvoid. Èçgetchar(void)
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½void. ï¿½ï¿½getchar(void)
 	if (symFnType) {
 		if (symFnType->args.size() == 1) {
 			if (symFnType->args[0]->name == "") {
@@ -355,7 +355,7 @@ std::any TypeCheckerVisitor::visitCallExpression(OrcParser::CallExpressionContex
 		args = closureType->args;
 	}
 
-	//¼ì²é²ÎÊýÀàÐÍÆ¥Åä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
 	int i = 0;
 	for (auto typeArg : args) {
 		auto actualArg = ctx->arguments()->singleExpression(i);
@@ -383,7 +383,7 @@ std::any TypeCheckerVisitor::visitCallExpression(OrcParser::CallExpressionContex
 // > < >= <= 
 std::any TypeCheckerVisitor::visitRelationalExpression(OrcParser::RelationalExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression(0));
 	checkIsNumber(ctx->singleExpression(1));
 	auto ret = visitChildren(ctx);
@@ -392,7 +392,7 @@ std::any TypeCheckerVisitor::visitRelationalExpression(OrcParser::RelationalExpr
 
 std::any TypeCheckerVisitor::visitPostIncrementExpression(OrcParser::PostIncrementExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression());
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -400,7 +400,7 @@ std::any TypeCheckerVisitor::visitPostIncrementExpression(OrcParser::PostIncreme
 
 std::any TypeCheckerVisitor::visitBitNotExpression(OrcParser::BitNotExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression());
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -408,7 +408,7 @@ std::any TypeCheckerVisitor::visitBitNotExpression(OrcParser::BitNotExpressionCo
 
 std::any TypeCheckerVisitor::visitDerefExpression(OrcParser::DerefExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÖ§³Ö½âÒýÓÃ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (!isOr_pointer_ref_array(ctx->singleExpression())) {
 		isOr_pointer_ref_array(ctx->singleExpression());
 		addTypeErrorByParseTree(ctx, std::format("no pointer|ref|array"));
@@ -420,7 +420,7 @@ std::any TypeCheckerVisitor::visitDerefExpression(OrcParser::DerefExpressionCont
 
 std::any TypeCheckerVisitor::visitGetAddressExpression(OrcParser::GetAddressExpressionContext* ctx)
 {
-	//¼ì²é×óÖµ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 	auto callExpr = dynamic_cast<OrcParser::CallExpressionContext*>(ctx->singleExpression());
 	if (callExpr) {
 		addTypeErrorByParseTree(ctx, std::format("can not get address for right value"));
@@ -439,7 +439,7 @@ std::any TypeCheckerVisitor::visitIdentifierExpression(OrcParser::IdentifierExpr
 		|| varName.starts_with("offsetof")
 		|| varName.starts_with("metaStructOf")
 		
-		) { //ÄÚÖÃµÄ
+		) { //ï¿½ï¿½ï¿½Ãµï¿½
 
 	}
 	else {
@@ -456,7 +456,7 @@ std::any TypeCheckerVisitor::visitIdentifierExpression(OrcParser::IdentifierExpr
 
 std::any TypeCheckerVisitor::visitBitAndExpression(OrcParser::BitAndExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression(0));
 	checkIsNumber(ctx->singleExpression(1));
 	auto ret = visitChildren(ctx);
@@ -465,7 +465,7 @@ std::any TypeCheckerVisitor::visitBitAndExpression(OrcParser::BitAndExpressionCo
 
 std::any TypeCheckerVisitor::visitBitOrExpression(OrcParser::BitOrExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä:Êý×ÖÀàÐÍ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression(0));
 	checkIsNumber(ctx->singleExpression(1));
 	auto ret = visitChildren(ctx);
@@ -474,7 +474,7 @@ std::any TypeCheckerVisitor::visitBitOrExpression(OrcParser::BitOrExpressionCont
 
 std::any TypeCheckerVisitor::visitAssignmentOperatorExpression(OrcParser::AssignmentOperatorExpressionContext* ctx)
 {
-	//¼ì²éÀàÐÍÆ¥Åä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
 	checkIsNumber(ctx->singleExpression(0));
 	checkIsNumber(ctx->singleExpression(1));
 
@@ -486,17 +486,17 @@ std::any TypeCheckerVisitor::visitCastExpression(OrcParser::CastExpressionContex
 {
 	auto declType = typeContext_toSymbolType(ctx->type());
 
-	//¼ì²éÀàÐÍÊÇ·ñ´æÔÚ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	if (!isTypeNameDefined(declType->getNakeTypeName())) {
 		addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
 		throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
 	}
 
-	//¼ì²éÀàÐÍÆ¥Åä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
 
-	//»ù±¾ÀàÐÍ×ª»»
-	//Ö¸Õëcast
-	//×ÓÀàcast
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½
+	//Ö¸ï¿½ï¿½cast
+	//ï¿½ï¿½ï¿½ï¿½cast
 	auto ret = visitChildren(ctx);
 	return ret;
 }
@@ -505,7 +505,7 @@ std::any TypeCheckerVisitor::visitCastExpression(OrcParser::CastExpressionContex
 std::any TypeCheckerVisitor::visitVarDeclaration(OrcParser::VarDeclarationContext* ctx)
 {
 	auto declType = typeContext_toSymbolType(ctx->type());
-	//¼ì²éÀàÐÍÊÇ·ñ´æÔÚ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	if (declType && !isTypeNameDefined(declType->getNakeTypeName())) {
 		isTypeNameDefined(declType->getNakeTypeName());
 		addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
@@ -513,8 +513,8 @@ std::any TypeCheckerVisitor::visitVarDeclaration(OrcParser::VarDeclarationContex
 	}
 
 
-	//¼ì²é ³õÊ¼»¯±í´ïµÄÀàÐÍÆ¥Åä
-	if (ctx->singleExpression()) { //ÓÐ³õÖµ
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
+	if (ctx->singleExpression()) { //ï¿½Ð³ï¿½Öµ
 		auto typeInfo = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
 
 		if (!typeInfo || !declType) {
@@ -533,6 +533,41 @@ std::any TypeCheckerVisitor::visitVarDeclaration(OrcParser::VarDeclarationContex
 	return ret;
 }
 
+std::any TypeCheckerVisitor::visitThrowStatement(OrcParser::ThrowStatementContext* ctx)
+{
+	auto typeInfo = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
+	if (!typeInfo || !typeInfo->type) {
+		addTypeErrorByParseTree(ctx, std::format("throw expression type error"));
+		throw buildErrorWithLine("throw expression type error", ctx);
+	}
+	auto refType = std::dynamic_pointer_cast<SymbolTypeRef>(typeInfo->type);
+	if (!refType) {
+		addTypeErrorByParseTree(ctx, std::format("throw only supports ref type"));
+		throw buildErrorWithLine("throw only supports ref type", ctx);
+	}
+	auto ret = visitChildren(ctx);
+	return ret;
+}
+
+std::any TypeCheckerVisitor::visitTryStatement(OrcParser::TryStatementContext* ctx)
+{
+	for (auto catchClause : ctx->catchClause()) {
+		auto refCtx = catchClause->ref();
+		if (!refCtx) {
+			addTypeErrorByParseTree(catchClause, std::format("catch requires ref type"));
+			throw buildErrorWithLine("catch requires ref type", catchClause);
+		}
+		auto catchType = std::make_shared<SymbolTypeRef>();
+		catchType->typeName = refCtx->Id()->getText();
+		if (!isTypeNameDefined(catchType->getNakeTypeName())) {
+			addTypeErrorByParseTree(catchClause, std::format("undefined catch type:{}", catchType->getNakeTypeName()));
+			throw buildErrorWithLine(std::format("undefined catch type:{}", catchType->getNakeTypeName()), catchClause);
+		}
+	}
+	auto ret = visitChildren(ctx);
+	return ret;
+}
+
 std::any TypeCheckerVisitor::visitReturnStatement(OrcParser::ReturnStatementContext* ctx)
 {
 
@@ -547,7 +582,7 @@ std::any TypeCheckerVisitor::visitReturnStatement(OrcParser::ReturnStatementCont
 		returnType = closure->type();
 	}
 
-	if (returnType->getText() == "void") { //·µ»Øvoid
+	if (returnType->getText() == "void") { //ï¿½ï¿½ï¿½ï¿½void
 		if (ctx->singleExpression()) {
 			addTypeErrorByParseTree(ctx, std::format("return expression for void"));
 			throw buildErrorWithLine("return expression for void", ctx);
@@ -555,13 +590,13 @@ std::any TypeCheckerVisitor::visitReturnStatement(OrcParser::ReturnStatementCont
 
 	}
 	else {
-		//Ã»ÓÐ·µ»ØÖµ
+		//Ã»ï¿½Ð·ï¿½ï¿½ï¿½Öµ
 		if (ctx->singleExpression() == NULL) {
 			addTypeErrorByParseTree(ctx, std::format("return void error"));
 			throw buildErrorWithLine("return void error", ctx);
 		}
 
-		//¼ì²é ÀàÐÍÆ¥Åä
+		//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
 		auto typeInfo = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
 
 		auto fnReturnType = typeContext_toSymbolType(returnType);
@@ -589,7 +624,7 @@ std::any TypeCheckerVisitor::visitExtensionDefinition(OrcParser::ExtensionDefini
 
 std::any TypeCheckerVisitor::visitExtensionBlock(OrcParser::ExtensionBlockContext* ctx)
 {
-	//¼ì²éÖØ¶¨Òå
+	//ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½
 
 	auto ret = visitChildren(ctx);
 	return ret;
@@ -598,7 +633,7 @@ std::any TypeCheckerVisitor::visitExtensionBlock(OrcParser::ExtensionBlockContex
 std::any TypeCheckerVisitor::visitType(OrcParser::TypeContext* ctx)
 {
 	auto declType = typeContext_toSymbolType(ctx);
-	//¼ì²éÀàÐÍÊÇ·ñ´æÔÚ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	if (declType && !isTypeNameDefined(declType->getNakeTypeName())) {
 		addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
 		throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
@@ -609,13 +644,13 @@ std::any TypeCheckerVisitor::visitType(OrcParser::TypeContext* ctx)
 std::any TypeCheckerVisitor::visitClassFieldDeclaration(OrcParser::ClassFieldDeclarationContext* ctx)
 {
 	auto declType = typeContext_toSymbolType(ctx->type());
-	//¼ì²éÀàÐÍÊÇ·ñ´æÔÚ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	if (declType && !isTypeNameDefined(declType->getNakeTypeName())) {
 		addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
 		throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
 	}
 
-	//¼ì²éÖØ¶¨Òå
+	//ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½
 	auto id = ctx->Id();
 	if (id) {
 		auto fieldName = id->getText();
@@ -643,9 +678,9 @@ std::any TypeCheckerVisitor::visitClassFieldDeclaration(OrcParser::ClassFieldDec
 		}
 	}
 
-	//¼ì²é¿É¸³Öµ
-	//¼ì²é ³õÊ¼»¯±í´ïµÄÀàÐÍÆ¥Åä
-	if (ctx->assignRightPart() && ctx->assignRightPart()->singleExpression()) { //ÓÐ³õÖµ
+	//ï¿½ï¿½ï¿½É¸ï¿½Öµ
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
+	if (ctx->assignRightPart() && ctx->assignRightPart()->singleExpression()) { //ï¿½Ð³ï¿½Öµ
 		auto expr = ctx->assignRightPart()->singleExpression();
 		auto typeInfo = ast_calcSymbolTypeOfExpressionResult(expr, space);
 
@@ -668,7 +703,7 @@ std::any TypeCheckerVisitor::visitClassFieldDeclaration(OrcParser::ClassFieldDec
 
 std::any TypeCheckerVisitor::visitClassDefinition(OrcParser::ClassDefinitionContext* ctx)
 {
-	//¼ì²é ¸¸ÀàÐÍ´æÔÚ
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½
 	auto superId = ctx->Id(1);
 	if (superId) {
 		auto className = superId->getText();
@@ -684,7 +719,7 @@ std::any TypeCheckerVisitor::visitClassDefinition(OrcParser::ClassDefinitionCont
 
 std::any TypeCheckerVisitor::visitFunctionDefinition(OrcParser::FunctionDefinitionContext* ctx)
 {
-	//¼ì²éÊÇ·ñÖØ¶¨Òå
+	//ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½
 	auto ret = visitChildren(ctx);
 	return ret;
 }

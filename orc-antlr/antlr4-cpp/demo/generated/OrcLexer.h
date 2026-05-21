@@ -28,14 +28,14 @@ public:
     T__56 = 57, T__57 = 58, T__58 = 59, T__59 = 60, T__60 = 61, T__61 = 62, 
     T__62 = 63, T__63 = 64, T__64 = 65, T__65 = 66, T__66 = 67, T__67 = 68, 
     T__68 = 69, Break = 70, Do = 71, Instanceof = 72, Case = 73, Else = 74, 
-    New = 75, Return = 76, Void = 77, Continue = 78, For = 79, While = 80, 
-    This = 81, If = 82, From = 83, Struct = 84, Class = 85, Enum = 86, Extends = 87, 
-    Extern = 88, Super = 89, Extension = 90, Const = 91, Export = 92, Import = 93, 
-    Static = 94, Async = 95, Await = 96, Refc = 97, NullLiteral = 98, BooleanLiteral = 99, 
-    DecimalLiteral = 100, HexIntegerLiteral = 101, OctalIntegerLiteral = 102, 
-    BinaryIntegerLiteral = 103, StringLiteral = 104, CharLiteral = 105, 
-    Id = 106, CloseBrace = 107, LineTerminator = 108, Whitespace = 109, 
-    BlockComment = 110, LineComment = 111
+    New = 75, Catch = 76, Finally = 77, Return = 78, Void = 79, Continue = 80, 
+    For = 81, While = 82, This = 83, If = 84, Throw = 85, Try = 86, From = 87, 
+    Struct = 88, Class = 89, Enum = 90, Extends = 91, Extern = 92, Super = 93, 
+    Extension = 94, Const = 95, Export = 96, Import = 97, Static = 98, Async = 99, 
+    Await = 100, Refc = 101, NullLiteral = 102, BooleanLiteral = 103, DecimalLiteral = 104, 
+    HexIntegerLiteral = 105, OctalIntegerLiteral = 106, BinaryIntegerLiteral = 107, 
+    StringLiteral = 108, CharLiteral = 109, Id = 110, CloseBrace = 111, 
+    LineTerminator = 112, Whitespace = 113, BlockComment = 114, LineComment = 115
   };
 
   explicit OrcLexer(antlr4::CharStream *input);

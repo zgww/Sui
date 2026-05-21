@@ -9,8 +9,12 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
-    <LocalDebuggerCommandArguments>w</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>c "D:\ws\Sui\orc-antlr\antlr4-cpp\demo\Windows\bin\vs-2022\x64\Release DLL\a.orc"</LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory>d:\ws\Sui\Sui\src</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <LocalDebuggerCommandArguments>c "D:\ws\Sui\orc-antlr\antlr4-cpp\demo\Windows\bin\vs-2022\x64\Release DLL\a.orc"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

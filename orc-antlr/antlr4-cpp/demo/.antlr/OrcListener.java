@@ -1,4 +1,4 @@
-// Generated from e:/luwa/oms_ts/orc-antlr/antlr4-cpp/demo/Orc.g4 by ANTLR 4.13.1
+// Generated from d:/ws/Sui/orc-antlr/antlr4-cpp/demo/Orc.g4 by ANTLR 4.13.1
 
     #include "OrcParserBase.h"
 

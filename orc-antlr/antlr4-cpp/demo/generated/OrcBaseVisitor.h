@@ -220,6 +220,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitThrowStatement(OrcParser::ThrowStatementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitReturnStatement(OrcParser::ReturnStatementContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -237,6 +241,18 @@ public:
   }
 
   virtual std::any visitSelectionStatement(OrcParser::SelectionStatementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitTryStatement(OrcParser::TryStatementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitCatchClause(OrcParser::CatchClauseContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitFinallyClause(OrcParser::FinallyClauseContext *ctx) override {
     return visitChildren(ctx);
   }
 

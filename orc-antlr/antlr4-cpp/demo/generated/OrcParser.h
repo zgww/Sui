@@ -28,14 +28,14 @@ public:
     T__56 = 57, T__57 = 58, T__58 = 59, T__59 = 60, T__60 = 61, T__61 = 62, 
     T__62 = 63, T__63 = 64, T__64 = 65, T__65 = 66, T__66 = 67, T__67 = 68, 
     T__68 = 69, Break = 70, Do = 71, Instanceof = 72, Case = 73, Else = 74, 
-    New = 75, Return = 76, Void = 77, Continue = 78, For = 79, While = 80, 
-    This = 81, If = 82, From = 83, Struct = 84, Class = 85, Enum = 86, Extends = 87, 
-    Extern = 88, Super = 89, Extension = 90, Const = 91, Export = 92, Import = 93, 
-    Static = 94, Async = 95, Await = 96, Refc = 97, NullLiteral = 98, BooleanLiteral = 99, 
-    DecimalLiteral = 100, HexIntegerLiteral = 101, OctalIntegerLiteral = 102, 
-    BinaryIntegerLiteral = 103, StringLiteral = 104, CharLiteral = 105, 
-    Id = 106, CloseBrace = 107, LineTerminator = 108, Whitespace = 109, 
-    BlockComment = 110, LineComment = 111
+    New = 75, Catch = 76, Finally = 77, Return = 78, Void = 79, Continue = 80, 
+    For = 81, While = 82, This = 83, If = 84, Throw = 85, Try = 86, From = 87, 
+    Struct = 88, Class = 89, Enum = 90, Extends = 91, Extern = 92, Super = 93, 
+    Extension = 94, Const = 95, Export = 96, Import = 97, Static = 98, Async = 99, 
+    Await = 100, Refc = 101, NullLiteral = 102, BooleanLiteral = 103, DecimalLiteral = 104, 
+    HexIntegerLiteral = 105, OctalIntegerLiteral = 106, BinaryIntegerLiteral = 107, 
+    StringLiteral = 108, CharLiteral = 109, Id = 110, CloseBrace = 111, 
+    LineTerminator = 112, Whitespace = 113, BlockComment = 114, LineComment = 115
   };
 
   enum {
@@ -43,19 +43,20 @@ public:
     RuleClosureExpression = 4, RuleSingleExpression = 5, RuleAssignmentOperator = 6, 
     RuleEmptyStatement = 7, RuleStructDefinition = 8, RuleStructMember = 9, 
     RuleArraySizeDeclaration = 10, RuleVarDeclaration = 11, RuleStatement = 12, 
-    RuleContinueStatement = 13, RuleBreakStatement = 14, RuleReturnStatement = 15, 
-    RuleScopeStatement = 16, RuleIterationStatement = 17, RuleForCondition = 18, 
-    RuleSelectionStatement = 19, RuleBlock = 20, RuleType = 21, RuleClosureType = 22, 
-    RuleFunctionTypeArg = 23, RuleAttribute = 24, RuleFunctionType = 25, 
-    RuleTypeQualifier = 26, RulePointer = 27, RuleRef = 28, RulePrimitiveType = 29, 
-    RuleEnumDefinition = 30, RuleEnumItem = 31, RuleExtensionDefinition = 32, 
-    RuleExtensionBlock = 33, RuleClassDefinition = 34, RuleClassDefinitionBlock = 35, 
-    RuleClassFieldDeclaration = 36, RuleMethodDeclaration = 37, RuleAssignRightPart = 38, 
-    RuleArgumentDeclaration = 39, RuleArgumentsDeclaration = 40, RuleFunctionPointerVarDeclaration = 41, 
-    RuleFunctionDefinition = 42, RuleGlobalFunctionDefinition = 43, RuleGlobalVarDeclaration = 44, 
-    RuleExternFunctionDeclaration = 45, RuleImportStatement = 46, RuleIncludeStatement = 47, 
-    RuleIncludePathCharacters = 48, RulePackageStatement = 49, RuleLiteral = 50, 
-    RuleEos = 51
+    RuleContinueStatement = 13, RuleBreakStatement = 14, RuleThrowStatement = 15, 
+    RuleReturnStatement = 16, RuleScopeStatement = 17, RuleIterationStatement = 18, 
+    RuleForCondition = 19, RuleSelectionStatement = 20, RuleTryStatement = 21, 
+    RuleCatchClause = 22, RuleFinallyClause = 23, RuleBlock = 24, RuleType = 25, 
+    RuleClosureType = 26, RuleFunctionTypeArg = 27, RuleAttribute = 28, 
+    RuleFunctionType = 29, RuleTypeQualifier = 30, RulePointer = 31, RuleRef = 32, 
+    RulePrimitiveType = 33, RuleEnumDefinition = 34, RuleEnumItem = 35, 
+    RuleExtensionDefinition = 36, RuleExtensionBlock = 37, RuleClassDefinition = 38, 
+    RuleClassDefinitionBlock = 39, RuleClassFieldDeclaration = 40, RuleMethodDeclaration = 41, 
+    RuleAssignRightPart = 42, RuleArgumentDeclaration = 43, RuleArgumentsDeclaration = 44, 
+    RuleFunctionPointerVarDeclaration = 45, RuleFunctionDefinition = 46, 
+    RuleGlobalFunctionDefinition = 47, RuleGlobalVarDeclaration = 48, RuleExternFunctionDeclaration = 49, 
+    RuleImportStatement = 50, RuleIncludeStatement = 51, RuleIncludePathCharacters = 52, 
+    RulePackageStatement = 53, RuleLiteral = 54, RuleEos = 55
   };
 
   explicit OrcParser(antlr4::TokenStream *input);
@@ -90,11 +91,15 @@ public:
   class StatementContext;
   class ContinueStatementContext;
   class BreakStatementContext;
+  class ThrowStatementContext;
   class ReturnStatementContext;
   class ScopeStatementContext;
   class IterationStatementContext;
   class ForConditionContext;
   class SelectionStatementContext;
+  class TryStatementContext;
+  class CatchClauseContext;
+  class FinallyClauseContext;
   class BlockContext;
   class TypeContext;
   class ClosureTypeContext;
@@ -764,9 +769,11 @@ public:
     BlockContext *block();
     ContinueStatementContext *continueStatement();
     BreakStatementContext *breakStatement();
+    ThrowStatementContext *throwStatement();
     SelectionStatementContext *selectionStatement();
     ReturnStatementContext *returnStatement();
     IterationStatementContext *iterationStatement();
+    TryStatementContext *tryStatement();
     SingleExpressionContext *singleExpression();
     EmptyStatementContext *emptyStatement();
 
@@ -810,6 +817,23 @@ public:
   };
 
   BreakStatementContext* breakStatement();
+
+  class  ThrowStatementContext : public OrcRuleContext {
+  public:
+    ThrowStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *Throw();
+    SingleExpressionContext *singleExpression();
+    EosContext *eos();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  ThrowStatementContext* throwStatement();
 
   class  ReturnStatementContext : public OrcRuleContext {
   public:
@@ -899,6 +923,59 @@ public:
   };
 
   SelectionStatementContext* selectionStatement();
+
+  class  TryStatementContext : public OrcRuleContext {
+  public:
+    TryStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *Try();
+    BlockContext *block();
+    std::vector<CatchClauseContext *> catchClause();
+    CatchClauseContext* catchClause(size_t i);
+    FinallyClauseContext *finallyClause();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  TryStatementContext* tryStatement();
+
+  class  CatchClauseContext : public OrcRuleContext {
+  public:
+    CatchClauseContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *Catch();
+    RefContext *ref();
+    BlockContext *block();
+    antlr4::tree::TerminalNode *Id();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  CatchClauseContext* catchClause();
+
+  class  FinallyClauseContext : public OrcRuleContext {
+  public:
+    FinallyClauseContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *Finally();
+    BlockContext *block();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  FinallyClauseContext* finallyClause();
 
   class  BlockContext : public OrcRuleContext {
   public:

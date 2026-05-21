@@ -4673,6 +4673,32 @@ public:
 	std::string staticStructCode = ""; //静态结构体的代码;
 	std::shared_ptr<SymbolSpace> space = nullptr;
 
+	struct FunctionReturnInfo {
+		bool isVoid = false;
+		std::string valueVar;
+		std::string flagVar;
+		std::string loopControlVar;
+	};
+
+	struct TryReturnInfo {
+		std::string finallyLabel;
+		std::string afterFinallyLabel;
+		bool inFinally = false;
+	};
+
+	struct LoopControlInfo {
+		std::string breakLabel;
+		std::string continueLabel;
+		int breakId = 0;
+		int continueId = 0;
+		int tryDepth = 0;
+	};
+
+	std::vector<FunctionReturnInfo> functionReturnInfoStack;
+	std::vector<TryReturnInfo> tryReturnInfoStack;
+	std::vector<LoopControlInfo> loopControlStack;
+	int nextLoopControlId = 1;
+
 
 	//virtual std::any visitClosureType(OrcParser::ClosureTypeContext* ctx) override {
 	//	auto type = visitReturnString(ctx->type());
@@ -5379,16 +5405,138 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 		return ret;
 	}
 
+	std::string prependCodeToBlock(std::string blockText, const std::string& prefixCode) {
+		if (prefixCode.empty()) {
+			return blockText;
+		}
+		auto indentedPrefix = StrUtil::addPrefixPerLine(prefixCode, "\t");
+		if (blockText.rfind("{\n", 0) == 0) {
+			return "{\n" + indentedPrefix + blockText.substr(2);
+		}
+		return "{\n" + indentedPrefix + StrUtil::addPrefixPerLine(blockText, "\t") + "\n}\n";
+	}
+
+	std::string buildExceptionMatchCondition(OrcParser::CatchClauseContext* catchClause) {
+		auto refCtx = catchClause->ref();
+		auto typeName = refCtx->Id()->getText();
+		auto def = this->space->findSymbolDefinitionByName_includeImports(typeName);
+		if (!def) {
+			throw std::format("catch type not found: {}", typeName);
+		}
+		auto classDef = std::dynamic_pointer_cast<SymbolDefinitionClass>(def);
+		if (classDef) {
+			return std::format("Orc_exceptionMatchesClass(Orc_currentException(), (Vtable_Object*)Vtable_{}_init(NULL))", classDef->fullname);
+		}
+		auto structDef = std::dynamic_pointer_cast<SymbolDefinitionStruct>(def);
+		if (structDef && structDef->hostSpace->path.ends_with(".orc")) {
+			return std::format("Orc_exceptionMatchesStruct(Orc_currentException(), {}_getOrInitMetaStruct())", structDef->fullname);
+		}
+		throw std::format("catch only supports orc class@ or struct@, got {}", typeName);
+	}
+
+	struct ForConditionParts {
+		std::string declText;
+		std::string condText;
+		std::string incText;
+	};
+
+	ForConditionParts buildForConditionParts(OrcParser::ForConditionContext* ctx) {
+		ForConditionParts parts;
+		int st = 0;
+		for (int i = 0; i < ctx->children.size(); i++) {
+			auto kid = ctx->children[i];
+			if (kid->getText() == ";") {
+				st++;
+			}
+			else {
+				if (st == 0) {
+					parts.declText = visitReturnString(kid);
+				}
+				else if (st == 1) {
+					parts.condText = visitReturnString(kid);
+				}
+				else if (st == 2) {
+					parts.incText = visitReturnString(kid);
+				}
+			}
+		}
+		return parts;
+	}
+
 	virtual std::any visitContinueStatement(OrcParser::ContinueStatementContext* ctx) override {
+		if (!loopControlStack.empty()) {
+			auto& loopInfo = loopControlStack.back();
+			auto currentTryDepth = (int)tryReturnInfoStack.size();
+			if (currentTryDepth > loopInfo.tryDepth && !functionReturnInfoStack.empty()) {
+				auto& tryInfo = tryReturnInfoStack.back();
+				auto& fnInfo = functionReturnInfoStack.back();
+				auto targetLabel = tryInfo.inFinally ? tryInfo.afterFinallyLabel : tryInfo.finallyLabel;
+				CostUsGuard g(this);
+				return std::format("{} = false; {} = {}; goto {};\n", fnInfo.flagVar, fnInfo.loopControlVar, loopInfo.continueId, targetLabel);
+			}
+			CostUsGuard g(this);
+			return std::format("goto {};\n", loopInfo.continueLabel);
+		}
 		return string("continue;\n");
 	}
 
 	virtual std::any visitBreakStatement(OrcParser::BreakStatementContext* ctx) override {
+		if (!loopControlStack.empty()) {
+			auto& loopInfo = loopControlStack.back();
+			auto currentTryDepth = (int)tryReturnInfoStack.size();
+			if (currentTryDepth > loopInfo.tryDepth && !functionReturnInfoStack.empty()) {
+				auto& tryInfo = tryReturnInfoStack.back();
+				auto& fnInfo = functionReturnInfoStack.back();
+				auto targetLabel = tryInfo.inFinally ? tryInfo.afterFinallyLabel : tryInfo.finallyLabel;
+				CostUsGuard g(this);
+				return std::format("{} = false; {} = {}; goto {};\n", fnInfo.flagVar, fnInfo.loopControlVar, loopInfo.breakId, targetLabel);
+			}
+			CostUsGuard g(this);
+			return std::format("goto {};\n", loopInfo.breakLabel);
+		}
 		return string("break;\n");
+	}
+
+	virtual std::any visitThrowStatement(OrcParser::ThrowStatementContext* ctx) override {
+		auto expr = visitReturnString(ctx->singleExpression());
+		auto exType = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
+		if (!exType) {
+			throw std::format("throw expression type resolve failed");
+		}
+		auto refType = std::dynamic_pointer_cast<SymbolTypeRef>(exType->type);
+		if (!refType) {
+			throw std::format("throw only supports ref type");
+		}
+		auto def = exType->findSymbolDefinition();
+		if (!def) {
+			throw std::format("throw ref type definition not found: {}", refType->typeName);
+		}
+		auto classDef = std::dynamic_pointer_cast<SymbolDefinitionClass>(def);
+		if (classDef) {
+			CostUsGuard g(this);
+			return std::format("Orc_throw((void*){}, (Vtable_Object*)Vtable_{}_init(NULL), NULL);\n", expr, classDef->fullname);
+		}
+		auto structDef = std::dynamic_pointer_cast<SymbolDefinitionStruct>(def);
+		if (structDef && structDef->hostSpace->path.ends_with(".orc")) {
+			CostUsGuard g(this);
+			return std::format("Orc_throw((void*){}, NULL, {}_getOrInitMetaStruct());\n", expr, structDef->fullname);
+		}
+		CostUsGuard g(this);
+		throw std::format("throw only supports orc class@ or struct@");
 	}
 
 	virtual std::any visitReturnStatement(OrcParser::ReturnStatementContext* ctx) override {
 		auto expr = visitReturnString(ctx->singleExpression());
+		if (!tryReturnInfoStack.empty() && !functionReturnInfoStack.empty()) {
+			auto& tryInfo = tryReturnInfoStack.back();
+			auto& fnInfo = functionReturnInfoStack.back();
+			auto targetLabel = tryInfo.inFinally ? tryInfo.afterFinallyLabel : tryInfo.finallyLabel;
+			CostUsGuard g(this);
+			if (fnInfo.isVoid) {
+				return std::format("{} = 0; {} = true; goto {};\n", fnInfo.loopControlVar, fnInfo.flagVar, targetLabel);
+			}
+			return std::format("{} = 0; {} = {}; {} = true; goto {};\n", fnInfo.loopControlVar, fnInfo.valueVar, expr, fnInfo.flagVar, targetLabel);
+		}
 		CostUsGuard g(this);
 		return string("return ") + expr + "; \n";
 	}
@@ -5500,23 +5648,54 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 	}
 
 	virtual std::any visitIterationStatement(OrcParser::IterationStatementContext* ctx) override {
+		auto loopSuffix = std::format("{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
 		if (ctx->While()) {
 			auto exprText = visitReturnString(ctx->singleExpression());
 			if (exprText.c_str()[0] != '(') {
 				exprText = std::format("({})", exprText);
 			}
+			auto breakLabel = std::format("__orc_loop_break_{}", loopSuffix);
+			auto continueLabel = std::format("__orc_loop_continue_{}", loopSuffix);
+			auto breakId = nextLoopControlId++;
+			auto continueId = nextLoopControlId++;
+			loopControlStack.push_back({ breakLabel, continueLabel, breakId, continueId, (int)tryReturnInfoStack.size() });
 			auto blockText = visitReturnString(ctx->block());
+			loopControlStack.pop_back();
 			CostUsGuard g(this);
-			auto ret = std::format("while {} {}", exprText, blockText);
+			auto ret = std::format(R"({{
+{}:
+if (!{}) goto {};
+{}
+goto {};
+{}:
+;
+}})", continueLabel, exprText, breakLabel, blockText, continueLabel, breakLabel);
 			return ret;
 		}
 		if (ctx->For()) {
-			//auto hasParenthesis = ctx->children[1]->getText() == "(";
-			auto forConditionText = visitReturnString(ctx->forCondition());
+			auto parts = buildForConditionParts(ctx->forCondition());
+			auto condText = parts.condText.empty() ? std::string("1") : parts.condText;
+			auto breakLabel = std::format("__orc_loop_break_{}", loopSuffix);
+			auto continueLabel = std::format("__orc_loop_continue_{}", loopSuffix);
+			auto condLabel = std::format("__orc_loop_cond_{}", loopSuffix);
+			auto breakId = nextLoopControlId++;
+			auto continueId = nextLoopControlId++;
+			loopControlStack.push_back({ breakLabel, continueLabel, breakId, continueId, (int)tryReturnInfoStack.size() });
 			auto blockText = visitReturnString(ctx->block());
+			loopControlStack.pop_back();
 
 			CostUsGuard g(this);
-			auto ret = std::format("for ({}) {}", forConditionText, blockText);
+			auto declCode = parts.declText.empty() ? std::string("") : std::format("{};\n", parts.declText);
+			auto incCode = parts.incText.empty() ? std::string("") : std::format("{};\n", parts.incText);
+			auto ret = std::format(R"({{
+{}{}:
+if (!({})) goto {};
+{}
+{}:
+{}goto {};
+{}:
+;
+}})", declCode, condLabel, condText, breakLabel, blockText, continueLabel, incCode, condLabel, breakLabel);
 			return ret;
 			
 		}
@@ -5524,31 +5703,9 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 	}
 
 	virtual std::any visitForCondition(OrcParser::ForConditionContext* ctx) override {
-		string declText;
-		string condText;
-		string incText;
-
-		int st = 0;
-		for (int i = 0; i < ctx->children.size(); i++) {
-			auto kid = ctx->children[i];
-
-			if (kid->getText() == ";") {
-				st++;
-			}
-			else {
-				if (st == 0) {
-					declText = visitReturnString(kid);
-				}
-				else if (st == 1) {
-					condText = visitReturnString(kid);
-				}
-				else if (st == 2) {
-					incText = visitReturnString(kid);
-				}
-			}
-		}
+		auto parts = buildForConditionParts(ctx);
 		CostUsGuard g(this);
-		auto ret = std::format("{}; {}; {}", declText, condText, incText);
+		auto ret = std::format("{}; {}; {}", parts.declText, parts.condText, parts.incText);
 		return ret;
 	}
 
@@ -5579,6 +5736,178 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 
 		}
 		return text;
+	}
+
+	virtual std::any visitTryStatement(OrcParser::TryStatementContext* ctx) override {
+		auto suffix = std::format("{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
+		auto trySiteName = std::format("try@{}:{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
+		auto catchSiteName = std::format("catch@{}:{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
+		auto tryFrameName = std::format("__orc_try_frame_{}", suffix);
+		auto tryCodeName = std::format("__orc_try_code_{}", suffix);
+		auto catchFrameName = std::format("__orc_catch_frame_{}", suffix);
+		auto catchCodeName = std::format("__orc_catch_code_{}", suffix);
+		auto handledName = std::format("__orc_catch_handled_{}", suffix);
+		auto needRethrowName = std::format("__orc_need_rethrow_{}", suffix);
+		auto handledExceptionName = std::format("__orc_handled_exception_{}", suffix);
+		auto finallyLabel = std::format("__orc_finally_{}", suffix);
+		auto afterFinallyLabel = std::format("__orc_after_finally_{}", suffix);
+		auto catchClauses = ctx->catchClause();
+		auto finallyClause = ctx->finallyClause();
+		std::string catchSection;
+		std::string finallySection;
+		std::string returnPropagateCode;
+		std::string returnFlagName;
+		std::string returnDispatchSection;
+		std::string loopControlVarName;
+		std::string loopDispatchSection;
+		auto currentTryDepth = (int)tryReturnInfoStack.size() + 1;
+		auto parentTryDepth = (int)tryReturnInfoStack.size();
+
+		if (!functionReturnInfoStack.empty()) {
+			returnFlagName = functionReturnInfoStack.back().flagVar;
+			loopControlVarName = functionReturnInfoStack.back().loopControlVar;
+			if (!tryReturnInfoStack.empty()) {
+				auto& parentTry = tryReturnInfoStack.back();
+				auto parentTarget = parentTry.inFinally ? parentTry.afterFinallyLabel : parentTry.finallyLabel;
+				returnPropagateCode = std::format("goto {};", parentTarget);
+			}
+			else {
+				if (functionReturnInfoStack.back().isVoid) {
+					returnPropagateCode = "return;";
+				}
+				else {
+					returnPropagateCode = std::format("return {};", functionReturnInfoStack.back().valueVar);
+				}
+			}
+		}
+
+		tryReturnInfoStack.push_back({ finallyLabel, afterFinallyLabel, false });
+		auto tryBlockText = visitReturnString(ctx->block());
+
+		if (!catchClauses.empty()) {
+			std::string catchCases;
+			for (auto catchClause : catchClauses) {
+				auto catchBlockText = visitReturnString(catchClause->block());
+				if (catchClause->Id()) {
+					auto varName = catchClause->Id()->getText();
+					auto catchVarDecl = std::format("{} {} = ({})Orc_currentException()->refValue;\n",
+						visitReturnString(catchClause->ref()),
+						varName,
+						visitReturnString(catchClause->ref())
+					);
+					catchBlockText = prependCodeToBlock(catchBlockText, catchVarDecl);
+				}
+				auto matchCond = buildExceptionMatchCondition(catchClause);
+				catchCases += std::format(R"(
+			if (!{} && {}) {{
+				{} = true;
+				{}
+			}}
+)", handledName, matchCond, handledName, catchBlockText);
+			}
+			catchSection = std::format(R"(
+	if ({} != 0) {{
+		OrcTryFrame {};
+		{}.site = "{}";
+		volatile int {} = Orc_tryEnter(&{});
+		volatile bool {} = false;
+		if ({} == 0) {{
+			{}
+		}}
+		Orc_tryLeave(&{});
+		if ({} != 0 || !{}) {{
+			{} = true;
+		}}
+		else {{
+			{} = true;
+		}}
+	}}
+)", tryCodeName, catchFrameName, catchFrameName, catchSiteName, catchCodeName, catchFrameName, handledName, catchCodeName, catchCases, catchFrameName, catchCodeName, handledName, needRethrowName, handledExceptionName);
+		}
+		else {
+			catchSection = std::format(R"(
+	if ({} != 0) {{
+		{} = true;
+	}}
+)", tryCodeName, needRethrowName);
+		}
+
+		if (finallyClause) {
+			tryReturnInfoStack.back().inFinally = true;
+			finallySection = visitReturnString(finallyClause->block());
+			tryReturnInfoStack.back().inFinally = false;
+		}
+		tryReturnInfoStack.pop_back();
+
+		if (!returnPropagateCode.empty()) {
+			returnDispatchSection = std::format(R"(
+	if ({}) {{
+		if ({} || {}) {{
+			Orc_clearException();
+		}}
+		{}
+	}}
+)", returnFlagName, needRethrowName, handledExceptionName, returnPropagateCode);
+		}
+		if (!loopControlVarName.empty()) {
+			for (auto& loopInfo : loopControlStack) {
+				if (loopInfo.tryDepth >= currentTryDepth) {
+					continue;
+				}
+				std::string breakAction;
+				std::string continueAction;
+				if (parentTryDepth > loopInfo.tryDepth && !tryReturnInfoStack.empty()) {
+					auto& parentTry = tryReturnInfoStack.back();
+					auto parentTarget = parentTry.inFinally ? parentTry.afterFinallyLabel : parentTry.finallyLabel;
+					breakAction = std::format("goto {};", parentTarget);
+					continueAction = std::format("goto {};", parentTarget);
+				}
+				else {
+					breakAction = std::format("{} = 0; goto {};", loopControlVarName, loopInfo.breakLabel);
+					continueAction = std::format("{} = 0; goto {};", loopControlVarName, loopInfo.continueLabel);
+				}
+				loopDispatchSection += std::format(R"(
+	if ({} == {}) {{
+		if ({} || {}) {{
+			Orc_clearException();
+		}}
+		{}
+	}}
+	if ({} == {}) {{
+		if ({} || {}) {{
+			Orc_clearException();
+		}}
+		{}
+	}}
+)", loopControlVarName, loopInfo.breakId, needRethrowName, handledExceptionName, breakAction,
+	loopControlVarName, loopInfo.continueId, needRethrowName, handledExceptionName, continueAction);
+			}
+		}
+
+		CostUsGuard g(this);
+		return std::format(R"({{
+	OrcTryFrame {};
+	{}.site = "{}";
+	volatile int {} = Orc_tryEnter(&{});
+	volatile bool {} = false;
+	volatile bool {} = false;
+	if ({} == 0) {}
+	Orc_tryLeave(&{});
+	{}
+	goto {};
+{}:
+	{}
+{}:
+	{}
+	{}
+	if ({}) {{
+		Orc_rethrowCurrentException();
+	}}
+	if ({}) {{
+		Orc_clearException();
+	}}
+}}
+)", tryFrameName, tryFrameName, trySiteName, tryCodeName, tryFrameName, needRethrowName, handledExceptionName, tryCodeName, tryBlockText, tryFrameName, catchSection, finallyLabel, finallyLabel, finallySection, afterFinallyLabel, returnDispatchSection, loopDispatchSection, needRethrowName, handledExceptionName);
 	}
 
 	virtual std::any visitBlock(OrcParser::BlockContext* ctx) override {
@@ -6194,7 +6523,18 @@ void {}_initMeta(Vtable_{} *pvt){{
 		auto type = visitReturnString(ctx->type());
 		auto args = visitReturnString(ctx->argumentsDeclaration());
 		auto name = ctx->fullname.empty() ? ctx->Id()->getText() : ctx->fullname;
+		auto returnType = typeContext_toSymbolType(ctx->type());
+		bool isVoidReturn = false;
+		if (auto primitiveType = std::dynamic_pointer_cast<SymbolTypePrimitiveType>(returnType)) {
+			isVoidReturn = primitiveType->typeName == "void";
+		}
+		auto functionSuffix = std::format("{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
+		auto returnValueVar = std::format("__orc_return_value_{}", functionSuffix);
+		auto returnFlagVar = std::format("__orc_return_flag_{}", functionSuffix);
+		auto loopControlVar = std::format("__orc_loop_control_{}", functionSuffix);
+		functionReturnInfoStack.push_back({ isVoidReturn, returnValueVar, returnFlagVar, loopControlVar });
 		auto block = visitReturnString(ctx->block());
+		functionReturnInfoStack.pop_back();
 
 		//生成对ref类型的arg的处理
 		auto argDecls = ctx->argumentsDeclaration()->argumentDeclaration();
@@ -6210,8 +6550,14 @@ void {}_initMeta(Vtable_{} *pvt){{
 					argDecl->Id()->getText());
 			}
 		}
-		if (!refArgCode.empty()) {
-			block = block.substr(0, 1) + "\n" + refArgCode + block.substr(1);
+		std::string returnStateCode = std::format("\tvolatile bool {} = false;\n", returnFlagVar);
+		returnStateCode += std::format("\tvolatile int {} = 0;\n", loopControlVar);
+		if (!isVoidReturn) {
+			returnStateCode += std::format("\t{} {} = {{0}};\n", type, returnValueVar);
+		}
+		auto functionPreamble = returnStateCode + refArgCode;
+		if (!functionPreamble.empty()) {
+			block = block.substr(0, 1) + "\n" + functionPreamble + block.substr(1);
 		}
 
 		return type + " " + name + args + block + "\n";

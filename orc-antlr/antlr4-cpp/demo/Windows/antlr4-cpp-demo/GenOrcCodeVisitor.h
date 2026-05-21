@@ -134,6 +134,8 @@ public:
 
 	virtual std::any visitBreakStatement(OrcParser::BreakStatementContext* ctx) override;
 
+	virtual std::any visitThrowStatement(OrcParser::ThrowStatementContext* ctx) override;
+
 	virtual std::any visitReturnStatement(OrcParser::ReturnStatementContext* ctx) override;
 
 	virtual std::any visitScopeStatement(OrcParser::ScopeStatementContext* ctx) override;
@@ -143,6 +145,12 @@ public:
 	virtual std::any visitForCondition(OrcParser::ForConditionContext* ctx) override;
 
 	virtual std::any visitSelectionStatement(OrcParser::SelectionStatementContext* ctx) override;
+
+	virtual std::any visitTryStatement(OrcParser::TryStatementContext* ctx) override;
+
+	virtual std::any visitCatchClause(OrcParser::CatchClauseContext* ctx) override;
+
+	virtual std::any visitFinallyClause(OrcParser::FinallyClauseContext* ctx) override;
 
 	virtual std::any visitBlock(OrcParser::BlockContext* ctx) override;
 

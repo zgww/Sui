@@ -123,6 +123,8 @@ public:
 
     virtual std::any visitBreakStatement(OrcParser::BreakStatementContext *context) = 0;
 
+    virtual std::any visitThrowStatement(OrcParser::ThrowStatementContext *context) = 0;
+
     virtual std::any visitReturnStatement(OrcParser::ReturnStatementContext *context) = 0;
 
     virtual std::any visitScopeStatement(OrcParser::ScopeStatementContext *context) = 0;
@@ -132,6 +134,12 @@ public:
     virtual std::any visitForCondition(OrcParser::ForConditionContext *context) = 0;
 
     virtual std::any visitSelectionStatement(OrcParser::SelectionStatementContext *context) = 0;
+
+    virtual std::any visitTryStatement(OrcParser::TryStatementContext *context) = 0;
+
+    virtual std::any visitCatchClause(OrcParser::CatchClauseContext *context) = 0;
+
+    virtual std::any visitFinallyClause(OrcParser::FinallyClauseContext *context) = 0;
 
     virtual std::any visitBlock(OrcParser::BlockContext *context) = 0;
 

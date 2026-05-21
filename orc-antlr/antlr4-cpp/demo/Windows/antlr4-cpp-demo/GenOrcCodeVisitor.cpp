@@ -347,6 +347,11 @@ std::any GenOrcCodeVisitor::visitBreakStatement(OrcParser::BreakStatementContext
 	return string("break;\n");
 }
 
+std::any GenOrcCodeVisitor::visitThrowStatement(OrcParser::ThrowStatementContext* ctx) {
+	auto expr = visitReturnString(ctx->singleExpression());
+	return string("throw ") + expr + "; \n";
+}
+
 std::any GenOrcCodeVisitor::visitReturnStatement(OrcParser::ReturnStatementContext* ctx) {
 	auto expr = visitReturnString(ctx->singleExpression());
 	return string("return ") + expr + "; \n";
@@ -437,6 +442,27 @@ std::any GenOrcCodeVisitor::visitSelectionStatement(OrcParser::SelectionStatemen
 
 	}
 	return text;
+}
+
+std::any GenOrcCodeVisitor::visitTryStatement(OrcParser::TryStatementContext* ctx) {
+	auto text = std::string("try ") + visitReturnString(ctx->block());
+	for (auto catchClause : ctx->catchClause()) {
+		text += visitReturnString(catchClause);
+	}
+	if (ctx->finallyClause()) {
+		text += visitReturnString(ctx->finallyClause());
+	}
+	return text;
+}
+
+std::any GenOrcCodeVisitor::visitCatchClause(OrcParser::CatchClauseContext* ctx) {
+	auto typeCode = visitReturnString(ctx->ref());
+	auto arg = ctx->Id() ? std::format(" {}", ctx->Id()->getText()) : std::string("");
+	return std::format("catch ({}{}) {}", typeCode, arg, visitReturnString(ctx->block()));
+}
+
+std::any GenOrcCodeVisitor::visitFinallyClause(OrcParser::FinallyClauseContext* ctx) {
+	return std::format("finally {}", visitReturnString(ctx->block()));
 }
 
 std::any GenOrcCodeVisitor::visitBlock(OrcParser::BlockContext* ctx) {
