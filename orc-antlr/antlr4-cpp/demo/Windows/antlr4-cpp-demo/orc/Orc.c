@@ -7,12 +7,20 @@
 #include "UrgcDll/urgc_api.h"
 #include "./ScopeData_orc.h"
 
+#if defined(_MSC_VER)
+#define ORC_THREAD_LOCAL __declspec(thread)
+#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+#define ORC_THREAD_LOCAL _Thread_local
+#else
+#define ORC_THREAD_LOCAL __thread
+#endif
+
 
 //虚表实例
 Vtable_Object _vtable_Object;
 Vtable_Object _vtable_Closure;
-static OrcTryFrame* g_orcTryTop = NULL;
-static OrcException g_orcCurrentException = {0};
+static ORC_THREAD_LOCAL OrcTryFrame* g_orcTryTop = NULL;
+static ORC_THREAD_LOCAL OrcException g_orcCurrentException = {0};
 
 static bool Orc_tryTraceEnabled(){
     const char* value = getenv("ORC_TRY_TRACE");
