@@ -25,6 +25,7 @@
 #include <GenOrcCodeVisitor.h>
 #include "./TypeCheckerVisitor.h"
 #include <cstdint>
+#include <functional>
 
 
 #include "./SymbolBuilderVisitor.h"
@@ -6689,9 +6690,33 @@ void {}_initMeta(Vtable_{} *pvt){{
 		auto returnValueVar = std::format("__orc_return_value_{}", functionSuffix);
 		auto returnFlagVar = std::format("__orc_return_flag_{}", functionSuffix);
 		auto loopControlVar = std::format("__orc_loop_control_{}", functionSuffix);
-		functionReturnInfoStack.push_back({ isVoidReturn, returnValueVar, returnFlagVar, loopControlVar });
+		std::function<bool(antlr4::tree::ParseTree*)> hasTryStatement = [&](antlr4::tree::ParseTree* node) -> bool {
+			if (dynamic_cast<OrcParser::TryStatementContext*>(node)) {
+				return true;
+			}
+			// 闭包会生成独立函数，里面的 try 不应触发外层函数生成 return/loop 控制状态
+			if (dynamic_cast<OrcParser::ClosureExpressionContext*>(node)) {
+				return false;
+			}
+			auto ruleNode = dynamic_cast<antlr4::ParserRuleContext*>(node);
+			if (!ruleNode) {
+				return false;
+			}
+			for (auto child : ruleNode->children) {
+				if (hasTryStatement(child)) {
+					return true;
+				}
+			}
+			return false;
+		};
+		auto needTryControlState = hasTryStatement(ctx->block());
+		if (needTryControlState) {
+			functionReturnInfoStack.push_back({ isVoidReturn, returnValueVar, returnFlagVar, loopControlVar });
+		}
 		auto block = visitReturnString(ctx->block());
-		functionReturnInfoStack.pop_back();
+		if (needTryControlState) {
+			functionReturnInfoStack.pop_back();
+		}
 
 		//生成对ref类型的arg的处理
 		auto argDecls = ctx->argumentsDeclaration()->argumentDeclaration();
@@ -6707,10 +6732,13 @@ void {}_initMeta(Vtable_{} *pvt){{
 					argDecl->Id()->getText());
 			}
 		}
-		std::string returnStateCode = std::format("\tvolatile bool {} = false;\n", returnFlagVar);
-		returnStateCode += std::format("\tvolatile int {} = 0;\n", loopControlVar);
-		if (!isVoidReturn) {
-			returnStateCode += std::format("\t{} {} = {{0}};\n", type, returnValueVar);
+		std::string returnStateCode;
+		if (needTryControlState) {
+			returnStateCode = std::format("\tvolatile bool {} = false;\n", returnFlagVar);
+			returnStateCode += std::format("\tvolatile int {} = 0;\n", loopControlVar);
+			if (!isVoidReturn) {
+				returnStateCode += std::format("\t{} {} = {{0}};\n", type, returnValueVar);
+			}
 		}
 		auto functionPreamble = returnStateCode + refArgCode;
 		if (!functionPreamble.empty()) {
