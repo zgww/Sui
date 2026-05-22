@@ -183,7 +183,8 @@ void SuiView$ScrollModel_fini(SuiView$ScrollModel *self){
     Object_fini((Object *)self);
 
     //字段释放
-	
+	urgc_set_field(self, (void**)&((SuiView$ScrollModel*)self)->get_scroll_size, NULL);
+	urgc_set_field(self, (void**)&((SuiView$ScrollModel*)self)->get_client_size, NULL);
 
 }
 
@@ -404,6 +405,7 @@ void SuiView$ScrollArea_fini(SuiView$ScrollArea *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->scroll_model);
 	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->scrollDirection);
+	urgc_set_field(self, (void**)&((SuiView$ScrollArea*)self)->onScrollChanged, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->verScrollBar);
 	urgc_fini_field_class(self, (void**)&((SuiView$ScrollArea*)self)->horScrollBar);
 

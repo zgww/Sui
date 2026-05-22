@@ -140,6 +140,7 @@ void Sui$Window_fini(Sui$Window *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((Sui$Window*)self)->rootView);
 	urgc_fini_field_class(self, (void**)&((Sui$Window*)self)->canvas);
+	urgc_set_field(self, (void**)&((Sui$Window*)self)->onClosed, NULL);
 
 }
 

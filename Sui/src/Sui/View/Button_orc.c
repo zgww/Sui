@@ -88,6 +88,7 @@ void SuiView$Button_fini(SuiView$Button *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$Button*)self)->label);
 	urgc_fini_field_class(self, (void**)&((SuiView$Button*)self)->src);
+	urgc_set_field(self, (void**)&((SuiView$Button*)self)->onClick, NULL);
 
 }
 
@@ -314,6 +315,7 @@ void SuiView$DrawButton_fini(SuiView$DrawButton *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$DrawButton*)self)->text);
 	urgc_fini_field_class(self, (void**)&((SuiView$DrawButton*)self)->src);
+	urgc_set_field(self, (void**)&((SuiView$DrawButton*)self)->onClick, NULL);
 
 }
 
@@ -519,6 +521,8 @@ void SuiView$MenuButton_fini(SuiView$MenuButton *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$MenuButton*)self)->text);
+	urgc_set_field(self, (void**)&((SuiView$MenuButton*)self)->onClick, NULL);
+	urgc_set_field(self, (void**)&((SuiView$MenuButton*)self)->onMouseMove, NULL);
 
 }
 

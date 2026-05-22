@@ -188,6 +188,7 @@ void SuiDesigner$BezierEditView_fini(SuiDesigner$BezierEditView *self){
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->c1View);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->endView);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$BezierEditView*)self)->drag);
+	urgc_set_field(self, (void**)&((SuiDesigner$BezierEditView*)self)->onChanged, NULL);
 
 }
 

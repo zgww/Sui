@@ -167,6 +167,7 @@ void SuiDesigner$GizmoRectView_fini(SuiDesigner$GizmoRectView *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$GizmoRectView*)self)->drag);
+	urgc_set_field(self, (void**)&((SuiDesigner$GizmoRectView*)self)->onRectChanged, NULL);
 
 }
 

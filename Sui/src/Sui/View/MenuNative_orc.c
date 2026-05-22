@@ -93,6 +93,7 @@ void SuiView$MenuNativeItem_fini(SuiView$MenuNativeItem *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$MenuNativeItem*)self)->cmd);
 	urgc_fini_field_class(self, (void**)&((SuiView$MenuNativeItem*)self)->label);
+	urgc_set_field(self, (void**)&((SuiView$MenuNativeItem*)self)->onActive, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$MenuNativeItem*)self)->children);
 
 }
@@ -250,6 +251,7 @@ void SuiView$MenuNative_fini(SuiView$MenuNative *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$MenuNative*)self)->root);
+	urgc_set_field(self, (void**)&((SuiView$MenuNative*)self)->cbOnDismiss, NULL);
 
 }
 

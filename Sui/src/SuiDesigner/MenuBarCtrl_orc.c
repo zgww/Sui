@@ -149,6 +149,7 @@ void SuiDesigner$MenuBarCtrl_fini(SuiDesigner$MenuBarCtrl *self){
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->curMenu);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->nextMenu);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->popup);
+	urgc_set_field(self, (void**)&((SuiDesigner$MenuBarCtrl*)self)->cbCreateMenuNativeItem, NULL);
 
 }
 

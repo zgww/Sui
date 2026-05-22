@@ -156,6 +156,8 @@ void SuiDesigner$FileChooser_fini(SuiDesigner$FileChooser *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->paths);
+	urgc_set_field(self, (void**)&((SuiDesigner$FileChooser*)self)->cbFilter, NULL);
+	urgc_set_field(self, (void**)&((SuiDesigner$FileChooser*)self)->onChoose, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->dir);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->search);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$FileChooser*)self)->win);

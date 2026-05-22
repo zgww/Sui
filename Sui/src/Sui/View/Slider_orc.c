@@ -111,6 +111,7 @@ void SuiView$Slider_fini(SuiView$Slider *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$Slider*)self)->circle);
 	urgc_fini_field_class(self, (void**)&((SuiView$Slider*)self)->drag);
+	urgc_set_field(self, (void**)&((SuiView$Slider*)self)->onChanged, NULL);
 
 }
 

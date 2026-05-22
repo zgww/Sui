@@ -109,6 +109,7 @@ void SuiDesigner$InvalidReact_fini(SuiDesigner$InvalidReact *self){
     Object_fini((Object *)self);
 
     //字段释放
+	urgc_set_field(self, (void**)&((SuiDesigner$InvalidReact*)self)->react, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$InvalidReact*)self)->target);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$InvalidReact*)self)->reactName);
 

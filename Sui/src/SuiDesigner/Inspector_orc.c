@@ -725,8 +725,10 @@ void SuiDesigner$Inspector_fini(SuiDesigner$Inspector *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$Inspector*)self)->obj);
+	urgc_set_field(self, (void**)&((SuiDesigner$Inspector*)self)->cbSetField, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$Inspector*)self)->parentNode);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$Inspector*)self)->attrInfoMap);
+	urgc_set_field(self, (void**)&((SuiDesigner$Inspector*)self)->setAttr, NULL);
 
 }
 

@@ -153,6 +153,7 @@ void SuiView$Select_fini(SuiView$Select *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$Select*)self)->options);
+	urgc_set_field(self, (void**)&((SuiView$Select*)self)->onChanged, NULL);
 
 }
 

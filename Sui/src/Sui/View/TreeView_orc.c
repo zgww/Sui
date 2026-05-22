@@ -180,6 +180,10 @@ void SuiView$TreeState_fini(SuiView$TreeState *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$TreeState*)self)->roots);
+	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->getId, NULL);
+	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->getItemChildren, NULL);
+	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->cbSelectedIdChanged, NULL);
+	urgc_set_field(self, (void**)&((SuiView$TreeState*)self)->getParent, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$TreeState*)self)->selectedIds);
 	urgc_fini_field_class(self, (void**)&((SuiView$TreeState*)self)->opendIds);
 
@@ -473,6 +477,8 @@ void SuiView$TreeView_fini(SuiView$TreeView *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$TreeView*)self)->state);
+	urgc_set_field(self, (void**)&((SuiView$TreeView*)self)->reactItem, NULL);
+	urgc_set_field(self, (void**)&((SuiView$TreeView*)self)->cbOnEvent_forItemView, NULL);
 
 }
 

@@ -144,6 +144,7 @@ void HoroEditor$Horo3dSceneView_fini(HoroEditor$Horo3dSceneView *self){
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->camera);
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->drag);
 	urgc_fini_field_class(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->groundGrid);
+	urgc_set_field(self, (void**)&((HoroEditor$Horo3dSceneView*)self)->cbAfterDraw, NULL);
 
 }
 

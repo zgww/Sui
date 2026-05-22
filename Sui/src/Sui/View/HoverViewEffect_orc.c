@@ -130,6 +130,9 @@ void SuiView$HoverViewEffect_fini(SuiView$HoverViewEffect *self){
 	urgc_fini_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->border);
 	urgc_fini_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->hoverBorder);
 	urgc_fini_field_class(self, (void**)&((SuiView$HoverViewEffect*)self)->activeBorder);
+	urgc_set_field(self, (void**)&((SuiView$HoverViewEffect*)self)->onClick, NULL);
+	urgc_set_field(self, (void**)&((SuiView$HoverViewEffect*)self)->onHostEvent, NULL);
+	urgc_set_field(self, (void**)&((SuiView$HoverViewEffect*)self)->cbOnHoverChanged, NULL);
 
 }
 

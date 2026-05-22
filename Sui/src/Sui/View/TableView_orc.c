@@ -199,6 +199,8 @@ void SuiView$TableView_fini(SuiView$TableView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
+	urgc_set_field(self, (void**)&((SuiView$TableView*)self)->renderTh, NULL);
+	urgc_set_field(self, (void**)&((SuiView$TableView*)self)->renderTd, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$TableView*)self)->columns);
 
 }

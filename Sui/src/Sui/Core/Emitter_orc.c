@@ -199,6 +199,7 @@ void SuiCore$Emitter_fini(SuiCore$Emitter *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiCore$Emitter*)self)->listeners);
 	urgc_fini_field_class(self, (void**)&((SuiCore$Emitter*)self)->listener);
+	urgc_set_field(self, (void**)&((SuiCore$Emitter*)self)->cbOnEvent, NULL);
 
 }
 

@@ -131,6 +131,8 @@ void SuiView$Panel_fini(SuiView$Panel *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
+	urgc_set_field(self, (void**)&((SuiView$Panel*)self)->cbRenderTitle, NULL);
+	urgc_set_field(self, (void**)&((SuiView$Panel*)self)->cbRenderContent, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$Panel*)self)->title);
 	urgc_fini_field_class(self, (void**)&((SuiView$Panel*)self)->body);
 
@@ -332,6 +334,7 @@ void SuiView$Panel2_fini(SuiView$Panel2 *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
+	urgc_set_field(self, (void**)&((SuiView$Panel2*)self)->cbRenderTitle, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$Panel2*)self)->title);
 
 }

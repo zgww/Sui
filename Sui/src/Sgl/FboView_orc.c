@@ -151,6 +151,7 @@ void Sgl$FboView_fini(Sgl$FboView *self){
 	urgc_fini_field_class(self, (void**)&((Sgl$FboView*)self)->camera);
 	urgc_fini_field_class(self, (void**)&((Sgl$FboView*)self)->groundGrid);
 	urgc_fini_field_class(self, (void**)&((Sgl$FboView*)self)->drag);
+	urgc_set_field(self, (void**)&((Sgl$FboView*)self)->cbDraw, NULL);
 
 }
 

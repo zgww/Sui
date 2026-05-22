@@ -195,6 +195,7 @@ void SuiCore$Timer_fini(SuiCore$Timer *self){
     Object_fini((Object *)self);
 
     //字段释放
+	urgc_set_field(self, (void**)&((SuiCore$Timer*)self)->runFunc, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiCore$Timer*)self)->name);
 
 }
@@ -659,7 +660,7 @@ void SuiCore$AnimStep_fini(SuiCore$AnimStep *self){
     Object_fini((Object *)self);
 
     //字段释放
-	
+	urgc_set_field(self, (void**)&((SuiCore$AnimStep*)self)->update, NULL);
 
 }
 

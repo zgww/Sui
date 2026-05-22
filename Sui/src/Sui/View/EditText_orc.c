@@ -209,7 +209,8 @@ void SuiView$Selection_fini(SuiView$Selection *self){
     Object_fini((Object *)self);
 
     //字段释放
-	
+	urgc_set_field(self, (void**)&((SuiView$Selection*)self)->get_value, NULL);
+	urgc_set_field(self, (void**)&((SuiView$Selection*)self)->set_value, NULL);
 
 }
 
@@ -464,6 +465,7 @@ void SuiView$Caret_fini(SuiView$Caret *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$Caret*)self)->blink_timer);
 	urgc_fini_field_class(self, (void**)&((SuiView$Caret*)self)->view);
+	urgc_set_field(self, (void**)&((SuiView$Caret*)self)->cb_notify, NULL);
 
 }
 
@@ -689,10 +691,12 @@ void SuiView$EditText_fini(SuiView$EditText *self){
 	urgc_fini_field_class(self, (void**)&((SuiView$EditText*)self)->value);
 	urgc_fini_field_class(self, (void**)&((SuiView$EditText*)self)->font_face);
 	urgc_fini_field_class(self, (void**)&((SuiView$EditText*)self)->placeholder);
+	urgc_set_field(self, (void**)&((SuiView$EditText*)self)->onchanged, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$EditText*)self)->selection);
 	urgc_fini_field_class(self, (void**)&((SuiView$EditText*)self)->drag_timer);
 	urgc_fini_field_class(self, (void**)&((SuiView$EditText*)self)->caret);
 	urgc_fini_field_class(self, (void**)&((SuiView$EditText*)self)->text_editing);
+	urgc_set_field(self, (void**)&((SuiView$EditText*)self)->onValueChanged, NULL);
 
 }
 

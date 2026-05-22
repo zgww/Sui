@@ -590,7 +590,10 @@ void SuiView$DockLayout_fini(SuiView$DockLayout *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$DockLayout*)self)->root);
+	urgc_set_field(self, (void**)&((SuiView$DockLayout*)self)->cbRenderItemContentView, NULL);
+	urgc_set_field(self, (void**)&((SuiView$DockLayout*)self)->cbRenderItemHeadView, NULL);
 	urgc_fini_field_class(self, (void**)&((SuiView$DockLayout*)self)->dragTab);
+	urgc_set_field(self, (void**)&((SuiView$DockLayout*)self)->_afterDrawChildren, NULL);
 
 }
 

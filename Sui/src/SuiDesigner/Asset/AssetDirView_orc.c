@@ -200,6 +200,8 @@ void SuiDesigner$SelectFileItems_fini(SuiDesigner$SelectFileItems *self){
 
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$SelectFileItems*)self)->list);
+	urgc_set_field(self, (void**)&((SuiDesigner$SelectFileItems*)self)->getAll, NULL);
+	urgc_set_field(self, (void**)&((SuiDesigner$SelectFileItems*)self)->onChanged, NULL);
 
 }
 

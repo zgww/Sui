@@ -119,6 +119,7 @@ void SuiCore$ViewBase_fini(SuiCore$ViewBase *self){
 	urgc_fini_field_class(self, (void**)&((SuiCore$ViewBase*)self)->hitTestType);
 	urgc_fini_field_class(self, (void**)&((SuiCore$ViewBase*)self)->layoutCells);
 	urgc_fini_field_class(self, (void**)&((SuiCore$ViewBase*)self)->cursor);
+	urgc_set_field(self, (void**)&((SuiCore$ViewBase*)self)->cbOnHoverChanged, NULL);
 
 }
 

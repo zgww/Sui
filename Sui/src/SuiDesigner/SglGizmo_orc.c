@@ -254,6 +254,7 @@ void SuiDesigner$SglGizmo_fini(SuiDesigner$SglGizmo *self){
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglGizmo*)self)->scene);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglGizmo*)self)->camera);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$SglGizmo*)self)->raycaster);
+	urgc_set_field(self, (void**)&((SuiDesigner$SglGizmo*)self)->getNdcPos, NULL);
 
 }
 

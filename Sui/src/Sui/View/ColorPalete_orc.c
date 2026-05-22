@@ -207,6 +207,7 @@ void SuiView$ColorPalete_fini(SuiView$ColorPalete *self){
 	urgc_fini_field_class(self, (void**)&((SuiView$ColorPalete*)self)->drag);
 	urgc_fini_field_class(self, (void**)&((SuiView$ColorPalete*)self)->kind);
 	urgc_fini_field_class(self, (void**)&((SuiView$ColorPalete*)self)->indicatorKind);
+	urgc_set_field(self, (void**)&((SuiView$ColorPalete*)self)->onChanged, NULL);
 
 }
 
@@ -477,7 +478,7 @@ void SuiView$ColorView_fini(SuiView$ColorView *self){
     SuiLayout$LayoutLinear_fini((SuiLayout$LayoutLinear *)self);
 
     //字段释放
-	
+	urgc_set_field(self, (void**)&((SuiView$ColorView*)self)->onChanged, NULL);
 
 }
 

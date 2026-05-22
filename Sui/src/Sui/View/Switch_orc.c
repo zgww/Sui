@@ -100,6 +100,7 @@ void SuiView$Switch_fini(SuiView$Switch *self){
     //字段释放
 	urgc_fini_field_class(self, (void**)&((SuiView$Switch*)self)->circle);
 	urgc_fini_field_class(self, (void**)&((SuiView$Switch*)self)->anim);
+	urgc_set_field(self, (void**)&((SuiView$Switch*)self)->onCheckedChanged, NULL);
 
 }
 

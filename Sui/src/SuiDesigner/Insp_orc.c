@@ -3009,6 +3009,10 @@ void SuiDesigner$Insp_fini(SuiDesigner$Insp *self){
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$Insp*)self)->obj);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$Insp*)self)->attrMap);
 	urgc_fini_field_class(self, (void**)&((SuiDesigner$Insp*)self)->lib);
+	urgc_set_field(self, (void**)&((SuiDesigner$Insp*)self)->beforeInsp, NULL);
+	urgc_set_field(self, (void**)&((SuiDesigner$Insp*)self)->afterInsp, NULL);
+	urgc_set_field(self, (void**)&((SuiDesigner$Insp*)self)->cbInsp, NULL);
+	urgc_set_field(self, (void**)&((SuiDesigner$Insp*)self)->cbSetAttr, NULL);
 
 }
 

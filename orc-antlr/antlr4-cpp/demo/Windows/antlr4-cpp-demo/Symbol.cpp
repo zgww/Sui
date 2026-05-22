@@ -6349,11 +6349,13 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 						fieldsFiniCode += fieldFiniCode;
 					}
 					else {
-						//不用加。因为字段可能已经被urgc释放掉了。对象的释放顺序可能是乱序的。
-						//修正。 不会出现乱序释放的问题。因为实际释放会延后。但是也没有必要加。因为urgc能识别到孤岛
-						/*fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{}, NULL);\n"
-							,  "urgc_set_field"
-							, ownedClassFullname, fieldName);*/
+						// 闭包字段持有闭包对象，fini 时需要主动断开引用，避免闭包与宿主对象之间残留环
+						if (closure) {
+							auto fieldFiniCode = std::format("{}(self, (void**)&(({}*)self)->{}, NULL);\n"
+								, "urgc_set_field"
+								, ownedClassFullname, fieldName);
+							fieldsFiniCode += fieldFiniCode;
+						}
 					}
 				}
 				else { //普通值
