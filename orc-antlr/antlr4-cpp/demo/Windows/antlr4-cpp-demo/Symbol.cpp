@@ -3789,6 +3789,7 @@ public:
 	/*
 	new ClassName()的几种转义:
 	- Type *a = new Type()  => Type *a = Type_new(&a);
+	- for (Type *a = new Type(); ; ) => for (Type *a = Type_new(&a); ; )
 	其他情况一律添加临时变量，用来接收new出来的对象
 
 	*/
@@ -3804,6 +3805,20 @@ public:
 			if (varDecl && varDecl->singleExpression() == ctx) {
 				// 添加参数 &varName
 				auto varName = varDecl->Id()->getText();
+				auto args = ctx->arguments();
+				auto arg0 = mk->getAddress(
+					mk->identifierExpression(varName)
+				);
+				args->insert(arg0, 0);
+				return defaultResult();
+			}
+		}
+		//情况2, 属于 for init 的变量声明初始化表达式中, 也直接使用变量作为 pOwner
+		{
+			auto declarator = ast_findAncestorByType<OrcParser::ForVarInitDeclaratorContext>(ctx);
+			auto forVarDecl = ast_findAncestorByType<OrcParser::ForVarDeclarationContext>(ctx);
+			if (declarator && forVarDecl && declarator->singleExpression() == ctx) {
+				auto varName = declarator->Id()->getText();
 				auto args = ctx->arguments();
 				auto arg0 = mk->getAddress(
 					mk->identifierExpression(varName)
@@ -5541,15 +5556,7 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 	}
 
 	virtual std::any visitForVarDeclaration(OrcParser::ForVarDeclarationContext* ctx) override {
-		auto ret = visitReturnString(ctx->type()) + " ";
-		auto declarators = ctx->forVarInitDeclarator();
-		for (int i = 0, l = declarators.size(); i < l; i++) {
-			if (i > 0) {
-				ret += ", ";
-			}
-			ret += visitReturnString(declarators[i]);
-		}
-		return ret + ";\n";
+		return buildForVarDeclarationText(ctx) + ";\n";
 	}
 
 	std::string prependCodeToBlock(std::string blockText, const std::string& prefixCode) {
@@ -5614,8 +5621,52 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 	}
 
 	std::string buildForVarDeclarationText(OrcParser::ForVarDeclarationContext* ctx) {
-		std::string ret = visitReturnString(ctx->type()) + " ";
+		auto typeCtx = ctx->type();
+		auto refCtx = typeCtx->ref();
+		auto type = visitReturnString(typeCtx);
 		auto declarators = ctx->forVarInitDeclarator();
+		if (refCtx) {
+			auto classDef = ast_findSymbolDefinitionClass_byTypeContext(typeCtx, space);
+			std::string ret = std::format("{} {} ", classDef ? "URGC_VAR_CLEANUP_CLASS" : "URGC_VAR_CLEANUP", type);
+			for (int i = 0, l = declarators.size(); i < l; i++) {
+				auto declarator = declarators[i];
+				if (declarator->arraySizeDeclaration()) {
+					throw std::format("for init ref declarator does not support array: {}", declarator->getText());
+				}
+				auto varName = declarator->Id()->getText();
+				std::string initCode = "NULL";
+				auto init = declarator->singleExpression();
+				if (init) {
+					auto callExpr = dynamic_cast<OrcParser::CallExpressionContext*>(init);
+					bool handled = false;
+					if (callExpr) {
+						auto initReturnTypeInfo = ast_calcSymbolTypeOfExpressionResult(init, space);
+						if (initReturnTypeInfo && dynamic_cast<SymbolTypeRef*>(initReturnTypeInfo->type.get())) {
+							initCode = visitReturnString(init);
+							handled = true;
+						}
+					}
+					if (!handled) {
+						auto tmpInitCode = visitReturnString(init);
+						if (tmpInitCode != "NULL") {
+							initCode = std::format("({}=NULL,{}((void**)&{}, {}))"
+								, varName
+								, classDef ? "urgc_init_var_class" : "urgc_init_var"
+								, varName
+								, tmpInitCode
+							);
+						}
+					}
+				}
+				if (i > 0) {
+					ret += ", ";
+				}
+				ret += std::format("{} = {}", varName, initCode);
+			}
+			return ret;
+		}
+
+		std::string ret = type + " ";
 		for (int i = 0, l = declarators.size(); i < l; i++) {
 			if (i > 0) {
 				ret += ", ";
