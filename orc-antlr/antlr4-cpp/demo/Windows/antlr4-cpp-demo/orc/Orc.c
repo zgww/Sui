@@ -73,6 +73,110 @@ static void Orc_traceTry(const char* event, OrcTryFrame* frame){
     );
 }
 
+OrcTryScope Orc_tryScopeMake(const char* trySite, const char* catchSite){
+    OrcTryScope scope;
+    memset(&scope, 0, sizeof(scope));
+    scope.trySite = trySite;
+    scope.catchSite = catchSite;
+    scope.tryFrame.site = trySite;
+    scope.catchFrame.site = catchSite;
+    return scope;
+}
+
+void Orc_tryPushFrame(OrcTryFrame* frame){
+    frame->prev = g_orcTryTop;
+    g_orcTryTop = frame;
+    Orc_traceTry("enter", frame);
+}
+
+void Orc_tryPopFrame(OrcTryFrame* frame){
+    Orc_traceTry("leave", frame);
+    if (g_orcTryTop == frame){
+        g_orcTryTop = frame->prev;
+    }
+}
+
+void Orc_tryScopePrepareTry(OrcTryScope* scope){
+    scope->tryFrame.site = scope->trySite;
+    scope->tryCode = 0;
+    scope->catchCode = 0;
+    scope->matched = false;
+    scope->needRethrow = false;
+    scope->handledException = false;
+}
+
+bool Orc_tryScopeHasException(const OrcTryScope* scope){
+    return scope->tryCode != 0;
+}
+
+void Orc_tryScopePrepareCatch(OrcTryScope* scope){
+    scope->catchFrame.site = scope->catchSite;
+    scope->catchCode = 0;
+    scope->matched = false;
+}
+
+void Orc_tryScopeFinishCatch(OrcTryScope* scope){
+    if (scope->catchCode != 0 || !scope->matched){
+        scope->needRethrow = true;
+    }
+    else{
+        scope->handledException = true;
+    }
+}
+
+void Orc_tryScopeMarkUnhandled(OrcTryScope* scope){
+    if (scope->tryCode != 0){
+        scope->needRethrow = true;
+    }
+}
+
+bool Orc_tryScopeCatchClass(OrcTryScope* scope, Vtable_Object* expected){
+    if (scope->matched){
+        return false;
+    }
+    if (!Orc_exceptionMatchesClass(Orc_currentException(), expected)){
+        return false;
+    }
+    scope->matched = true;
+    return true;
+}
+
+bool Orc_tryScopeCatchStruct(OrcTryScope* scope, MetaStruct* expected){
+    if (scope->matched){
+        return false;
+    }
+    if (!Orc_exceptionMatchesStruct(Orc_currentException(), expected)){
+        return false;
+    }
+    scope->matched = true;
+    return true;
+}
+
+bool Orc_tryScopeShouldRethrow(const OrcTryScope* scope){
+    return scope->needRethrow;
+}
+
+bool Orc_tryScopeShouldClear(const OrcTryScope* scope){
+    return scope->handledException;
+}
+
+void Orc_tryScopeAbandon(OrcTryScope* scope){
+    if (scope->needRethrow || scope->handledException){
+        Orc_clearException();
+    }
+    scope->needRethrow = false;
+    scope->handledException = false;
+}
+
+void Orc_tryScopeFinalize(OrcTryScope* scope){
+    if (scope->needRethrow){
+        Orc_rethrowCurrentException();
+    }
+    if (scope->handledException){
+        Orc_clearException();
+    }
+}
+
 struct SkPaint;
 
 Vtable_Object *orc_Vtable_Closure_init(){
@@ -231,20 +335,6 @@ Object* Object_new(void *pOwner) {
     Object_init(a, pOwner);
 
     return a;
-}
-
-int Orc_tryEnter(OrcTryFrame* frame){
-    frame->prev = g_orcTryTop;
-    g_orcTryTop = frame;
-    Orc_traceTry("enter", frame);
-    return setjmp(frame->env);
-}
-
-void Orc_tryLeave(OrcTryFrame* frame){
-    Orc_traceTry("leave", frame);
-    if (g_orcTryTop == frame){
-        g_orcTryTop = frame->prev;
-    }
 }
 
 OrcException* Orc_currentException(){

@@ -137,6 +137,7 @@ void Orc_scopeExit(void* p);
 
 typedef struct tagOrcTryFrame OrcTryFrame;
 typedef struct tagOrcException OrcException;
+typedef struct tagOrcTryScope OrcTryScope;
 
 struct tagOrcException {
     void* refValue;
@@ -150,14 +151,93 @@ struct tagOrcTryFrame {
     const char* site;
 };
 
-int Orc_tryEnter(OrcTryFrame* frame);
-void Orc_tryLeave(OrcTryFrame* frame);
+struct tagOrcTryScope {
+    OrcTryFrame tryFrame;
+    OrcTryFrame catchFrame;
+    const char* trySite;
+    const char* catchSite;
+    volatile int tryCode;
+    volatile int catchCode;
+    volatile bool matched;
+    volatile bool needRethrow;
+    volatile bool handledException;
+};
+
+OrcTryScope Orc_tryScopeMake(const char* trySite, const char* catchSite);
+void Orc_tryPushFrame(OrcTryFrame* frame);
+void Orc_tryPopFrame(OrcTryFrame* frame);
+void Orc_tryScopePrepareTry(OrcTryScope* scope);
+bool Orc_tryScopeHasException(const OrcTryScope* scope);
+void Orc_tryScopePrepareCatch(OrcTryScope* scope);
+void Orc_tryScopeFinishCatch(OrcTryScope* scope);
+void Orc_tryScopeMarkUnhandled(OrcTryScope* scope);
+bool Orc_tryScopeCatchClass(OrcTryScope* scope, Vtable_Object* expected);
+bool Orc_tryScopeCatchStruct(OrcTryScope* scope, MetaStruct* expected);
+bool Orc_tryScopeShouldRethrow(const OrcTryScope* scope);
+bool Orc_tryScopeShouldClear(const OrcTryScope* scope);
+void Orc_tryScopeAbandon(OrcTryScope* scope);
+void Orc_tryScopeFinalize(OrcTryScope* scope);
 void Orc_throw(void* refValue, Vtable_Object* classInfo, MetaStruct* structInfo);
 OrcException* Orc_currentException();
 void Orc_clearException();
 void Orc_rethrowCurrentException();
 bool Orc_exceptionMatchesClass(OrcException* ex, Vtable_Object* expected);
 bool Orc_exceptionMatchesStruct(OrcException* ex, MetaStruct* expected);
+
+#define ORC_TRY_SCOPE(NAME, TRY_SITE, CATCH_SITE) \
+    OrcTryScope NAME = Orc_tryScopeMake((TRY_SITE), (CATCH_SITE))
+
+#define ORC_TRY(NAME, TRY_SITE, CATCH_SITE) \
+    ORC_TRY_SCOPE(NAME, TRY_SITE, CATCH_SITE); \
+    ORC_TRY_BEGIN(NAME)
+
+#define ORC_TRY_BEGIN(NAME) \
+    Orc_tryScopePrepareTry(&(NAME)); \
+    Orc_tryPushFrame(&(NAME).tryFrame); \
+    (NAME).tryCode = setjmp((NAME).tryFrame.env); \
+    if ((NAME).tryCode == 0)
+
+#define ORC_TRY_END(NAME) \
+    Orc_tryPopFrame(&(NAME).tryFrame)
+
+#define ORC_CATCH(NAME) \
+    ORC_CATCH_BEGIN(NAME)
+
+#define ORC_CATCH_BEGIN(NAME) \
+    if (Orc_tryScopeHasException(&(NAME))) { \
+        Orc_tryScopePrepareCatch(&(NAME)); \
+        Orc_tryPushFrame(&(NAME).catchFrame); \
+        (NAME).catchCode = setjmp((NAME).catchFrame.env); \
+        if ((NAME).catchCode == 0)
+
+#define ORC_END_CATCH(NAME) \
+    ORC_CATCH_END(NAME)
+
+#define ORC_CATCH_END(NAME) \
+        Orc_tryPopFrame(&(NAME).catchFrame); \
+        Orc_tryScopeFinishCatch(&(NAME)); \
+    } else { \
+        Orc_tryScopeMarkUnhandled(&(NAME)); \
+    }
+
+#define ORC_CATCH_CLASS(NAME, EXPECTED) \
+    if (Orc_tryScopeCatchClass(&(NAME), (Vtable_Object*)(EXPECTED)))
+
+#define ORC_CATCH_CLASS_AS(NAME, EXPECTED, TYPE, VAR) \
+    if (Orc_tryScopeCatchClass(&(NAME), (Vtable_Object*)(EXPECTED))) \
+        for (TYPE VAR = (TYPE)Orc_currentException()->refValue; VAR != (TYPE)0; VAR = (TYPE)0)
+
+#define ORC_CATCH_STRUCT(NAME, EXPECTED) \
+    if (Orc_tryScopeCatchStruct(&(NAME), (MetaStruct*)(EXPECTED)))
+
+#define ORC_CATCH_STRUCT_AS(NAME, EXPECTED, TYPE, VAR) \
+    if (Orc_tryScopeCatchStruct(&(NAME), (MetaStruct*)(EXPECTED))) \
+        for (TYPE VAR = (TYPE)Orc_currentException()->refValue; VAR != (TYPE)0; VAR = (TYPE)0)
+
+#define ORC_FINALLY if (1)
+
+#define ORC_TRY_SHOULD_RETHROW(NAME) Orc_tryScopeShouldRethrow(&(NAME))
+#define ORC_TRY_SHOULD_CLEAR(NAME) Orc_tryScopeShouldClear(&(NAME))
 
 
 //============反射

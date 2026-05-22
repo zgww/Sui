@@ -4687,8 +4687,6 @@ public:
 	};
 
 	struct LoopControlInfo {
-		std::string breakLabel;
-		std::string continueLabel;
 		int breakId = 0;
 		int continueId = 0;
 		int tryDepth = 0;
@@ -5416,22 +5414,37 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 		return "{\n" + indentedPrefix + StrUtil::addPrefixPerLine(blockText, "\t") + "\n}\n";
 	}
 
-	std::string buildExceptionMatchCondition(OrcParser::CatchClauseContext* catchClause) {
+	std::string buildCatchCaseHeader(OrcParser::CatchClauseContext* catchClause, const std::string& scopeName) {
 		auto refCtx = catchClause->ref();
+		auto refTypeCode = visitReturnString(refCtx);
 		auto typeName = refCtx->Id()->getText();
+		auto varName = catchClause->Id() ? catchClause->Id()->getText() : std::string("");
 		auto def = this->space->findSymbolDefinitionByName_includeImports(typeName);
 		if (!def) {
 			throw std::format("catch type not found: {}", typeName);
 		}
 		auto classDef = std::dynamic_pointer_cast<SymbolDefinitionClass>(def);
 		if (classDef) {
-			return std::format("Orc_exceptionMatchesClass(Orc_currentException(), (Vtable_Object*)Vtable_{}_init(NULL))", classDef->fullname);
+			if (!varName.empty()) {
+				return std::format("ORC_CATCH_CLASS_AS({}, (Vtable_Object*)Vtable_{}_init(NULL), {}, {})", scopeName, classDef->fullname, refTypeCode, varName);
+			}
+			return std::format("ORC_CATCH_CLASS({}, (Vtable_Object*)Vtable_{}_init(NULL))", scopeName, classDef->fullname);
 		}
 		auto structDef = std::dynamic_pointer_cast<SymbolDefinitionStruct>(def);
 		if (structDef && structDef->hostSpace->path.ends_with(".orc")) {
-			return std::format("Orc_exceptionMatchesStruct(Orc_currentException(), {}_getOrInitMetaStruct())", structDef->fullname);
+			if (!varName.empty()) {
+				return std::format("ORC_CATCH_STRUCT_AS({}, {}_getOrInitMetaStruct(), {}, {})", scopeName, structDef->fullname, refTypeCode, varName);
+			}
+			return std::format("ORC_CATCH_STRUCT({}, {}_getOrInitMetaStruct())", scopeName, structDef->fullname);
 		}
 		throw std::format("catch only supports orc class@ or struct@, got {}", typeName);
+	}
+
+	std::string buildTryAbandonSection(const std::string& scopeName, const std::string& action) {
+		if (action.empty()) {
+			return "";
+		}
+		return std::format("Orc_tryScopeAbandon(&{});\n\t\t{}", scopeName, action);
 	}
 
 	struct ForConditionParts {
@@ -5474,9 +5487,8 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 				CostUsGuard g(this);
 				return std::format("{} = false; {} = {}; goto {};\n", fnInfo.flagVar, fnInfo.loopControlVar, loopInfo.continueId, targetLabel);
 			}
-			CostUsGuard g(this);
-			return std::format("goto {};\n", loopInfo.continueLabel);
 		}
+		CostUsGuard g(this);
 		return string("continue;\n");
 	}
 
@@ -5491,9 +5503,8 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 				CostUsGuard g(this);
 				return std::format("{} = false; {} = {}; goto {};\n", fnInfo.flagVar, fnInfo.loopControlVar, loopInfo.breakId, targetLabel);
 			}
-			CostUsGuard g(this);
-			return std::format("goto {};\n", loopInfo.breakLabel);
 		}
+		CostUsGuard g(this);
 		return string("break;\n");
 	}
 
@@ -5648,56 +5659,27 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 	}
 
 	virtual std::any visitIterationStatement(OrcParser::IterationStatementContext* ctx) override {
-		auto loopSuffix = std::format("{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
 		if (ctx->While()) {
 			auto exprText = visitReturnString(ctx->singleExpression());
 			if (exprText.c_str()[0] != '(') {
 				exprText = std::format("({})", exprText);
 			}
-			auto breakLabel = std::format("__orc_loop_break_{}", loopSuffix);
-			auto continueLabel = std::format("__orc_loop_continue_{}", loopSuffix);
 			auto breakId = nextLoopControlId++;
 			auto continueId = nextLoopControlId++;
-			loopControlStack.push_back({ breakLabel, continueLabel, breakId, continueId, (int)tryReturnInfoStack.size() });
+			loopControlStack.push_back({ breakId, continueId, (int)tryReturnInfoStack.size() });
 			auto blockText = visitReturnString(ctx->block());
 			loopControlStack.pop_back();
 			CostUsGuard g(this);
-			auto ret = std::format(R"({{
-{}:
-if (!{}) goto {};
-{}
-goto {};
-{}:
-;
-}})", continueLabel, exprText, breakLabel, blockText, continueLabel, breakLabel);
-			return ret;
+			return std::format("while {} {}", exprText, blockText);
 		}
 		if (ctx->For()) {
-			auto parts = buildForConditionParts(ctx->forCondition());
-			auto condText = parts.condText.empty() ? std::string("1") : parts.condText;
-			auto breakLabel = std::format("__orc_loop_break_{}", loopSuffix);
-			auto continueLabel = std::format("__orc_loop_continue_{}", loopSuffix);
-			auto condLabel = std::format("__orc_loop_cond_{}", loopSuffix);
 			auto breakId = nextLoopControlId++;
 			auto continueId = nextLoopControlId++;
-			loopControlStack.push_back({ breakLabel, continueLabel, breakId, continueId, (int)tryReturnInfoStack.size() });
+			loopControlStack.push_back({ breakId, continueId, (int)tryReturnInfoStack.size() });
 			auto blockText = visitReturnString(ctx->block());
 			loopControlStack.pop_back();
-
 			CostUsGuard g(this);
-			auto declCode = parts.declText.empty() ? std::string("") : std::format("{};\n", parts.declText);
-			auto incCode = parts.incText.empty() ? std::string("") : std::format("{};\n", parts.incText);
-			auto ret = std::format(R"({{
-{}{}:
-if (!({})) goto {};
-{}
-{}:
-{}goto {};
-{}:
-;
-}})", declCode, condLabel, condText, breakLabel, blockText, continueLabel, incCode, condLabel, breakLabel);
-			return ret;
-			
+			return std::format("for ({}) {}", visitReturnString(ctx->forCondition()), blockText);
 		}
 		return visitChildrenReturnString(ctx);
 	}
@@ -5742,13 +5724,7 @@ if (!({})) goto {};
 		auto suffix = std::format("{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
 		auto trySiteName = std::format("try@{}:{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
 		auto catchSiteName = std::format("catch@{}:{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
-		auto tryFrameName = std::format("__orc_try_frame_{}", suffix);
-		auto tryCodeName = std::format("__orc_try_code_{}", suffix);
-		auto catchFrameName = std::format("__orc_catch_frame_{}", suffix);
-		auto catchCodeName = std::format("__orc_catch_code_{}", suffix);
-		auto handledName = std::format("__orc_catch_handled_{}", suffix);
-		auto needRethrowName = std::format("__orc_need_rethrow_{}", suffix);
-		auto handledExceptionName = std::format("__orc_handled_exception_{}", suffix);
+		auto tryScopeName = std::format("__orc_try_scope_{}", suffix);
 		auto finallyLabel = std::format("__orc_finally_{}", suffix);
 		auto afterFinallyLabel = std::format("__orc_after_finally_{}", suffix);
 		auto catchClauses = ctx->catchClause();
@@ -5788,48 +5764,21 @@ if (!({})) goto {};
 			std::string catchCases;
 			for (auto catchClause : catchClauses) {
 				auto catchBlockText = visitReturnString(catchClause->block());
-				if (catchClause->Id()) {
-					auto varName = catchClause->Id()->getText();
-					auto catchVarDecl = std::format("{} {} = ({})Orc_currentException()->refValue;\n",
-						visitReturnString(catchClause->ref()),
-						varName,
-						visitReturnString(catchClause->ref())
-					);
-					catchBlockText = prependCodeToBlock(catchBlockText, catchVarDecl);
-				}
-				auto matchCond = buildExceptionMatchCondition(catchClause);
 				catchCases += std::format(R"(
-			if (!{} && {}) {{
-				{} = true;
-				{}
-			}}
-)", handledName, matchCond, handledName, catchBlockText);
+		{} {}
+)", buildCatchCaseHeader(catchClause, tryScopeName), catchBlockText);
 			}
 			catchSection = std::format(R"(
-	if ({} != 0) {{
-		OrcTryFrame {};
-		{}.site = "{}";
-		volatile int {} = Orc_tryEnter(&{});
-		volatile bool {} = false;
-		if ({} == 0) {{
-			{}
-		}}
-		Orc_tryLeave(&{});
-		if ({} != 0 || !{}) {{
-			{} = true;
-		}}
-		else {{
-			{} = true;
-		}}
+	ORC_CATCH({}) {{
+		{}
 	}}
-)", tryCodeName, catchFrameName, catchFrameName, catchSiteName, catchCodeName, catchFrameName, handledName, catchCodeName, catchCases, catchFrameName, catchCodeName, handledName, needRethrowName, handledExceptionName);
+	ORC_END_CATCH({});
+)", tryScopeName, catchCases, tryScopeName);
 		}
 		else {
 			catchSection = std::format(R"(
-	if ({} != 0) {{
-		{} = true;
-	}}
-)", tryCodeName, needRethrowName);
+	Orc_tryScopeMarkUnhandled(&{});
+)", tryScopeName);
 		}
 
 		if (finallyClause) {
@@ -5842,12 +5791,9 @@ if (!({})) goto {};
 		if (!returnPropagateCode.empty()) {
 			returnDispatchSection = std::format(R"(
 	if ({}) {{
-		if ({} || {}) {{
-			Orc_clearException();
-		}}
 		{}
 	}}
-)", returnFlagName, needRethrowName, handledExceptionName, returnPropagateCode);
+)", returnFlagName, buildTryAbandonSection(tryScopeName, returnPropagateCode));
 		}
 		if (!loopControlVarName.empty()) {
 			for (auto& loopInfo : loopControlStack) {
@@ -5863,51 +5809,35 @@ if (!({})) goto {};
 					continueAction = std::format("goto {};", parentTarget);
 				}
 				else {
-					breakAction = std::format("{} = 0; goto {};", loopControlVarName, loopInfo.breakLabel);
-					continueAction = std::format("{} = 0; goto {};", loopControlVarName, loopInfo.continueLabel);
+					breakAction = std::format("{} = 0; break;", loopControlVarName);
+					continueAction = std::format("{} = 0; continue;", loopControlVarName);
 				}
 				loopDispatchSection += std::format(R"(
 	if ({} == {}) {{
-		if ({} || {}) {{
-			Orc_clearException();
-		}}
 		{}
 	}}
 	if ({} == {}) {{
-		if ({} || {}) {{
-			Orc_clearException();
-		}}
 		{}
 	}}
-)", loopControlVarName, loopInfo.breakId, needRethrowName, handledExceptionName, breakAction,
-	loopControlVarName, loopInfo.continueId, needRethrowName, handledExceptionName, continueAction);
+)", loopControlVarName, loopInfo.breakId, buildTryAbandonSection(tryScopeName, breakAction),
+	loopControlVarName, loopInfo.continueId, buildTryAbandonSection(tryScopeName, continueAction));
 			}
 		}
 
 		CostUsGuard g(this);
 		return std::format(R"({{
-	OrcTryFrame {};
-	{}.site = "{}";
-	volatile int {} = Orc_tryEnter(&{});
-	volatile bool {} = false;
-	volatile bool {} = false;
-	if ({} == 0) {}
-	Orc_tryLeave(&{});
+	ORC_TRY({}, "{}", "{}") {}
+	ORC_TRY_END({});
 	{}
 	goto {};
 {}:
-	{}
+	ORC_FINALLY {}
 {}:
 	{}
 	{}
-	if ({}) {{
-		Orc_rethrowCurrentException();
-	}}
-	if ({}) {{
-		Orc_clearException();
-	}}
+	Orc_tryScopeFinalize(&{});
 }}
-)", tryFrameName, tryFrameName, trySiteName, tryCodeName, tryFrameName, needRethrowName, handledExceptionName, tryCodeName, tryBlockText, tryFrameName, catchSection, finallyLabel, finallyLabel, finallySection, afterFinallyLabel, returnDispatchSection, loopDispatchSection, needRethrowName, handledExceptionName);
+)", tryScopeName, trySiteName, catchSiteName, tryBlockText, tryScopeName, catchSection, finallyLabel, finallyLabel, finallySection, afterFinallyLabel, returnDispatchSection, loopDispatchSection, tryScopeName);
 	}
 
 	virtual std::any visitBlock(OrcParser::BlockContext* ctx) override {
