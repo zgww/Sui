@@ -975,6 +975,8 @@ public:
 	OrcParser::VarDeclarationContext* varDeclaration = NULL;
 	//参数
 	OrcParser::ArgumentDeclarationContext* argumentDeclaration = NULL;
+	//用于catchClause
+	OrcParser::CatchClauseContext* catchClause = NULL;
 	//用于scopeStatement
 	OrcParser::ScopeStatementContext* scopeStatement = NULL;
 	//全局变量或者导入的符号,或者原始类型(如int)
@@ -986,7 +988,7 @@ public:
 	//void findSymbolDefinitionByScopeStatement(SymbolSpace* space);
 	//void findSymbolDefinitionByType(SymbolSpace* space, OrcParser::TypeContext* type);
 
-	std::shared_ptr<SymbolTypeWithHostSpace> calcSymbolType(std::shared_ptr < SymbolSpace> space);
+	std::shared_ptr<SymbolTypeWithHostSpace> calcSymbolType(std::shared_ptr<SymbolSpace> space);
 
 
 	//变量定义是否在函数内

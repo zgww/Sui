@@ -1271,6 +1271,14 @@ std::shared_ptr<SymbolTypeWithHostSpace> VarInfo::calcSymbolType(std::shared_ptr
 			}
 		}
 	}
+	if (catchClause) {
+		auto symbolType = std::make_shared<SymbolTypeRef>();
+		symbolType->typeName = catchClause->ref()->Id()->getText();
+		if (symbolType) {
+			auto ret = SymbolTypeWithHostSpace::mk(symbolType, space);
+			return ret;
+		}
+	}
 	if (scopeStatement) {
 		auto ret = ast_calcSymbolTypeOfExpressionResult(scopeStatement->singleExpression(), space);
 		//cost.stat("ast_calcSymbolTypeOfExpressionResult");
@@ -1291,6 +1299,9 @@ bool VarInfo::isInFunction()
 {
 	//参数，说明肯定在函数内
 	if (argumentDeclaration) {
+		return true;
+	}
+	if (catchClause) {
 		return true;
 	}
 	//scope语句，也只在函数内有
@@ -1493,6 +1504,14 @@ VarInfo ast_findVarInfoByVarName(
 						return info;
 					}
 				}
+			}
+		}
+		{ // catch变量
+			auto catchClause = dynamic_cast<OrcParser::CatchClauseContext*>(tree);
+			if (catchClause && catchClause->Id() && catchClause->Id()->getText() == varName) {
+				info.isFound = true;
+				info.catchClause = catchClause;
+				return info;
 			}
 		}
 		if (varName == "o") { // scopeStatement.o
