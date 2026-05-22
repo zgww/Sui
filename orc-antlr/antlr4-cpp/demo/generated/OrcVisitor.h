@@ -133,6 +133,12 @@ public:
 
     virtual std::any visitForCondition(OrcParser::ForConditionContext *context) = 0;
 
+    virtual std::any visitForInit(OrcParser::ForInitContext *context) = 0;
+
+    virtual std::any visitForVarDeclaration(OrcParser::ForVarDeclarationContext *context) = 0;
+
+    virtual std::any visitForVarInitDeclarator(OrcParser::ForVarInitDeclaratorContext *context) = 0;
+
     virtual std::any visitSelectionStatement(OrcParser::SelectionStatementContext *context) = 0;
 
     virtual std::any visitTryStatement(OrcParser::TryStatementContext *context) = 0;

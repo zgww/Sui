@@ -395,26 +395,66 @@ std::any GenOrcCodeVisitor::visitForCondition(OrcParser::ForConditionContext* ct
 	string condText;
 	string incText;
 
-	int st = 0;
-	for (int i = 0; i < ctx->children.size(); i++) {
-		auto kid = ctx->children[i];
+	auto buildForVarInitDeclaratorText = [this](OrcParser::ForVarInitDeclaratorContext* declarator) {
+		auto ret = declarator->Id()->getText();
+		if (declarator->arraySizeDeclaration()) {
+			ret += visitReturnString(declarator->arraySizeDeclaration());
+		}
+		if (declarator->singleExpression()) {
+			ret += " = " + visitReturnString(declarator->singleExpression());
+		}
+		return ret;
+	};
 
-		if (kid->getText() == ";") {
-			st++;
+	auto forInit = ctx->forInit();
+	if (forInit) {
+		if (forInit->forVarDeclaration()) {
+			auto forVarDecl = forInit->forVarDeclaration();
+			declText = visitReturnString(forVarDecl->type()) + " ";
+			auto declarators = forVarDecl->forVarInitDeclarator();
+			for (int i = 0, l = declarators.size(); i < l; i++) {
+				if (i > 0) {
+					declText += ", ";
+				}
+				declText += buildForVarInitDeclaratorText(declarators[i]);
+			}
 		}
 		else {
-			if (st == 0) {
-				declText = visitReturnString(kid);
-			}
-			else if (st == 1) {
-				condText = visitReturnString(kid);
-			}
-			else if (st == 2) {
-				incText = visitReturnString(kid);
-			}
+			declText = visitReturnString(forInit->singleExpression());
 		}
 	}
+
+	auto exprs = ctx->singleExpression();
+	if (!exprs.empty()) {
+		condText = visitReturnString(exprs[0]);
+	}
+	if (exprs.size() > 1) {
+		incText = visitReturnString(exprs[1]);
+	}
 	auto ret = std::format("{}; {}; {}", declText, condText, incText);
+	return ret;
+}
+
+std::any GenOrcCodeVisitor::visitForVarInitDeclarator(OrcParser::ForVarInitDeclaratorContext* ctx) {
+	auto ret = ctx->Id()->getText();
+	if (ctx->arraySizeDeclaration()) {
+		ret += visitReturnString(ctx->arraySizeDeclaration());
+	}
+	if (ctx->singleExpression()) {
+		ret += " = " + visitReturnString(ctx->singleExpression());
+	}
+	return ret;
+}
+
+std::any GenOrcCodeVisitor::visitForVarDeclaration(OrcParser::ForVarDeclarationContext* ctx) {
+	auto ret = visitReturnString(ctx->type()) + " ";
+	auto declarators = ctx->forVarInitDeclarator();
+	for (int i = 0, l = declarators.size(); i < l; i++) {
+		if (i > 0) {
+			ret += ", ";
+		}
+		ret += visitReturnString(declarators[i]);
+	}
 	return ret;
 }
 

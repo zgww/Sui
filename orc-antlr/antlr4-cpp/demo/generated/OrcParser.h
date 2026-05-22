@@ -45,18 +45,19 @@ public:
     RuleArraySizeDeclaration = 10, RuleVarDeclaration = 11, RuleStatement = 12, 
     RuleContinueStatement = 13, RuleBreakStatement = 14, RuleThrowStatement = 15, 
     RuleReturnStatement = 16, RuleScopeStatement = 17, RuleIterationStatement = 18, 
-    RuleForCondition = 19, RuleSelectionStatement = 20, RuleTryStatement = 21, 
-    RuleCatchClause = 22, RuleFinallyClause = 23, RuleBlock = 24, RuleType = 25, 
-    RuleClosureType = 26, RuleFunctionTypeArg = 27, RuleAttribute = 28, 
-    RuleFunctionType = 29, RuleTypeQualifier = 30, RulePointer = 31, RuleRef = 32, 
-    RulePrimitiveType = 33, RuleEnumDefinition = 34, RuleEnumItem = 35, 
-    RuleExtensionDefinition = 36, RuleExtensionBlock = 37, RuleClassDefinition = 38, 
-    RuleClassDefinitionBlock = 39, RuleClassFieldDeclaration = 40, RuleMethodDeclaration = 41, 
-    RuleAssignRightPart = 42, RuleArgumentDeclaration = 43, RuleArgumentsDeclaration = 44, 
-    RuleFunctionPointerVarDeclaration = 45, RuleFunctionDefinition = 46, 
-    RuleGlobalFunctionDefinition = 47, RuleGlobalVarDeclaration = 48, RuleExternFunctionDeclaration = 49, 
-    RuleImportStatement = 50, RuleIncludeStatement = 51, RuleIncludePathCharacters = 52, 
-    RulePackageStatement = 53, RuleLiteral = 54, RuleEos = 55
+    RuleForCondition = 19, RuleForInit = 20, RuleForVarDeclaration = 21, 
+    RuleForVarInitDeclarator = 22, RuleSelectionStatement = 23, RuleTryStatement = 24, 
+    RuleCatchClause = 25, RuleFinallyClause = 26, RuleBlock = 27, RuleType = 28, 
+    RuleClosureType = 29, RuleFunctionTypeArg = 30, RuleAttribute = 31, 
+    RuleFunctionType = 32, RuleTypeQualifier = 33, RulePointer = 34, RuleRef = 35, 
+    RulePrimitiveType = 36, RuleEnumDefinition = 37, RuleEnumItem = 38, 
+    RuleExtensionDefinition = 39, RuleExtensionBlock = 40, RuleClassDefinition = 41, 
+    RuleClassDefinitionBlock = 42, RuleClassFieldDeclaration = 43, RuleMethodDeclaration = 44, 
+    RuleAssignRightPart = 45, RuleArgumentDeclaration = 46, RuleArgumentsDeclaration = 47, 
+    RuleFunctionPointerVarDeclaration = 48, RuleFunctionDefinition = 49, 
+    RuleGlobalFunctionDefinition = 50, RuleGlobalVarDeclaration = 51, RuleExternFunctionDeclaration = 52, 
+    RuleImportStatement = 53, RuleIncludeStatement = 54, RuleIncludePathCharacters = 55, 
+    RulePackageStatement = 56, RuleLiteral = 57, RuleEos = 58
   };
 
   explicit OrcParser(antlr4::TokenStream *input);
@@ -96,6 +97,9 @@ public:
   class ScopeStatementContext;
   class IterationStatementContext;
   class ForConditionContext;
+  class ForInitContext;
+  class ForVarDeclarationContext;
+  class ForVarInitDeclaratorContext;
   class SelectionStatementContext;
   class TryStatementContext;
   class CatchClauseContext;
@@ -891,7 +895,7 @@ public:
   public:
     ForConditionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    VarDeclarationContext *varDeclaration();
+    ForInitContext *forInit();
     std::vector<SingleExpressionContext *> singleExpression();
     SingleExpressionContext* singleExpression(size_t i);
 
@@ -903,6 +907,56 @@ public:
   };
 
   ForConditionContext* forCondition();
+
+  class  ForInitContext : public OrcRuleContext {
+  public:
+    ForInitContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    ForVarDeclarationContext *forVarDeclaration();
+    SingleExpressionContext *singleExpression();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  ForInitContext* forInit();
+
+  class  ForVarDeclarationContext : public OrcRuleContext {
+  public:
+    ForVarDeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    TypeContext *type();
+    std::vector<ForVarInitDeclaratorContext *> forVarInitDeclarator();
+    ForVarInitDeclaratorContext* forVarInitDeclarator(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  ForVarDeclarationContext* forVarDeclaration();
+
+  class  ForVarInitDeclaratorContext : public OrcRuleContext {
+  public:
+    ForVarInitDeclaratorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *Id();
+    ArraySizeDeclarationContext *arraySizeDeclaration();
+    SingleExpressionContext *singleExpression();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  ForVarInitDeclaratorContext* forVarInitDeclarator();
 
   class  SelectionStatementContext : public OrcRuleContext {
   public:

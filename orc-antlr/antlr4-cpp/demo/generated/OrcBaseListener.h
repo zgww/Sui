@@ -186,6 +186,15 @@ public:
   virtual void enterForCondition(OrcParser::ForConditionContext * /*ctx*/) override { }
   virtual void exitForCondition(OrcParser::ForConditionContext * /*ctx*/) override { }
 
+  virtual void enterForInit(OrcParser::ForInitContext * /*ctx*/) override { }
+  virtual void exitForInit(OrcParser::ForInitContext * /*ctx*/) override { }
+
+  virtual void enterForVarDeclaration(OrcParser::ForVarDeclarationContext * /*ctx*/) override { }
+  virtual void exitForVarDeclaration(OrcParser::ForVarDeclarationContext * /*ctx*/) override { }
+
+  virtual void enterForVarInitDeclarator(OrcParser::ForVarInitDeclaratorContext * /*ctx*/) override { }
+  virtual void exitForVarInitDeclarator(OrcParser::ForVarInitDeclaratorContext * /*ctx*/) override { }
+
   virtual void enterSelectionStatement(OrcParser::SelectionStatementContext * /*ctx*/) override { }
   virtual void exitSelectionStatement(OrcParser::SelectionStatementContext * /*ctx*/) override { }
 

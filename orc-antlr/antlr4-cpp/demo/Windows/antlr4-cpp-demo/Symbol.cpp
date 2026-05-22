@@ -24,6 +24,7 @@
 #include "ReturnStringVisitor.h"
 #include <GenOrcCodeVisitor.h>
 #include "./TypeCheckerVisitor.h"
+#include <cstdint>
 
 
 #include "./SymbolBuilderVisitor.h"
@@ -1247,6 +1248,24 @@ std::shared_ptr<SymbolTypeWithHostSpace> VarInfo::calcSymbolType(std::shared_ptr
 		}
 
 	}
+	if (forVarDeclaration && forVarInitDeclarator) {
+		auto arr = forVarInitDeclarator->arraySizeDeclaration();
+		auto type = forVarDeclaration->type();
+		if (type) {
+			auto symbolType = typeContext_toSymbolType(type);
+			if (symbolType) {
+				if (arr && type->primitiveType()) {  //一维基础类型数组
+					auto typePointer = std::make_shared<SymbolTypePointer>();
+					typePointer->typeName = type->primitiveType()->getText();
+					typePointer->pointerLevel = 1;
+					auto ret = SymbolTypeWithHostSpace::mk(typePointer, space);
+					return ret;
+				}
+				auto ret = SymbolTypeWithHostSpace::mk(symbolType, space);
+				return ret;
+			}
+		}
+	}
 	if (argumentDeclaration) {
 		auto symbolType = typeContext_toSymbolType(argumentDeclaration->type());
 		//cost.stat("typeContext_toSymbolType");
@@ -1311,6 +1330,10 @@ bool VarInfo::isInFunction()
 	//变量，要向上找到函数定义，有找到才算
 	if (varDeclaration) {
 		auto def = ast_findAncestorByType<OrcParser::FunctionDefinitionContext>(varDeclaration);
+		return def != nullptr;
+	}
+	if (forVarInitDeclarator) {
+		auto def = ast_findAncestorByType<OrcParser::FunctionDefinitionContext>(forVarInitDeclarator);
 		return def != nullptr;
 	}
 
@@ -1419,6 +1442,22 @@ VarInfo ast_findVarInfoByVarName(
 						}
 					}
 				}
+				// 处理被 hoist 到 block 中的 for 多变量声明
+				for (auto kid : block->children) {
+					auto forVarDecl = dynamic_cast<OrcParser::ForVarDeclarationContext*>(kid);
+					if (!forVarDecl) {
+						continue;
+					}
+					auto declarators = forVarDecl->forVarInitDeclarator();
+					for (auto declarator : declarators) {
+						if (declarator->Id() && declarator->Id()->getText() == varName) {
+							info.isFound = true;
+							info.forVarDeclaration = forVarDecl;
+							info.forVarInitDeclarator = declarator;
+							return info;
+						}
+					}
+				}
 			}
 		}
 		{
@@ -1457,14 +1496,18 @@ VarInfo ast_findVarInfoByVarName(
 			auto iteration = dynamic_cast<OrcParser::IterationStatementContext*>(tree);
 			auto forCtx = iteration ? iteration->forCondition(): NULL;
 			if (forCtx) {
-				//遍历子语句，查找变量声明
-				//TODO支持多变量声明语句
-				auto varDecl = forCtx->varDeclaration();
-				//找到同名的定义
-				if (varDecl && varDecl->Id()->getText() == varName) {
-					info.isFound = true;
-					info.varDeclaration = varDecl;
-					return info;
+				auto forInit = forCtx->forInit();
+				auto forVarDecl = forInit ? forInit->forVarDeclaration() : NULL;
+				if (forVarDecl) {
+					auto declarators = forVarDecl->forVarInitDeclarator();
+					for (auto declarator : declarators) {
+						if (declarator->Id() && declarator->Id()->getText() == varName) {
+							info.isFound = true;
+							info.forVarDeclaration = forVarDecl;
+							info.forVarInitDeclarator = declarator;
+							return info;
+						}
+					}
 				}
 			}
 		}
@@ -1779,21 +1822,14 @@ void vector_addOnce(std::vector<T> &vec, T item) {
 class ClosureCollectVarRefInfoVisitor : public OrcBaseVisitor {
 public:
 	//当前所在的closure栈中
-	//std::vector<ClosureInfo*> closureStack;
+	std::vector<ClosureInfo*> closureStack;
 
 	virtual std::any visitClosureExpression(OrcParser::ClosureExpressionContext* ctx) override {
-		//auto info = ctx->goc_closureInfo();
-		//info->ctx = ctx;
-
-
-		////关联父闭包
-		//if (closureStack.size() > 0) {
-		//	info->parent = closureStack.back();
-		//}
-
-		//closureStack.push_back(info.get());
+		auto info = ctx->goc_closureInfo();
+		info->ctx = ctx;
+		closureStack.push_back(info.get());
 		auto ret = visitChildren(ctx);
-		//closureStack.pop_back();
+		closureStack.pop_back();
 
 		return ret;
 	}
@@ -1810,14 +1846,18 @@ public:
 			if (varInfo.isFound && varInfo.isInFunction()) {
 				auto capInfo = varInfo.varDeclaration ? varInfo.varDeclaration->captureInfo
 					: nullptr;
-				if (varInfo.argumentDeclaration) {
+				if (varInfo.forVarInitDeclarator) {
+					capInfo = varInfo.forVarInitDeclarator->captureInfo;
+				}
+				else if (varInfo.argumentDeclaration) {
 					capInfo = varInfo.argumentDeclaration->captureInfo;
 				}
 				else if (varInfo.scopeStatement) {
 					capInfo = varInfo.scopeStatement->captureInfo;
 				}
 				if (capInfo) {
-					capInfo->addUsedExpr_once(ctx, nullptr); //登记为使用了捕获的变量
+					auto closureInfo = closureStack.empty() ? nullptr : closureStack.back();
+					capInfo->addUsedExpr_once(ctx, closureInfo); //登记为使用了捕获的变量
 				}
 			}
 			
@@ -2325,6 +2365,15 @@ public:
 					assign->insert(e->varDeclaration->singleExpression());
 					ast_replaceChild(e->varDeclaration, assign);
 				}
+				else if (e->forVarInitDeclarator) {
+					// for 初始化变量会先被提到外层 block 中，这里把初值同步到 blockVar
+					auto assign = mk->assignmentExpression();
+					assign->insert(access);
+					assign->insert(mk->identifierExpression(e->varName));
+					auto stmt = mk->statement();
+					stmt->insert(assign);
+					blockInfo->blockCtx->insert(stmt, 2);
+				}
 				else if (e->argumentDeclaration) {
 					//在函数开始插入 blockVar->argName = argName
 					auto assign = mk->assignmentExpression();
@@ -2402,6 +2451,11 @@ public:
 	OrcParser::TypeContext* getTypeCtx_ofCaptureVarInfo(CaptureVarInfo*info) {
 		if (info->varDeclaration) {
 			auto type = info->varDeclaration->type();
+			auto retType = ast_cloneTypeContext(type, mk);
+			return retType;
+		}
+		if (info->forVarDeclaration && info->forVarInitDeclarator) {
+			auto type = info->forVarDeclaration->type();
 			auto retType = ast_cloneTypeContext(type, mk);
 			return retType;
 		}
@@ -2657,6 +2711,51 @@ public:
 						}
 					}
 
+					// 如果变量来自scopeStatement
+					else if (varInfo.forVarInitDeclarator) {
+						auto isInClosure = ast_isAncestorOf(lastClosure->ctx, varInfo.forVarInitDeclarator);
+						if (isInClosure) { //变量没有跨闭包
+							break;
+						}
+
+						auto capInfo = varInfo.forVarInitDeclarator->goc_captureInfo();
+						capInfo->forVarDeclaration = varInfo.forVarDeclaration;
+						capInfo->forVarInitDeclarator = varInfo.forVarInitDeclarator;
+						capInfo->type = "var";
+						capInfo->varName = varInfo.varName;
+						capInfo->addUsedExpr_once(ctx, closureStack.back());
+						closureStack.back()->addCaptureVarInfo_once(capInfo);
+
+						auto forCond = ast_findAncestorByType<OrcParser::ForConditionContext>(varInfo.forVarInitDeclarator);
+						if (forCond) {
+							auto blockCtx = ast_wrapBlock_outOfForStatement(forCond, mk);
+							if (!blockCtx) {
+								auto errInfo = std::format("upfind block failed.:{}", varInfo.varName);
+								throw errInfo;
+							}
+
+							auto forInit = forCond->forInit();
+							if (forInit && varInfo.forVarDeclaration && varInfo.forVarDeclaration->parent == forInit) {
+								forInit->removeChild(varInfo.forVarDeclaration);
+								blockCtx->insert(varInfo.forVarDeclaration, 0);
+							}
+
+							auto blockInfo = blockCtx->goc_captureBlockInfo();
+							blockInfo->addCaptureVarInfos_once(capInfo);
+							addBlockInfo_once_toUpClosures(blockInfo);
+						}
+						else {
+							auto blockCtx = ast_findAncestorByType<OrcParser::BlockContext>(varInfo.forVarInitDeclarator);
+							if (!blockCtx) {
+								auto errInfo = std::format("upfind block failed.:{}", varInfo.varName);
+								throw errInfo;
+							}
+
+							auto blockInfo = blockCtx->goc_captureBlockInfo();
+							blockInfo->addCaptureVarInfos_once(capInfo);
+							addBlockInfo_once_toUpClosures(blockInfo);
+						}
+					}
 					// 如果变量来自scopeStatement
 					else if (varInfo.scopeStatement) {
 						auto isInClosure = ast_isAncestorOf(lastClosure->ctx, varInfo.scopeStatement);
@@ -3831,7 +3930,7 @@ public:
 		if (0 && id && ctx->type()->children.size() == 1) {
 			auto typeName = id->getText();
 			auto varInfo = ast_findVarInfoByVarName(ctx, typeName, space);
-			if (varInfo.isFound && (varInfo.argumentDeclaration || varInfo.varDeclaration || varInfo.scopeStatement)) { //说明是变量。 不是类型。 需要转写为
+			if (varInfo.isFound && (varInfo.argumentDeclaration || varInfo.varDeclaration || varInfo.forVarInitDeclarator || varInfo.scopeStatement)) { //说明是变量。 不是类型。 需要转写为
 				auto varExpr = mk->expressionSequence();
 				auto idExpr = mk->identifierExpression(typeName);
 				varExpr->addChild(idExpr);
@@ -5422,6 +5521,29 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 		return ret;
 	}
 
+	virtual std::any visitForVarInitDeclarator(OrcParser::ForVarInitDeclaratorContext* ctx) override {
+		auto ret = ctx->Id()->getText();
+		if (ctx->arraySizeDeclaration()) {
+			ret += visitReturnString(ctx->arraySizeDeclaration());
+		}
+		if (ctx->singleExpression()) {
+			ret += " = " + visitReturnString(ctx->singleExpression());
+		}
+		return ret;
+	}
+
+	virtual std::any visitForVarDeclaration(OrcParser::ForVarDeclarationContext* ctx) override {
+		auto ret = visitReturnString(ctx->type()) + " ";
+		auto declarators = ctx->forVarInitDeclarator();
+		for (int i = 0, l = declarators.size(); i < l; i++) {
+			if (i > 0) {
+				ret += ", ";
+			}
+			ret += visitReturnString(declarators[i]);
+		}
+		return ret + ";\n";
+	}
+
 	std::string prependCodeToBlock(std::string blockText, const std::string& prefixCode) {
 		if (prefixCode.empty()) {
 			return blockText;
@@ -5472,25 +5594,46 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 		std::string incText;
 	};
 
+	std::string buildForVarInitDeclaratorText(OrcParser::ForVarInitDeclaratorContext* ctx) {
+		auto ret = ctx->Id()->getText();
+		if (ctx->arraySizeDeclaration()) {
+			ret += visitReturnString(ctx->arraySizeDeclaration());
+		}
+		if (ctx->singleExpression()) {
+			ret += " = " + visitReturnString(ctx->singleExpression());
+		}
+		return ret;
+	}
+
+	std::string buildForVarDeclarationText(OrcParser::ForVarDeclarationContext* ctx) {
+		std::string ret = visitReturnString(ctx->type()) + " ";
+		auto declarators = ctx->forVarInitDeclarator();
+		for (int i = 0, l = declarators.size(); i < l; i++) {
+			if (i > 0) {
+				ret += ", ";
+			}
+			ret += buildForVarInitDeclaratorText(declarators[i]);
+		}
+		return ret;
+	}
+
 	ForConditionParts buildForConditionParts(OrcParser::ForConditionContext* ctx) {
 		ForConditionParts parts;
-		int st = 0;
-		for (int i = 0; i < ctx->children.size(); i++) {
-			auto kid = ctx->children[i];
-			if (kid->getText() == ";") {
-				st++;
+		auto forInit = ctx->forInit();
+		if (forInit) {
+			if (forInit->forVarDeclaration()) {
+				parts.declText = buildForVarDeclarationText(forInit->forVarDeclaration());
 			}
 			else {
-				if (st == 0) {
-					parts.declText = visitReturnString(kid);
-				}
-				else if (st == 1) {
-					parts.condText = visitReturnString(kid);
-				}
-				else if (st == 2) {
-					parts.incText = visitReturnString(kid);
-				}
+				parts.declText = visitReturnString(forInit->singleExpression());
 			}
+		}
+		auto exprs = ctx->singleExpression();
+		if (!exprs.empty()) {
+			parts.condText = visitReturnString(exprs[0]);
+		}
+		if (exprs.size() > 1) {
+			parts.incText = visitReturnString(exprs[1]);
 		}
 		return parts;
 	}
@@ -6477,7 +6620,13 @@ void {}_initMeta(Vtable_{} *pvt){{
 		if (auto primitiveType = std::dynamic_pointer_cast<SymbolTypePrimitiveType>(returnType)) {
 			isVoidReturn = primitiveType->typeName == "void";
 		}
-		auto functionSuffix = std::format("{}_{}", ctx->getStart()->getLine(), ctx->getStart()->getCharPositionInLine());
+		std::string functionSuffix;
+		if (auto start = ctx->getStart()) {
+			functionSuffix = std::format("{}_{}", start->getLine(), start->getCharPositionInLine());
+		}
+		else {
+			functionSuffix = std::format("dyn_{:x}", static_cast<unsigned long long>(reinterpret_cast<uintptr_t>(ctx)));
+		}
 		auto returnValueVar = std::format("__orc_return_value_{}", functionSuffix);
 		auto returnFlagVar = std::format("__orc_return_flag_{}", functionSuffix);
 		auto loopControlVar = std::format("__orc_loop_control_{}", functionSuffix);

@@ -240,6 +240,18 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitForInit(OrcParser::ForInitContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitForVarDeclaration(OrcParser::ForVarDeclarationContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitForVarInitDeclarator(OrcParser::ForVarInitDeclaratorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitSelectionStatement(OrcParser::SelectionStatementContext *ctx) override {
     return visitChildren(ctx);
   }

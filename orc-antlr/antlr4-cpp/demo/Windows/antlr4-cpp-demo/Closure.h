@@ -47,6 +47,8 @@ public:
     std::string varName;
 
     OrcParser::VarDeclarationContext* varDeclaration = nullptr;
+    OrcParser::ForVarDeclarationContext* forVarDeclaration = nullptr;
+    OrcParser::ForVarInitDeclaratorContext* forVarInitDeclarator = nullptr;
     OrcParser::ArgumentDeclarationContext* argumentDeclaration = nullptr;
     OrcParser::ScopeStatementContext* scopeStatement = nullptr;
     OrcParser::SuperExpressionContext* superExpression = NULL;

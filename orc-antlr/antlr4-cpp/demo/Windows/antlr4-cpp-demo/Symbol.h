@@ -973,6 +973,8 @@ public:
 	std::string varName;
 	bool isFound = false;
 	OrcParser::VarDeclarationContext* varDeclaration = NULL;
+	OrcParser::ForVarDeclarationContext* forVarDeclaration = NULL;
+	OrcParser::ForVarInitDeclaratorContext* forVarInitDeclarator = NULL;
 	//参数
 	OrcParser::ArgumentDeclarationContext* argumentDeclaration = NULL;
 	//用于catchClause

@@ -144,6 +144,10 @@ public:
 
 	virtual std::any visitForCondition(OrcParser::ForConditionContext* ctx) override;
 
+	virtual std::any visitForVarDeclaration(OrcParser::ForVarDeclarationContext* ctx) override;
+
+	virtual std::any visitForVarInitDeclarator(OrcParser::ForVarInitDeclaratorContext* ctx) override;
+
 	virtual std::any visitSelectionStatement(OrcParser::SelectionStatementContext* ctx) override;
 
 	virtual std::any visitTryStatement(OrcParser::TryStatementContext* ctx) override;

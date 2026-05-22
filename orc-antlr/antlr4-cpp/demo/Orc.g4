@@ -195,7 +195,20 @@ iterationStatement
     ;
 
 forCondition
-    : (varDeclaration | singleExpression?) ';' singleExpression? ';' singleExpression?
+    : forInit? ';' singleExpression? ';' singleExpression?
+    ;
+
+forInit
+    : forVarDeclaration
+    | singleExpression
+    ;
+
+forVarDeclaration
+    : type forVarInitDeclarator (',' forVarInitDeclarator)*
+    ;
+
+forVarInitDeclarator
+    : Id arraySizeDeclaration? ('=' singleExpression)?
     ;
 
 selectionStatement
