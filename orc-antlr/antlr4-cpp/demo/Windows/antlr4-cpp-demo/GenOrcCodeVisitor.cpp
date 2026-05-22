@@ -34,7 +34,15 @@ std::any GenOrcCodeVisitor::visitArguments(OrcParser::ArgumentsContext* ctx) {
 }
 
 std::any GenOrcCodeVisitor::visitExpressionSequence(OrcParser::ExpressionSequenceContext* ctx) {
-	return visitChildrenReturnString(ctx);
+	std::string ret;
+	auto exprs = ctx->singleExpression();
+	for (int i = 0, l = exprs.size(); i < l; i++) {
+		if (i > 0) {
+			ret += ", ";
+		}
+		ret += visitReturnString(exprs[i]);
+	}
+	return ret;
 }
 
 
@@ -420,11 +428,11 @@ std::any GenOrcCodeVisitor::visitForCondition(OrcParser::ForConditionContext* ct
 			}
 		}
 		else {
-			declText = visitReturnString(forInit->singleExpression());
+			declText = visitReturnString(forInit->expressionSequence());
 		}
 	}
 
-	auto exprs = ctx->singleExpression();
+	auto exprs = ctx->expressionSequence();
 	if (!exprs.empty()) {
 		condText = visitReturnString(exprs[0]);
 	}

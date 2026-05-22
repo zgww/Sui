@@ -195,12 +195,12 @@ iterationStatement
     ;
 
 forCondition
-    : forInit? ';' singleExpression? ';' singleExpression?
+    : forInit? ';' expressionSequence? ';' expressionSequence?
     ;
 
 forInit
     : forVarDeclaration
-    | singleExpression
+    | expressionSequence
     ;
 
 forVarDeclaration

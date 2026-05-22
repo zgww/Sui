@@ -262,9 +262,9 @@ void orcParserInitialize() {
   	0,0,375,376,5,81,0,0,376,377,3,38,19,0,377,378,3,54,27,0,378,380,1,0,
   	0,0,379,365,1,0,0,0,379,369,1,0,0,0,379,375,1,0,0,0,380,37,1,0,0,0,381,
   	383,3,40,20,0,382,381,1,0,0,0,382,383,1,0,0,0,383,384,1,0,0,0,384,386,
-  	5,51,0,0,385,387,3,10,5,0,386,385,1,0,0,0,386,387,1,0,0,0,387,388,1,0,
-  	0,0,388,390,5,51,0,0,389,391,3,10,5,0,390,389,1,0,0,0,390,391,1,0,0,0,
-  	391,39,1,0,0,0,392,395,3,42,21,0,393,395,3,10,5,0,394,392,1,0,0,0,394,
+  	5,51,0,0,385,387,3,6,3,0,386,385,1,0,0,0,386,387,1,0,0,0,387,388,1,0,
+  	0,0,388,390,5,51,0,0,389,391,3,6,3,0,390,389,1,0,0,0,390,391,1,0,0,0,
+  	391,39,1,0,0,0,392,395,3,42,21,0,393,395,3,6,3,0,394,392,1,0,0,0,394,
   	393,1,0,0,0,395,41,1,0,0,0,396,397,3,56,28,0,397,402,3,44,22,0,398,399,
   	5,2,0,0,399,401,3,44,22,0,400,398,1,0,0,0,401,404,1,0,0,0,402,400,1,0,
   	0,0,402,403,1,0,0,0,403,43,1,0,0,0,404,402,1,0,0,0,405,407,5,110,0,0,
@@ -3767,12 +3767,12 @@ OrcParser::ForInitContext* OrcParser::ForConditionContext::forInit() {
   return getRuleContext<OrcParser::ForInitContext>(0);
 }
 
-std::vector<OrcParser::SingleExpressionContext *> OrcParser::ForConditionContext::singleExpression() {
-  return getRuleContexts<OrcParser::SingleExpressionContext>();
+std::vector<OrcParser::ExpressionSequenceContext *> OrcParser::ForConditionContext::expressionSequence() {
+  return getRuleContexts<OrcParser::ExpressionSequenceContext>();
 }
 
-OrcParser::SingleExpressionContext* OrcParser::ForConditionContext::singleExpression(size_t i) {
-  return getRuleContext<OrcParser::SingleExpressionContext>(i);
+OrcParser::ExpressionSequenceContext* OrcParser::ForConditionContext::expressionSequence(size_t i) {
+  return getRuleContext<OrcParser::ExpressionSequenceContext>(i);
 }
 
 
@@ -3834,7 +3834,7 @@ OrcParser::ForConditionContext* OrcParser::forCondition() {
       ((1ULL << _la) & 258162) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 68585521409) != 0)) {
       setState(385);
-      singleExpression(0);
+      expressionSequence();
     }
     setState(388);
     match(OrcParser::T__50);
@@ -3846,7 +3846,7 @@ OrcParser::ForConditionContext* OrcParser::forCondition() {
       ((1ULL << _la) & 258162) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 68585521409) != 0)) {
       setState(389);
-      singleExpression(0);
+      expressionSequence();
     }
    
   }
@@ -3869,8 +3869,8 @@ OrcParser::ForVarDeclarationContext* OrcParser::ForInitContext::forVarDeclaratio
   return getRuleContext<OrcParser::ForVarDeclarationContext>(0);
 }
 
-OrcParser::SingleExpressionContext* OrcParser::ForInitContext::singleExpression() {
-  return getRuleContext<OrcParser::SingleExpressionContext>(0);
+OrcParser::ExpressionSequenceContext* OrcParser::ForInitContext::expressionSequence() {
+  return getRuleContext<OrcParser::ExpressionSequenceContext>(0);
 }
 
 
@@ -3923,7 +3923,7 @@ OrcParser::ForInitContext* OrcParser::forInit() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(393);
-      singleExpression(0);
+      expressionSequence();
       break;
     }
 

@@ -4884,7 +4884,15 @@ public:
 	}
 
 	virtual std::any visitExpressionSequence(OrcParser::ExpressionSequenceContext* ctx) override {
-		return visitChildrenReturnString(ctx);
+		std::string ret;
+		auto exprs = ctx->singleExpression();
+		for (int i = 0, l = exprs.size(); i < l; i++) {
+			if (i > 0) {
+				ret += ", ";
+			}
+			ret += visitReturnString(exprs[i]);
+		}
+		return ret;
 	}
 
 	virtual std::any visitClosureExpression(OrcParser::ClosureExpressionContext* ctx) override {
@@ -5625,10 +5633,10 @@ MetaStruct* {}_getOrInitMetaStruct(){{
 				parts.declText = buildForVarDeclarationText(forInit->forVarDeclaration());
 			}
 			else {
-				parts.declText = visitReturnString(forInit->singleExpression());
+				parts.declText = visitReturnString(forInit->expressionSequence());
 			}
 		}
-		auto exprs = ctx->singleExpression();
+		auto exprs = ctx->expressionSequence();
 		if (!exprs.empty()) {
 			parts.condText = visitReturnString(exprs[0]);
 		}
