@@ -277,7 +277,6 @@ void HoroEditor$HoroSceneHierView_initMeta(Vtable_HoroEditor$HoroSceneHierView *
 	orc_metaField_class(&pNext, "drag", ((Vtable_Object*)Vtable_SuiView$Drag_init(0)), offsetof(HoroEditor$HoroSceneHierView, drag), true, false, 1);
 	orc_metaField_class(&pNext, "indi", ((Vtable_Object*)Vtable_Sui$DragCrossWindowIndicator_init(0)), offsetof(HoroEditor$HoroSceneHierView, indi), true, false, 1);
 
-	orc_metaField_method(&pNext, "onUnmouting", offsetof(HoroEditor$HoroSceneHierView, onUnmouting));
 	orc_metaField_method(&pNext, "_routeRightMenu", offsetof(HoroEditor$HoroSceneHierView, _routeRightMenu));
 	orc_metaField_method(&pNext, "_onItemRightClick", offsetof(HoroEditor$HoroSceneHierView, _onItemRightClick));
 	orc_metaField_method(&pNext, "_onEvent_forItemView", offsetof(HoroEditor$HoroSceneHierView, _onEvent_forItemView));
@@ -347,7 +346,7 @@ void HoroEditor$HoroSceneHierView_init_fields(HoroEditor$HoroSceneHierView *self
 	((SuiCore$Emitter*)self)->onEvent = (void*)HoroEditor$HoroSceneHierView$onEvent;
 	((SuiCore$Listener*)self)->onListenerEvent = (void*)HoroEditor$HoroSceneHierView$onListenerEvent;
 	((SuiCore$Node*)self)->onMounted = (void*)HoroEditor$HoroSceneHierView$onMounted;
-	((HoroEditor$HoroSceneHierView*)self)->onUnmouting = (void*)HoroEditor$HoroSceneHierView$onUnmouting;
+	((SuiCore$Node*)self)->onUnmounting = (void*)HoroEditor$HoroSceneHierView$onUnmounting;
 	((HoroEditor$HoroSceneHierView*)self)->_routeRightMenu = (void*)HoroEditor$HoroSceneHierView$_routeRightMenu;
 	((HoroEditor$HoroSceneHierView*)self)->_onItemRightClick = (void*)HoroEditor$HoroSceneHierView$_onItemRightClick;
 	((HoroEditor$HoroSceneHierView*)self)->_onEvent_forItemView = (void*)HoroEditor$HoroSceneHierView$_onEvent_forItemView;
@@ -429,7 +428,7 @@ void  HoroEditor$HoroSceneHierView$onMounted(HoroEditor$HoroSceneHierView *  sel
 }
 
 
-void  HoroEditor$HoroSceneHierView$onUnmouting(HoroEditor$HoroSceneHierView *  self){
+void  HoroEditor$HoroSceneHierView$onUnmounting(HoroEditor$HoroSceneHierView *  self){
 	SuiCore$Node$onUnmounting(self) ;
 	SuiCore$Emitter *  tmpThis_1 = NULL;
 	(tmpThis_1 = SuiCore$useEbus() )->removeListener(tmpThis_1, self) ;

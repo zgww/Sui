@@ -96,7 +96,6 @@ extern Vtable_SuiDesigner$SglSceneHierView _vtable_SuiDesigner$SglSceneHierView;
 struct tagSuiDesigner$SglSceneHierView {
 	SuiLayout$LayoutLinear super; 
 	SuiDesigner$SglEditCtx*  editCtx ;
-	void  (*onUnmouting) (SuiDesigner$SglSceneHierView *  self);
 	void  (*_routeRightMenu) (SuiDesigner$SglSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiCore$Node*  node);
 	void  (*_onItemRightClick) (SuiDesigner$SglSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 	void  (*_onEvent_forItemView) (SuiDesigner$SglSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
@@ -110,7 +109,7 @@ void SuiDesigner$SglSceneHierView_fini(SuiDesigner$SglSceneHierView *self);
 void  SuiDesigner$SglSceneHierView$ctor(SuiDesigner$SglSceneHierView *  self);
 void  SuiDesigner$SglSceneHierView$onListenerEvent(SuiDesigner$SglSceneHierView *  self, SuiCore$Event *  event);
 void  SuiDesigner$SglSceneHierView$onMounted(SuiDesigner$SglSceneHierView *  self);
-void  SuiDesigner$SglSceneHierView$onUnmouting(SuiDesigner$SglSceneHierView *  self);
+void  SuiDesigner$SglSceneHierView$onUnmounting(SuiDesigner$SglSceneHierView *  self);
 void  SuiDesigner$SglSceneHierView$_routeRightMenu(SuiDesigner$SglSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiCore$Node*  node);
 void  SuiDesigner$SglSceneHierView$_onItemRightClick(SuiDesigner$SglSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 void  SuiDesigner$SglSceneHierView$_onEvent_forItemView(SuiDesigner$SglSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);

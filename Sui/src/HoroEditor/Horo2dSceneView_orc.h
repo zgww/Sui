@@ -114,7 +114,6 @@ struct tagHoroEditor$Horo2dSceneView {
 	SuiDesigner$ANode*  root ;
 	SuiCore$Node*  rootNode ;
 	SuiCore$Node*  gizmoRoot ;
-	void  (*onUnmouting) (HoroEditor$Horo2dSceneView *  self);
 	void  (*onLeftClickInCapture) (HoroEditor$Horo2dSceneView *  self, SuiCore$MouseEvent *  me);
 	void  (*_routeRightMenu) (HoroEditor$Horo2dSceneView *  self, SuiView$MenuNativeItem *  item);
 	void  (*onRightClick) (HoroEditor$Horo2dSceneView *  self, SuiCore$MouseEvent *  me);
@@ -135,7 +134,7 @@ void HoroEditor$Horo2dSceneView_fini(HoroEditor$Horo2dSceneView *self);
 void  HoroEditor$Horo2dSceneView$ctor(HoroEditor$Horo2dSceneView *  self);
 void  HoroEditor$Horo2dSceneView$onListenerEvent(HoroEditor$Horo2dSceneView *  self, SuiCore$Event *  event);
 void  HoroEditor$Horo2dSceneView$onMounted(HoroEditor$Horo2dSceneView *  self);
-void  HoroEditor$Horo2dSceneView$onUnmouting(HoroEditor$Horo2dSceneView *  self);
+void  HoroEditor$Horo2dSceneView$onUnmounting(HoroEditor$Horo2dSceneView *  self);
 void  HoroEditor$Horo2dSceneView$onEvent(HoroEditor$Horo2dSceneView *  self, SuiCore$Event *  e);
 void  HoroEditor$Horo2dSceneView$onLeftClickInCapture(HoroEditor$Horo2dSceneView *  self, SuiCore$MouseEvent *  me);
 void  HoroEditor$Horo2dSceneView$_routeRightMenu(HoroEditor$Horo2dSceneView *  self, SuiView$MenuNativeItem *  item);

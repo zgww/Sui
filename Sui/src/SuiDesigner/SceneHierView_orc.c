@@ -225,7 +225,6 @@ void SuiDesigner$SceneHierView_initMeta(Vtable_SuiDesigner$SceneHierView *pvt){
 	
 	
 
-	orc_metaField_method(&pNext, "onUnmouting", offsetof(SuiDesigner$SceneHierView, onUnmouting));
 	orc_metaField_method(&pNext, "_routeRightMenu", offsetof(SuiDesigner$SceneHierView, _routeRightMenu));
 	orc_metaField_method(&pNext, "_onItemRightClick", offsetof(SuiDesigner$SceneHierView, _onItemRightClick));
 	orc_metaField_method(&pNext, "_onEvent_forItemView", offsetof(SuiDesigner$SceneHierView, _onEvent_forItemView));
@@ -286,7 +285,7 @@ void SuiDesigner$SceneHierView_init_fields(SuiDesigner$SceneHierView *self){
 	((Object*)self)->ctor = (void*)SuiDesigner$SceneHierView$ctor;
 	((SuiCore$Listener*)self)->onListenerEvent = (void*)SuiDesigner$SceneHierView$onListenerEvent;
 	((SuiCore$Node*)self)->onMounted = (void*)SuiDesigner$SceneHierView$onMounted;
-	((SuiDesigner$SceneHierView*)self)->onUnmouting = (void*)SuiDesigner$SceneHierView$onUnmouting;
+	((SuiCore$Node*)self)->onUnmounting = (void*)SuiDesigner$SceneHierView$onUnmounting;
 	((SuiDesigner$SceneHierView*)self)->_routeRightMenu = (void*)SuiDesigner$SceneHierView$_routeRightMenu;
 	((SuiDesigner$SceneHierView*)self)->_onItemRightClick = (void*)SuiDesigner$SceneHierView$_onItemRightClick;
 	((SuiDesigner$SceneHierView*)self)->_onEvent_forItemView = (void*)SuiDesigner$SceneHierView$_onEvent_forItemView;
@@ -353,7 +352,7 @@ void  SuiDesigner$SceneHierView$onMounted(SuiDesigner$SceneHierView *  self){
 }
 
 
-void  SuiDesigner$SceneHierView$onUnmouting(SuiDesigner$SceneHierView *  self){
+void  SuiDesigner$SceneHierView$onUnmounting(SuiDesigner$SceneHierView *  self){
 	SuiCore$Node$onUnmounting(self) ;
 	SuiCore$Emitter *  tmpThis_1 = NULL;
 	(tmpThis_1 = SuiCore$useEbus() )->removeListener(tmpThis_1, self) ;

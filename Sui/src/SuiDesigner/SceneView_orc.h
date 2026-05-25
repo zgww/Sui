@@ -176,7 +176,6 @@ struct tagSuiDesigner$SceneView {
 	SuiDesigner$DrawDegree*  degree ;
 	SuiCore$Node*  rootNode ;
 	SuiCore$Node*  gizmoRoot ;
-	void  (*onUnmouting) (SuiDesigner$SceneView *  self);
 	void  (*onLeftClickInCapture) (SuiDesigner$SceneView *  self, SuiCore$MouseEvent *  me);
 	void  (*_routeRightMenu) (SuiDesigner$SceneView *  self, SuiView$MenuNativeItem *  item);
 	void  (*onRightClick) (SuiDesigner$SceneView *  self, SuiCore$MouseEvent *  me);
@@ -197,7 +196,7 @@ void SuiDesigner$SceneView_fini(SuiDesigner$SceneView *self);
 void  SuiDesigner$SceneView$ctor(SuiDesigner$SceneView *  self);
 void  SuiDesigner$SceneView$onListenerEvent(SuiDesigner$SceneView *  self, SuiCore$Event *  event);
 void  SuiDesigner$SceneView$onMounted(SuiDesigner$SceneView *  self);
-void  SuiDesigner$SceneView$onUnmouting(SuiDesigner$SceneView *  self);
+void  SuiDesigner$SceneView$onUnmounting(SuiDesigner$SceneView *  self);
 void  SuiDesigner$SceneView$onEvent(SuiDesigner$SceneView *  self, SuiCore$Event *  e);
 void  SuiDesigner$SceneView$onLeftClickInCapture(SuiDesigner$SceneView *  self, SuiCore$MouseEvent *  me);
 void  SuiDesigner$SceneView$_routeRightMenu(SuiDesigner$SceneView *  self, SuiView$MenuNativeItem *  item);

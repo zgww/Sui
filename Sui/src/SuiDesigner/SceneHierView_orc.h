@@ -94,7 +94,6 @@ extern Vtable_SuiDesigner$SceneHierView _vtable_SuiDesigner$SceneHierView;
 // class refc:0
 struct tagSuiDesigner$SceneHierView {
 	SuiLayout$LayoutLinear super; 
-	void  (*onUnmouting) (SuiDesigner$SceneHierView *  self);
 	void  (*_routeRightMenu) (SuiDesigner$SceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  anode);
 	void  (*_onItemRightClick) (SuiDesigner$SceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 	void  (*_onEvent_forItemView) (SuiDesigner$SceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
@@ -108,7 +107,7 @@ void SuiDesigner$SceneHierView_fini(SuiDesigner$SceneHierView *self);
 void  SuiDesigner$SceneHierView$ctor(SuiDesigner$SceneHierView *  self);
 void  SuiDesigner$SceneHierView$onListenerEvent(SuiDesigner$SceneHierView *  self, SuiCore$Event *  event);
 void  SuiDesigner$SceneHierView$onMounted(SuiDesigner$SceneHierView *  self);
-void  SuiDesigner$SceneHierView$onUnmouting(SuiDesigner$SceneHierView *  self);
+void  SuiDesigner$SceneHierView$onUnmounting(SuiDesigner$SceneHierView *  self);
 void  SuiDesigner$SceneHierView$_routeRightMenu(SuiDesigner$SceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  anode);
 void  SuiDesigner$SceneHierView$_onItemRightClick(SuiDesigner$SceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 void  SuiDesigner$SceneHierView$_onEvent_forItemView(SuiDesigner$SceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);

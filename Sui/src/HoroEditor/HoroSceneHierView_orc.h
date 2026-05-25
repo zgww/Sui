@@ -106,7 +106,6 @@ struct tagHoroEditor$HoroSceneHierView {
 	HoroEditor$HoroEditor*  editor ;
 	SuiView$Drag*  drag ;
 	Sui$DragCrossWindowIndicator*  indi ;
-	void  (*onUnmouting) (HoroEditor$HoroSceneHierView *  self);
 	void  (*_routeRightMenu) (HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  anode);
 	void  (*_onItemRightClick) (HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 	void  (*_onEvent_forItemView) (HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);
@@ -121,7 +120,7 @@ void  HoroEditor$HoroSceneHierView$ctor(HoroEditor$HoroSceneHierView *  self);
 void  HoroEditor$HoroSceneHierView$onEvent(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  event);
 void  HoroEditor$HoroSceneHierView$onListenerEvent(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  event);
 void  HoroEditor$HoroSceneHierView$onMounted(HoroEditor$HoroSceneHierView *  self);
-void  HoroEditor$HoroSceneHierView$onUnmouting(HoroEditor$HoroSceneHierView *  self);
+void  HoroEditor$HoroSceneHierView$onUnmounting(HoroEditor$HoroSceneHierView *  self);
 void  HoroEditor$HoroSceneHierView$_routeRightMenu(HoroEditor$HoroSceneHierView *  self, SuiView$MenuNativeItem *  item, SuiDesigner$ANode*  anode);
 void  HoroEditor$HoroSceneHierView$_onItemRightClick(HoroEditor$HoroSceneHierView *  self, SuiCore$MouseEvent *  me, SuiCore$Node *  view, Object *  item);
 void  HoroEditor$HoroSceneHierView$_onEvent_forItemView(HoroEditor$HoroSceneHierView *  self, SuiCore$Event *  e, SuiCore$Node *  view, Object *  item);

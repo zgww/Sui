@@ -215,7 +215,6 @@ void HoroEditor$Horo2dSceneView_initMeta(Vtable_HoroEditor$Horo2dSceneView *pvt)
 	orc_metaField_primitive(&pNext, "_reactGizmosDirty", OrcMetaType_bool, offsetof(HoroEditor$Horo2dSceneView, _reactGizmosDirty), 0, 0, 0, 0);//bool
 	orc_metaField_struct(&pNext, "_sceneWorldMat", SuiCore$Mat2d_getOrInitMetaStruct(), offsetof(HoroEditor$Horo2dSceneView, _sceneWorldMat), false, false, 0);
 
-	orc_metaField_method(&pNext, "onUnmouting", offsetof(HoroEditor$Horo2dSceneView, onUnmouting));
 	orc_metaField_method(&pNext, "onLeftClickInCapture", offsetof(HoroEditor$Horo2dSceneView, onLeftClickInCapture));
 	orc_metaField_method(&pNext, "_routeRightMenu", offsetof(HoroEditor$Horo2dSceneView, _routeRightMenu));
 	orc_metaField_method(&pNext, "onRightClick", offsetof(HoroEditor$Horo2dSceneView, onRightClick));
@@ -303,7 +302,7 @@ void HoroEditor$Horo2dSceneView_init_fields(HoroEditor$Horo2dSceneView *self){
 	((Object*)self)->ctor = (void*)HoroEditor$Horo2dSceneView$ctor;
 	((SuiCore$Listener*)self)->onListenerEvent = (void*)HoroEditor$Horo2dSceneView$onListenerEvent;
 	((SuiCore$Node*)self)->onMounted = (void*)HoroEditor$Horo2dSceneView$onMounted;
-	((HoroEditor$Horo2dSceneView*)self)->onUnmouting = (void*)HoroEditor$Horo2dSceneView$onUnmouting;
+	((SuiCore$Node*)self)->onUnmounting = (void*)HoroEditor$Horo2dSceneView$onUnmounting;
 	((SuiCore$Emitter*)self)->onEvent = (void*)HoroEditor$Horo2dSceneView$onEvent;
 	((HoroEditor$Horo2dSceneView*)self)->onLeftClickInCapture = (void*)HoroEditor$Horo2dSceneView$onLeftClickInCapture;
 	((HoroEditor$Horo2dSceneView*)self)->_routeRightMenu = (void*)HoroEditor$Horo2dSceneView$_routeRightMenu;
@@ -384,7 +383,7 @@ void  HoroEditor$Horo2dSceneView$onMounted(HoroEditor$Horo2dSceneView *  self){
 }
 
 
-void  HoroEditor$Horo2dSceneView$onUnmouting(HoroEditor$Horo2dSceneView *  self){
+void  HoroEditor$Horo2dSceneView$onUnmounting(HoroEditor$Horo2dSceneView *  self){
 	SuiCore$Node$onUnmounting(self) ;
 	SuiCore$Emitter *  tmpThis_1 = NULL;
 	(tmpThis_1 = SuiCore$useEbus() )->removeListener(tmpThis_1, self) ;

@@ -550,7 +550,6 @@ void SuiDesigner$SceneView_initMeta(Vtable_SuiDesigner$SceneView *pvt){
 	orc_metaField_primitive(&pNext, "_reactGizmosDirty", OrcMetaType_bool, offsetof(SuiDesigner$SceneView, _reactGizmosDirty), 0, 0, 0, 0);//bool
 	orc_metaField_struct(&pNext, "_sceneWorldMat", SuiCore$Mat2d_getOrInitMetaStruct(), offsetof(SuiDesigner$SceneView, _sceneWorldMat), false, false, 0);
 
-	orc_metaField_method(&pNext, "onUnmouting", offsetof(SuiDesigner$SceneView, onUnmouting));
 	orc_metaField_method(&pNext, "onLeftClickInCapture", offsetof(SuiDesigner$SceneView, onLeftClickInCapture));
 	orc_metaField_method(&pNext, "_routeRightMenu", offsetof(SuiDesigner$SceneView, _routeRightMenu));
 	orc_metaField_method(&pNext, "onRightClick", offsetof(SuiDesigner$SceneView, onRightClick));
@@ -634,7 +633,7 @@ void SuiDesigner$SceneView_init_fields(SuiDesigner$SceneView *self){
 	((Object*)self)->ctor = (void*)SuiDesigner$SceneView$ctor;
 	((SuiCore$Listener*)self)->onListenerEvent = (void*)SuiDesigner$SceneView$onListenerEvent;
 	((SuiCore$Node*)self)->onMounted = (void*)SuiDesigner$SceneView$onMounted;
-	((SuiDesigner$SceneView*)self)->onUnmouting = (void*)SuiDesigner$SceneView$onUnmouting;
+	((SuiCore$Node*)self)->onUnmounting = (void*)SuiDesigner$SceneView$onUnmounting;
 	((SuiCore$Emitter*)self)->onEvent = (void*)SuiDesigner$SceneView$onEvent;
 	((SuiDesigner$SceneView*)self)->onLeftClickInCapture = (void*)SuiDesigner$SceneView$onLeftClickInCapture;
 	((SuiDesigner$SceneView*)self)->_routeRightMenu = (void*)SuiDesigner$SceneView$_routeRightMenu;
@@ -717,7 +716,7 @@ void  SuiDesigner$SceneView$onMounted(SuiDesigner$SceneView *  self){
 }
 
 
-void  SuiDesigner$SceneView$onUnmouting(SuiDesigner$SceneView *  self){
+void  SuiDesigner$SceneView$onUnmounting(SuiDesigner$SceneView *  self){
 	SuiCore$Node$onUnmounting(self) ;
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$EditCtx*  tmpReturn_1 = NULL;
 	urgc_set_field_class(SuiDesigner$EditCtx_ins(&tmpReturn_1) , (void * )offsetof(SuiDesigner$EditCtx, sceneView) , NULL) ;
