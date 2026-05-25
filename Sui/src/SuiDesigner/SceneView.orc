@@ -248,7 +248,7 @@ class SceneView extends View {
 
         useEbus().addListener(self)
     }
-    void onUnmouting(){
+    void onUnmounting(){
         super.onUnmounting()
         EditCtx_ins().sceneView = null
         useEbus().removeListener(self)

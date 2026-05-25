@@ -112,7 +112,7 @@ class HoroSceneHierView extends LayoutLinear {
         super.onMounted()
         useEbus().addListener(self)
     }
-    void onUnmouting(){
+    void onUnmounting(){
         super.onUnmounting()
         useEbus().removeListener(self)
     }

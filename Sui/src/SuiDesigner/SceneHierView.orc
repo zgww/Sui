@@ -73,7 +73,7 @@ class SceneHierView extends LayoutLinear {
         useEbus().addListener(self)
         
     }
-    void onUnmouting(){
+    void onUnmounting(){
         super.onUnmounting()
         useEbus().removeListener(self)
     }
