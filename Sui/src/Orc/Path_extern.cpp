@@ -9,6 +9,8 @@
 #include "./Path_orc.h"
 #include "Naga/Utf8Util.h"
 #include "Naga/FsUtil.h"
+#include <unordered_set>
+#include <mutex>
 
 #include <string>
 #include <filesystem>
@@ -220,4 +222,47 @@ long long Orc$Path_mtimeMs(const char *src){
 	// std::cout << "localtime: " << lsystemTime->tm_year << " " << lsystemTime->tm_mon << " " << lsystemTime->tm_mday << " " << lsystemTime->tm_hour << " " << lsystemTime->tm_min << " " << lsystemTime->tm_sec << std::endl;
 
 	return systemTime;
+}
+
+
+
+
+static bool enableCollectLiveObject = false;
+static std::unordered_set<Object*> liveObjects;
+static std::mutex liveObjectsMutex;
+void orc_enableCollectLiveObjects(bool enable){
+    enableCollectLiveObject = enable;
+    printf("\n\nLive object collection %s\n", enable ? "enabled" : "disabled");
+}
+void orc_collectLiveObject_onInit(Object *obj){
+    if (!enableCollectLiveObject){
+        return;
+    }
+    std::lock_guard<std::mutex> g(liveObjectsMutex);
+    liveObjects.insert(obj);
+
+    size_t cnt = liveObjects.size();
+    printf("============insert live object count:%zu============\n", cnt);
+}
+void orc_collectLiveObject_onFini(Object *obj){
+    // if (!enableCollectLiveObject){
+    //     return;
+    // }
+    std::lock_guard<std::mutex> g(liveObjectsMutex);
+    liveObjects.erase(obj);
+    // size_t cnt = liveObjects.size();
+    // printf("============erase live object count:%zu============\n", cnt);
+}
+void orc_collectLiveObject_report(){
+    size_t cnt = liveObjects.size();
+    printf("============live object count:%zu============\n", cnt);
+    for (auto it : liveObjects) {
+		printf("live object:%p. className:%s", it, Object_getClassName(it));
+        if (strcmp(Object_getClassName(it), "Orc$String") == 0){
+            Orc$String* s = (Orc$String*)it;
+            printf(" str:%s", s->str);
+        }
+        printf("\n");
+	}
+    printf("============live object end\n");
 }

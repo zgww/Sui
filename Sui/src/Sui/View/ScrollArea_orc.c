@@ -843,6 +843,14 @@ static SuiCore$Vec2 __fn___Closure_187_38(SuiView$__Closure_187_38 *  self){
 	return self->__var___Block_182_12->self->calc_scroll_size(self->__var___Block_182_12->self) ; 
 }
 
+/**
+ * @brief 闭包 SuiView$__Closure_187_38 的析构终结函数
+ *
+ * 清除闭包中捕获的变量 __var___Block_182_12 的引用（置为 NULL），
+ * 并将闭包自身标记为延迟释放。
+ *
+ * @param self 指向待销毁闭包实例的指针
+ */
 static void  __fini___Closure_187_38(SuiView$__Closure_187_38 *  self){
 	urgc_set_field(self, (void * )offsetof(SuiView$__Closure_187_38, __var___Block_182_12) , NULL) ;
 	urgc_free_later(self) ;

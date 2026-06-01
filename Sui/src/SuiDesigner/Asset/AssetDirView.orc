@@ -195,6 +195,7 @@ class AssetDirView extends LayoutLinear {
                     self.reactFileItem(o, fi)
                 }
 
+                printf("rowwrap children count:%d\n\n", o.getChildrenCount())
             }
 
         }

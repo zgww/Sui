@@ -60,7 +60,7 @@ Vtable_Orc$String* Vtable_Orc$String_init(Vtable_Orc$String* pvt){
 
     ((Vtable_Object*)pvt)->initMeta = (void*)Orc$String_initMeta;
 
-    ((Vtable_Object*)pvt)->refc = 1;
+    ((Vtable_Object*)pvt)->refc = 0;
 
     return pvt;
 }

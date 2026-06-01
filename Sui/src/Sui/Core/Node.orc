@@ -17,6 +17,7 @@ import * from "./Timer.orc"
 
 //节点react脏标识
 int Node_gReactDirty = true
+int mountedNodeCount = 0
 
 
 //内部react时，有自己的unusedMap
@@ -123,8 +124,10 @@ class Node extends Emitter {
         // Node::g_onMounted(this);
 
         self.onMounted();
+        mountedNodeCount++
     }
     void baseOnUnmounting() {
+        mountedNodeCount--
         self.setOwnerWindow(null)
         //setOwnerWindow(nullptr);
 

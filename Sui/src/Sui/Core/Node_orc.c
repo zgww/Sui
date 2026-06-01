@@ -14,13 +14,13 @@
 
 
 // static struct 
-typedef struct tagSuiCore$__Block_282_24 SuiCore$__Block_282_24;
+typedef struct tagSuiCore$__Block_285_24 SuiCore$__Block_285_24;
 
-typedef struct tagSuiCore$__Closure_290_30 SuiCore$__Closure_290_30;
+typedef struct tagSuiCore$__Closure_293_30 SuiCore$__Closure_293_30;
 
 
 
-struct tagSuiCore$__Block_282_24 {
+struct tagSuiCore$__Block_285_24 {
 	SuiCore$Node*  self ;
 };
 
@@ -28,10 +28,10 @@ struct tagSuiCore$__Block_282_24 {
 
 
 
-struct tagSuiCore$__Closure_290_30 {
-	bool  (*invoke)(SuiCore$__Closure_290_30 *  self);
+struct tagSuiCore$__Closure_293_30 {
+	bool  (*invoke)(SuiCore$__Closure_293_30 *  self);
 	Vtable_Object *  vtable ;
-	SuiCore$__Block_282_24*  __var___Block_282_24 ;
+	SuiCore$__Block_285_24*  __var___Block_285_24 ;
 };
 
 
@@ -39,13 +39,14 @@ struct tagSuiCore$__Closure_290_30 {
 
 
 // static function declaration
-static void  __finiBlock___Block_282_24(SuiCore$__Block_282_24 *  self);
-static bool  __fn___Closure_290_30(SuiCore$__Closure_290_30 *  self);
-static void  __fini___Closure_290_30(SuiCore$__Closure_290_30 *  self);
-static SuiCore$__Closure_290_30*  __make___Closure_290_30(SuiCore$__Closure_290_30 **  __outRef__, SuiCore$__Block_282_24 *  __var___Block_282_24);
+static void  __finiBlock___Block_285_24(SuiCore$__Block_285_24 *  self);
+static bool  __fn___Closure_293_30(SuiCore$__Closure_293_30 *  self);
+static void  __fini___Closure_293_30(SuiCore$__Closure_293_30 *  self);
+static SuiCore$__Closure_293_30*  __make___Closure_293_30(SuiCore$__Closure_293_30 **  __outRef__, SuiCore$__Block_285_24 *  __var___Block_285_24);
 
 
 int  SuiCore$Node_gReactDirty = true;
+int  SuiCore$mountedNodeCount = 0;
 
 //vtable instance
 Vtable_SuiCore$InnerReact _vtable_SuiCore$InnerReact;
@@ -401,10 +402,12 @@ void  SuiCore$Node$baseOnMounted(SuiCore$Node *  self){
 		}
 	}
 	self->onMounted(self) ;
+	SuiCore$mountedNodeCount++;
 }
 
 
 void  SuiCore$Node$baseOnUnmounting(SuiCore$Node *  self){
+	SuiCore$mountedNodeCount--;
 	self->setOwnerWindow(self, NULL) ;
 	self->onUnmounting(self) ;
 }
@@ -564,15 +567,15 @@ void  SuiCore$Node$invalidReact(SuiCore$Node *  self){
 
 
 void  SuiCore$Node$trigger_react(SuiCore$Node *  self){
-	URGC_VAR_CLEANUP SuiCore$__Block_282_24*  __var___Block_282_24 = (__var___Block_282_24=NULL,urgc_init_var((void**)&__var___Block_282_24, orc_alloc_and_set_deleter(sizeof(SuiCore$__Block_282_24) , __finiBlock___Block_282_24) ));
-	urgc_set_field_class(__var___Block_282_24, (void * )offsetof(SuiCore$__Block_282_24, self) , self) ;
+	URGC_VAR_CLEANUP SuiCore$__Block_285_24*  __var___Block_285_24 = (__var___Block_285_24=NULL,urgc_init_var((void**)&__var___Block_285_24, orc_alloc_and_set_deleter(sizeof(SuiCore$__Block_285_24) , __finiBlock___Block_285_24) ));
+	urgc_set_field_class(__var___Block_285_24, (void * )offsetof(SuiCore$__Block_285_24, self) , self) ;
 	if (self->_reactDirty) {
 		return ; 
 	}
 	self->_reactDirty = true;
 	SuiCore$Node_gReactDirty = true;
-	URGC_VAR_CLEANUP SuiCore$__Closure_290_30*  tmpReturn_1 = NULL;
-	SuiCore$requestAnimationFrame(__make___Closure_290_30(&tmpReturn_1, __var___Block_282_24) ) ;
+	URGC_VAR_CLEANUP SuiCore$__Closure_293_30*  tmpReturn_1 = NULL;
+	SuiCore$requestAnimationFrame(__make___Closure_293_30(&tmpReturn_1, __var___Block_285_24) ) ;
 }
 
 
@@ -589,27 +592,27 @@ Orc$ScopeData SuiCore$Node$__exit__(SuiCore$Node *  self){
 
 
 
-static void  __finiBlock___Block_282_24(SuiCore$__Block_282_24 *  self){
-	urgc_set_field_class(self, (void * )offsetof(SuiCore$__Block_282_24, self) , NULL) ;
+static void  __finiBlock___Block_285_24(SuiCore$__Block_285_24 *  self){
+	urgc_set_field_class(self, (void * )offsetof(SuiCore$__Block_285_24, self) , NULL) ;
 	return urgc_free_later(self) ; 
 }
 
-static bool  __fn___Closure_290_30(SuiCore$__Closure_290_30 *  self){
-	self->__var___Block_282_24->self->_reactDirty = false;
-	self->__var___Block_282_24->self->react(self->__var___Block_282_24->self) ;
+static bool  __fn___Closure_293_30(SuiCore$__Closure_293_30 *  self){
+	self->__var___Block_285_24->self->_reactDirty = false;
+	self->__var___Block_285_24->self->react(self->__var___Block_285_24->self) ;
 	return true; 
 }
 
-static void  __fini___Closure_290_30(SuiCore$__Closure_290_30 *  self){
-	urgc_set_field(self, (void * )offsetof(SuiCore$__Closure_290_30, __var___Block_282_24) , NULL) ;
+static void  __fini___Closure_293_30(SuiCore$__Closure_293_30 *  self){
+	urgc_set_field(self, (void * )offsetof(SuiCore$__Closure_293_30, __var___Block_285_24) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static SuiCore$__Closure_290_30*  __make___Closure_290_30(SuiCore$__Closure_290_30 **  __outRef__, SuiCore$__Block_282_24 *  __var___Block_282_24){
-	URGC_VAR_CLEANUP SuiCore$__Closure_290_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiCore$__Closure_290_30) , __fini___Closure_290_30) ));
-	self->invoke = __fn___Closure_290_30;
+static SuiCore$__Closure_293_30*  __make___Closure_293_30(SuiCore$__Closure_293_30 **  __outRef__, SuiCore$__Block_285_24 *  __var___Block_285_24){
+	URGC_VAR_CLEANUP SuiCore$__Closure_293_30*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(SuiCore$__Closure_293_30) , __fini___Closure_293_30) ));
+	self->invoke = __fn___Closure_293_30;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(SuiCore$__Closure_290_30, __var___Block_282_24) , __var___Block_282_24) ;
+	urgc_set_field(self, (void * )offsetof(SuiCore$__Closure_293_30, __var___Block_285_24) , __var___Block_285_24) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

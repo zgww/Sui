@@ -56,7 +56,7 @@ static SuiView$__Closure_207_22*  __make___Closure_207_22(SuiView$__Closure_207_
 
 SuiCore$Node*  SuiView$gocNode(SuiCore$Node **  __outRef__, void *  sp, SuiCore$Node *  parent, Vtable_Object *  vt){
 	char  key[32];
-	snprintf(key, 32, "%p", sp) ;
+	snprintf(key, 32, "GOC%p", sp) ;
 	Orc$Map *  map = SuiCore$get_mapForReact(parent) ;
 	Orc$Map *  unusedMap = SuiCore$get_unusedMapForReact(parent) ;
 	SuiCore$View *  n = (SuiCore$View * )unusedMap->get(unusedMap, key) ;

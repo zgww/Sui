@@ -380,6 +380,23 @@ class HoroEditor extends Listener{
                         UiAct_savePrefab(self)
                         return
                     }
+                    if item.label.equals("启用对象跟踪"){
+                        orc_enableCollectLiveObjects(true);
+                        return
+                    }
+                    if item.label.equals("禁用对象跟踪"){
+                        orc_enableCollectLiveObjects(false);
+                        return
+                    }
+                    if item.label.equals("报告对象存活"){
+                        orc_collectLiveObject_report(false);
+                        return
+                    }
+                    if item.label.equals("报告挂载节点数"){
+                        printf("\n\n挂载节点数量:%d\n", mountedNodeCount);
+                        Toast_make(item.label.str)
+                        return
+                    }
                     Toast_make(item.label.str)
                 }
                 mkMenuNativeItem(null, null, null).{
@@ -400,7 +417,10 @@ class HoroEditor extends Listener{
                     }
                     else if mbutton.text.equals("调试"){
                         mkMenuNativeItem(o, str("Outline"), onActive)
-                        // mkMenuNativeItem(o, str("绘制深度图"), onActive)
+                        mkMenuNativeItem(o, str("启用对象跟踪"), onActive)
+                        mkMenuNativeItem(o, str("禁用对象跟踪"), onActive)
+                        mkMenuNativeItem(o, str("报告对象存活"), onActive)
+                        mkMenuNativeItem(o, str("报告挂载节点数"), onActive)
                     }
                     else {
                         mkMenuNativeItem(o, str("退出"), onActive)

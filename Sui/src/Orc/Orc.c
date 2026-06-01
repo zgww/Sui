@@ -137,10 +137,13 @@ void Object_fini(Object* this) {
     //调用父类清理函数
 
     //字段清理
+    orc_collectLiveObject_onFini(this);
 }
 void Object_init_fields(Object* this) {
     this->fini = Object_fini;
     // this->dtor = Object_dtor;
+
+    orc_collectLiveObject_onInit(this);
 }
 void Object_init(Object* self, void *pOwner) {
     //虚表初始化

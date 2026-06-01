@@ -40,7 +40,7 @@ import type * from "../Layout/LayoutLinear.orc"
 
 Node@ gocNode(void *sp, Node* parent, Vtable_Object*vt){
     char key[32];
-    snprintf(key, 32, "%p", sp);
+    snprintf(key, 32, "GOC%p", sp);
 
 
     Map* map = get_mapForReact(parent)

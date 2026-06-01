@@ -458,7 +458,11 @@ class ToolMgr {
             if n instanceof Light {
                 mkImageView(o, (long long)n).{
                     // printf("gizmos:%p\n", o)
-                    o.setSrc(Path_resolveFromExecutionDir("../asset/gizmo/light.png"))
+                    static String@ lightSrc = null
+                    if lightSrc == null {
+                        lightSrc = Path_resolveFromExecutionDir("../asset/gizmo/light.png")
+                    }
+                    o.setSrc(lightSrc)
                     // o.height = 32
                     o.width = 32
                     o.setImageMode(WidthFix)
@@ -492,7 +496,11 @@ class ToolMgr {
             else if n instanceof Camera {
                 mkImageView(o, (long long)n).{
                     // printf("gizmos:%p\n", o)
-                    o.setSrc(Path_resolveFromExecutionDir("../asset/gizmo/camera.png"))
+                    static String@ cameraSrc = null;
+                    if (cameraSrc == null) {
+                        cameraSrc = Path_resolveFromExecutionDir("../asset/gizmo/camera.png")
+                    }
+                    o.setSrc(cameraSrc)
                     // o.height = 32
                     o.width = 32
                     o.setImageMode(WidthFix)

@@ -55,6 +55,7 @@ extern "C"{
 
 //代码内容
 extern int  SuiCore$Node_gReactDirty;
+extern int  SuiCore$mountedNodeCount;
 
 // 虚表
 struct tagVtable_SuiCore$InnerReact {

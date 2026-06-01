@@ -282,6 +282,11 @@ int orc_getRefcObjCount();
 void urgc_refvar_cleanup_class(void *p) ;
 
 
+void orc_enableCollectLiveObjects(bool enable);
+void orc_collectLiveObject_onInit(Object *obj);
+void orc_collectLiveObject_onFini(Object *obj);
+void orc_collectLiveObject_report();
+
 //<<<<<<<<<<<<
 
 #ifdef __cplusplus
