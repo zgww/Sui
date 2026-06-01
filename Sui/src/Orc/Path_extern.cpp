@@ -260,7 +260,9 @@ void orc_collectLiveObject_report(){
 		printf("live object:%p. className:%s", it, Object_getClassName(it));
         if (strcmp(Object_getClassName(it), "Orc$String") == 0){
             Orc$String* s = (Orc$String*)it;
-            printf(" str:%s", s->str);
+
+            int refc = orc_getRefCount(it);
+            printf(" str:%s; refCount:%d, atomic:%d", s->str, s->super.refCount, refc);
         }
         printf("\n");
 	}

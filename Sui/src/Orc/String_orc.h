@@ -72,7 +72,7 @@ struct tagVtable_Orc$String {
 //虚表实例
 extern Vtable_Orc$String _vtable_Orc$String;
 
-// class refc:0
+// class refc:1
 struct tagOrc$String {
 	Object super; 
 	char *  str ;

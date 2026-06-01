@@ -737,6 +737,11 @@ int orc_getRefcObjCount(){
 
     return refcObjCount;
 }
+
+int orc_getRefCount(Object *p){
+    int refc = atomic_load(&p->refCount);
+    return refc;
+}
 //加引用计数
 void orc_addRefc(Object *p){
     atomic_fetch_add(&p->refCount, 1);

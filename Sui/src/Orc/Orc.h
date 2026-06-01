@@ -276,6 +276,7 @@ void orc_addRefc(Object *p);
 void orc_delRefc(Object *p);
 //返回使用引用计数的对象的数量
 int orc_getRefcObjCount();
+int orc_getRefCount(Object *p);
 
 
 //类专用的cleanup

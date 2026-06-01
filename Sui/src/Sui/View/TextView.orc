@@ -437,14 +437,14 @@ class TextView extends View {
 	// 	self.setText(str(text))
 	// }
 	void setText(String@ text){
-		if (self->text.equalsString( text) ) {
+		if (self.text.equalsString( text) ) {
 			return;
 		}
 		if text == null {
 			self.text.set("")
 		}
 		else {
-			self->text = text;
+			self.text.set(text.str).add("--")// = text;
 		}
 
 		self.invalidLayout();

@@ -798,7 +798,7 @@ void  SuiView$TextView$setText(SuiView$TextView *  self, Orc$String*  text){
 		Orc$String$set(self->text, "") ;
 	}
 	else {
-		urgc_set_field_class(self, (void * )offsetof(SuiView$TextView, text) , text) ;
+		Orc$String$add(Orc$String$set(self->text, text->str) , "--") ;
 	}
 	((SuiCore$ViewBase * )self)->invalidLayout(self) ;
 }

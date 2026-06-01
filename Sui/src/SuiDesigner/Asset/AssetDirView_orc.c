@@ -924,7 +924,8 @@ void  SuiDesigner$AssetDirView$reactFileItem(SuiDesigner$AssetDirView *  self, S
 			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_436_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			SuiCore$Inset$setVer(&((SuiCore$View * )o)->margin, 6) ;
-			o->setText(o, fi->filename) ;
+			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_11 = NULL;
+			o->setText(o, Orc$String$add(Orc$str(&tmpReturn_11, fi->filename->str) , "$") ) ;
 			o->setFont_size(o, t->dir_fontSize) ;
 			o->color = t->dir_color;
 		}

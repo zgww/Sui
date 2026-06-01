@@ -435,7 +435,7 @@ class AssetDirView extends LayoutLinear {
             }
             mkTextView(o, 0).{
                 o.margin.setVer(6)
-                o.setText(fi.filename)
+                o.setText(str(fi.filename.str).add("$"))
                 o.setFont_size(t.dir_fontSize)
                 o.color = t.dir_color
             }
