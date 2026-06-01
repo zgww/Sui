@@ -345,7 +345,7 @@ int  SuiView$TextLayout$get_actual_line_height(SuiView$TextLayout *  self){
 
 void  SuiView$TextLayout$setText(SuiView$TextLayout *  self, const char *  v){
 	if (!Orc$String$equals(self->text, v) ) {
-		Orc$String$set(self->text, v) ;
+		Orc$String$add(Orc$String$set(self->text, v) , "LAY") ;
 		self->dirty = true;
 	}
 }
@@ -505,7 +505,7 @@ Orc$List*  SuiView$TextLayout$break_text(Orc$List **  __outRef__, SuiView$TextLa
 			if (line_w > self->w) {
 				URGC_VAR_CLEANUP_CLASS SuiView$TextLineInfo*  line_info = (line_info=NULL,urgc_init_var_class((void**)&line_info, SuiView$TextLineInfo_new(&line_info) ));
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
-				urgc_set_field_class(line_info, (void * )offsetof(SuiView$TextLineInfo, text) , Orc$String$substringByCount(&tmpReturn_1, remain, 0, l - 1) ) ;
+				urgc_set_field_class(line_info, (void * )offsetof(SuiView$TextLineInfo, text) , Orc$String$add(Orc$String$substringByCount(&tmpReturn_1, remain, 0, l - 1) , "LI") ) ;
 				line_info->w = prev_w;
 				line_info->h = (int )(boundHeight);
 				lines->add(lines, line_info) ;
@@ -516,7 +516,7 @@ Orc$List*  SuiView$TextLayout$break_text(Orc$List **  __outRef__, SuiView$TextLa
 			if (l >= ml) {
 				URGC_VAR_CLEANUP_CLASS SuiView$TextLineInfo*  line_info = (line_info=NULL,urgc_init_var_class((void**)&line_info, SuiView$TextLineInfo_new(&line_info) ));
 				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
-				urgc_set_field_class(line_info, (void * )offsetof(SuiView$TextLineInfo, text) , Orc$String$substringByCount(&tmpReturn_3, remain, 0, l) ) ;
+				urgc_set_field_class(line_info, (void * )offsetof(SuiView$TextLineInfo, text) , Orc$String$add(Orc$String$substringByCount(&tmpReturn_3, remain, 0, l) , "LIE") ) ;
 				line_info->w = line_w;
 				line_info->h = (int )boundHeight;
 				lines->add(lines, line_info) ;
@@ -798,7 +798,7 @@ void  SuiView$TextView$setText(SuiView$TextView *  self, Orc$String*  text){
 		Orc$String$set(self->text, "") ;
 	}
 	else {
-		Orc$String$add(Orc$String$set(self->text, text->str) , "--") ;
+		Orc$String$add(Orc$String$set(self->text, text->str) , "-----------") ;
 	}
 	((SuiCore$ViewBase * )self)->invalidLayout(self) ;
 }

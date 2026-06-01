@@ -705,7 +705,7 @@ void * urgc_init_var_class(void **pvar, Object* p){
 
 }
 //统计使用引用计数对象的数量
-static int refcObjCount = 0;
+static _Atomic int refcObjCount = 0;
 int orc_getRefcObjCount(){
     // DWORD numHeaps = GetProcessHeaps(0, NULL);
     // HANDLE *heaps = calloc(numHeaps, sizeof(HANDLE*));
@@ -735,7 +735,9 @@ int orc_getRefcObjCount(){
     // }
     // free(heaps);
 
-    return refcObjCount;
+    int refc = atomic_load(&refcObjCount);
+    // return refcObjCount;
+    return refc;
 }
 
 int orc_getRefCount(Object *p){
@@ -747,7 +749,8 @@ void orc_addRefc(Object *p){
     atomic_fetch_add(&p->refCount, 1);
     int refc = atomic_load(&p->refCount);
     if (refc == 1){
-        refcObjCount++;
+        // refcObjCount++;
+        atomic_fetch_add(&refcObjCount, 1);
     }
 }
 //减引用计数
@@ -760,7 +763,8 @@ void orc_delRefc(Object *p){
         //     printf("string减引用计数至0， 释放内存:%p %s\n", p, p->vtable->className);
         //  }
         orc_delete(p);
-        refcObjCount--;
+        // refcObjCount--;
+        atomic_fetch_sub(&refcObjCount, 1);
     }
 }
 
