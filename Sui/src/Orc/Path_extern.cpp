@@ -10,6 +10,7 @@
 #include "Naga/Utf8Util.h"
 #include "Naga/FsUtil.h"
 #include <unordered_set>
+#include <unordered_map>
 #include <mutex>
 
 #include <string>
@@ -229,10 +230,17 @@ long long Orc$Path_mtimeMs(const char *src){
 
 static bool enableCollectLiveObject = false;
 static std::unordered_set<Object*> liveObjects;
+static std::unordered_map<std::string, int> initCounts;
+static std::unordered_map<std::string, int> finiCounts;
 static std::mutex liveObjectsMutex;
 void orc_enableCollectLiveObjects(bool enable){
     enableCollectLiveObject = enable;
     printf("\n\nLive object collection %s\n", enable ? "enabled" : "disabled");
+    if (enable){
+        liveObjects.clear();
+        initCounts.clear();
+        finiCounts.clear();
+    }
 }
 void orc_collectLiveObject_onInit(Object *obj){
     if (!enableCollectLiveObject){
@@ -243,6 +251,15 @@ void orc_collectLiveObject_onInit(Object *obj){
 
     size_t cnt = liveObjects.size();
     printf("============insert live object count:%zu============\n", cnt);
+
+    std::string key = Object_getClassName(obj);
+    if (initCounts.find(key) == initCounts.end()){
+        initCounts[key] = 1;
+    }
+    else {
+        initCounts[key]++;
+    }
+
 }
 void orc_collectLiveObject_onFini(Object *obj){
     // if (!enableCollectLiveObject){
@@ -252,6 +269,14 @@ void orc_collectLiveObject_onFini(Object *obj){
     liveObjects.erase(obj);
     // size_t cnt = liveObjects.size();
     // printf("============erase live object count:%zu============\n", cnt);
+
+    std::string key = Object_getClassName(obj);
+    if (finiCounts.find(key) == finiCounts.end()){
+        finiCounts[key] = 1;
+    }
+    else {
+        finiCounts[key]++;
+    }
 }
 void orc_collectLiveObject_report(){
     size_t cnt = liveObjects.size();
@@ -267,4 +292,12 @@ void orc_collectLiveObject_report(){
         printf("\n");
 	}
     printf("============live object end\n");
+
+    for (auto it: initCounts){
+        printf("init %s;%d\n", it.first.c_str(), it.second);
+    }
+    for (auto it: finiCounts){
+        printf("fini %s;%d\n", it.first.c_str(), it.second);
+    }
+
 }

@@ -101,7 +101,7 @@ class  TextLayout {
 	bool dirty = true
 	void setText(const char *v){
 		if (!self.text.equals(v)){
-			self.text.set(v).add("LAY")
+			self.text.set(v)//.add("LAY")
 			self.dirty = true;
 		}
 	}

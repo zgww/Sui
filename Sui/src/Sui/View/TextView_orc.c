@@ -345,7 +345,7 @@ int  SuiView$TextLayout$get_actual_line_height(SuiView$TextLayout *  self){
 
 void  SuiView$TextLayout$setText(SuiView$TextLayout *  self, const char *  v){
 	if (!Orc$String$equals(self->text, v) ) {
-		Orc$String$add(Orc$String$set(self->text, v) , "LAY") ;
+		Orc$String$set(self->text, v) ;
 		self->dirty = true;
 	}
 }

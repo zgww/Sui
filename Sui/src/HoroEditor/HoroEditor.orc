@@ -389,7 +389,8 @@ class HoroEditor extends Listener{
                         return
                     }
                     if item.label.equals("报告对象存活"){
-                        orc_collectLiveObject_report(false);
+                        orc_collectLiveObject_report();
+                        Toast_make(item.label.str)
                         return
                     }
                     if item.label.equals("报告挂载节点数"){
@@ -526,7 +527,7 @@ class HoroEditor extends Listener{
                             return o
                         }
                     }
-                    if (item.id.equals("hierarchy")){
+                    if (0 && item.id.equals("hierarchy")){
                         mkHoroSceneHierView(o, (long long)item).{
                             o.editCtx = self.editCtx
                             o.editor = self
@@ -535,7 +536,7 @@ class HoroEditor extends Listener{
                             return o
                         }
                     }
-                    if (item.id.equals("inspector")){
+                    if (0 && item.id.equals("inspector")){
                         mkHoroInspView(o, (long long)item).{
                             o.editCtx = self.editCtx
                             o.editor = self
@@ -543,7 +544,7 @@ class HoroEditor extends Listener{
                             return o
                         }
                     }
-                    if (item.id.equals("scene")){
+                    if (0 && item.id.equals("scene")){
                         return self.reactScene(o, item)
                     }
 
@@ -574,19 +575,19 @@ class HoroEditor extends Listener{
                 o.root.{
                     o.isHorizontal = false
 
-                    mkDockItemSplitter(o, null, true).{
-                        mkDockItem(o, str("hierarchy")).{
-                            o.intId = 0;
-                            o.width = 200
-                        }
-                        mkDockItem(o, str("scene")).{
-                            o.intId = 0;
-                        }
-                        mkDockItem(o, str("inspector")).{
-                            o.intId = 0;
-                            o.width = 250
-                        }
-                    }
+                    // mkDockItemSplitter(o, null, true).{
+                    //     mkDockItem(o, str("hierarchy")).{
+                    //         o.intId = 0;
+                    //         o.width = 200
+                    //     }
+                    //     mkDockItem(o, str("scene")).{
+                    //         o.intId = 0;
+                    //     }
+                    //     mkDockItem(o, str("inspector")).{
+                    //         o.intId = 0;
+                    //         o.width = 250
+                    //     }
+                    // }
                     mkDockItemSplitter(o, null, true).{
                         o.width = 150
                         mkDockItem(o, str("project")).{
@@ -693,7 +694,7 @@ class HoroEditor extends Listener{
         Theme* t = themeIns()
         self.win.rootView.{
             self.reactMenubar(o)
-            self.reactToolbar(o)
+            // self.reactToolbar(o)
             self.reactDocklayout(o)
         }
     }
