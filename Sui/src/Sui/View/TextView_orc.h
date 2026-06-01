@@ -176,7 +176,6 @@ struct tagSuiView$TextView {
 	SuiCore$Vec2 (*get_pos_by_rune_cnt) (SuiView$TextView *  self, int  rune_cnt);
 	SuiCore$Frame cacheFrame ;
 	bool  layoutDirty ;
-	bool  skipLayout ;
 	Orc$String*  text ;
 	void  (*setText) (SuiView$TextView *  self, Orc$String*  text);
 	int  font_size ;

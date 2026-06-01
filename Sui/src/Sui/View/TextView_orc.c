@@ -399,15 +399,15 @@ void  SuiView$TextLayout$layout(SuiView$TextLayout *  self, int  w, int  h){
 	}
 	self->dirty = false;
 	URGC_VAR_CLEANUP_CLASS Orc$List*  lines = Orc$String$splitByRe((lines = NULL,&lines), self->text, "\n") ;
-	if (1) {
-		return ; 
-	}
 	self->use_max_w = 0;
 	self->use_max_h = 0;
 	self->line_infos->clear(self->line_infos) ;
 	int  l = lines->size(lines) ;
 	for (int  i = 0; i < l; i++) {
 		Orc$String *  line = (Orc$String * )lines->get(lines, i) ;
+		if (self->layout_line(self, line->str) ) {
+			break;
+		}
 	}
 	float  lh = self->get_actual_line_height(self) ;
 	float  half_lh_space = (lh - self->font_size) / 2;
@@ -559,7 +559,6 @@ void SuiView$TextView_initMeta(Vtable_SuiView$TextView *pvt){
 	
 	orc_metaField_struct(&pNext, "cacheFrame", SuiCore$Frame_getOrInitMetaStruct(), offsetof(SuiView$TextView, cacheFrame), false, false, 0);
 	orc_metaField_primitive(&pNext, "layoutDirty", OrcMetaType_bool, offsetof(SuiView$TextView, layoutDirty), 0, 0, 0, 0);//bool
-	orc_metaField_primitive(&pNext, "skipLayout", OrcMetaType_bool, offsetof(SuiView$TextView, skipLayout), 0, 0, 0, 0);//bool
 	orc_metaField_class(&pNext, "text", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(SuiView$TextView, text), true, false, 1);
 	orc_metaField_primitive(&pNext, "font_size", OrcMetaType_int, offsetof(SuiView$TextView, font_size), 0, 0, 0, 0);//int
 	orc_metaField_class(&pNext, "font_face", ((Vtable_Object*)Vtable_Orc$String_init(0)), offsetof(SuiView$TextView, font_face), true, false, 1);
@@ -649,7 +648,6 @@ void SuiView$TextView_init_fields(SuiView$TextView *self){
     {
 	((SuiView$TextView*)self)->cacheFrame = SuiCore$mkFrame() ;
 	((SuiView$TextView*)self)->layoutDirty = true;
-	((SuiView$TextView*)self)->skipLayout = false;
 	URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_1 = NULL;
 	urgc_set_field_class(self, (void**)&((SuiView$TextView*)self)->text, Orc$str(&tmpReturn_1, "") );
 	((SuiView$TextView*)self)->font_size = SuiDesigner$themeIns() ->textview_fontSize;
