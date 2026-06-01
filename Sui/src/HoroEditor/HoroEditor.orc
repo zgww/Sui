@@ -227,13 +227,19 @@ class HoroEditor extends Listener{
             }
         }
 
-        String@ projectDirPath = Path_dirname(Path_getExecutionPath().str).add("/../asset/matl")
+        String@ exePath = Path_getExecutionPath()
+        String@ exeDir = Path_dirname(exePath.str)
+        String@ projectDirPath = exeDir.add("/../asset/matl")
         printf("projectDirPath:%s\n", projectDirPath.str)
         Project_ins().init(projectDirPath.str)
 
         self.toolMgr.setTool(self.toolSelect)
         // self.toolMgr.setTool(new ToolDropModelLoader())
         useEbus().addListener(self)
+
+        mkTimerInterval(^void (){
+			printf("HoroEditor 引用计数对象数:%d\n", orc_getRefcObjCount());
+        }, 300)
     }
     void dtor(){
         useEbus().removeListener(self)

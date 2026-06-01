@@ -158,7 +158,11 @@ class  TextLayout {
 		// }
 		List@ lines = self.text.splitByRe("\n");
         // List@ lines = new List()
+        // lines.add(self.text)
         // lines.add(str("test"))
+        if 1 {
+            return;
+        }
 
 		//重置
 		self.use_max_w = 0;
@@ -167,9 +171,9 @@ class  TextLayout {
 		int l = lines.size()
 		for (int i = 0; i < l; i++) { 
 			String* line = (String*)lines.get(i);
-			if (self.layout_line(line.str)) {
-				break;
-			}
+			// if (self.layout_line(line.str)) {
+			// 	break;
+			// }
 		}
 		float lh = self.get_actual_line_height();
 		float half_lh_space = (lh - self.font_size) / 2;
@@ -398,10 +402,12 @@ class TextView extends View {
 
 		//逐字计算
 		self._set_tl();
-		self._text_layout.layout(
-			ctx->maxWidth == infinity ? 99999999 : ctx->maxWidth,
-			ctx->maxHeight == infinity ? 99999999 : ctx->maxHeight
-		);
+        // if !self.skipLayout {
+    		self._text_layout.layout(
+    			ctx->maxWidth == infinity ? 99999999 : ctx->maxWidth,
+    			ctx->maxHeight == infinity ? 99999999 : ctx->maxHeight
+    		);
+        // }
 
 		//得到了宽高
 		contentCtx.setSize(self._text_layout.use_max_w, self._text_layout.use_max_h);
@@ -427,6 +433,7 @@ class TextView extends View {
 		self.backgroundColor = themeIns().textview_bg
 	}
 	bool layoutDirty = true;
+    bool skipLayout = false;
 
 	void invalidLayout(){
 		super.invalidLayout()

@@ -16,7 +16,7 @@ Orc$String* Orc$strByWcs(Orc$String** __outRef__, wchar_t const* data) {
 	Orc$String$add(str, utf8);
 	free(utf8);
 
-	return (Orc$String*)urgc_set_var_for_return((void**)__outRef__, str);
+	return (Orc$String*)URGC_RETURN_CLASS(str);
 }
 
 Orc$String*  Orc$strf(Orc$String **  __outRef__, const char *  format, ...){
@@ -70,7 +70,7 @@ Orc$String* Orc$String$_substringByCount(Orc$String** __outRef__, Orc$String* se
 		Orc$String$add(str, utf8);
 		free(utf8);
 	}
-	return (Orc$String * )urgc_set_var_for_return((void**)__outRef__, str);
+	return (Orc$String * )URGC_RETURN_CLASS(str);
 }
 
 
@@ -88,7 +88,7 @@ Orc$List* Orc$String$splitByRe(Orc$List** __outRef__, Orc$String* self, char con
 		Orc$String$add(str, parts[i].c_str());
 		ret->add(ret, (Object*)str);
 	}
-	return (Orc$List*)urgc_set_var_for_return((void**)__outRef__, ret);
+	return (Orc$List*)URGC_RETURN_CLASS(ret);
 }
 int Orc$utf8RuneLength(char const* data) {
 	if (!data) {
@@ -142,7 +142,7 @@ Orc$String* Orc$String$replaceAll(
 	NEW_CLASS_VAR(Orc$String, ret);
 	Orc$String$add(ret, s.c_str());
 
-	return (Orc$String*)urgc_set_var_for_return((void**)__outRef__, ret);
+	return (Orc$String*)URGC_RETURN_CLASS( ret);
 }
 Orc$String* Orc$String$replaceAllByRe(
 	Orc$String * * __outRef__, 
@@ -158,5 +158,5 @@ Orc$String* Orc$String$replaceAllByRe(
 	NEW_CLASS_VAR(Orc$String, ret);
 	Orc$String$add(ret, s.c_str());
 
-	return (Orc$String*)urgc_set_var_for_return((void**)__outRef__, ret);
+	return (Orc$String*)URGC_RETURN_CLASS(ret);
 }

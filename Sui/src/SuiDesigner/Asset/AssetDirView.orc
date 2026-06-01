@@ -402,42 +402,43 @@ class AssetDirView extends LayoutLinear {
             o.margin.setHor(6)
             o.cursor = str("pointer")
 
-            o.cbOnEvent = ^void (Event *e){
-                self._fileItem_onEvent(e, tmpFi)
-            }
+            // o.cbOnEvent = ^void (Event *e){
+            //     self._fileItem_onEvent(e, tmpFi)
+            // }
 
-            mkHoverViewEffect(o, 0).{
-                // o.isActive = self.activeFileItem == fi
-                o.isActive = self.selectFileItems.list.has(fi)
-                // o.hoverBackgroundColor = 0xff
-            }
+            // mkHoverViewEffect(o, 0).{
+            //     // o.isActive = self.activeFileItem == fi
+            //     o.isActive = self.selectFileItems.list.has(fi)
+            //     // o.hoverBackgroundColor = 0xff
+            // }
 
-            mkImageView(o, 0).{
-                if HoroIconMgr_checkPath(fi.path) {
-                    // o._img = 
-                    o._img = insHoroIconMgr().load(fi.path)
-                }
-                else if fi.path.endsWith(".png"){
-                    o.setSrc(fi.path)
-                }
-                else if fi.path.endsWith(".prefab.json"){
-                    o.setSrc(Path_resolveFromExecutionDir("../asset/icon/prefab.png"))
-                }
-                else {
-                    o.setSrc(
-                        fi.isDirectory
-                        ? Path_resolveFromExecutionDir("../asset/icon/dir.png")
-                        : Path_resolveFromExecutionDir("../asset/icon/file.png")
-                    )
-                }
-                o.width = 60
-                o.height = 60
-            }
+            // mkImageView(o, 0).{
+            //     if HoroIconMgr_checkPath(fi.path) {
+            //         // o._img = 
+            //         o._img = insHoroIconMgr().load(fi.path)
+            //     }
+            //     else if fi.path.endsWith(".png"){
+            //         o.setSrc(fi.path)
+            //     }
+            //     else if fi.path.endsWith(".prefab.json"){
+            //         o.setSrc(Path_resolveFromExecutionDir("../asset/icon/prefab.png"))
+            //     }
+            //     else {
+            //         o.setSrc(
+            //             fi.isDirectory
+            //             ? Path_resolveFromExecutionDir("../asset/icon/dir.png")
+            //             : Path_resolveFromExecutionDir("../asset/icon/file.png")
+            //         )
+            //     }
+            //     o.width = 60
+            //     o.height = 60
+            // }
             mkTextView(o, 0).{
                 o.margin.setVer(6)
                 o.setText(str(fi.filename.str).add("$"))
                 o.setFont_size(t.dir_fontSize)
                 o.color = t.dir_color
+                o.skipLayout = true
             }
         }
     }

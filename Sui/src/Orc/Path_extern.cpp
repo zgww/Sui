@@ -1,5 +1,5 @@
 
-#include "Orc/Orc.h"
+#include "./Orc.h"
 #include <chrono>
 #include <ratio>
 #ifndef _CRT_SECURE_NO_WARNINGS
@@ -142,7 +142,7 @@ Orc$String* Orc$Path_getcwd(Orc$String * * __outRef__){
     Orc$String$add(ret, utf8str.c_str());
     // free(s);
 
-	return (Orc$String*)urgc_set_var_for_return((void**)__outRef__, ret);
+	return (Orc$String*)URGC_RETURN_CLASS( ret);
 }
 void Orc$Path_setcwd(char const * path){
 	std::filesystem::path p(toutf16(path));
@@ -154,7 +154,7 @@ Orc$String* Orc$Path_getExecutionPath(Orc$String * * __outRef__){
     char *s = new_FsUtil_getExecutionPath();
     Orc$String$set_as_own(ret, s);
 
-	return (Orc$String*)urgc_set_var_for_return((void**)__outRef__, ret);
+	return (Orc$String*)URGC_RETURN_CLASS(ret);
 }
 
 void myfree(void *p) {
@@ -194,7 +194,7 @@ Orc$String* Orc$Path_readText(Orc$String * * __outRef__, char const * path){
 
 	Orc$String$set_as_own(ret, s);
 
-	return (Orc$String*)urgc_set_var_for_return((void**)__outRef__, ret);
+	return (Orc$String*)URGC_RETURN_CLASS(ret);
 }
 bool Orc$Path_writeText(char const * path, char const * text){
 	try {
