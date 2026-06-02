@@ -1502,23 +1502,55 @@ void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCo
 				o->isHorizontal = false;
 				URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_4 = NULL;
 				{
-					SuiView$DockItem*  __scopeVar_597_20 = SuiView$mkDockItemSplitter(&tmpReturn_4, o, NULL, true) , *o = __scopeVar_597_20;
+					SuiView$DockItem*  __scopeVar_584_20 = SuiView$mkDockItemSplitter(&tmpReturn_4, o, NULL, true) , *o = __scopeVar_584_20;
 					
 				
-					o->width = 150;
 					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_5 = NULL;
 					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_6 = NULL;
 					{
-						SuiView$DockItem*  __scopeVar_599_24 = SuiView$mkDockItem(&tmpReturn_5, o, Orc$str(&tmpReturn_6, "project") ) , *o = __scopeVar_599_24;
+						SuiView$DockItem*  __scopeVar_585_24 = SuiView$mkDockItem(&tmpReturn_5, o, Orc$str(&tmpReturn_6, "hierarchy") ) , *o = __scopeVar_585_24;
+						
+					
+						o->intId = 0;
+						o->width = 200;
+					}
+					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_7 = NULL;
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
+					{
+						SuiView$DockItem*  __scopeVar_589_24 = SuiView$mkDockItem(&tmpReturn_7, o, Orc$str(&tmpReturn_8, "scene") ) , *o = __scopeVar_589_24;
+						
+					
+						o->intId = 0;
+					}
+					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_9 = NULL;
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_10 = NULL;
+					{
+						SuiView$DockItem*  __scopeVar_592_24 = SuiView$mkDockItem(&tmpReturn_9, o, Orc$str(&tmpReturn_10, "inspector") ) , *o = __scopeVar_592_24;
+						
+					
+						o->intId = 0;
+						o->width = 250;
+					}
+				}
+				URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_11 = NULL;
+				{
+					SuiView$DockItem*  __scopeVar_597_20 = SuiView$mkDockItemSplitter(&tmpReturn_11, o, NULL, true) , *o = __scopeVar_597_20;
+					
+				
+					o->width = 150;
+					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_12 = NULL;
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_13 = NULL;
+					{
+						SuiView$DockItem*  __scopeVar_599_24 = SuiView$mkDockItem(&tmpReturn_12, o, Orc$str(&tmpReturn_13, "project") ) , *o = __scopeVar_599_24;
 						
 					
 						o->intId = 0;
 						o->width = 160;
 					}
-					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_7 = NULL;
-					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_8 = NULL;
+					URGC_VAR_CLEANUP_CLASS SuiView$DockItem*  tmpReturn_14 = NULL;
+					URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_15 = NULL;
 					{
-						SuiView$DockItem*  __scopeVar_603_24 = SuiView$mkDockItem(&tmpReturn_7, o, Orc$str(&tmpReturn_8, "dir") ) , *o = __scopeVar_603_24;
+						SuiView$DockItem*  __scopeVar_603_24 = SuiView$mkDockItem(&tmpReturn_14, o, Orc$str(&tmpReturn_15, "dir") ) , *o = __scopeVar_603_24;
 						
 					
 						o->intId = 0;
@@ -1526,8 +1558,8 @@ void  HoroEditor$HoroEditor$reactDocklayout(HoroEditor$HoroEditor *  self, SuiCo
 				}
 			}
 		}
-		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_9 = NULL;
-		SuiLayout$layoutLinearCell(&tmpReturn_9, o, 0) ;
+		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinearCell*  tmpReturn_16 = NULL;
+		SuiLayout$layoutLinearCell(&tmpReturn_16, o, 0) ;
 	}
 }
 
@@ -2037,6 +2069,7 @@ void  HoroEditor$HoroEditor$react(HoroEditor$HoroEditor *  self){
 		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_701_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		self->reactMenubar(self, o) ;
+		self->reactToolbar(self, o) ;
 		self->reactDocklayout(self, o) ;
 	}
 }
@@ -2580,7 +2613,7 @@ static SuiCore$ViewBase *  __fn___Closure_522_44(HoroEditor$__Closure_522_44 *  
 			return o; 
 		}
 	}
-	if (0 && Orc$String$equals(item->id, "hierarchy") ) {
+	if (1 && Orc$String$equals(item->id, "hierarchy") ) {
 		URGC_VAR_CLEANUP_CLASS HoroEditor$HoroSceneHierView*  tmpReturn_3 = NULL;
 		{
 			HoroEditor$HoroSceneHierView*  __scopeVar_537_24 = HoroEditor$mkHoroSceneHierView(&tmpReturn_3, o, (long long )item) , *o = __scopeVar_537_24;
@@ -2591,7 +2624,7 @@ static SuiCore$ViewBase *  __fn___Closure_522_44(HoroEditor$__Closure_522_44 *  
 			return o; 
 		}
 	}
-	if (0 && Orc$String$equals(item->id, "inspector") ) {
+	if (1 && Orc$String$equals(item->id, "inspector") ) {
 		URGC_VAR_CLEANUP_CLASS HoroEditor$HoroInspView*  tmpReturn_4 = NULL;
 		{
 			HoroEditor$HoroInspView*  __scopeVar_546_24 = HoroEditor$mkHoroInspView(&tmpReturn_4, o, (long long )item) , *o = __scopeVar_546_24;
@@ -2603,7 +2636,7 @@ static SuiCore$ViewBase *  __fn___Closure_522_44(HoroEditor$__Closure_522_44 *  
 			return o; 
 		}
 	}
-	if (0 && Orc$String$equals(item->id, "scene") ) {
+	if (1 && Orc$String$equals(item->id, "scene") ) {
 		return self->__var___Block_458_33->self->reactScene(self->__var___Block_458_33->self, o, item) ; 
 	}
 	URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_5 = NULL;

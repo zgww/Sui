@@ -288,7 +288,7 @@ class  TextLayout {
 				float boundHeight = bounds[3] - bounds[1];
 				if (line_w > self.w) {//提前break
 					TextLineInfo @line_info = new TextLineInfo();
-					line_info.text = remain.substringByCount(0, l - 1).add("LI");
+					line_info.text = remain.substringByCount(0, l - 1) //.add("LI");
 					line_info.w = prev_w;
 					line_info.h = (int)(boundHeight);
 					lines.add(line_info);
@@ -297,7 +297,7 @@ class  TextLayout {
 				}
 				if (l >= ml) { //最后一行，还没有满
 					TextLineInfo @line_info = new TextLineInfo();
-					line_info.text = remain.substringByCount(0, l).add("LIE");
+					line_info.text = remain.substringByCount(0, l) //.add("LIE");
 					line_info.w = line_w;
 					line_info.h = (int)boundHeight;
 					lines.add(line_info);
@@ -447,7 +447,7 @@ class TextView extends View {
 			self.text.set("")
 		}
 		else {
-			self.text.set(text.str).add("-----------")// = text;
+			self.text.set(text.str) //.add("-----------")// = text;
 		}
 
 		self.invalidLayout();
