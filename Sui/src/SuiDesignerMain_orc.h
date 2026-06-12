@@ -13,6 +13,8 @@ typedef struct tagTmp3 Tmp3;
 typedef struct tagVtable_Tmp3 Vtable_Tmp3;
 typedef struct tagTmp2 Tmp2;
 typedef struct tagVtable_Tmp2 Vtable_Tmp2;
+typedef struct tagException Exception;
+typedef struct tagVtable_Exception Vtable_Exception;
 
 
 #ifndef define_struct_____SuiDesignerMain_orc_h__
@@ -299,6 +301,27 @@ void  Tmp2$dtor(Tmp2 *  self);
 void  test_tmp2();
 extern void  test_tgfx();
 int  testAudio();
+
+// 虚表
+struct tagVtable_Exception {
+	Vtable_Object super;
+};
+//虚表实例
+extern Vtable_Exception _vtable_Exception;
+
+// class refc:1
+struct tagException {
+	Object super; 
+	int  tmp ;
+};
+Vtable_Exception* Vtable_Exception_init(Vtable_Exception* pvt);
+void Exception_init_fields(Exception *self);
+void Exception_init(Exception *self, void *pOwner);
+Exception * Exception_new(void *pOwner);
+void Exception_fini(Exception *self);
+
+void  Exception$dtor(Exception *  self);
+
 int  main();
 void  testTransparency();
 

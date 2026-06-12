@@ -2060,9 +2060,202 @@ int  testAudio(){
 	return 0; 
 }
 
-int  main(){
+
+//vtable instance
+Vtable_Exception _vtable_Exception;
+
+// init meta
+
+void Exception_initMeta(Vtable_Exception *pvt){
+    OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
+	
+	orc_metaField_primitive(&pNext, "tmp", OrcMetaType_int, offsetof(Exception, tmp), 0, 0, 0, 0);//int
+
+	
+}
+
+
+// vtable init
+
+
+Vtable_Exception* Vtable_Exception_init(Vtable_Exception* pvt){
+    if (pvt == NULL){
+        pvt = &_vtable_Exception;
+    }
+    if (((Vtable_Object*)pvt)->inited){
+        return pvt;
+    }
+	// init super vtable
+    Vtable_Object_init(&_vtable_Object);
+
+	// init by super vtable init function
+    Vtable_Object_init((void*)pvt);
+
+    ((Vtable_Object*)pvt)->super = (void*)&_vtable_Object;
+    ((Vtable_Object*)pvt)->make = (void*)&Exception_new;
+    ((Vtable_Object*)pvt)->className = "Exception";
+
+    ((Vtable_Object*)pvt)->initMeta = (void*)Exception_initMeta;
+
+    ((Vtable_Object*)pvt)->refc = 1;
+
+    return pvt;
+}
+
+
+// fini function
+
+void Exception_fini(Exception *self){
+	//super fini
+    Object_fini((Object *)self);
+
+    //字段释放
+	
+
+}
+
+// init fields function
+
+
+void Exception_init_fields(Exception *self){
+	//super class
+    Object_init_fields((Object*)self);
+
+    ((Object*)self)->fini = (void*)Exception_fini;
+	//fields
+    {
+	((Exception*)self)->tmp = 0;
+    }
+	((Object*)self)->dtor = (void*)Exception$dtor;
+}
+
+// init function
+
+void Exception_init(Exception *self, void *pOwner){
+    Vtable_Exception_init(&_vtable_Exception);
+
+    ((Object*)self)->vtable = (void*)&_vtable_Exception;
+	
+	//has old object
+	if (*((void**)pOwner) != NULL) urgc_deref_class(pOwner, *((void**)pOwner));
+	*((void**)pOwner) = self;
+	urgc_ref_class(pOwner, self, (void*)orc_delete);
+
+    //urgc_guard(self, (void*)orc_delete);
+
+    Exception_init_fields(self);
+
+    if (((Object*)self)->ctor){
+        ((Object*)self)->ctor((void*)self);
+    }
+
+    //urgc_deguard(self);
+}
+
+// new function
+Exception * Exception_new(void *pOwner){
+	if (pOwner == NULL){ return NULL;}
+    Exception *self = ORC_CALLOC(1, sizeof(Exception));
+	
+    Exception_init(self, pOwner);
+    return self;
+}
+
+
+// class members
+void  Exception$dtor(Exception *  self){
+	printf("~Exception:tmp:%d\n", self->tmp) ;
+}
+
+
+
+int  main2(){
+	volatile bool __orc_return_flag_1185_0 = false;
+	volatile int __orc_loop_control_1185_0 = 0;
+	int  __orc_return_value_1185_0 = {0};
+
 	urgc_start_process_thread() ;
 	windowInit() ;
+	{
+		URGC_VAR_CLEANUP_CLASS Exception*  e = (e=NULL,urgc_init_var_class((void**)&e, Exception_new(&e) ));
+		e->tmp = 1;
+	}
+	{
+		{
+			ORC_TRY(__orc_try_scope_1196_8, "try@1196:8", "catch@1196:8") {
+			printf("try\n") ;
+			URGC_VAR_CLEANUP_CLASS Exception*  e = (e=NULL,urgc_init_var_class((void**)&e, Exception_new(&e) ));
+			e->tmp = 30;
+			Orc_throw((void*)e, (Vtable_Object*)Vtable_Exception_init(NULL), NULL);
+		}
+		
+			ORC_TRY_END(__orc_try_scope_1196_8);
+			
+			ORC_CATCH(__orc_try_scope_1196_8) {
+				
+				ORC_CATCH_CLASS_AS(__orc_try_scope_1196_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
+			printf("catch: %d\n", e->tmp) ;
+		}
+		
+		
+			}
+			ORC_END_CATCH(__orc_try_scope_1196_8);
+		
+			goto __orc_finally_1196_8;
+		__orc_finally_1196_8:
+			ORC_FINALLY {
+			printf("finally\n") ;
+		}
+		
+		__orc_after_finally_1196_8:
+			
+			if (__orc_return_flag_1185_0) {
+				Orc_tryScopeAbandon(&__orc_try_scope_1196_8);
+				return __orc_return_value_1185_0;
+			}
+		
+			
+			Orc_tryScopeFinalize(&__orc_try_scope_1196_8);
+		}
+		{
+			ORC_TRY(__orc_try_scope_1207_8, "try@1207:8", "catch@1207:8") {
+			printf("try\n") ;
+			URGC_VAR_CLEANUP_CLASS Exception*  e = (e=NULL,urgc_init_var_class((void**)&e, Exception_new(&e) ));
+			e->tmp = 34;
+			Orc_throw((void*)e, (Vtable_Object*)Vtable_Exception_init(NULL), NULL);
+		}
+		
+			ORC_TRY_END(__orc_try_scope_1207_8);
+			
+			ORC_CATCH(__orc_try_scope_1207_8) {
+				
+				ORC_CATCH_CLASS_AS(__orc_try_scope_1207_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
+			printf("catch: %d\n", e->tmp) ;
+		}
+		
+		
+			}
+			ORC_END_CATCH(__orc_try_scope_1207_8);
+		
+			goto __orc_finally_1207_8;
+		__orc_finally_1207_8:
+			ORC_FINALLY {
+			printf("finally\n") ;
+		}
+		
+		__orc_after_finally_1207_8:
+			
+			if (__orc_return_flag_1185_0) {
+				Orc_tryScopeAbandon(&__orc_try_scope_1207_8);
+				return __orc_return_value_1185_0;
+			}
+		
+			
+			Orc_tryScopeFinalize(&__orc_try_scope_1207_8);
+		}
+	}
+	printf("done\n") ;
+	Orc$Time_sleepMs(1000 * 100) ;
 	{
 		{
 			HoroEditor$HoroEditor *  o = HoroEditor$insHoroEditor() ;
@@ -2082,7 +2275,7 @@ void  testTransparency(){
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutAlign*  tmpNewOwner_1 = NULL;
 	{
 		SuiLayout$LayoutAlign*  o = SuiLayout$LayoutAlign_new(&tmpNewOwner_1) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1265_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1305_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = 0x33afafff;
 		SuiCore$Vec2$set(&o->anchor, 0.5, 0.5) ;
@@ -2090,8 +2283,8 @@ void  testTransparency(){
 		urgc_set_field_class(win, (void * )offsetof(Sui$Window, rootView) , o) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmpReturn_2 = NULL;
 		{
-			SuiCore$View*  __scopeVar_1272_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1272_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1272_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiCore$View*  __scopeVar_1312_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1312_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1312_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->backgroundColor = 0xffefefff;
 			o->width = 100;
@@ -2099,8 +2292,8 @@ void  testTransparency(){
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_3 = NULL;
 		{
-			SuiView$TextView*  __scopeVar_1277_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1277_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1277_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$TextView*  __scopeVar_1317_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1317_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1317_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 			o->setText(o, Orc$str(&tmpReturn_4, "你好呀， Sui") ) ;
@@ -2113,3 +2306,39 @@ void  testTransparency(){
 
 
 
+
+
+
+
+#include <stdio.h>
+#include <setjmp.h>
+
+jmp_buf env;
+
+// 清理函数
+void cleanup_func(int *p) {
+    printf("Cleanup function called! Value: %d\n", *p);
+}
+
+void test_function() {
+    // 声明变量并绑定 cleanup 属性
+    __attribute__((cleanup(cleanup_func))) int my_var = 42;
+    
+    printf("Before longjmp, my_var = %d\n", my_var);
+    
+    // 直接跳转，绕过正常的函数返回
+    longjmp(env, 1); 
+    
+    // 这里的代码永远不会执行，cleanup 也不会执行
+    printf("After longjmp (unreachable)\n");
+}
+
+int main() {
+    if (setjmp(env) == 0) {
+        printf("Calling test_function...\n");
+        test_function();
+    } else {
+        printf("Returned from longjmp. Notice that cleanup was NOT called.\n");
+    }
+    return 0;
+}

@@ -1176,9 +1176,49 @@ int testAudio(){
     }
     return 0;
 }
+class Exception {
+    int tmp = 0
+    void dtor(){
+        printf("~Exception:tmp:%d\n", self.tmp)
+    }
+}
 int main(){
     urgc_start_process_thread();
     windowInit()
+
+    {
+        Exception@ e = new Exception()
+        e.tmp = 1
+    }
+
+
+    {
+        try{
+            printf("try\n");
+            Exception @ e = new Exception()
+            e.tmp = 30
+            throw e;
+        } catch (Exception@ e){
+            printf("catch: %d\n", e.tmp);
+        }
+        finally {
+            printf("finally\n")
+        }
+        try{
+            printf("try\n");
+            Exception @ e = new Exception()
+            e.tmp = 34
+            throw e;
+        } catch (Exception@ e){
+            printf("catch: %d\n", e.tmp);
+        }
+        finally {
+            printf("finally\n")
+        }
+    }
+    printf("done\n")
+    Time_sleepMs(1000 * 100);
+
 
     // Window@ win = new Window()
 

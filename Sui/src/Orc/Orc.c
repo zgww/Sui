@@ -7,10 +7,237 @@
 #include "UrgcDll/urgc_api.h"
 #include "./ScopeData_orc.h"
 
+#if defined(_MSC_VER)
+#define ORC_THREAD_LOCAL __declspec(thread)
+#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+#define ORC_THREAD_LOCAL _Thread_local
+#else
+#define ORC_THREAD_LOCAL __thread
+#endif
+
 
 //虚表实例
 Vtable_Object _vtable_Object;
 Vtable_Object _vtable_Closure;
+
+static ORC_THREAD_LOCAL OrcTryFrame* g_orcTryTop = NULL;
+static ORC_THREAD_LOCAL OrcException g_orcCurrentException = {0};
+
+static bool Orc_tryTraceEnabled(){
+    const char* value = getenv("ORC_TRY_TRACE");
+    return value != NULL && value[0] != '\0' && strcmp(value, "0") != 0;
+}
+
+static void Orc_resetException(OrcException* ex){
+    ex->refValue = NULL;
+    ex->classInfo = NULL;
+    ex->structInfo = NULL;
+}
+
+static void Orc_releaseException(OrcException* ex){
+    if (ex->refValue != NULL){
+        if (ex->classInfo != NULL){
+            printf("deref class exception refValue\n");
+            urgc_deref_class(&ex->refValue, (Object*)ex->refValue);
+        }
+        else{
+            urgc_deref(&ex->refValue, ex->refValue);
+        }
+    }
+    Orc_resetException(ex);
+}
+
+static void Orc_retainException(OrcException* ex, void* refValue, Vtable_Object* classInfo, MetaStruct* structInfo){
+    Orc_releaseException(ex);
+    ex->refValue = refValue;
+    ex->classInfo = classInfo;
+    ex->structInfo = structInfo;
+    if (refValue != NULL){
+        if (classInfo != NULL){
+            printf("ref class exception refValue\n");
+            urgc_ref_class(&ex->refValue, (Object*)refValue, NULL);
+        }
+        else{
+            urgc_ref(&ex->refValue, refValue, NULL);
+        }
+    }
+}
+
+static void Orc_traceTry(const char* event, OrcTryFrame* frame){
+    if (!Orc_tryTraceEnabled()){
+        return;
+    }
+    fprintf(stderr, "[orc-try] %s site=%s frame=%p prev=%p top=%p\n",
+        event,
+        frame && frame->site ? frame->site : "<unknown>",
+        (void*)frame,
+        frame ? (void*)frame->prev : NULL,
+        (void*)g_orcTryTop
+    );
+}
+
+OrcTryScope Orc_tryScopeMake(const char* trySite, const char* catchSite){
+    OrcTryScope scope;
+    memset(&scope, 0, sizeof(scope));
+    scope.trySite = trySite;
+    scope.catchSite = catchSite;
+    scope.tryFrame.site = trySite;
+    scope.catchFrame.site = catchSite;
+    return scope;
+}
+
+void Orc_tryPushFrame(OrcTryFrame* frame){
+    frame->prev = g_orcTryTop;
+    g_orcTryTop = frame;
+    Orc_traceTry("enter", frame);
+}
+
+void Orc_tryPopFrame(OrcTryFrame* frame){
+    Orc_traceTry("leave", frame);
+    if (g_orcTryTop == frame){
+        g_orcTryTop = frame->prev;
+    }
+}
+
+void Orc_tryScopePrepareTry(OrcTryScope* scope){
+    scope->tryFrame.site = scope->trySite;
+    scope->tryCode = 0;
+    scope->catchCode = 0;
+    scope->matched = false;
+    scope->needRethrow = false;
+    scope->handledException = false;
+}
+
+bool Orc_tryScopeHasException(const OrcTryScope* scope){
+    return scope->tryCode != 0;
+}
+
+void Orc_tryScopePrepareCatch(OrcTryScope* scope){
+    scope->catchFrame.site = scope->catchSite;
+    scope->catchCode = 0;
+    scope->matched = false;
+}
+
+void Orc_tryScopeFinishCatch(OrcTryScope* scope){
+    if (scope->catchCode != 0 || !scope->matched){
+        scope->needRethrow = true;
+    }
+    else{
+        scope->handledException = true;
+    }
+}
+
+void Orc_tryScopeMarkUnhandled(OrcTryScope* scope){
+    if (scope->tryCode != 0){
+        scope->needRethrow = true;
+    }
+}
+
+bool Orc_tryScopeCatchClass(OrcTryScope* scope, Vtable_Object* expected){
+    if (scope->matched){
+        return false;
+    }
+    if (!Orc_exceptionMatchesClass(Orc_currentException(), expected)){
+        return false;
+    }
+    scope->matched = true;
+    return true;
+}
+
+bool Orc_tryScopeCatchStruct(OrcTryScope* scope, MetaStruct* expected){
+    if (scope->matched){
+        return false;
+    }
+    if (!Orc_exceptionMatchesStruct(Orc_currentException(), expected)){
+        return false;
+    }
+    scope->matched = true;
+    return true;
+}
+
+bool Orc_tryScopeShouldRethrow(const OrcTryScope* scope){
+    return scope->needRethrow;
+}
+
+bool Orc_tryScopeShouldClear(const OrcTryScope* scope){
+    return scope->handledException;
+}
+
+void Orc_tryScopeAbandon(OrcTryScope* scope){
+    if (scope->needRethrow || scope->handledException){
+        Orc_clearException();
+    }
+    scope->needRethrow = false;
+    scope->handledException = false;
+}
+
+void Orc_tryScopeFinalize(OrcTryScope* scope){
+    if (scope->needRethrow){
+        Orc_rethrowCurrentException();
+    }
+    if (scope->handledException){
+        Orc_clearException();
+    }
+}
+
+OrcException* Orc_currentException(){
+    return &g_orcCurrentException;
+}
+
+void Orc_clearException(){
+    printf("clear exception\n");
+    Orc_releaseException(&g_orcCurrentException);
+}
+
+bool Orc_exceptionMatchesClass(OrcException* ex, Vtable_Object* expected){
+    if (ex == NULL || expected == NULL || ex->classInfo == NULL){
+        return false;
+    }
+    Vtable_Object* cur = ex->classInfo;
+    while (cur != NULL){
+        if (cur == expected){
+            return true;
+        }
+        cur = cur->super;
+    }
+    return false;
+}
+
+bool Orc_exceptionMatchesStruct(OrcException* ex, MetaStruct* expected){
+    if (ex == NULL || expected == NULL || ex->structInfo == NULL){
+        return false;
+    }
+    return ex->structInfo == expected;
+}
+
+void Orc_throw(void* refValue, Vtable_Object* classInfo, MetaStruct* structInfo){
+    if (Orc_tryTraceEnabled()){
+        fprintf(stderr, "[orc-try] throw ref=%p class=%s struct=%s top=%p topSite=%s\n",
+            refValue,
+            classInfo && classInfo->className ? classInfo->className : "<null>",
+            structInfo && structInfo->structName ? structInfo->structName : "<null>",
+            (void*)g_orcTryTop,
+            g_orcTryTop && g_orcTryTop->site ? g_orcTryTop->site : "<unknown>"
+        );
+    }
+    if (g_orcTryTop == NULL){
+        fprintf(stderr, "uncaught orc exception\n");
+        abort();
+    }
+    Orc_retainException(&g_orcCurrentException, refValue, classInfo, structInfo);
+    longjmp(g_orcTryTop->env, 1);
+}
+
+void Orc_rethrowCurrentException(){
+    if (g_orcTryTop == NULL){
+        fprintf(stderr, "uncaught orc exception rethrow\n");
+        abort();
+    }
+    longjmp(g_orcTryTop->env, 1);
+}
+
+
+
 
 struct SkPaint;
 
@@ -770,7 +997,8 @@ void orc_delRefc(Object *p){
 
 void urgc_refvar_cleanup_class(void *p) {
     Object** ppobj = (Object **)p;
-    //printf("cleanup ref:p=%p obj=%p\n", pobj, *pobj);
+    printf("urgc_refvar_cleanup_class:%p, pp:%p\n", p, ppobj);
+    // printf("cleanup ref:p=%p obj=%p\n", pobj, *pobj);
     //urgc_set_var(pobj, NULL);//记录引用
 	// urgc.deref(pobj, (GcObj*)(*pobj));
     urgc_deref_class(ppobj, *ppobj);
