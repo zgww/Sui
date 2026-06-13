@@ -57,6 +57,7 @@ class Tex2d {
         self.updateParameters()
     }
     void dtor(){
+        printf("Tex2d.~dtor. self:%p\n", self)
         if self.id {
             GLuint id = self.id
             //确保在主线程释放
@@ -169,6 +170,7 @@ Image* loadImageByTex2d(Tex2d *tex){
         ret._img = imgId
         ret.data = tex
         imageMap.put(key, ret)
+        printf("tex2d image map size:%d\n", imageMap.size())
         return ret
     }
 }

@@ -2267,7 +2267,6 @@ int  main(){
 		}
 	}
 	printf("done\n") ;
-	Orc$Time_sleepMs(1000 * 100) ;
 	{
 		{
 			HoroEditor$HoroEditor *  o = HoroEditor$insHoroEditor() ;

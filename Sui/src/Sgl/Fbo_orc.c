@@ -9,17 +9,17 @@
 
 
 // static struct 
-typedef struct tagSgl$__Block_46_19 Sgl$__Block_46_19;
+typedef struct tagSgl$__Block_47_19 Sgl$__Block_47_19;
 
-typedef struct tagSgl$__Block_198_19 Sgl$__Block_198_19;
+typedef struct tagSgl$__Block_200_19 Sgl$__Block_200_19;
 
-typedef struct tagSgl$__Closure_49_27 Sgl$__Closure_49_27;
+typedef struct tagSgl$__Closure_50_27 Sgl$__Closure_50_27;
 
-typedef struct tagSgl$__Closure_201_27 Sgl$__Closure_201_27;
+typedef struct tagSgl$__Closure_203_27 Sgl$__Closure_203_27;
 
 
 
-struct tagSgl$__Block_46_19 {
+struct tagSgl$__Block_47_19 {
 	GLuint id ;
 };
 
@@ -27,7 +27,7 @@ struct tagSgl$__Block_46_19 {
 
 
 
-struct tagSgl$__Block_198_19 {
+struct tagSgl$__Block_200_19 {
 	GLuint id ;
 };
 
@@ -35,20 +35,20 @@ struct tagSgl$__Block_198_19 {
 
 
 
-struct tagSgl$__Closure_49_27 {
-	void  (*invoke)(Sgl$__Closure_49_27 *  self);
+struct tagSgl$__Closure_50_27 {
+	void  (*invoke)(Sgl$__Closure_50_27 *  self);
 	Vtable_Object *  vtable ;
-	Sgl$__Block_46_19*  __var___Block_46_19 ;
+	Sgl$__Block_47_19*  __var___Block_47_19 ;
 };
 
 
 
 
 
-struct tagSgl$__Closure_201_27 {
-	void  (*invoke)(Sgl$__Closure_201_27 *  self);
+struct tagSgl$__Closure_203_27 {
+	void  (*invoke)(Sgl$__Closure_203_27 *  self);
 	Vtable_Object *  vtable ;
-	Sgl$__Block_198_19*  __var___Block_198_19 ;
+	Sgl$__Block_200_19*  __var___Block_200_19 ;
 };
 
 
@@ -56,14 +56,14 @@ struct tagSgl$__Closure_201_27 {
 
 
 // static function declaration
-static void  __finiBlock___Block_46_19(Sgl$__Block_46_19 *  self);
-static void  __finiBlock___Block_198_19(Sgl$__Block_198_19 *  self);
-static void  __fn___Closure_49_27(Sgl$__Closure_49_27 *  self);
-static void  __fini___Closure_49_27(Sgl$__Closure_49_27 *  self);
-static Sgl$__Closure_49_27*  __make___Closure_49_27(Sgl$__Closure_49_27 **  __outRef__, Sgl$__Block_46_19 *  __var___Block_46_19);
-static void  __fn___Closure_201_27(Sgl$__Closure_201_27 *  self);
-static void  __fini___Closure_201_27(Sgl$__Closure_201_27 *  self);
-static Sgl$__Closure_201_27*  __make___Closure_201_27(Sgl$__Closure_201_27 **  __outRef__, Sgl$__Block_198_19 *  __var___Block_198_19);
+static void  __finiBlock___Block_47_19(Sgl$__Block_47_19 *  self);
+static void  __finiBlock___Block_200_19(Sgl$__Block_200_19 *  self);
+static void  __fn___Closure_50_27(Sgl$__Closure_50_27 *  self);
+static void  __fini___Closure_50_27(Sgl$__Closure_50_27 *  self);
+static Sgl$__Closure_50_27*  __make___Closure_50_27(Sgl$__Closure_50_27 **  __outRef__, Sgl$__Block_47_19 *  __var___Block_47_19);
+static void  __fn___Closure_203_27(Sgl$__Closure_203_27 *  self);
+static void  __fini___Closure_203_27(Sgl$__Closure_203_27 *  self);
+static Sgl$__Closure_203_27*  __make___Closure_203_27(Sgl$__Closure_203_27 **  __outRef__, Sgl$__Block_200_19 *  __var___Block_200_19);
 
 
 
@@ -236,12 +236,13 @@ void  Sgl$Fbo$ctor(Sgl$Fbo *  self){
 
 
 void  Sgl$Fbo$dtor(Sgl$Fbo *  self){
+	printf("~Fbo.dtor. %p, %p\n\n", self->tex2d, self->depthTex2d) ;
 	if (self->id) {
-		URGC_VAR_CLEANUP Sgl$__Block_46_19*  __var___Block_46_19 = (__var___Block_46_19=NULL,urgc_init_var((void**)&__var___Block_46_19, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_46_19) , __finiBlock___Block_46_19) ));
-		__var___Block_46_19->id = self->id;
+		URGC_VAR_CLEANUP Sgl$__Block_47_19*  __var___Block_47_19 = (__var___Block_47_19=NULL,urgc_init_var((void**)&__var___Block_47_19, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_47_19) , __finiBlock___Block_47_19) ));
+		__var___Block_47_19->id = self->id;
 		URGC_VAR_CLEANUP_CLASS SuiCore$Timer*  tmpReturn_1 = NULL;
-		URGC_VAR_CLEANUP Sgl$__Closure_49_27*  tmpReturn_2 = NULL;
-		SuiCore$mkTimerTimeout(&tmpReturn_1, __make___Closure_49_27(&tmpReturn_2, __var___Block_46_19) , 0) ;
+		URGC_VAR_CLEANUP Sgl$__Closure_50_27*  tmpReturn_2 = NULL;
+		SuiCore$mkTimerTimeout(&tmpReturn_1, __make___Closure_50_27(&tmpReturn_2, __var___Block_47_19) , 0) ;
 	}
 }
 
@@ -473,56 +474,57 @@ void  Sgl$Rbo$ctor(Sgl$Rbo *  self){
 
 
 void  Sgl$Rbo$dtor(Sgl$Rbo *  self){
+	printf("~Rbo.dtor\n") ;
 	if (self->id) {
-		URGC_VAR_CLEANUP Sgl$__Block_198_19*  __var___Block_198_19 = (__var___Block_198_19=NULL,urgc_init_var((void**)&__var___Block_198_19, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_198_19) , __finiBlock___Block_198_19) ));
-		__var___Block_198_19->id = self->id;
+		URGC_VAR_CLEANUP Sgl$__Block_200_19*  __var___Block_200_19 = (__var___Block_200_19=NULL,urgc_init_var((void**)&__var___Block_200_19, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_200_19) , __finiBlock___Block_200_19) ));
+		__var___Block_200_19->id = self->id;
 		URGC_VAR_CLEANUP_CLASS SuiCore$Timer*  tmpReturn_1 = NULL;
-		URGC_VAR_CLEANUP Sgl$__Closure_201_27*  tmpReturn_2 = NULL;
-		SuiCore$mkTimerTimeout(&tmpReturn_1, __make___Closure_201_27(&tmpReturn_2, __var___Block_198_19) , 0) ;
+		URGC_VAR_CLEANUP Sgl$__Closure_203_27*  tmpReturn_2 = NULL;
+		SuiCore$mkTimerTimeout(&tmpReturn_1, __make___Closure_203_27(&tmpReturn_2, __var___Block_200_19) , 0) ;
 	}
 }
 
 
 
-static void  __finiBlock___Block_46_19(Sgl$__Block_46_19 *  self){
+static void  __finiBlock___Block_47_19(Sgl$__Block_47_19 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __finiBlock___Block_198_19(Sgl$__Block_198_19 *  self){
+static void  __finiBlock___Block_200_19(Sgl$__Block_200_19 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_49_27(Sgl$__Closure_49_27 *  self){
-	Sgl$deleteFrameBuffer(self->__var___Block_46_19->id) ;
+static void  __fn___Closure_50_27(Sgl$__Closure_50_27 *  self){
+	Sgl$deleteFrameBuffer(self->__var___Block_47_19->id) ;
 }
 
-static void  __fini___Closure_49_27(Sgl$__Closure_49_27 *  self){
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_49_27, __var___Block_46_19) , NULL) ;
+static void  __fini___Closure_50_27(Sgl$__Closure_50_27 *  self){
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_50_27, __var___Block_47_19) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static Sgl$__Closure_49_27*  __make___Closure_49_27(Sgl$__Closure_49_27 **  __outRef__, Sgl$__Block_46_19 *  __var___Block_46_19){
-	URGC_VAR_CLEANUP Sgl$__Closure_49_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_49_27) , __fini___Closure_49_27) ));
-	self->invoke = __fn___Closure_49_27;
+static Sgl$__Closure_50_27*  __make___Closure_50_27(Sgl$__Closure_50_27 **  __outRef__, Sgl$__Block_47_19 *  __var___Block_47_19){
+	URGC_VAR_CLEANUP Sgl$__Closure_50_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_50_27) , __fini___Closure_50_27) ));
+	self->invoke = __fn___Closure_50_27;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_49_27, __var___Block_46_19) , __var___Block_46_19) ;
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_50_27, __var___Block_47_19) , __var___Block_47_19) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
-static void  __fn___Closure_201_27(Sgl$__Closure_201_27 *  self){
-	Sgl$deleteRenderBuffer(self->__var___Block_198_19->id) ;
+static void  __fn___Closure_203_27(Sgl$__Closure_203_27 *  self){
+	Sgl$deleteRenderBuffer(self->__var___Block_200_19->id) ;
 }
 
-static void  __fini___Closure_201_27(Sgl$__Closure_201_27 *  self){
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_201_27, __var___Block_198_19) , NULL) ;
+static void  __fini___Closure_203_27(Sgl$__Closure_203_27 *  self){
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_203_27, __var___Block_200_19) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static Sgl$__Closure_201_27*  __make___Closure_201_27(Sgl$__Closure_201_27 **  __outRef__, Sgl$__Block_198_19 *  __var___Block_198_19){
-	URGC_VAR_CLEANUP Sgl$__Closure_201_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_201_27) , __fini___Closure_201_27) ));
-	self->invoke = __fn___Closure_201_27;
+static Sgl$__Closure_203_27*  __make___Closure_203_27(Sgl$__Closure_203_27 **  __outRef__, Sgl$__Block_200_19 *  __var___Block_200_19){
+	URGC_VAR_CLEANUP Sgl$__Closure_203_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_203_27) , __fini___Closure_203_27) ));
+	self->invoke = __fn___Closure_203_27;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_201_27, __var___Block_198_19) , __var___Block_198_19) ;
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_203_27, __var___Block_200_19) , __var___Block_200_19) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 

@@ -43,6 +43,7 @@ class Fbo{
         self.gen()
     }
     void dtor(){
+        printf("~Fbo.dtor. %p, %p\n\n", self.tex2d, self.depthTex2d)
         if self.id {
             GLuint id = self.id
             //确保在主线程释放
@@ -195,6 +196,7 @@ class Rbo {
         self.gen()
     }
     void dtor(){
+        printf("~Rbo.dtor\n")
         if self.id {
             GLuint id = self.id
             //确保在主线程释放

@@ -160,12 +160,14 @@ class HoroEditor extends Listener{
         if e instanceof MouseEvent {
             MouseEvent *me = (MouseEvent*)e
             Rect absRect = self.sceneView.get_abs_rect()
-            Vec2 fboSize = self.sceneView.fbo.getSize()
-            //计算ndcPos
-            me.ndcPos = mkVec2(
-                (me.clientX - absRect.x) / fboSize.x * 2.0 - 1.0,
-                -(me.clientY - absRect.bottom()) / fboSize.y * 2.0 - 1.0,
-            )
+            if self.sceneView.fbo {
+                Vec2 fboSize = self.sceneView.fbo.getSize()
+                //计算ndcPos
+                me.ndcPos = mkVec2(
+                    (me.clientX - absRect.x) / fboSize.x * 2.0 - 1.0,
+                    -(me.clientY - absRect.bottom()) / fboSize.y * 2.0 - 1.0,
+                )
+            }
             // printf("ndcPos:%f,%f\n", me.ndcPos.x, me.ndcPos.y);
         }
 
@@ -190,8 +192,10 @@ class HoroEditor extends Listener{
         Node* sel = selANode == null ? null : (Node*)selANode.node
 
         if sel && sel instanceof Obj3d{
-            //绘制outline
-            self.outlineFx.draw(self.sceneView.drawCtx, sel, self.sceneView.fbo)
+            if self.sceneView.fbo{
+                //绘制outline
+                self.outlineFx.draw(self.sceneView.drawCtx, sel, self.sceneView.fbo)
+            }
         }
 
         self.toolMgr.scene  = self.sceneView.scene

@@ -997,7 +997,7 @@ void orc_delRefc(Object *p){
 
 void urgc_refvar_cleanup_class(void *p) {
     Object** ppobj = (Object **)p;
-    printf("urgc_refvar_cleanup_class:%p, pp:%p\n", p, ppobj);
+    // printf("urgc_refvar_cleanup_class:%p, pp:%p\n", p, ppobj);
     // printf("cleanup ref:p=%p obj=%p\n", pobj, *pobj);
     //urgc_set_var(pobj, NULL);//记录引用
 	// urgc.deref(pobj, (GcObj*)(*pobj));

@@ -20,13 +20,13 @@
 
 
 // static struct 
-typedef struct tagSgl$__Block_60_19 Sgl$__Block_60_19;
+typedef struct tagSgl$__Block_61_19 Sgl$__Block_61_19;
 
-typedef struct tagSgl$__Closure_63_27 Sgl$__Closure_63_27;
+typedef struct tagSgl$__Closure_64_27 Sgl$__Closure_64_27;
 
 
 
-struct tagSgl$__Block_60_19 {
+struct tagSgl$__Block_61_19 {
 	GLuint id ;
 };
 
@@ -34,10 +34,10 @@ struct tagSgl$__Block_60_19 {
 
 
 
-struct tagSgl$__Closure_63_27 {
-	void  (*invoke)(Sgl$__Closure_63_27 *  self);
+struct tagSgl$__Closure_64_27 {
+	void  (*invoke)(Sgl$__Closure_64_27 *  self);
 	Vtable_Object *  vtable ;
-	Sgl$__Block_60_19*  __var___Block_60_19 ;
+	Sgl$__Block_61_19*  __var___Block_61_19 ;
 };
 
 
@@ -45,10 +45,10 @@ struct tagSgl$__Closure_63_27 {
 
 
 // static function declaration
-static void  __finiBlock___Block_60_19(Sgl$__Block_60_19 *  self);
-static void  __fn___Closure_63_27(Sgl$__Closure_63_27 *  self);
-static void  __fini___Closure_63_27(Sgl$__Closure_63_27 *  self);
-static Sgl$__Closure_63_27*  __make___Closure_63_27(Sgl$__Closure_63_27 **  __outRef__, Sgl$__Block_60_19 *  __var___Block_60_19);
+static void  __finiBlock___Block_61_19(Sgl$__Block_61_19 *  self);
+static void  __fn___Closure_64_27(Sgl$__Closure_64_27 *  self);
+static void  __fini___Closure_64_27(Sgl$__Closure_64_27 *  self);
+static Sgl$__Closure_64_27*  __make___Closure_64_27(Sgl$__Closure_64_27 **  __outRef__, Sgl$__Block_61_19 *  __var___Block_61_19);
 
 
 
@@ -228,12 +228,13 @@ void  Sgl$Tex2d$ctor(Sgl$Tex2d *  self){
 
 
 void  Sgl$Tex2d$dtor(Sgl$Tex2d *  self){
+	printf("Tex2d.~dtor. self:%p\n", self) ;
 	if (self->id) {
-		URGC_VAR_CLEANUP Sgl$__Block_60_19*  __var___Block_60_19 = (__var___Block_60_19=NULL,urgc_init_var((void**)&__var___Block_60_19, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_60_19) , __finiBlock___Block_60_19) ));
-		__var___Block_60_19->id = self->id;
+		URGC_VAR_CLEANUP Sgl$__Block_61_19*  __var___Block_61_19 = (__var___Block_61_19=NULL,urgc_init_var((void**)&__var___Block_61_19, orc_alloc_and_set_deleter(sizeof(Sgl$__Block_61_19) , __finiBlock___Block_61_19) ));
+		__var___Block_61_19->id = self->id;
 		URGC_VAR_CLEANUP_CLASS SuiCore$Timer*  tmpReturn_1 = NULL;
-		URGC_VAR_CLEANUP Sgl$__Closure_63_27*  tmpReturn_2 = NULL;
-		SuiCore$mkTimerTimeout(&tmpReturn_1, __make___Closure_63_27(&tmpReturn_2, __var___Block_60_19) , 0) ;
+		URGC_VAR_CLEANUP Sgl$__Closure_64_27*  tmpReturn_2 = NULL;
+		SuiCore$mkTimerTimeout(&tmpReturn_1, __make___Closure_64_27(&tmpReturn_2, __var___Block_61_19) , 0) ;
 	}
 }
 
@@ -295,24 +296,24 @@ bool  Sgl$Tex2d$loadImageByPathCstr(Sgl$Tex2d *  self, const char *  path){
 
 
 
-static void  __finiBlock___Block_60_19(Sgl$__Block_60_19 *  self){
+static void  __finiBlock___Block_61_19(Sgl$__Block_61_19 *  self){
 	return urgc_free_later(self) ; 
 }
 
-static void  __fn___Closure_63_27(Sgl$__Closure_63_27 *  self){
-	Sgl$deleteTexture(self->__var___Block_60_19->id) ;
+static void  __fn___Closure_64_27(Sgl$__Closure_64_27 *  self){
+	Sgl$deleteTexture(self->__var___Block_61_19->id) ;
 }
 
-static void  __fini___Closure_63_27(Sgl$__Closure_63_27 *  self){
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_63_27, __var___Block_60_19) , NULL) ;
+static void  __fini___Closure_64_27(Sgl$__Closure_64_27 *  self){
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_64_27, __var___Block_61_19) , NULL) ;
 	urgc_free_later(self) ;
 }
 
-static Sgl$__Closure_63_27*  __make___Closure_63_27(Sgl$__Closure_63_27 **  __outRef__, Sgl$__Block_60_19 *  __var___Block_60_19){
-	URGC_VAR_CLEANUP Sgl$__Closure_63_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_63_27) , __fini___Closure_63_27) ));
-	self->invoke = __fn___Closure_63_27;
+static Sgl$__Closure_64_27*  __make___Closure_64_27(Sgl$__Closure_64_27 **  __outRef__, Sgl$__Block_61_19 *  __var___Block_61_19){
+	URGC_VAR_CLEANUP Sgl$__Closure_64_27*  self = (self=NULL,urgc_init_var((void**)&self, orc_alloc_and_set_deleter(sizeof(Sgl$__Closure_64_27) , __fini___Closure_64_27) ));
+	self->invoke = __fn___Closure_64_27;
 	self->vtable = orc_Vtable_Closure_init() ;
-	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_63_27, __var___Block_60_19) , __var___Block_60_19) ;
+	urgc_set_field(self, (void * )offsetof(Sgl$__Closure_64_27, __var___Block_61_19) , __var___Block_61_19) ;
 	return urgc_set_var_for_return((void ** )__outRef__, self) ; 
 }
 
@@ -340,6 +341,7 @@ SuiCore$Image *  Sgl$loadImageByTex2d(Sgl$Tex2d *  tex){
 		ret->_img = imgId;
 		urgc_set_field_class(ret, (void * )offsetof(SuiCore$Image, data) , tex) ;
 		imageMap->put(imageMap, key, ret) ;
+		printf("tex2d image map size:%d\n", imageMap->size(imageMap) ) ;
 		return ret; 
 	}
 }
