@@ -2169,7 +2169,7 @@ void  Exception$dtor(Exception *  self){
 
 
 
-int  main2(){
+int  main(){
 	volatile bool __orc_return_flag_1185_0 = false;
 	volatile int __orc_loop_control_1185_0 = 0;
 	int  __orc_return_value_1185_0 = {0};
@@ -2326,17 +2326,24 @@ void test_function() {
     
     printf("Before longjmp, my_var = %d\n", my_var);
     
-    // 直接跳转，绕过正常的函数返回
-    longjmp(env, 1); 
+	{
+		// 直接跳转，绕过正常的函数返回
+		longjmp(env, 1); 
+	}
     
     // 这里的代码永远不会执行，cleanup 也不会执行
     printf("After longjmp (unreachable)\n");
 }
+void test_function2() {
+    // 声明变量并绑定 cleanup 属性
+    __attribute__((cleanup(cleanup_func))) int my_var = 22;
+	test_function();
+}
 
-int main() {
+int main3() {
     if (setjmp(env) == 0) {
         printf("Calling test_function...\n");
-        test_function();
+        test_function2();
     } else {
         printf("Returned from longjmp. Notice that cleanup was NOT called.\n");
     }
