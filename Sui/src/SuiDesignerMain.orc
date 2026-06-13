@@ -1194,10 +1194,13 @@ int main(){
 
     {
         try{
+            Exception@ e2 = new Exception()
+            e2.tmp = 2
             printf("try\n");
             Exception @ e = new Exception()
             e.tmp = 30
             throw e;
+            printf("after throw\n")
         } catch (Exception@ e){
             printf("catch: %d\n", e.tmp);
         }
