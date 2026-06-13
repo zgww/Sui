@@ -2169,10 +2169,18 @@ void  Exception$dtor(Exception *  self){
 
 
 
+void  testThrow(){
+	URGC_VAR_CLEANUP_CLASS Exception*  e2 = (e2=NULL,urgc_init_var_class((void**)&e2, Exception_new(&e2) ));
+	e2->tmp = 3;
+	URGC_VAR_CLEANUP_CLASS Exception*  e = (e=NULL,urgc_init_var_class((void**)&e, Exception_new(&e) ));
+	e->tmp = 4;
+	Orc_throw((void*)e, (Vtable_Object*)Vtable_Exception_init(NULL), NULL);
+}
+
 int  main(){
-	volatile bool __orc_return_flag_1185_0 = false;
-	volatile int __orc_loop_control_1185_0 = 0;
-	int  __orc_return_value_1185_0 = {0};
+	volatile bool __orc_return_flag_1192_0 = false;
+	volatile int __orc_loop_control_1192_0 = 0;
+	int  __orc_return_value_1192_0 = {0};
 
 	urgc_start_process_thread() ;
 	windowInit() ;
@@ -2182,9 +2190,10 @@ int  main(){
 	}
 	{
 		{
-			ORC_TRY(__orc_try_scope_1196_8, "try@1196:8", "catch@1196:8") {
+			ORC_TRY(__orc_try_scope_1203_8, "try@1203:8", "catch@1203:8") {
 			URGC_VAR_CLEANUP_CLASS Exception*  e2 = (e2=NULL,urgc_init_var_class((void**)&e2, Exception_new(&e2) ));
 			e2->tmp = 2;
+			testThrow() ;
 			printf("try\n") ;
 			URGC_VAR_CLEANUP_CLASS Exception*  e = (e=NULL,urgc_init_var_class((void**)&e, Exception_new(&e) ));
 			e->tmp = 30;
@@ -2192,69 +2201,69 @@ int  main(){
 			printf("after throw\n") ;
 		}
 		
-			ORC_TRY_END(__orc_try_scope_1196_8);
+			ORC_TRY_END(__orc_try_scope_1203_8);
 			
-			ORC_CATCH(__orc_try_scope_1196_8) {
+			ORC_CATCH(__orc_try_scope_1203_8) {
 				
-				ORC_CATCH_CLASS_AS(__orc_try_scope_1196_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
+				ORC_CATCH_CLASS_AS(__orc_try_scope_1203_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
 			printf("catch: %d\n", e->tmp) ;
 		}
 		
 		
 			}
-			ORC_END_CATCH(__orc_try_scope_1196_8);
+			ORC_END_CATCH(__orc_try_scope_1203_8);
 		
-			goto __orc_finally_1196_8;
-		__orc_finally_1196_8:
+			goto __orc_finally_1203_8;
+		__orc_finally_1203_8:
 			ORC_FINALLY {
 			printf("finally\n") ;
 		}
 		
-		__orc_after_finally_1196_8:
+		__orc_after_finally_1203_8:
 			
-			if (__orc_return_flag_1185_0) {
-				Orc_tryScopeAbandon(&__orc_try_scope_1196_8);
-				return __orc_return_value_1185_0;
+			if (__orc_return_flag_1192_0) {
+				Orc_tryScopeAbandon(&__orc_try_scope_1203_8);
+				return __orc_return_value_1192_0;
 			}
 		
 			
-			Orc_tryScopeFinalize(&__orc_try_scope_1196_8);
+			Orc_tryScopeFinalize(&__orc_try_scope_1203_8);
 		}
 		{
-			ORC_TRY(__orc_try_scope_1210_8, "try@1210:8", "catch@1210:8") {
+			ORC_TRY(__orc_try_scope_1220_8, "try@1220:8", "catch@1220:8") {
 			printf("try\n") ;
 			URGC_VAR_CLEANUP_CLASS Exception*  e = (e=NULL,urgc_init_var_class((void**)&e, Exception_new(&e) ));
 			e->tmp = 34;
 			Orc_throw((void*)e, (Vtable_Object*)Vtable_Exception_init(NULL), NULL);
 		}
 		
-			ORC_TRY_END(__orc_try_scope_1210_8);
+			ORC_TRY_END(__orc_try_scope_1220_8);
 			
-			ORC_CATCH(__orc_try_scope_1210_8) {
+			ORC_CATCH(__orc_try_scope_1220_8) {
 				
-				ORC_CATCH_CLASS_AS(__orc_try_scope_1210_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
+				ORC_CATCH_CLASS_AS(__orc_try_scope_1220_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
 			printf("catch: %d\n", e->tmp) ;
 		}
 		
 		
 			}
-			ORC_END_CATCH(__orc_try_scope_1210_8);
+			ORC_END_CATCH(__orc_try_scope_1220_8);
 		
-			goto __orc_finally_1210_8;
-		__orc_finally_1210_8:
+			goto __orc_finally_1220_8;
+		__orc_finally_1220_8:
 			ORC_FINALLY {
 			printf("finally\n") ;
 		}
 		
-		__orc_after_finally_1210_8:
+		__orc_after_finally_1220_8:
 			
-			if (__orc_return_flag_1185_0) {
-				Orc_tryScopeAbandon(&__orc_try_scope_1210_8);
-				return __orc_return_value_1185_0;
+			if (__orc_return_flag_1192_0) {
+				Orc_tryScopeAbandon(&__orc_try_scope_1220_8);
+				return __orc_return_value_1192_0;
 			}
 		
 			
-			Orc_tryScopeFinalize(&__orc_try_scope_1210_8);
+			Orc_tryScopeFinalize(&__orc_try_scope_1220_8);
 		}
 	}
 	printf("done\n") ;
@@ -2278,7 +2287,7 @@ void  testTransparency(){
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutAlign*  tmpNewOwner_1 = NULL;
 	{
 		SuiLayout$LayoutAlign*  o = SuiLayout$LayoutAlign_new(&tmpNewOwner_1) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1308_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1318_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = 0x33afafff;
 		SuiCore$Vec2$set(&o->anchor, 0.5, 0.5) ;
@@ -2286,8 +2295,8 @@ void  testTransparency(){
 		urgc_set_field_class(win, (void * )offsetof(Sui$Window, rootView) , o) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmpReturn_2 = NULL;
 		{
-			SuiCore$View*  __scopeVar_1315_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1315_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1315_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiCore$View*  __scopeVar_1325_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1325_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1325_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->backgroundColor = 0xffefefff;
 			o->width = 100;
@@ -2295,8 +2304,8 @@ void  testTransparency(){
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_3 = NULL;
 		{
-			SuiView$TextView*  __scopeVar_1320_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1320_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1320_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$TextView*  __scopeVar_1330_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1330_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1330_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 			o->setText(o, Orc$str(&tmpReturn_4, "你好呀， Sui") ) ;

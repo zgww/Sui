@@ -1182,6 +1182,13 @@ class Exception {
         printf("~Exception:tmp:%d\n", self.tmp)
     }
 }
+void testThrow(){
+    Exception@ e2 = new Exception()
+    e2.tmp = 3
+    Exception @ e = new Exception()
+    e.tmp = 4
+    throw e
+}
 int main(){
     urgc_start_process_thread();
     windowInit()
@@ -1196,6 +1203,9 @@ int main(){
         try{
             Exception@ e2 = new Exception()
             e2.tmp = 2
+
+            testThrow()
+
             printf("try\n");
             Exception @ e = new Exception()
             e.tmp = 30

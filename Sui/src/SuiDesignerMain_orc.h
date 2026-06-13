@@ -322,6 +322,7 @@ void Exception_fini(Exception *self);
 
 void  Exception$dtor(Exception *  self);
 
+void  testThrow();
 int  main();
 void  testTransparency();
 
