@@ -100,6 +100,7 @@ class Horo3dSceneView extends ImageView {
                     self.camera.position = newcampos
                 }
 
+                self.invalidDraw()
                 // self.camera.rotation.y += d.deltaPos.x * 0.001
                 // self.camera.rotation.x += d.deltaPos.y * 0.001
             }
@@ -195,6 +196,7 @@ class Horo3dSceneView extends ImageView {
                     -we.deltaY
                     ))
                 self.camera.position = self.camera.getParentObj3d().worldToLocal(newPos)
+                self.invalidDraw()
 
             }
             if 

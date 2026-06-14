@@ -285,6 +285,7 @@ void  HoroEditor$Horo3dSceneView$onEvent(HoroEditor$Horo3dSceneView *  self, Sui
 			SuiCore$Vec3 newPos = ((Sgl$Obj3d * )self->camera)->localToWorld(self->camera, SuiCore$mkVec3(0, 0, -we->deltaY) ) ;
 			Sgl$Obj3d *  tmpThis_1 = NULL;
 			((Sgl$Obj3d * )self->camera)->position = (tmpThis_1 = Sgl$Obj3d$getParentObj3d((Sgl$Obj3d * )self->camera) )->worldToLocal(tmpThis_1, newPos) ;
+			((SuiCore$ViewBase * )self)->invalidDraw(self) ;
 		}
 		if ((me->button == 1 || me->button == 3) && me->isMouseDown && ((SuiCore$ViewEvent * )me)->isBubble(me) ) {
 			self->drag->onMouseDown(self->drag, me) ;
@@ -342,6 +343,7 @@ static void  __fn___Closure_68_27(HoroEditor$__Closure_68_27 *  self, SuiView$Dr
 			SuiCore$Vec3 newcampos = (tmpThis_2 = Sgl$Obj3d$getParentObj3d((Sgl$Obj3d * )self->__var___Block_66_15->self->camera) )->worldToLocal(tmpThis_2, newPos) ;
 			((Sgl$Obj3d * )self->__var___Block_66_15->self->camera)->position = newcampos;
 		}
+		((SuiCore$ViewBase * )self->__var___Block_66_15->self)->invalidDraw(self->__var___Block_66_15->self) ;
 	}
 }
 

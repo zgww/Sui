@@ -91,7 +91,7 @@ void SuiCore$App$runEventLoop(SuiCore$App* self) {
 		self->processDirtyReacts(self);
 
 		if (self->_invalidDraw) {
-			// self->_invalidDraw = false;
+			self->_invalidDraw = false;
 			self->layoutAndDrawAllWindows(self);
 		}
 

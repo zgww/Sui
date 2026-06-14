@@ -2256,7 +2256,7 @@ int  main(){
 		printf("after longjmp\n");
 	}
 	if (1){
-		return 0;
+		// return 0;
 	}
 	volatile bool __orc_return_flag_1192_0 = false;
 	volatile int __orc_loop_control_1192_0 = 0;
