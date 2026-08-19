@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="fui.vcxproj" Id="8d41ffd3-a9c3-4a6f-b8a9-5c2101e2eb51" />
+</Solution>
