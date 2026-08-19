@@ -302,10 +302,132 @@ file(GLOB orcSrc
     )
 
 
+file(GLOB TestMiniSrc 
+    src/*.cpp
+    src/TestMini/Main_orc.c
+    # src/Main_orc.c
+    # src/*.c  
+
+    src/Json/*.c  
+    src/Json/*.cpp
+
+    src/GL/*.c  
+    src/GL/*.cpp
+
+
+    src/nanovg/*.c  
+    src/nanovg/*.cpp
+
+    src/Audio/AudioFile_extern.cpp
+
+    src/Sui/Dialog/*.c  
+    src/Sui/Dialog/*.cpp
+
+    src/Sui/Core/Image_orc.c  
+    src/Sui/Core/Canvas_orc.c  
+    src/Sui/Core/Canvas_extern.cpp
+    src/Sui/Core/Fps_orc.c  
+    src/Sui/Core/Vec2_orc.c  
+    src/Sui/Core/Vec3_orc.c  
+    src/Sui/Core/Vec4_orc.c  
+    src/Sui/Core/Quat_orc.c  
+    src/Sui/Core/Rect_orc.c  
+    src/Sui/Core/Plane_orc.c  
+    src/Sui/Core/Quaternion_orc.c  
+    src/Sui/Core/Triangle_orc.c  
+    src/Sui/Core/Spherical_orc.c  
+    src/Sui/Core/Mat3_orc.c  
+    src/Sui/Core/Line3_orc.c  
+    src/Sui/Core/Euler_orc.c  
+
+    src/Sui/Core/Radius_orc.c  
+    src/Sui/Core/Inset_orc.c  
+    src/Sui/Core/Global_orc.c  
+    src/Sui/Core/Event_orc.c  
+    src/Sui/Core/Emitter_orc.c  
+    src/Sui/Core/Edge_orc.c  
+    src/Sui/Core/Cursor_orc.c  
+    src/Sui/Core/Cursor_win32_extern.cpp
+    src/Sui/Core/Color_orc.c  
+    src/Sui/Core/Clipboard_orc.c  
+    src/Sui/Core/Clipboard_win32_extern.cpp
+    src/Sui/Core/BoxShadow_orc.c  
+    src/Sui/Core/Border_orc.c  
+    src/Sui/Core/Screen_orc.c  
+    src/Sui/Core/Screen_win32_extern.cpp
+    src/Sui/Core/Node_orc.c
+    src/Sui/Core/Timer_orc.c
+    src/Sui/Core/Window_orc.c
+    src/Sui/Core/ViewBase_orc.c
+    src/Sui/Core/View_orc.c
+    src/Sui/Core/Focus_orc.c
+    src/Sui/Core/Frame_orc.c
+    src/Sui/Core/LayoutCell_orc.c
+    src/Sui/Core/Mat2d_orc.c
+    src/Sui/Core/App_orc.c
+    src/Sui/Core/KeyEvent_orc.c
+    src/Sui/Core/MouseEvent_orc.c
+    src/Sui/Core/Mouse_orc.c
+    src/Sui/Core/Keyboard_orc.c
+    src/Sui/Core/App_win32_extern.cpp
+    src/Sui/Core/Mouse_win32_extern.cpp
+    src/Sui/Core/Mat2d_extern.cpp
+    src/Sui/Core/Window_win32_extern.cpp
+    src/Sui/Core/NodeLib_orc.c
+    src/Sui/Core/Bezier_orc.c
+    src/Sui/Core/TestMath_orc.c
+
+
+    src/Sui/View/Checkbox_orc.c
+    src/Sui/View/ColorPalete_orc.c
+    src/Sui/View/ColorPicker_orc.c
+    src/Sui/View/DockLayout_orc.c
+    src/Sui/View/Drag_orc.c
+    src/Sui/View/Menu_orc.c
+    src/Sui/View/MenuNative_orc.c
+    src/Sui/View/MenuNative_win32_extern.cpp
+    src/Sui/View/ViewBuilder_orc.c
+    src/Sui/View/ImageView_orc.c
+    src/Sui/View/HoverViewEffect_orc.c
+    src/Sui/View/TextView_orc.c
+    src/Sui/View/EditText_orc.c
+    src/Sui/View/Button_orc.c
+    src/Sui/View/ScrollArea_orc.c
+    src/Sui/View/ProgressView_orc.c
+    src/Sui/View/Panel_orc.c
+    src/Sui/View/Switch_orc.c
+    src/Sui/View/Select_orc.c
+    src/Sui/View/Slider_orc.c
+    src/Sui/View/SplitterView_orc.c
+    src/Sui/View/TableView_orc.c
+    src/Sui/View/TreeView_orc.c
+    src/Sui/View/SystemTrayIcon_orc.c
+    src/Sui/View/SystemTrayIcon_win32.cpp
+
+
+    src/Sui/Layout/LayoutLinear_orc.c
+    src/Sui/Layout/LayoutGrid_orc.c
+    src/Sui/Layout/RowWrap_orc.c
+    src/Sui/Layout/LayoutAlign_orc.c
+
+
+    src/Orc/Md5.c
+
+    # src/testTgfx.cpp
+
+    # src/Orc/*.c
+    # src/Orc/*.cpp
+    )
+
+# add_definitions(-D_CRT=)
+
+
+
 add_executable(Sui 
     ${src}
     # resource.rc 
 )
+
 
 
 add_subdirectory(UrgcDll)
@@ -342,7 +464,6 @@ target_link_libraries(Sui
 
     assimp
     miniaudio
-    
 
     # -fsanitize=address
     )
@@ -361,3 +482,31 @@ set_target_properties(Naga PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
+
+
+add_executable(TestMini 
+    ${TestMiniSrc}
+    # resource.rc 
+)
+target_link_directories(TestMini PRIVATE 
+    lib
+    "build/assimp/lib"
+    )
+
+target_link_libraries(TestMini 
+
+    # clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+    # asan
+    Orc
+    UrgcDll Naga 
+
+    opengl32
+    glu32
+    glew32
+    # tgfx
+
+    assimp
+    miniaudio
+
+    # -fsanitize=address
+    )

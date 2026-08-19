@@ -1,4 +1,8 @@
-	编译异常:不识别的表达式，无法求取类型:self.inspector.inspect #109
-	编译异常:不识别的表达式，无法求取类型:self.inspector.inspect #109
-	编译异常:不识别的表达式，无法求取类型:self.inspector.inspect #109
-	编译异常:不识别的表达式，无法求取类型:self.inspector.inspect #109
+	编译异常:通过符号Json文件失败:%s
+	编译异常:通过符号Json文件失败:%s
+	编译异常:通过符号Json文件失败:%s
+	编译异常:通过符号Json文件失败:%s
+	编译异常:通过符号Json文件失败:%s
+	编译异常:通过符号Json文件失败:%s
+	编译异常:通过符号Json文件失败:%s
+	编译异常:加载orc文件符号表异常。计算模块绝对路径异常basepath:E:/ws/Sui/Sui/src/TestMini/Main.orc path:./Sui/View/Button.orc, abspath:
