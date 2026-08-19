@@ -59,7 +59,7 @@ public:
 	virtual void _on_invalidDraw() {}
 	virtual void resetViewTreeDirty() {}
 
-	void invalidReact() override;
+	virtual void invalidReact() override;
 
 	Vec2 localToWorld(float x, float y);
 	Vec2 worldToLocal(float x, float y);

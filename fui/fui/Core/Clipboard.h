@@ -2,5 +2,5 @@
 
 #include "Predef.h"
 
-void clipboard_setText(const char* text);
-std::string clipboard_getText();
+void Clipboard_setText(const char* text);
+std::string Clipboard_getText();

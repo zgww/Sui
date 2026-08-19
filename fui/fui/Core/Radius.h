@@ -3,7 +3,7 @@
 #include "Predef.h"
 #include "../Urgc/GcObj.h"
 
-class Radius : public GcObj {
+struct Radius  {
 public:
 	float tl = 0.0f;
 	float tr = 0.0f;

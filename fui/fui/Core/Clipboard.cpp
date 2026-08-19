@@ -3,7 +3,7 @@
 #ifdef _WIN32
 #include <windows.h>
 
-void clipboard_setText(const char* text) {
+void Clipboard_setText(const char* text) {
 	if (!OpenClipboard(nullptr)) return;
 	EmptyClipboard();
 	int wlen = MultiByteToWideChar(CP_UTF8, 0, text, -1, nullptr, 0);
@@ -17,7 +17,7 @@ void clipboard_setText(const char* text) {
 	CloseClipboard();
 }
 
-std::string clipboard_getText() {
+std::string Clipboard_getText() {
 	if (!OpenClipboard(nullptr)) return "";
 	HANDLE h = GetClipboardData(CF_UNICODETEXT);
 	if (!h) { CloseClipboard(); return ""; }
@@ -35,6 +35,6 @@ std::string clipboard_getText() {
 	return result;
 }
 #else
-void clipboard_setText(const char* text) {}
-std::string clipboard_getText() { return ""; }
+void Clipboard_setText(const char* text) {}
+std::string Clipboard_getText() { return ""; }
 #endif

@@ -4,7 +4,8 @@
 #include "Emitter.h"
 #include "../Urgc/GcList.h"
 #include "../Urgc/GcMap.h"
-
+#include <string>
+#include <format>
 class Node;
 class Window;
 
@@ -46,7 +47,7 @@ class Window;
 #define CONCAT(a, b) a##b
 #define LINE_KEY TO_STRING(__LINE__)##"L"
 
-#define R(Type, ...) {auto _tmp = r<Type>(o, ##__VA_ARGS__), o = _tmp;
+#define R(Type, ...) {auto _tmp = Node_getOrCreate<Type>(o, ##__VA_ARGS__), o = _tmp;
 #define REND Node_removeUnusedKids(o); o->react();} 
 
 template <class T>
@@ -60,87 +61,14 @@ void Node_removeUnusedKids(Node* o);
 Node* Node_findChildByKeyAfterIndexBeforeStaticChild(Node* parent, int start, std::string& key);
 
 
-template <class T>
-Ref<T> r(Node* o, std::string key = "") {
-	if (key == "") { //期望静态节点
-		while (true) {
-			auto curNode = o->getChild(o->gocIdx);
-			if (curNode == nullptr) {
-				break; //需要创建
-			}
-			if (curNode->gocKey.empty()) {//是静态节点
-				if (isSameNodeType<T>(curNode)) { //匹配一致
-					o->gocIdx++;
-					return curNode;
-				}
-				else {
-					throw std::exception(std::format("static node type is different {}", o->gocIdx));
-				}
-			}
-			else { //非静态节点
-				o->removeChild(o->gocIdx); //直接移除
-			}
-
-		}
-	}
-	else { //带key节点
-		while (true) {
-			auto curNode = o->getChild(o->gocIdx);
-			if (curNode == nullptr) {
-				break; //需要创建
-			}
-			if (curNode->gocKey == key) { //key匹配
-				if (isSameNodeType<T>(curNode)) { //匹配一致
-					o->gocIdx++;
-					return curNode;
-				}
-				else {
-					throw std::exception(std::format("dynamic node type is different gocIdx:{}, key:{}", o->gocIdx, key));
-				}
-			}
-			else { // key不匹配，向后查找 
-				auto found = Node_findChildByKeyAfterIndexBeforeStaticChild(o, o->gocIdx + 1, key);
-				if (found) {
-					if (isSameNodeType<T>(found)) { //类型匹配一致,需要移位回来
-						o->insertChild(found, o->gocIdx);
-						o->gocIdx++;
-						return found;
-					}
-					else {
-						throw std::exception(std::format("dynamic founded node type is different gocIdx:{}, key:{}", o->gocIdx, key));
-					}
-				}
-				else { //未找到，需要新增
-
-				}
-				//需要删除的就会一直被移到后面，如果后面还有静态节点，就会把无效的动态节点删除，如果后面已经没有静态节点了， 那就会剩下一些无效节点，需要删除
-			}
-		}
-	}
-
-	//创建新节点
-	Ref<T> ret{ new T() };
-	ret->gocKey = key;
-	o->insertChild(ret.get(), o->gocIdx);
-	o->gocIdx++;
-	return ret;
-}
-template <class T>
-Ref<T> r(Ref<Node>& o, std::string key = "") {
-	return r(o.get(), key);
-}
-
-
-
 void requestAnimationFrame(Ref<Closure<bool()>> fn);
 void tickAnimationFrames();
 
 class Node : public Emitter {
 public:
-	char key[32] = {0};
-
-	Ref<GcList<Node>> children{new GcList<Node>(), this};
+	Ref<GcList<Node>> children{ new GcList<Node>(), this };
 	Ref<Node> parent{nullptr, this};
+	Ref<GcList<Node>> outKids{ nullptr, this };
 
 	std::string name;
 
@@ -151,13 +79,12 @@ public:
 	bool mounted = false;
 	Ref<Window> ownerWindow{nullptr, this};
 
-	bool hasInnerReact = false;
+	bool _flagUseOutKids = false;
+
 	bool _reactDirty = false;
 
-	Ref<GcMap<Node>> _mapForReact{nullptr, this};
-	Ref<GcMap<Node>> _unusedMapForReact{nullptr, this};
-	int _appendIndexForReact = 0;
-	bool isNewForReact = true;
+	//标记是不是新建的节点,用于react时判断节点是create/update
+	bool created = true;
 
 	// Lifecycle
 	void setMounted(bool m);
@@ -185,58 +112,15 @@ public:
 
 	// React system
 	virtual void react() {}
-	void invalidReact();
-	void clearUnusedKids();
+	virtual void invalidReact();
 	void placeKid(Node* n);
 	void placeKids(Ref<GcList<Node>> kids);
-	bool isInInnerReact();
+	// innerReact适用于有内部子树，有槽节点的情况
+	void initInnerReact();
 	void startInnerReact();
 	void endInnerReact();
-	Ref<GcList<Node>> getOutKids();
+	Ref<GcList<Node>> gocOutKids();
 
-
-	template<typename T>
-	T* gocChild(long long key) {
-		if (!_unusedMapForReact) _unusedMapForReact = new GcMap<Node>();
-		if (!_mapForReact) _mapForReact = new GcMap<Node>();
-
-		char keyStr[32];
-		snprintf(keyStr, sizeof(keyStr), "%lld", key);
-
-		Node* existing = _unusedMapForReact->get(keyStr);
-		if (existing) {
-			T* casted = dynamic_cast<T*>(existing);
-			if (casted) {
-				placeKid(casted);
-				return casted;
-			}
-		}
-
-		T* node = new T();
-		snprintf(node->key, sizeof(node->key), "%lld", key);
-		placeKid(node);
-		return node;
-	}
-
-	template<typename T>
-	T* gocChildStr(const std::string& key) {
-		if (!_unusedMapForReact) _unusedMapForReact = new GcMap<Node>();
-		if (!_mapForReact) _mapForReact = new GcMap<Node>();
-
-		Node* existing = _unusedMapForReact->get(key);
-		if (existing) {
-			T* casted = dynamic_cast<T*>(existing);
-			if (casted) {
-				placeKid(casted);
-				return casted;
-			}
-		}
-
-		T* node = new T();
-		snprintf(node->key, sizeof(node->key), "%s", key.c_str());
-		placeKid(node);
-		return node;
-	}
 
 	// Utility
 	void walkIf(std::function<bool(void* data, Node* n)> fn, void* ud);
@@ -269,3 +153,81 @@ public:
 
 	virtual const char* getClassName() const { return "Node"; }
 };
+
+
+
+template <class T>
+Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
+	if (key == "") { //期望静态节点
+		while (true) {
+			auto curNode = o->getChild(o->gocIdx);
+			if (curNode == nullptr) {
+				break; //需要创建
+			}
+			if (curNode->gocKey.empty()) {//是静态节点
+				if (isSameNodeType<T>(curNode)) { //匹配一致
+					o->gocIdx++;
+					curNode->created = false; //标记为update
+					return curNode;
+				}
+				else {
+					throw std::exception(std::format("static node type is different {}", o->gocIdx));
+				}
+			}
+			else { //非静态节点
+				o->removeChild(o->gocIdx); //直接移除
+			}
+
+		}
+	}
+	else { //带key节点
+		while (true) {
+			auto curNode = o->getChild(o->gocIdx);
+			if (curNode == nullptr) {
+				break; //需要创建
+			}
+			if (curNode->gocKey == key) { //key匹配
+				if (isSameNodeType<T>(curNode)) { //匹配一致
+					o->gocIdx++;
+					curNode->created = false; //标记为update
+					return curNode;
+				}
+				else {
+					throw std::exception(std::format("dynamic node type is different gocIdx:{}, key:{}", o->gocIdx, key));
+				}
+			}
+			else { // key不匹配，向后查找 
+				auto found = Node_findChildByKeyAfterIndexBeforeStaticChild(o, o->gocIdx + 1, key);
+				if (found) {
+					if (isSameNodeType<T>(found)) { //类型匹配一致,需要移位回来
+						o->insertChild(found, o->gocIdx);
+						o->gocIdx++;
+						found->created = false;//标记为update
+						return found;
+					}
+					else {
+						throw std::exception(std::format("dynamic founded node type is different gocIdx:{}, key:{}", o->gocIdx, key));
+					}
+				}
+				else { //未找到，需要新增
+
+				}
+				//需要删除的就会一直被移到后面，如果后面还有静态节点，就会把无效的动态节点删除，如果后面已经没有静态节点了， 那就会剩下一些无效节点，需要删除
+			}
+		}
+	}
+
+	//创建新节点
+	Ref<T> ret{ new T() };
+	ret->gocKey = key;
+	o->insertChild(ret.get(), o->gocIdx);
+	o->gocIdx++;
+	return ret;
+}
+template <class T>
+Ref<T> Node_getOrCreate(Ref<Node>& o, std::string key = "") {
+	auto n = o.get();
+	return Node_getOrCreate<T>(n, key);
+}
+
+

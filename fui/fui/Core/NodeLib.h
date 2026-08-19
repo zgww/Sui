@@ -14,8 +14,7 @@ class EditText;
 
 template<typename T>
 T* gocNode(Node* parent, long long key) {
-	if (!parent) return nullptr;
-	return parent->gocChild<T>(key);
+	return nullptr;
 }
 
 LayoutLinear* gocLayoutLinear(Node* parent, long long key);

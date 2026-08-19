@@ -14,6 +14,7 @@
 
 class Canvas;
 class ViewCallback;
+class View;
 
 class ViewCallback : public GcObj {
 public:
@@ -37,11 +38,11 @@ public:
 	float minHeight = 0.0f;
 	float maxHeight = infinity;
 
-	Ref<Border> border{new Border(), this};
-	Ref<Radius> radius{new Radius(), this};
+	Border border;
+	Radius radius;
 	Inset padding;
 	Inset margin;
-	Ref<BoxShadow> boxShadow{new BoxShadow(), this};
+	BoxShadow boxShadow;
 	int backgroundColor = 0x00000000;
 
 	Ref<ViewCallback> cb{nullptr, this};

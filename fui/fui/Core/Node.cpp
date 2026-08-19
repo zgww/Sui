@@ -1,5 +1,6 @@
 #include "Node.h"
 #include "Timer.h"
+#include "App.h"
 
 // Global animation frame list
 static Ref<GcList<Closure<bool()>>> g_animationFrameList;
@@ -74,15 +75,21 @@ Node* Node::getChild(int i) {
 
 void Node::appendChild(Node* child) {
 	if (child) {
-		child->removeSelf();
-		child->parent = this;
-		children->push(child);
-		child->setMounted(mounted);
+		this->insertChild(child, this->getChildrenCount());
 	}
 }
 
 void Node::insertChild(Node* child, int at) {
 	if (!child) return;
+
+	//作为outKids参数存在,适用于innerReact
+	if (_flagUseOutKids) {
+		auto outkids = gocOutKids();
+		outkids->insert_at(at, child);
+		return;
+	}
+
+
 	if (child->parent != this) {
 		child->removeSelf();
 		child->parent = this;
@@ -102,15 +109,15 @@ void Node::insertChild(Node* child, int at) {
 	}
 	child->setMounted(mounted);
 }
-
-void Node::removeChild(Node* child) {
-	if (child) {
-		child->parent = nullptr;
-		children->remove(child);
-		child->setMounted(false);
-	}
-}
 void Node::removeChildAt(int idx) {
+	//作为outKids参数存在,适用于innerReact
+	if (_flagUseOutKids) {
+		auto outkids = gocOutKids();
+		outkids->remove_at(idx);
+		return;
+	}
+
+
 	auto child = this->getChild(idx);
 	if (child) {
 		child->parent = nullptr;
@@ -118,14 +125,15 @@ void Node::removeChildAt(int idx) {
 		child->setMounted(false);
 	}
 }
+void Node::removeChild(Node* child) {
+	if (child) {
+		auto idx = this->indexOf(child);
+		this->removeChildAt(idx);
+	}
+}
 void Node::removeAllChildren() {
-	while (children->size() > 0) {
-		Node* child = children->get(0);
-		if (child) {
-			removeChild(child);
-		} else {
-			break;
-		}
+	for (int i = this->getChildrenCount()- 1; i >= 0; i--){
+		this->removeChildAt(i);
 	}
 }
 
@@ -145,12 +153,7 @@ void Node::dissolveSubtree() {
 		Node* n = getChild(i);
 		n->dissolveSubtree();
 	}
-	if (_mapForReact) {
-		_mapForReact->clear();
-	}
-	if (_unusedMapForReact) {
-		_unusedMapForReact->clear();
-	}
+
 	removeSelf();
 }
 
@@ -173,6 +176,8 @@ void Node::invalidReact() {
 	if (_reactDirty) return;
 	_reactDirty = true;
 
+	App_use()->_reactDirty = true;
+
 	Ref<Node> self = this;
 	requestAnimationFrame(CLOSURE([=]() -> bool {
 		self->_reactDirty = false;
@@ -181,57 +186,17 @@ void Node::invalidReact() {
 	}));
 }
 
-void Node::clearUnusedKids() {
-	Node* n = this;
-	if (!_unusedMapForReact) {
-		_unusedMapForReact = new GcMap<Node>();
-	}
-	if (!_mapForReact) {
-		_mapForReact = new GcMap<Node>();
-	}
-
-	GcMap<Node>* unused = _unusedMapForReact;
-	GcMap<Node>* map = _mapForReact;
-
-	std::vector<std::string> keys;
-	for (auto& entry : unused->map) {
-		keys.push_back(entry.first);
-	}
-
-	for (auto& key : keys) {
-		Node* unusedNode = unused->get(key);
-		if (unusedNode) {
-			unusedNode->removeSelf();
-		}
-	}
-	unused->clear();
-
-	// Swap maps
-	auto tmp = _mapForReact;
-	_mapForReact = _unusedMapForReact;
-	_unusedMapForReact = tmp;
-
-	_appendIndexForReact = 0;
-}
-
 void Node::placeKid(Node* n) {
-	Node* parent = this;
-	if (!_unusedMapForReact) {
-		_unusedMapForReact = new GcMap<Node>();
+	//不需要goc Node, 因为参数就已经是Node了，只需要确定位置正确即可
+	//原位置
+	if (this->getChild(gocIdx) == n) {
+		gocIdx++;
+		return;
 	}
-	if (!_mapForReact) {
-		_mapForReact = new GcMap<Node>();
-	}
 
-	GcMap<Node>* unusedMap = _unusedMapForReact;
-	GcMap<Node>* map = _mapForReact;
-
-	std::string keyStr(n->key);
-	unusedMap->remove(keyStr);
-	map->set(keyStr, n);
-
-	parent->insertChild(n, parent->_appendIndexForReact);
-	parent->_appendIndexForReact++;
+	//不相等，就转移到位置
+	this->insertChild(n, this->gocIdx);
+	gocIdx++;
 }
 
 void Node::placeKids(Ref<GcList<Node>> kids) {
@@ -243,35 +208,27 @@ void Node::placeKids(Ref<GcList<Node>> kids) {
 	}
 }
 
-bool Node::isInInnerReact() {
-	return false;
-}
-
 void Node::startInnerReact() {
-	if (!_unusedMapForReact) _unusedMapForReact = new GcMap<Node>();
-	if (!_mapForReact) _mapForReact = new GcMap<Node>();
-
-	auto tmp = _mapForReact;
-	_mapForReact = _unusedMapForReact;
-	_unusedMapForReact = tmp;
-
-	_appendIndexForReact = 0;
+	_flagUseOutKids = false;
 }
 
 void Node::endInnerReact() {
-	clearUnusedKids();
+	_flagUseOutKids = true;
+	Node_removeUnusedKids(this);
 }
 
-Ref<GcList<Node>> Node::getOutKids() {
-	Ref<GcList<Node>> ret{new GcList<Node>()};
-	int l = getChildrenCount();
-	for (int i = 0; i < l; i++) {
-		Node* kid = getChild(i);
-		if (kid && kid->key[0] == '\0') {
-			ret->push(kid);
-		}
+void Node::initInnerReact()
+{
+	_flagUseOutKids = true;
+	this->gocOutKids();
+	this->react();
+}
+
+Ref<GcList<Node>> Node::gocOutKids() {
+	if (this->outKids == nullptr) {
+		this->outKids = new GcList<Node>();
 	}
-	return ret;
+	return this->outKids;
 }
 
 void Node::walkIf(std::function<bool(void* data, Node* n)> fn, void* ud) {
@@ -311,10 +268,10 @@ Node* Node_findChildByKeyAfterIndexBeforeStaticChild(Node* parent, int start, st
 	for (int i = start, l = parent->children->size(); i < l; i++) {
 		auto kid = parent->children->get(i);
 		if (kid) {
-			if (kid->key == key) {
+			if (kid->gocKey == key) {
 				return kid;
 			}
-			if (kid->key == "") { //到达了静态节点，不在同一个动态块里了，可以直接pass
+			if (kid->gocKey == "") { //到达了静态节点，不在同一个动态块里了，可以直接pass
 				return nullptr;
 			}
 		}

@@ -75,29 +75,6 @@
     <ClInclude Include="Layout\LayoutLinear.h" />
     <ClInclude Include="Layout\LayoutGrid.h" />
     <ClInclude Include="Layout\RowWrap.h" />
-    <ClInclude Include="View\TextView.h" />
-    <ClInclude Include="View\Button.h" />
-    <ClInclude Include="View\ImageView.h" />
-    <ClInclude Include="View\ProgressView.h" />
-    <ClInclude Include="View\Slider.h" />
-    <ClInclude Include="View\Checkbox.h" />
-    <ClInclude Include="View\Switch.h" />
-    <ClInclude Include="View\Drag.h" />
-    <ClInclude Include="View\Panel.h" />
-    <ClInclude Include="View\ScrollArea.h" />
-    <ClInclude Include="View\EditText.h" />
-    <ClInclude Include="View\Select.h" />
-    <ClInclude Include="View\HoverViewEffect.h" />
-    <ClInclude Include="View\SplitterView.h" />
-    <ClInclude Include="View\TreeView.h" />
-    <ClInclude Include="View\TableView.h" />
-    <ClInclude Include="View\Menu.h" />
-    <ClInclude Include="View\MenuNative.h" />
-    <ClInclude Include="View\ColorPalete.h" />
-    <ClInclude Include="View\ColorPicker.h" />
-    <ClInclude Include="View\DockLayout.h" />
-    <ClInclude Include="View\ImageManager.h" />
-    <ClInclude Include="View\SystemTrayIcon.h" />
     <ClInclude Include="Dialog\Toast.h" />
     <ClInclude Include="Dialog\FileDialog.h" />
     <ClInclude Include="Dialog\MessageDialog.h" />
@@ -130,29 +107,6 @@
     <ClCompile Include="Layout\LayoutLinear.cpp" />
     <ClCompile Include="Layout\LayoutGrid.cpp" />
     <ClCompile Include="Layout\RowWrap.cpp" />
-    <ClCompile Include="View\TextView.cpp" />
-    <ClCompile Include="View\Button.cpp" />
-    <ClCompile Include="View\ImageView.cpp" />
-    <ClCompile Include="View\ProgressView.cpp" />
-    <ClCompile Include="View\Slider.cpp" />
-    <ClCompile Include="View\Checkbox.cpp" />
-    <ClCompile Include="View\Switch.cpp" />
-    <ClCompile Include="View\Drag.cpp" />
-    <ClCompile Include="View\Panel.cpp" />
-    <ClCompile Include="View\ScrollArea.cpp" />
-    <ClCompile Include="View\EditText.cpp" />
-    <ClCompile Include="View\Select.cpp" />
-    <ClCompile Include="View\HoverViewEffect.cpp" />
-    <ClCompile Include="View\SplitterView.cpp" />
-    <ClCompile Include="View\TreeView.cpp" />
-    <ClCompile Include="View\TableView.cpp" />
-    <ClCompile Include="View\Menu.cpp" />
-    <ClCompile Include="View\MenuNative.cpp" />
-    <ClCompile Include="View\ColorPalete.cpp" />
-    <ClCompile Include="View\ColorPicker.cpp" />
-    <ClCompile Include="View\DockLayout.cpp" />
-    <ClCompile Include="View\ImageManager.cpp" />
-    <ClCompile Include="View\SystemTrayIcon.cpp" />
     <ClCompile Include="Dialog\Toast.cpp" />
     <ClCompile Include="Dialog\FileDialog.cpp" />
     <ClCompile Include="Dialog\MessageDialog.cpp" />
@@ -265,7 +219,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;glew32.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>F:\ws\Sui\Sui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -287,7 +241,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;glew32.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>F:\ws\Sui\Sui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>

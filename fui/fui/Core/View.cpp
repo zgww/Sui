@@ -27,24 +27,24 @@ Rect View::getViewRect() {
 
 Rect View::getContentRect() {
 	return mkRect(
-		margin.left + border->l->w + padding.left,
-		margin.top + border->t->w + padding.top,
-		maxFloat(0.0f, frame.width - margin.hor() - border->hor() - padding.hor()),
-		maxFloat(0.0f, frame.height - margin.ver() - border->ver() - padding.ver())
+		margin.left + border.l.w + padding.left,
+		margin.top + border.t.w + padding.top,
+		maxFloat(0.0f, frame.width - margin.hor() - border.hor() - padding.hor()),
+		maxFloat(0.0f, frame.height - margin.ver() - border.ver() - padding.ver())
 	);
 }
 
 Vec2 View::getNonContentSize() {
-	float w = margin.hor() + border->l->w + border->r->w + padding.hor();
-	float h = margin.ver() + border->l->w + border->r->w + padding.ver();
+	float w = margin.hor() + border.l.w + border.r.w + padding.hor();
+	float h = margin.ver() + border.l.w + border.r.w + padding.ver();
 	return mkVec2(w, h);
 }
 
 Inset View::getInsetOfFrameToContent() {
-	float l = margin.left + border->l->w + padding.left;
-	float t = margin.top + border->t->w + padding.top;
-	float r = margin.right + border->r->w + padding.right;
-	float b = margin.bottom + border->b->w + padding.bottom;
+	float l = margin.left + border.l.w + padding.left;
+	float t = margin.top + border.t.w + padding.top;
+	float r = margin.right + border.r.w + padding.right;
+	float b = margin.bottom + border.b.w + padding.bottom;
 	return mkInset(t, r, b, l);
 }
 
@@ -103,19 +103,19 @@ void View::updateFrame_forSelfWidthHeight(Frame* ctx) {
 
 Rect View::getContentLocalRect() {
 	return mkRect(
-		margin.left + border->l->w + padding.left,
-		margin.top + border->t->w + padding.top,
-		maxFloat(0.0f, frame.width - margin.hor() - border->hor() - padding.hor()),
-		maxFloat(0.0f, frame.height - margin.ver() - border->ver() - padding.ver())
+		margin.left + border.l.w + padding.left,
+		margin.top + border.t.w + padding.top,
+		maxFloat(0.0f, frame.width - margin.hor() - border.hor() - padding.hor()),
+		maxFloat(0.0f, frame.height - margin.ver() - border.ver() - padding.ver())
 	);
 }
 
 Rect View::getContentRect_baseViewRect() {
 	return mkRect(
-		border->l->w + padding.left,
-		border->t->w + padding.top,
-		frame.width - margin.hor() - border->hor() - padding.hor(),
-		frame.height - margin.ver() - border->ver() - padding.ver()
+		border.l.w + padding.left,
+		border.t.w + padding.top,
+		frame.width - margin.hor() - border.hor() - padding.hor(),
+		frame.height - margin.ver() - border.ver() - padding.ver()
 	);
 }
 
@@ -259,8 +259,8 @@ void View::draw(Canvas* canvas) {
 
 		canvas->save();
 		canvas->translate(
-			padding.left + border->l->w,
-			padding.top + border->t->w
+			padding.left + border.l.w,
+			padding.top + border.t.w
 		);
 		draw_children(canvas);
 		canvas->restore();
@@ -274,58 +274,58 @@ void View::draw(Canvas* canvas) {
 }
 
 void View::drawSelfBorder(Canvas* canvas) {
-	int tc = border->t->color;
-	int rc = border->r->color;
-	int bc = border->b->color;
-	int lc = border->l->color;
+	int tc = border.t.color;
+	int rc = border.r.color;
+	int bc = border.b.color;
+	int lc = border.l.color;
 
 	if (colorGetA(tc) > 0 || colorGetA(rc) > 0 || colorGetA(bc) > 0 || colorGetA(lc) > 0) {
 		Rect viewRect = getViewRect();
 		float w = viewRect.w;
 		float h = viewRect.h;
 
-		if (border->isAllHasWidth()) {
+		if (border.isAllHasWidth()) {
 			canvas->beginPath();
-			if (border->t->w <= 1.001f) {
+			if (border.t.w <= 1.001f) {
 				canvas->strokeWidth(1.0f);
-				canvas->roundRect(0.5f, 0.5f, w - 0.5f, h - 0.5f, radius->tl);
+				canvas->roundRect(0.5f, 0.5f, w - 0.5f, h - 0.5f, radius.tl);
 			} else {
-				canvas->roundRect(0.5f, 0.5f, w - 0.5f, h - 0.5f, radius->tl);
-				canvas->strokeWidth(border->t->w);
+				canvas->roundRect(0.5f, 0.5f, w - 0.5f, h - 0.5f, radius.tl);
+				canvas->strokeWidth(border.t.w);
 			}
-			canvas->strokeColorByInt32(border->t->color);
+			canvas->strokeColorByInt32(border.t.color);
 			canvas->stroke();
 		} else {
-			if (border->t->w > 0.0f) {
+			if (border.t.w > 0.0f) {
 				canvas->beginPath();
 				canvas->moveTo(0.5f, 0.5f);
 				canvas->lineTo(w + 0.5f, 0.5f);
-				canvas->strokeWidth(border->t->w);
-				canvas->strokeColorByInt32(border->t->color);
+				canvas->strokeWidth(border.t.w);
+				canvas->strokeColorByInt32(border.t.color);
 				canvas->stroke();
 			}
-			if (border->r->w > 0.0f) {
+			if (border.r.w > 0.0f) {
 				canvas->beginPath();
 				canvas->moveTo(w + 0.5f, 0.5f);
 				canvas->lineTo(w + 0.5f, h + 0.5f);
-				canvas->strokeWidth(border->r->w);
-				canvas->strokeColorByInt32(border->r->color);
+				canvas->strokeWidth(border.r.w);
+				canvas->strokeColorByInt32(border.r.color);
 				canvas->stroke();
 			}
-			if (border->b->w > 0.0f) {
+			if (border.b.w > 0.0f) {
 				canvas->beginPath();
 				canvas->moveTo(0.5f, h + 0.5f);
 				canvas->lineTo(w + 0.5f, h + 0.5f);
-				canvas->strokeWidth(border->b->w);
-				canvas->strokeColorByInt32(border->b->color);
+				canvas->strokeWidth(border.b.w);
+				canvas->strokeColorByInt32(border.b.color);
 				canvas->stroke();
 			}
-			if (border->l->w > 0.0f) {
+			if (border.l.w > 0.0f) {
 				canvas->beginPath();
 				canvas->moveTo(0.5f, 0.5f);
 				canvas->lineTo(0.5f, h + 0.5f);
-				canvas->strokeWidth(border->l->w);
-				canvas->strokeColorByInt32(border->l->color);
+				canvas->strokeWidth(border.l.w);
+				canvas->strokeColorByInt32(border.l.color);
 				canvas->stroke();
 			}
 		}
@@ -339,7 +339,7 @@ void View::draw_self(Canvas* canvas) {
 		float w = size.x;
 		float h = size.y;
 		canvas->beginPath();
-		canvas->roundRect(0.0f, 0.0f, w, h, radius->tl);
+		canvas->roundRect(0.0f, 0.0f, w, h, radius.tl);
 		canvas->fillColorByInt32(backgroundColor);
 		canvas->fill();
 	}

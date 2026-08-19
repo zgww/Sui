@@ -4,7 +4,7 @@
 
 Toast::Toast() {
 	backgroundColor = bgColor;
-	radius->setAll(8);
+	radius.setAll(8);
 	padding.setAxis(10, 16);
 	visible = false;
 }
@@ -34,7 +34,7 @@ void Toast::draw_self(Canvas* canvas) {
 	canvas->fontFace("sans");
 	canvas->fillColorByInt32(textColor);
 	canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
-	canvas->text(padding.left + border->l->w, h / 2.0f + padding.top + border->t->w - padding.top, message.c_str());
+	canvas->text(padding.left + border.l.w, h / 2.0f + padding.top + border.t.w - padding.top, message.c_str());
 }
 
 static Ref<Toast> g_toast;

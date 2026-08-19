@@ -86,12 +86,15 @@ void App::invalidLayout() {
 }
 
 void App::processDirtyReacts() {
-	// Simplified - react processing
-	for (int i = 0; i < windows->size(); i++) {
-		Window* win = windows->get(i);
-		if (win && win->rootView) {
-			processRecuDirtyReacts(win->rootView);
+	if (this->_reactDirty) {
+		// Simplified - react processing
+		for (int i = 0; i < windows->size(); i++) {
+			Window* win = windows->get(i);
+			if (win && win->rootView) {
+				processRecuDirtyReacts(win->rootView);
+			}
 		}
+		this->_reactDirty = false;
 	}
 }
 

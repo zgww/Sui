@@ -106,7 +106,7 @@ public:
     {
         Ref<T> ele = last();
         auto size = vector.size();
-        remove_at(size - 1);
+        remove_at((int)(size - 1));
         return ele;
     }
     Ref<T> last() {
@@ -294,7 +294,7 @@ public:
         std::lock_guard<std::recursive_mutex> g(mutex);
 
         Ref<T> ele = last();
-        auto size = vector.size();
+        int size = vector.size();
         remove_at(size - 1);
         return ele;
     }

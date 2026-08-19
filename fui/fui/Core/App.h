@@ -13,6 +13,8 @@ class AppEventLoopMessage : public GcObj {
 
 class App : public GcObj {
 public:
+	bool _reactDirty = false;
+
 	Ref<GcList<Window>> windows{new GcList<Window>(), this};
 	std::recursive_mutex messageList_mutex;
 	Ref<GcList<AppEventLoopMessage>> messageList{new GcList<AppEventLoopMessage>(), this};

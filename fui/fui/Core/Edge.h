@@ -3,7 +3,7 @@
 #include "Predef.h"
 #include "../Urgc/GcObj.h"
 
-class Edge : public GcObj {
+struct Edge {
 public:
 	float w = 0.0f;
 	int color = 0x00000000;

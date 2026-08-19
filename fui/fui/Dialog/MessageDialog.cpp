@@ -51,7 +51,7 @@ void MessageDialog_prompt(const char* value, const char* title, Ref<Closure<void
 	Ref<Window> win{new Window()};
 	win->initData();
 
-	Ref<LayoutLinear> root{new LayoutLinear()};
+	/*Ref<LayoutLinear> root{new LayoutLinear()};
 	root->direction = "column";
 	root->alignItems = "stretch";
 	root->justifyContent = "center";
@@ -91,7 +91,7 @@ void MessageDialog_prompt(const char* value, const char* title, Ref<Closure<void
 				if (winRef.get() != nullptr) winRef->close();
 			});
 		}
-	}
+	}*/
 
 	win->setTitle(title);
 	win->setSize(300, 140);

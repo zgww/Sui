@@ -176,7 +176,7 @@ void LayoutGrid::layoutContent(Frame* ctx) {
 				item.x = c * (colSize + colGap);
 
 				items.push_back(item);
-				maxRowCount = maxFloat(r + rs, (float)maxRowCount);
+				maxRowCount = (int)maxFloat((float)r + rs, (float)maxRowCount);
 
 				c += cs;
 			} else {

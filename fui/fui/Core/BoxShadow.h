@@ -3,7 +3,7 @@
 #include "Predef.h"
 #include "../Urgc/GcObj.h"
 
-class BoxShadow : public GcObj {
+struct BoxShadow  {
 public:
 	float dx = 0.0f;
 	float dy = 0.0f;
