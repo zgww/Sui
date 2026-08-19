@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Urgc\GcList.h" />
+    <ClInclude Include="Urgc\GcMap.h" />
+    <ClInclude Include="Urgc\GcObj.h" />
+    <ClInclude Include="Urgc\Urgc.h" />
+    <ClInclude Include="Urgc\UrgcIndex.h" />
+    <ClInclude Include="Urgc\UrgcPredef.h" />
+    <ClInclude Include="Urgc\urgc_api.h" />
+    <ClInclude Include="Core\Predef.h" />
+    <ClInclude Include="Core\Vec2.h" />
+    <ClInclude Include="Core\Vec3.h" />
+    <ClInclude Include="Core\Rect.h" />
+    <ClInclude Include="Core\Mat2d.h" />
+    <ClInclude Include="Core\Inset.h" />
+    <ClInclude Include="Core\Frame.h" />
+    <ClInclude Include="Core\Color.h" />
+    <ClInclude Include="Core\Edge.h" />
+    <ClInclude Include="Core\Border.h" />
+    <ClInclude Include="Core\Radius.h" />
+    <ClInclude Include="Core\BoxShadow.h" />
+    <ClInclude Include="Core\Bezier.h" />
+    <ClInclude Include="Core\Image.h" />
+    <ClInclude Include="Core\Event.h" />
+    <ClInclude Include="Core\Emitter.h" />
+    <ClInclude Include="Core\Node.h" />
+    <ClInclude Include="Core\ViewBase.h" />
+    <ClInclude Include="Core\View.h" />
+    <ClInclude Include="Core\Canvas.h" />
+    <ClInclude Include="Core\Window.h" />
+    <ClInclude Include="Core\App.h" />
+    <ClInclude Include="Core\Timer.h" />
+    <ClInclude Include="Core\TimerNode.h" />
+    <ClInclude Include="Core\Fps.h" />
+    <ClInclude Include="Core\Focus.h" />
+    <ClInclude Include="Core\Cursor.h" />
+    <ClInclude Include="Core\Screen.h" />
+    <ClInclude Include="Core\Clipboard.h" />
+    <ClInclude Include="Core\MouseEvent.h" />
+    <ClInclude Include="Core\KeyEvent.h" />
+    <ClInclude Include="Core\Mouse.h" />
+    <ClInclude Include="Core\Keyboard.h" />
+    <ClInclude Include="Core\LayoutCell.h" />
+    <ClInclude Include="Core\NodeLib.h" />
+    <ClInclude Include="Core\Vec4.h" />
+    <ClInclude Include="Core\Mat3.h" />
+    <ClInclude Include="Core\Quaternion.h" />
+    <ClInclude Include="Core\Quat.h" />
+    <ClInclude Include="Core\Euler.h" />
+    <ClInclude Include="Core\Line3.h" />
+    <ClInclude Include="Core\Plane.h" />
+    <ClInclude Include="Core\Spherical.h" />
+    <ClInclude Include="Core\Triangle.h" />
+    <ClInclude Include="Core\Frustum.h" />
+    <ClInclude Include="Layout\LayoutAlign.h" />
+    <ClInclude Include="Layout\LayoutLinear.h" />
+    <ClInclude Include="Layout\LayoutGrid.h" />
+    <ClInclude Include="Layout\RowWrap.h" />
+    <ClInclude Include="View\TextView.h" />
+    <ClInclude Include="View\Button.h" />
+    <ClInclude Include="View\ImageView.h" />
+    <ClInclude Include="View\ProgressView.h" />
+    <ClInclude Include="View\Slider.h" />
+    <ClInclude Include="View\Checkbox.h" />
+    <ClInclude Include="View\Switch.h" />
+    <ClInclude Include="View\Drag.h" />
+    <ClInclude Include="View\Panel.h" />
+    <ClInclude Include="View\ScrollArea.h" />
+    <ClInclude Include="View\EditText.h" />
+    <ClInclude Include="View\Select.h" />
+    <ClInclude Include="View\HoverViewEffect.h" />
+    <ClInclude Include="View\SplitterView.h" />
+    <ClInclude Include="View\TreeView.h" />
+    <ClInclude Include="View\TableView.h" />
+    <ClInclude Include="View\Menu.h" />
+    <ClInclude Include="View\MenuNative.h" />
+    <ClInclude Include="View\ColorPalete.h" />
+    <ClInclude Include="View\ColorPicker.h" />
+    <ClInclude Include="View\DockLayout.h" />
+    <ClInclude Include="View\ImageManager.h" />
+    <ClInclude Include="View\SystemTrayIcon.h" />
+    <ClInclude Include="Dialog\Toast.h" />
+    <ClInclude Include="Dialog\FileDialog.h" />
+    <ClInclude Include="Dialog\MessageDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="nanovg\nanovg.c" />
+    <ClCompile Include="Urgc\urgc.cpp" />
+    <ClCompile Include="Core\Color.cpp" />
+    <ClCompile Include="Core\Emitter.cpp" />
+    <ClCompile Include="Core\Node.cpp" />
+    <ClCompile Include="Core\ViewBase.cpp" />
+    <ClCompile Include="Core\View.cpp" />
+    <ClCompile Include="Core\Canvas.cpp" />
+    <ClCompile Include="Core\Window.cpp" />
+    <ClCompile Include="Core\App.cpp" />
+    <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Core\Fps.cpp" />
+    <ClCompile Include="Core\Focus.cpp" />
+    <ClCompile Include="Core\Cursor.cpp" />
+    <ClCompile Include="Core\Screen.cpp" />
+    <ClCompile Include="Core\Clipboard.cpp" />
+    <ClCompile Include="Core\MouseEvent.cpp" />
+    <ClCompile Include="Core\KeyEvent.cpp" />
+    <ClCompile Include="Core\Mouse.cpp" />
+    <ClCompile Include="Core\Keyboard.cpp" />
+    <ClCompile Include="Core\LayoutCell.cpp" />
+    <ClCompile Include="Core\NodeLib.cpp" />
+    <ClCompile Include="Layout\LayoutAlign.cpp" />
+    <ClCompile Include="Layout\LayoutLinear.cpp" />
+    <ClCompile Include="Layout\LayoutGrid.cpp" />
+    <ClCompile Include="Layout\RowWrap.cpp" />
+    <ClCompile Include="View\TextView.cpp" />
+    <ClCompile Include="View\Button.cpp" />
+    <ClCompile Include="View\ImageView.cpp" />
+    <ClCompile Include="View\ProgressView.cpp" />
+    <ClCompile Include="View\Slider.cpp" />
+    <ClCompile Include="View\Checkbox.cpp" />
+    <ClCompile Include="View\Switch.cpp" />
+    <ClCompile Include="View\Drag.cpp" />
+    <ClCompile Include="View\Panel.cpp" />
+    <ClCompile Include="View\ScrollArea.cpp" />
+    <ClCompile Include="View\EditText.cpp" />
+    <ClCompile Include="View\Select.cpp" />
+    <ClCompile Include="View\HoverViewEffect.cpp" />
+    <ClCompile Include="View\SplitterView.cpp" />
+    <ClCompile Include="View\TreeView.cpp" />
+    <ClCompile Include="View\TableView.cpp" />
+    <ClCompile Include="View\Menu.cpp" />
+    <ClCompile Include="View\MenuNative.cpp" />
+    <ClCompile Include="View\ColorPalete.cpp" />
+    <ClCompile Include="View\ColorPicker.cpp" />
+    <ClCompile Include="View\DockLayout.cpp" />
+    <ClCompile Include="View\ImageManager.cpp" />
+    <ClCompile Include="View\SystemTrayIcon.cpp" />
+    <ClCompile Include="Dialog\Toast.cpp" />
+    <ClCompile Include="Dialog\FileDialog.cpp" />
+    <ClCompile Include="Dialog\MessageDialog.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8d41ffd3-a9c3-4a6f-b8a9-5c2101e2eb51}</ProjectGuid>
+    <RootNamespace>fui</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;URGC_STATICAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)GL;$(ProjectDir)nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\ws\Sui\Sui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;URGC_STATICAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)GL;$(ProjectDir)nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\ws\Sui\Sui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;URGC_STATICAPI;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)GL;$(ProjectDir)nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\ws\Sui\Sui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;URGC_STATICAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)GL;$(ProjectDir)nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\ws\Sui\Sui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

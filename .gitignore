@@ -102,3 +102,8 @@
 /orc-linux/.cache
 /orc-linux/src/_orc
 /orc-linux/build-linux
+/fui/fui/fui
+/fui/fui/stdin.log
+/fui/fui/.vs
+/fui/fui/x64/Debug/fui.exe
+/fui/fui/x64/Debug/fui.pdb
