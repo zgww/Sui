@@ -28,6 +28,7 @@
 #include "View/ColorPicker.h"
 #include "View/MenuNative.h"
 #include "View/SystemTrayIcon.h"
+#include "View/ProgressView.h"
 #include "View/Switch.h"
 #include "Dialog/Toast.h"
 #include "Dialog/FileDialog.h"
@@ -293,6 +294,13 @@ int main() {
 
 		}REND;
 		R(Switch) {
+
+		}REND;
+		R(ProgressView) {
+			o->setValue(0.5);
+			mkTimerInterval(CLOSURE([=]() {
+				o->setValue(o->value + 0.01);
+				}), 100);
 
 		}REND;
 		R(View) {

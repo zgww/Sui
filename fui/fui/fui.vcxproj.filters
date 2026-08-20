@@ -219,6 +219,9 @@
     <ClInclude Include="Core\Defines_win.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\ProgressView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -336,6 +339,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\SystemTrayIcon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\ProgressView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

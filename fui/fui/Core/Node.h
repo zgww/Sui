@@ -74,6 +74,7 @@ public:
 	Ref<GcList<Node>> outKids{ nullptr, this };
 
 	std::string name;
+	std::string slot; //用于placeKids
 
 	//用于goc
 	int gocIdx = 0; 
@@ -118,6 +119,7 @@ public:
 	virtual void invalidReact();
 	void placeKid(Node* n);
 	void placeKids(Ref<GcList<Node>> kids);
+	void placeKidsOfSlot(Ref<GcList<Node>> kids, std::string slot);
 	// innerReact适用于有内部子树，有槽节点的情况
 	void initInnerReact();
 	void startInnerReact();

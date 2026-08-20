@@ -4,7 +4,7 @@ ProgressView::ProgressView() {
 	backgroundColor = trackColor;
 	width = 200;
 	height = 6;
-	radius->setAll(3);
+	radius.setAll(3);
 }
 
 void ProgressView::setValue(float v) {
@@ -26,7 +26,7 @@ void ProgressView::draw_self(Canvas* canvas) {
 	float fillW = w * value;
 	if (fillW > 0) {
 		canvas->beginPath();
-		canvas->roundRect(0, 0, fillW, h, radius->tl);
+		canvas->roundRect(0, 0, fillW, h, radius.tl);
 		canvas->fillColorByInt32(fillColor);
 		canvas->fill();
 	}

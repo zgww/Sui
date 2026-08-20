@@ -84,6 +84,7 @@
     <ClInclude Include="View\HoverViewEffect.h" />
     <ClInclude Include="View\ImageView.h" />
     <ClInclude Include="View\MenuNative.h" />
+    <ClInclude Include="View\ProgressView.h" />
     <ClInclude Include="View\Switch.h" />
     <ClInclude Include="View\SystemTrayIcon.h" />
     <ClInclude Include="View\TextView.h" />
@@ -125,6 +126,7 @@
     <ClCompile Include="View\HoverViewEffect.cpp" />
     <ClCompile Include="View\ImageView.cpp" />
     <ClCompile Include="View\MenuNative.cpp" />
+    <ClCompile Include="View\ProgressView.cpp" />
     <ClCompile Include="View\Switch.cpp" />
     <ClCompile Include="View\SystemTrayIcon.cpp" />
     <ClCompile Include="View\TextView.cpp" />

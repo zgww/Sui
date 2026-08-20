@@ -208,6 +208,18 @@ void Node::placeKids(Ref<GcList<Node>> kids) {
 	}
 }
 
+void Node::placeKidsOfSlot(Ref<GcList<Node>> kids, std::string slot)
+{
+	if (!kids) return;
+	int l = kids->size();
+	for (int i = 0; i < l; i++) {
+		Node* n = kids->get(i);
+		if (n->slot == slot) {
+			placeKid(n);
+		}
+	}
+}
+
 void Node::startInnerReact() {
 	_flagUseOutKids = false;
 }
