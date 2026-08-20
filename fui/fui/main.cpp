@@ -10,6 +10,7 @@
 #include "Layout/LayoutAlign.h"
 #include "Layout/LayoutGrid.h"
 #include "View/TextView.h"
+#include "View/ImageView.h"
 #include "View/Button.h"
 #include "View/ProgressView.h"
 #include "View/Slider.h"
@@ -237,11 +238,54 @@ int main() {
 
 	//scroll->appendChild(root);
 	//win->setRootView(scroll);
-	auto white = Ref(new View());
+	auto white = Ref(new LayoutLinear());
 	white->cbOnEvent = CLOSURE([](Event *event) {
 		printf("event:%s\n", event->name.c_str());
 		});
 	white->backgroundColor = 0xffffeeee;
+
+	RINS(white) {
+		o->direction = "column";
+		o->alignItems = "center";
+		o->justifyContent = "center";
+
+		R(TextView) {
+			o->setText("你好啊");
+		}REND;
+
+		R(TextView) {
+			o->setText("你好啊");
+		}REND;
+
+		R(LayoutLinear) {
+			o->backgroundColor = 0x3300ff00;
+			R(TextView) {
+				o->setText("左边");
+				o->setFontSize(34);
+			}REND;
+
+			R(TextView) {
+				o->setText("右边");
+			}REND;
+		}REND;
+
+		R(TextView) {
+			o->setText("你好啊");
+		}REND;
+
+		R(TextView) {
+			o->setText("你好啊");
+		}REND;
+
+
+		R(ImageView) {
+			o->setSrc("asset/sample.png");
+			o->setImageMode(ImageMode_WidthFix);
+			o->width = 400;
+		}REND;
+	}REND;
+
+
 	class TmpViewCb : public ViewCallback {
 	public:
 
@@ -254,7 +298,7 @@ int main() {
 		}
 	};
 	auto cb = Ref(new TmpViewCb());
-	white->cb = cb;
+	//white->cb = cb;
 	win->setRootView(white);
 	win->setTitle("fui - GUI Framework Demo中文");
 	win->setSize(800, 600);

@@ -14,8 +14,16 @@
 #include "../nanovg/stb_image.h"
 #endif
 
-Canvas::Canvas() {}
-Canvas::~Canvas() {}
+static Canvas* gCanvas;
+
+Canvas::Canvas() {
+	gCanvas = this;
+}
+Canvas::~Canvas() {
+	if (gCanvas == this) {
+		gCanvas = nullptr;
+	}
+}
 
 void Canvas::init() {
 	if (data) return;
@@ -293,4 +301,9 @@ Ref<Image> Canvas::createImage(const char* path) {
 	img->_img = _createImage(path);
 	if (img->_img) return img;
 	return nullptr;
+}
+
+Canvas* Canvas::getInstance()
+{
+	return gCanvas;
 }

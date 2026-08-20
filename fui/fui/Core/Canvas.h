@@ -88,4 +88,7 @@ public:
 	Ref<Image> createImageRGBA(int w, int h, const unsigned char* imgData);
 	int _createImage(const char* path);
 	Ref<Image> createImage(const char* path);
+
+	static Canvas* getInstance();
 };
+

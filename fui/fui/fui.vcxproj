@@ -78,8 +78,11 @@
     <ClInclude Include="Dialog\Toast.h" />
     <ClInclude Include="Dialog\FileDialog.h" />
     <ClInclude Include="Dialog\MessageDialog.h" />
+    <ClInclude Include="View\ImageView.h" />
+    <ClInclude Include="View\TextView.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\Image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nanovg\nanovg.c" />
     <ClCompile Include="Urgc\urgc.cpp" />
@@ -110,6 +113,8 @@
     <ClCompile Include="Dialog\Toast.cpp" />
     <ClCompile Include="Dialog\FileDialog.cpp" />
     <ClCompile Include="Dialog\MessageDialog.cpp" />
+    <ClCompile Include="View\ImageView.cpp" />
+    <ClCompile Include="View\TextView.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

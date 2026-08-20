@@ -294,7 +294,7 @@ public:
         std::lock_guard<std::recursive_mutex> g(mutex);
 
         Ref<T> ele = last();
-        int size = vector.size();
+        int size = (int)vector.size();
         remove_at(size - 1);
         return ele;
     }

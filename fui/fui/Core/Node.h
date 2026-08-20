@@ -47,13 +47,16 @@ class Window;
 #define CONCAT(a, b) a##b
 #define LINE_KEY TO_STRING(__LINE__)##"L"
 
+// 根据类型 get or create
 #define R(Type, ...) {auto _tmp = Node_getOrCreate<Type>(o, ##__VA_ARGS__), o = _tmp;
+// 参数就是节点了，不需要再get or create. 主要是在匹配REND进行清理
+#define RINS(n) {auto o = n;
 #define REND Node_removeUnusedKids(o); o->react();} 
 
 template <class T>
 bool isSameNodeType(Node* curNode) {
-	auto typeName = typeid(T).name;
-	auto nodeTypeName = typeid(curNode).name;
+	auto typeName = typeid(T).name();
+	auto nodeTypeName = typeid(curNode).name();
 	return _strcmpi(typeName, nodeTypeName) == 0;
 }
 
@@ -168,14 +171,14 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 				if (isSameNodeType<T>(curNode)) { //匹配一致
 					o->gocIdx++;
 					curNode->created = false; //标记为update
-					return curNode;
+					return (T*)curNode;
 				}
 				else {
-					throw std::exception(std::format("static node type is different {}", o->gocIdx));
+					throw std::runtime_error(std::format("static node type is different {}", o->gocIdx));
 				}
 			}
 			else { //非静态节点
-				o->removeChild(o->gocIdx); //直接移除
+				o->removeChildAt(o->gocIdx); //直接移除
 			}
 
 		}
@@ -190,10 +193,10 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 				if (isSameNodeType<T>(curNode)) { //匹配一致
 					o->gocIdx++;
 					curNode->created = false; //标记为update
-					return curNode;
+					return (T*)curNode;
 				}
 				else {
-					throw std::exception(std::format("dynamic node type is different gocIdx:{}, key:{}", o->gocIdx, key));
+					throw std::runtime_error(std::format("dynamic node type is different gocIdx:{}, key:{}", o->gocIdx, key));
 				}
 			}
 			else { // key不匹配，向后查找 
@@ -203,10 +206,10 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 						o->insertChild(found, o->gocIdx);
 						o->gocIdx++;
 						found->created = false;//标记为update
-						return found;
+						return (T*)found;
 					}
 					else {
-						throw std::exception(std::format("dynamic founded node type is different gocIdx:{}, key:{}", o->gocIdx, key));
+						throw std::runtime_error(std::format("dynamic founded node type is different gocIdx:{}, key:{}", o->gocIdx, key));
 					}
 				}
 				else { //未找到，需要新增

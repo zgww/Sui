@@ -1,98 +1,172 @@
 #include "ImageView.h"
 #include "../Core/Window.h"
 
-void ImageView::setSrc(const std::string& s) {
-	if (src == s) return;
-	src = s;
-	if (s.empty()) {
-		_img = nullptr;
-	} else {
-		Window* win = getWindow();
-		if (win && win->canvas && win->canvas->data) {
-			_img = win->canvas->createImage(s.c_str());
+
+void ImageView::setSrc(std::string src) {
+	if (this->src == src) {
+		return;
+	}
+	this->src = src;
+	if (!src.empty()) {
+
+		auto canvas = Canvas::getInstance();
+		if (canvas) {
+			_img = canvas->createImage(src.c_str());
 		}
 	}
-	invalidLayout();
+	else {
+		_img = nullptr;
+	}
 }
 
 void ImageView::setImageMode(ImageMode mode) {
-	if (imageMode != mode) {
-		imageMode = mode;
-		invalidLayout();
+	if (this->imageMode != mode) {
+		this->imageMode = mode;
+		this->invalidLayout();
 	}
 }
 
-bool ImageView::isImageValid() {
-	return _img != nullptr && _img->_img != 0;
+//此函数用来在nvg支持类似于skia的  绘制源图像 某区域 到目标区域的功能。
+void drawImage_atRect(Canvas* canvas, Image* imgId, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) {
+	int imgW = imgId->width();
+		int  imgH = imgId->height();
+	// nvgImageSize(vg, imgId, &imgW, &imgH);
+	float wscale = dw / sw;
+	float hscale = dh / sh;
+	float imgScaleW = imgW * wscale;
+	float imgScaleH = imgH * hscale;
+
+	float ox = -sx * wscale + dx;
+	float oy = -sy * hscale + dy;
+
+	//创建图片笔刷。  ex,ey表示图片缩放到目标宽高
+	canvas->imagePattern(true, ox, oy, imgScaleW, imgScaleH, 0.f, imgId, 1.f);
+	// nvgFillPaint(vg, paint);
+
+	canvas->beginPath();
+	canvas->rect(dx, dy, dw, dh);
+}
+
+void ImageModeCalc::calc(int sw, int sh, int dw, int dh, ImageMode mode) {
+	this->sw = sw;
+	this->sh = sh;
+	this->dw = dw;
+	this->dh = dh;
+
+	if (sw == 0 || sh == 0 || dw == 0 || dh == 0) {
+		return;
+	}
+	this->sr = sw / (float)sh;
+	this->dr = dw / (float)dh;
+
+	if (mode == ImageMode_Cover) {
+		calc_cover();
+	}
+	else if (mode == ImageMode_Contain) {
+		calc_contain();
+	}
+}
+
+void ImageModeCalc::calc_contain() {
+	float w_scale = dw / (float)sw;
+	float h_scale = dh / (float)sh;
+	float scale = minFloat(w_scale, h_scale);
+	float tw = scale * this->sw;
+	float th = scale * this->sh;
+	this->dx = (int)((this->dw - tw) / 2.f);
+	this->dy = (int)((this->dh - th) / 2.f);
+	this->dw = (int)tw;
+	this->dh = (int)th;
+	this->scale = scale;
+}
+
+void ImageModeCalc::calc_cover() {
+	float w_scale = sw / (float)dw;
+	float h_scale = sh / (float)dh;
+	float scale = minFloat(w_scale, h_scale);
+	float tw = scale * dw;
+	float th = scale * dh;
+	this->sx = (int)((this->sw - tw) / 2.f);
+	this->sy = (int)((this->sh - th) / 2.f);
+	this->sw = (int)tw;
+	this->sh = (int)th;
+	this->scale = scale;
 }
 
 void ImageView::layout(Frame* ctx) {
-	updateFrame_forSelfWidthHeight(ctx);
-	initLayoutSize(ctx);
+	ctx->incTimesInOneLayout();
 
-	if (isImageValid()) {
-		Window* win = getWindow();
-		if (win && win->canvas && win->canvas->data) {
-			NVGcontext* vg = (NVGcontext*)win->canvas->data;
-			int iw = 0, ih = 0;
-			nvgImageSize(vg, _img->_img, &iw, &ih);
-			float imgW = (float)iw;
-			float imgH = (float)ih;
+	this->updateFrame_forSelfWidthHeight(ctx);
 
-			if (imageMode == ImageMode_WrapContent) {
-				ctx->setSize(imgW, imgH);
-			} else if (imageMode == ImageMode_WidthFix) {
-				float h = ctx->width > 0 ? ctx->width * imgH / imgW : imgH;
-				ctx->setSize(ctx->width, h);
-			} else if (imageMode == ImageMode_HeightFix) {
-				float w = ctx->height > 0 ? ctx->height * imgW / imgH : imgW;
-				ctx->setSize(w, ctx->height);
-			} else if (imageMode == ImageMode_Contain || imageMode == ImageMode_Cover) {
-				float availW = ctx->maxWidth == infinity ? imgW : ctx->maxWidth;
-				float availH = ctx->maxHeight == infinity ? imgH : ctx->maxHeight;
-				float scale = imageMode == ImageMode_Contain
-					? minFloat(availW / imgW, availH / imgH)
-					: maxFloat(availW / imgW, availH / imgH);
-				ctx->setSize(imgW * scale, imgH * scale);
-			} else if (imageMode == ImageMode_Fill) {
-				// use constraints as-is
-			}
+	//默认情况
+	this->initLayoutSize(ctx);
+
+
+	if (this->cb && cb->cbLayout(this, ctx)) {
+		return;
+	}
+
+	if (this->_isImageValid()) {
+		if (this->imageMode == ImageMode_WrapContent) {
+			ctx->setSize(
+				this->_img->width() + this->margin.hor(),
+				this->_img->height() + this->margin.ver());
+		}
+		else if (this->imageMode == ImageMode_WidthFix) {
+			// //根据自身的宽高声明，进一步约束
+			// self.updateFrame_forSelfWidthHeight(ctx);
+
+			// //默认情况
+			// self.initLayoutSize(ctx);
+			ctx->setHeight(
+				this->_img->height() / this->_img->width() * ctx->width
+			);
+		}
+		else if (this->imageMode == ImageMode_HeightFix) {
+			ctx->setWidth(
+				this->_img->width() / this->_img->height() * ctx->height
+			);
 		}
 	}
 
-	layoutContent_fromOutBox(ctx);
-	ctx->saveConstraints();
+	//imageview的大小不受子视图影响
+	Frame tmp = *ctx;
+	this->layoutContent_fromOutBox(&tmp);
+
+	//叠加margin
+	ctx->setSize(
+		ctx->width + this->margin.hor(),
+		ctx->height + this->margin.ver()
+	);
 }
 
 void ImageView::draw_self(Canvas* canvas) {
 	View::draw_self(canvas);
+	if (_isImageValid()) {
+		//ImageModeCalc@ calc = new ImageModeCalc();
 
-	if (!isImageValid() || !canvas || !canvas->data) return;
+		Rect r = getViewRect();
+		float w = r.w;// taitank::get_taitank_node_layout_width(yg);
+		float h = r.h;// taitank::get_taitank_node_layout_height(yg);
+		calc.calc(
+			_img->width(), _img->height(),
+			w, h, imageMode
+		);
+		// NVGpaint paint = nvgImagePattern(vg, calc.sx, calc.sy, calc.sw, calc.sh, 0.f, self._img._img, 1.f)
+		// nvgFillPaint(vg, paint);
+		// nvgBeginPath(vg)
+		// nvgRect(vg, calc.dx, calc.dy, calc.dw, calc.dh);
 
-	Vec2 size = getSizeWithoutMargin();
-	float w = size.x;
-	float h = size.y;
-
-	NVGcontext* vg = (NVGcontext*)canvas->data;
-	int iw = 0, ih = 0;
-	nvgImageSize(vg, _img->_img, &iw, &ih);
-	float imgW = (float)iw;
-	float imgH = (float)ih;
-
-	if (imgW <= 0 || imgH <= 0) return;
-
-	if (imageMode == ImageMode_Fill) {
-		canvas->drawImageAtRect(_img, 0, 0, imgW, imgH, 0, 0, w, h, 1.0f);
-	} else if (imageMode == ImageMode_Contain || imageMode == ImageMode_Cover) {
-		float scale = imageMode == ImageMode_Contain
-			? minFloat(w / imgW, h / imgH)
-			: maxFloat(w / imgW, h / imgH);
-		float dw = imgW * scale;
-		float dh = imgH * scale;
-		float dx = (w - dw) / 2.0f;
-		float dy = (h - dh) / 2.0f;
-		canvas->drawImageAtRect(_img, 0, 0, imgW, imgH, dx, dy, dw, dh, 1.0f);
-	} else {
-		canvas->drawImage(_img, 0, 0, 1.0f);
+		drawImage_atRect(canvas, _img,
+			calc.sx, calc.sy, calc.sw, calc.sh,
+			calc.dx, calc.dy, calc.dw, calc.dh);
+		canvas->fill();
+		// SkRect src; 
+		// src.setXYWH(calc.sx, calc.sy, calc.sw, calc.sh);
+		// SkRect dst;
+		// dst.setXYWH(calc.dx, calc.dy, calc.dw, calc.dh);
+		// SkSamplingOptions opt{SkFilterMode::kLinear};
+		// canvas->drawImageRect(_img, src, dst, opt, nullptr, SkCanvas::kFast_SrcRectConstraint);
 	}
+
 }
