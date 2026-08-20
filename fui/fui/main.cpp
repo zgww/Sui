@@ -27,6 +27,7 @@
 #include "View/SplitterView.h"
 #include "View/ColorPicker.h"
 #include "View/MenuNative.h"
+#include "View/SystemTrayIcon.h"
 #include "View/Switch.h"
 #include "Dialog/Toast.h"
 #include "Dialog/FileDialog.h"
@@ -399,6 +400,10 @@ int main() {
 	//printf("screen:%f,%f,%f,%f\n", 
 	//	a.x, a.y, b.x, b.y
 	//	);
+
+	auto tray = Ref(new SystemTrayIcon());
+	tray->setIconPath("asset/icon2.ico");
+	tray->init();
 
 	mkTimerTimeout(CLOSURE([]() {
 		printf("定时器到达\n");

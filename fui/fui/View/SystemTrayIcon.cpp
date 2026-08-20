@@ -6,6 +6,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <shellapi.h>
+#include "../Core/Defines_win.h"
 #endif
 
 static int gTrayUid = 100;
@@ -29,18 +30,18 @@ void SystemTrayIcon::setIconPath(const char* path) {
 }
 
 #ifdef _WIN32
-#define WM_TRAYICON (WM_USER + 100)
 
 static bool _initTrayData(SystemTrayIcon* tray) {
 	HWND hwnd = GetForegroundWindow();
 	if (!hwnd) hwnd = CreateWindowEx(0, L"Static", L"", 0, 0, 0, 0, 0, nullptr, nullptr, nullptr, nullptr);
 
-	NOTIFYICONDATAW nid = {0};
+	static NOTIFYICONDATAW nid = {0};
 	nid.cbSize = sizeof(nid);
 	nid.hWnd = hwnd;
 	nid.uID = tray->uid;
 	nid.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
-	nid.uCallbackMessage = WM_TRAYICON;
+	nid.uCallbackMessage = FUI_WM_TRAYICON;
+	nid.uVersion = NOTIFYICON_VERSION_4;
 
 	std::wstring wpath(tray->iconPath.begin(), tray->iconPath.end());
 	HICON hIcon = (HICON)LoadImageW(nullptr, wpath.c_str(), IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
@@ -48,7 +49,12 @@ static bool _initTrayData(SystemTrayIcon* tray) {
 	nid.hIcon = hIcon;
 	wcscpy_s(nid.szTip, L"fui");
 
+
+
 	BOOL ok = Shell_NotifyIconW(NIM_ADD, &nid);
+	Shell_NotifyIconW(NIM_SETVERSION, &nid);
+
+
 	tray->data = hwnd;
 	return ok ? true : false;
 }

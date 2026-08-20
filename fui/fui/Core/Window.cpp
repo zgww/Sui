@@ -9,6 +9,7 @@
 #include "Keyboard.h"
 #include "../Urgc/Urgc.h"
 #include "../View/MenuNative.h"
+#include "../View/SystemTrayIcon.h"
 
 
 #ifdef _WIN32
@@ -18,6 +19,7 @@
 #include "../nanovg/nanovg.h"
 #include "../GL/glew.h"
 #include "../GL/wglew.h"
+#include "Defines_win.h"
 
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "gdi32.lib")
@@ -37,6 +39,33 @@ static HGLRC g_shareHrc = nullptr;
 static NVGcontext* g_sharedVg = nullptr;
 
 static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+
+class GetAssisKey {
+public:
+	GetAssisKey() {
+		lctrl = (GetKeyState(VK_LCONTROL) & 0x8000);
+		rctrl = (GetKeyState(VK_RCONTROL) & 0x8000);
+		lshift = (GetKeyState(VK_LSHIFT) & 0x8000);
+		rshift = (GetKeyState(VK_RSHIFT) & 0x8000);
+		lalt = (GetKeyState(VK_MENU) & 0x8000);
+		ralt = (GetKeyState(VK_RMENU) & 0x8000);
+
+		ctrl = lctrl || rctrl;
+		shift = lshift || rshift;
+		alt = lalt || ralt;
+	}
+	bool lctrl = false;
+	bool rctrl = false;
+	bool ctrl = false;
+	bool lshift = false;
+	bool rshift = false;
+	bool shift = false;
+
+	bool lalt = false;
+	bool ralt = false;
+	bool alt = false;
+};
 
 static void _registerWinClass() {
 	static bool registered = false;
@@ -170,6 +199,72 @@ static int _command(HWND win, WPARAM wp, LPARAM lp) {
 	 }*/
 	return 0;
 }
+static void _build_md_for_ontrayicon(
+	MouseData* md,
+	HWND hwnd, WPARAM wp, LPARAM lp, int button
+	, int type//0:down,1:move,2:up, 3: dblclick
+) {
+	// SuiCore$MouseData md = { 0 };
+	auto msg = LOWORD(lp);
+	auto uid = HIWORD(lp);
+
+	//md.eventType = "mousedown";
+	md->button = button;
+	md->clientX = GET_X_LPARAM(wp);
+	md->clientY = GET_Y_LPARAM(wp);
+	md->windowId = (long long)hwnd;
+	md->isMouseDown = type == 0;
+	md->isMouseMove = type == 1;
+	md->isMouseUp = type == 2;
+	md->isDoubleClick = type == 3;
+
+	GetAssisKey ak;
+	md->ctrl = ak.ctrl;
+	md->shift = ak.shift;
+	md->alt = ak.alt;
+}
+
+static LRESULT _ontrayicon(HWND hwnd, WPARAM wp, LPARAM lp)
+{
+	auto msg = LOWORD(lp);
+	auto uid = HIWORD(lp);
+	MouseData md = { 0 };
+	md.button = -1;
+	md.uid = uid;
+
+	//注意。 实际上并不会在按下时，就触发事件。而是在up时，同时触发down/up
+	if (msg == WM_LBUTTONDOWN) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 1, 0); }
+	if (msg == WM_MBUTTONDOWN) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 2, 0); }
+	if (msg == WM_RBUTTONDOWN) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 3, 0); }
+
+	if (msg == WM_MOUSEMOVE) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 1, 1); }
+
+	if (msg == WM_LBUTTONUP) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 1, 2); }
+	if (msg == WM_MBUTTONUP) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 2, 2); }
+	if (msg == WM_RBUTTONUP) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 3, 2); }
+
+	if (msg == WM_LBUTTONDBLCLK) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 1, 3); }
+	if (msg == WM_MBUTTONDBLCLK) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 2, 3); }
+	if (msg == WM_RBUTTONDBLCLK) { _build_md_for_ontrayicon(&md, hwnd, wp, lp, 3, 3); }
+
+	if (md.button != -1) {//说明是鼠标相关事件
+		// if (md.isDoubleClick){
+		//     POINT pt{};
+		//     GetCursorPos(&pt);//取鼠标坐标
+		//     ::SetForegroundWindow(hwnd);//解决在菜单外单击左键菜单不消失的问题
+		//     auto hMenu = CreatePopupMenu();//生成菜单
+		//     //为托盘菜单添加两个选项
+		//     AppendMenu(hMenu, MF_STRING, 1, TEXT("update"));
+		//     AppendMenu(hMenu, MF_STRING, 2, TEXT("show"));
+		//     AppendMenu(hMenu, MF_STRING, 3, TEXT("about"));
+		//     auto id = TrackPopupMenu(hMenu, TPM_RETURNCMD, pt.x, pt.y, NULL, hwnd, NULL);
+		//     printf("on menu activate:%d\n", id);
+		// }
+		//SuiCore$printMouseData(&md, "_mousedown");
+		SystemTrayIcon_onMouseData(&md);
+	}
+	return 0;
+}
 static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	int64_t winId = (int64_t)hWnd;
 
@@ -276,6 +371,11 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	case WM_COMMAND:
 	{
 		return _command(hWnd, wParam, lParam);
+	}
+	case FUI_WM_TRAYICON://自定义的托盘消息
+	{
+		// lParam是消息类型
+		return _ontrayicon(hWnd, wParam, lParam);
 	}
 	default:
 		return DefWindowProc(hWnd, uMsg, wParam, lParam);

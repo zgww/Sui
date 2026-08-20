@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Defines_win.h" />
     <ClInclude Include="Urgc\GcList.h" />
     <ClInclude Include="Urgc\GcMap.h" />
     <ClInclude Include="Urgc\GcObj.h" />
@@ -84,6 +85,7 @@
     <ClInclude Include="View\ImageView.h" />
     <ClInclude Include="View\MenuNative.h" />
     <ClInclude Include="View\Switch.h" />
+    <ClInclude Include="View\SystemTrayIcon.h" />
     <ClInclude Include="View\TextView.h" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +126,7 @@
     <ClCompile Include="View\ImageView.cpp" />
     <ClCompile Include="View\MenuNative.cpp" />
     <ClCompile Include="View\Switch.cpp" />
+    <ClCompile Include="View\SystemTrayIcon.cpp" />
     <ClCompile Include="View\TextView.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

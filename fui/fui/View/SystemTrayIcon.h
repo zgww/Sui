@@ -5,6 +5,9 @@
 #include "../Core/Vec2.h"
 #include <string>
 
+
+
+
 class SystemTrayIcon : public GcObj {
 public:
 	int uid = 0;
