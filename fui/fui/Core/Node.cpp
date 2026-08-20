@@ -221,7 +221,7 @@ void Node::initInnerReact()
 {
 	_flagUseOutKids = true;
 	this->gocOutKids();
-	this->react();
+	//this->react();
 }
 
 Ref<GcList<Node>> Node::gocOutKids() {

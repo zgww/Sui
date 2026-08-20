@@ -22,6 +22,7 @@
 #include "View/Select.h"
 #include "View/TreeView.h"
 #include "View/TableView.h"
+#include "View/Button.h"
 #include "View/SplitterView.h"
 #include "View/ColorPicker.h"
 #include "Dialog/Toast.h"
@@ -283,6 +284,42 @@ int main() {
 			o->setImageMode(ImageMode_WidthFix);
 			o->width = 400;
 		}REND;
+
+
+
+
+		R(LayoutLinear) {
+			R(Button) {
+				o->name = "Button";
+				o->setLabel("保存");
+				o->onClick = CLOSURE([](MouseEvent* me) {
+					printf("点击提交\n");
+
+					FileDialog_getSaveFileName("./", "请选择保存路径");
+
+					});
+				o->width = 200;
+			}REND;
+			R(Button) {
+				o->name = "Button";
+				o->setLabel("取消");
+				o->onClick = CLOSURE([](MouseEvent* me) {
+					printf("点击提交\n");
+					MessageDialog_alert("取消", "提示");
+					});
+			}REND;
+
+			R(Button) {
+				o->name = "Button";
+				o->setLabel("关闭窗口");
+				o->onClick = CLOSURE([=](MouseEvent* me) {
+					win->close();
+
+
+					});
+			}REND;
+		}REND;
+
 	}REND;
 
 

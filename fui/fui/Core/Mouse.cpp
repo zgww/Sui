@@ -32,9 +32,18 @@ Vec2 Mouse_getPosOfWindow(int64_t windowId) {
 #endif
 }
 
+static int mouseDownClientX = 0;
+static int mouseDownClientY = 0;
 void setMouseEventFromMouseData(MouseEvent* event, MouseData* md, Window* win) {
+	if (md->isMouseDown) {
+		mouseDownClientX = md->clientX;
+		mouseDownClientY = md->clientY;
+	}
+
 	event->clientX = md->clientX;
 	event->clientY = md->clientY;
+	event->mouseDownClientX = mouseDownClientX;
+	event->mouseDownClientY = mouseDownClientY;
 	event->button = md->button;
 	event->window = win;
 	event->isMouseDown = md->isMouseDown;
@@ -45,8 +54,6 @@ void setMouseEventFromMouseData(MouseEvent* event, MouseData* md, Window* win) {
 	event->alt = md->alt;
 
 	if (md->isMouseDown) {
-		event->mouseDownClientX = md->clientX;
-		event->mouseDownClientY = md->clientY;
 		event->name = "mousedown";
 	} else if (md->isMouseUp) {
 		event->name = "mouseup";

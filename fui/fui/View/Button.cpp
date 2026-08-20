@@ -2,6 +2,7 @@
 #include "TextView.h"
 #include "ImageView.h"
 #include <format>
+#include "Core/MouseEvent.h"
 
 Button::Button() {
 	cursor = "pointer";
@@ -9,11 +10,10 @@ Button::Button() {
 	justifyContent = "center";
 	alignItems = "center";
 	padding.setAxis(6, 12);
-	radius->setAll(6);
+	radius.setAll(6);
 	backgroundColor = normalBg;
 
-
-	this->react();
+	this->initInnerReact();
 }
 
 
@@ -54,32 +54,38 @@ void Button::onEvent(Event* ev) {
 	LayoutLinear::onEvent(ev);
 	if (ev->isStopPropagation) return;
 
-	MouseEvent* me = dynamic_cast<MouseEvent*>(ev);
-	if (!me) return;
-
-	if (me->isClickInBubble()) {
-		backgroundColor = activeBg;
-		invalidDraw();
-		if (onClick) {
-			onClick->invoke(me);
+	if (auto me = dynamic_cast<MouseEnterEvent*>(ev)){
+		this->backgroundColor = 0xffff8888;
+		this->labelColor = 0xff0000ff;
+		this->react();
+		this->invalidDraw();
+	}
+	if (auto me = dynamic_cast<MouseLeaveEvent*>(ev)) {
+		this->backgroundColor = 0xffff0000;
+		this->labelColor = 0xffffffff;
+		this->react();
+		this->invalidDraw();
+	}
+	if (auto me = dynamic_cast<MouseEvent*>(ev)){
+		if (me->isClickInBubble()) {
+			//if (self.clickListener){
+				//self.clickListener.onEvent(me);
+			//}
+			if (this->onClick) {
+				this->onClick->invoke(me);
+			}
 		}
-	} else if (me->isMouseDown && me->isBubble()) {
-		backgroundColor = activeBg;
-		invalidDraw();
+	}
+	if (auto me = dynamic_cast<ViewEvent*>(ev)) {
+			// printf("Button.onEvent: %s isCapture:%d\n", Object_getClassName(ev), ve.isCapture)
 	}
 }
 
-void Button::onHoverChanged() {
-	if (hover) {
-		backgroundColor = hoverBg;
-	} else {
-		backgroundColor = normalBg;
-	}
-	invalidDraw();
-}
 
 void Button::react()
 {
+	startInnerReact();
+
 	auto o = this;
 	if (src != "") {
 		R(ImageView, LINE_KEY) {
@@ -95,4 +101,6 @@ void Button::react()
 			o->setFontSize(fontSize);
 		}REND;
 	}
+
+	endInnerReact();
 }

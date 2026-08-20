@@ -28,7 +28,6 @@ public:
 	void setLabelColor(int c);
 	void setNormalBg(int c);
 	void onEvent(Event* ev) override;
-	void onHoverChanged() override;
 	void react() override;
 
 	virtual const char* getClassName() const override { return "Button"; }

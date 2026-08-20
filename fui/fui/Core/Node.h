@@ -56,7 +56,7 @@ class Window;
 template <class T>
 bool isSameNodeType(Node* curNode) {
 	auto typeName = typeid(T).name();
-	auto nodeTypeName = typeid(curNode).name();
+	auto nodeTypeName = typeid(*curNode).name();
 	return _strcmpi(typeName, nodeTypeName) == 0;
 }
 
@@ -196,6 +196,8 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 					return (T*)curNode;
 				}
 				else {
+					auto typeName = typeid(T).name();
+					auto nodeTypeName = typeid(*curNode).name();
 					throw std::runtime_error(std::format("dynamic node type is different gocIdx:{}, key:{}", o->gocIdx, key));
 				}
 			}

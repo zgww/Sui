@@ -37,6 +37,10 @@ void HoverSentive::onmousemove(ViewBase* rootView, float x, float y) {
 
 	ViewBase* hitTestView = rootView ? rootView->hitTest(x, y) : nullptr;
 
+	if (hitTestView) {
+		printf("hitTestView:%s                      ============\n", hitTestView->name.c_str());
+	}
+
 	Ref<GcList<Node>> parents = hitTestView ? hitTestView->getAncients(true) : Ref<GcList<Node>>(new GcList<Node>());
 	std::string cursor = "unset";
 
@@ -50,6 +54,7 @@ void HoverSentive::onmousemove(ViewBase* rootView, float x, float y) {
 			}
 		}
 		if (!found) {
+			printf("mouse leave:%s\n", v->name.c_str());
 			dellist->push(v);
 			hoverings->remove_at(i);
 			v->setHover(false);
@@ -70,6 +75,7 @@ void HoverSentive::onmousemove(ViewBase* rootView, float x, float y) {
 				}
 			}
 			if (!inHover) {
+				printf("mouse enter:%s\n", v->name.c_str());
 				addlist->push(v);
 				hoverings->push(v);
 				v->setHover(true);

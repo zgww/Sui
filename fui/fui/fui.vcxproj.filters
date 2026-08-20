@@ -198,6 +198,9 @@
     <ClInclude Include="View\ImageView.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\Button.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -297,6 +300,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Core\Image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\Button.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
