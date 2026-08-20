@@ -2,18 +2,20 @@
 #include "../Core/Canvas.h"
 
 Switch::Switch() {
-	width = 34;
+	width = 30;
 	height = 20;
 	cursor = "pointer";
-	radius->setAll(10);
+	radius.setAll(10);
 	backgroundColor = trackOffColor;
 
 	circle = new View();
 	circle->width = circleSize;
 	circle->height = circleSize;
 	circle->backgroundColor = 0xffffffff;
-	circle->radius->setAll(circleSize / 2.0f);
+	circle->radius.setAll(circleSize / 2.0f);
 	appendChild(circle);
+
+	initInnerReact();
 }
 
 void Switch::setChecked(bool v) {

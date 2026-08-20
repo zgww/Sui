@@ -83,6 +83,7 @@
     <ClInclude Include="View\HoverViewEffect.h" />
     <ClInclude Include="View\ImageView.h" />
     <ClInclude Include="View\MenuNative.h" />
+    <ClInclude Include="View\Switch.h" />
     <ClInclude Include="View\TextView.h" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,7 @@
     <ClCompile Include="View\HoverViewEffect.cpp" />
     <ClCompile Include="View\ImageView.cpp" />
     <ClCompile Include="View\MenuNative.cpp" />
+    <ClCompile Include="View\Switch.cpp" />
     <ClCompile Include="View\TextView.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

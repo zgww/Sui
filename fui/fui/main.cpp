@@ -27,6 +27,7 @@
 #include "View/SplitterView.h"
 #include "View/ColorPicker.h"
 #include "View/MenuNative.h"
+#include "View/Switch.h"
 #include "Dialog/Toast.h"
 #include "Dialog/FileDialog.h"
 #include "Dialog/MessageDialog.h"
@@ -288,7 +289,10 @@ int main() {
 		//}REND;
 
 		R(Checkbox) {
-			
+
+		}REND;
+		R(Switch) {
+
 		}REND;
 		R(View) {
 			o->width = 100;
