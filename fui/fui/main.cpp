@@ -19,12 +19,14 @@
 #include "View/Panel.h"
 #include "View/ScrollArea.h"
 #include "View/EditText.h"
+#include "View/HoverViewEffect.h"
 #include "View/Select.h"
 #include "View/TreeView.h"
 #include "View/TableView.h"
 #include "View/Button.h"
 #include "View/SplitterView.h"
 #include "View/ColorPicker.h"
+#include "View/MenuNative.h"
 #include "Dialog/Toast.h"
 #include "Dialog/FileDialog.h"
 #include "Dialog/MessageDialog.h"
@@ -250,41 +252,54 @@ int main() {
 		o->alignItems = "center";
 		o->justifyContent = "center";
 
-		R(TextView) {
-			o->setText("你好啊");
-		}REND;
+		//R(TextView) {
+		//	o->setText("你好啊");
+		//}REND;
 
-		R(TextView) {
-			o->setText("你好啊");
-		}REND;
+		//R(TextView) {
+		//	o->setText("你好啊");
+		//}REND;
 
-		R(LayoutLinear) {
-			o->backgroundColor = 0x3300ff00;
-			R(TextView) {
-				o->setText("左边");
-				o->setFontSize(34);
+		//R(LayoutLinear) {
+		//	o->backgroundColor = 0x3300ff00;
+		//	R(TextView) {
+		//		o->setText("左边");
+		//		o->setFontSize(34);
+		//	}REND;
+
+		//	R(TextView) {
+		//		o->setText("右边");
+		//	}REND;
+		//}REND;
+
+		//R(TextView) {
+		//	o->setText("你好啊");
+		//}REND;
+
+		//R(TextView) {
+		//	o->setText("你好啊");
+		//}REND;
+
+
+		//R(ImageView) {
+		//	o->setSrc("asset/sample.png");
+		//	o->setImageMode(ImageMode_WidthFix);
+		//	o->width = 400;
+		//}REND;
+
+		R(Checkbox) {
+			
+		}REND;
+		R(View) {
+			o->width = 100;
+			o->height = 100;
+			R(HoverViewEffect) {
+				o->backgroundColor = 0xffff0000;
+				o->hoverBackgroundColor = 0xff00ff00;
+				o->activeBackgroundColor = 0xff0000ff;
+				o->hoverBorder.setAll(1, 0xff333333);
 			}REND;
-
-			R(TextView) {
-				o->setText("右边");
-			}REND;
 		}REND;
-
-		R(TextView) {
-			o->setText("你好啊");
-		}REND;
-
-		R(TextView) {
-			o->setText("你好啊");
-		}REND;
-
-
-		R(ImageView) {
-			o->setSrc("asset/sample.png");
-			o->setImageMode(ImageMode_WidthFix);
-			o->width = 400;
-		}REND;
-
 
 
 
@@ -305,7 +320,32 @@ int main() {
 				o->setLabel("取消");
 				o->onClick = CLOSURE([](MouseEvent* me) {
 					printf("点击提交\n");
-					MessageDialog_alert("取消", "提示");
+
+					HIER( mkMenuNativeItem(nullptr, "", nullptr) ) {
+						mkMenuNativeItem(o, "about", CLOSURE([=](MenuNativeItem* item) {
+
+							MessageDialog_alert("取消", "提示");
+							}));
+						mkMenuNativeItem(o, "关于");
+						mkMenuNativeItem(o, "退出");
+						mkMenuNativeItem(o, "打开");
+						HIER(mkMenuNativeItem(o, "添加")) {
+							mkMenuNativeItem(o, "分组");
+							mkMenuNativeItem(o, "视频流任务");
+							mkMenuNativeItem(o, "图片任务");
+							mkMenuNativeItem(o, "服务器配置");
+						}HEND;
+						mkMenuNativeItem(o, "复制");
+						mkMenuNativeItem(o, "粘贴");
+						mkMenuNativeItem(o, "剪切");
+						mkMenuNativeItem(o, "移动");
+
+						auto n = Ref(new MenuNative());
+						n->create(o);
+						n->showAtMouse();
+					}HEND;
+					
+
 					});
 			}REND;
 

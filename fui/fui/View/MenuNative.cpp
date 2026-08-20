@@ -6,7 +6,7 @@
 #endif
 
 static int gMenuId = 10000;
-static MenuNative* currentMenuNative = nullptr;
+static Ref<MenuNative> currentMenuNative = nullptr;
 
 MenuNativeItem::MenuNativeItem() {
 	commandId = gMenuId;
@@ -30,6 +30,8 @@ MenuNativeItem* mkMenuNativeItem(MenuNativeItem* parent, const std::string& labe
 }
 
 MenuNative::MenuNative() {
+	//CtorGuard(this);
+
 	currentMenuNative = this;
 }
 

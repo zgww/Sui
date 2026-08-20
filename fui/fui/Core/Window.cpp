@@ -8,6 +8,8 @@
 #include "Mouse.h"
 #include "Keyboard.h"
 #include "../Urgc/Urgc.h"
+#include "../View/MenuNative.h"
+
 
 #ifdef _WIN32
 #include <windows.h>
@@ -140,6 +142,34 @@ static const char* vkToKeyName(WPARAM vk) {
 	return "";
 }
 
+static int _command(HWND win, WPARAM wp, LPARAM lp) {
+
+
+	auto ok = IDOK;
+	auto cancel = IDCANCEL;
+	auto type = HIWORD(wp);
+	auto realid = LOWORD(wp);
+
+	int id = wp;
+
+	MenuNative_doCommand((long long)win, id);
+	/* if (g_current_native_menu) {
+
+		 auto item = g_current_native_menu->root->by_id(id);
+		 if (item) {
+			 if (item->click) {
+				 try {
+					 item->click->call();
+				 }
+				 catch (std::exception& e) {
+					 printf("_command捕获到异常:%s\n", e.what());
+				 }
+			 }
+		 }
+		 g_current_native_menu = nullptr;
+	 }*/
+	return 0;
+}
 static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	int64_t winId = (int64_t)hWnd;
 
@@ -241,6 +271,11 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			}
 		}
 		break;
+	}
+	// 菜单事件
+	case WM_COMMAND:
+	{
+		return _command(hWnd, wParam, lParam);
 	}
 	default:
 		return DefWindowProc(hWnd, uMsg, wParam, lParam);

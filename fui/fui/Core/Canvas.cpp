@@ -240,6 +240,13 @@ float Canvas::textBounds(float x, float y, const char* string, const char* end, 
 	return nvgTextBounds((NVGcontext*)data, x, y, string, end, bounds);
 }
 
+TextMetrics Canvas::textMetrics()
+{
+	TextMetrics tm;
+	nvgTextMetrics((NVGcontext*)data, &tm.ascender, &tm.descender, &tm.lineh);
+	return tm;
+}
+
 void Canvas::drawImage(Image* img, float x, float y, float alpha) {
 	if (!img || img->_img == 0) return;
 	NVGcontext* vg = (NVGcontext*)data;

@@ -5,6 +5,13 @@
 #include "Image.h"
 #include "Color.h"
 
+class TextMetrics {
+public:
+	float ascender;
+	float descender;
+	float lineh;
+};
+
 class Canvas : public GcObj {
 public:
 	void* data = nullptr;
@@ -75,6 +82,7 @@ public:
 	void textAlign(int align);
 	void text(float x, float y, const char* string);
 	float textBounds(float x, float y, const char* string, const char* end, float* bounds);
+	TextMetrics textMetrics();
 
 	void drawImage(Image* img, float x, float y, float alpha);
 	void drawImageAtRect(Image* img, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh, float alpha);

@@ -11,13 +11,13 @@
 class HoverViewEffect : public Node {
 public:
 	int backgroundColor = 0x00ffffff;
-	Ref<Border> border{new Border(), this};
+	Border border;
 
 	int hoverBackgroundColor = 0x22666666;
-	Ref<Border> hoverBorder{new Border(), this};
+	Border hoverBorder;
 
 	int activeBackgroundColor = 0x53007aff;
-	Ref<Border> activeBorder{new Border(), this};
+	Border activeBorder;
 
 	bool isActive = false;
 

@@ -8,6 +8,11 @@
 #include "../Core/Window.h"
 #include <vector>
 
+
+#define HIER(Expr) {auto _tmp = Expr, o = _tmp;
+#define HEND }
+
+
 class MenuNativeItem : public GcObj {
 public:
 	int commandId = 0;
@@ -22,7 +27,7 @@ public:
 	void append(MenuNativeItem* item);
 };
 
-MenuNativeItem* mkMenuNativeItem(MenuNativeItem* parent, const std::string& label, Ref<Closure<void(MenuNativeItem*)>> onActive);
+MenuNativeItem* mkMenuNativeItem(MenuNativeItem* parent, const std::string& label, Ref<Closure<void(MenuNativeItem*)>> onActive = nullptr);
 
 class MenuNative : public GcObj {
 public:

@@ -5,8 +5,8 @@ Checkbox::Checkbox() {
 	width = 16;
 	height = 16;
 	cursor = "pointer";
-	radius->setAll(3);
-	border->setAll(1, 0xff999999);
+	radius.setAll(3);
+	border.setAll(1, 0xff999999);
 	backgroundColor = uncheckedBg;
 }
 
@@ -14,7 +14,7 @@ void Checkbox::setChecked(bool v) {
 	if (checked != v) {
 		checked = v;
 		backgroundColor = checked ? checkedBg : uncheckedBg;
-		border->setAll(1, checked ? 0xff1677ff : 0xff999999);
+		border.setAll(1, checked ? 0xff1677ff : 0xff999999);
 		invalidDraw();
 		if (onChanged) {
 			onChanged->invoke(checked);

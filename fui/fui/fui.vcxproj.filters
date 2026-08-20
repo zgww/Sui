@@ -201,6 +201,15 @@
     <ClInclude Include="View\Button.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\Checkbox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="View\HoverViewEffect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="View\MenuNative.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -303,6 +312,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\Button.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\Checkbox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\HoverViewEffect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\MenuNative.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

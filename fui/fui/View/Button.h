@@ -16,8 +16,8 @@ public:
 	int labelColor = 0xffffffff;
 	float fontSize = 14.0f;
 	int normalBg = 0xff1677ff;
-	int hoverBg = 0xff3a8ee6;
-	int activeBg = 0xff0d5cb8;
+	int hoverBg = 0xee1677ff;
+	int activeBg = 0xdd1677ff;
 
 	Ref<Closure<void(MouseEvent*)>> onClick{nullptr, this};
 

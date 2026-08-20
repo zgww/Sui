@@ -79,7 +79,10 @@
     <ClInclude Include="Dialog\FileDialog.h" />
     <ClInclude Include="Dialog\MessageDialog.h" />
     <ClInclude Include="View\Button.h" />
+    <ClInclude Include="View\Checkbox.h" />
+    <ClInclude Include="View\HoverViewEffect.h" />
     <ClInclude Include="View\ImageView.h" />
+    <ClInclude Include="View\MenuNative.h" />
     <ClInclude Include="View\TextView.h" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +118,10 @@
     <ClCompile Include="Dialog\FileDialog.cpp" />
     <ClCompile Include="Dialog\MessageDialog.cpp" />
     <ClCompile Include="View\Button.cpp" />
+    <ClCompile Include="View\Checkbox.cpp" />
+    <ClCompile Include="View\HoverViewEffect.cpp" />
     <ClCompile Include="View\ImageView.cpp" />
+    <ClCompile Include="View\MenuNative.cpp" />
     <ClCompile Include="View\TextView.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

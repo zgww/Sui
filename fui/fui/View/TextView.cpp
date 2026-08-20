@@ -226,7 +226,9 @@ void TextView::draw_self(Canvas* canvas) {
 	float pl = padding.left + border.l.w;
 	float pt = padding.top + border.t.w;
 
+
+	auto tm = canvas->textMetrics();
 	for (auto& li : lineInfos) {
-		canvas->text(li.x + pl + areaX, li.y + pt, li.text.c_str());
+		canvas->text(li.x + pl + areaX, li.y + pt - tm.descender, li.text.c_str());
 	}
 }

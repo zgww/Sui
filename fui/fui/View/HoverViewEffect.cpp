@@ -5,10 +5,8 @@ void HoverViewEffect::onMounted() {
 	if (p) {
 		View* v = dynamic_cast<View*>(p);
 		if (v) {
-			auto selfRef = this;
+			auto hve = Ref(this);
 			v->cbOnHoverChanged = CLOSURE([=]() {
-				HoverViewEffect* hve = selfRef;
-				if (!hve) return;
 				hve->applyEffect();
 				if (hve->cbOnHoverChanged) {
 					hve->cbOnHoverChanged->invoke(v);
@@ -16,8 +14,6 @@ void HoverViewEffect::onMounted() {
 			});
 			if (onClick || onHostEvent) {
 				v->cbOnEvent = CLOSURE([=](Event* e) {
-					HoverViewEffect* hve = selfRef;
-					if (!hve) return;
 					if (hve->onHostEvent) {
 						if (hve->onHostEvent->invoke(e)) return;
 					}
@@ -44,20 +40,18 @@ void HoverViewEffect::applyEffect() {
 		if (v) {
 			bool hover = v->hover;
 			int bgColor = backgroundColor;
-			Border* b = border.get();
+			Border b = border;
 
 			if (isActive) {
 				bgColor = activeBackgroundColor;
-				b = activeBorder.get();
+				b = activeBorder;
 			} else if (hover) {
 				bgColor = hoverBackgroundColor;
-				b = hoverBorder.get();
+				b = hoverBorder;
 			}
 
 			v->backgroundColor = bgColor;
-			if (b) {
-				v->border->copyFrom(b);
-			}
+			v->border.copyFrom(&b);
 			v->invalidDraw();
 		}
 	}

@@ -55,14 +55,14 @@ void Button::onEvent(Event* ev) {
 	if (ev->isStopPropagation) return;
 
 	if (auto me = dynamic_cast<MouseEnterEvent*>(ev)){
-		this->backgroundColor = 0xffff8888;
-		this->labelColor = 0xff0000ff;
+		this->backgroundColor = this->hoverBg;
+		//this->labelColor = 0xff0000ff;
 		this->react();
 		this->invalidDraw();
 	}
 	if (auto me = dynamic_cast<MouseLeaveEvent*>(ev)) {
-		this->backgroundColor = 0xffff0000;
-		this->labelColor = 0xffffffff;
+		this->backgroundColor = this->normalBg;
+		//this->labelColor = 0xffffffff;
 		this->react();
 		this->invalidDraw();
 	}
@@ -97,6 +97,7 @@ void Button::react()
 	if (label != "") {
 		R(TextView, LINE_KEY) {
 			o->setText(label);
+			//o->backgroundColor = 0xff0000ff;
 			o->color = labelColor;
 			o->setFontSize(fontSize);
 		}REND;
