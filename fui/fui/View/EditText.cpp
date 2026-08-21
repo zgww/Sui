@@ -5,12 +5,15 @@
 #include "../Core/Clipboard.h"
 
 EditText::EditText() {
+	CtorGuard g(this);
+
+
 	width = 200;
 	height = 28;
 	cursor = "text";
 	backgroundColor = bgColor;
-	border->setAll(1, 0xffcccccc);
-	radius->setAll(4);
+	border.setAll(1, 0xffcccccc);
+	radius.setAll(4);
 	padding.setAxis(4, 8);
 	needClip = true;
 
@@ -35,7 +38,7 @@ void EditText::setValue(const std::string& v) {
 void EditText::focus() {
 	if (!focused) {
 		focused = true;
-		border->setAll(1, 0xff1677ff);
+		border.setAll(1, 0xff1677ff);
 		caretVisible = true;
 		if (caretTimer) caretTimer->start();
 		invalidDraw();
@@ -45,7 +48,7 @@ void EditText::focus() {
 void EditText::blur() {
 	if (focused) {
 		focused = false;
-		border->setAll(1, 0xffcccccc);
+		border.setAll(1, 0xffcccccc);
 		if (caretTimer) caretTimer->cancel();
 		invalidDraw();
 	}
@@ -99,8 +102,8 @@ void EditText::draw_self(Canvas* canvas) {
 	canvas->fontSize(fontSize);
 	canvas->fontFace("sans");
 
-	float pl = padding.left + border->l->w;
-	float pt = padding.top + border->t->w;
+	float pl = padding.left + border.l.w;
+	float pt = padding.top + border.t.w;
 
 	if (value.empty() && !placeholder.empty()) {
 		canvas->fillColorByInt32(placeholderColor);
@@ -141,9 +144,9 @@ void EditText::onEvent(Event* ev) {
 	if (ke && ke->isKeyDown && focused) {
 		if (ke->ctrl) {
 			if (ke->key == "c" || ke->key == "C") {
-				clipboard_setText(value.c_str());
+				Clipboard_setText(value.c_str());
 			} else if (ke->key == "v" || ke->key == "V") {
-				std::string clip = clipboard_getText();
+				std::string clip = Clipboard_getText();
 				if (!clip.empty()) insertText(clip);
 			} else if (ke->key == "a" || ke->key == "A") {
 				caretPos = (int)value.size();

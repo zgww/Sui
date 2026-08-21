@@ -82,6 +82,7 @@
     <ClInclude Include="View\Button.h" />
     <ClInclude Include="View\Checkbox.h" />
     <ClInclude Include="View\Drag.h" />
+    <ClInclude Include="View\EditText.h" />
     <ClInclude Include="View\HoverViewEffect.h" />
     <ClInclude Include="View\ImageView.h" />
     <ClInclude Include="View\MenuNative.h" />
@@ -127,6 +128,7 @@
     <ClCompile Include="View\Button.cpp" />
     <ClCompile Include="View\Checkbox.cpp" />
     <ClCompile Include="View\Drag.cpp" />
+    <ClCompile Include="View\EditText.cpp" />
     <ClCompile Include="View\HoverViewEffect.cpp" />
     <ClCompile Include="View\ImageView.cpp" />
     <ClCompile Include="View\MenuNative.cpp" />
