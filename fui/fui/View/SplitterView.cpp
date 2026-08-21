@@ -1,7 +1,8 @@
 #include "SplitterView.h"
+#include "../Core/Cursor.h"
 
 SplitterView::SplitterView() {
-	CtorGuard(this);
+	CtorGuard g(this);
 
 	hitTestPadding.setAll(3);
 	cursor = "sizewe";
@@ -30,6 +31,8 @@ SplitterView::SplitterView() {
 		if (!prevCell || !nextCell) return;
 
 		if (d->isDragStart) {
+			Cursor_ins()->setCursor(self->cursor.c_str());
+			Cursor_ins()->setIsLocked(true);
 			if (isHor) {
 				self->prevGrow = prev->frame.width;
 				self->nextGrow = next->frame.width;
@@ -56,6 +59,11 @@ SplitterView::SplitterView() {
 			prevCell->grow = self->prevGrow;
 			nextCell->grow = self->nextGrow;
 		}
+		if (d->isDragEnd) {
+			Cursor_ins()->setIsLocked(false);
+		}
+
+		parentView->invalidLayout();
 	});
 }
 

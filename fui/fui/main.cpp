@@ -319,24 +319,23 @@ int main() {
 		//	}REND;
 		//}REND;
 
-		//R(LayoutLinear) {
-		//	o->width = 600;
+		R(LayoutLinear) {
+			o->width = 600;
 
-
-		//	R(View) {
-		//		o->backgroundColor = 0xff99ff00;
-		//		o->height = 100;
-		//		R(LayoutLinearCell) {}REND;
-		//	} REND;
-		//	R(SplitterView) {
-		//		o->height = 100;
-		//	}REND;
-		//	R(View) {
-		//		o->backgroundColor = 0xff00ff99;
-		//		o->height = 100;
-		//		R(LayoutLinearCell) {}REND;
-		//	} REND;
-		//} REND;
+			R(View) {
+				o->backgroundColor = 0xff99ff00;
+				o->height = 100;
+				R(LayoutLinearCell) {}REND;
+			} REND;
+			R(SplitterView) {
+				o->height = 100;
+			}REND;
+			R(View) {
+				o->backgroundColor = 0xff00ff99;
+				o->height = 100;
+				R(LayoutLinearCell) {}REND;
+			} REND;
+		} REND;
 
 
 		R(LayoutLinear) {
