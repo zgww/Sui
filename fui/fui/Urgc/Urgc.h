@@ -211,6 +211,8 @@ public:
 	int deguardCount = 0;
 	int setDeleterCount = 0;
 
+	void* watchTarget = nullptr;
+
 	//通过被引用者查找入引用管理
 	RefMgr* get_ref_mgr_by_target(void* target);
 	//不存在就创建 入引用

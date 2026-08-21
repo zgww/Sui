@@ -2,6 +2,8 @@
 #include "../Core/Canvas.h"
 
 Switch::Switch() {
+	CtorGuard(this);
+
 	width = 30;
 	height = 20;
 	cursor = "pointer";

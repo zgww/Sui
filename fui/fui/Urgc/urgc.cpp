@@ -328,6 +328,7 @@ inline void Urgc::ref(void* source, void* target, std::function<void(void*)> del
 	#ifdef USE_LOCK
 	std::lock_guard<std::recursive_mutex> g(swap_collecting_mutex);
 	#endif
+	//RefMgr* mgr = goc_ref_mgr_by_target(target, deleter);
 
 	auto c = eventLists->collecting;
 	auto& item = c->data[c->length];
@@ -650,6 +651,10 @@ void Urgc::process_on_thread()
 			//auto& list = *processing;
 			for (int i = 0, l = processing->size(); i < l; i++) {
 				auto& e = processing->at(i);
+
+				if (e.target == watchTarget) {
+					printf("watching obj:%p\n", watchTarget);
+				}
 
 				#ifdef RECORD_TARGET_REF_EVENTS
 				this->record_target_ref_event(e);

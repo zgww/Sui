@@ -5,6 +5,9 @@
 #include "Core/MouseEvent.h"
 
 Button::Button() {
+	CtorGuard(this);
+
+
 	cursor = "pointer";
 	direction = "row";
 	justifyContent = "center";

@@ -1,6 +1,8 @@
 #include "SplitterView.h"
 
 SplitterView::SplitterView() {
+	CtorGuard(this);
+
 	hitTestPadding.setAll(3);
 	cursor = "sizewe";
 

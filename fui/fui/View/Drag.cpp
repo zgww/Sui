@@ -33,6 +33,9 @@ void Drag::onMouseDown(Event* e) {
 	mouseDownButton = me->button;
 	mouseEvent = me;
 
+	//urgc.report_source_chain(this);
+	//urgc.watchTarget = e;
+
 	Window* win = me->window;
 	if (win && win->rootView) {
 		ViewBase* rootView = (ViewBase*)win->rootView;

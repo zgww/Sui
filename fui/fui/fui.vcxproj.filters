@@ -228,6 +228,9 @@
     <ClInclude Include="View\Slider.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\SplitterView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -354,6 +357,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\Slider.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\SplitterView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

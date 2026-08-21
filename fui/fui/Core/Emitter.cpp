@@ -7,3 +7,4 @@ Emitter* useEbus() {
 	}
 	return ins;
 }
+

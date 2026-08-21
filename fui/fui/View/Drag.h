@@ -24,7 +24,7 @@ public:
 	void setStatus(const char* status);
 	void onMouseDown(Event* e);
 	void onMouseDown_byPrefer(Event* e, int button, bool cap, bool bubble);
-	void onListenerEvent(Event* ev) override;
+	void onListenerEvent(Event* ev) ;
 
-	virtual const char* getClassName() const override { return "Drag"; }
+	virtual const char* getClassName() const  { return "Drag"; }
 };

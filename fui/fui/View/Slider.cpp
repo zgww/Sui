@@ -3,7 +3,7 @@
 #include "../Core/Canvas.h"
 
 Slider::Slider() {
-	CtorGuard(this);
+	CtorGuard g(this);
 
 	
 	height = 16;
@@ -18,6 +18,7 @@ Slider::Slider() {
 	circle->border.setAll(4, 0xff1677ff);
 	appendChild(circle);
 
+
 	Ref<Slider> self = this;
 	drag->onDrag = CLOSURE([=](Drag* d) {
 		if (d->isDragging || d->isDragStart) {
@@ -27,6 +28,7 @@ Slider::Slider() {
 			self->setRatio(v);
 		}
 	});
+	printf("drag:%p, Slider:%p\n", drag, this);
 
 
 	initInnerReact();

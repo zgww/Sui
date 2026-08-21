@@ -73,7 +73,11 @@ void dispatchMouseEvent(ViewBase* rootView, MouseData* md, Window* win) {
 	ViewBase* hit = rootView->hitTest(md->clientX, md->clientY);
 	if (!hit) return;
 
-	Ref<MouseEvent> event{new MouseEvent()};
+	if (md->isMouseDown) {
+		printf("mousedown\n");
+	}
+
+	Ref<MouseEvent> event{ new MouseEvent() };
 	setMouseEventFromMouseData(event, md, win);
 
 	event->target = hit;

@@ -300,25 +300,43 @@ int main() {
 			o->width = 400;
 			o->margin.setAll(10);
 		}REND;
-		R(ProgressView) {
-			o->setValue(0.5);
-			mkTimerInterval(CLOSURE([=]() {
-				o->setValue(o->value + 0.01);
-				}), 100);
+		//R(ProgressView) {
+		//	o->setValue(0.5);
+		//	mkTimerInterval(CLOSURE([=]() {
+		//		o->setValue(o->value + 0.01);
+		//		}), 100);
 
-		}REND;
-		R(View) {
-			o->width = 100;
-			o->height = 100;
-			o->cursor = "pointer";
-			R(HoverViewEffect) {
-				o->backgroundColor = 0xffff0000;
-				o->hoverBackgroundColor = 0xff00ff00;
-				o->activeBackgroundColor = 0xff0000ff;
-				o->hoverBorder.setAll(1, 0xff333333);
-			}REND;
-		}REND;
+		//}REND;
+		//R(View) {
+		//	o->width = 100;
+		//	o->height = 100;
+		//	o->cursor = "pointer";
+		//	R(HoverViewEffect) {
+		//		o->backgroundColor = 0xffff0000;
+		//		o->hoverBackgroundColor = 0xff00ff00;
+		//		o->activeBackgroundColor = 0xff0000ff;
+		//		o->hoverBorder.setAll(1, 0xff333333);
+		//	}REND;
+		//}REND;
 
+		//R(LayoutLinear) {
+		//	o->width = 600;
+
+
+		//	R(View) {
+		//		o->backgroundColor = 0xff99ff00;
+		//		o->height = 100;
+		//		R(LayoutLinearCell) {}REND;
+		//	} REND;
+		//	R(SplitterView) {
+		//		o->height = 100;
+		//	}REND;
+		//	R(View) {
+		//		o->backgroundColor = 0xff00ff99;
+		//		o->height = 100;
+		//		R(LayoutLinearCell) {}REND;
+		//	} REND;
+		//} REND;
 
 
 		R(LayoutLinear) {

@@ -11,7 +11,7 @@ public:
 	float fromValue = 0.0f;
 	float toValue = 1.0f;
 	Ref<View> circle{nullptr, this};
-	Ref<Drag> drag{new Drag(), this};
+	Ref<Drag> drag{ new Drag(), this };
 	Ref<Closure<void(float)>> onChanged{nullptr, this};
 
 	Slider();
