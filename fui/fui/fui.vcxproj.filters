@@ -222,6 +222,12 @@
     <ClInclude Include="View\ProgressView.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\Drag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="View\Slider.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -342,6 +348,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\ProgressView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\Drag.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\Slider.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

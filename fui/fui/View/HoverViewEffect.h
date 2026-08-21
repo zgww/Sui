@@ -19,6 +19,8 @@ public:
 	int activeBackgroundColor = 0x53007aff;
 	Border activeBorder;
 
+	std::string hoverCursor = "pointer";
+
 	bool isActive = false;
 
 	Ref<Closure<void(MouseEvent*)>> onClick{nullptr, this};

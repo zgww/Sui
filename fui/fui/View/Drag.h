@@ -5,7 +5,7 @@
 #include "../Core/Vec2.h"
 #include "../Core/MouseEvent.h"
 
-class Drag : public Emitter {
+class Drag : public Listener {
 public:
 	Ref<Closure<void(Drag*)>> onDrag{nullptr, this};
 	Vec2 currentClientPos;
@@ -19,7 +19,7 @@ public:
 	float moveThreshold = 5.0f;
 	Ref<MouseEvent> mouseEvent{nullptr, this};
 	int mouseDownButton = 1;
-	void* data = nullptr;
+	Ref<GcObj> data{ nullptr, this };
 
 	void setStatus(const char* status);
 	void onMouseDown(Event* e);

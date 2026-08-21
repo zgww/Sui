@@ -1,6 +1,7 @@
 #include "Drag.h"
 #include "../Core/ViewBase.h"
 #include "../Core/Window.h"
+#include "../Core/Cursor.h"
 
 void Drag::setStatus(const char* status) {
 	isDragChecking = false;
@@ -12,6 +13,17 @@ void Drag::setStatus(const char* status) {
 	else if (strcmp(status, "start") == 0) isDragStart = true;
 	else if (strcmp(status, "dragging") == 0) isDragging = true;
 	else if (strcmp(status, "end") == 0) isDragEnd = true;
+
+	if (cursor != "") {
+		if (isDragStart) {
+			Cursor_ins()->setCursor(cursor.c_str());
+			Cursor_ins()->setIsLocked(true);
+		}
+		else if (isDragEnd) {
+			Cursor_ins()->setCursor("normal");
+			Cursor_ins()->setIsLocked(false);
+		}
+	}
 }
 
 void Drag::onMouseDown(Event* e) {

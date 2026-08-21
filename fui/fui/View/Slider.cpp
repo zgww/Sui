@@ -3,15 +3,19 @@
 #include "../Core/Canvas.h"
 
 Slider::Slider() {
+	CtorGuard(this);
+
+	
 	height = 16;
 	cursor = "pointer";
+
 
 	circle = new View();
 	circle->width = 16;
 	circle->height = 16;
 	circle->backgroundColor = 0xffffffff;
-	circle->radius->setAll(8);
-	circle->border->setAll(4, 0xff1677ff);
+	circle->radius.setAll(8);
+	circle->border.setAll(4, 0xff1677ff);
 	appendChild(circle);
 
 	Ref<Slider> self = this;
@@ -23,6 +27,9 @@ Slider::Slider() {
 			self->setRatio(v);
 		}
 	});
+
+
+	initInnerReact();
 }
 
 void Slider::setRatio(float v) {
@@ -51,7 +58,9 @@ float Slider::calcToX() {
 }
 
 float Slider::calcToY() {
-	return frame.height / 2.0f - circle->frame.height / 2.0f;
+	auto rect = getContentRect();
+	auto ret = rect.h / 2.0f - circle->frame.height / 2.0f;
+	return ret;
 }
 
 void Slider::layoutContent(Frame* ctx) {

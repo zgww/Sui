@@ -296,6 +296,10 @@ int main() {
 		R(Switch) {
 
 		}REND;
+		R(Slider) {
+			o->width = 400;
+			o->margin.setAll(10);
+		}REND;
 		R(ProgressView) {
 			o->setValue(0.5);
 			mkTimerInterval(CLOSURE([=]() {
@@ -306,6 +310,7 @@ int main() {
 		R(View) {
 			o->width = 100;
 			o->height = 100;
+			o->cursor = "pointer";
 			R(HoverViewEffect) {
 				o->backgroundColor = 0xffff0000;
 				o->hoverBackgroundColor = 0xff00ff00;

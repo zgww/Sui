@@ -48,7 +48,12 @@ void HoverViewEffect::applyEffect() {
 			} else if (hover) {
 				bgColor = hoverBackgroundColor;
 				b = hoverBorder;
+
 			}
+			else {
+			}
+
+
 
 			v->backgroundColor = bgColor;
 			v->border.copyFrom(&b);

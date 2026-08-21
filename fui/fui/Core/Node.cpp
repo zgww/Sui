@@ -232,7 +232,7 @@ void Node::endInnerReact() {
 void Node::initInnerReact()
 {
 	_flagUseOutKids = true;
-	this->gocOutKids();
+	//this->gocOutKids();
 	//this->react();
 }
 
