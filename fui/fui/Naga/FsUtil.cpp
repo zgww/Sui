@@ -4,7 +4,7 @@
 #include <filesystem>
 #include "Utf8Util.h"
 #include "StrUtil.h"
-#include "urgc_api.h"
+#include "../Urgc/urgc_api.h"
 
 
 #ifdef _WIN32

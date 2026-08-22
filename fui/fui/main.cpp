@@ -38,6 +38,7 @@
 #include "Core/Screen.h"
 #include "Core/Clipboard.h"
 #include "View/Panel.h"
+#include "View/TreeView.h"
 
 int main() {
 	SetConsoleOutputCP(65001);
@@ -362,29 +363,48 @@ int main() {
 		//
 		//}REND;
 
-		R(TableView) {
-			if (o.created) {
-				o.addColumn(60, "ID");
-				o.addColumn(160, "名称");
-				o.addColumn(150, "内容");
-				o.addColumn(100, "状态");
-				o.addColumn(120, "操作");
-			}
-			o.rowCount = 20;
-			o.margin.setAll(6);
-			//o.backgroundColor = 0x330030ff;
-			//o.width = 300;
-			// o.height = 300
-			// Node *tmp = o
-			o.renderTd = CLOSURE([](Node& o, int row, int col) {
-				R(TextView, row*10000 + col) {
-					//o.backgroundColor = 0xff999999;
-					o.setColor(0xff555555);
-					o.setText(std::format("{}:{}", row, col));
-						//.addi(row))
-				} REND;
-			});
+		R(LayoutLinear) {
+			o.direction = "column";
+			o.alignItems = "start";
+			R(TreeSelfCtrlView) {
+				o.deep = 0;
+				o.hasKids = true;
+				R(TextView) { o.setText("根"); }REND;
+			}REND;
+			R(TreeSelfCtrlView) {
+				o.deep = 0;
+				o.hasKids = true;
+				R(TextView) { o.setText("根2"); }REND;
+			}REND;
+			R(TreeSelfCtrlView) {
+				o.deep = 1;
+				o.hasKids = true;
+				R(TextView) { o.setText("父2"); }REND;
+			}REND;
+
+			R(TreeSelfCtrlView) {
+				o.deep = 2;
+				o.hasKids = false;
+				R(TextView) { o.setText("子2"); }REND;
+			}REND;
 		} REND;
+		//R(TableView) {
+		//	if (o.created) {
+		//		o.addColumn(60, "ID");
+		//		o.addColumn(160, "名称");
+		//		o.addColumn(150, "内容");
+		//		o.addColumn(100, "状态");
+		//		o.addColumn(120, "操作");
+		//	}
+		//	o.rowCount = 20;
+		//	o.margin.setAll(6);
+		//	o.renderTd = CLOSURE([](Node& o, int row, int col) {
+		//		R(TextView, row*10000 + col) {
+		//			o.setColor(0xff555555);
+		//			o.setText(std::format("{}:{}", row, col));
+		//		} REND;
+		//	});
+		//} REND;
 
 
 		R(LayoutLinear) {

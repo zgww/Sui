@@ -96,3 +96,72 @@ std::string Str::lower(std::string data0) {
 		});
 	return data;
 }
+bool Str::startsWith(const char* s, const char* find) {
+	if (s == nullptr || find == nullptr) {
+		return false;
+	}
+	int slen = strlen(s);
+	int findLen = strlen(find);
+	if (slen < findLen) {
+		return false;
+	}
+	for (int i = 0; i < findLen; i++) {
+		if (s[i] != find[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+//注意，返回的是以字节为单位的
+int Str::lastIndexByteOf(std::string source, const char* cstr) {
+	if ( cstr == nullptr || strlen(cstr) == 0) {
+		return -1;
+	}
+	for (int i = source.size() - 1; i >= 0; i--) {
+		bool ok = Str::startsWith( source.c_str() + i, cstr);
+		if (ok) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+static std::string& replace_all(
+	std::string& str,
+	const std::string& old_value,
+	const std::string& new_value)
+{
+	int offset = 0;
+	while (true) {
+		int pos = 0;
+		if ((pos = str.find(old_value, offset)) != std::string::npos) {
+			str.replace(pos, old_value.length(), new_value);
+			offset = pos + new_value.length();
+		}
+		else {
+			break;
+		}
+	}
+	return str;
+}
+
+std::string Str::replaceAll(
+	std::string source,
+	char const* find,
+	char const* newStr) {
+
+	std::string s = replace_all(source, std::string(find), std::string(newStr));
+	return s;
+}
+std::string  Str::replaceAllByRe(
+	std::string source,
+	char const* pattern,
+	char const* newStr) {
+
+	std::regex re(pattern);
+	std::string replacement(newStr);
+	std::string s = std::regex_replace(source, re, replacement);
+
+	return s;
+}

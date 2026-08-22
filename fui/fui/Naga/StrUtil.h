@@ -63,6 +63,21 @@ extern "C" {
 		class Str {
 		public:
 			static std::string lower(std::string data0);
+
+			static int lastIndexByteOf(std::string source, const char* cstr);
+
+			static bool startsWith(const char* s, const char* find);
+
+
+			static std::string replaceAll(
+				std::string source,
+				char const* find,
+				char const* newStr);
+
+			static std::string  replaceAllByRe(
+				std::string source,
+				char const* pattern,
+				char const* newStr);
 		};
 
 

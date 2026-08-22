@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClInclude Include="Core\Defines_win.h" />
     <ClInclude Include="Core\Theme.h" />
+    <ClInclude Include="Naga\FsUtil.h" />
     <ClInclude Include="Naga\MathEx.h" />
     <ClInclude Include="Naga\StrUtil.h" />
     <ClInclude Include="Naga\Utf8Util.h" />
     <ClInclude Include="Naga\Win32Utf8Util.h" />
+    <ClInclude Include="Naga\Path.h" />
     <ClInclude Include="Urgc\GcList.h" />
     <ClInclude Include="Urgc\GcMap.h" />
     <ClInclude Include="Urgc\GcObj.h" />
@@ -99,16 +101,19 @@
     <ClInclude Include="View\SystemTrayIcon.h" />
     <ClInclude Include="View\TableView.h" />
     <ClInclude Include="View\TextView.h" />
+    <ClInclude Include="View\TreeView.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Image.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Naga\FsUtil.cpp" />
     <ClCompile Include="Naga\MathEx.cpp" />
     <ClCompile Include="Naga\StrUtil.cpp" />
     <ClCompile Include="Naga\Utf8Util.cpp" />
     <ClCompile Include="Naga\Win32Utf8Util.cpp" />
     <ClCompile Include="nanovg\nanovg.c" />
     <ClCompile Include="Core\Theme.cpp" />
+    <ClCompile Include="Naga\Path.cpp" />
     <ClCompile Include="Urgc\urgc.cpp" />
     <ClCompile Include="Core\Color.cpp" />
     <ClCompile Include="Core\Emitter.cpp" />
@@ -152,6 +157,7 @@
     <ClCompile Include="View\SystemTrayIcon.cpp" />
     <ClCompile Include="View\TableView.cpp" />
     <ClCompile Include="View\TextView.cpp" />
+    <ClCompile Include="View\TreeView.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

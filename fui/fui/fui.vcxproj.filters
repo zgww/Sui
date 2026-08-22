@@ -255,6 +255,15 @@
     <ClInclude Include="View\TableView.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\TreeView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\Path.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\FsUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -408,6 +417,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\TableView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\TreeView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\Path.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\FsUtil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
