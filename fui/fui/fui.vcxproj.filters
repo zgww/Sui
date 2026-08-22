@@ -252,6 +252,9 @@
     <ClInclude Include="View\Panel.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\TableView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -402,6 +405,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\Panel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\TableView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

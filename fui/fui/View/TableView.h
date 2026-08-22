@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <functional>
+#include <memory>
 
 class TableViewColumn : public GcObj {
 public:
@@ -19,13 +20,13 @@ public:
 
 class TableView : public LayoutLinear {
 public:
-	Ref<Closure<void()>> renderTh{nullptr, this};
+	//Ref<Closure<void()>> renderTh{nullptr, this};
 	Ref<Closure<void(Node*, int, int)>> renderTd{nullptr, this};
 
 	int rowHeight = 20;
 	int rowCount = 0;
 
-	std::vector<TableViewColumn*> columns;
+	std::vector<std::shared_ptr<TableViewColumn>> columns;
 
 	int hoverRow = -1;
 	int hoverCol = -1;

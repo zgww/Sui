@@ -3,8 +3,8 @@
 #include "../Core/NodeLib.h"
 #include <cmath>
 
-TableViewColumn* mkTableViewColumn(int width, const std::string& label) {
-	TableViewColumn* col = new TableViewColumn();
+std::shared_ptr<TableViewColumn> mkTableViewColumn(int width, const std::string& label) {
+	auto col = std::make_shared<TableViewColumn>();
 	col->width = width;
 	col->label = label;
 	return col;
@@ -34,61 +34,63 @@ void TableView::react() {
 
 void TableView::renderHead() {
 	Node* o = this;
-	LayoutLinear* head = gocLayoutLinear(o, 0);
-	if (!head) return;
-	head->height = (float)rowHeight;
-	head->direction = "row";
 
-	int l = (int)columns.size();
-	for (int i = 0; i < l; i++) {
-		TableViewColumn* col = columns[i];
-		LayoutLinear* cell = gocLayoutLinear(head, i + 1);
-		if (!cell) continue;
-		cell->direction = "row";
-		cell->justifyContent = "center";
-		cell->width = (float)col->width;
-		cell->height = (float)rowHeight;
-		cell->padding.right = 5;
+	R(LayoutLinear){
+		o->height = rowHeight;
+		o->direction = ("row");
 
-		TextView* tv = gocTextView(cell, 0);
-		if (tv) {
-			tv->setColor(0xffffffff);
-			tv->setText(col->label);
+		int l = columns.size();
+		for (int i = 0; i < l; i++) {
+			auto col = columns[i];
+			R(LayoutLinear, i) {
+				o->direction = ("row");
+				o->justifyContent = ("center");
+				o->width = col->width;
+				o->height = rowHeight;
+				o->padding.right = 5;
+
+				R(TextView) {
+					o->setColor(0xffffffff);
+					o->setText(col->label);
+				} REND;
+			} REND;
 		}
-	}
+	} REND;
 }
 
 void TableView::renderBody() {
 	Node* o = this;
 	for (int r = 0; r < rowCount; r++) {
-		LayoutLinear* rowView = gocLayoutLinear(o, 1000 + r);
-		if (!rowView) continue;
-		rowView->height = (float)rowHeight;
-		rowView->direction = "row";
-		rowView->backgroundColor = 0x3300ffff;
+		R(LayoutLinear, r){
+			o->height = rowHeight;
+				// o->width = 400
+			o->direction=("row");
+				// o->justifyContent.set("center")
+			o->backgroundColor = 0x3300ffff;
 
-		int l = (int)columns.size();
-		for (int i = 0; i < l; i++) {
-			TableViewColumn* col = columns[i];
-			LayoutLinear* cell = gocLayoutLinear(rowView, i + 1);
-			if (!cell) continue;
-			cell->backgroundColor = 0x33ffff00;
-			cell->direction = "row";
-			cell->justifyContent = "center";
-			cell->width = (float)col->width;
-			cell->height = (float)rowHeight;
-			cell->padding.right = 5;
+			int l = columns.size();
+			for (int i = 0; i < l; i++) {
+				auto col = columns[i];
+				R(LayoutLinear, i){
+					o->backgroundColor = 0x33ffff00;
+					o->direction=("row");
+					o->justifyContent=("center");
+					o->width = col->width;
+					o->height = rowHeight;
+					o->padding.right = 5;
 
-			if (renderTd) {
-				renderTd->invoke(cell, r, i);
-			} else {
-				TextView* tv = gocTextView(cell, 0);
-				if (tv) {
-					tv->setColor(0xffffffff);
-					tv->setText("-");
-				}
+					if (renderTd != nullptr) {
+						renderTd->invoke(o, r, i);
+					}
+					else {
+						R(TextView, i) {
+							o->setColor(0xffffffff);
+							o->setText(("-"));
+						} REND;
+					}
+				} REND;
 			}
-		}
+		} REND;
 	}
 }
 
@@ -109,7 +111,7 @@ void TableView::draw_self(Canvas* canvas) {
 	int colX = 0;
 	int l = (int)columns.size();
 	for (int i = 0; i < l - 1; i++) {
-		TableViewColumn* col = columns[i];
+		auto col = columns[i];
 		colX += col->width;
 		canvas->moveTo((float)colX, 0);
 		canvas->lineTo((float)colX, (float)h);
@@ -175,7 +177,7 @@ void TableView::onMouseEvent(MouseEvent* e) {
 		int endX = 0;
 		int l = (int)columns.size();
 		for (int i = 0; i < l; i++) {
-			TableViewColumn* column = columns[i];
+			auto column = columns[i];
 			endX = colX + column->width;
 			if (colX <= (int)dx && (int)dx < endX) {
 				col = i;

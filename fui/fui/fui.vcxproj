@@ -97,6 +97,7 @@
     <ClInclude Include="View\SplitterView.h" />
     <ClInclude Include="View\Switch.h" />
     <ClInclude Include="View\SystemTrayIcon.h" />
+    <ClInclude Include="View\TableView.h" />
     <ClInclude Include="View\TextView.h" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClCompile Include="View\SplitterView.cpp" />
     <ClCompile Include="View\Switch.cpp" />
     <ClCompile Include="View\SystemTrayIcon.cpp" />
+    <ClCompile Include="View\TableView.cpp" />
     <ClCompile Include="View\TextView.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

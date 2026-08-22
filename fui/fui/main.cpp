@@ -30,6 +30,7 @@
 #include "View/SystemTrayIcon.h"
 #include "View/ProgressView.h"
 #include "View/Switch.h"
+#include "View/TableView.h"
 #include "Dialog/Toast.h"
 #include "Dialog/FileDialog.h"
 #include "Dialog/MessageDialog.h"
@@ -342,25 +343,35 @@ int main() {
 			} REND;
 		} REND;
 
-		R(Panel) {
-			//o->title = "检视器";
-			o->width = 300;
-			//o->height = 250;
-			o->backgroundColor = 0x88ddffdd;
+		//R(Panel) {
+		//	//o->title = "检视器";
+		//	o->width = 300;
+		//	o->backgroundColor = 0x88ddffdd;
 
-			R(TextView) {
-				o->slot = "head";
-				o->setText("自定义slot view");
-			} REND;
+		//	R(TextView) {
+		//		o->slot = "head";
+		//		o->setText("自定义slot view");
+		//	} REND;
 
-			R(View) {
-				o->width = 100;
-				o->height = 100;
-				o->backgroundColor = 0xff00ff00;
-				o->margin.setAll(10);
-			}REND;
-		
-		}REND;
+		//	R(View) {
+		//		o->width = 100;
+		//		o->height = 100;
+		//		o->backgroundColor = 0xff00ff00;
+		//		o->margin.setAll(10);
+		//	}REND;
+		//
+		//}REND;
+
+		R(TableView) {
+			if (o->created) {
+				o->addColumn(100, "标题");
+				o->addColumn(100, "标题1");
+				o->addColumn(200, "标题2");
+				o->addColumn(100, "标题3");
+				o->addColumn(40, "标题4");
+			}
+
+		} REND;
 
 
 		R(LayoutLinear) {
