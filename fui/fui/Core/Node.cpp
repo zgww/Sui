@@ -220,8 +220,9 @@ void Node::placeKidsOfSlot(Ref<GcList<Node>> kids, std::string slot)
 	}
 }
 
-void Node::startInnerReact() {
+Node& Node::startInnerReact() {
 	_flagUseOutKids = false;
+	return *this;
 }
 
 void Node::endInnerReact() {

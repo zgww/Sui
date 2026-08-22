@@ -51,7 +51,7 @@ class Window;
 #define R(Type, ...) {auto _tmp = Node_getOrCreate<Type>(&o, ##__VA_ARGS__); auto& o = *_tmp.get();
 // 参数就是节点了，不需要再get or create. 主要是在匹配REND进行清理
 #define RINS(n) {auto& o = *n;
-#define REND Node_removeUnusedKids(o); o.react();} 
+#define REND Node_removeUnusedKids(&o); o.react();} 
 
 template <class T>
 bool isSameNodeType(Node* curNode) {
@@ -122,7 +122,7 @@ public:
 	void placeKidsOfSlot(Ref<GcList<Node>> kids, std::string slot);
 	// innerReact适用于有内部子树，有槽节点的情况
 	void initInnerReact();
-	void startInnerReact();
+	Node& startInnerReact();
 	void endInnerReact();
 	Ref<GcList<Node>> gocOutKids();
 

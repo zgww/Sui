@@ -252,44 +252,44 @@ int main() {
 		});
 	white->backgroundColor = 0xffffeeee;
 
-	RINS(white) {
-		o->direction = "column";
-		o->alignItems = "center";
-		o->justifyContent = "center";
+	RINS(white.get()) {
+		o.direction = "column";
+		o.alignItems = "center";
+		o.justifyContent = "center";
 
 		//R(TextView) {
-		//	o->setText("你好啊");
+		//	o.setText("你好啊");
 		//}REND;
 
 		//R(TextView) {
-		//	o->setText("你好啊");
+		//	o.setText("你好啊");
 		//}REND;
 
 		//R(LayoutLinear) {
-		//	o->backgroundColor = 0x3300ff00;
+		//	o.backgroundColor = 0x3300ff00;
 		//	R(TextView) {
-		//		o->setText("左边");
-		//		o->setFontSize(34);
+		//		o.setText("左边");
+		//		o.setFontSize(34);
 		//	}REND;
 
 		//	R(TextView) {
-		//		o->setText("右边");
+		//		o.setText("右边");
 		//	}REND;
 		//}REND;
 
 		//R(TextView) {
-		//	o->setText("你好啊");
+		//	o.setText("你好啊");
 		//}REND;
 
 		//R(TextView) {
-		//	o->setText("你好啊");
+		//	o.setText("你好啊");
 		//}REND;
 
 
 		//R(ImageView) {
-		//	o->setSrc("asset/sample.png");
-		//	o->setImageMode(ImageMode_WidthFix);
-		//	o->width = 400;
+		//	o.setSrc("asset/sample.png");
+		//	o.setImageMode(ImageMode_WidthFix);
+		//	o.width = 400;
 		//}REND;
 
 		R(Checkbox) {
@@ -299,97 +299,110 @@ int main() {
 
 		}REND;
 		R(Slider) {
-			o->width = 400;
-			o->margin.setAll(10);
+			o.width = 400;
+			o.margin.setAll(10);
 		}REND;
 		R(EditText) {
-			o->width = 200;
-			//o->margin.setAll(10);
+			o.width = 200;
+			//o.margin.setAll(10);
 		}REND;
 		//R(ProgressView) {
-		//	o->setValue(0.5);
+		//	o.setValue(0.5);
 		//	mkTimerInterval(CLOSURE([=]() {
-		//		o->setValue(o->value + 0.01);
+		//		o.setValue(o.value + 0.01);
 		//		}), 100);
 
 		//}REND;
 		//R(View) {
-		//	o->width = 100;
-		//	o->height = 100;
-		//	o->cursor = "pointer";
+		//	o.width = 100;
+		//	o.height = 100;
+		//	o.cursor = "pointer";
 		//	R(HoverViewEffect) {
-		//		o->backgroundColor = 0xffff0000;
-		//		o->hoverBackgroundColor = 0xff00ff00;
-		//		o->activeBackgroundColor = 0xff0000ff;
-		//		o->hoverBorder.setAll(1, 0xff333333);
+		//		o.backgroundColor = 0xffff0000;
+		//		o.hoverBackgroundColor = 0xff00ff00;
+		//		o.activeBackgroundColor = 0xff0000ff;
+		//		o.hoverBorder.setAll(1, 0xff333333);
 		//	}REND;
 		//}REND;
 
 		R(LayoutLinear) {
-			o->width = 600;
+			o.width = 600;
 
 			R(View) {
-				o->backgroundColor = 0xff99ff00;
-				o->height = 100;
+				o.backgroundColor = 0xff99ff00;
+				o.height = 100;
 				R(LayoutLinearCell) {}REND;
 			} REND;
 			R(SplitterView) {
-				o->height = 100;
+				o.height = 100;
 			}REND;
 			R(View) {
-				o->backgroundColor = 0xff00ff99;
-				o->height = 100;
+				o.backgroundColor = 0xff00ff99;
+				o.height = 100;
 				R(LayoutLinearCell) {}REND;
 			} REND;
 		} REND;
 
 		//R(Panel) {
-		//	//o->title = "检视器";
-		//	o->width = 300;
-		//	o->backgroundColor = 0x88ddffdd;
+		//	//o.title = "检视器";
+		//	o.width = 300;
+		//	o.backgroundColor = 0x88ddffdd;
 
 		//	R(TextView) {
-		//		o->slot = "head";
-		//		o->setText("自定义slot view");
+		//		o.slot = "head";
+		//		o.setText("自定义slot view");
 		//	} REND;
 
 		//	R(View) {
-		//		o->width = 100;
-		//		o->height = 100;
-		//		o->backgroundColor = 0xff00ff00;
-		//		o->margin.setAll(10);
+		//		o.width = 100;
+		//		o.height = 100;
+		//		o.backgroundColor = 0xff00ff00;
+		//		o.margin.setAll(10);
 		//	}REND;
 		//
 		//}REND;
 
 		R(TableView) {
-			if (o->created) {
-				o->addColumn(100, "标题");
-				o->addColumn(100, "标题1");
-				o->addColumn(200, "标题2");
-				o->addColumn(100, "标题3");
-				o->addColumn(40, "标题4");
+			if (o.created) {
+				o.addColumn(60, "ID");
+				o.addColumn(160, "名称");
+				o.addColumn(150, "内容");
+				o.addColumn(100, "状态");
+				o.addColumn(120, "操作");
 			}
-
+			o.rowCount = 10;
+			o.margin.setAll(6);
+			//o.backgroundColor = 0x330030ff;
+			//o.width = 300;
+			// o.height = 300
+			// Node *tmp = o
+			o.renderTd = CLOSURE([](Node& o, int row, int col) {
+				R(TextView, row*10000 + col) {
+					//o.backgroundColor = 0xff999999;
+					o.setColor(0xff555555);
+					o.setText(std::format("{}:{}", row, col));
+						//.addi(row))
+				} REND;
+			});
 		} REND;
 
 
 		R(LayoutLinear) {
 			R(Button) {
-				o->name = "Button";
-				o->setLabel("保存");
-				o->onClick = CLOSURE([](MouseEvent* me) {
+				o.name = "Button";
+				o.setLabel("保存");
+				o.onClick = CLOSURE([](MouseEvent* me) {
 					printf("点击提交\n");
 
 					FileDialog_getSaveFileName("./", "请选择保存路径");
 
 					});
-				o->width = 200;
+				o.width = 200;
 			}REND;
 			R(Button) {
-				o->name = "Button";
-				o->setLabel("取消");
-				o->onClick = CLOSURE([](MouseEvent* me) {
+				o.name = "Button";
+				o.setLabel("取消");
+				o.onClick = CLOSURE([](MouseEvent* me) {
 					printf("点击提交\n");
 
 					HIER( mkMenuNativeItem(nullptr, "", nullptr) ) {
@@ -421,9 +434,9 @@ int main() {
 			}REND;
 
 			R(Button) {
-				o->name = "Button";
-				o->setLabel("关闭窗口");
-				o->onClick = CLOSURE([=](MouseEvent* me) {
+				o.name = "Button";
+				o.setLabel("关闭窗口");
+				o.onClick = CLOSURE([=](MouseEvent* me) {
 					win->close();
 
 

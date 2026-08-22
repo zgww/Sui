@@ -89,20 +89,20 @@ void Button::react()
 {
 	startInnerReact();
 
-	auto o = this;
+	auto& o = *this;
 	if (src != "") {
 		R(ImageView, LINE_KEY) {
-			o->setSrc(src);
-			o->margin.right = !src.empty() && !label.empty() ? 6 : 0;
+			o.setSrc(src);
+			o.margin.right = !src.empty() && !label.empty() ? 6 : 0;
 		}REND;
 	}
 
 	if (label != "") {
 		R(TextView, LINE_KEY) {
-			o->setText(label);
-			//o->backgroundColor = 0xff0000ff;
-			o->color = labelColor;
-			o->setFontSize(fontSize);
+			o.setText(label);
+			//o.backgroundColor = 0xff0000ff;
+			o.color = labelColor;
+			o.setFontSize(fontSize);
 		}REND;
 	}
 

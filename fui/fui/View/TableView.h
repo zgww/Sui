@@ -20,8 +20,8 @@ public:
 
 class TableView : public LayoutLinear {
 public:
-	//Ref<Closure<void()>> renderTh{nullptr, this};
-	Ref<Closure<void(Node*, int, int)>> renderTd{nullptr, this};
+	Ref<Closure<void(Node& o, int col)>> renderTh{nullptr, this};
+	Ref<Closure<void(Node& o, int row, int col)>> renderTd{nullptr, this};
 
 	int rowHeight = 20;
 	int rowCount = 0;

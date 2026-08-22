@@ -23,8 +23,7 @@ void TableView::react() {
 	direction = "column";
 	alignItems = "start";
 
-	startInnerReact();
-	Node* o = this;
+	auto& o = startInnerReact();
 	renderHead();
 	renderBody();
 	endInnerReact();
@@ -33,59 +32,64 @@ void TableView::react() {
 }
 
 void TableView::renderHead() {
-	Node* o = this;
+	Node& o = *this;
 
 	R(LayoutLinear){
-		o->height = rowHeight;
-		o->direction = ("row");
+		o.height = rowHeight;
+		o.direction = ("row");
 
 		int l = columns.size();
 		for (int i = 0; i < l; i++) {
 			auto col = columns[i];
 			R(LayoutLinear, i) {
-				o->direction = ("row");
-				o->justifyContent = ("center");
-				o->width = col->width;
-				o->height = rowHeight;
-				o->padding.right = 5;
+				o.direction = ("row");
+				o.justifyContent = ("center");
+				o.width = col->width;
+				o.height = rowHeight;
+				o.padding.right = 5;
 
-				R(TextView) {
-					o->setColor(0xffffffff);
-					o->setText(col->label);
-				} REND;
+				if (renderTh != nullptr) {
+					renderTh->invoke(o, i);
+				}
+				else {
+					R(TextView) {
+						o.setColor(0xff555555);
+						o.setText(col->label);
+					} REND;
+				}
 			} REND;
 		}
 	} REND;
 }
 
 void TableView::renderBody() {
-	Node* o = this;
+	Node& o = *this;
 	for (int r = 0; r < rowCount; r++) {
 		R(LayoutLinear, r){
-			o->height = rowHeight;
-				// o->width = 400
-			o->direction=("row");
-				// o->justifyContent.set("center")
-			o->backgroundColor = 0x3300ffff;
+			o.height = rowHeight;
+				// o.width = 400
+			o.direction=("row");
+				// o.justifyContent.set("center")
+			//o.backgroundColor = 0x3300ffff;
 
 			int l = columns.size();
 			for (int i = 0; i < l; i++) {
 				auto col = columns[i];
 				R(LayoutLinear, i){
-					o->backgroundColor = 0x33ffff00;
-					o->direction=("row");
-					o->justifyContent=("center");
-					o->width = col->width;
-					o->height = rowHeight;
-					o->padding.right = 5;
+					//o.backgroundColor = 0x33ffff00;
+					o.direction=("row");
+					o.justifyContent=("center");
+					o.width = col->width;
+					o.height = rowHeight;
+					o.padding.right = 5;
 
 					if (renderTd != nullptr) {
 						renderTd->invoke(o, r, i);
 					}
 					else {
 						R(TextView, i) {
-							o->setColor(0xffffffff);
-							o->setText(("-"));
+							o.setColor(0xffffffff);
+							o.setText(("-"));
 						} REND;
 					}
 				} REND;
@@ -105,9 +109,11 @@ void TableView::draw_self(Canvas* canvas) {
 	canvas->translate(r.x, r.y);
 
 	canvas->strokeWidth(1);
-	canvas->strokeColor(255, 255, 255, 128);
+	canvas->strokeColorByInt32(0xff999999);
+	//canvas->strokeColor(255, 255, 255, 128);
 	canvas->beginPath();
 
+	//绘制边框
 	int colX = 0;
 	int l = (int)columns.size();
 	for (int i = 0; i < l - 1; i++) {
@@ -128,28 +134,29 @@ void TableView::draw_self(Canvas* canvas) {
 
 	canvas->stroke();
 
-	canvas->fillColor(255, 255, 255, 16);
-	canvas->beginPath();
-	for (int r = 0; r < rowToDraw + 1; r += 2) {
-		int y = r * rowHeight;
-		canvas->rect(0, (float)y, (float)w, (float)rowHeight);
-	}
-	canvas->fill();
+	//canvas->fillColor(255, 255, 255, 16);
+	//canvas->beginPath();
+	//for (int r = 0; r < rowToDraw + 1; r += 2) {
+	//	int y = r * rowHeight;
+	//	canvas->rect(0, (float)y, (float)w, (float)rowHeight);
+	//}
+	//canvas->fill();
 
+	//绘制hover
 	if (hoverRow != -1) {
-		canvas->fillColor(255, 255, 255, 32);
+		canvas->fillColor(0, 0, 0, 24);
 		canvas->beginPath();
 		int y = hoverRow * rowHeight;
 		canvas->rect(0, (float)y, (float)w, (float)rowHeight);
 		canvas->fill();
 	}
-	if (hoverCol != -1) {
-		canvas->fillColor(255, 255, 255, 32);
-		canvas->beginPath();
-		int y = hoverRow * rowHeight;
-		canvas->rect((float)hoverStartX, 0, (float)(hoverEndX - hoverStartX), (float)h);
-		canvas->fill();
-	}
+	//if (hoverCol != -1) {
+	//	canvas->fillColor(0, 0, 0, 32);
+	//	canvas->beginPath();
+	//	int y = hoverRow * rowHeight;
+	//	canvas->rect((float)hoverStartX, 0, (float)(hoverEndX - hoverStartX), (float)h);
+	//	canvas->fill();
+	//}
 
 	canvas->restore();
 }
