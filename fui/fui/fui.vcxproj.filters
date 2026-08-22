@@ -234,6 +234,21 @@
     <ClInclude Include="View\EditText.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Theme.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\Win32Utf8Util.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\Utf8Util.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\MathEx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Naga\StrUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -366,6 +381,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\EditText.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Theme.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\Utf8Util.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\Win32Utf8Util.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\MathEx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\StrUtil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

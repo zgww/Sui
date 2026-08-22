@@ -184,3 +184,13 @@ void printMouseData(MouseData* md) {
 	printf("MouseData: client(%f,%f) button:%d down:%d move:%d up:%d\n",
 		md->clientX, md->clientY, md->button, md->isMouseDown, md->isMouseMove, md->isMouseUp);
 }
+
+
+Vec2 Mouse_getPosOfWindow(Window* window) {
+	if (window) {
+		Vec2 pos = Mouse_getPos();
+		Vec2 winPos = window->getPos();
+		return mkVec2(pos.x - winPos.x, pos.y - winPos.y);
+	}
+	return mkVec2(0.f, 0.f);
+}

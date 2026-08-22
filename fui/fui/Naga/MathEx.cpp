@@ -56,9 +56,9 @@ int MathEx_maxi(int a, int b) {
 int MathEx_mini(int a, int b) {
 	return a >= b ? b : a;
 }
-int MathEx_maxf(float a, float b) {
+float MathEx_maxf(float a, float b) {
 	return a >= b ? a : b;
 }
-int MathEx_minf(float a, float b) {
+float MathEx_minf(float a, float b) {
 	return a >= b ? b : a;
 }

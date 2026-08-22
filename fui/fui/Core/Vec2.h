@@ -170,13 +170,13 @@ struct Vec2 {
 	}
 
 	float angle() const {
-		return atan2f(-y, -x) + PI;
+		return atan2f(-y, -x) + PIf;
 	}
 
 	float angleTo(const Vec2& v) const {
 		float denominator = sqrtf(lengthSq() * v.lengthSq());
 		if (eqFloat(denominator, 0)) {
-			return PI / 2.0f;
+			return PIf / 2.0f;
 		}
 		float theta = dot(v) / denominator;
 		return acosf(clampFloat(theta, -1, 1));

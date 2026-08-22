@@ -24,4 +24,4 @@ public:
 
 std::vector<SystemTrayIcon*> SystemTrayIcons_use();
 SystemTrayIcon* SystemTrayIcons_findByUid(int uid);
-void SystemTrayIcon_onMouseData(class MouseData* md);
+void SystemTrayIcon_onMouseData(MouseData* md);

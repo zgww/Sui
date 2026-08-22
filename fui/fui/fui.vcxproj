@@ -20,6 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Defines_win.h" />
+    <ClInclude Include="Core\Theme.h" />
+    <ClInclude Include="Naga\MathEx.h" />
+    <ClInclude Include="Naga\StrUtil.h" />
+    <ClInclude Include="Naga\Utf8Util.h" />
+    <ClInclude Include="Naga\Win32Utf8Util.h" />
     <ClInclude Include="Urgc\GcList.h" />
     <ClInclude Include="Urgc\GcMap.h" />
     <ClInclude Include="Urgc\GcObj.h" />
@@ -96,7 +101,12 @@
   <ItemGroup>
     <ClCompile Include="Core\Image.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Naga\MathEx.cpp" />
+    <ClCompile Include="Naga\StrUtil.cpp" />
+    <ClCompile Include="Naga\Utf8Util.cpp" />
+    <ClCompile Include="Naga\Win32Utf8Util.cpp" />
     <ClCompile Include="nanovg\nanovg.c" />
+    <ClCompile Include="Core\Theme.cpp" />
     <ClCompile Include="Urgc\urgc.cpp" />
     <ClCompile Include="Core\Color.cpp" />
     <ClCompile Include="Core\Emitter.cpp" />
@@ -237,7 +247,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;URGC_STATICAPI;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;NAGA_STATIC;_CONSOLE;URGC_STATICAPI;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)GL;$(ProjectDir)nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

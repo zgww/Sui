@@ -24,15 +24,23 @@ public:
 	int total_rune_length() const { return (int)text.length(); }
 };
 
-void dispatchImeEndComposition(TextEditingEvent* event);
-void dispatchImeComposition(TextEditingEvent* event);
+//输入法合成事件
+void dispatchImeEndComposition(long long windowId);
+
+//结束输入法合成
+void dispatchImeComposition(
+	const char* text,
+	int start,
+	int length,
+	long long windowId
+);
 
 class TextInputEvent : public TextEventBase {
 public:
 	std::string text;
 };
 
-void dispatchTextInputEvent(TextInputEvent* event);
+void dispatchTextInputEvent(const char* text, long long windowId);
 
 class KeyEvent : public Event {
 public:
@@ -57,4 +65,4 @@ public:
 };
 
 void dispatchWindowFocusEvent(WindowFocusEvent* event);
-void dispatchEventToFocusNode(Node* node, Event* event);
+void dispatchEventToFocusNode(Event* event, Window* window);

@@ -302,7 +302,7 @@ int main() {
 		}REND;
 		R(EditText) {
 			o->width = 200;
-			o->margin.setAll(10);
+			//o->margin.setAll(10);
 		}REND;
 		//R(ProgressView) {
 		//	o->setValue(0.5);

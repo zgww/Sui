@@ -7,6 +7,8 @@
 #include "Frame.h"
 #include "Mouse.h"
 #include "Keyboard.h"
+#include "KeyEvent.h"
+#include "../Naga/Utf8Util.h"
 #include "../Urgc/Urgc.h"
 #include "../View/MenuNative.h"
 #include "../View/SystemTrayIcon.h"
@@ -15,11 +17,18 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <windowsx.h>
+#include "../Naga/Win32Utf8Util.h"
 
 #include "../nanovg/nanovg.h"
 #include "../GL/glew.h"
 #include "../GL/wglew.h"
 #include "Defines_win.h"
+
+#include <dwmapi.h>
+#include <CommCtrl.h>
+#pragma comment (lib, "dwmapi.lib")
+#pragma comment (lib, "Imm32.lib")
+#pragma comment(lib, "comctl32.lib")
 
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "gdi32.lib")
@@ -141,10 +150,10 @@ static const char* vkToKeyName(WPARAM vk) {
 	case VK_RETURN: return "Enter";
 	case VK_ESCAPE: return "Escape";
 	case VK_DELETE: return "Delete";
-	case VK_LEFT: return "ArrowLeft";
-	case VK_RIGHT: return "ArrowRight";
-	case VK_UP: return "ArrowUp";
-	case VK_DOWN: return "ArrowDown";
+	case VK_LEFT: return "Left";
+	case VK_RIGHT: return "Right";
+	case VK_UP: return "Up";
+	case VK_DOWN: return "Down";
 	case VK_HOME: return "Home";
 	case VK_END: return "End";
 	case VK_PRIOR: return "PageUp";
@@ -179,7 +188,7 @@ static int _command(HWND win, WPARAM wp, LPARAM lp) {
 	auto type = HIWORD(wp);
 	auto realid = LOWORD(wp);
 
-	int id = wp;
+	int id = (int)wp;
 
 	MenuNative_doCommand((long long)win, id);
 	/* if (g_current_native_menu) {
@@ -210,8 +219,8 @@ static void _build_md_for_ontrayicon(
 
 	//md.eventType = "mousedown";
 	md->button = button;
-	md->clientX = GET_X_LPARAM(wp);
-	md->clientY = GET_Y_LPARAM(wp);
+	md->clientX = (float)GET_X_LPARAM(wp);
+	md->clientY = (float)GET_Y_LPARAM(wp);
 	md->windowId = (long long)hwnd;
 	md->isMouseDown = type == 0;
 	md->isMouseMove = type == 1;
@@ -265,8 +274,164 @@ static LRESULT _ontrayicon(HWND hwnd, WPARAM wp, LPARAM lp)
 	}
 	return 0;
 }
+
+
+static
+std::string _toutf8(wchar_t* wstr) {
+	const char* str = new_Utf8Util_toutf8(wstr);
+	std::string ret = str;
+	free((void*)str);
+	return ret;
+}
+static
+std::string _utf32_to_utf8(wchar_t wchar) {
+	const char* str = new_Utf8Util_utf32ToUtf8(wchar);
+	std::string ret = str;
+	free((void*)str);
+	return ret;
+}
+static std::string
+_char_surrogate_to_utf8(UINT32 high_surrogate, UINT32 low_surrogate)
+{
+	const UINT32 SURROGATE_OFFSET = 0x10000 - (0xD800 << 10) - 0xDC00;
+	const UINT32 codepoint = (high_surrogate << 10) + low_surrogate + SURROGATE_OFFSET;
+	// return Utf8Util::utf32_to_utf8(codepoint);
+	return _utf32_to_utf8(codepoint);
+}
+/*把WPARAM当成 当前编码页的 双字节字符，转为unicode 16*/
+static int Ime_WPARAM_asActiveCodePage_toWchar(WPARAM wParam) {
+	char tmp[4] = { 0 };
+	tmp[0] = (wParam >> 8) & 0xff;
+	tmp[1] = (wParam >> 0) & 0xff;
+
+	wchar_t* wstr = new_Win32Utf8Util_acpToUtf16(tmp);
+	wchar_t wchar = wstr[0];
+	free(wstr);
+	return wchar;
+}
+/*输入输入法字符
+https://learn.microsoft.com/zh-cn/windows/win32/intl/wm-ime-char
+要求创建Unicode窗体
+*/
+static int _ime_char(HWND hwnd, WPARAM wParam, LPARAM lp) {
+	//wchar_t wchar = wParam;
+
+	//dbcs窗口（非unicode窗口）， wParam是双字节编码。应该是跟active code page 有关
+	wchar_t wchar = Ime_WPARAM_asActiveCodePage_toWchar(wParam);
+
+	std::string text = _utf32_to_utf8(wchar);
+
+	dispatchTextInputEvent(text.c_str(), (long long)hwnd);
+
+	// TextInputEvent e;
+	// e.text = text;
+	// e.window = win;
+	// printf("textinput wchar:%s\n", e.text.c_str());
+	// e.dispatch();
+	return 0;
+}
+/*输入字符,不含输入法字符*/
+static int _char(HWND hwnd, WPARAM wParam, LPARAM lp) {
+	GetAssisKey ak;
+	if (ak.alt || ak.ctrl) {
+		return 0;
+	}
+
+	wchar_t wchar = (wchar_t)wParam;
+	std::string text = _utf32_to_utf8(wchar);
+	dispatchTextInputEvent(text.c_str(), (long long)hwnd);
+	return 0;
+
+	// TextInputEvent e;
+	// e.text = text;
+	// e.window = win;
+	// printf("textinput char:%s\n", e.text.c_str());
+	// e.dispatch();
+	// return 0;
+}
+static void _ime_end_composition(HWND hwnd, WPARAM wp, LPARAM lp) {
+	printf("结束合成，发送空TextEditing事件\n");
+	// TextEditingEvent e;
+	// e.dispatch();
+	dispatchImeEndComposition((long long)hwnd);
+}
+static void _ime_composition(HWND hwnd, WPARAM wp, LPARAM lp) {
+
+	auto himc = ImmGetContext(hwnd);
+	auto result_length = ImmGetCompositionStringW(himc, GCS_RESULTSTR, NULL, 0);
+	//字节长
+	auto ori_length = ImmGetCompositionStringW(himc, GCS_COMPSTR, NULL, 0);
+	wchar_t ori_buf[256] = { 0 };
+	auto ori_length2 = ImmGetCompositionStringW(himc, GCS_COMPSTR, ori_buf, sizeof(ori_buf));
+	auto cursor_pos = ImmGetCompositionStringW(himc, GCS_CURSORPOS, NULL, 0);
+	auto text = _toutf8(ori_buf);
+
+	printf("合成输入中 :%ld %ld cursor:%ld  %ld text=%s\n",
+		result_length, ori_length, cursor_pos, ori_length2, text.c_str());
+	ImmReleaseContext(hwnd, himc);
+
+	auto rune_len = ori_length / sizeof(wchar_t);
+
+	dispatchImeComposition(
+		text.c_str(),
+		cursor_pos,
+		rune_len - cursor_pos,
+		(long long)hwnd
+	);
+	// TextEditingEvent e;
+	// e.text = text;
+	// e.start = cursor_pos;
+	// e.length = rune_len - e.start;
+	// e.window = win;
+	// printf("textediting:%s, start:%d,length:%d\n", e.text.c_str(), e.start, e.length);
+	// e.dispatch();
+}
+static int _set_focus(HWND hwnd, WPARAM wp, LPARAM lp) {
+	printf("取得窗口焦点:%p\n", hwnd);
+	// WindowFocusGainedEvent().dispatch(win);
+	dispatchWindowFocusGainedEvent((long long)hwnd);
+	return 0;
+}
+
+static int _kill_focus(HWND hwnd, WPARAM wp, LPARAM lp) {
+	printf("丢失窗口焦点:%p\n", hwnd);
+	dispatchWindowFocusLostEvent((long long)hwnd);
+	// WindowFocusLostEvent().dispatch(win);
+	return 0;
+}
+
+void dispatchWindowFocusGainedEvent(long long windowId) {
+	printf("取得窗口 焦点。。。。\n");
+
+	Ref<App> app = App_use();
+	Ref<Window> win = app->findWindowById(windowId);
+
+	Ref<WindowFocusEvent> e = new WindowFocusEvent();
+	e->isFocus = true;
+	e->isBlur = false;
+	e->window = win;
+
+	dispatchWindowFocusEvent(e);
+}
+
+void dispatchWindowFocusLostEvent(long long windowId) {
+	printf("丢失窗口 焦点。。。。\n");
+
+	Ref<App> app = App_use();
+	Ref<Window> win = app->findWindowById(windowId);
+
+	Ref<WindowFocusEvent> e = new WindowFocusEvent();
+	e->isFocus = false;
+	e->isBlur = true;
+	e->window = win;
+
+	dispatchWindowFocusEvent(e);
+}
+
+
 static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	int64_t winId = (int64_t)hWnd;
+	auto hwnd = hWnd;
 
 	switch (uMsg) {
 	case WM_CLOSE:
@@ -355,16 +520,53 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		Keyboard_onKeyUp(winId, (int)wParam, keyName, shift, ctrl, alt);
 		break;
 	}
-	case WM_CHAR: {
-		wchar_t wc = (wchar_t)wParam;
-		if (wc >= 32) {
-			char buf[8] = {0};
-			WideCharToMultiByte(CP_UTF8, 0, &wc, 1, buf, sizeof(buf), nullptr, nullptr);
-			if (buf[0] != 0) {
-				char keyStr[2] = {buf[0], 0};
-				Keyboard_onKeyDown(winId, (int)buf[0], keyStr, false, false, false);
-			}
-		}
+	//case WM_CHAR: {
+	//	wchar_t wc = (wchar_t)wParam;
+	//	if (wc >= 32) {
+	//		char buf[8] = {0};
+	//		WideCharToMultiByte(CP_UTF8, 0, &wc, 1, buf, sizeof(buf), nullptr, nullptr);
+	//		if (buf[0] != 0) {
+	//			char keyStr[2] = {buf[0], 0};
+	//			Keyboard_onKeyDown(winId, (int)buf[0], keyStr, false, false, false);
+	//		}
+	//	}
+	//	break;
+	//}
+
+				/*
+ 任意字符键
+ BACKSPACE 退格
+ ENTER（回车）
+ ESC 退出
+ SHIFT + ENTER（换行）
+ TAB*/
+	case WM_CHAR: return _char(hwnd, wParam, lParam);
+	//case WM_KEYUP: return _key_up(hwnd, wParam, lParam);
+	case WM_SETFOCUS: return _set_focus(hwnd, wParam, lParam);
+	case WM_KILLFOCUS: return _kill_focus(hwnd, wParam, lParam);
+
+		// 输入法
+	case WM_IME_CHAR: return _ime_char(hwnd, wParam, lParam);
+	case WM_IME_STARTCOMPOSITION:
+	{
+		// printf("开始合成输入\n");
+		// Ime::ins()->set_pos(win, { 0, 100 });
+		break;
+	}
+	case WM_IME_ENDCOMPOSITION:
+	{
+		_ime_end_composition(hwnd, wParam, lParam);
+		break;
+	}
+	case WM_IME_COMPOSITION:
+	{
+		_ime_composition(hwnd, wParam, lParam);
+		break;
+	}
+	case WM_IME_SETCONTEXT:
+	{
+		// 不希望显示CompositionWindow,清除显示CompositionWindow的标记，然后交给DefWindowProc处理
+		lParam = lParam & ~ISC_SHOWUICOMPOSITIONWINDOW;
 		break;
 	}
 	// 菜单事件
@@ -715,6 +917,11 @@ void DragCrossWindowIndicator::end() {
 void DragCrossWindowIndicator::onDragMove(Vec2 clientPos) {
 	_dragMove();
 }
+
+
+
+
+
 
 #else
 

@@ -34,3 +34,6 @@ void Mouse_onMouseMove(int64_t windowId, float x, float y, bool shift, bool alt,
 void Mouse_onMouseUp(int64_t windowId, float x, float y, int button, bool shift, bool alt, bool ctrl);
 void Mouse_onWheel(int64_t windowId, float x, float y, float deltaY, float deltaX, bool shift, bool alt, bool ctrl);
 void printMouseData(MouseData* md);
+
+Vec2 Mouse_getPosOfWindow(Window* window);
+

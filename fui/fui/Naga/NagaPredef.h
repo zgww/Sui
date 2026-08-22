@@ -1,9 +1,15 @@
 #pragma once
-#ifndef NAGA_DLLAPI 
-	#ifdef NAGA_DLL_EXPORT
-		#define NAGA_DLLAPI __declspec(dllexport)
-	#else
-		#define NAGA_DLLAPI __declspec(dllimport)
+
+#ifdef NAGA_STATIC
+	#define NAGA_DLLAPI 
+#else
+
+	#ifndef NAGA_DLLAPI 
+		#ifdef NAGA_DLL_EXPORT
+			#define NAGA_DLLAPI __declspec(dllexport)
+		#else
+			#define NAGA_DLLAPI __declspec(dllimport)
+		#endif
 	#endif
 #endif
 

@@ -48,12 +48,12 @@ void drawImage_atRect(Canvas* canvas, Image* imgId, float sx, float sy, float sw
 }
 
 void ImageModeCalc::calc(int sw, int sh, int dw, int dh, ImageMode mode) {
-	this->sw = sw;
-	this->sh = sh;
-	this->dw = dw;
-	this->dh = dh;
+	this->sw = (float)sw;
+	this->sh = (float)sh;
+	this->dw = (float)dw;
+	this->dh = (float)dh;
 
-	if (sw == 0 || sh == 0 || dw == 0 || dh == 0) {
+	if (sw == 0.f || sh == 0.f || dw == 0.f || dh == 0.f) {
 		return;
 	}
 	this->sr = sw / (float)sh;
@@ -73,10 +73,10 @@ void ImageModeCalc::calc_contain() {
 	float scale = minFloat(w_scale, h_scale);
 	float tw = scale * this->sw;
 	float th = scale * this->sh;
-	this->dx = (int)((this->dw - tw) / 2.f);
-	this->dy = (int)((this->dh - th) / 2.f);
-	this->dw = (int)tw;
-	this->dh = (int)th;
+	this->dx = ((this->dw - tw) / 2.f);
+	this->dy = ((this->dh - th) / 2.f);
+	this->dw = tw;
+	this->dh = th;
 	this->scale = scale;
 }
 

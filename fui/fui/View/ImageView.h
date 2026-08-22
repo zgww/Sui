@@ -18,21 +18,21 @@ enum ImageMode {
 class  ImageModeCalc {
 public:
 	Rect getSrcRect() {
-		return mkRect(sx, sy, sw, sh);
+		return mkRect((float)sx, (float)sy, (float)sw, (float)sh);
 	}
 	Rect getDstRect() {
-		return mkRect(dx, dy, dw, dh);
+		return mkRect((float)dx, (float)dy, (float)dw, (float)dh);
 	}
 
-	int sw = 0;
-	int sh = 0;
-	int dw = 0;
-	int dh = 0;
+	float sw = 0;
+	float sh = 0;
+	float dw = 0;
+	float dh = 0;
 
-	int sx = 0;
-	int sy = 0;
-	int dx = 0;
-	int dy = 0;
+	float sx = 0;
+	float sy = 0;
+	float dx = 0;
+	float dy = 0;
 	float sr = 0.f;
 	float dr = 0.f;
 	float scale = 1.f;

@@ -28,7 +28,7 @@ Slider::Slider() {
 			self->setRatio(v);
 		}
 	});
-	printf("drag:%p, Slider:%p\n", drag, this);
+	printf("drag:%p, Slider:%p\n", drag.get(), this);
 
 
 	initInnerReact();

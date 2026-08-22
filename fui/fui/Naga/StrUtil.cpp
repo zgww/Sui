@@ -85,3 +85,14 @@ char* StrUtil_insert_at(char* str0, int at, char* newstr) {
 
 	return _strdup(ret.c_str());
 }
+
+std::string Str::lower(std::string data0) {
+	std::string data(data0);
+	std::for_each(
+		data.begin(),
+		data.end(),
+		[](char& c) {
+			c = ::tolower(c);
+		});
+	return data;
+}

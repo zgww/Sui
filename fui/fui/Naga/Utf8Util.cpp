@@ -75,7 +75,7 @@ int Utf8Util_byteOffsetAt(const char * text, int rune_offset) {
 		tmp += cl;
 	}
 
-	return tmp - str;
+	return (int)(tmp - str);
 }
 
 char* new_Utf8Util_substr(const char * text0, int at, int n) {
@@ -402,7 +402,7 @@ int Utf8Util::byte_offset_at(std::string text, int rune_offset) {
 		tmp += cl;
 	}
 
-	return tmp - str;
+	return (int)(tmp - str);
 }
 
 std::string Utf8Util::substr(std::string text, int at, int n) {
@@ -532,4 +532,9 @@ Utf8Util::utf32_to_utf8(uint32_t codepoint)
 	}
 	std::string ret = text;
 	return ret;
+}
+
+
+bool Utf8Util::equalIgnoreCase(std::string s0, std::string s) {
+	return _stricmp(s0.c_str(), s.c_str()) == 0;
 }

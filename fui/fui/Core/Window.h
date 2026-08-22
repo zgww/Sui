@@ -77,3 +77,6 @@ public:
 	void end();
 	void onDragMove(Vec2 clientPos);
 };
+
+void dispatchWindowFocusGainedEvent(long long windowId);
+void dispatchWindowFocusLostEvent(long long windowId);

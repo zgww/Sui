@@ -109,6 +109,9 @@ public:
 	static std::string insert_at(std::string str, int at, std::string newstr);
 	static std::string backspace(std::string str, int at, int cnt);
 	static std::string delete_rune(std::string str, int at, int cnt);
+
+
+	static bool equalIgnoreCase(std::string s0, std::string s);
 };
 
 #endif

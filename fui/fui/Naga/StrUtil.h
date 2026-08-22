@@ -1,7 +1,7 @@
 #pragma once
 
 #include "./NagaPredef.h"
-
+#include <string>
 
 #ifdef __cplusplus
 
@@ -59,6 +59,11 @@ extern "C" {
 		NAGA_DLLAPI  char* StrUtil_insert_at(const char* str, int at, const char* newstr);
 
 	//};
+
+		class Str {
+		public:
+			static std::string lower(std::string data0);
+		};
 
 
 
