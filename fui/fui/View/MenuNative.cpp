@@ -18,8 +18,8 @@ void MenuNativeItem::append(MenuNativeItem* item) {
 	children->push(item);
 }
 
-MenuNativeItem* mkMenuNativeItem(MenuNativeItem* parent, const std::string& label, Ref<Closure<void(MenuNativeItem*)>> onActive) {
-	MenuNativeItem* ins = new MenuNativeItem();
+Ref<MenuNativeItem> mkMenuNativeItem(MenuNativeItem* parent, const std::string& label, Ref<Closure<void(MenuNativeItem*)>> onActive) {
+	Ref<MenuNativeItem> ins{ new MenuNativeItem() };
 	ins->label = label;
 	ins->cmd = label;
 	ins->onActive = onActive;
@@ -29,6 +29,11 @@ MenuNativeItem* mkMenuNativeItem(MenuNativeItem* parent, const std::string& labe
 	return ins;
 }
 
+Ref<MenuNative> MenuNative::mk(MenuNativeItem* root) {
+	auto ret = Ref(new MenuNative());
+	ret->create(root);
+	return ret;
+}
 MenuNative::MenuNative() {
 	//CtorGuard(this);
 

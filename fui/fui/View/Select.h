@@ -13,22 +13,27 @@ public:
 	int selectedIndex = -1;
 	bool isActive = false;
 
-	int normalBg = 0xffffffff;
-	int hoverBg = 0xfff0f0f0;
-	int activeBg = 0xffe0e0e0;
-	int textColor = 0xff333333;
+    int value = -1;
 
-	Ref<TextView> labelView{nullptr, this};
-	Ref<TextView> arrowView{nullptr, this};
+    Ref<Closure<void(int i, std::string label)>> onChanged{ nullptr, this };
 
-	Ref<Closure<void(int, const std::string&)>> onChanged{nullptr, this};
+    void fire_onChanged();
 
-	Select();
-	void appendOption(const std::string& text);
-	void setSelectedIndex(int i);
-	void togglePopup();
-	void onEvent(Event* ev) override;
-	void onHoverChanged() override;
+    Select();
+    void appendOptionCStr(const char* text);
+    void appendOption(std::string text);
+    void react();
+
+    std::string getLabel();
+
+    void setIsActive(bool v);
+
+    void setValue(int i);
+
+    void showPopupMenu();
+
+    void onEvent(Event* ev);
+
 
 	virtual const char* getClassName() const override { return "Select"; }
 };

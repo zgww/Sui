@@ -16,6 +16,7 @@
 #include "View/Slider.h"
 #include "View/Checkbox.h"
 #include "View/Switch.h"
+#include "View/Select.h"
 #include "View/Panel.h"
 #include "View/ScrollArea.h"
 #include "View/EditText.h"
@@ -344,6 +345,15 @@ int main() {
 			} REND;
 		} REND;
 
+
+		R(Select) {
+			if (o.created) {
+				o.appendOption("男");
+				o.appendOption("女");
+				o.appendOption("未知");
+			}
+		} REND;
+
 		//R(Panel) {
 		//	//o.title = "检视器";
 		//	o.width = 300;
@@ -363,31 +373,31 @@ int main() {
 		//
 		//}REND;
 
-		R(LayoutLinear) {
-			o.direction = "column";
-			o.alignItems = "start";
-			R(TreeSelfCtrlView) {
-				o.deep = 0;
-				o.hasKids = true;
-				R(TextView) { o.setText("根"); }REND;
-			}REND;
-			R(TreeSelfCtrlView) {
-				o.deep = 0;
-				o.hasKids = true;
-				R(TextView) { o.setText("根2"); }REND;
-			}REND;
-			R(TreeSelfCtrlView) {
-				o.deep = 1;
-				o.hasKids = true;
-				R(TextView) { o.setText("父2"); }REND;
-			}REND;
+		//R(LayoutLinear) {
+		//	o.direction = "column";
+		//	o.alignItems = "start";
+		//	R(TreeSelfCtrlView) {
+		//		o.deep = 0;
+		//		o.hasKids = true;
+		//		R(TextView) { o.setText("根"); }REND;
+		//	}REND;
+		//	R(TreeSelfCtrlView) {
+		//		o.deep = 0;
+		//		o.hasKids = true;
+		//		R(TextView) { o.setText("根2"); }REND;
+		//	}REND;
+		//	R(TreeSelfCtrlView) {
+		//		o.deep = 1;
+		//		o.hasKids = true;
+		//		R(TextView) { o.setText("父2"); }REND;
+		//	}REND;
 
-			R(TreeSelfCtrlView) {
-				o.deep = 2;
-				o.hasKids = false;
-				R(TextView) { o.setText("子2"); }REND;
-			}REND;
-		} REND;
+		//	R(TreeSelfCtrlView) {
+		//		o.deep = 2;
+		//		o.hasKids = false;
+		//		R(TextView) { o.setText("子2"); }REND;
+		//	}REND;
+		//} REND;
 		//R(TableView) {
 		//	if (o.created) {
 		//		o.addColumn(60, "ID");

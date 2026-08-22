@@ -264,6 +264,9 @@
     <ClInclude Include="Naga\FsUtil.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\Select.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -426,6 +429,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Naga\FsUtil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\Select.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

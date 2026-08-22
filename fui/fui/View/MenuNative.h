@@ -9,7 +9,7 @@
 #include <vector>
 
 
-#define HIER(Expr) {auto _tmp = Expr, o = _tmp;
+#define HIER(Expr) {auto _tmp = Expr; auto o = _tmp;
 #define HEND }
 
 
@@ -27,7 +27,7 @@ public:
 	void append(MenuNativeItem* item);
 };
 
-MenuNativeItem* mkMenuNativeItem(MenuNativeItem* parent, const std::string& label, Ref<Closure<void(MenuNativeItem*)>> onActive = nullptr);
+Ref<MenuNativeItem> mkMenuNativeItem(MenuNativeItem* parent, const std::string& label, Ref<Closure<void(MenuNativeItem*)>> onActive = nullptr);
 
 class MenuNative : public GcObj {
 public:
@@ -46,6 +46,8 @@ public:
 	void onDismiss();
 	void destroy();
 	bool dispatchCommand(MenuNativeItem* item, Window* win, int commandId);
+
+	static Ref<MenuNative> mk(MenuNativeItem* root);
 
 	virtual const char* getClassName() const { return "MenuNative"; }
 };

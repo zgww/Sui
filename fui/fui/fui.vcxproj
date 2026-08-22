@@ -95,6 +95,7 @@
     <ClInclude Include="View\MenuNative.h" />
     <ClInclude Include="View\Panel.h" />
     <ClInclude Include="View\ProgressView.h" />
+    <ClInclude Include="View\Select.h" />
     <ClInclude Include="View\Slider.h" />
     <ClInclude Include="View\SplitterView.h" />
     <ClInclude Include="View\Switch.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="View\MenuNative.cpp" />
     <ClCompile Include="View\Panel.cpp" />
     <ClCompile Include="View\ProgressView.cpp" />
+    <ClCompile Include="View\Select.cpp" />
     <ClCompile Include="View\Slider.cpp" />
     <ClCompile Include="View\SplitterView.cpp" />
     <ClCompile Include="View\Switch.cpp" />
