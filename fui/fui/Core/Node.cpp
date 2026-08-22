@@ -225,8 +225,8 @@ void Node::startInnerReact() {
 }
 
 void Node::endInnerReact() {
-	_flagUseOutKids = true;
 	Node_removeUnusedKids(this);
+	_flagUseOutKids = true;
 }
 
 void Node::initInnerReact()

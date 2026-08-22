@@ -91,6 +91,7 @@
     <ClInclude Include="View\HoverViewEffect.h" />
     <ClInclude Include="View\ImageView.h" />
     <ClInclude Include="View\MenuNative.h" />
+    <ClInclude Include="View\Panel.h" />
     <ClInclude Include="View\ProgressView.h" />
     <ClInclude Include="View\Slider.h" />
     <ClInclude Include="View\SplitterView.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="View\HoverViewEffect.cpp" />
     <ClCompile Include="View\ImageView.cpp" />
     <ClCompile Include="View\MenuNative.cpp" />
+    <ClCompile Include="View\Panel.cpp" />
     <ClCompile Include="View\ProgressView.cpp" />
     <ClCompile Include="View\Slider.cpp" />
     <ClCompile Include="View\SplitterView.cpp" />

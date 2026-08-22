@@ -36,6 +36,7 @@
 #include "Core/NodeLib.h"
 #include "Core/Screen.h"
 #include "Core/Clipboard.h"
+#include "View/Panel.h"
 
 int main() {
 	SetConsoleOutputCP(65001);
@@ -340,6 +341,26 @@ int main() {
 				R(LayoutLinearCell) {}REND;
 			} REND;
 		} REND;
+
+		R(Panel) {
+			//o->title = "检视器";
+			o->width = 300;
+			//o->height = 250;
+			o->backgroundColor = 0x88ddffdd;
+
+			R(TextView) {
+				o->slot = "head";
+				o->setText("自定义slot view");
+			} REND;
+
+			R(View) {
+				o->width = 100;
+				o->height = 100;
+				o->backgroundColor = 0xff00ff00;
+				o->margin.setAll(10);
+			}REND;
+		
+		}REND;
 
 
 		R(LayoutLinear) {

@@ -18,9 +18,12 @@ void HoverViewEffect::onMounted() {
 						if (hve->onHostEvent->invoke(e)) return;
 					}
 					MouseEvent* me = dynamic_cast<MouseEvent*>(e);
-					if (me && me->button == 1 && me->isClickInBubble()) {
-						if (hve->onClick) {
-							hve->onClick->invoke(me);
+					if (me && me->isClickInBubble()) {
+
+						if (me->button == 0 ) {
+							if (hve->onClick) {
+								hve->onClick->invoke(me);
+							}
 						}
 					}
 				});

@@ -462,7 +462,7 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	case WM_MBUTTONDOWN: {
 		float x = (float)GET_X_LPARAM(lParam);
 		float y = (float)GET_Y_LPARAM(lParam);
-		int button = (uMsg == WM_LBUTTONDOWN) ? 0 : (uMsg == WM_RBUTTONDOWN ? 1 : 2);
+		int button = (uMsg == WM_LBUTTONDOWN) ? 0 : (uMsg == WM_RBUTTONDOWN ? 2 : 1);
 		bool shift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
 		bool alt = (GetKeyState(VK_MENU) & 0x8000) != 0;
 		bool ctrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
@@ -475,7 +475,7 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	case WM_MBUTTONUP: {
 		float x = (float)GET_X_LPARAM(lParam);
 		float y = (float)GET_Y_LPARAM(lParam);
-		int button = (uMsg == WM_LBUTTONUP) ? 0 : (uMsg == WM_RBUTTONUP ? 1 : 2);
+		int button = (uMsg == WM_LBUTTONUP) ? 0 : (uMsg == WM_RBUTTONUP ? 2 : 1);
 		bool shift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
 		bool alt = (GetKeyState(VK_MENU) & 0x8000) != 0;
 		bool ctrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;

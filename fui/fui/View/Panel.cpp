@@ -1,62 +1,88 @@
 #include "Panel.h"
 #include "TextView.h"
+#include "../View/HoverViewEffect.h"
 
 Panel::Panel() {
+	CtorGuard g(this);
+
 	direction = "column";
 	alignItems = "stretch";
 	padding.setAll(0);
 
-	titleView = new TextView();
-	titleView->text = title;
-	titleView->fontSize = titleFontSize;
-	titleView->color = titleColor;
-	titleView->backgroundColor = titleBg;
-	titleView->padding.setAxis(6, 8);
-	titleView->cursor = "pointer";
-	appendChild(titleView);
+	//titleView = new TextView();
+	//titleView->text = title;
+	//titleView->fontSize = titleFontSize;
+	//titleView->color = titleColor;
+	//titleView->backgroundColor = titleBg;
+	//titleView->padding.setAxis(6, 8);
+	//titleView->cursor = "pointer";
+	//appendChild(titleView);
 
-	bodyView = new View();
-	bodyView->backgroundColor = 0x00000000;
-	appendChild(bodyView);
+	//bodyView = new View();
+	//bodyView->backgroundColor = 0x00000000;
+	//appendChild(bodyView);
+
+
+	initInnerReact();
 }
 
 void Panel::setTitle(const std::string& t) {
 	if (title != t) {
 		title = t;
-		if (titleView) {
-			titleView->setText(t);
-		}
 	}
 }
 
 void Panel::setOpen(bool v) {
 	if (open != v) {
 		open = v;
-		if (bodyView) {
-			bodyView->setVisible(open);
-		}
-		invalidLayout();
+		invalidReact();
 	}
 }
 
-void Panel::setBody(View* v) {
-	if (bodyView) {
-		bodyView->removeAllChildren();
-		if (v) {
-			bodyView->appendChild(v);
-		}
-	}
-}
 
 void Panel::onEvent(Event* ev) {
 	LayoutLinear::onEvent(ev);
 }
 
-void Panel::onEvent_forHead(Event* e) {
-	MouseEvent* me = dynamic_cast<MouseEvent*>(e);
-	if (!me) return;
-	if (me->isClickInBubble()) {
-		setOpen(!open);
-		me->stopPropagation();
+void Panel::react()
+{
+	auto o = this;
+	startInnerReact();
+
+	R(LayoutLinear) {
+		o->direction = "row";
+
+		R(TextView) {
+			std::string text = open ? "V " : "> ";
+			if (this->title != "") {
+				text += this->title;
+				o->setColor(this->titleColor);
+				o->setFontSize(this->titleFontSize);
+			}
+			o->setText(text);
+			R(HoverViewEffect) {
+				auto self = Ref(this);
+				o->onClick = CLOSURE([=](MouseEvent *e) {
+					self->setOpen(!self->open);
+				});
+			} REND;
+		} REND;
+		if (this->title == "") {
+			this->placeKidsOfSlot(this->gocOutKids(), "head");
+		}
+	}REND;
+
+	if (open) {
+		this->placeKidsOfSlot(this->gocOutKids(), "");
 	}
+	endInnerReact();
 }
+
+//void Panel::onEvent_forHead(Event* e) {
+//	MouseEvent* me = dynamic_cast<MouseEvent*>(e);
+//	if (!me) return;
+//	if (me->isClickInBubble()) {
+//		setOpen(!open);
+//		me->stopPropagation();
+//	}
+//}
