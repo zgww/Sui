@@ -370,7 +370,7 @@ int main() {
 				o.addColumn(100, "状态");
 				o.addColumn(120, "操作");
 			}
-			o.rowCount = 10;
+			o.rowCount = 20;
 			o.margin.setAll(6);
 			//o.backgroundColor = 0x330030ff;
 			//o.width = 300;
