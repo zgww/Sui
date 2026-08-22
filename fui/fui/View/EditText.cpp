@@ -361,19 +361,25 @@ Range mkRange(int start, int end) {
 	 if (this->value.empty() && !this->placeholder.empty()) {
 		 // nvgFillColor(vg, nvgRGBA(255,255,255,64));
 		 canvas->fillColorByInt32((this->color));
-		 canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
+		 canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_BASELINE);
 		 canvas->text(x + h * 0.3f, 
-			 y + lineYStart + metrics.calcYStart(), //h * 0.5f, 
+			 y + lineYStart  + metrics.ascender, //h * 0.5f, 
 			 this->placeholder.c_str());
 	 }
 	 //绘制文本
 	 if (!this->value.empty()) {
 		 // nvgFillColor(vg, nvgRGBA(255,255,255,255));
+		 //canvas->beginPath();
+		 //canvas->rect(0, lineYStart, 100, metrics.lineh);
+		 //canvas->fillColorByInt32(0x33ff0000);
+		 //canvas->fill();
+
 		 canvas->fillColorByInt32(this->color);
-		 canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
+		 canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_BASELINE);
 		 float textX = x + startOffset + this->draw_offset;
+
 		 canvas->text(textX,
-			 y + lineYStart + metrics.calcYStart(), //h * 0.5f, 
+			 y + lineYStart  + metrics.ascender, //h * 0.5f, 
 			 this->value.c_str());
 	 }
 

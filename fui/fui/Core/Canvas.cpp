@@ -315,6 +315,3 @@ Canvas* Canvas::getInstance()
 	return gCanvas;
 }
 
-float TextMetrics::calcYStart() {
-	return lineh + descender;
-}

@@ -10,7 +10,6 @@ public:
 	float ascender;
 	float descender;
 	float lineh;
-	float calcYStart();
 };
 
 class Canvas : public GcObj {
