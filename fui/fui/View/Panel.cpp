@@ -51,6 +51,14 @@ void Panel::react()
 
 	R(LayoutLinear) {
 		o->direction = "row";
+		//o->backgroundColor = 0xff0000ff;
+
+		R(HoverViewEffect) {
+			auto self = Ref(this);
+			o->onClick = CLOSURE([=](MouseEvent* e) {
+				self->setOpen(!self->open);
+				});
+		} REND;
 
 		R(TextView) {
 			std::string text = open ? "V " : "> ";
@@ -60,20 +68,14 @@ void Panel::react()
 				o->setFontSize(this->titleFontSize);
 			}
 			o->setText(text);
-			R(HoverViewEffect) {
-				auto self = Ref(this);
-				o->onClick = CLOSURE([=](MouseEvent *e) {
-					self->setOpen(!self->open);
-				});
-			} REND;
 		} REND;
 		if (this->title == "") {
-			this->placeKidsOfSlot(this->gocOutKids(), "head");
+			o->placeKidsOfSlot(this->gocOutKids(), "head");
 		}
 	}REND;
 
 	if (open) {
-		this->placeKidsOfSlot(this->gocOutKids(), "");
+		o->placeKidsOfSlot(this->gocOutKids(), "");
 	}
 	endInnerReact();
 }
