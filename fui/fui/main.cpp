@@ -45,6 +45,8 @@
 #include "View/Panel.h"
 #include "View/TreeView.h"
 
+import ViewAbout;
+
 int main2() {
 	SetConsoleOutputCP(65001);
 	urgc.start_process_thread();
@@ -905,6 +907,8 @@ int main() {
 	win->moveToCenter();
 	win->show();
 
+	User user;
+	user.say();
 	app->runEventLoop();
 
 	return 0;

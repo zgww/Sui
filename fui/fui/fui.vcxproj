@@ -150,6 +150,7 @@
     <ClCompile Include="Dialog\Toast.cpp" />
     <ClCompile Include="Dialog\FileDialog.cpp" />
     <ClCompile Include="Dialog\MessageDialog.cpp" />
+    <ClCompile Include="ViewAbout.ixx" />
     <ClCompile Include="View\Button.cpp" />
     <ClCompile Include="View\Checkbox.cpp" />
     <ClCompile Include="View\ColorPalete.cpp" />

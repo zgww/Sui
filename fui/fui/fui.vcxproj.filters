@@ -467,5 +467,8 @@
     <ClCompile Include="Naga\TimeUtil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ViewAbout.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
