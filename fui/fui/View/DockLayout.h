@@ -136,8 +136,8 @@ public:
 	// List<DockSplitterInfo>
 	// Ref<GcList<>> splitterInfos = new List()
 
-	Ref<Closure< ViewBase* (DockItem* item, ViewBase* parent)>> cbRenderItemContentView{ nullptr, this };
-	Ref<Closure< void(DockItem* item, ViewBase* parent, int kidIndex)>> cbRenderItemHeadView{ nullptr, this };
+	Ref<Closure< ViewBase* (DockItem* item, ViewBase& parent)>> cbRenderItemContentView{ nullptr, this };
+	Ref<Closure< void(DockItem* item, ViewBase& parent, int kidIndex)>> cbRenderItemHeadView{ nullptr, this };
 
 	// Ref<Drag> dragSplitter = new Drag()
 	Ref<Drag> dragTab{ new Drag(), this };
@@ -165,8 +165,8 @@ public:
 	void _onEvent_tabItemHead(Event* e, DockItem* kid);
 
 	// ^void (Event *e) _onEvent_tabItem 
-	void _reactTabHeads(DockItem* tab, ViewBase* parent);
-	void _reactTabContent(DockItem* tab, ViewBase* parent);
+	void _reactTabHeads(DockItem* tab, ViewBase& parent);
+	void _reactTabContent(DockItem* tab, ViewBase& parent);
 
 	void layoutContent(Frame* frame);
 	void layoutContentDockItem(Frame* frame, DockItem* item, int px, int py);
@@ -175,8 +175,8 @@ public:
 	//     super.draw_self(canvas)
 	//     this->drawDndIndicator(canvas)
 	// }
-	void drawSelfBorder(Canvas* canvas);
-	void drawDndIndicator(Canvas* canvas);
+	virtual void drawSelfBorder(Canvas* canvas) override;
+	virtual void drawDndIndicator(Canvas* canvas);
 	DockItem* findDockItem_containsVec2(DockItem* item, int clientX, int clientY);
 
 	//向上找到离splitter最近 dockItem(非splitter)

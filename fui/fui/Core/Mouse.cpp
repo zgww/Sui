@@ -32,8 +32,8 @@ Vec2 Mouse_getPosOfWindow(int64_t windowId) {
 #endif
 }
 
-static int mouseDownClientX = 0;
-static int mouseDownClientY = 0;
+static float mouseDownClientX = 0;
+static float mouseDownClientY = 0;
 void setMouseEventFromMouseData(MouseEvent* event, MouseData* md, Window* win) {
 	if (md->isMouseDown) {
 		mouseDownClientX = md->clientX;
@@ -138,7 +138,7 @@ void Mouse_onMouseMove(int64_t windowId, float x, float y, bool shift, bool alt,
 	md.shift = shift;
 	md.alt = alt;
 	md.ctrl = ctrl;
-	printf("dispatchMouseMoveEvent :%s\n", win->getTitle().c_str());
+	//printf("dispatchMouseMoveEvent :%s\n", win->getTitle().c_str());
 
 	dispatchMouseMoveEvent(win->rootView, &md, win);
 }

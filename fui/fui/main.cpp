@@ -362,7 +362,7 @@ int main2() {
 					o.backgroundColor = 0xff00ff00;//0xff000000 | (r << 24) | (g << 16) | b;
 					o.height = 100;
 					o.margin.setVer(10);
-					o.width = 100 + 20 * (i % 10);
+					o.width = 100.f + 20 * (i % 10);
 					o.aic().jcc();
 					//R(LayoutLinearCell) {}REND;
 
@@ -585,23 +585,81 @@ int main() {
 
 
 		R(DockLayout) {
-			o.width = 600;
-			o.height = 600;
-			o.backgroundColor = 0xff00ff00;
+			o.width = 500;
+			o.height = 500;
+			o.backgroundColor = 0x3300ff00;
 
 
 			if (o.created) {
-				HIER(mkDockItemSplitter(o.root, "project", false)) {
+				//HIER(mkDockItemSplitter(o.root, "project", false)) {
+				HIER(mkDockItemTab(o.root, "project")) {
 					HIER(mkDockItem(o, "hier")) {
-
 					} HEND;
 					HIER(mkDockItem(o, "inspector")) {
-
 					} HEND;
 				} HEND;
+
 
 				HIER(mkDockItem(o.root, "scene")) {
 				} HEND;
+
+				o.cbRenderItemHeadView = CLOSURE([=](DockItem* item, ViewBase& o, int kidIndex) {
+					if (item->id == ("project")) {
+					}
+					auto t = themeIns();
+					R(TextView, (long long)item) {
+						o.cursor = ("pointer");
+						o.setText(item->id);
+						o.color = t->dock_head_c;
+						o.padding.top = 4;
+						o.padding.setHor(8);
+						o.border.setAll(0.0f, 0xffaeaeb2);
+
+						bool active = item->parent->tabActiveIndex == kidIndex;
+						if (active) {
+							o.border.t.w = 2.f;
+							o.border.t.color = t->c_main;
+						}
+
+						if (kidIndex < item->parent->children->size() - 1) {
+							o.border.r.w = 1.f;
+						}
+						// o.backgroundColor = 
+							// item.parent.tabActiveIndex == kidIndex ? 0x99000030l
+							// : 0x66000030
+						o.backgroundColor =
+							active ? t->dock_head_bg_active
+							: t->dock_head_bg;
+
+					} REND;
+					});
+				o.cbRenderItemContentView = CLOSURE([=](DockItem* item, ViewBase& o) {
+					if (item->id == ("project")) {
+					}
+					ViewBase* ret = nullptr;
+					R(TextView, (long long)item) {
+						ret = &o;
+						o.needClip = true;
+
+						o.setText(item->id);
+						o.setFontSize(30);
+						o.color = 0xff000000;
+						o.radius.setAll(6);
+						o.padding.setAll(6);
+
+						//o.backgroundColor =
+						//	item->id == "hier" ? 0xffff0000
+						//	: item->id == "inspector" ? 0xff00ff00
+						//	: item->id == "scene" ? 0xff3000ff
+						//	: 0xff00ffff;
+
+						R(LayoutLinearCell) {
+							o.grow = 1;
+						} REND;
+
+					} REND;
+					return ret;
+				});
 			}
 		} REND;
 

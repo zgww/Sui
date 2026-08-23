@@ -127,7 +127,7 @@ void DockItem::printTree(int tab) {
 	}
 	printf("%s@%p#%d[%f,%f]\n", this->id.c_str(), this, this->intId, this->width, this->weight);
 	for (int i = 0; i < this->children->size(); i++) {
-		DockItem* kid = (DockItem*)this->children->get(i);
+		DockItem* kid = this->children->get(i);
 		kid->printTree(tab + 1);
 	}
 }
@@ -242,7 +242,7 @@ void DockLayout::doDrop() {
 		}
 
 		if (dynamic_cast<DockItem*>(this->dragTab->data.get())) {
-			Ref<DockItem> source = (DockItem*)this->dragTab->data.get();
+			DockItem* source = (DockItem*)this->dragTab->data.get();
 			printf("do Drop source:%s, target:%s, geoType:%d\n"
 				, source->id.c_str()
 				, target->id.c_str()
@@ -358,7 +358,7 @@ void DockLayout::_reactDockItem(DockItem* item) {
 		for (int i = 0; i < l; i++) {
 			int index = i;
 
-			DockItem* kid = (DockItem*)item->children->get(i);
+			DockItem* kid = item->children->get(i);
 
 			kid->prevSplitterView = splitterView;
 			this->_reactDockItem(kid);
@@ -396,14 +396,14 @@ void DockLayout::_reactDockItem(DockItem* item) {
 			o.alignItems = ("stretch");
 
 			//渲染头部视图
-			this->_reactTabHeads(item, &o);
+			this->_reactTabHeads(item, o);
 			//渲染内容视图
-			this->_reactTabContent(item, &o);
+			this->_reactTabContent(item, o);
 		} REND;
 	}
 	if (item->type == (ITEM)) {
 		if (this->cbRenderItemContentView) {
-			ViewBase* v = this->cbRenderItemContentView->invoke(item, self);
+			ViewBase* v = this->cbRenderItemContentView->invoke(item, *this);
 			item->view = v;
 		}
 	}
@@ -420,35 +420,38 @@ void DockLayout::_onEvent_tabItemHead(Event* e, DockItem* kid) {
 	if (dynamic_cast<MouseEvent*>(e)) {
 		MouseEvent* me = (MouseEvent*)e;
 
-		if (me->isMouseDown) {
-			// MessageDialog_alert("click tab head", "title标题")
-			this->_onClickTabItemHead(kid);
-		}
+		if (me->isBubble()) {
+			if (me->isMouseDown) {
+				// MessageDialog_alert("click tab head", "title标题")
+				this->_onClickTabItemHead(kid);
+			}
 
-		this->dragTab->data = kid;
-		this->dragTab->onMouseDown(me);
+			this->dragTab->data = kid;
+			this->dragTab->onMouseDown(me);
+		}
 	}
 }
 
 // ^void (Event *e) _onEvent_tabItem 
-void DockLayout::_reactTabHeads(DockItem* tab, ViewBase* parent) {
+void DockLayout::_reactTabHeads(DockItem* tab, ViewBase& o) {
 	auto self = Ref(this);
-	auto& o = *parent;
 	R(LayoutLinear) {
 		o.direction = ("row");
 		// o.backgroundColor = 0xff0000ff
 		o.backgroundColor = this->tabHeadBg;
 		int l = tab->children->size();
 		for (int i = 0; i < l; i++) {
-			Ref<DockItem> kid = (Ref<DockItem>)tab->children->get(i);
+			Ref<DockItem> kid = tab->children->get(i);
 			if (kid->type == (ITEM)) {
 				R(LayoutLinear, (long long)kid.get()) {
 					// printf("设置tabHead cbOnEvent:%p %s\n", kid, kid->id.c_str());
-					o.cbOnEvent = CLOSURE([=](Event* e) {
-						self->_onEvent_tabItemHead(e, kid.get());
-						});
+					o.cbOnEvent = CLOSURE(
+						[=](Event* e) { 
+							self->_onEvent_tabItemHead(e, kid.get());
+						}
+					);
 					if (this->cbRenderItemHeadView) {
-						this->cbRenderItemHeadView->invoke(kid, &o, i);
+						this->cbRenderItemHeadView->invoke(kid, o, i);
 					}
 				} REND;
 			}
@@ -456,9 +459,8 @@ void DockLayout::_reactTabHeads(DockItem* tab, ViewBase* parent) {
 	} REND;
 }
 
-void DockLayout::_reactTabContent(DockItem* tab, ViewBase* parent) {
+void DockLayout::_reactTabContent(DockItem* tab, ViewBase &o) {
 	auto self = Ref(this);
-	auto& o = *parent;
 
 	R(LayoutLinear) {
 		o.direction = ("column");
@@ -470,10 +472,10 @@ void DockLayout::_reactTabContent(DockItem* tab, ViewBase* parent) {
 			o.grow = 1;
 		} REND;
 
-		DockItem* kid = (DockItem*)tab->children->get(tab->tabActiveIndex);
+		Ref<DockItem> kid = tab->children->get(tab->tabActiveIndex);
 		if (kid) {
 			if (this->cbRenderItemContentView) {
-				ViewBase* view = this->cbRenderItemContentView->invoke(kid, &o);
+				ViewBase* view = this->cbRenderItemContentView->invoke(kid, o);
 				kid->view = view;;
 			}
 		}
@@ -505,7 +507,7 @@ void DockLayout::layoutContentDockItem(Frame* frame, DockItem* item, int px, int
 		float sumWidth = 0;
 		int l = kidsSize;
 		for (int i = 0; i < l; i++) {
-			DockItem* kid = (DockItem*)item->children->get(i);
+			Ref<DockItem> kid = item->children->get(i);
 			float w = maxFloat(0.0, kid->width);
 			if (w > 0) { //width优先
 				sumWidth = sumWidth + w;
@@ -528,14 +530,14 @@ void DockLayout::layoutContentDockItem(Frame* frame, DockItem* item, int px, int
 		float pos = 0.0;
 		l = kidsSize;
 		for (int i = 0; i < l; i++) {
-			DockItem* kid = (DockItem*)item->children->get(i);
+			Ref<DockItem> kid = item->children->get(i);
 			Frame tmpFrame = mkFrame();
 			Frame* kidFrame = kid->view ? &kid->view->frame : &tmpFrame;
 
 			float kidSize = 0.0;
 			if (item->isHorizontal) { //水平方向
 				kidFrame->x = pos + px;
-				kidFrame->y = 0.0 + py;
+				kidFrame->y = 0.0f + py;
 				// float placeSize = maxFloat(0.0, kid->width)
 				kidSize = kid->width > 0
 					? kid->width
@@ -546,7 +548,7 @@ void DockLayout::layoutContentDockItem(Frame* frame, DockItem* item, int px, int
 				);
 			}
 			else { //垂直方向
-				kidFrame->x = 0.0 + px;
+				kidFrame->x = 0.0f + px;
 				kidFrame->y = pos + py;
 				kidSize = kid->width > 0
 					? kid->width
@@ -626,9 +628,9 @@ void DockLayout::drawDndIndicator(Canvas* canvas) {
 		);
 
 		Rect absRect = target->view->get_abs_rect();
-		printf("mousePos.:%f,%f abs:%f,%f,%f,%f\n", mousePos.x, mousePos.y
-			, absRect.x, absRect.y, absRect.w, absRect.h
-		);
+		//printf("DockLayout mousePos.:%f,%f abs:%f,%f,%f,%f\n", mousePos.x, mousePos.y
+		//	, absRect.x, absRect.y, absRect.w, absRect.h
+		//);
 		// drop type
 		// Vec2 geo = absRect.containsPositionIn9Patch(mousePos.x, mousePos.y)
 		Rect geo = absRect.containsPositionIn5Patch(mousePos.x, mousePos.y,
@@ -638,7 +640,7 @@ void DockLayout::drawDndIndicator(Canvas* canvas) {
 		Rect r = target->view->frame.toRect();
 
 		canvas->beginPath();
-		canvas->fillColor(255, 0, 0, 64);
+		canvas->fillColor(0, 64, 255, 64);
 		canvas->rect(
 			r.x + r.w * geo.x
 			, r.y + r.h * geo.y
@@ -646,8 +648,19 @@ void DockLayout::drawDndIndicator(Canvas* canvas) {
 			, r.h * geo.h);
 		canvas->fill();
 
+		//printf("draw dndindicator:%f,%f,%f,%f\n",
+
+		//	r.x + r.w * geo.x
+		//	, r.y + r.h * geo.y
+		//	, r.w * geo.w
+		//	, r.h * geo.h
+		//);
+
 		canvas->restore();
 
+	}
+	else {
+		//printf("no drawDndIndicator. no target or view\n");
 	}
 }
 
@@ -662,7 +675,7 @@ DockItem* DockLayout::findDockItem_containsVec2(DockItem* item, int clientX, int
 	//不是子视图
 	int l = item->children->size();
 	for (int i = 0; i < l; i++) {
-		DockItem* kid = (DockItem*)item->children->get(i);
+		Ref<DockItem> kid = item->children->get(i);
 		DockItem* ret = this->findDockItem_containsVec2(kid, clientX, clientY);
 		if (ret) {
 			return ret;
@@ -755,7 +768,7 @@ void DockLayout::clearAllEmptyTab(DockItem* item) {
 			}
 			else if (kid->children->size() == 1) {//只有一个子的splitter,也没有意义
 				if (kid->parent) {
-					Ref<DockItem> solo = (Ref<DockItem>)kid->children->get(0);
+					DockItem* solo = kid->children->get(0);
 					if (solo) {
 						kid->parent->insertBefore(solo, kid); //把子提出来
 						kid->removeSelf(); //再把无效的splitter删掉

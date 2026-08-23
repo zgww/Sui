@@ -26,7 +26,7 @@ void Drag::setStatus(const char* status) {
 	}
 }
 
-void Drag::onMouseDown(Event* e) {
+void Drag::_onMouseDown(Event* e) {
 	MouseEvent* me = dynamic_cast<MouseEvent*>(e);
 	if (!me || !me->isMouseDown) return;
 
@@ -50,13 +50,20 @@ void Drag::onMouseDown(Event* e) {
 	if (onDrag) onDrag->invoke(this);
 }
 
+void Drag::onMouseDown(Event* e) {
+	MouseEvent* me = dynamic_cast<MouseEvent*>(e);
+	if (!me || !me->isMouseDown || me->isCapture) return;
+
+	_onMouseDown(e);
+}
+
 void Drag::onMouseDown_byPrefer(Event* e, int button, bool cap, bool bubble) {
 	MouseEvent* me = dynamic_cast<MouseEvent*>(e);
 	if (!me || !me->isMouseDown) return;
 	if (me->button != button) return;
 	if (cap && !me->isCapture) return;
 	if (bubble && !me->isBubble()) return;
-	onMouseDown(e);
+	_onMouseDown(e);
 }
 
 void Drag::onListenerEvent(Event* ev) {

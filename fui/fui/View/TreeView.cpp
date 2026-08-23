@@ -310,7 +310,7 @@ void TreeSelfCtrlView::updateForOpen() {
 }
 
 void TreeSelfCtrlView::react() {
-	padding.left = deep * 20;
+	padding.left = deep * 20.f;
 	auto self = Ref(this);
 	auto& o = startInnerReact();
 

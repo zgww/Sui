@@ -84,8 +84,8 @@ public:
 
 	void clip(Canvas* canvas);
 	void draw(Canvas* canvas) override;
-	void drawSelfBorder(Canvas* canvas);
-	void draw_self(Canvas* canvas) override;
+	virtual void drawSelfBorder(Canvas* canvas);
+	virtual void draw_self(Canvas* canvas) override;
 
 	virtual const char* getClassName() const override { return "View"; }
 };

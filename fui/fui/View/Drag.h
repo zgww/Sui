@@ -22,6 +22,7 @@ public:
 	Ref<GcObj> data{ nullptr, this };
 
 	void setStatus(const char* status);
+	void _onMouseDown(Event* e);
 	void onMouseDown(Event* e);
 	void onMouseDown_byPrefer(Event* e, int button, bool cap, bool bubble);
 	void onListenerEvent(Event* ev) ;

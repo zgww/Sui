@@ -217,7 +217,7 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 					}
 				}
 				else { //未找到，需要新增
-
+					break;
 				}
 				//需要删除的就会一直被移到后面，如果后面还有静态节点，就会把无效的动态节点删除，如果后面已经没有静态节点了， 那就会剩下一些无效节点，需要删除
 			}
@@ -237,11 +237,11 @@ Ref<T> Node_getOrCreate(Ref<Node>& o, std::string key = "") {
 	return Node_getOrCreate<T>(n, key);
 }
 template <class T>
-Ref<T> Node_getOrCreate(Node* o, int key) {
+Ref<T> Node_getOrCreate(Node* o, long long key) {
 	return Node_getOrCreate<T>(o, std::to_string(key));
 }
 template <class T>
-Ref<T> Node_getOrCreate(Ref<Node>& o, int key) {
+Ref<T> Node_getOrCreate(Ref<Node>& o, long long key) {
 	auto n = o.get();
 	return Node_getOrCreate<T>(n, std::to_string(key));
 }

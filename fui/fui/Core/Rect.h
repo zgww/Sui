@@ -108,41 +108,25 @@ struct Rect {
 			&& fabsf(w - b.w) < 0.00001f
 			&& fabsf(h - b.h) < 0.00001f;
 	}
+	Rect containsPositionIn5Patch(float px, float py, Rect centerRect);
 
-	Rect containsPositionIn5Patch(float px, float py, const Rect& centerRatio) const {
-		float cx0 = x + w * centerRatio.x;
-		float cy0 = y + h * centerRatio.y;
-		float cx1 = cx0 + w * centerRatio.w;
-		float cy1 = cy0 + h * centerRatio.h;
+	//是否包含位置在9宫格内
+	// 0 0 0
+	// 1 2 3
+	// 4 4 4
+	// -1 表示 不包含
+	// [centerRect]表示中间区域，以比例的方式表示
+	// [return] 返回以比例表示的rect
+	Rect containsPositionIn5Patch_withOutType(float px, float py, Rect centerRect, int* outType);
 
-		if (px < cx0) {
-			Rect r; r.setAll(x, cy0, cx0 - x, cy1 - cy0); return r;
-		}
-		if (px >= cx1) {
-			Rect r; r.setAll(cx1, cy0, x + w - cx1, cy1 - cy0); return r;
-		}
-		if (py < cy0) {
-			Rect r; r.setAll(cx0, y, cx1 - cx0, cy0 - y); return r;
-		}
-		if (py >= cy1) {
-			Rect r; r.setAll(cx0, cy1, cx1 - cx0, y + h - cy1); return r;
-		}
-		Rect r; r.setAll(cx0, cy0, cx1 - cx0, cy1 - cy0); return r;
-	}
+	//是否包含位置在9宫格内
+	// 0 1 2
+	// 3 4 5
+	// 6 7 8
+	// -1 表示 不包含
+	Vec2 containsPositionIn9Patch(float px, float py);
 
-	Rect containsPositionIn5Patch_withOutType(float px, float py, const Rect& centerRatio, int* geoType) const {
-		float cx0 = x + w * centerRatio.x;
-		float cy0 = y + h * centerRatio.y;
-		float cx1 = cx0 + w * centerRatio.w;
-		float cy1 = cy0 + h * centerRatio.h;
 
-		if (px < cx0) { if (geoType) *geoType = 1; Rect r; r.setAll(x, cy0, cx0 - x, cy1 - cy0); return r; }
-		if (px >= cx1) { if (geoType) *geoType = 3; Rect r; r.setAll(cx1, cy0, x + w - cx1, cy1 - cy0); return r; }
-		if (py < cy0) { if (geoType) *geoType = 0; Rect r; r.setAll(cx0, y, cx1 - cx0, cy0 - y); return r; }
-		if (py >= cy1) { if (geoType) *geoType = 4; Rect r; r.setAll(cx0, cy1, cx1 - cx0, y + h - cy1); return r; }
-		if (geoType) *geoType = 2;
-		Rect r; r.setAll(cx0, cy0, cx1 - cx0, cy1 - cy0); return r;
-	}
 };
 
 inline float cross2d(float x1, float y1, float x2, float y2, float x, float y) {

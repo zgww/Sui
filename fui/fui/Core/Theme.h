@@ -58,12 +58,12 @@ public:
     int dock_head_c = 0xffedeef0;// 0xff666666
 
         // docklayout tab背景色
-    int dock_headbar_bg = 0xff2e3135;//0x00d1d1d6
+    int dock_headbar_bg = 0xffdfdfdf;//0xff2e3135;//0x00d1d1d6
 
         // docklayout tab背景色
     int dock_head_bg = 0x00000000;//0x00000030
         //选中的tab背景色
-    int dock_head_bg_active = 0xff212225; //0x990000fa
+    int dock_head_bg_active = 0xff3388ee;//0xff212225; //0x990000fa
     int dock_content_bg = 0xe5e5e5;
     int dock_splitterBg = 0x25d9edfe;
     int dock_splitterBgHover = 0xff007aff;
