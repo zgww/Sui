@@ -3,6 +3,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#include "../Naga/Utf8Util.h"
 #endif
 
 static int gMenuId = 10000;
@@ -49,14 +50,16 @@ static HMENU _buildNativeMenuRecursive(MenuNativeItem* item) {
 		MenuNativeItem* kid = item->children->get(i);
 		if (!kid) continue;
 		UINT flags = MF_STRING;
+		std::wstring wlabel = Utf8Util::toutf16(kid->label);
 		if (kid->children->size() > 0) {
 			flags = MF_POPUP;
 			HMENU hSubMenu = _buildNativeMenuRecursive(kid);
 			AppendMenuW(hMenu, flags | MF_STRING, (UINT_PTR)hSubMenu, L">");
 			ModifyMenuW(hMenu, (UINT_PTR)hSubMenu, MF_POPUP | MF_STRING, (UINT_PTR)hSubMenu,
-				std::wstring(kid->label.begin(), kid->label.end()).c_str());
+				wlabel.c_str()
+			
+			);
 		} else {
-			std::wstring wlabel(kid->label.begin(), kid->label.end());
 			AppendMenuW(hMenu, flags, (UINT_PTR)kid->commandId, wlabel.c_str());
 		}
 	}
@@ -80,6 +83,9 @@ void MenuNative::show() {
 void MenuNative::showAt(int clientX, int clientY) {
 #ifdef _WIN32
 	HWND hwnd = (HWND)windowId;
+	if (!hwnd) {
+		hwnd = GetForegroundWindow();
+	}
 	POINT pt;
 	pt.x = clientX;
 	pt.y = clientY;

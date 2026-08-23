@@ -79,8 +79,8 @@ void Select::showPopupMenu() {
 			printf("cbOnDismiss\n");;
 			self->setIsActive(false);
 			});
-		//menu->showAt(r.x, r.bottom());
-		menu->showAtMouse();
+		menu->showAt(r.x, r.bottom());
+		//menu->showAtMouse();
 
 	}HEND;
 }
