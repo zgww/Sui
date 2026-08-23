@@ -12,43 +12,65 @@
 #include "Drag.h"
 #include <string>
 
-class ColorPalete : public View {
+
+/// 颜色盘
+class ColorPalete :public View {
 public:
-	Vec2 indicatorPos;
-	Ref<Drag> drag{new Drag(), this};
+	// 都是归一化的0-1值. 原点在左下角
+	Vec2 indicatorPos = mkVec2(0, 0);
+	Ref<Drag> drag{ new Drag() , this};
+
+		//sv的主色
 	int color = 0xffff0000;
+
 	bool xDraggale = true;
 	bool yDraggale = true;
-	std::string kind = "sv";
-	std::string indicatorKind = "rect";
-	Ref<Closure<void(Vec2)>> onChanged{nullptr, this};
+		//sv|alpha|hue
+	std::string kind = ("sv");
+		// circle|rect
+	std::string indicatorKind = ("rect");
+	// bool rect = false;
+	Ref<Closure<void(Vec2 ratio) >> onChanged{ nullptr, this };
 
 	Vec2 calcIndicatorPosInPixel();
-	void onEvent(Event* e) override;
-	void onMouseEvent(MouseEvent* me);
-	void onDrag(Drag* d);
-	void drawCircle(Canvas* canvas, float x, float y);
-	void drawMark(Canvas* canvas, float w, float y);
-	void drawHue(Canvas* canvas, float w, float h);
-	void drawAlpha(Canvas* canvas, float w, float h);
-	void drawSv(Canvas* canvas, float w, float h);
-	void draw_self(Canvas* canvas) override;
 
-	virtual const char* getClassName() const override { return "ColorPalete"; }
+	void onEvent(Event* e);
+	void onMouseEvent(MouseEvent* me);
+	void onDrag(Drag* drag);
+
+	//色盘
+	void drawCircle(Canvas* canvas, int x, int y);
+	//色盘
+	void drawMark(Canvas* canvas, int w, int y);
+	void drawHue(Canvas* pcanvas, int w, int h);
+	//透明度
+	void drawAlpha(Canvas* pcanvas, int w, int h);
+	//饱和度和亮度
+	void drawSv(Canvas* pcanvas, int w, int h);
+	void draw_self(Canvas* canvas);
 };
 
 class ColorView : public LayoutLinear {
 public:
-	Hsva hsva;
+
+	// int color = 0;
+	Hsva hsva = mkHsva(0.0, 1.0, 1.0, 255);
 	bool showRgba = true;
 	bool showHsva = false;
 	bool showHsla = false;
-	Ref<Closure<void(int)>> onChanged{nullptr, this};
+
+	Ref<Closure< void(int newcolor)>> onChanged{ nullptr, this };
 
 	void fire_onChanged();
-	void setColor(int c);
-	void react() override;
-	void draw_self(Canvas* canvas) override;
+	ColorView();
+	// void ctor(){
+	// 	super.ctor()
 
-	virtual const char* getClassName() const override { return "ColorView"; }
+	// 	// Hsla sv = mkHsla(0.5, 0.5, 0.5, 255)
+
+	// 	// this->color = c
+	// }
+	void setColor(int c);
+	void draw_self(Canvas* canvas);
+	void react();
 };

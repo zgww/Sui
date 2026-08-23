@@ -3,44 +3,51 @@
 #include "../Layout/LayoutLinear.h"
 #include "../Core/NodeLib.h"
 
+
 void ColorPicker::fire_onChanged(int newcolor) {
-	if (onChanged) {
-		onChanged->invoke(newcolor);
+	if (this->onChanged) {
+		this->onChanged->invoke(newcolor);
 	}
 }
 
 ColorPicker::ColorPicker() {
-	width = 14;
-	height = 14;
-	border->setAll(2, 0xffffffff);
-	backgroundColor = 0xff00ff00;
+	this->width = 14;
+	this->height = 14;
+	this->border.setAll(2, 0xffffffff);
+	this->backgroundColor = 0xff00ff00;
+
+	initInnerReact();
 }
 
 void ColorPicker::showWindow_colorPalete() {
-	Ref<Window> win{new Window()};
-	win->initData();
+	auto self = Ref(this);
 
-	Ref<LayoutLinear> root{new LayoutLinear()};
-	root->direction = "column";
-	root->alignItems = "center";
-	root->padding.setAll(8);
-	win->setRootView(root.get());
+	auto root = Ref(new LayoutLinear());
+	RINS(root.get()) {
 
-	ColorView* cv = gocNode<ColorView>(root.get(), 0);
-	if (cv) {
-		cv->hsva = mkHsva_byInt(backgroundColor);
-		auto selfRef = this;
-		auto winRef = win;
-		cv->onChanged = CLOSURE([=](int c) {
-			ColorPicker* self = selfRef;
-			if (!self) return;
-			self->backgroundColor = c;
-			self->fire_onChanged(c);
-			self->invalidDraw();
-		});
-	}
+		o.direction = ("column");
+		o.alignItems = ("center");
+		// o.justifyContent.set("center")
+		o.padding.setAll(8);
 
-	win->setOwner(getWindow());
+		// mkTextView(o, 0).{
+		// 	o.setText(str("你好"))
+		// }
+		R(ColorView) {
+			if (o.created) {
+				o.hsva = mkHsva_byInt(this->backgroundColor);
+			}
+			o.onChanged = CLOSURE([=](int c) {
+				self->backgroundColor = c;
+				self->fire_onChanged(c);
+				self->invalidDraw();
+				});
+		} REND;
+	} REND;
+
+	auto win = Ref(new Window());
+	win->setRootView(root);
+	win->setOwner(this->getWindow());
 	win->setTitle("ColorPicker");
 	win->setSize(300, 300);
 	win->moveToCenter();
@@ -48,16 +55,19 @@ void ColorPicker::showWindow_colorPalete() {
 }
 
 void ColorPicker::onEvent(Event* e) {
-	View::onEvent(e);
-	if (e->isStopPropagation) return;
-	MouseEvent* me = dynamic_cast<MouseEvent*>(e);
-	if (me) {
-		onMouseEvent(me);
+	if (dynamic_cast<MouseEvent*>(e)) {
+		this->onMouseEvent((MouseEvent*)e);
 	}
 }
 
+
 void ColorPicker::onMouseEvent(MouseEvent* me) {
 	if (me->isClickInBubble()) {
-		showWindow_colorPalete();
+		this->showWindow_colorPalete();
+		// Toast_make("HI")
+		// this->drag.onDrag = ^void (Drag *d){
+		// 	this->onDrag(d)
+		// }
+		// this->drag.onMouseDown(me)
 	}
 }

@@ -49,7 +49,7 @@ bool MessageDialog_confirm(const char* content, const char* title) {
 
 void MessageDialog_prompt(const char* value, const char* title, Ref<Closure<void(const std::string&)>> onNewValue) {
 	Ref<Window> win{new Window()};
-	win->initData();
+	//win->initData();
 
 	/*Ref<LayoutLinear> root{new LayoutLinear()};
 	root->direction = "column";

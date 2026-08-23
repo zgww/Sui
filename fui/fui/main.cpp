@@ -29,6 +29,7 @@
 #include "View/ColorPicker.h"
 #include "View/MenuNative.h"
 #include "View/SystemTrayIcon.h"
+#include "View/ColorPalete.h"
 #include "View/ScrollArea.h"
 #include "View/ProgressView.h"
 #include "View/Switch.h"
@@ -49,7 +50,7 @@ int main() {
 	App* app = App_use();
 
 	Ref<Window> win{new Window()};
-	win->initData();
+	//win->initData();
 
 	//Ref<ScrollArea> scroll{new ScrollArea()};
 	//scroll->backgroundColor = 0xfff5f5f5;
@@ -348,7 +349,7 @@ int main() {
 
 		R(ScrollArea) {
 			o.width = 600;
-			o.height = 300;
+			o.height = 200;
 			o.backgroundColor = 0x33ff0000;
 
 			for (int i = 0; i < 10; i++) {
@@ -371,6 +372,17 @@ int main() {
 				} REND;
 			}
 		
+		} REND;
+
+		//R(ColorPalete) {
+		//	o.width = 400;
+		//	o.height = 400;
+		//} REND;
+		R(TextView) { o.setText("ColorView"); } REND;
+		R(ColorView) {
+		} REND;
+		R(TextView) { o.setText("ColorPicker"); } REND;
+		R(ColorPicker) {
 		} REND;
 
 		//R(Select) {

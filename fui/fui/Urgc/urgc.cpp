@@ -189,7 +189,7 @@ void RefMgr::delete_target()
 	{
 		auto tmp = (GcObj*)target;
 		//printf("delete target :%s\n", typeid(*tmp).name());
-		printf("delete target :%p\n", target);
+		//printf("delete target :%p\n", target);
 		delete (GcObj*)target;
 	}
 	else

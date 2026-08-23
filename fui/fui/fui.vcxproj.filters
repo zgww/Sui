@@ -270,6 +270,12 @@
     <ClInclude Include="View\ScrollArea.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\ColorPalete.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="View\ColorPicker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -438,6 +444,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\ScrollArea.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\ColorPalete.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="View\ColorPicker.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

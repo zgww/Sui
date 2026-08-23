@@ -454,6 +454,7 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		bool shift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
 		bool alt = (GetKeyState(VK_MENU) & 0x8000) != 0;
 		bool ctrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
+		printf("mouse move :%f,%f  winId:%lld\n", x, y, winId);
 		Mouse_onMouseMove(winId, x, y, shift, alt, ctrl);
 		break;
 	}
@@ -599,6 +600,8 @@ Window::Window() {
 
 	App* app = App_use();
 	app->addWindow(this);
+
+	this->initData();
 }
 
 Window::~Window() {

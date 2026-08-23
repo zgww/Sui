@@ -3,287 +3,390 @@
 #include "../Core/NodeLib.h"
 #include "../Core/Inset.h"
 
-static unsigned char* createChessBgData(int w, int h, int r, int g, int b, int a) {
-	unsigned char* data = (unsigned char*)malloc(w * h * 4);
+static char* new_createChessBg_inMemory(int w, int h, int r, int g, int b, int a) {
+	char* data = (char*)malloc(w * h * 4);
 	int hw = w / 2;
 	int hh = h / 2;
+
 	for (int y = 0; y < h; y++) {
 		for (int x = 0; x < w; x++) {
 			int i = (y * w + x) * 4;
-			data[i] = (unsigned char)r;
-			data[i + 1] = (unsigned char)g;
-			data[i + 2] = (unsigned char)b;
-			data[i + 3] = (unsigned char)((x < hw && y < hh) || (x >= hw && y >= hh) ? a : 0);
+			data[i] = r;
+			data[i + 1] = g;
+			data[i + 2] = b;
+			data[i + 3] = (x < hw && y < hh) || (x >= hw && y >= hh) ? a : 0;
 		}
 	}
+
 	return data;
 }
-
-static Image* gocChessBgImage(Canvas* canvas) {
+static Ref<Image> gocChessBgImage(Canvas* canvas) {
 	static Ref<Image> img;
 	if (img == nullptr) {
-		int w = 16, h = 16;
-		unsigned char* imgData = createChessBgData(w, h, 128, 128, 128, 255);
-		img = canvas->createImageRGBA(w, h, imgData);
+		int w = 16;
+		int h = 16;
+
+		char* imgData = new_createChessBg_inMemory(w, h,
+			128, 128, 128, 255);
+
+		img = canvas->createImageRGBA(w, h, (const unsigned char*)imgData);
+
 		free(imgData);
 	}
-	return img.get();
+	return img;
 }
 
 Vec2 ColorPalete::calcIndicatorPosInPixel() {
-	Rect r = getContentLocalRect();
-	return Vec2(r.w * indicatorPos.x, r.h * (1.0f - indicatorPos.y));
+	Rect r = this->getContentLocalRect();
+	return mkVec2(
+		r.w * this->indicatorPos.x,
+		r.h * (1.0 - this->indicatorPos.y)
+	);
 }
 
 void ColorPalete::onEvent(Event* e) {
-	View::onEvent(e);
-	if (e->isStopPropagation) return;
-	MouseEvent* me = dynamic_cast<MouseEvent*>(e);
-	if (me) {
-		onMouseEvent(me);
+	if (dynamic_cast<MouseEvent*>(e)) {
+		this->onMouseEvent((MouseEvent*)e);
 	}
 }
 
 void ColorPalete::onMouseEvent(MouseEvent* me) {
 	if (me->isMouseDown) {
-		auto selfRef = this;
-		drag->onDrag = CLOSURE([=](Drag* d) {
-			ColorPalete* self = selfRef;
-			if (!self) return;
+		auto self = Ref(this);
+		this->drag->onDrag = CLOSURE([=](Drag* d) {
 			self->onDrag(d);
-		});
-		drag->onMouseDown(me);
+			});
+		this->drag->onMouseDown(me);
 	}
 }
 
-void ColorPalete::onDrag(Drag* d) {
-	if (d->isDragging || d->isDragStart || d->isDragChecking) {
-		Rect r = getContentLocalRect();
-		Rect cr = getContentClientRect();
-		float tox = d->currentClientPos.x - cr.x;
-		float toy = d->currentClientPos.y - cr.y;
-		tox = clampFloat(tox, 0, r.w);
-		toy = clampFloat(toy, 0, r.h);
+void ColorPalete::onDrag(Drag* drag) {
+	auto& d = *drag;
+	if (d.isDragging || d.isDragStart || d.isDragChecking) {
+		Rect r = this->getContentLocalRect();
+		Vec2 pos = this->calcIndicatorPosInPixel();
 
-		float xRatio = r.w > 0 ? tox / r.w : 0;
-		float yRatio = r.h > 0 ? toy / r.h : 0;
+		int tox = pos.x + d.deltaPos.x;
+		int toy = pos.y + d.deltaPos.y;
 
-		if (xDraggale) indicatorPos.x = xRatio;
-		if (yDraggale) indicatorPos.y = 1.0f - yRatio;
-
-		if (onChanged) {
-			onChanged->invoke(indicatorPos);
+		{
+			Rect r = this->getContentClientRect();
+			tox = d.currentClientPos.x - r.x;
+			toy = d.currentClientPos.y - r.y;
+			printf("tox:%d, toy:%d cur:%f, %f, r:%f,%f\n",
+				tox, toy,
+				d.currentClientPos.x,
+				d.currentClientPos.y,
+				r.x, r.y);
 		}
-		invalidDraw();
+
+		printf("tox:%d, toy:%d\n", tox, toy);
+		tox = clampInt(tox, 0, r.w);
+		toy = clampInt(toy, 0, r.h);
+
+		float xRatio = 0;
+		if (r.w > 0) {
+			xRatio = tox / r.w;
+		}
+		float yRatio = 0;
+		if (r.h > 0) {
+			yRatio = toy / r.h;
+		}
+
+		if (this->xDraggale) {
+			this->indicatorPos.x = xRatio;
+		}
+		if (this->yDraggale) {
+			this->indicatorPos.y = 1.0 - yRatio;
+		}
+
+		if (this->onChanged) {
+			this->onChanged->invoke(this->indicatorPos);
+		}
+
+		this->invalidDraw();
 	}
 }
 
-void ColorPalete::drawCircle(Canvas* canvas, float x, float y) {
+//色盘
+void ColorPalete::drawCircle(Canvas* canvas, int x, int y) {
+	// Marker on
 	canvas->strokeWidth(2.0f);
 	canvas->beginPath();
+	// nvgRect(vg, -2, y - h / 2, w + 4, h)
 	canvas->circle(x, y, 4);
 	canvas->strokeColor(255, 255, 255, 192);
 	canvas->stroke();
 }
 
-void ColorPalete::drawMark(Canvas* canvas, float w, float y) {
-	float h = 8;
+//色盘
+void ColorPalete::drawMark(Canvas* canvas, int w, int y) {
+	int h = 8;
+	// Marker on
 	canvas->strokeWidth(2.0f);
 	canvas->beginPath();
-	canvas->rect(-2.0f, y - h / 2, w + 4.0f, h);
+	canvas->rect(-2.f, y - h / 2, w + 4.f, h);
 	canvas->strokeColor(255, 255, 255, 192);
 	canvas->stroke();
 }
 
-void ColorPalete::drawHue(Canvas* canvas, float w, float h) {
-	float seg = h / 6.0f;
+void ColorPalete::drawHue(Canvas* pcanvas, int w, int h) {
+	auto& canvas = *pcanvas;
+	// w = 20
+	float seg = h / 6.0;
 	for (int i = 0; i < 6; i++) {
 		float y = i * seg;
-		canvas->beginPath();
-		canvas->rect(0, y, w, seg + (i == 5 ? 0 : 1));
-		canvas->linearGradient(true,
-			0, y, 0, y + seg,
-			mkHsla(1.0f - (i / 6.0f), 1.0f, 0.55f, 255).toRgbaInt(),
-			mkHsla(1.0f - ((i + 1) / 6.0f), 1.0f, 0.55f, 255).toRgbaInt());
-		canvas->fill();
+		canvas.beginPath();
+		canvas.rect(0, y, w, seg + (i == 5 ? 0 : 1));
+
+		canvas.linearGradient(true,
+			0, y,
+			0, y + seg,
+			mkHsla(1.0 - (i / 6.0), 1.0f, 0.55, 255).toRgbaInt(),
+			mkHsla(1.0 - ((i + 1) / 6.0), 1.0f, 0.55, 255).toRgbaInt()
+		);
+		canvas.fill();
 	}
 }
 
-void ColorPalete::drawAlpha(Canvas* canvas, float w, float h) {
-	canvas->beginPath();
-	canvas->rect(0, 0, w, h);
-	Image* bg = gocChessBgImage(canvas);
-	canvas->imagePattern(true, 0, 0, 16, 16, 0, bg, 1);
-	canvas->fill();
+//透明度
+void ColorPalete::drawAlpha(Canvas* pcanvas, int w, int h) {
+	auto& canvas = *pcanvas;
+	canvas.beginPath();
+	// nvgFillColor(vg, nvgRGBA(255, 0, 0, 255))
+	// nvgRoundedRect(vg, 0, 0, w, h, 15)
+	canvas.rect(0, 0, w, h);
 
-	canvas->linearGradient(true,
-		0, 0, 0, h,
+	Image* bg = gocChessBgImage(pcanvas);
+	//绘制背景
+	canvas.imagePattern(
+		true,
+		0, 0, 16, 16, 0, bg, 1
+	);
+	// nvgFillPaint(vg, bp)	
+	canvas.fill();
+
+
+	// NVGpaint lg = nvgLinearGradient(vg, 
+	// 	0.0, 0.0, 0.0, h, 
+	// 	nvgRGBA(255, 255, 255, 255),
+	// 	// nvgRGBA(255, 255, 255, 0),
+	// 	nvgRGBA(0, 0, 0, 200),
+	// )
+	// nvgFillPaint(vg, lg)
+
+	canvas.linearGradient(true,
+		0.0, 0.0, 0.0, h,
 		mkIntByRgba(255, 255, 255, 255),
-		mkIntByRgba(0, 0, 0, 200));
-	canvas->fill();
+		// nvgRGBA(255, 255, 255, 0),
+		mkIntByRgba(0, 0, 0, 200)
+	);
+	canvas.fill();
 }
 
-void ColorPalete::drawSv(Canvas* canvas, float w, float h) {
-	canvas->beginPath();
-	canvas->rect(0, 0, w, h);
-	canvas->fillColorByInt32(color);
-	canvas->fill();
+//饱和度和亮度
+void ColorPalete::drawSv(Canvas* pcanvas, int w, int h) {
+	auto& canvas = *pcanvas;
+	canvas.beginPath();
+	// nvgFillColor(vg, nvgRGBA(255, 0, 0, 255))
+	// nvgRoundedRect(vg, 0, 0, w, h, 15)
+	canvas.rect(0, 0, w, h);
 
-	canvas->linearGradient(true,
-		0, 0, w, 0,
+	// nvgFillColor(vg, nvgRGBA(255, 0, 0, 255))
+	canvas.fillColorByInt32(this->color);
+	canvas.fill();
+
+	// NVGpaint lg = nvgLinearGradient(vg, 
+	// 	0.0, 0.0, w, 0.0,
+	// 	nvgRGBA(255, 255, 255, 255),
+	// 	nvgRGBA(255, 255, 255, 0),
+	// )
+	// nvgFillPaint(vg, lg)
+	canvas.linearGradient(true,
+		0.0, 0.0, w, 0.0,
 		mkIntByRgba(255, 255, 255, 255),
-		mkIntByRgba(255, 255, 255, 0));
-	canvas->fill();
+		mkIntByRgba(255, 255, 255, 0)
+	);
+	canvas.fill();
 
-	canvas->linearGradient(true,
-		0, 0, 0, h,
-		mkIntByRgba(0, 0, 0, 0),
-		mkIntByRgba(0, 0, 0, 255));
-	canvas->fill();
+	{
+		// NVGpaint lg = nvgLinearGradient(vg, 
+		// 	0.0, 0.0, 0.0, h,
+		// 	nvgRGBA(0, 0, 0, 0),
+		// 	nvgRGBA(0, 0, 0, 255),
+		// )
+		// nvgFillPaint(vg, lg)
+		canvas.linearGradient(true,
+			0.0, 0.0, 0.0, h,
+			mkIntByRgba(0, 0, 0, 0),
+			mkIntByRgba(0, 0, 0, 255)
+		);
+		canvas.fill();
+	}
 }
 
 void ColorPalete::draw_self(Canvas* canvas) {
-	Rect r = getContentLocalRect();
-	float w = r.w;
-	float h = r.h;
-	backgroundColor = 0xff000000;
+	Rect r = this->getContentLocalRect();
+	int w = r.w;
+	int h = r.h;
+
+	this->backgroundColor = 0xff000000;
+
 	View::draw_self(canvas);
 
-	if (kind == "sv") drawSv(canvas, w, h);
-	if (kind == "alpha") drawAlpha(canvas, w, h);
-	if (kind == "hue") drawHue(canvas, w, h);
+	if (this->kind == ("sv")) {
+		this->drawSv(canvas, w, h);
+	}
+	if (this->kind == ("alpha")) {
+		this->drawAlpha(canvas, w, h);
+	}
+	if (this->kind == ("hue")) {
+		this->drawHue(canvas, w, h);
+	}
 
-	Vec2 indiPos = calcIndicatorPosInPixel();
-	if (indicatorKind == "rect") drawMark(canvas, w, indiPos.y);
-	if (indicatorKind == "circle") drawCircle(canvas, indiPos.x, indiPos.y);
+	Vec2 indiPos = this->calcIndicatorPosInPixel();
+	if (this->indicatorKind == ("rect")) {
+		this->drawMark(canvas, w, indiPos.y);
+	}
+	if (this->indicatorKind == "circle") {
+		this->drawCircle(canvas, indiPos.x, indiPos.y);
+	}
+
 }
 
 void ColorView::fire_onChanged() {
-	if (onChanged) {
-		int c = hsva.toRgbaInt();
-		onChanged->invoke(c);
+	if (this->onChanged) {
+		int color = this->hsva.toRgbaInt();
+		this->onChanged->invoke(color);
 	}
 }
 
+ColorView::ColorView() {
+	initInnerReact();
+}
+
+// 	// this->color = c
+// }
 void ColorView::setColor(int c) {
+	// this->color = c
 	Rgba rgba = mkRgbaByInt(c);
-	hsva = rgbaToHsva(rgba);
+	this->hsva = rgbaToHsva(rgba);
 }
 
 void ColorView::draw_self(Canvas* canvas) {
-	LayoutLinear::draw_self(canvas);
+	View::draw_self(canvas);
 }
 
 void ColorView::react() {
-	startInnerReact();
-	ColorView* o = this;
+	auto& o = this->startInnerReact();
+	auto self = Ref(this);
 
-	Hsva sv = mkHsva(hsva.h, 1.0f, 1.0f, 255);
+
+	Hsva sv = mkHsva(this->hsva.h, 1.0, 1.0, 255);
 	int svColor = sv.toRgbaInt();
 
-	direction = "column";
-	alignItems = "stretch";
+	this->direction = ("column");
+	this->alignItems = ("stretch");
 
-	LayoutLinear* row1 = gocLayoutLinear(o, 0);
-	if (row1) {
-		row1->direction = "row";
+	R(LayoutLinear) {
+		R(ColorPalete) {
+			o.indicatorPos.set(this->hsva.s, this->hsva.v);
 
-		ColorPalete* svPal = gocNode<ColorPalete>(row1, 1);
-		if (svPal) {
-			svPal->indicatorPos.x = hsva.s;
-			svPal->indicatorPos.y = hsva.v;
-			svPal->color = svColor;
-			svPal->kind = "sv";
-			svPal->indicatorKind = "circle";
-			svPal->width = 200;
-			svPal->height = 200;
-			svPal->margin.right = 6;
-			auto selfRef = this;
-			svPal->onChanged = CLOSURE([=](Vec2 ratio) {
-				ColorView* self = selfRef;
-				if (!self) return;
-				self->hsva.s = ratio.x;
-				self->hsva.v = ratio.y;
-				self->fire_onChanged();
-				self->invalidReact();
-			});
-		}
+			o.color = svColor;
+			o.kind = ("sv");
+			o.indicatorKind = ("circle");
+			o.width = 200;
+			o.height = 200;
+			// o.margin.left = 100
+			o.margin.right = 6;
+			o.onChanged = CLOSURE([=](Vec2 ratio) {
+				printf("ratio:%f,%f\n", ratio.x, ratio.y);
+				this->hsva.s = ratio.x;
+				this->hsva.v = ratio.y;
 
-		ColorPalete* huePal = gocNode<ColorPalete>(row1, 2);
-		if (huePal) {
-			huePal->indicatorPos.y = hsva.h / 360.0f;
-			huePal->kind = "hue";
-			huePal->width = 20;
-			huePal->height = 200;
-			huePal->margin.right = 6;
-			auto selfRef = this;
-			huePal->onChanged = CLOSURE([=](Vec2 ratio) {
-				ColorView* self = selfRef;
-				if (!self) return;
-				self->hsva.h = ratio.y * 360.0f;
-				self->fire_onChanged();
-				self->invalidReact();
-			});
-		}
+				this->fire_onChanged();
 
-		ColorPalete* alphaPal = gocNode<ColorPalete>(row1, 3);
-		if (alphaPal) {
-			alphaPal->indicatorPos.y = hsva.a / 255.0f;
-			alphaPal->kind = "alpha";
-			alphaPal->width = 20;
-			alphaPal->height = 200;
-			auto selfRef = this;
-			alphaPal->onChanged = CLOSURE([=](Vec2 ratio) {
-				ColorView* self = selfRef;
-				if (!self) return;
-				self->hsva.a = ratio.y * 255.0f;
-				self->fire_onChanged();
-				self->invalidReact();
-			});
-		}
-	}
+				// this->color = hsva.toRgbaInt()
+				this->invalidReact();
+				});
+		} REND;
+		R(ColorPalete) {
+			o.indicatorPos.y = this->hsva.h / 360.0;
+			printf("hue:%f\n", this->hsva.h);
 
-	LayoutLinear* row2 = gocLayoutLinear(o, 1);
-	if (row2) {
-		row2->direction = "row";
+			o.kind = ("hue");
+			o.width = 20;
+			o.height = 200;
+			o.margin.right = 6;
+			o.onChanged = CLOSURE([=](Vec2 ratio) {
+				this->hsva.h = ratio.y * 360.0;
+				printf("hue ratio:%f,%f. hue:%f\n", ratio.x, ratio.y, this->hsva.h);
 
-		View* colorBox = gocView(row2, 0);
-		if (colorBox) {
-			colorBox->backgroundColor = hsva.toRgbaInt();
-			colorBox->width = 16;
-			colorBox->height = 16;
-			colorBox->border->setAll(1, 0xff000000);
-			colorBox->padding.setAll(1);
-			colorBox->margin.setVer(6);
-			colorBox->margin.right = 6;
-		}
 
-		LayoutLinear* infoCol = gocLayoutLinear(row2, 1);
-		if (infoCol) {
-			infoCol->direction = "column";
-			infoCol->alignItems = "start";
+				this->fire_onChanged();
+				// this->color = this->hsva.toRgbaInt()
+				this->invalidReact();
+				});
+		} REND;
 
-			if (showHsva) {
-				TextView* tv = gocTextView(infoCol, 0);
-				if (tv) tv->setText(hsva.toString());
+		R(ColorPalete) {
+			o.indicatorPos.y = this->hsva.a / 255.0;
+
+			o.kind = ("alpha");
+			o.width = 20;
+			o.height = 200;
+			o.onChanged = CLOSURE([=](Vec2 ratio) {
+
+				// hsla.a = ratio.y * 255.0
+				// rgba.a = ratio.y * 255.0
+				this->hsva.a = ratio.y * 255.0;
+
+
+				this->fire_onChanged();
+				printf("alpha ratio:%f,%f. alpha:%d\n", ratio.x, ratio.y, this->hsva.a);
+				// this->color = rgba.toInt()
+				this->invalidReact();
+				});
+		} REND;
+	} REND;
+	R(LayoutLinear) {
+		R(View) {
+			o.backgroundColor = this->hsva.toRgbaInt();
+			o.width = 16;
+			o.height = 16;
+			o.border.setAll(1, 0xff000000);
+			o.padding.setAll(1);
+			o.margin.setVer(6);
+			o.margin.right = 6;
+		} REND;
+		R(LayoutLinear) {
+			o.direction = ("column");
+			o.alignItems = ("start");
+			if (this->showHsva) {
+				R(TextView, LINE_KEY) {
+					std::string s = this->hsva.toString();
+					o.setText(s);
+				} REND;
 			}
-			if (showRgba) {
-				TextView* tv = gocTextView(infoCol, 1);
-				if (tv) {
-					Rgba r = hsva.toRgba();
-					tv->setText(r.toString());
-				}
+			if (this->showRgba) {
+				R(TextView, LINE_KEY) {
+					Rgba r = this->hsva.toRgba();
+					std::string s = r.toString();
+					o.setText(s);
+				} REND;
 			}
-			if (showHsla) {
-				TextView* tv = gocTextView(infoCol, 2);
-				if (tv) {
-					Rgba r = hsva.toRgba();
+			if (this->showHsla) {
+				R(TextView, LINE_KEY) {
+					Rgba r = this->hsva.toRgba();
 					Hsla hsl = rgbaToHsla(r);
-					tv->setText(hsl.toString());
-				}
-			}
-		}
-	}
 
-	endInnerReact();
+					std::string s = hsl.toString();
+					o.setText(s);
+				} REND;
+			}
+		} REND;
+
+	} REND;
+
+	this->endInnerReact();
 }

@@ -86,15 +86,20 @@ void dispatchMouseEvent(ViewBase* rootView, MouseData* md, Window* win) {
 }
 
 void dispatchMouseMoveEvent(ViewBase* rootView, MouseData* md, Window* win) {
+	if (!win || !rootView) {
+		return;
+	}
+
 	Ref<MouseEvent> event{new MouseEvent()};
 	setMouseEventFromMouseData(event, md, win);
 
-	ViewBase* hit = rootView ? rootView->hitTest(md->clientX, md->clientY) : nullptr;
+	ViewBase* hit = rootView->hitTest(md->clientX, md->clientY) ;
 
-	if (hit) {
-		event->target = hit;
-		propagateViewEvent(event);
+	if (!hit) {
+		hit = rootView;
 	}
+	event->target = hit;
+	propagateViewEvent(event);
 
 	HoverSentive* hs = sinsHoverSentive();
 	if (hs) {
@@ -133,6 +138,7 @@ void Mouse_onMouseMove(int64_t windowId, float x, float y, bool shift, bool alt,
 	md.shift = shift;
 	md.alt = alt;
 	md.ctrl = ctrl;
+	printf("dispatchMouseMoveEvent :%s\n", win->getTitle().c_str());
 
 	dispatchMouseMoveEvent(win->rootView, &md, win);
 }
