@@ -24,6 +24,7 @@
 #include "View/Select.h"
 #include "View/TreeView.h"
 #include "View/TableView.h"
+#include "View/DockLayout.h"
 #include "View/Button.h"
 #include "View/SplitterView.h"
 #include "View/ColorPicker.h"
@@ -43,7 +44,7 @@
 #include "View/Panel.h"
 #include "View/TreeView.h"
 
-int main() {
+int main2() {
 	SetConsoleOutputCP(65001);
 	urgc.start_process_thread();
 
@@ -561,6 +562,59 @@ int main() {
 			Clipboard_getText().c_str());
 		Clipboard_setText("你好啊");
 		});
+	app->runEventLoop();
+
+	return 0;
+}
+
+
+
+int main() {
+	SetConsoleOutputCP(65001);
+	urgc.start_process_thread();
+
+	App* app = App_use();
+	
+	auto white = Ref(new LayoutLinear());
+
+	RINS(white.get()) {
+		o.backgroundColor = 0xffffeeee;
+		o.direction = "column";
+		o.alignItems = "center";
+		o.justifyContent = "center";
+
+
+		R(DockLayout) {
+			o.width = 600;
+			o.height = 600;
+			o.backgroundColor = 0xff00ff00;
+
+
+			if (o.created) {
+				HIER(mkDockItemSplitter(o.root, "project", false)) {
+					HIER(mkDockItem(o, "hier")) {
+
+					} HEND;
+					HIER(mkDockItem(o, "inspector")) {
+
+					} HEND;
+				} HEND;
+
+				HIER(mkDockItem(o.root, "scene")) {
+				} HEND;
+			}
+		} REND;
+
+	}REND;
+
+
+	Ref<Window> win{ new Window() };
+	win->setRootView(white);
+	win->setTitle("fui - GUI Framework Demo中文");
+	win->setSize(800, 600);
+	win->moveToCenter();
+	win->show();
+
 	app->runEventLoop();
 
 	return 0;

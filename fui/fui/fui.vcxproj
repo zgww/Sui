@@ -90,6 +90,7 @@
     <ClInclude Include="View\Checkbox.h" />
     <ClInclude Include="View\ColorPalete.h" />
     <ClInclude Include="View\ColorPicker.h" />
+    <ClInclude Include="View\DockLayout.h" />
     <ClInclude Include="View\Drag.h" />
     <ClInclude Include="View\EditText.h" />
     <ClInclude Include="View\HoverViewEffect.h" />
@@ -150,6 +151,7 @@
     <ClCompile Include="View\Checkbox.cpp" />
     <ClCompile Include="View\ColorPalete.cpp" />
     <ClCompile Include="View\ColorPicker.cpp" />
+    <ClCompile Include="View\DockLayout.cpp" />
     <ClCompile Include="View\Drag.cpp" />
     <ClCompile Include="View\EditText.cpp" />
     <ClCompile Include="View\HoverViewEffect.cpp" />

@@ -96,7 +96,7 @@ void Node::insertChild(Node* child, int at) {
 		children->insert_at(at, child);
 	} else {
 		if (children->get(at) == child) return;
-		int nowIndex = children->index_of(child);
+		int nowIndex = children->indexOf(child);
 		if (nowIndex == -1) {
 			children->insert_at(at, child);
 		} else if (at < nowIndex) {
@@ -138,7 +138,7 @@ void Node::removeAllChildren() {
 }
 
 int Node::indexOf(Node* child) {
-	return children->index_of(child);
+	return children->indexOf(child);
 }
 
 void Node::removeSelf() {

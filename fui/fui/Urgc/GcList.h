@@ -54,7 +54,7 @@ public:
         return (int)vector.size();
     }
     void insert_before(T* ele, T* rel) {
-        auto idx = index_of(rel);
+        auto idx = indexOf(rel);
         //-1时，就附到最后
         //
 
@@ -66,7 +66,7 @@ public:
         }
     }
     void insert_after(T* ele, T* rel) {
-        auto idx = index_of(rel);
+        auto idx = indexOf(rel);
         //-1时，就插入到0位
         insert_at(idx + 1, ele);
     }
@@ -119,7 +119,7 @@ public:
         return vector[index];
     }
     bool include(T* ele) {
-        return index_of(ele) != -1;
+        return indexOf(ele) != -1;
     }
 
     GcList<T>& clear(){
@@ -142,7 +142,7 @@ public:
         }
         return -1;
     }
-    int index_of(T*ele){
+    int indexOf(T*ele){
         for (int i = 0, l = size(); i < l; i++){
             if (vector[i] == ele){
                 return i;
@@ -160,7 +160,7 @@ public:
         return false;
     }
     bool remove(T* ele){
-        int idx = index_of(ele);
+        int idx = indexOf(ele);
         if (idx != -1){
             return remove_at(idx);
         }
