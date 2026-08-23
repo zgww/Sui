@@ -2,6 +2,7 @@
 #include "../Core/Window.h"
 #include "../Layout/LayoutLinear.h"
 #include "../Core/NodeLib.h"
+#include "../Core/Screen.h"
 
 
 void ColorPicker::fire_onChanged(int newcolor) {
@@ -50,7 +51,13 @@ void ColorPicker::showWindow_colorPalete() {
 	win->setOwner(this->getWindow());
 	win->setTitle("ColorPicker");
 	win->setSize(300, 300);
-	win->moveToCenter();
+
+	auto screenRect = this->getScreenRect();
+
+	auto size = Screen_get_usable_size();
+	//printf("setPos:%f,%f, %f, %f\n", screenRect.x, screenRect.y, size.width(), size.height());
+	win->setPos(screenRect.right(), screenRect.y);
+
 	win->show();
 }
 
