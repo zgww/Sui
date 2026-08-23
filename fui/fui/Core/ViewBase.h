@@ -82,13 +82,13 @@ public:
 	virtual void draw_self(Canvas* canvas);
 	void invalidDraw();
 
-	bool canLayoutByParent() { return visible; }
+	virtual bool canLayoutByParent() { return visible; }
 
-	void setVisible(bool v);
-	void setHover(bool v);
+	virtual void setVisible(bool v);
+	virtual void setHover(bool v);
 	virtual void onHoverChanged();
 
-	std::string toString() override;
+	virtual std::string toString() override;
 
 	virtual const char* getClassName() const override { return "ViewBase"; }
 };

@@ -496,7 +496,7 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		ScreenToClient(hWnd, &pt);
 		float x = (float)pt.x;
 		float y = (float)pt.y;
-		float deltaY = -(float)GET_WHEEL_DELTA_WPARAM(wParam) / 120.0f * 40.0f;
+		float deltaY = GET_WHEEL_DELTA_WPARAM(wParam); //-(float)GET_WHEEL_DELTA_WPARAM(wParam) / 120.0f * 40.0f;
 		float deltaX = 0;
 		bool shift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
 		bool alt = (GetKeyState(VK_MENU) & 0x8000) != 0;

@@ -29,6 +29,7 @@
 #include "View/ColorPicker.h"
 #include "View/MenuNative.h"
 #include "View/SystemTrayIcon.h"
+#include "View/ScrollArea.h"
 #include "View/ProgressView.h"
 #include "View/Switch.h"
 #include "View/TableView.h"
@@ -345,14 +346,40 @@ int main() {
 			} REND;
 		} REND;
 
+		R(ScrollArea) {
+			o.width = 600;
+			o.height = 300;
+			o.backgroundColor = 0x33ff0000;
 
-		R(Select) {
-			if (o.created) {
-				o.appendOption("男");
-				o.appendOption("女");
-				o.appendOption("未知");
+			for (int i = 0; i < 10; i++) {
+				R(LayoutLinear, i) {
+
+					int r = (int)((float)(i % 3) * 15);
+					int g = (int)((float)((i+1) % 3) * 15);
+					int b = (int)((float)((i + 2) % 3) * 15);
+					o.backgroundColor = 0xff00ff00;//0xff000000 | (r << 24) | (g << 16) | b;
+					o.height = 100;
+					o.margin.setVer(10);
+					o.width = 100 + 20 * (i % 10);
+					o.aic().jcc();
+					//R(LayoutLinearCell) {}REND;
+
+					R(TextView) {
+						o.setText(std::format("视图:{}", i));
+						o.setFontSize(18);
+					}REND;
+				} REND;
 			}
+		
 		} REND;
+
+		//R(Select) {
+		//	if (o.created) {
+		//		o.appendOption("男");
+		//		o.appendOption("女");
+		//		o.appendOption("未知");
+		//	}
+		//} REND;
 
 		//R(Panel) {
 		//	//o.title = "检视器";

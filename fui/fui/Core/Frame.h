@@ -36,6 +36,9 @@ struct Frame {
 		ret.height = height;
 		return ret;
 	}
+	std::string toString() {
+		return std::format("Frame({}, {}, {}, {})", x, y, width, height);
+	}
 
 	bool isConstraintsNotChanged() const {
 		return prevMinWidth == minWidth

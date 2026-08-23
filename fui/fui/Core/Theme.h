@@ -108,7 +108,7 @@ public:
 
         // scrollbar
         int scrollbar_bg = 0x00ffffff;
-        int scrollbar_barBg = 0x33ffffff;
+        int scrollbar_barBg = 0x33000000;//0x33ffffff;
         int scrollbar_size = 4;
 };
 
