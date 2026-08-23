@@ -24,6 +24,7 @@
     <ClInclude Include="Naga\FsUtil.h" />
     <ClInclude Include="Naga\MathEx.h" />
     <ClInclude Include="Naga\StrUtil.h" />
+    <ClInclude Include="Naga\TimeUtil.h" />
     <ClInclude Include="Naga\Utf8Util.h" />
     <ClInclude Include="Naga\Win32Utf8Util.h" />
     <ClInclude Include="Naga\Path.h" />
@@ -115,6 +116,7 @@
     <ClCompile Include="Naga\FsUtil.cpp" />
     <ClCompile Include="Naga\MathEx.cpp" />
     <ClCompile Include="Naga\StrUtil.cpp" />
+    <ClCompile Include="Naga\TimeUtil.cpp" />
     <ClCompile Include="Naga\Utf8Util.cpp" />
     <ClCompile Include="Naga\Win32Utf8Util.cpp" />
     <ClCompile Include="nanovg\nanovg.c" />

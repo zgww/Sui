@@ -279,6 +279,9 @@
     <ClInclude Include="View\DockLayout.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Naga\TimeUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -459,6 +462,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Core\Rect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Naga\TimeUtil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

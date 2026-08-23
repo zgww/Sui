@@ -807,11 +807,14 @@ void reactRowWrap(Node& o) {
 
 void reactLayoutGrid(Node& o) {
 	R(LayoutGrid) {
-		o.backgroundColor = 0xffefefef;
+		o.backgroundColor = 0xff5fefef;
 		o.width = 400;
 		o.height = 400;
 		o.rowGap = 8;
 		o.colGap = 8;
+		o.rowSize = 200;
+
+		R(LayoutLinearCell) {}REND;
 
 
 		R(View) {
@@ -887,7 +890,7 @@ int main() {
 	RINS(white.get()) {
 		o.backgroundColor = 0xffffeeee;
 		o.direction = "column";
-		o.alignItems = "center";
+		o.alignItems = "stretch";
 		o.justifyContent = "center";
 
 		//reactLayoutAlign(o);
