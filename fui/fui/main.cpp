@@ -9,6 +9,7 @@
 #include "Layout/LayoutLinear.h"
 #include "Layout/LayoutAlign.h"
 #include "Layout/LayoutGrid.h"
+#include "Layout/RowWrap.h"
 #include "View/TextView.h"
 #include "View/ImageView.h"
 #include "View/Button.h"
@@ -569,7 +570,8 @@ int main2() {
 
 
 
-int main() {
+
+int mainDockLayout() {
 	SetConsoleOutputCP(65001);
 	urgc.start_process_thread();
 
@@ -665,6 +667,233 @@ int main() {
 
 	}REND;
 
+
+	Ref<Window> win{ new Window() };
+	win->setRootView(white);
+	win->setTitle("fui - GUI Framework Demo中文");
+	win->setSize(800, 600);
+	win->moveToCenter();
+	win->show();
+
+	app->runEventLoop();
+
+	return 0;
+}
+
+void reactLayoutAlign(Node& o) {
+	R(LayoutAlign) {
+		o.backgroundColor = 0xff00ff00;
+		o.width = 200;
+		o.height = 200;
+		o.setCenter();
+		o.margin.bottom = 10;
+		R(TextView) {
+			o.setText("中间");
+			o.backgroundColor = 0xff999999;
+		}REND;
+	} REND;
+
+	R(LayoutAlign) {
+		o.backgroundColor = 0xff00ff00;
+		o.width = 200;
+		o.height = 200;
+		o.setBottomLeft();
+		o.margin.bottom = 10;
+		R(TextView) {
+			o.setText("左下");
+			o.backgroundColor = 0xff999999;
+		}REND;
+	} REND;
+
+	R(LayoutAlign) {
+		o.backgroundColor = 0xff00ff00;
+		o.width = 200;
+		o.height = 200;
+		o.setBottomRight();
+		o.margin.bottom = 10;
+		R(TextView) {
+			o.setText("右下");
+			o.backgroundColor = 0xff999999;
+		}REND;
+	} REND;
+
+
+	R(LayoutAlign) {
+		o.backgroundColor = 0xff00ff00;
+		o.width = 200;
+		o.height = 200;
+		o.setTopRight();
+		o.margin.bottom = 10;
+		
+		R(TextView) {
+			o.setText("右上");
+			o.backgroundColor = 0xff999999;
+		}REND;
+	} REND;
+}
+
+
+void reactRowWrap(Node& o) {
+	R(RowWrap) {
+		o.backgroundColor = 0xffefefef;
+		o.width = 400;
+		//o.height = 400;
+		o.rowGap = 8;
+		o.colGap = 8;
+
+		R(View) {
+			o.width = 100; 
+			o.height = 100;
+			o.backgroundColor = 0xff900999;
+		}REND;
+
+		R(View) {
+			o.width = 20;
+			o.height = 50;
+			o.backgroundColor = 0xffff9999;
+		}REND;
+
+		R(View) {
+			o.width = 150;
+			o.height =  70;
+			o.backgroundColor = 0xff999999;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+
+		R(View) {
+			o.width = 100;
+			o.height = 100;
+			o.backgroundColor = 0xff99ff99;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+
+		R(View) {
+			o.width = 150;
+			o.height = 70;
+			o.backgroundColor = 0xff999999;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+
+		R(View) {
+			o.width = 100;
+			o.height = 100;
+			o.backgroundColor = 0xff99ff99;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+	} REND;
+
+}
+
+
+void reactLayoutGrid(Node& o) {
+	R(LayoutGrid) {
+		o.backgroundColor = 0xffefefef;
+		o.width = 400;
+		o.height = 400;
+		o.rowGap = 8;
+		o.colGap = 8;
+
+
+		R(View) {
+			o.width = 100;
+			o.height = 100;
+			o.backgroundColor = 0xff900999;
+		}REND;
+
+		R(View) {
+			o.width = 20;
+			o.height = 50;
+			o.backgroundColor = 0xffff9999;
+		}REND;
+
+		R(View) {
+			o.width = 150;
+			o.height = 70;
+			o.backgroundColor = 0xff999999;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+
+		R(View) {
+			o.width = 100;
+			o.height = 100;
+			o.backgroundColor = 0xff99ff99;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+
+		R(View) {
+			o.width = 150;
+			o.height = 70;
+			o.backgroundColor = 0xff999999;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+
+		R(View) {
+			o.width = 100;
+			o.height = 100;
+			o.backgroundColor = 0xff99ff99;
+		}REND;
+
+		R(View) {
+			o.width = 120;
+			o.height = 100;
+			o.backgroundColor = 0xff9999ff;
+		}REND;
+	} REND;
+
+}
+int main() {
+	SetConsoleOutputCP(65001);
+	urgc.start_process_thread();
+
+	App* app = App_use();
+
+	auto white = Ref(new LayoutLinear());
+
+	RINS(white.get()) {
+		o.backgroundColor = 0xffffeeee;
+		o.direction = "column";
+		o.alignItems = "center";
+		o.justifyContent = "center";
+
+		//reactLayoutAlign(o);
+		//reactRowWrap(o);
+		reactLayoutGrid(o);
+	}REND;
 
 	Ref<Window> win{ new Window() };
 	win->setRootView(white);

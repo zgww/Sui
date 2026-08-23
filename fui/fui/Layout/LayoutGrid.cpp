@@ -130,8 +130,8 @@ void LayoutGrid::layoutContent(Frame* ctx) {
 
 	if (rowSizeRatio > 0.001f) {
 		rowSize = colSize * rowSizeRatio;
-	} else if (rowSize > 0.001f) {
-		// use fixed rowSize
+	} else if (this->rowSize > 0.001f) {
+		rowSize = this->rowSize;
 	} else if (rowCount > 0 && ctx->isTightHeight()) {
 		rowSize = (ctx->height - rowGap * (rowCount - 1)) / rowCount;
 	} else {
@@ -243,6 +243,7 @@ void LayoutGrid::layoutContent(Frame* ctx) {
 			view->layout(&view->frame);
 			view->frame.setPosition(
 				item.x,
+				//item.row * rowSize + (item.row - 1) * rowGap
 				item.row * (rowSize + rowGap)
 			);
 			maxHeight = maxFloat(maxHeight, view->frame.getBottom());
