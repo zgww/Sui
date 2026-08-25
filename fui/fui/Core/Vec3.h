@@ -2,7 +2,10 @@
 
 #include "Predef.h"
 
+struct Euler;
 struct Mat3;
+struct Quaternion;
+class Mat;
 
 struct Vec3 {
 	float x = 0;
@@ -110,9 +113,9 @@ struct Vec3 {
 		z *= scalar;
 		return this;
 	}
-
+	Vec3* setFromEuler(Euler& e);
 	Vec3* applyMatrix3Local(const Mat3& m);
-
+	Vec3* setFromMatrixPosition(Mat& m);
 	Vec3* minLocal(const Vec3& v) {
 		x = minFloat(x, v.x);
 		y = minFloat(y, v.y);
@@ -168,6 +171,17 @@ struct Vec3 {
 		float l = length();
 		return multiplyScalarLocal(eqFloat(l, 0) ? 1.0f : 1.0f / l);
 	}
+	//归一化
+	Vec3 normalize() {
+		Vec3 ret = *this;
+		ret.normalizeLocal();
+		return ret;
+	}
+	Vec3* setLength(float length) {
+		return normalizeLocal()->multiplyScalarLocal(length);
+	}
+
+
 
 	float distanceTo(const Vec3& v) const {
 		return sqrtf(distanceToSquared(v));
@@ -229,6 +243,82 @@ struct Vec3 {
 			&& fabsf(y - b.y) < 0.00001f
 			&& fabsf(z - b.z) < 0.00001f;
 	}
+
+
+
+	Vec3* fromArray(float* array, int offset) {
+		x = array[offset];
+		y = array[offset + 1];
+		z = array[offset + 2];
+		return this;
+	}
+
+	Vec3* crossLocal(Vec3 v) {
+		return crossVectorsLocal(*this, v);
+	}
+
+	Vec3* crossVectorsLocal(Vec3 a, Vec3 b) {
+
+		float ax = a.x;
+		float ay = a.y;
+			float az = a.z;
+			float bx = b.x;
+			float by = b.y;
+			float bz = b.z;
+
+		x = ay * bz - az * by;
+		y = az * bx - ax * bz;
+		z = ax * by - ay * bx;
+
+		return this;
+
+	}
+
+
+	Vec3* applyQuaternionLocal(Quaternion& q);
+
+
+
+	Vec3 clamp(Vec3 min, Vec3 max) {
+
+		auto& self = *this;
+		// assumes min < max, componentwise
+		Vec3 r;
+
+		r.x = maxFloat(min.x, minFloat(max.x, self.x));
+		r.y = maxFloat(min.y, minFloat(max.y, self.y));
+		r.z = maxFloat(min.z, minFloat(max.z, self.z));
+
+		return r;
+
+	}
+
+	Vec3 clampScalar(float minVal, float maxVal) {
+		auto& self = *this;
+		Vec3 r;
+
+		r.x = maxFloat(minVal, minFloat(maxVal, self.x));
+		r.y = maxFloat(minVal, minFloat(maxVal, self.y));
+		r.z = maxFloat(minVal, minFloat(maxVal, self.z));
+
+		return r;
+
+	}
+
+	Vec3 clampLength(float min, float max) {
+
+		float length = this->length();
+
+		Vec3 tmp = this->scale(1 / (length == 0 ? 1 : length));
+		return tmp.scale(maxFloat(min, minFloat(max, length)));
+	}
+
+
+
+	Vec3 applyMatrix4(Mat& m);
+	Vec3* applyMatrix4Local(Mat& m);
+
+
 };
 
 inline Vec3 mkVec3(float x, float y, float z) {

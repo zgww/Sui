@@ -5,6 +5,7 @@
 #include "Vec4.h"
 
 struct Euler;
+class Mat;
 
 struct Quaternion {
 	float x = 0;
@@ -37,16 +38,12 @@ struct Quaternion {
 		w = tw*qw - tx*qx - ty*qy - tz*qz;
 		return this;
 	}
+	Quaternion* setFromRotationMatrix(Mat& m);
+	
+	Quaternion* premultiplyLocal(Quaternion q);
 
-	Quaternion* multiplyQuaternionsLocal(const Quaternion& a, const Quaternion& b) {
-		float ax=a.x, ay=a.y, az=a.z, aw=a.w;
-		float bx=b.x, by=b.y, bz=b.z, bw=b.w;
-		x = aw*bx + ax*bw + ay*bz - az*by;
-		y = aw*by - ax*bz + ay*bw + az*bx;
-		z = aw*bz + ax*by - ay*bx + az*bw;
-		w = aw*bw - ax*bx - ay*by - az*bz;
-		return this;
-	}
+	Quaternion* multiplyQuaternionsLocal(Quaternion a, Quaternion b);
+
 
 	Quaternion* conjugateLocal() { x=-x; y=-y; z=-z; return this; }
 	Quaternion* invertLocal() { return conjugateLocal(); }

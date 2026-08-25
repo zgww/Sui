@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Core\Defines_win.h" />
     <ClInclude Include="Core\Theme.h" />
+    <ClInclude Include="Core\Mat.h" />
     <ClInclude Include="Naga\FsUtil.h" />
     <ClInclude Include="Naga\MathEx.h" />
     <ClInclude Include="Naga\StrUtil.h" />
@@ -110,9 +111,13 @@
     <ClInclude Include="View\TreeView.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\Euler.cpp" />
     <ClCompile Include="Core\Image.cpp" />
+    <ClCompile Include="Core\linmath.h" />
+    <ClCompile Include="Core\Quaternion.cpp" />
     <ClCompile Include="Core\Rect.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Core\Vec3.cpp" />
+    <ClCompile Include="Core\Mat.cpp" />
     <ClCompile Include="Naga\FsUtil.cpp" />
     <ClCompile Include="Naga\MathEx.cpp" />
     <ClCompile Include="Naga\StrUtil.cpp" />
@@ -150,7 +155,6 @@
     <ClCompile Include="Dialog\Toast.cpp" />
     <ClCompile Include="Dialog\FileDialog.cpp" />
     <ClCompile Include="Dialog\MessageDialog.cpp" />
-    <ClCompile Include="ViewAbout.ixx" />
     <ClCompile Include="View\Button.cpp" />
     <ClCompile Include="View\Checkbox.cpp" />
     <ClCompile Include="View\ColorPalete.cpp" />
@@ -195,7 +199,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -271,7 +275,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;NAGA_STATIC;_CONSOLE;URGC_STATICAPI;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;NAGA_STATIC;URGC_STATICAPI;_CONSOLE;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)GL;$(ProjectDir)nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

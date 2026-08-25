@@ -282,12 +282,12 @@
     <ClInclude Include="Naga\TimeUtil.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Mat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="nanovg\nanovg.c">
@@ -467,7 +467,19 @@
     <ClCompile Include="Naga\TimeUtil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ViewAbout.ixx">
+    <ClCompile Include="Core\Vec3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Mat.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\linmath.h">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Euler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Quaternion.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

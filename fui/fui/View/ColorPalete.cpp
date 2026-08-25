@@ -66,8 +66,8 @@ void ColorPalete::onDrag(Drag* drag) {
 		Rect r = this->getContentLocalRect();
 		Vec2 pos = this->calcIndicatorPosInPixel();
 
-		int tox = pos.x + d.deltaPos.x;
-		int toy = pos.y + d.deltaPos.y;
+		int tox = (int)(pos.x + d.deltaPos.x);
+		int toy = (int)(pos.y + d.deltaPos.y);
 
 		{
 			Rect r = this->getContentClientRect();
@@ -311,7 +311,7 @@ void ColorView::react() {
 				});
 		} REND;
 		R(ColorPalete) {
-			o.indicatorPos.y = this->hsva.h / 360.0;
+			o.indicatorPos.y = this->hsva.h / 360.0f;
 			printf("hue:%f\n", this->hsva.h);
 
 			o.kind = ("hue");
@@ -319,7 +319,7 @@ void ColorView::react() {
 			o.height = 200;
 			o.margin.right = 6;
 			o.onChanged = CLOSURE([=](Vec2 ratio) {
-				this->hsva.h = ratio.y * 360.0;
+				this->hsva.h = ratio.y * 360.0f;
 				printf("hue ratio:%f,%f. hue:%f\n", ratio.x, ratio.y, this->hsva.h);
 
 
@@ -330,7 +330,7 @@ void ColorView::react() {
 		} REND;
 
 		R(ColorPalete) {
-			o.indicatorPos.y = this->hsva.a / 255.0;
+			o.indicatorPos.y = this->hsva.a / 255.0f;
 
 			o.kind = ("alpha");
 			o.width = 20;
@@ -339,7 +339,7 @@ void ColorView::react() {
 
 				// hsla.a = ratio.y * 255.0
 				// rgba.a = ratio.y * 255.0
-				this->hsva.a = ratio.y * 255.0;
+				this->hsva.a = ratio.y * 255.0f;
 
 
 				this->fire_onChanged();

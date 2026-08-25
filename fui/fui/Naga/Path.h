@@ -307,8 +307,8 @@ std::string Path_dirname(std::string s);
 // 解码相对路径。 相对于.exe目录
 std::string Path_resolveFromExecutionDir(std::string path);
 //
-//extern std::string Path_readText(const char* path);
-//extern bool Path_writeText(const char* path, const char* text);
+std::string Path_readText(const char* path);
+bool Path_writeText(const char* path, const char* text);
 //
 //bool Path_isUsualImage(const char* path) {
 //    return String_endsWith(path, ".jpg")

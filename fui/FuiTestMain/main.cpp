@@ -47,7 +47,7 @@
 
 import ViewAbout;
 
-int main2() {
+int main() {
 	SetConsoleOutputCP(65001);
 	urgc.start_process_thread();
 
@@ -441,23 +441,23 @@ int main2() {
 		//		R(TextView) { o.setText("子2"); }REND;
 		//	}REND;
 		//} REND;
-		//R(TableView) {
-		//	if (o.created) {
-		//		o.addColumn(60, "ID");
-		//		o.addColumn(160, "名称");
-		//		o.addColumn(150, "内容");
-		//		o.addColumn(100, "状态");
-		//		o.addColumn(120, "操作");
-		//	}
-		//	o.rowCount = 20;
-		//	o.margin.setAll(6);
-		//	o.renderTd = CLOSURE([](Node& o, int row, int col) {
-		//		R(TextView, row*10000 + col) {
-		//			o.setColor(0xff555555);
-		//			o.setText(std::format("{}:{}", row, col));
-		//		} REND;
-		//	});
-		//} REND;
+		R(TableView) {
+			if (o.created) {
+				o.addColumn(60, "ID");
+				o.addColumn(160, "名称");
+				o.addColumn(150, "内容");
+				o.addColumn(100, "状态");
+				o.addColumn(120, "操作");
+			}
+			o.rowCount = 20;
+			o.margin.setAll(6);
+			o.renderTd = CLOSURE([](Node& o, int row, int col) {
+				R(TextView, row*10000 + col) {
+					o.setColor(0xff555555);
+					o.setText(std::format("{}:{}", row, col));
+				} REND;
+			});
+		} REND;
 
 
 		R(LayoutLinear) {
@@ -881,7 +881,7 @@ void reactLayoutGrid(Node& o) {
 	} REND;
 
 }
-int main() {
+int main2() {
 	SetConsoleOutputCP(65001);
 	urgc.start_process_thread();
 

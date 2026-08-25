@@ -114,3 +114,6 @@
 /fui/fui/x64/Debug/fui.lib
 /fui/fui/x64/Debug/fui.exp
 /fui/fui/x64/Release/fui.exe
+/fui/FuiTestMain/x64
+/fui/Sgl/x64
+/fui/fui/x64/Debug/*.pdb

@@ -93,7 +93,7 @@ void Button::react()
 	if (src != "") {
 		R(ImageView, LINE_KEY) {
 			o.setSrc(src);
-			o.margin.right = !src.empty() && !label.empty() ? 6 : 0;
+			o.margin.right = !src.empty() && !label.empty() ? 6.f : 0.f;
 		}REND;
 	}
 

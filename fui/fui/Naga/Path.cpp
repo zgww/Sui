@@ -740,25 +740,21 @@ std::string Path_resolveFromExecutionDir(std::string path) {
 //
 //
 //
-//String* Path_readText(String** __outRef__, char const* path) {
-//    NEW_CLASS_VAR(String, ret);
-//    char* s = new_FsUtil_read_all_text(path, "r");
-//
-//
-//
-//    String$set_as_own(ret, s);
-//
-//    return (String*)URGC_RETURN_CLASS(ret);
-//}
-//bool Path_writeText(char const* path, char const* text) {
-//    try {
-//        FsUtil_write_all_text(path, text, "w+");
-//        return true;
-//    }
-//    catch (...) {
-//        return false;
-//    }
-//}
+std::string Path_readText( char const* path) {
+    char* s = new_FsUtil_read_all_text(path, "r");
+    std::string ret = s;
+    free(s);
+    return ret;
+}
+bool Path_writeText(char const* path, char const* text) {
+    try {
+        FsUtil_write_all_text(path, text, "w+");
+        return true;
+    }
+    catch (...) {
+        return false;
+    }
+}
 std::string Path_getExecutionPath() {
     char* s = new_FsUtil_getExecutionPath();
     std::string ret(s);
