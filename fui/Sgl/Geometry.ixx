@@ -19,7 +19,7 @@ public:
     Ref<Vbo> vbo;
 
     bool bindVertexAttrib(Material* matl) {
-
+        return false;
     }
 };
 
