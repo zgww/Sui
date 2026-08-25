@@ -115,7 +115,7 @@ struct Quaternion {
 		return this;
 	}
 
-	Quaternion* setFromEuler(const Euler& euler);
+	Quaternion* setFromEuler( Euler& euler);
 	Quaternion* setFromUnitVectors(const Vec3& vFrom, const Vec3& vTo);
 
 	bool equals(const Quaternion& q) const {

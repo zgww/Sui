@@ -84,3 +84,77 @@ Quaternion* Quaternion::multiplyQuaternionsLocal(Quaternion a, Quaternion b) {
 	return this;
 
 }
+
+Quaternion* Quaternion::setFromEuler(Euler& euler) {
+	auto& self = *this;
+	float x = euler.x;
+	float y = euler.y;
+	float z = euler.z;
+		const char* order = euler.order;
+
+	// http://www.mathworks.com/matlabcentral/fileexchange/
+	// 	20696-function-to-convert-between-dcm-euler-angles-quaternions-and-euler-vectors/
+	//	content/SpinCalc.m
+
+
+	float c1 = cos(x / 2.0);
+	float c2 = cos(y / 2.0);
+	float c3 = cos(z / 2.0);
+
+	float s1 = sin(x / 2.0);
+	float s2 = sin(y / 2.0);
+	float s3 = sin(z / 2.0);
+
+
+	if (strcmp(order, "XYZ") == 0) {
+		self.x = s1 * c2 * c3 + c1 * s2 * s3;
+		self.y = c1 * s2 * c3 - s1 * c2 * s3;
+		self.z = c1 * c2 * s3 + s1 * s2 * c3;
+		self.w = c1 * c2 * c3 - s1 * s2 * s3;
+	}
+
+	else if (strcmp(order, "YXZ") == 0) {
+		self.x = s1 * c2 * c3 + c1 * s2 * s3;
+		self.y = c1 * s2 * c3 - s1 * c2 * s3;
+		self.z = c1 * c2 * s3 - s1 * s2 * c3;
+		self.w = c1 * c2 * c3 + s1 * s2 * s3;
+	}
+
+	else if (strcmp(order, "ZXY") == 0 ){
+		self.x = s1 * c2 * c3 - c1 * s2 * s3;
+		self.y = c1 * s2 * c3 + s1 * c2 * s3;
+		self.z = c1 * c2 * s3 + s1 * s2 * c3;
+		self.w = c1 * c2 * c3 - s1 * s2 * s3;
+	}
+
+	else if (strcmp(order, "ZYX") == 0) {
+		self.x = s1 * c2 * c3 - c1 * s2 * s3;
+		self.y = c1 * s2 * c3 + s1 * c2 * s3;
+		self.z = c1 * c2 * s3 - s1 * s2 * c3;
+		self.w = c1 * c2 * c3 + s1 * s2 * s3;
+	}
+
+	else if (strcmp(order, "YZX") == 0) {
+		self.x = s1 * c2 * c3 + c1 * s2 * s3;
+		self.y = c1 * s2 * c3 + s1 * c2 * s3;
+		self.z = c1 * c2 * s3 - s1 * s2 * c3;
+		self.w = c1 * c2 * c3 - s1 * s2 * s3;
+	}
+
+	else if ( strcmp(order, "XZY") == 0) {
+		self.x = s1 * c2 * c3 - c1 * s2 * s3;
+		self.y = c1 * s2 * c3 - s1 * c2 * s3;
+		self.z = c1 * c2 * s3 + s1 * s2 * c3;
+		self.w = c1 * c2 * c3 + s1 * s2 * s3;
+	}
+
+	else {
+		printf("Quaternion: .setFromEuler() encountered an unknown order: %s", order);
+	}
+
+
+	// if ( update != false ) self._onChangeCallback();
+
+	return this;
+
+}
