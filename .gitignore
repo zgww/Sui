@@ -117,3 +117,5 @@
 /fui/FuiTestMain/x64
 /fui/Sgl/x64
 /fui/fui/x64/Debug/*.pdb
+/fui/fui/x64/Debug/*.idb
+/fui/fui/x64/Debug/*.exe
