@@ -11,8 +11,10 @@ module;
 
 #define NANOVG_GL3
 #include "nanovg/nanovg_gl.h"
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "nanovg/stb_image_write.h"
+
+#define STB_IMAGE_IMPLEMENTATION
+//#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "nanovg/stb_image.h"
 
 #include <vector>
 
@@ -223,7 +225,7 @@ public:
 		);
 	}
 	void initForDepth24Stencil8Attachment(int w, int h) {
-		this->bind(this);
+		this->bind();
 
 		this->width = w;
 		this->height = h;
@@ -243,26 +245,26 @@ public:
 		int channel = 0;
 		stbi_set_flip_vertically_on_load(true);
 		unsigned char* data = stbi_load(path, &width, &height, &channel, 0);
-		if data {
+		if (data) {
 			printf("load image. data:%p,  width:%d, height:%d, ch:%d\n", data, width, height, channel);
 
-			if channel == 4 {
+			if (channel == 4) {
 				// this->active(0)
-				this->bind()
-					this->updateParameters()
-					this->image2dRgba(data, width, height)
-					this->unbind()
+				this->bind();
+					this->updateParameters();
+				this->image2dRgba(data, width, height);
+				this->unbind();
 			}
-			else if channel == 3 {
+			else if ( channel == 3) {
 				// this->active(0)
-				this->bind()
-					this->updateParameters()
-					this->image2dRgb(data, width, height)
-					this->unbind()
+				this->bind();
+				this->updateParameters();
+				this->image2dRgb(data, width, height);
+				this->unbind();
 			}
 			stbi_image_free(data);
-			this->path = str(path)
-				return true;
+			this->path = (path);
+			return true;
 		}
 		printf("\n\t\t加载纹理失败。 path:%s\n\n", path);
 		return false;

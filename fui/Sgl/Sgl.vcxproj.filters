@@ -48,5 +48,11 @@
     <ClCompile Include="Obj3d.ixx">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Raycaster.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

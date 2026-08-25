@@ -2,6 +2,20 @@
 #include "./Quaternion.h"
 #include "./Mat.h"
 #include "./Euler.h"
+Vec3* Vec3::fromArray(float* array, int offset) {
+	x = array[offset];
+	y = array[offset + 1];
+	z = array[offset + 2];
+	return this;
+}
+float* Vec3::toArray(float* array, int offset) {
+
+	array[offset] = x;
+	array[offset + 1] = y;
+	array[offset + 2] = z;
+
+	return array;
+}
 
 Vec3* Vec3::setFromEuler(Euler& e) {
 

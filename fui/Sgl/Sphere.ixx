@@ -1,12 +1,12 @@
 module;
-#include "Core/Vec3.h";
+#include "Core/Vec3.h"
 #include "Core/Euler.h"
+#include "Core/Mat.h"
 #include "Core/Quaternion.h"
 
 export module Sgl:Sphere;
 
 import :Box3;
-import :Mat;
 
 /// 布局上下文
 export struct Sphere {

@@ -20,6 +20,11 @@ struct Vec3 {
 	float width() const { return x; }
 	float height() const { return y; }
 
+
+	Vec3* fromArray(float* array, int offset);
+
+	float* toArray(float* array, int offset);
+
 	Vec3* set(float x, float y, float z) {
 		this->x = x;
 		this->y = y;
@@ -246,12 +251,6 @@ struct Vec3 {
 
 
 
-	Vec3* fromArray(float* array, int offset) {
-		x = array[offset];
-		y = array[offset + 1];
-		z = array[offset + 2];
-		return this;
-	}
 
 	Vec3* crossLocal(Vec3 v) {
 		return crossVectorsLocal(*this, v);

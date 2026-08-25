@@ -45,7 +45,7 @@ class Window;
 #define TO_STRING_(x) #x
 #define TO_STRING(x) TO_STRING_(x)
 #define CONCAT(a, b) a##b
-#define LINE_KEY TO_STRING(__LINE__)##"L"
+#define LINE_KEY (TO_STRING(__LINE__)  "L")
 
 // 根据类型 get or create
 #define R(Type, ...) {auto _tmp = Node_getOrCreate<Type>(&o, ##__VA_ARGS__); auto& o = *_tmp.get();
