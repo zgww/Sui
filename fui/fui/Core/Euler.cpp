@@ -2,7 +2,7 @@
 
 #include "./Mat.h"
 
-inline Euler* Euler::set(float x, float y, float z, const char* order) {
+Euler* Euler::set(float x, float y, float z, const char* order) {
 
 	this->x = x;
 	this->y = y;
@@ -14,7 +14,7 @@ inline Euler* Euler::set(float x, float y, float z, const char* order) {
 	return this;
 }
 
-inline Euler* Euler::copy(Euler euler) {
+Euler* Euler::copy(Euler euler) {
 
 	this->x = euler.x;
 	this->y = euler.y;
@@ -27,7 +27,7 @@ inline Euler* Euler::copy(Euler euler) {
 
 }
 
-inline Euler* Euler::setFromRotationMatrix(Mat& m, const char* order) {
+Euler* Euler::setFromRotationMatrix(Mat& m, const char* order) {
 	if (order == nullptr) {
 		order = Euler_Default;
 	}
@@ -150,7 +150,7 @@ inline Euler* Euler::setFromRotationMatrix(Mat& m, const char* order) {
 
 }
 
-inline Euler* Euler::setFromQuaternion(Quaternion q, const char* order) {
+Euler* Euler::setFromQuaternion(Quaternion q, const char* order) {
 	Mat _matrix;
 
 	_matrix.makeRotationFromQuaternion(q);
@@ -159,20 +159,20 @@ inline Euler* Euler::setFromQuaternion(Quaternion q, const char* order) {
 
 }
 
-inline Euler* Euler::setFromVector3(Vec3 v, const char* order) {
+Euler* Euler::setFromVector3(Vec3 v, const char* order) {
 
 	return this->set(v.x, v.y, v.z, order);
 
 }
 
-inline Euler* Euler::reorder(const char* newOrder) {
+Euler* Euler::reorder(const char* newOrder) {
 	// WARNING: self discards revolution information -bhouston
 	Quaternion q;
 	q.setFromEuler(*this);
 	return this->setFromQuaternion(q, newOrder);
 }
 
-inline bool Euler::equals(Euler euler) {
+bool Euler::equals(Euler euler) {
 
 	return eqFloat(euler.x, this->x)
 		&& eqFloat(euler.y, this->y)
@@ -180,7 +180,7 @@ inline bool Euler::equals(Euler euler) {
 
 }
 
-inline Euler* Euler::fromArray(float* array) {
+Euler* Euler::fromArray(float* array) {
 
 	this->x = array[0];
 	this->y = array[1];
@@ -192,7 +192,7 @@ inline Euler* Euler::fromArray(float* array) {
 	return this;
 }
 
-inline float* Euler::toArray(float* array, int offset) {
+float* Euler::toArray(float* array, int offset) {
 	array[offset] = this->x;
 	array[offset + 1] = this->y;
 	array[offset + 2] = this->z;

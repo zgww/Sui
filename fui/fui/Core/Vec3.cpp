@@ -62,13 +62,13 @@ Vec3* Vec3::applyQuaternionLocal(Quaternion& q) {
 	return this;
 }
 
-inline Vec3 Vec3::applyMatrix4(Mat& m) {
+Vec3 Vec3::applyMatrix4(Mat& m) {
 	Vec3 r = *this;
 	r.applyMatrix4Local(m);
 	return r;
 }
 
-inline Vec3* Vec3::applyMatrix4Local(Mat& m) {
+Vec3* Vec3::applyMatrix4Local(Mat& m) {
 
 	float x = this->x;
 	float y = this->y;

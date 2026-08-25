@@ -116,7 +116,7 @@ struct Quaternion {
 	}
 
 	Quaternion* setFromEuler( Euler& euler);
-	Quaternion* setFromUnitVectors(const Vec3& vFrom, const Vec3& vTo);
+	Quaternion* setFromUnitVectors(Vec3 vFrom, Vec3 vTo);
 
 	bool equals(const Quaternion& q) const {
 		return fabsf(x-q.x) < EPSILON && fabsf(y-q.y) < EPSILON &&

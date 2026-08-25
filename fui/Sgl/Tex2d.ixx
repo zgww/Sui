@@ -12,7 +12,7 @@ module;
 #define NANOVG_GL3
 #include "nanovg/nanovg_gl.h"
 
-#define STB_IMAGE_IMPLEMENTATION
+//#define STB_IMAGE_IMPLEMENTATION
 //#define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "nanovg/stb_image.h"
 

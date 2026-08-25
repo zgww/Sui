@@ -1,7 +1,7 @@
 #include "./Quaternion.h"
 #include "./Mat.h"
 
-inline Quaternion* Quaternion::setFromRotationMatrix(Mat& m) {
+Quaternion* Quaternion::setFromRotationMatrix(Mat& m) {
 
 	// http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
 
@@ -156,5 +156,52 @@ Quaternion* Quaternion::setFromEuler(Euler& euler) {
 	// if ( update != false ) self._onChangeCallback();
 
 	return this;
+
+}
+
+
+Quaternion* Quaternion::setFromUnitVectors(Vec3 vFrom, Vec3 vTo) {
+	auto& self = *this;
+
+	// assumes direction vectors vFrom and vTo are normalized
+
+	float r = vFrom.dot(vTo) + 1;
+
+	if (r < EPSILON) {
+
+		// vFrom and vTo point in opposite directions
+
+		r = 0;
+
+		if (absFloat(vFrom.x) > absFloat(vFrom.z)) {
+
+			self.x = -vFrom.y;
+			self.y = vFrom.x;
+			self.z = 0;
+			self.w = r;
+
+		}
+		else {
+
+			self.x = 0;
+			self.y = -vFrom.z;
+			self.z = vFrom.y;
+			self.w = r;
+
+		}
+
+	}
+	else {
+
+		// crossVectors( vFrom, vTo ); // inlined to avoid cyclic dependency on Vector3
+
+		self.x = vFrom.y * vTo.z - vFrom.z * vTo.y;
+		self.y = vFrom.z * vTo.x - vFrom.x * vTo.z;
+		self.z = vFrom.x * vTo.y - vFrom.y * vTo.x;
+		self.w = r;
+
+	}
+
+	return self.normalizeLocal();
 
 }
