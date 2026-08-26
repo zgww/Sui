@@ -78,6 +78,11 @@ extern "C" {
 				std::string source,
 				char const* pattern,
 				char const* newStr);
+
+
+			static std::vector<std::string> splitByRe(std::string source, char const* pattern);
+
+			static std::vector<std::string> splitToLines(std::string content);
 		};
 
 

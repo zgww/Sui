@@ -61,6 +61,13 @@ struct Line3 {
 		if (clampToLine) t = clampFloat(t, 0, 1);
 		return at(t);
 	}
+
+
+	Vec3 getCenter() {
+		Vec3 target;
+		target.addVectorsLocal(this->start, this->end)->multiplyScalarLocal(0.5);
+		return target;
+	}
 };
 
 inline Line3 mkLine3(const Vec3& start, const Vec3& end) {

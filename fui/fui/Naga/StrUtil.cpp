@@ -165,3 +165,34 @@ std::string  Str::replaceAllByRe(
 
 	return s;
 }
+
+static std::vector<std::string> Str::splitToLines(std::string content) {
+	std::vector<std::string> ret;
+	int start = 0;
+	int len = content.size();
+	for (int i = 0; i < len; i++) {
+		if (content[i] == '\n' || content[i] == '\r') {
+			std::string line = content.substr(start, i - start);// self.substringByByteRange(start, i);
+			ret.push_back(line);
+
+			if (content[i] == '\r' && i + 1 < len && content[i + 1] == '\n') {
+				i++;
+			}
+			start = i + 1; //跳过换行符
+		}
+	}
+
+	return ret;
+}
+std::vector<std::string> Str::splitByRe(std::string source, char const* pattern) {
+	std::vector<std::string> ret;
+	std::regex re(pattern);
+	std::vector<std::string> parts(
+		std::sregex_token_iterator(source.begin(), source.end(), re, -1),
+		std::sregex_token_iterator());
+
+	for (int i = 0; i < parts.size(); i++) {
+		ret.push_back(parts[i]);
+	}
+	return ret;
+}

@@ -24,6 +24,7 @@
 #include "View/HoverViewEffect.h"
 #include "View/Select.h"
 #include "View/TreeView.h"
+#include "Core/Line3.h"
 #include "View/TableView.h"
 #include "View/DockLayout.h"
 #include "View/Button.h"
@@ -552,6 +553,8 @@ void main(){
 )EOF"
 	);
 
+	Line3 line3;
+	line3.getCenter();
 	win->show();
 	//FileDialog_getSaveFileName("./", "请选择保存路径");
 	
