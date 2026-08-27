@@ -148,6 +148,9 @@ void App::init() {
 	if (mgr) {
 		mgr->startThreadTick();
 	}
+#ifdef _WIN32
+	SetConsoleOutputCP(65001);
+#endif
 }
 
 #ifdef _WIN32

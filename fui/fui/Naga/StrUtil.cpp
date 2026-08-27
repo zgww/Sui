@@ -166,7 +166,7 @@ std::string  Str::replaceAllByRe(
 	return s;
 }
 
-static std::vector<std::string> Str::splitToLines(std::string content) {
+std::vector<std::string> Str::splitToLines(std::string content) {
 	std::vector<std::string> ret;
 	int start = 0;
 	int len = content.size();
@@ -193,6 +193,15 @@ std::vector<std::string> Str::splitByRe(std::string source, char const* pattern)
 
 	for (int i = 0; i < parts.size(); i++) {
 		ret.push_back(parts[i]);
+	}
+	return ret;
+}
+
+
+std::string Str::join(std::vector<std::string>& strs, std::string sep) {
+	std::string ret = "";
+	for (int i = 0, l = strs.size(); i < l; i++) {
+		ret += strs[i];
 	}
 	return ret;
 }

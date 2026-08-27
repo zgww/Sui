@@ -24,7 +24,7 @@ public:
 };
 
 //管理顶点数据：坐标、颜色 、面
-class Geometry: public GcObj {
+export class Geometry: public GcObj {
 public:
     // <GeoAttr>
     Ref<GcMap<GeoAttr>> attrs{ new GcMap<GeoAttr>(), this };

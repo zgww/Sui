@@ -145,15 +145,23 @@
   <ItemGroup>
     <ClCompile Include="Box2.ixx" />
     <ClCompile Include="Box3.ixx" />
+    <ClCompile Include="Camera.ixx" />
+    <ClCompile Include="DirLight.ixx" />
+    <ClCompile Include="Entry.ixx" />
+    <ClCompile Include="Fbo.ixx" />
     <ClCompile Include="Geometry.ixx" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Light.ixx" />
+    <ClCompile Include="Material.ixx" />
     <ClCompile Include="Obj3d.ixx" />
+    <ClCompile Include="PointLight.ixx" />
     <ClCompile Include="Program.ixx" />
     <ClCompile Include="Ray.ixx" />
     <ClCompile Include="Raycaster.ixx" />
     <ClCompile Include="Sgl.ixx" />
     <ClCompile Include="Sphere.ixx" />
+    <ClCompile Include="SpotLight.ixx" />
     <ClCompile Include="Tex2d.ixx" />
+    <ClCompile Include="Vao.ixx" />
     <ClCompile Include="Vbo.ixx" />
     <ClCompile Include="ViewAbout.ixx" />
   </ItemGroup>

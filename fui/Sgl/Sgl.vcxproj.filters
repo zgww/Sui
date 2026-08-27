@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ViewAbout.ixx">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -52,6 +49,33 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Geometry.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Entry.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DirLight.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Vao.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Fbo.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.ixx">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

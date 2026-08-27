@@ -62,8 +62,8 @@ struct Line3 {
 		return at(t);
 	}
 
-
 	Vec3 getCenter() {
+		printf("hi\n");
 		Vec3 target;
 		target.addVectorsLocal(this->start, this->end)->multiplyScalarLocal(0.5);
 		return target;

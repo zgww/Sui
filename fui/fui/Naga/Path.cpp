@@ -3,6 +3,7 @@
 #include <filesystem>
 #include "Naga/Utf8Util.h"
 #include "Naga/FsUtil.h"
+#include "Naga/MathEx.h"
 
 //归一化，统一分隔符为'/'
 std::string Path_normal(std::string s) {
@@ -138,40 +139,38 @@ std::string Path_dirname(std::string s) {
 //    return false
 //}
 //
-////转为绝对路径
-//std::string Path_toAbsolute(const char* p) {
-//    if String_startsWith(p, "/") {
-//        return str(p)
-//    }
-//    //windows 盘符
-//    if strlen(p) >= 2 && p[1] == ':'{
-//        return str(p)
-//    }
-//
-//    String @abs = Path_getcwd();
-//    abs.add("/").add(p)
-//
-//        // std::string nmlpath = Path_normal(abs.str);
-//        List@ parts = abs.splitByRe("/|\\\\")
-//        List@ segs = new List();
-//    for int i = 0; i < parts.size(); i++{
-//        String* part = (String*)parts.get(i)
-//            printf("part:%s\n", part.str)
-//            if part.equals(".") {
-//                continue
-//            }
-//            else if part.equals("..") {
-//                if segs.size() > 0 {
-//                    segs.removeAt(segs.size() - 1)
-//                }
-//            }
-//            else {
-//                segs.add(part)
-//            }
-//    }
-//    std::string ret = String_join(segs, "/")
-//        return ret
-//}
+//转为绝对路径
+std::string Path_toAbsolute(const char* p) {
+    if (Str::startsWith(p, "/")) {
+        return (p);
+    }
+    //windows 盘符
+    if (strlen(p) >= 2 && p[1] == ':'){
+        return (p);
+    }
+
+    auto abs = Path_getcwd() + "/" + p;
+
+    // std::string nmlpath = Path_normal(abs.str);
+    auto parts = Str::splitByRe(abs, "/|\\\\");
+    std::vector<std::string> segs;
+    for (int i = 0; i < parts.size(); i++){
+        auto part = parts[i];
+        if (part == ".") {
+            continue;
+        }
+        else if (part == "..") {
+            if (segs.size() > 0) {
+                segs.erase(segs.begin() + segs.size() - 1);
+            }
+        }
+        else {
+            segs.push_back(part);
+        }
+    }
+    std::string ret = Str::join(segs, "/");
+    return ret;
+}
 //
 ////替换basename
 //std::string Path_withBasename(const char* path, const char* newbasename) {
@@ -386,47 +385,46 @@ std::string Path_resolveFromExecutionDir(std::string path) {
 //        return result;
 //}
 //
-////计算[path]相对于[relFilePath]的相对路径
-////[relFilePath]是文件路径
-//// 返回相对路径
-//// 例： ("/a/b/c.png", "/a/b/d.json") => "c.png"
-//std::string Path_relPathToFile(const char* path, const char* relFilePath) {
-//    std::string abspath = Path_toAbsolute(path)
-//        std::string absTargetPath = Path_toAbsolute(relFilePath)
-//
-//        List@ parts = abspath.splitByRe("/|\\\\")
-//        List@ targetParts = absTargetPath.splitByRe("/|\\\\")
-//
-//        int l0 = parts.size()
-//        int l1 = targetParts.size()
-//        int minl = minInt(l0, l1)
-//        int samel = minl
-//        //计算共同组成长度
-//        for int i = 0; i < minl; i++{
-//            String* a = (String*)parts.get(i)
-//                String * b = (String*)targetParts.get(i)
-//                if !a.equalsString(b) {
-//                    samel = i;
-//                    break
-//                }
-//        }
-//
-//
-//
-//    List@ segs = new List()
-//        //去掉共同点。 从不同点开始， 
-//        //添加'..'; -1是因为 relFilePath是文件路径，不是目录路径
-//        for int i = samel; i < l1 - 1; i++{
-//            segs.add(str(".."))
-//        }
-//    //添加不同点
-//    for int i = samel; i < l0; i++{
-//        String* part = (String*)parts.get(i)
-//            segs.add(part)
-//    }
-//    std::string result = String_join(segs, "/")
-//        return result;
-//}
+//计算[path]相对于[relFilePath]的相对路径
+//[relFilePath]是文件路径
+// 返回相对路径
+// 例： ("/a/b/c.png", "/a/b/d.json") => "c.png"
+std::string Path_relPathToFile(const char* path, const char* relFilePath) {
+    std::string abspath = Path_toAbsolute(path);
+    std::string absTargetPath = Path_toAbsolute(relFilePath);
+
+    auto parts = Str::splitByRe(abspath, "/|\\\\");
+    auto targetParts = Str::splitByRe(absTargetPath, "/|\\\\");
+
+    int l0 = parts.size();
+    int l1 = targetParts.size();
+    int minl = minInt(l0, l1);
+    int samel = minl;
+    //计算共同组成长度
+    for (int i = 0; i < minl; i++){
+        auto a = parts[i];
+        auto b = targetParts[i];
+        if (a != (b)) {
+            samel = i;
+            break;
+        }
+    }
+
+    std::vector<std::string> segs ;
+    //去掉共同点。 从不同点开始， 
+    //添加'..'; -1是因为 relFilePath是文件路径，不是目录路径
+    for (int i = samel; i < l1 - 1; i++){
+        segs.push_back((".."));
+    }
+
+    //添加不同点
+    for (int i = samel; i < l0; i++){
+        auto part = parts[i];
+        segs.push_back(part);
+    }
+    std::string result = Str::join(segs, "/");
+    return result;
+}
 //
 //List@ Path_splitString(String* p) {
 //    List@ parts = p.splitByRe("/|\\\\")
@@ -760,4 +758,32 @@ std::string Path_getExecutionPath() {
     std::string ret(s);
     free(s);
     return ret;
+}
+
+//
+//List* Path_list(List** __outRef__, char const* path) {
+//    NEW_CLASS_VAR(List, list);
+//    std::filesystem::path p(toutf16(path));
+//    if (std::filesystem::exists(p)) {
+//        for (auto& it : std::filesystem::directory_iterator(p)) {
+//            auto kidPath = toutf8(it.path().wstring());
+//            URGC_VAR_CLEANUP_CLASS String* ret = NULL;// String_new();
+//            Path_normal(&ret, kidPath.c_str());
+//            //ret->add(ret, kidPath.c_str());
+//            list->add(list, (Object*)ret);
+//        }
+//
+//    }
+//    return (List*)urgc_set_var_for_return((void**)__outRef__, list);
+//}
+std::string Path_getcwd() {
+    auto cp = std::filesystem::current_path();
+    //std::string utf8str = toutf8(cp.wstring());
+    auto u8str = Utf8Util::toutf8(cp.wstring());
+    return u8str;
+}
+
+void Path_setcwd(char const* path) {
+    std::filesystem::path p(Utf8Util::toutf16(path));
+    std::filesystem::current_path(p);
 }

@@ -32,7 +32,6 @@ export struct Line3 {
 
 	Vec3 getCenter() {
 		Vec3 target;
-
 		target.addVectorsLocal(this->start, this->end)->multiplyScalarLocal(0.5);
 		return target;
 

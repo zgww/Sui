@@ -25,6 +25,7 @@ public:
 
 	~Program() {
 		if (this->id) {
+			//printf("hihihi hi iiii22\n");
 			GLuint id = this->id;
 
 			//确保在主线程释放

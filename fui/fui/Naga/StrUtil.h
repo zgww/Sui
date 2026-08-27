@@ -79,6 +79,7 @@ extern "C" {
 				char const* pattern,
 				char const* newStr);
 
+			static std::string join(std::vector<std::string>& strs, std::string sep);
 
 			static std::vector<std::string> splitByRe(std::string source, char const* pattern);
 

@@ -13,9 +13,16 @@ export module Sgl:Material;
 import :Tex2d;
 import :Program;
 
+export class UniformMeta : public GcObj {
+public:
+	std::string name = ("");
+	std::string type = ("");
+	std::string editor = ("");
+	std::string defaultValue = ("");
+};
 
 
-export class UniformInfo {
+export class UniformInfo: public GcObj {
 public:
 	std::string key = ("");
 
@@ -258,8 +265,111 @@ public:
 		return false;
 	}
 };
+
+
+// 解析shader code,得到元信息
+export class ShaderMeta : public GcObj {
+public:
+	std::string vsPath;
+	std::string vsCode;
+
+	std::string fsPath;
+	std::string fsCode;
+
+	// <UniformMeta>
+	Ref<GcList<UniformMeta>> uniformMetas{ new GcList<UniformMeta>(), this };
+
+	UniformMeta* getUniformMeta(const char* name) {
+		int l = this->uniformMetas->size();
+		for (int i = 0; i < l; i++) {
+			UniformMeta* um = (UniformMeta*)this->uniformMetas->get(i);
+			if (um->name == name) {
+				return um;
+			}
+		}
+		return nullptr;
+	}
+
+	void parseCode(std::string code) {
+		if (code == "") {
+			return;
+		}
+		//auto lines = Str::splitToLines(code);
+
+		//std::string editor;
+		//std::string defaultValue;
+
+		//    for (int i = 0; i < lines.size(); i++) {
+		//        auto line = lines[i];
+		//            // printf("line %d: %s\n", i, line.str)
+		//            if (line.startsWith("//@default ")) {
+		//                defaultValue = line.substringByByteStart(11).trim()
+		//            }
+		//            else if (line.startsWith("//@editor ")) {
+		//                editor = line.substringByByteStart(10).trim()
+		//            }
+		//            else if (line.startsWith("uniform ")) {
+		//                List@ parts = line.splitByRe("\\s+|;")
+		//                    if (parts.size() >= 3) {
+		//                        auto typeName = parts[1];
+		//                        auto  name = parts[2];
+		//                        UniformMeta* oldUm = this->getUniformMeta(name.c_str());
+
+		//                            if (oldUm) {//旧的Uniform已经存在
+		//                                // 旧的uniform的信息也全,不需要覆盖
+		//                                if (oldUm->editor != "" || oldUm->defaultValue != "") {
+		//                                    defaultValue = nullptr;
+		//                                        editor = nullptr;
+		//                                        continue;
+		//                                }
+		//                                // 旧的Uniform信息不全,需要删除
+		//                                this->uniformMetas.remove(oldUm);
+		//                                printf("\tremove old uniform: %s\n", name.c_str());
+		//                            }
+
+		//                        auto  um = Ref(new UniformMeta());
+		//                            um->name = name;
+		//                            um->type = typeName;
+		//                            if (editor) {
+		//                                um->editor = editor;
+		//                            }
+		//                        if (defaultValue != "") {
+		//                            um->defaultValue = defaultValue;
+		//                        }
+
+		//                        this->uniformMetas->push(um);
+
+		//                        defaultValue = nullptr;
+		//                        editor = nullptr;
+
+		//                        printf("uniform: %s, type: %s, editor:%s default: %s\n",
+		//                            um.name.str,
+		//                            um.type.str,
+		//                            um.editor.str,
+		//                            um.defaultValue.str);
+		//                    }
+		//            }
+		//    }
+	}
+
+	void parseFsByPathCstr(const char* path) {
+		this->fsPath = (path);
+		std::string code = Path_readText(path);
+		this->fsCode = code;
+		this->parseCode(code);
+	}
+	void parseVsByPathCstr(const char* path) {
+
+		this->vsPath = (path);
+		std::string code = Path_readText(path);
+		this->vsCode = code;
+		this->parseCode(code);
+	}
+};
+
+
 //主类
-export class Material {
+export class Material: public GcObj {
 public:
 	//材质文件的路径
 	std::string path = ("test??.matl.json");
@@ -625,8 +735,8 @@ public:
 		);
 
 		this->shaderMeta = new ShaderMeta();
-		this->shaderMeta->parseFsByPathC(fsPath);
-		this->shaderMeta->parseVsByPathC(vsPath);
+		this->shaderMeta->parseFsByPathCstr(fsPath);
+		this->shaderMeta->parseVsByPathCstr(vsPath);
 
 		//应用默认值
 		{
@@ -684,8 +794,6 @@ public:
 			}
 		}
 
-
-
 		// if ok {
 		// }
 
@@ -695,110 +803,3 @@ public:
 	Ref<ShaderMeta> shaderMeta{ nullptr, this };
 };
 
-
-export class UniformMeta : public GcObj {
-public:
-	std::string name = ("");
-	std::string type = ("");
-	std::string editor = ("");
-	std::string defaultValue = ("");
-};
-// 解析shader code,得到元信息
-export class ShaderMeta : public GcObj {
-public:
-	std::string vsPath;
-	std::string vsCode;
-
-	std::string fsPath;
-	std::string fsCode;
-
-	// <UniformMeta>
-	Ref<GcList<UniformMeta>> uniformMetas{ new GcList<UniformMeta>(), this };
-
-	UniformMeta* getUniformMeta(const char* name) {
-		int l = this->uniformMetas->size();
-		for (int i = 0; i < l; i++) {
-			UniformMeta* um = (UniformMeta*)this->uniformMetas->get(i);
-			if (um->name == name) {
-				return um;
-			}
-		}
-		return nullptr;
-	}
-
-	void parseCode(std::string code) {
-		if (code == "") {
-			return;
-		}
-		//auto lines = Str::splitToLines(code);
-
-		//std::string editor;
-		//std::string defaultValue;
-
-		//    for (int i = 0; i < lines.size(); i++) {
-		//        auto line = lines[i];
-		//            // printf("line %d: %s\n", i, line.str)
-		//            if (line.startsWith("//@default ")) {
-		//                defaultValue = line.substringByByteStart(11).trim()
-		//            }
-		//            else if (line.startsWith("//@editor ")) {
-		//                editor = line.substringByByteStart(10).trim()
-		//            }
-		//            else if (line.startsWith("uniform ")) {
-		//                List@ parts = line.splitByRe("\\s+|;")
-		//                    if (parts.size() >= 3) {
-		//                        auto typeName = parts[1];
-		//                        auto  name = parts[2];
-		//                        UniformMeta* oldUm = this->getUniformMeta(name.c_str());
-
-		//                            if (oldUm) {//旧的Uniform已经存在
-		//                                // 旧的uniform的信息也全,不需要覆盖
-		//                                if (oldUm->editor != "" || oldUm->defaultValue != "") {
-		//                                    defaultValue = nullptr;
-		//                                        editor = nullptr;
-		//                                        continue;
-		//                                }
-		//                                // 旧的Uniform信息不全,需要删除
-		//                                this->uniformMetas.remove(oldUm);
-		//                                printf("\tremove old uniform: %s\n", name.c_str());
-		//                            }
-
-		//                        auto  um = Ref(new UniformMeta());
-		//                            um->name = name;
-		//                            um->type = typeName;
-		//                            if (editor) {
-		//                                um->editor = editor;
-		//                            }
-		//                        if (defaultValue != "") {
-		//                            um->defaultValue = defaultValue;
-		//                        }
-
-		//                        this->uniformMetas->push(um);
-
-		//                        defaultValue = nullptr;
-		//                        editor = nullptr;
-
-		//                        printf("uniform: %s, type: %s, editor:%s default: %s\n",
-		//                            um.name.str,
-		//                            um.type.str,
-		//                            um.editor.str,
-		//                            um.defaultValue.str);
-		//                    }
-		//            }
-		//    }
-	}
-
-	void parseFsByPathC(const char* path) {
-		this->fsPath = (path);
-		std::string code = Path_readText(path);
-		this->fsCode = code;
-		this->parseCode(code);
-	}
-	void parseVsByPathC(const char* path) {
-
-		this->vsPath = (path);
-		std::string code = Path_readText(path);
-		this->vsCode = code;
-		this->parseCode(code);
-	}
-};
