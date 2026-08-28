@@ -1,7 +1,6 @@
 
 #include "SuiDesignerMain_orc.h" 
 
-#include <setjmp.h>
 #include <stdio.h>
 #include "./Orc/Orc.h"
 #include "../UrgcDll/urgc_api.h"
@@ -75,7 +74,6 @@
 #include "./Sgl/GeometryHeightMap_orc.h"
 #include "./Sui/Core/TestMath_orc.h"
 #include "./HoroEditor/HoroEditor_orc.h"
-#include <signal.h>
 
 
 // static struct 
@@ -2179,85 +2177,7 @@ void  testThrow(){
 	Orc_throw((void*)e, (Vtable_Object*)Vtable_Exception_init(NULL), NULL);
 }
 
-static jmp_buf buf;
-void __clean_a(void *p){
-	int *a = (int*)p;
-	printf("clean a:%d\n", *a);
-}
-void testNullpointer(){
-	int __attribute__((cleanup(__clean_a))) b = 103;
-	int *a = 0;
-	printf("===test nullpointer\n");
-	*a = 123;
-	printf("===after test nullpointer\n");
-}
-void segv_handler(int sig){
-	if (sig == SIGSEGV){
-
-	}
-	printf("catch segmentation fault. :%d\n", sig);
-}
-// 信号处理函数必须遵循这个签名才能接收 siginfo_t
-// void segv_handler2(int sig, siginfo_t *info, void *context) {
-//     // // info->si_addr 就是触发段错误的内存地址
-//     // void *fault_addr = info->si_addr;
-    
-//     // // 获取段错误的具体原因代码
-//     // int si_code = info->si_code;
-//     // const char *reason = "Unknown";
-//     // if (si_code == SEGV_MAPERR) {
-//     //     reason = "Address not mapped to object (空指针或野指针)";
-//     // } else if (si_code == SEGV_ACCERR) {
-//     //     reason = "Invalid permissions for mapped object (无读写/执行权限)";
-//     // }
-
-//     // // 【注意】：在信号处理函数中使用 printf 是不安全的（非异步信号安全）。
-//     // // 这里为了演示直观使用了 printf，生产环境中建议使用 write() 系统调用。
-//     // fprintf(stderr, "Caught SIGSEGV!\n");
-//     // fprintf(stderr, "Faulting address: %p\n", fault_addr);
-//     // fprintf(stderr, "Reason: %s (si_code: %d)\n", reason, si_code);
-
-//     // // 发生段错误后，程序状态通常已损坏，建议记录日志后安全退出或生成 core dump
-//     // // 不要尝试在这里恢复执行，除非你非常清楚自己在做什么（如修改 ucontext）
-//     // _exit(EXIT_FAILURE); 
-// }
-
-
-// 全局异常处理回调
-LONG WINAPI GlobalVectoredHandler(PEXCEPTION_POINTERS ExceptionInfo) {
-    if (ExceptionInfo->ExceptionRecord->ExceptionCode == EXCEPTION_ACCESS_VIOLATION) {
-        ULONG_PTR addr = ExceptionInfo->ExceptionRecord->ExceptionInformation[1];
-        printf("[Global Handler] Access Violation at address: 0x%p\n", (void*)addr);
-
-		int __attribute__((cleanup(__clean_a))) a = 102;
-        
-        // 注意：在这里直接 return EXCEPTION_CONTINUE_EXECUTION 试图恢复执行是非常危险的，
-        // 除非你明确修复了导致错误的内存状态。通常建议记录日志后调用 ExitProcess。
-		if (addr == 0L){
-			printf("longjmp\n");
-			longjmp(buf, 1);
-		}
-    }
-    
-    // 继续传递给下一个处理程序（包括系统的默认崩溃处理）
-    return EXCEPTION_CONTINUE_SEARCH;
-}
 int  main(){
-    // 注册全局向量异常处理程序 (1 表示优先级最高)
-    AddVectoredExceptionHandler(1, GlobalVectoredHandler);
-	// signal(SIGSEGV, segv_handler);
-
-
-	if (setjmp(buf) == 0){
-		testNullpointer();
-		printf("in setjmp\n");
-	}
-	else {
-		printf("after longjmp\n");
-	}
-	if (1){
-		// return 0;
-	}
 	volatile bool __orc_return_flag_1192_0 = false;
 	volatile int __orc_loop_control_1192_0 = 0;
 	int  __orc_return_value_1192_0 = {0};
@@ -2352,7 +2272,7 @@ int  main(){
 			HoroEditor$HoroEditor *  o = HoroEditor$insHoroEditor() ;
 			
 		
-			o->openProject(o, "../DemoProject") ;
+			o->openProject(o, "../DemoProject/prefab") ;
 		}
 	}
 	SuiCore$App *  tmpThis_1 = NULL;

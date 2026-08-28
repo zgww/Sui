@@ -470,7 +470,7 @@ public:
 		}
 	}
 
-	//bool load(const char* path) {
+	bool load(const char* path) {
 	//    this->path = (path)
 	//        Json@ jo = Json_parseByPathC(path)
 	//        if jo {
@@ -483,8 +483,8 @@ public:
 	//                this->buildByShaderPathC(realVsPath.str, realFsPath.str)
 	//                return true
 	//        }
-	//    return false
-	//}
+		return false;
+	}
 	//bool saveTo(String* path) {
 	//    if path&& path.notEmpty() {
 	//        Json@ jo = Json_toJson(this)

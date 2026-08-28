@@ -153,9 +153,13 @@
     <ClCompile Include="Entry.ixx" />
     <ClCompile Include="Fbo.ixx" />
     <ClCompile Include="Geometry.ixx" />
+    <ClCompile Include="GeometryRect.ixx" />
     <ClCompile Include="Light.ixx" />
     <ClCompile Include="Material.ixx" />
     <ClCompile Include="Obj3d.ixx" />
+    <ClCompile Include="Particle.ixx" />
+    <ClCompile Include="PerspectiveCamera.ixx" />
+    <ClCompile Include="PixelReader.ixx" />
     <ClCompile Include="PointLight.ixx" />
     <ClCompile Include="Program.ixx" />
     <ClCompile Include="Ray.ixx" />

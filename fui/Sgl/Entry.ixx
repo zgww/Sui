@@ -37,13 +37,16 @@ void main(){
 	gl_Position = vec4(0.0);
 }
 )EOF", R"EOF(
-void main(){
+void main(){ 
 }
 )EOF"
 );
 
 	auto drawCtx = Ref(new DrawCtx());
 	auto raycaster = Ref(new Raycaster());
+	auto pr = Ref(new RgbaPixelsReader());
+	auto perspectiveCamera = Ref(new PerspectiveCamera());
+	auto particle = Ref(new Particle());
 	app->runEventLoop();
 	return 0;
 }

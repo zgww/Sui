@@ -845,7 +845,7 @@ class HoroEditor extends Listener{
             self.react()
 
 
-            o.setTitle("Horo编辑器")
+            o.setTitle("Horo编辑器-20260828")
             o.setSize(200, 100)
             o.moveToCenter()
             o.show()
@@ -903,7 +903,7 @@ class HoroEditor extends Listener{
         // self.editCtx.openPrefab("prefab/button.prefab.json")
         // self.editCtx.openPrefab("prefab/login.prefab.json")
         // self.editCtx.openPrefab("prefab/3dbase.prefab.json")
-        self.editCtx.openPrefab("prefab/3d.prefab.json")
+        // self.editCtx.openPrefab("prefab/3d.prefab.json")
 
 
         self.showWindow()

@@ -90,5 +90,17 @@
     <ClCompile Include="Buffer.ixx">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="PixelReader.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PerspectiveCamera.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryRect.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

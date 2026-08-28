@@ -1268,7 +1268,7 @@ int main(){
         insHoroEditor().{
             // Time_sleepMs(1000)
             // urgc_report_sources_of(o)
-            o.openProject("../DemoProject")
+            o.openProject("../DemoProject/prefab")
             // o.showWindow()
         }
     }

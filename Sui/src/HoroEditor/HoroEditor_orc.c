@@ -2200,7 +2200,7 @@ void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self){
 			self->win->setRootView(self->win, o) ;
 		}
 		self->react(self) ;
-		o->setTitle(o, "Horo编辑器") ;
+		o->setTitle(o, "Horo编辑器-20260828") ;
 		o->setSize(o, 200, 100) ;
 		o->moveToCenter(o) ;
 		o->show(o) ;
@@ -2218,7 +2218,6 @@ void  HoroEditor$HoroEditor$openProject(HoroEditor$HoroEditor *  self, const cha
 	SuiDesigner$Project *  tmpThis_1 = NULL;
 	URGC_VAR_CLEANUP_CLASS SuiDesigner$Project*  tmpReturn_1 = NULL;
 	(tmpThis_1 = SuiDesigner$Project_ins(&tmpReturn_1) )->init(tmpThis_1, abspath->str) ;
-	self->editCtx->openPrefab(self->editCtx, "prefab/3d.prefab.json") ;
 	self->showWindow(self) ;
 	win->close(win) ;
 }
