@@ -19,7 +19,7 @@ int main() {
 		o.backgroundColor = 0xffefefef;
 
 		o.jcc().aic();
-		R(TextView) { o.setText("你1gggg213好51----665464啊"); } REND;
+		R(TextView) { o.setText("你1g33..gg213好51----665464啊"); } REND;
 
 
 		auto win = Ref(new Window());
