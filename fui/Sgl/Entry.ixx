@@ -9,7 +9,7 @@
 import Sgl;
 
 int main() {
-	printf("hi'\n");
+	printf("13hi'\n");
 	urgc.start_process_thread();
 
 	auto app = App_use();
@@ -19,7 +19,7 @@ int main() {
 		o.backgroundColor = 0xffefefef;
 
 		o.jcc().aic();
-		R(TextView) { o.setText("你123好啊"); } REND;
+		R(TextView) { o.setText("你1gggg23好啊"); } REND;
 
 
 		auto win = Ref(new Window());
@@ -41,6 +41,9 @@ void main(){
 }
 )EOF"
 );
+
+	auto drawCtx = Ref(new DrawCtx());
+	auto raycaster = Ref(new Raycaster());
 	app->runEventLoop();
 	return 0;
 }

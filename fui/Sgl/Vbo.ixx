@@ -9,10 +9,13 @@ module;
 
 export module Sgl:Vbo;
 
+import :Buffer;
+
 
 void deleteBuffer(GLuint id) {
 	glDeleteBuffers(1, &id);
 }
+
 //Vertex Buffer Object
 export class Vbo : public GcObj {
 public:
@@ -37,7 +40,9 @@ public:
 	//是不是索引数据
 	bool isIndices = false;
 
-	//Buffer@ buf;
+	Ref<Buffer> buf{ nullptr, this };
+	//std::vector<int> intBuf;
+	//std::vector<float> floatBuf;
 
 	void setInstancedRender(int elementCount, int drawInstanceCount) {
 		this->elementCount = elementCount;
@@ -64,7 +69,7 @@ public:
 	}
 
 
-	void ctor() {
+	Vbo() {
 		this->genBuffer();
 	}
 	~Vbo() {
@@ -87,8 +92,8 @@ public:
 	}
 
 	void genBuffer() {
+		glGenBuffers(1, &id);
 	}
-	// extern void bind();
 
 	void setVertexAttrib() {
 		this->bind();
@@ -113,16 +118,19 @@ public:
 	}
 
 
-	void intArrayBuffer(std::vector<float>& buf) {
+	void intArrayBuffer(Buffer* buf) {
 		this->isInt = true;
 		this->isFloat = false;
-		this->arrayBufferData(buf.size(), (float*)buf.data());
+		this->buf = buf;
+		this->arrayBufferData(buf->intSize(), (float*)buf->data);
 	}
-	void arrayBuffer(std::vector<float>& buf) {
-		this->arrayBufferData(buf.size(), (float*)buf.data());
+	void arrayBuffer(Buffer* buf) {
+		this->buf = buf;
+		this->arrayBufferData(buf->floatSize(), (float*)buf->data);
 	}
-	void elementBuffer(std::vector<int>& buf) {
-		this->elementBufferData(buf.size(), (int*)buf.data());
+	void elementBuffer(Buffer* buf) {
+		this->buf = buf;
+		this->elementBufferData(buf->intSize(), (int*)buf->data);
 	}
 
 	void arrayBufferData(int byteSize, float* vertices) {

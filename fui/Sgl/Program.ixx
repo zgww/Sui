@@ -13,6 +13,7 @@ void deleteProgram(GLuint id) {
 	//会有bug, 释放可能是在别的线程释放的。。。。。。
 	glDeleteProgram(id);
 }
+
 //主类
 export class Program : public GcObj {
 public:
@@ -25,7 +26,7 @@ public:
 
 	~Program() {
 		if (this->id) {
-			//printf("hihihi hi iiii22\n");
+			printf("hihihi h1i iiii1122\n");
 			GLuint id = this->id;
 
 			//确保在主线程释放

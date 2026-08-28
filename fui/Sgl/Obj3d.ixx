@@ -24,7 +24,8 @@ module;
 export module Sgl:Obj3d;
 
 
-
+export class DrawCtx;
+export class Raycaster;
 
 export class Obj3d : public Node {
 public:
@@ -130,43 +131,43 @@ public:
 		}
 	}
 
-	// //收集
-	// void collectTransparent(DrawCtx *ctx){
-	// }
+	 //收集
+	 void collectTransparent(DrawCtx *ctx){
+	 }
 
 	//void drawDepth(DrawCtx* ctx) {
 	//}
-	//void draw(DrawCtx* ctx) {
-	//	this->drawSelf(ctx);
-	//	this->drawChildren(ctx);
-	//}
+	void draw(DrawCtx* ctx) {
+		this->drawSelf(ctx);
+		this->drawChildren(ctx);
+	}
 	//在draw中，如果发现material需要在transparent中绘制，就可以调用ctx的方法加入到transparentList中
-	//void drawTransparent(DrawCtx* ctx) {
-	//	this->drawSelf(ctx);
-	//}
+	void drawTransparent(DrawCtx* ctx) {
+		this->drawSelf(ctx);
+	}
 
 	//void drawSelfRaw(DrawCtx* ctx, Vao* vao, Material* matl) {
 	//}
-	//void drawSelf(DrawCtx* ctx) {
-	//}
-	//void drawChildren(DrawCtx* ctx) {
-	//	int l = this->getChildrenCount();
-	//	for (int i = 0; i < l; i++) {
-	//		Node* view = this->getChild(i);
-	//		if (dynamic_cast<Obj3d*>(view)) {
-	//			Obj3d* obj = (Obj3d*)view;
-	//			if (obj.visible) { //&& view->style.display != DISPLAY_TYPE_NONE) {
-	//				obj.draw(ctx);
-	//			}
-	//		}
-	//	}
-	//}
-	//void tick(DrawCtx* ctx) {
-	//}
+	void drawSelf(DrawCtx* ctx) {
+	}
+	void drawChildren(DrawCtx* ctx) {
+		int l = this->getChildrenCount();
+		for (int i = 0; i < l; i++) {
+			Node* view = this->getChild(i);
+			if (dynamic_cast<Obj3d*>(view)) {
+				Obj3d* obj = (Obj3d*)view;
+				if (obj->visible) { //&& view->style.display != DISPLAY_TYPE_NONE) {
+					obj->draw(ctx);
+				}
+			}
+		}
+	}
+	void tick(DrawCtx* ctx) {
+	}
 	//结果放到raycaster.result中
-	//bool hitTestSelfByRaycaster(Raycaster* raycaster) {
-	//	return false;
-	//}
+	bool hitTestSelfByRaycaster(Raycaster* raycaster) {
+		return false;
+	}
 
 	// 令正z轴朝向目标位置
 	void lookAt(float x, float y, float z) {

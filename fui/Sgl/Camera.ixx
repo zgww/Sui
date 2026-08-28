@@ -4,6 +4,7 @@ module;
 #include "GL/wglew.h"
 #include "Core/Timer.h"
 #include "Core/Vec2.h"
+#include "Core/Vec3.h"
 #include "Core/Rect.h"
 
 export module Sgl:Camera;

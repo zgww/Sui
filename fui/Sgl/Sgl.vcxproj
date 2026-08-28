@@ -113,6 +113,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>..\fui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,8 +146,10 @@
   <ItemGroup>
     <ClCompile Include="Box2.ixx" />
     <ClCompile Include="Box3.ixx" />
+    <ClCompile Include="Buffer.ixx" />
     <ClCompile Include="Camera.ixx" />
     <ClCompile Include="DirLight.ixx" />
+    <ClCompile Include="DrawCtx.ixx" />
     <ClCompile Include="Entry.ixx" />
     <ClCompile Include="Fbo.ixx" />
     <ClCompile Include="Geometry.ixx" />
@@ -157,7 +160,9 @@
     <ClCompile Include="Program.ixx" />
     <ClCompile Include="Ray.ixx" />
     <ClCompile Include="Raycaster.ixx" />
+    <ClCompile Include="Scene.ixx" />
     <ClCompile Include="Sgl.ixx" />
+    <ClCompile Include="Skybox.ixx" />
     <ClCompile Include="Sphere.ixx" />
     <ClCompile Include="SpotLight.ixx" />
     <ClCompile Include="Tex2d.ixx" />

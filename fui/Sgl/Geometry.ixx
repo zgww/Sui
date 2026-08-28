@@ -10,10 +10,11 @@ module;
 export module Sgl:Geometry;
 
 import :Vbo;
+import :Buffer;
 
 class Material;
 
-class GeoAttr :public GcObj {
+export class GeoAttr :public GcObj {
 public:
     std::string key;
     Ref<Vbo> vbo;
@@ -39,14 +40,14 @@ public:
         void build() {
     }
 
-    void setIboByBuffer(std::vector<int>& buffer) {
+    void setIboByBuffer(Buffer* buffer) {
         auto& me = *this;
         me.ibo = new Vbo();
         me.ibo->elementBuffer(buffer);
 
         me.version++;
     }
-    void setAttrByBuffer(const char* name, std::vector<float>& buffer, int elementCountPerVertex) {
+    void setAttrByBuffer(const char* name, Buffer* buffer, int elementCountPerVertex) {
 
         auto& me = *this;
         Ref<Vbo> vbo = new Vbo();
@@ -76,10 +77,10 @@ public:
 
 
     //自动创建或者更新
-    void applyAttrByBuffer(const char* name, std::vector<float>& buffer, int elementCountPerVertex) {
+    void applyAttrByBuffer(const char* name, Buffer* buffer, int elementCountPerVertex) {
         auto& me = *this;
         GeoAttr* ga = me.getAttr(name);
-		if (ga != nullptr && ga->vbo->byteSize >= buffer.size()) {//已存在，空间足够； 更新即可
+		if (ga != nullptr && ga->vbo->byteSize >= buffer->size) {//已存在，空间足够； 更新即可
 			ga->vbo->arrayBuffer(buffer);
 		}
 		else {
@@ -115,7 +116,7 @@ public:
 
     // geom.setInstanceAttrByBuffer("insPos", insPos, 3)
 
-    void setInstanceAttrByBuffer(const char* name, std::vector<float>& buffer, int elementCount) {
+    void setInstanceAttrByBuffer(const char* name, Buffer* buffer, int elementCount) {
         auto& self = *this;
         Ref<Vbo> vbo = new Vbo();
         vbo->arrayBuffer(buffer);

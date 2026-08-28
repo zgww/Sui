@@ -165,4 +165,4 @@ public:
 	Vec4 mulVec4(Vec4 v);
 
 };
-static Mat mkMatIdentity();
+Mat mkMatIdentity();

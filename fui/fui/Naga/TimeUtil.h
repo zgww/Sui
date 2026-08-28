@@ -11,6 +11,8 @@ extern "C" {
 
 	NAGA_DLLAPI 	int64_t TimeUtil_unixMs();
 	NAGA_DLLAPI 	int64_t TimeUtil_unixUs();
+	NAGA_DLLAPI 	int64_t Time_unixMs();
+	NAGA_DLLAPI 	int64_t Time_unixUs();
 
 #ifdef __cplusplus
 }

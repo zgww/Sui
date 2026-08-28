@@ -272,13 +272,13 @@ public:
 
 };
 
-Ref<Tex2d> mkTex2dByPathCstr(const char* path) {
+export Ref<Tex2d> mkTex2dByPathCstr(const char* path) {
 	auto r = Ref(new Tex2d());
 	r->loadImageByPathCstr(path);
 	return r;
 }
 
-Ref<Image> loadImageByTex2d(Tex2d* tex) {
+export Ref<Image> loadImageByTex2d(Tex2d* tex) {
 	static Ref<GcMap<Image>> imageMap = nullptr;
 	if (!imageMap) {
 		imageMap = new GcMap<Image>();

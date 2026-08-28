@@ -78,5 +78,17 @@
     <ClCompile Include="Camera.ixx">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DrawCtx.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffer.ixx">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
