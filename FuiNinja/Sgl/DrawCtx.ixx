@@ -7,6 +7,7 @@ module;
 #include "Naga/TimeUtil.h"
 #include "Core/Vec2.h"
 #include "Core/Vec3.h"
+#include "Core/Mat.h"
 #include "Naga/Path.h"
 
 export module Sgl:DrawCtx;

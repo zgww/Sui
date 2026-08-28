@@ -19,14 +19,15 @@ int main() {
 		o.backgroundColor = 0xffefefef;
 
 		o.jcc().aic();
-		R(TextView) { o.setText("你1g33..gg213好51----665464啊"); } REND;
+		R(TextView) { o.setText("-l天生"); } REND;
 
 
 		auto win = Ref(new Window());
 		win->setRootView(&o);
-		win->setTitle("1测试Entry.ixx");
+		win->setTitle("中文正常吗");
 		win->setSize(800, 600);
 		win->show();
+        printf("get title:%s\n", win->getTitle().c_str());
 	} REND;
 
 	Program p;

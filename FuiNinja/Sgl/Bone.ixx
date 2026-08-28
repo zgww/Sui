@@ -15,7 +15,7 @@ export module Sgl:Bone;
 import :Obj3d;
 import :Buffer;
 
-class Skeleton;
+export class Skeleton;
 
 struct CalcData {
 	Skeleton* skeleton;

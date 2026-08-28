@@ -25,6 +25,7 @@ add_definitions(
     -DURGC_STATICAPI
     -D_CONSOLE
     -D_AMD64_
+    -DUNICODE
 )
 add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
 # set(FLAGS "-ftime-trace  -Wno-int-conversion -Wno-microsoft-enum-forward-reference  -Wno-compare-distinct-pointer-types -Wno-ignored-attributes -Wno-unsequenced -Wno-incompatible-pointer-types")
@@ -60,9 +61,6 @@ file(GLOB src
 
     fui/nanovg/*.c  
     fui/nanovg/*.cpp
-
-
-    Sgl/*.ixx
     )
 
 # add_definitions(-D_CRT=)
@@ -74,10 +72,21 @@ file(GLOB src
 
 
 
-add_executable(Fui 
+add_executable(Fui
     ${src}
-    # resource.rc 
+    Sgl/Entry.cpp
+    # resource.rc
 )
+
+# C++20 module interface units
+file(GLOB sgl_modules CONFIGURE_DEPENDS Sgl/*.ixx)
+target_sources(Fui
+  PRIVATE
+  FILE_SET sgl_modules TYPE CXX_MODULES FILES ${sgl_modules}
+)
+
+# Scan regular sources (e.g. Sgl/Entry.cpp) for module imports
+set_target_properties(Fui PROPERTIES CXX_SCAN_FOR_MODULES ON)
 
 # ADD_LIBRARY(UrgcDll SHARED ${UrgcDll_Src})
 

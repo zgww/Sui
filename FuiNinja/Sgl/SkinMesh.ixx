@@ -1,3 +1,5 @@
+module;
+
 #include "GL/glew.h"
 #include "GL/wglew.h"
 #include "Core/Timer.h"

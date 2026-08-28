@@ -101,7 +101,7 @@ Range mkRange(int start, int end) {
 		 }
 		 //std::string nval = val.substring(0, this->start - 1).addString(val.substring(this->start, val.length()));
 		 auto nval = Utf8Util::substr(val, 0, this->start - 1) + Utf8Util::substr(val, this->start, val.length());
-		 this->set_collapse_pos(this->start - 1);
+		 this->set_collapse_pos(this->start -   1);
 		 return nval;
 	 }
  }
