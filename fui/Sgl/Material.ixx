@@ -12,6 +12,7 @@ export module Sgl:Material;
 
 import :Tex2d;
 import :Program;
+import :Buffer;
 
 export class UniformMeta : public GcObj {
 public:
@@ -41,7 +42,7 @@ public:
 	Ref<Tex2d> tex{ nullptr, this };
 	std::string texPath; //纹理是没办法序列化的
 
-	//MatArray@ matArray;
+	Ref<MatArray> matArray{ nullptr, this };
 
 		// void insp(Insp* insp){
 			// insp.cbInsp = ^void(Insp*insp, Node* o){
@@ -199,12 +200,12 @@ public:
 				// }
 			}
 			else if (this->kind == 5) {
-				// if this->mat {
-				//program->uniformMatrix4fv(this->key.c_str(), this->matArray.data, this->matArray.size)
-					// }
-					// else{
-					//     return false
-					// }
+				 //if (this->mat) {
+					 program->uniformMatrix4fv(this->key.c_str(), (float*)this->matArray->data, this->matArray->size);
+					 //}
+					 //else{
+					 //return false;
+					 //}
 			}
 			else if (this->kind == 2) {
 				if (this->count == 1) {
@@ -470,7 +471,7 @@ public:
 		}
 	}
 
-	//bool load(const char* path) {
+	bool load(const char* path) {
 	//    this->path = (path)
 	//        Json@ jo = Json_parseByPathC(path)
 	//        if jo {
@@ -483,8 +484,8 @@ public:
 	//                this->buildByShaderPathC(realVsPath.str, realFsPath.str)
 	//                return true
 	//        }
-	//    return false
-	//}
+		return false;
+	}
 	//bool saveTo(String* path) {
 	//    if path&& path.notEmpty() {
 	//        Json@ jo = Json_toJson(this)
@@ -629,11 +630,11 @@ public:
 		// ui.texIndex = activeIndex
 		return ui;
 	}
-	//void setUniformMatArray(const char* key, MatArray@ matArray) {
-	//    UniformInfo* ui = this->gocUniformInfo(key);
-	//    ui->kind = 5;
-		//ui->matArray = matArray;
-	//}
+	void setUniformMatArray(const char* key, MatArray* matArray) {
+	    UniformInfo* ui = this->gocUniformInfo(key);
+	    ui->kind = 5;
+		ui->matArray = matArray;
+	}
 	void setUniformMat4(const char* key, Mat mat) {
 		UniformInfo* ui = this->gocUniformInfo(key);
 		ui->kind = 1;

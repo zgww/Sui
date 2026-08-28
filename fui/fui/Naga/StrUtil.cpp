@@ -39,7 +39,7 @@ char* StrUtil_trim(char* source0, char* eraseTarget) {
 bool StrUtil_starts_with(char* s, char* sub) {
 	return std::string(s).find(sub) == 0;
 }
-bool StrUtil_ends_with(char* s0, char* sub0) {
+bool StrUtil_ends_with(const char* s0, const char* sub0) {
 	std::string s(s0);
 	std::string sub(sub0);
 	return s.rfind(sub) == s.length() - sub.length();

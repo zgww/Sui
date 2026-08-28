@@ -6,11 +6,182 @@ module;
 #include "Core/Color.h"
 #include "Naga/TimeUtil.h"
 #include "Core/Vec2.h"
+#include "Core/Mat.h"
 #include "Core/Vec3.h"
 #include "Naga/Path.h"
 
 export module Sgl:Buffer;
 
+
+//结构体数组，基类
+export class StructArrayBase : public GcObj {
+public:
+	//元素数
+	int size = 0;
+	int capacity = 0;
+	int elementSize = 1;
+
+	~StructArrayBase() {
+		void** pdata = this->getPtrData();
+		if (pdata != nullptr && (*pdata) != nullptr) {
+			void* data = *pdata;
+			free(data);
+			*pdata = nullptr;
+			// self.data = null
+		}
+	}
+	//需要继承
+	virtual void** getPtrData() {
+		return nullptr;
+	}
+
+	//需要继承
+	virtual char* getRaw() {
+		return NULL;
+	}
+
+	virtual bool equalsRaw(char* a, char* b) {
+		for (int j = 0; j < elementSize; j++) {
+			if (b[j] != a[j]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	//去除重复
+	virtual void distinct() {
+		char* raw = getRaw();
+		for (int i = 0; i < this->size; i++) {
+			char* ele = raw + (i * this->elementSize);
+
+			for (int j = this->size - 1; j >= i + 1; j++) {
+				char* b = raw + (i * this->elementSize);
+				if (equalsRaw(ele, b)) { //需要去掉
+					// memmove()
+					memmove(b, b + elementSize, (size - 1 - j) * elementSize);
+					this->size--;
+				}
+			}
+		}
+	}
+
+	virtual bool hasByRaw(char* data) {
+		char* raw = this->getRaw();
+		for (int i = 0; i < this->size; i++) {
+			char* ele = raw + (i * this->elementSize);
+			bool eq = true;
+			for (int j = 0; j < this->elementSize; j++) {
+				if (ele[j] != data[j]) {
+					eq = false;
+					break;
+				}
+			}
+			if (eq) {
+				return true;
+			}
+		}
+		return false;
+	}
+	virtual char* getPtrRawAtElement(int index) {
+		return getRaw() + index * elementSize;
+	}
+	virtual void setRawAtElement(int index, char* data) {
+		char* p = getRaw() + index * elementSize;
+		memcpy(p, data, elementSize);
+	}
+	virtual void setByPtr(int index, void* data) {
+		char* p = getRaw() + index * elementSize;
+		memcpy(p, data, elementSize);
+	}
+	virtual void appendByCount(void* data, int count) {
+		expandIfNeed(count);
+		memcpy(getRaw() + size * elementSize, data, count * elementSize);
+		size += count;
+	}
+	virtual void clear() {
+		size = 0;
+	}
+	//扩展，直到size >= toSize
+	virtual void expandToSize(int toSize) {
+		if (size < toSize) {
+			expandIfNeed(toSize - size);
+			size = toSize;
+		}
+	}
+	virtual void expandIfNeed(int addEleSize) {
+		int newSize = size + addEleSize;
+		if (newSize > capacity) {
+			int cap = maxInt(capacity * 2, 32);
+			// printf("cap:%d, self.cap:%d, newSize:%d\n", cap, self.capacity, newSize)
+			if (capacity < 1000 && cap >= newSize) {//翻倍增长
+				expandCapacity(cap);
+			}
+			else {
+
+				int exp = maxInt(addEleSize, 10240);
+				int toCap = size + exp;
+				expandCapacity(toCap);
+			}
+		}
+	}
+	virtual void expandCapacity(int needSize) {
+		if (needSize > capacity) {
+			// printf("expandCapacity:%d\n", needSize)
+			capacity = needSize;
+			void** pp = getPtrData();
+			if (*pp == nullptr) {
+				*pp = calloc(1, needSize * elementSize);
+				return;
+			}
+			*pp = realloc(*pp, needSize * elementSize);
+		}
+	}
+};
+
+export class MatArray :public StructArrayBase {
+public:
+	Mat* data;
+
+	MatArray() {
+		elementSize = sizeof(Mat);
+	}
+
+	virtual void** getPtrData() {
+		return (void**)(&this->data);
+	}
+
+	//需要继承
+	virtual char* getRaw() {
+		return (char*)this->data;
+	}
+	virtual Mat get(int i) {
+		if (i >= this->size) {
+			Mat m;
+			m.identity();
+			return m;
+		}
+		return this->data[i];
+	}
+	virtual bool set(int i, Mat v) {
+		if (i >= this->size) {
+			this->expandToSize(i + 1);
+		}
+		if (i < this->size) {
+			this->data[i] = v;
+			return true;
+		}
+		return false;
+	}
+	virtual void add(Mat v) {
+		this->expandIfNeed(1);
+		this->data[this->size] = v;
+		this->size++;
+	}
+	virtual bool has(Mat v) {
+		return this->hasByRaw((char*)&v);
+	}
+};
 
 //内存里的区域
 export class Buffer : public GcObj {

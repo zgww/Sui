@@ -38,7 +38,7 @@ void HoverSentive::onmousemove(ViewBase* rootView, float x, float y) {
 	ViewBase* hitTestView = rootView ? rootView->hitTest(x, y) : nullptr;
 
 	if (hitTestView) {
-		printf("hitTestView:%s                      ============\n", hitTestView->name.c_str());
+		//printf("hitTestView:%s                      ============\n", hitTestView->name.c_str());
 	}
 
 	Ref<GcList<Node>> parents = hitTestView ? hitTestView->getAncients(true) : Ref<GcList<Node>>(new GcList<Node>());

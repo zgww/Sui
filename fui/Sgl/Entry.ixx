@@ -19,7 +19,7 @@ int main() {
 		o.backgroundColor = 0xffefefef;
 
 		o.jcc().aic();
-		R(TextView) { o.setText("你1gggg23好啊"); } REND;
+		R(TextView) { o.setText("你1gggg213好51----665464啊"); } REND;
 
 
 		auto win = Ref(new Window());
@@ -37,13 +37,16 @@ void main(){
 	gl_Position = vec4(0.0);
 }
 )EOF", R"EOF(
-void main(){
+void main(){ 
 }
 )EOF"
 );
 
 	auto drawCtx = Ref(new DrawCtx());
 	auto raycaster = Ref(new Raycaster());
+	auto pr = Ref(new RgbaPixelsReader());
+	auto perspectiveCamera = Ref(new PerspectiveCamera());
+	auto particle = Ref(new Particle());
 	app->runEventLoop();
 	return 0;
 }

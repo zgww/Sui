@@ -6,6 +6,7 @@ export import :Raycaster;
 export import :Program;
 export import :Vbo;
 export import :Geometry;
+export import :GeometryRect;
 export import :Light;
 export import :PointLight;
 export import :DirLight;
@@ -15,3 +16,13 @@ export import :Fbo;
 export import :Camera;
 export import :DrawCtx;
 export import :Buffer;
+export import :PixelReader;
+export import :PerspectiveCamera;
+export import :Particle;
+export import :Mesh;
+export import :FboView;
+export import :Billboard;
+
+export import :Bone;
+export import :SkinMesh;
+

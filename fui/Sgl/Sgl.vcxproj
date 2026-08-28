@@ -131,19 +131,26 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;NAGA_STATIC;URGC_STATICAPI;_CONSOLE;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>..\fui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutputPath);$(SolutionDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fui.lib;opengl32.lib;glew32.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Billboard.ixx" />
+    <ClCompile Include="Bone.ixx" />
     <ClCompile Include="Box2.ixx" />
     <ClCompile Include="Box3.ixx" />
     <ClCompile Include="Buffer.ixx" />
@@ -152,16 +159,23 @@
     <ClCompile Include="DrawCtx.ixx" />
     <ClCompile Include="Entry.ixx" />
     <ClCompile Include="Fbo.ixx" />
+    <ClCompile Include="FboView.ixx" />
     <ClCompile Include="Geometry.ixx" />
+    <ClCompile Include="GeometryRect.ixx" />
     <ClCompile Include="Light.ixx" />
     <ClCompile Include="Material.ixx" />
+    <ClCompile Include="Mesh.ixx" />
     <ClCompile Include="Obj3d.ixx" />
+    <ClCompile Include="Particle.ixx" />
+    <ClCompile Include="PerspectiveCamera.ixx" />
+    <ClCompile Include="PixelReader.ixx" />
     <ClCompile Include="PointLight.ixx" />
     <ClCompile Include="Program.ixx" />
     <ClCompile Include="Ray.ixx" />
     <ClCompile Include="Raycaster.ixx" />
     <ClCompile Include="Scene.ixx" />
     <ClCompile Include="Sgl.ixx" />
+    <ClCompile Include="SkinMesh.ixx" />
     <ClCompile Include="Skybox.ixx" />
     <ClCompile Include="Sphere.ixx" />
     <ClCompile Include="SpotLight.ixx" />
