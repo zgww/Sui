@@ -845,7 +845,7 @@ class HoroEditor extends Listener{
             self.react()
 
 
-            o.setTitle("Horo编辑器-20260828")
+            o.setTitle("lsj Horo编辑器-20260828")
             o.setSize(200, 100)
             o.moveToCenter()
             o.show()

@@ -2200,7 +2200,7 @@ void  HoroEditor$HoroEditor$showWindow(HoroEditor$HoroEditor *  self){
 			self->win->setRootView(self->win, o) ;
 		}
 		self->react(self) ;
-		o->setTitle(o, "Horo编辑器-20260828") ;
+		o->setTitle(o, "lsj Horo编辑器-20260828") ;
 		o->setSize(o, 200, 100) ;
 		o->moveToCenter(o) ;
 		o->show(o) ;

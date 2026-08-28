@@ -484,29 +484,29 @@ set_target_properties(Naga PROPERTIES
 )
 
 
-add_executable(TestMini 
-    ${TestMiniSrc}
-    # resource.rc 
-)
-target_link_directories(TestMini PRIVATE 
-    lib
-    "build/assimp/lib"
-    )
+# add_executable(TestMini 
+#     ${TestMiniSrc}
+#     # resource.rc 
+# )
+# target_link_directories(TestMini PRIVATE 
+#     lib
+#     "build/assimp/lib"
+#     )
 
-target_link_libraries(TestMini 
+# target_link_libraries(TestMini 
 
-    # clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
-    # asan
-    Orc
-    UrgcDll Naga 
+#     # clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+#     # asan
+#     Orc
+#     UrgcDll Naga 
 
-    opengl32
-    glu32
-    glew32
-    # tgfx
+#     opengl32
+#     glu32
+#     glew32
+#     # tgfx
 
-    assimp
-    miniaudio
+#     assimp
+#     miniaudio
 
-    # -fsanitize=address
-    )
+#     # -fsanitize=address
+#     )

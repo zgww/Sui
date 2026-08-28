@@ -1189,6 +1189,9 @@ void testThrow(){
     e.tmp = 4
     throw e
 }
+class User {
+    int age = 123;
+}
 int main(){
     urgc_start_process_thread();
     windowInit()
@@ -1262,9 +1265,27 @@ int main(){
 
     // testPlane()
     // testRay()
+    if 1 {
+        Window@ w = new Window()
+        new LayoutLinear().{
+            o.aic().jcc()
+            o.backgroundColor = 0xffefefef;
+            w.setRootView(o);
 
-    {
+            mkTextView(o, 0).{
+                o.setText(str("do re mi fa so"))
+                o.color = 0xffff0000
+                o.setFont_size(18)
+            }
+        }
+        w.setSize(400, 400)
+        w.setTitle("你好")
+        w.moveToCenter();
+        w.show()
+        App_use().runEventLoop();
+    }
 
+    if 0 {
         insHoroEditor().{
             // Time_sleepMs(1000)
             // urgc_report_sources_of(o)

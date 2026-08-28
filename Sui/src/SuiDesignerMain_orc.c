@@ -2177,10 +2177,114 @@ void  testThrow(){
 	Orc_throw((void*)e, (Vtable_Object*)Vtable_Exception_init(NULL), NULL);
 }
 
+
+//vtable instance
+Vtable_User _vtable_User;
+
+// init meta
+
+void User_initMeta(Vtable_User *pvt){
+    OrcMetaField **pNext = &((Vtable_Object*)pvt)->headMetaField;//without super fields
+	
+	orc_metaField_primitive(&pNext, "age", OrcMetaType_int, offsetof(User, age), 0, 0, 0, 0);//int
+
+	
+}
+
+
+// vtable init
+
+
+Vtable_User* Vtable_User_init(Vtable_User* pvt){
+    if (pvt == NULL){
+        pvt = &_vtable_User;
+    }
+    if (((Vtable_Object*)pvt)->inited){
+        return pvt;
+    }
+	// init super vtable
+    Vtable_Object_init(&_vtable_Object);
+
+	// init by super vtable init function
+    Vtable_Object_init((void*)pvt);
+
+    ((Vtable_Object*)pvt)->super = (void*)&_vtable_Object;
+    ((Vtable_Object*)pvt)->make = (void*)&User_new;
+    ((Vtable_Object*)pvt)->className = "User";
+
+    ((Vtable_Object*)pvt)->initMeta = (void*)User_initMeta;
+
+    ((Vtable_Object*)pvt)->refc = 1;
+
+    return pvt;
+}
+
+
+// fini function
+
+void User_fini(User *self){
+	//super fini
+    Object_fini((Object *)self);
+
+    //字段释放
+	
+
+}
+
+// init fields function
+
+
+void User_init_fields(User *self){
+	//super class
+    Object_init_fields((Object*)self);
+
+    ((Object*)self)->fini = (void*)User_fini;
+	//fields
+    {
+	((User*)self)->age = 123;
+    }
+	
+}
+
+// init function
+
+void User_init(User *self, void *pOwner){
+    Vtable_User_init(&_vtable_User);
+
+    ((Object*)self)->vtable = (void*)&_vtable_User;
+	
+	//has old object
+	if (*((void**)pOwner) != NULL) urgc_deref_class(pOwner, *((void**)pOwner));
+	*((void**)pOwner) = self;
+	urgc_ref_class(pOwner, self, (void*)orc_delete);
+
+    //urgc_guard(self, (void*)orc_delete);
+
+    User_init_fields(self);
+
+    if (((Object*)self)->ctor){
+        ((Object*)self)->ctor((void*)self);
+    }
+
+    //urgc_deguard(self);
+}
+
+// new function
+User * User_new(void *pOwner){
+	if (pOwner == NULL){ return NULL;}
+    User *self = ORC_CALLOC(1, sizeof(User));
+	
+    User_init(self, pOwner);
+    return self;
+}
+
+
+// class members
+
 int  main(){
-	volatile bool __orc_return_flag_1192_0 = false;
-	volatile int __orc_loop_control_1192_0 = 0;
-	int  __orc_return_value_1192_0 = {0};
+	volatile bool __orc_return_flag_1195_0 = false;
+	volatile int __orc_loop_control_1195_0 = 0;
+	int  __orc_return_value_1195_0 = {0};
 
 	urgc_start_process_thread() ;
 	windowInit() ;
@@ -2190,7 +2294,7 @@ int  main(){
 	}
 	{
 		{
-			ORC_TRY(__orc_try_scope_1203_8, "try@1203:8", "catch@1203:8") {
+			ORC_TRY(__orc_try_scope_1206_8, "try@1206:8", "catch@1206:8") {
 			URGC_VAR_CLEANUP_CLASS Exception*  e2 = (e2=NULL,urgc_init_var_class((void**)&e2, Exception_new(&e2) ));
 			e2->tmp = 2;
 			testThrow() ;
@@ -2201,73 +2305,103 @@ int  main(){
 			printf("after throw\n") ;
 		}
 		
-			ORC_TRY_END(__orc_try_scope_1203_8);
+			ORC_TRY_END(__orc_try_scope_1206_8);
 			
-			ORC_CATCH(__orc_try_scope_1203_8) {
+			ORC_CATCH(__orc_try_scope_1206_8) {
 				
-				ORC_CATCH_CLASS_AS(__orc_try_scope_1203_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
+				ORC_CATCH_CLASS_AS(__orc_try_scope_1206_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
 			printf("catch: %d\n", e->tmp) ;
 		}
 		
 		
 			}
-			ORC_END_CATCH(__orc_try_scope_1203_8);
+			ORC_END_CATCH(__orc_try_scope_1206_8);
 		
-			goto __orc_finally_1203_8;
-		__orc_finally_1203_8:
+			goto __orc_finally_1206_8;
+		__orc_finally_1206_8:
 			ORC_FINALLY {
 			printf("finally\n") ;
 		}
 		
-		__orc_after_finally_1203_8:
+		__orc_after_finally_1206_8:
 			
-			if (__orc_return_flag_1192_0) {
-				Orc_tryScopeAbandon(&__orc_try_scope_1203_8);
-				return __orc_return_value_1192_0;
+			if (__orc_return_flag_1195_0) {
+				Orc_tryScopeAbandon(&__orc_try_scope_1206_8);
+				return __orc_return_value_1195_0;
 			}
 		
 			
-			Orc_tryScopeFinalize(&__orc_try_scope_1203_8);
+			Orc_tryScopeFinalize(&__orc_try_scope_1206_8);
 		}
 		{
-			ORC_TRY(__orc_try_scope_1220_8, "try@1220:8", "catch@1220:8") {
+			ORC_TRY(__orc_try_scope_1223_8, "try@1223:8", "catch@1223:8") {
 			printf("try\n") ;
 			URGC_VAR_CLEANUP_CLASS Exception*  e = (e=NULL,urgc_init_var_class((void**)&e, Exception_new(&e) ));
 			e->tmp = 34;
 			Orc_throw((void*)e, (Vtable_Object*)Vtable_Exception_init(NULL), NULL);
 		}
 		
-			ORC_TRY_END(__orc_try_scope_1220_8);
+			ORC_TRY_END(__orc_try_scope_1223_8);
 			
-			ORC_CATCH(__orc_try_scope_1220_8) {
+			ORC_CATCH(__orc_try_scope_1223_8) {
 				
-				ORC_CATCH_CLASS_AS(__orc_try_scope_1220_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
+				ORC_CATCH_CLASS_AS(__orc_try_scope_1223_8, (Vtable_Object*)Vtable_Exception_init(NULL), Exception*, e) {
 			printf("catch: %d\n", e->tmp) ;
 		}
 		
 		
 			}
-			ORC_END_CATCH(__orc_try_scope_1220_8);
+			ORC_END_CATCH(__orc_try_scope_1223_8);
 		
-			goto __orc_finally_1220_8;
-		__orc_finally_1220_8:
+			goto __orc_finally_1223_8;
+		__orc_finally_1223_8:
 			ORC_FINALLY {
 			printf("finally\n") ;
 		}
 		
-		__orc_after_finally_1220_8:
+		__orc_after_finally_1223_8:
 			
-			if (__orc_return_flag_1192_0) {
-				Orc_tryScopeAbandon(&__orc_try_scope_1220_8);
-				return __orc_return_value_1192_0;
+			if (__orc_return_flag_1195_0) {
+				Orc_tryScopeAbandon(&__orc_try_scope_1223_8);
+				return __orc_return_value_1195_0;
 			}
 		
 			
-			Orc_tryScopeFinalize(&__orc_try_scope_1220_8);
+			Orc_tryScopeFinalize(&__orc_try_scope_1223_8);
 		}
 	}
 	printf("done\n") ;
-	{
+	if (1) {
+		URGC_VAR_CLEANUP_CLASS Sui$Window*  w = (w=NULL,urgc_init_var_class((void**)&w, Sui$Window_new(&w) ));
+		URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutLinear*  tmpNewOwner_1 = NULL;
+		{
+			SuiLayout$LayoutLinear*  o = SuiLayout$LayoutLinear_new(&tmpNewOwner_1) ;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1270_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		
+			SuiLayout$LayoutLinear *  tmpThis_1 = NULL;
+			(tmpThis_1 = o->aic(o) )->jcc(tmpThis_1) ;
+			((SuiCore$View * )o)->backgroundColor = 0xffefefef;
+			w->setRootView(w, o) ;
+			URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_2 = NULL;
+			{
+				SuiView$TextView*  __scopeVar_1275_12 = SuiView$mkTextView(&tmpReturn_2, o, 0) , *o = __scopeVar_1275_12;
+				UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1275_12 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			
+				URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_3 = NULL;
+				o->setText(o, Orc$str(&tmpReturn_3, "do re mi 22323f112da so") ) ;
+				o->color = 0xffff0000;
+				o->setFont_size(o, 18) ;
+			}
+		}
+		w->setSize(w, 400, 400) ;
+		w->setTitle(w, "你333不对啊xx好xx") ;
+		w->moveToCenter(w) ;
+		w->show(w) ;
+		SuiCore$App *  tmpThis_2 = NULL;
+		URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_4 = NULL;
+		(tmpThis_2 = SuiCore$App_use(&tmpReturn_4) )->runEventLoop(tmpThis_2) ;
+	}
+	if (0) {
 		{
 			HoroEditor$HoroEditor *  o = HoroEditor$insHoroEditor() ;
 			
@@ -2275,9 +2409,9 @@ int  main(){
 			o->openProject(o, "../DemoProject/prefab") ;
 		}
 	}
-	SuiCore$App *  tmpThis_1 = NULL;
-	URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_1 = NULL;
-	(tmpThis_1 = SuiCore$App_use(&tmpReturn_1) )->runEventLoop(tmpThis_1) ;
+	SuiCore$App *  tmpThis_3 = NULL;
+	URGC_VAR_CLEANUP_CLASS SuiCore$App*  tmpReturn_5 = NULL;
+	(tmpThis_3 = SuiCore$App_use(&tmpReturn_5) )->runEventLoop(tmpThis_3) ;
 	return 0; 
 }
 
@@ -2286,7 +2420,7 @@ void  testTransparency(){
 	URGC_VAR_CLEANUP_CLASS SuiLayout$LayoutAlign*  tmpNewOwner_1 = NULL;
 	{
 		SuiLayout$LayoutAlign*  o = SuiLayout$LayoutAlign_new(&tmpNewOwner_1) ;
-		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1318_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
+		UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1339_4 = ((SuiCore$Node*)o)->__exit__((void*)o);
 	
 		((SuiCore$View * )o)->backgroundColor = 0x33afafff;
 		SuiCore$Vec2$set(&o->anchor, 0.5, 0.5) ;
@@ -2294,8 +2428,8 @@ void  testTransparency(){
 		urgc_set_field_class(win, (void * )offsetof(Sui$Window, rootView) , o) ;
 		URGC_VAR_CLEANUP_CLASS SuiCore$View*  tmpReturn_2 = NULL;
 		{
-			SuiCore$View*  __scopeVar_1325_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1325_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1325_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiCore$View*  __scopeVar_1346_8 = SuiView$mkView(&tmpReturn_2, o, 0) , *o = __scopeVar_1346_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1346_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			o->backgroundColor = 0xffefefff;
 			o->width = 100;
@@ -2303,8 +2437,8 @@ void  testTransparency(){
 		}
 		URGC_VAR_CLEANUP_CLASS SuiView$TextView*  tmpReturn_3 = NULL;
 		{
-			SuiView$TextView*  __scopeVar_1330_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1330_8;
-			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1330_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
+			SuiView$TextView*  __scopeVar_1351_8 = SuiView$mkTextView(&tmpReturn_3, o, 0) , *o = __scopeVar_1351_8;
+			UNUSED DEFER(Orc_scopeExit) Orc$ScopeData __scopeObj_1351_8 = ((SuiCore$Node*)o)->__exit__((void*)o);
 		
 			URGC_VAR_CLEANUP_CLASS Orc$String*  tmpReturn_4 = NULL;
 			o->setText(o, Orc$str(&tmpReturn_4, "你好呀， Sui") ) ;

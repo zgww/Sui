@@ -15,6 +15,8 @@ typedef struct tagTmp2 Tmp2;
 typedef struct tagVtable_Tmp2 Vtable_Tmp2;
 typedef struct tagException Exception;
 typedef struct tagVtable_Exception Vtable_Exception;
+typedef struct tagUser User;
+typedef struct tagVtable_User Vtable_User;
 
 
 #ifndef define_struct_____SuiDesignerMain_orc_h__
@@ -323,6 +325,26 @@ void Exception_fini(Exception *self);
 void  Exception$dtor(Exception *  self);
 
 void  testThrow();
+
+// 虚表
+struct tagVtable_User {
+	Vtable_Object super;
+};
+//虚表实例
+extern Vtable_User _vtable_User;
+
+// class refc:1
+struct tagUser {
+	Object super; 
+	int  age ;
+};
+Vtable_User* Vtable_User_init(Vtable_User* pvt);
+void User_init_fields(User *self);
+void User_init(User *self, void *pOwner);
+User * User_new(void *pOwner);
+void User_fini(User *self);
+
+
 int  main();
 void  testTransparency();
 
