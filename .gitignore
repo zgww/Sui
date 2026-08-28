@@ -119,3 +119,5 @@
 /fui/fui/x64/Debug/*.pdb
 /fui/fui/x64/Debug/*.idb
 /fui/fui/x64/Debug/*.exe
+/fui/fui/x64/Release/Sgl.pdb
+/fui/fui/x64/Release/fui.lib
