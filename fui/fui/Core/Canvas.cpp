@@ -14,6 +14,7 @@
 #include "../nanovg/stb_image.h"
 #endif
 
+
 static Canvas* gCanvas;
 
 Canvas::Canvas() {

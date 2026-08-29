@@ -1,915 +1,139 @@
 #include <Windows.h>
-#include "./Urgc/Urgc.h"
 #include <stdio.h>
-
-#include "Core/App.h"
-#include "Core/Window.h"
-#include "Core/View.h"
-#include "Core/Canvas.h"
-#include "Layout/LayoutLinear.h"
-#include "Layout/LayoutAlign.h"
-#include "Layout/LayoutGrid.h"
-#include "Layout/RowWrap.h"
-#include "View/TextView.h"
-#include "View/ImageView.h"
-#include "View/Button.h"
-#include "View/ProgressView.h"
-#include "View/Slider.h"
-#include "View/Checkbox.h"
-#include "View/Switch.h"
-#include "View/Select.h"
-#include "View/Panel.h"
-#include "View/ScrollArea.h"
-#include "View/EditText.h"
-#include "View/HoverViewEffect.h"
-#include "View/Select.h"
-#include "View/TreeView.h"
-#include "View/TableView.h"
-#include "View/DockLayout.h"
-#include "View/Button.h"
-#include "View/SplitterView.h"
-#include "View/ColorPicker.h"
-#include "View/MenuNative.h"
-#include "View/SystemTrayIcon.h"
-#include "View/ColorPalete.h"
-#include "View/ScrollArea.h"
-#include "View/ProgressView.h"
-#include "View/Switch.h"
-#include "View/TableView.h"
-#include "Dialog/Toast.h"
-#include "Dialog/FileDialog.h"
-#include "Dialog/MessageDialog.h"
-#include "Core/NodeLib.h"
-#include "Core/Screen.h"
-#include "Core/Clipboard.h"
-#include "View/Panel.h"
-#include "View/TreeView.h"
-
-import ViewAbout;
-
-int main() {
-	SetConsoleOutputCP(65001);
-	urgc.start_process_thread();
-
-	App* app = App_use();
-
-	Ref<Window> win{new Window()};
-	//win->initData();
-
-	//Ref<ScrollArea> scroll{new ScrollArea()};
-	//scroll->backgroundColor = 0xfff5f5f5;
-
-	//Ref<LayoutLinear> root{new LayoutLinear()};
-	//root->direction = "column";
-	//root->alignItems = "stretch";
-	//root->padding.setAll(16);
-	//root->backgroundColor = 0xfff5f5f5;
-
-	//{
-	//	Ref<TextView> title{new TextView()};
-	//	title->text = "fui Demo - Complete Controls";
-	//	title->fontSize = 24;
-	//	title->color = 0xff333333;
-	//	title->padding.bottom = 12;
-	//	root->appendChild(title);
-	//}
-
-	//{
-	//	Ref<LayoutLinear> row{new LayoutLinear()};
-	//	row->direction = "row";
-	//	row->alignItems = "center";
-	//	row->padding.bottom = 12;
-
-	//	Ref<Button> btn{new Button()};
-	//	btn->setLabel("Show Toast");
-	//	btn->setNormalBg(0xff1677ff);
-	//	btn->onClick = CLOSURE([=](MouseEvent* me) {
-	//		showToast("Hello from Toast!", 2000);
-	//	});
-
-	//	Ref<Button> btnDialog{new Button()};
-	//	btnDialog->setLabel("Message Dialog");
-	//	btnDialog->setNormalBg(0xff52c41a);
-	//	btnDialog->margin.left = 8;
-	//	btnDialog->onClick = CLOSURE([=](MouseEvent* me) {
-	//		bool ok = MessageDialog_confirm("Are you sure?", "Confirm");
-	//		if (ok) {
-	//			showToast("Confirmed!", 1500);
-	//		}
-	//	});
-
-	//	Ref<Button> btnFile{new Button()};
-	//	btnFile->setLabel("Open File");
-	//	btnFile->setNormalBg(0xff722ed1);
-	//	btnFile->margin.left = 8;
-	//	btnFile->onClick = CLOSURE([=](MouseEvent* me) {
-	//		std::string path = FileDialog_getFirstOpenFileName(".", "Select a file");
-	//		if (!path.empty()) {
-	//			showToast("Selected: " + path, 3000);
-	//		}
-	//	});
-
-	//	row->appendChild(btn);
-	//	row->appendChild(btnDialog);
-	//	row->appendChild(btnFile);
-	//	root->appendChild(row);
-	//}
-
-	//{
-	//	Ref<LayoutLinear> row{new LayoutLinear()};
-	//	row->direction = "row";
-	//	row->alignItems = "center";
-	//	row->padding.bottom = 12;
-
-	//	Ref<Slider> sliderRef{new Slider()};
-	//	sliderRef->setRatio(0.5f);
-	//	sliderRef->onChanged = CLOSURE([=](float v) {
-	//		printf("Slider value: %f\n", v);
-	//	});
-
-	//	Ref<Checkbox> cb{new Checkbox()};
-	//	cb->margin.left = 16;
-	//	cb->onChanged = CLOSURE([=](bool checked) {
-	//		printf("Checkbox: %s\n", checked ? "checked" : "unchecked");
-	//	});
-
-	//	Ref<TextView> cbLabel{new TextView()};
-	//	cbLabel->text = "Checkbox";
-	//	cbLabel->fontSize = 14;
-	//	cbLabel->color = 0xff333333;
-	//	cbLabel->margin.left = 6;
-
-	//	Ref<Switch> sw{new Switch()};
-	//	sw->margin.left = 16;
-	//	sw->onCheckedChanged = CLOSURE([=](Switch* s) {
-	//		printf("Switch: %s\n", s->checked ? "on" : "off");
-	//	});
-
-	//	Ref<TextView> swLabel{new TextView()};
-	//	swLabel->text = "Switch";
-	//	swLabel->fontSize = 14;
-	//	swLabel->color = 0xff333333;
-	//	swLabel->margin.left = 6;
-
-	//	row->appendChild(sliderRef);
-	//	row->appendChild(cb);
-	//	row->appendChild(cbLabel);
-	//	row->appendChild(sw);
-	//	row->appendChild(swLabel);
-	//	root->appendChild(row);
-	//}
-
-	//{
-	//	Ref<LayoutLinear> row{new LayoutLinear()};
-	//	row->direction = "row";
-	//	row->alignItems = "center";
-	//	row->padding.bottom = 12;
-
-	//	Ref<EditText> edit{new EditText()};
-	//	edit->setValue("Type here...");
-	//	edit->width = 200;
-	//	edit->height = 28;
-
-	//	Ref<ColorPicker> cp{new ColorPicker()};
-	//	cp->margin.left = 16;
-
-	//	row->appendChild(edit);
-	//	row->appendChild(cp);
-	//	root->appendChild(row);
-	//}
-
-	//{
-	//	Ref<ProgressView> progress{new ProgressView()};
-	//	progress->setValue(0.7f);
-	//	progress->padding.bottom = 12;
-	//	root->appendChild(progress);
-	//}
-
-	//{
-	//	Ref<Panel> panel{new Panel()};
-	//	panel->setTitle("TreeView & TableView Demo");
-	//	panel->setOpen(true);
-
-	//	Ref<LayoutLinear> panelContent{new LayoutLinear()};
-	//	panelContent->direction = "row";
-	//	panelContent->padding.setAll(8);
-	//	panelContent->height = 200;
-
-	//	Ref<TreeView> tree{new TreeView()};
-	//	tree->state->getId = [](void* item) -> std::string {
-	//		return std::to_string((int)(intptr_t)item);
-	//	};
-	//	tree->state->getItemChildren = [](void* item) -> std::vector<void*> {
-	//		int id = (int)(intptr_t)item;
-	//		if (id < 10) {
-	//			std::vector<void*> kids;
-	//			for (int i = 1; i <= 3; i++) {
-	//				kids.push_back((void*)(intptr_t)(id * 10 + i));
-	//			}
-	//			return kids;
-	//		}
-	//		return {};
-	//	};
-	//	tree->state->roots = {
-	//		(void*)(intptr_t)1,
-	//		(void*)(intptr_t)2,
-	//		(void*)(intptr_t)3
-	//	};
-	//	tree->state->setOpen((void*)(intptr_t)1, true);
-	//	tree->reactItem = CLOSURE([=](Node* o, void* item, int deep) {
-	//		TextView* tv = gocTextView(o, 0);
-	//		if (tv) {
-	//			tv->setText("Node " + std::to_string((int)(intptr_t)item));
-	//			tv->fontSize = 13;
-	//			tv->color = 0xff333333;
-	//		}
-	//	});
-	//	tree->width = 250;
-	//	tree->invalidReact();
-
-	//	Ref<TableView> table{new TableView()};
-	//	table->addColumn(80, "ID");
-	//	table->addColumn(120, "Name");
-	//	table->addColumn(100, "Status");
-	//	table->rowCount = 5;
-	//	table->rowHeight = 22;
-	//	table->renderTd = CLOSURE([=](Node* o, int row, int col) {
-	//		TextView* tv = gocTextView(o, 0);
-	//		if (tv) {
-	//			if (col == 0) tv->setText(std::to_string(row + 1));
-	//			else if (col == 1) tv->setText("Item " + std::to_string(row + 1));
-	//			else tv->setText(row % 2 == 0 ? "Active" : "Idle");
-	//			tv->fontSize = 13;
-	//			tv->color = 0xff333333;
-	//		}
-	//	});
-	//	table->margin.left = 8;
-	//	table->invalidReact();
-
-	//	panelContent->appendChild(tree);
-	//	panelContent->appendChild(table);
-	//	panel->setBody(panelContent);
-	//	root->appendChild(panel);
-	//}
-
-	//scroll->appendChild(root);
-	//win->setRootView(scroll);
-	auto white = Ref(new LayoutLinear());
-	white->cbOnEvent = CLOSURE([](Event *event) {
-		printf("event:%s\n", event->name.c_str());
-		});
-	white->backgroundColor = 0xffffeeee;
-
-	RINS(white.get()) {
-		o.direction = "column";
-		o.alignItems = "center";
-		o.justifyContent = "center";
-
-		//R(TextView) {
-		//	o.setText("你好啊");
-		//}REND;
-
-		//R(TextView) {
-		//	o.setText("你好啊");
-		//}REND;
-
-		//R(LayoutLinear) {
-		//	o.backgroundColor = 0x3300ff00;
-		//	R(TextView) {
-		//		o.setText("左边");
-		//		o.setFontSize(34);
-		//	}REND;
-
-		//	R(TextView) {
-		//		o.setText("右边");
-		//	}REND;
-		//}REND;
-
-		//R(TextView) {
-		//	o.setText("你好啊");
-		//}REND;
-
-		//R(TextView) {
-		//	o.setText("你好啊");
-		//}REND;
-
-
-		//R(ImageView) {
-		//	o.setSrc("asset/sample.png");
-		//	o.setImageMode(ImageMode_WidthFix);
-		//	o.width = 400;
-		//}REND;
-
-		R(Checkbox) {
-
-		}REND;
-		R(Switch) {
-
-		}REND;
-		R(Slider) {
-			o.width = 400;
-			o.margin.setAll(10);
-		}REND;
-		R(EditText) {
-			o.width = 200;
-			//o.margin.setAll(10);
-		}REND;
-		//R(ProgressView) {
-		//	o.setValue(0.5);
-		//	mkTimerInterval(CLOSURE([=]() {
-		//		o.setValue(o.value + 0.01);
-		//		}), 100);
-
-		//}REND;
-		//R(View) {
-		//	o.width = 100;
-		//	o.height = 100;
-		//	o.cursor = "pointer";
-		//	R(HoverViewEffect) {
-		//		o.backgroundColor = 0xffff0000;
-		//		o.hoverBackgroundColor = 0xff00ff00;
-		//		o.activeBackgroundColor = 0xff0000ff;
-		//		o.hoverBorder.setAll(1, 0xff333333);
-		//	}REND;
-		//}REND;
-
-		R(LayoutLinear) {
-			o.width = 600;
-
-			R(View) {
-				o.backgroundColor = 0xff99ff00;
-				o.height = 100;
-				R(LayoutLinearCell) {}REND;
-			} REND;
-			R(SplitterView) {
-				o.height = 100;
-			}REND;
-			R(View) {
-				o.backgroundColor = 0xff00ff99;
-				o.height = 100;
-				R(LayoutLinearCell) {}REND;
-			} REND;
-		} REND;
-
-		R(ScrollArea) {
-			o.width = 600;
-			o.height = 200;
-			o.backgroundColor = 0x33ff0000;
-
-			for (int i = 0; i < 10; i++) {
-				R(LayoutLinear, i) {
-
-					int r = (int)((float)(i % 3) * 15);
-					int g = (int)((float)((i+1) % 3) * 15);
-					int b = (int)((float)((i + 2) % 3) * 15);
-					o.backgroundColor = 0xff00ff00;//0xff000000 | (r << 24) | (g << 16) | b;
-					o.height = 100;
-					o.margin.setVer(10);
-					o.width = 100.f + 20 * (i % 10);
-					o.aic().jcc();
-					//R(LayoutLinearCell) {}REND;
-
-					R(TextView) {
-						o.setText(std::format("视图:{}", i));
-						o.setFontSize(18);
-					}REND;
-				} REND;
-			}
-		
-		} REND;
-
-		//R(ColorPalete) {
-		//	o.width = 400;
-		//	o.height = 400;
-		//} REND;
-		R(TextView) { o.setText("ColorView"); } REND;
-		R(ColorView) {
-		} REND;
-		R(TextView) { o.setText("ColorPicker"); } REND;
-		R(ColorPicker) {
-		} REND;
-
-		//R(Select) {
-		//	if (o.created) {
-		//		o.appendOption("男");
-		//		o.appendOption("女");
-		//		o.appendOption("未知");
-		//	}
-		//} REND;
-
-		//R(Panel) {
-		//	//o.title = "检视器";
-		//	o.width = 300;
-		//	o.backgroundColor = 0x88ddffdd;
-
-		//	R(TextView) {
-		//		o.slot = "head";
-		//		o.setText("自定义slot view");
-		//	} REND;
-
-		//	R(View) {
-		//		o.width = 100;
-		//		o.height = 100;
-		//		o.backgroundColor = 0xff00ff00;
-		//		o.margin.setAll(10);
-		//	}REND;
-		//
-		//}REND;
-
-		//R(LayoutLinear) {
-		//	o.direction = "column";
-		//	o.alignItems = "start";
-		//	R(TreeSelfCtrlView) {
-		//		o.deep = 0;
-		//		o.hasKids = true;
-		//		R(TextView) { o.setText("根"); }REND;
-		//	}REND;
-		//	R(TreeSelfCtrlView) {
-		//		o.deep = 0;
-		//		o.hasKids = true;
-		//		R(TextView) { o.setText("根2"); }REND;
-		//	}REND;
-		//	R(TreeSelfCtrlView) {
-		//		o.deep = 1;
-		//		o.hasKids = true;
-		//		R(TextView) { o.setText("父2"); }REND;
-		//	}REND;
-
-		//	R(TreeSelfCtrlView) {
-		//		o.deep = 2;
-		//		o.hasKids = false;
-		//		R(TextView) { o.setText("子2"); }REND;
-		//	}REND;
-		//} REND;
-		R(TableView) {
-			if (o.created) {
-				o.addColumn(60, "ID");
-				o.addColumn(160, "名称");
-				o.addColumn(150, "内容");
-				o.addColumn(100, "状态");
-				o.addColumn(120, "操作");
-			}
-			o.rowCount = 20;
-			o.margin.setAll(6);
-			o.renderTd = CLOSURE([](Node& o, int row, int col) {
-				R(TextView, row*10000 + col) {
-					o.setColor(0xff555555);
-					o.setText(std::format("{}:{}", row, col));
-				} REND;
-			});
-		} REND;
-
-
-		R(LayoutLinear) {
-			R(Button) {
-				o.name = "Button";
-				o.setLabel("保存");
-				o.onClick = CLOSURE([](MouseEvent* me) {
-					printf("点击提交\n");
-
-					FileDialog_getSaveFileName("./", "请选择保存路径");
-
-					});
-				o.width = 200;
-			}REND;
-			R(Button) {
-				o.name = "Button";
-				o.setLabel("取消");
-				o.onClick = CLOSURE([](MouseEvent* me) {
-					printf("点击提交\n");
-
-					HIER( mkMenuNativeItem(nullptr, "", nullptr) ) {
-						mkMenuNativeItem(o, "about", CLOSURE([=](MenuNativeItem* item) {
-
-							MessageDialog_alert("取消", "提示");
-							}));
-						mkMenuNativeItem(o, "关于");
-						mkMenuNativeItem(o, "退出");
-						mkMenuNativeItem(o, "打开");
-						HIER(mkMenuNativeItem(o, "添加")) {
-							mkMenuNativeItem(o, "分组");
-							mkMenuNativeItem(o, "视频流任务");
-							mkMenuNativeItem(o, "图片任务");
-							mkMenuNativeItem(o, "服务器配置");
-						}HEND;
-						mkMenuNativeItem(o, "复制");
-						mkMenuNativeItem(o, "粘贴");
-						mkMenuNativeItem(o, "剪切");
-						mkMenuNativeItem(o, "移动");
-
-						auto n = Ref(new MenuNative());
-						n->create(o);
-						n->showAtMouse();
-					}HEND;
-					
-
-					});
-			}REND;
-
-			R(Button) {
-				o.name = "Button";
-				o.setLabel("关闭窗口");
-				o.onClick = CLOSURE([=](MouseEvent* me) {
-					win->close();
-
-
-					});
-			}REND;
-		}REND;
-
-	}REND;
-
-
-	class TmpViewCb : public ViewCallback {
-	public:
-
-		virtual bool cbDrawSelf(View* div, Canvas* canvas) { 
-			canvas->fillColorByInt32(0xff00ff00);
-			canvas->beginPath();
-			canvas->rect(100, 100, 200, 200);
-			canvas->fill();
-			return true;
-		}
+#include <d2d1.h>
+#include "Urgc/Urgc.h"
+
+#pragma comment(lib, "d2d1.lib")
+
+static ID2D1Factory* g_factory = nullptr;
+static ID2D1HwndRenderTarget* g_target = nullptr;
+static ID2D1LinearGradientBrush* g_gradient = nullptr;
+static ID2D1SolidColorBrush* g_solid = nullptr;
+
+static void recreateGradientBrush() {
+	if (!g_target) return;
+
+	D2D1_SIZE_F size = g_target->GetSize();
+	D2D1_GRADIENT_STOP stops[] = {
+		{ 0.0f, D2D1::ColorF(0x89b4fa) },
+		{ 1.0f, D2D1::ColorF(0xf5c2e7) },
 	};
-	auto cb = Ref(new TmpViewCb());
-	//white->cb = cb;
-	win->setRootView(white);
-	win->setTitle("fui - GUI Framework Demo中文");
-	win->setSize(800, 600);
-	win->moveToCenter();
-	win->show();
-	//FileDialog_getSaveFileName("./", "请选择保存路径");
-	
-	//SetProcessWorkingSetSize(GetCurrentProcess(), -1, -1);
+	ID2D1GradientStopCollection* collection = nullptr;
+	g_target->CreateGradientStopCollection(stops, 2, &collection);
 
-	//mkTimerInterval(CLOSURE([]() {
-	//	printf("定时器到达\n");
-	//	}), 1000);
+	ID2D1LinearGradientBrush* brush = nullptr;
+	g_target->CreateLinearGradientBrush(
+		D2D1::LinearGradientBrushProperties(
+			D2D1::Point2F(0.0f, 0.0f),
+			D2D1::Point2F(size.width, size.height)),
+		collection, &brush);
+	collection->Release();
 
-
-	//Vec2 a= Screen_get_usable_size();
-	//Vec2 b = Screen_get_size();
-	//printf("screen:%f,%f,%f,%f\n", 
-	//	a.x, a.y, b.x, b.y
-	//	);
-
-	auto tray = Ref(new SystemTrayIcon());
-	tray->setIconPath("asset/icon2.ico");
-	tray->init();
-
-	mkTimerTimeout(CLOSURE([]() {
-		printf("定时器到达\n");
-		}), 1000);
-	win->onClosed = CLOSURE([](Window* win) {
-		printf("window 关闭:%s。 剪贴板:%s\n", win->getTitle().c_str(),
-			Clipboard_getText().c_str());
-		Clipboard_setText("你好啊");
-		});
-	app->runEventLoop();
-
-	return 0;
+	if (g_gradient) g_gradient->Release();
+	g_gradient = brush;
 }
 
+static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+	switch (msg) {
+	case WM_CREATE: {
+		RECT rc;
+		GetClientRect(hwnd, &rc);
+		if (FAILED(g_factory->CreateHwndRenderTarget(
+				D2D1::RenderTargetProperties(),
+				D2D1::HwndRenderTargetProperties(hwnd, D2D1::SizeU(rc.right, rc.bottom)),
+				&g_target))) {
+			return -1;
+		}
+		g_target->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::White, 0.5f), &g_solid);
+		recreateGradientBrush();
+		return 0;
+	}
+	case WM_PAINT: {
+		PAINTSTRUCT ps;
+		BeginPaint(hwnd, &ps);
 
+		g_target->BeginDraw();
+		g_target->Clear(D2D1::ColorF(0x181825));
 
+		D2D1_SIZE_F size = g_target->GetSize();
+		D2D1_RECT_F rect = D2D1::RectF(
+			size.width * 0.1f, size.height * 0.1f,
+			size.width * 0.9f, size.height * 0.9f);
+		g_target->FillRoundedRectangle(
+			D2D1::RoundedRect(rect, 24.0f, 24.0f), g_gradient);
 
-int mainDockLayout() {
-	SetConsoleOutputCP(65001);
+		g_target->FillEllipse(
+			D2D1::Ellipse(D2D1::Point2F(size.width * 0.5f, size.height * 0.5f), 60.0f, 60.0f),
+			g_solid);
+
+		g_target->EndDraw();
+		EndPaint(hwnd, &ps);
+		return 0;
+	}
+	case WM_SIZE:
+		if (g_target && wParam != SIZE_MINIMIZED) {
+			g_target->Resize(D2D1::SizeU(LOWORD(lParam), HIWORD(lParam)));
+			recreateGradientBrush();
+			//InvalidateRect(hwnd, nullptr, FALSE);
+		}
+		return 0;
+	case WM_ERASEBKGND:
+		return 1;
+	case WM_DESTROY:
+		if (g_solid) { g_solid->Release(); g_solid = nullptr; }
+		if (g_gradient) { g_gradient->Release(); g_gradient = nullptr; }
+		if (g_target) { g_target->Release(); g_target = nullptr; }
+		PostQuitMessage(0);
+		return 0;
+	}
+	return DefWindowProcW(hwnd, msg, wParam, lParam);
+}
+class User {
+public:
+	float data[1024];
+};
+//int WinMain(
+//	HINSTANCE hInstance,
+//	HINSTANCE hPrevInstance,
+//	LPSTR     lpCmdLine,
+//	int       nShowCmd
+//) {
+int main() {
 	urgc.start_process_thread();
-
-	App* app = App_use();
 	
-	auto white = Ref(new LayoutLinear());
-
-	RINS(white.get()) {
-		o.backgroundColor = 0xffffeeee;
-		o.direction = "column";
-		o.alignItems = "center";
-		o.justifyContent = "center";
-
-
-		R(DockLayout) {
-			o.width = 500;
-			o.height = 500;
-			o.backgroundColor = 0x3300ff00;
-
-
-			if (o.created) {
-				//HIER(mkDockItemSplitter(o.root, "project", false)) {
-				HIER(mkDockItemTab(o.root, "project")) {
-					HIER(mkDockItem(o, "hier")) {
-					} HEND;
-					HIER(mkDockItem(o, "inspector")) {
-					} HEND;
-				} HEND;
-
-
-				HIER(mkDockItem(o.root, "scene")) {
-				} HEND;
-
-				o.cbRenderItemHeadView = CLOSURE([=](DockItem* item, ViewBase& o, int kidIndex) {
-					if (item->id == ("project")) {
-					}
-					auto t = themeIns();
-					R(TextView, (long long)item) {
-						o.cursor = ("pointer");
-						o.setText(item->id);
-						o.color = t->dock_head_c;
-						o.padding.top = 4;
-						o.padding.setHor(8);
-						o.border.setAll(0.0f, 0xffaeaeb2);
-
-						bool active = item->parent->tabActiveIndex == kidIndex;
-						if (active) {
-							o.border.t.w = 2.f;
-							o.border.t.color = t->c_main;
-						}
-
-						if (kidIndex < item->parent->children->size() - 1) {
-							o.border.r.w = 1.f;
-						}
-						// o.backgroundColor = 
-							// item.parent.tabActiveIndex == kidIndex ? 0x99000030l
-							// : 0x66000030
-						o.backgroundColor =
-							active ? t->dock_head_bg_active
-							: t->dock_head_bg;
-
-					} REND;
-					});
-				o.cbRenderItemContentView = CLOSURE([=](DockItem* item, ViewBase& o) {
-					if (item->id == ("project")) {
-					}
-					ViewBase* ret = nullptr;
-					R(TextView, (long long)item) {
-						ret = &o;
-						o.needClip = true;
-
-						o.setText(item->id);
-						o.setFontSize(30);
-						o.color = 0xff000000;
-						o.radius.setAll(6);
-						o.padding.setAll(6);
-
-						//o.backgroundColor =
-						//	item->id == "hier" ? 0xffff0000
-						//	: item->id == "inspector" ? 0xff00ff00
-						//	: item->id == "scene" ? 0xff3000ff
-						//	: 0xff00ffff;
-
-						R(LayoutLinearCell) {
-							o.grow = 1;
-						} REND;
-
-					} REND;
-					return ret;
-				});
-			}
-		} REND;
-
-	}REND;
-
-
-	Ref<Window> win{ new Window() };
-	win->setRootView(white);
-	win->setTitle("fui - GUI Framework Demo中文");
-	win->setSize(800, 600);
-	win->moveToCenter();
-	win->show();
-
-	app->runEventLoop();
-
-	return 0;
-}
-
-void reactLayoutAlign(Node& o) {
-	R(LayoutAlign) {
-		o.backgroundColor = 0xff00ff00;
-		o.width = 200;
-		o.height = 200;
-		o.setCenter();
-		o.margin.bottom = 10;
-		R(TextView) {
-			o.setText("中间");
-			o.backgroundColor = 0xff999999;
-		}REND;
-	} REND;
-
-	R(LayoutAlign) {
-		o.backgroundColor = 0xff00ff00;
-		o.width = 200;
-		o.height = 200;
-		o.setBottomLeft();
-		o.margin.bottom = 10;
-		R(TextView) {
-			o.setText("左下");
-			o.backgroundColor = 0xff999999;
-		}REND;
-	} REND;
-
-	R(LayoutAlign) {
-		o.backgroundColor = 0xff00ff00;
-		o.width = 200;
-		o.height = 200;
-		o.setBottomRight();
-		o.margin.bottom = 10;
-		R(TextView) {
-			o.setText("右下");
-			o.backgroundColor = 0xff999999;
-		}REND;
-	} REND;
-
-
-	R(LayoutAlign) {
-		o.backgroundColor = 0xff00ff00;
-		o.width = 200;
-		o.height = 200;
-		o.setTopRight();
-		o.margin.bottom = 10;
-		
-		R(TextView) {
-			o.setText("右上");
-			o.backgroundColor = 0xff999999;
-		}REND;
-	} REND;
-}
-
-
-void reactRowWrap(Node& o) {
-	R(RowWrap) {
-		o.backgroundColor = 0xffefefef;
-		o.width = 400;
-		//o.height = 400;
-		o.rowGap = 8;
-		o.colGap = 8;
-
-		R(View) {
-			o.width = 100; 
-			o.height = 100;
-			o.backgroundColor = 0xff900999;
-		}REND;
-
-		R(View) {
-			o.width = 20;
-			o.height = 50;
-			o.backgroundColor = 0xffff9999;
-		}REND;
-
-		R(View) {
-			o.width = 150;
-			o.height =  70;
-			o.backgroundColor = 0xff999999;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-
-		R(View) {
-			o.width = 100;
-			o.height = 100;
-			o.backgroundColor = 0xff99ff99;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-
-		R(View) {
-			o.width = 150;
-			o.height = 70;
-			o.backgroundColor = 0xff999999;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-
-		R(View) {
-			o.width = 100;
-			o.height = 100;
-			o.backgroundColor = 0xff99ff99;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-	} REND;
-
-}
-
-
-void reactLayoutGrid(Node& o) {
-	R(LayoutGrid) {
-		o.backgroundColor = 0xff5fefef;
-		o.width = 400;
-		o.height = 400;
-		o.rowGap = 8;
-		o.colGap = 8;
-		o.rowSize = 200;
-
-		R(LayoutLinearCell) {}REND;
-
-
-		R(View) {
-			o.width = 100;
-			o.height = 100;
-			o.backgroundColor = 0xff900999;
-		}REND;
-
-		R(View) {
-			o.width = 20;
-			o.height = 50;
-			o.backgroundColor = 0xffff9999;
-		}REND;
-
-		R(View) {
-			o.width = 150;
-			o.height = 70;
-			o.backgroundColor = 0xff999999;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-
-		R(View) {
-			o.width = 100;
-			o.height = 100;
-			o.backgroundColor = 0xff99ff99;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-
-		R(View) {
-			o.width = 150;
-			o.height = 70;
-			o.backgroundColor = 0xff999999;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-
-		R(View) {
-			o.width = 100;
-			o.height = 100;
-			o.backgroundColor = 0xff99ff99;
-		}REND;
-
-		R(View) {
-			o.width = 120;
-			o.height = 100;
-			o.backgroundColor = 0xff9999ff;
-		}REND;
-	} REND;
-
-}
-int main2() {
 	SetConsoleOutputCP(65001);
-	urgc.start_process_thread();
 
-	App* app = App_use();
+	if (FAILED(D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &g_factory))) {
+		printf("D2D1CreateFactory failed\n");
+		return 1;
+	}
+	Ref<User> user = new User();
+	WNDCLASSW wc = {};
+	wc.lpfnWndProc = WndProc;
+	wc.hInstance = GetModuleHandleW(nullptr);
+	wc.lpszClassName = L"FuiTestD2D";
+	wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	RegisterClassW(&wc);
 
-	auto white = Ref(new LayoutLinear());
+	HWND hwnd = CreateWindowExW(
+		0, wc.lpszClassName, L"FuiTestMain - Direct2D",
+		WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, CW_USEDEFAULT, 900, 600,
+		nullptr, nullptr, wc.hInstance, nullptr);
+	if (!hwnd) {
+		g_factory->Release();
+		return 1;
+	}
 
-	RINS(white.get()) {
-		o.backgroundColor = 0xffffeeee;
-		o.direction = "column";
-		o.alignItems = "stretch";
-		o.justifyContent = "center";
+	ShowWindow(hwnd, SW_SHOW);
+	UpdateWindow(hwnd);
 
-		//reactLayoutAlign(o);
-		//reactRowWrap(o);
-		reactLayoutGrid(o);
-	}REND;
+	MSG msg;
+	while (GetMessageW(&msg, nullptr, 0, 0)) {
+		TranslateMessage(&msg);
+		DispatchMessageW(&msg);
+	}
 
-	Ref<Window> win{ new Window() };
-	win->setRootView(white);
-	win->setTitle("fui - GUI Framework Demo中文");
-	win->setSize(800, 600);
-	win->moveToCenter();
-	win->show();
-
-	User user;
-	user.say();
-	app->runEventLoop();
-
-	return 0;
+	g_factory->Release();
+	return (int)msg.wParam;
 }
