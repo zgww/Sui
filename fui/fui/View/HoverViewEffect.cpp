@@ -12,7 +12,7 @@ void HoverViewEffect::onMounted() {
 					hve->cbOnHoverChanged->invoke(v);
 				}
 			});
-			if (onClick || onHostEvent) {
+			//if (onClick || onHostEvent) {
 				v->cbOnEvent = CLOSURE([=](Event* e) {
 					if (hve->onHostEvent) {
 						if (hve->onHostEvent->invoke(e)) return;
@@ -27,7 +27,7 @@ void HoverViewEffect::onMounted() {
 						}
 					}
 				});
-			}
+			//}
 		}
 	}
 }
@@ -71,6 +71,7 @@ void HoverViewEffect::onUnmounting() {
 		View* v = dynamic_cast<View*>(p);
 		if (v) {
 			v->cbOnHoverChanged = nullptr;
+			v->cbOnEvent = nullptr;
 			applyEffect();
 		}
 	}

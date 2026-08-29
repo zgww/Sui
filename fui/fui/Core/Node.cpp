@@ -69,6 +69,33 @@ void Node::setOwnerWindow(Window* win) {
 	}
 }
 
+Node* Node::getOutChild(int i) {
+	if (_flagUseOutKids) {
+		auto outkids = gocOutKids();
+		return outkids->get(i);
+	}
+	return children->get(i);
+}
+
+int Node::getOutChildrenCount() {
+	if (_flagUseOutKids) {
+		auto outkids = gocOutKids();
+		return outkids->size();
+	}
+	return children->size();
+}
+void Node::insertOutChild(Node* child, int at)
+{
+	if (!child) return;
+
+	//作为outKids参数存在,适用于innerReact
+	if (_flagUseOutKids) {
+		auto outkids = gocOutKids();
+		outkids->insert_at(at, child);
+		return;
+	}
+	insertChild(child, at);
+}
 Node* Node::getChild(int i) {
 	return children->get(i);
 }
@@ -109,7 +136,8 @@ void Node::insertChild(Node* child, int at) {
 	}
 	child->setMounted(mounted);
 }
-void Node::removeChildAt(int idx) {
+
+void Node::removeOutChildAt(int idx) {
 	//作为outKids参数存在,适用于innerReact
 	if (_flagUseOutKids) {
 		auto outkids = gocOutKids();
@@ -118,6 +146,10 @@ void Node::removeChildAt(int idx) {
 	}
 
 
+	removeChildAt(idx);
+}
+
+void Node::removeChildAt(int idx) {
 	auto child = this->getChild(idx);
 	if (child) {
 		child->parent = nullptr;
@@ -220,6 +252,11 @@ void Node::placeKidsOfSlot(Ref<GcList<Node>> kids, std::string slot)
 	}
 }
 
+void Node::placeOutKids(std::string slot)
+{
+	placeKidsOfSlot(gocOutKids(), slot);
+}
+
 Node& Node::startInnerReact() {
 	_flagUseOutKids = false;
 	return *this;
@@ -278,8 +315,8 @@ std::string Node::toString() {
 
 
 Node* Node_findChildByKeyAfterIndexBeforeStaticChild(Node* parent, int start, std::string& key) {
-	for (int i = start, l = parent->children->size(); i < l; i++) {
-		auto kid = parent->children->get(i);
+	for (int i = start, l = parent->getOutChildrenCount(); i < l; i++) {
+		auto kid = parent->getOutChild(i);
 		if (kid) {
 			if (kid->gocKey == key) {
 				return kid;

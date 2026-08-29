@@ -6,6 +6,9 @@
   <Project Path="../FuiTestMain/FuiTestMain.vcxproj" Id="27f22c75-dc49-4617-8dbd-0188db8dbf07">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
+  <Project Path="../ImageViewer/ImageViewer.vcxproj" Id="3166cea3-2460-4525-b128-3786609e0430">
+    <BuildDependency Project="fui.vcxproj" />
+  </Project>
   <Project Path="../Sgl/Sgl.vcxproj" Id="9dc77d1e-f9ab-4010-8c60-172f0bb2b05c">
     <BuildDependency Project="fui.vcxproj" />
   </Project>

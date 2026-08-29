@@ -3,11 +3,74 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#include <windowsx.h>
 #include "../Naga/Utf8Util.h"
 #endif
 
 static int gMenuId = 10000;
 static Ref<MenuNative> currentMenuNative = nullptr;
+
+
+
+
+
+//弹出菜单的消息勾子
+static LRESULT HookProc(int code, WPARAM wp, LPARAM lp) {
+	if (code == MSGF_MENU) {
+		PMSG pMsg = (PMSG)lp;
+		if (pMsg->message == WM_MOUSEMOVE) {
+			auto clientX = (int)(short)LOWORD(lp);
+			auto clientY = (int)(short)HIWORD(lp);
+
+			// URGC_VAR_CLEANUP SuiCore$App *app = NULL;
+			// SuiCore$App_use(&app);
+			// app->layoutAndDrawAllWindows(app);
+
+			//auto win = get_window_by_hwnd(pMsg->hwnd);
+			//auto r = win->getClientRect();
+
+			POINT p = { 0 };
+			ClientToScreen(pMsg->hwnd, &p);
+			// GetWindowRect(pMsg->hwnd, &rect);
+
+			RECT clientRect = {};
+			GetClientRect(pMsg->hwnd, &clientRect);
+
+			auto screenX = GET_X_LPARAM(pMsg->lParam);
+			auto screenY = GET_Y_LPARAM(pMsg->lParam);
+
+
+			//SuiCore$MouseData md = { 0 };
+			//md.clientX = screenX - p.x;
+			//md.clientY = screenY - p.y;
+			//md.button = 0;
+			//md.isMouseMove = true;
+			//md.windowId = (long long)pMsg->hwnd;
+
+			//// printf("HOokProc WM_MOUSEMOVE. %d,%d. %d,%d\n", clientX, clientY
+			//// , md.clientX, md.clientY);
+
+			//SuiCore$Mouse_onMouseMove(md);
+			//SuiCore$App_repaintWindowById((long long)pMsg->hwnd);
+
+			Mouse_onMouseMove((long long)pMsg->hwnd, screenX - p.x, screenY - p.y, false, false, false);
+			App_repaintWindowById((long long)pMsg->hwnd);
+			// App::ins()->_remap_up_position.remap_onmove(&e);
+			// e.dispatchMouseMove();
+
+
+			//printf("mousemove hook: %d %d window:%d\n", e.client_x, e.client_y, win->getId());
+			//_mouse_move(win, pMsg->wParam, pMsg->lParam);
+		}
+
+	}
+	return CallNextHookEx(NULL, code, wp, lp);
+
+}
+
+
+
+
 
 MenuNativeItem::MenuNativeItem() {
 	commandId = gMenuId;
@@ -80,6 +143,9 @@ void MenuNative::show() {
 	showAtScreenPosition((int)s.x, (int)s.y);
 }
 
+
+
+
 void MenuNative::showAt(int clientX, int clientY) {
 #ifdef _WIN32
 	HWND hwnd = (HWND)windowId;
@@ -90,7 +156,13 @@ void MenuNative::showAt(int clientX, int clientY) {
 	pt.x = clientX;
 	pt.y = clientY;
 	ClientToScreen(hwnd, &pt);
+
+
+
+	auto hook = SetWindowsHookEx(WH_MSGFILTER, HookProc, NULL, GetCurrentThreadId());
 	TrackPopupMenu((HMENU)id, TPM_LEFTALIGN | TPM_TOPALIGN, pt.x, pt.y, 0, hwnd, nullptr);
+	UnhookWindowsHookEx(hook);
+	onDismiss();
 #endif
 }
 
@@ -100,7 +172,10 @@ void MenuNative::showAtScreenPosition(int screenX, int screenY) {
 	if (!hwnd) {
 		hwnd = GetForegroundWindow();
 	}
+	auto hook = SetWindowsHookEx(WH_MSGFILTER, HookProc, NULL, GetCurrentThreadId());
 	TrackPopupMenu((HMENU)id, TPM_LEFTALIGN | TPM_TOPALIGN, screenX, screenY, 0, hwnd, nullptr);
+	UnhookWindowsHookEx(hook);
+	onDismiss();
 	PostMessage(hwnd, WM_NULL, 0, 0);
 #endif
 }
@@ -122,7 +197,9 @@ void MenuNative::onDismiss() {
 void MenuNative::destroy() {
 #ifdef _WIN32
 	if (id) {
-		DestroyMenu((HMENU)id);
+		EndMenu(); //关闭菜单
+		auto ok = DestroyMenu((HMENU)id);//释放菜单资源
+		auto err = GetLastError();
 		id = 0;
 	}
 #endif

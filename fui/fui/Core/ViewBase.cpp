@@ -4,6 +4,7 @@
 #include "App.h"
 #include "LayoutCell.h"
 #include "../Urgc/GcList.h"
+#include "../Meta/MetaRegistry.h"
 
 Ref<GcList<LayoutCell>> ViewBase::gocLayoutCells() {
 	if (!layoutCells) {
@@ -296,4 +297,13 @@ ViewBase* hitTestChildren_withZ(ViewBase* ins, float x, float y) {
 		}
 	}
 	return ret;
+}
+
+void ViewBase::registerMeta() {
+	auto reg = MetaRegistry::instance()->registerClass<ViewBase, Node>();
+
+	reg.property("visible", &ViewBase::visible);
+	reg.property("cursor", &ViewBase::cursor);
+	reg.property("hover", &ViewBase::hover);
+	reg.property("z", &ViewBase::z);
 }

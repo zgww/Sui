@@ -83,6 +83,39 @@ static std::mutex free_later_mutex;
 //批量延迟删除
 static void do_free_later();
 
+
+static std::size_t gcObjSize = 0;
+
+static size_t get_malloc_size(void* ptr) {
+	if (ptr == NULL) return 0;
+
+#ifdef _WIN32
+	return _msize(ptr);
+#elif defined(__linux__)
+	return malloc_usable_size(ptr);
+#elif defined(__APPLE__)
+	return malloc_size(ptr);
+#else
+	return 0; // 不支持的平台
+#endif
+}
+void* GcObj::operator new(std::size_t size)
+{
+	//std::cout << "operator new" << std::endl;
+	void *p = malloc(size);
+	int actualSize = get_malloc_size(p);
+	gcObjSize += size;
+	return p;
+}
+void GcObj::operator delete(void* ptr)
+{
+
+	int actualSize = get_malloc_size(ptr);
+	gcObjSize -= actualSize;
+	//std::cout << "operator delete" << std::endl;
+	free(ptr);
+}
+
 static void printHeapSummary(){
     DWORD numHeaps = GetProcessHeaps(0, NULL);
     HANDLE *heaps = reinterpret_cast<HANDLE*>(calloc(numHeaps, sizeof(HANDLE)));
@@ -764,14 +797,15 @@ void Urgc::process_on_thread()
 				int objCount = target_in_ref_mgr.size();
 				int _memcnt = memcnt.load();;
 
-				printf("T%lld#%5d-%4dI%d 处理事件[%d]结束, 耗时:%lld ms %lldms. cost ref:%d,%lldus, deref:%d, %lldus guard:%d, %lldus degurad:%d, %lldus setDeleter:%d, %lldus\n", 
+				printf("T%lld#%5d-%4dI%d 处理事件[%d]结束, 耗时:%lld ms %lldms. cost ref:%d,%lldus, deref:%d, %lldus guard:%d, %lldus degurad:%d, %lldus setDeleter:%d, %lldus  gcObjSize(MB):%f\n", 
 					ms3, objCount, delete_cnt, _memcnt,
 					count, ms2 - ms, ms3 - ms2, 
 					refCount, refCostUs, 
 					derefCount, derefCostUs, 
 					guardCount, guardCostUs, 
 					deguardCount, deguardCostUs,
-					setDeleterCount, setDeleterCostUs
+					setDeleterCount, setDeleterCostUs,
+					gcObjSize / 1000.0 / 1000.0
 				);
 			}
 

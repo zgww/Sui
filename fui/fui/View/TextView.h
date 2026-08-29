@@ -7,9 +7,20 @@
 #include <vector>
 #include <string>
 
+
+/**
+ * @export
+ */
 class TextView : public View {
 public:
+	/**
+	 * @property
+	 * @brief text
+	 */
 	std::string text;
+	/**
+	 * @property
+	 */
 	float fontSize = 14.0f;
 	std::string fontFace = "sans";
 	int color = 0xff000000;
@@ -45,4 +56,6 @@ public:
 	void invalidLayout() override;
 
 	virtual const char* getClassName() const override { return "TextView"; }
+
+	static void registerMeta();
 };

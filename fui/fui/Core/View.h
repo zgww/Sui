@@ -88,4 +88,6 @@ public:
 	virtual void draw_self(Canvas* canvas) override;
 
 	virtual const char* getClassName() const override { return "View"; }
+
+	static void registerMeta();
 };

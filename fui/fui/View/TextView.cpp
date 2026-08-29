@@ -2,6 +2,7 @@
 #include "../Core/Window.h"
 #include "../Core/Canvas.h"
 #include "../Core/App.h"
+#include "../Meta/MetaRegistry.h"
 
 void TextView::setText(const std::string& t) {
 	if (text != t) {
@@ -231,4 +232,18 @@ void TextView::draw_self(Canvas* canvas) {
 	for (auto& li : lineInfos) {
 		canvas->text(li.x + pl + areaX, li.y + pt - tm.descender, li.text.c_str());
 	}
+}
+
+void TextView::registerMeta() {
+	auto reg = MetaRegistry::instance()->registerClass<TextView, View>();
+
+	reg.property("text", &TextView::text);
+	reg.property("fontSize", &TextView::fontSize);
+	reg.property("color", &TextView::color);
+	reg.property("textAlign", &TextView::textAlign);
+	reg.property("lineHeight", &TextView::lineHeight);
+	reg.property("wrap", &TextView::wrap);
+	reg.property("maxLine", &TextView::maxLine);
+	reg.property("overflowEllipsis", &TextView::overflowEllipsis);
+	reg.property("fontFace", &TextView::fontFace);
 }

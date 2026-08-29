@@ -36,6 +36,8 @@ struct Inset {
 		right = -right;
 		bottom = -bottom;
 	}
+
+	static void registerMeta();
 };
 
 inline Inset mkInset0() {

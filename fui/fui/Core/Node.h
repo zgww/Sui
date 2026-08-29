@@ -78,7 +78,7 @@ public:
 
 	//用于goc
 	int gocIdx = 0; 
-	std::string gocKey;
+	std::string gocKey; 
 
 	bool mounted = false;
 	Ref<Window> ownerWindow{nullptr, this};
@@ -112,6 +112,7 @@ public:
 	void removeSelf();
 	void dissolveSubtree();
 
+
 	Ref<GcList<Node>> getAncients(bool includeSelf);
 
 	// React system
@@ -120,11 +121,18 @@ public:
 	void placeKid(Node* n);
 	void placeKids(Ref<GcList<Node>> kids);
 	void placeKidsOfSlot(Ref<GcList<Node>> kids, std::string slot);
+	void placeOutKids(std::string slot="");
 	// innerReact适用于有内部子树，有槽节点的情况
 	void initInnerReact();
 	Node& startInnerReact();
 	void endInnerReact();
 	Ref<GcList<Node>> gocOutKids();
+
+	void removeOutChildAt(int idx);
+	//根据_flagUseOutKids,取得对应的child
+	Node* getOutChild(int i);
+	int getOutChildrenCount();
+	void insertOutChild(Node* child, int at);
 
 
 	// Utility
@@ -165,7 +173,7 @@ template <class T>
 Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 	if (key == "") { //期望静态节点
 		while (true) {
-			auto curNode = o->getChild(o->gocIdx);
+			auto curNode = o->getOutChild(o->gocIdx);
 			if (curNode == nullptr) {
 				break; //需要创建
 			}
@@ -180,14 +188,14 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 				}
 			}
 			else { //非静态节点
-				o->removeChildAt(o->gocIdx); //直接移除
+				o->removeOutChildAt(o->gocIdx); //直接移除
 			}
 
 		}
 	}
 	else { //带key节点
 		while (true) {
-			auto curNode = o->getChild(o->gocIdx);
+			auto curNode = o->getOutChild(o->gocIdx);
 			if (curNode == nullptr) {
 				break; //需要创建
 			}
@@ -207,7 +215,7 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 				auto found = Node_findChildByKeyAfterIndexBeforeStaticChild(o, o->gocIdx + 1, key);
 				if (found) {
 					if (isSameNodeType<T>(found)) { //类型匹配一致,需要移位回来
-						o->insertChild(found, o->gocIdx);
+						o->insertOutChild(found, o->gocIdx);
 						o->gocIdx++;
 						found->created = false;//标记为update
 						return (T*)found;
@@ -227,7 +235,7 @@ Ref<T> Node_getOrCreate(Node* o, std::string key = "") {
 	//创建新节点
 	Ref<T> ret{ new T() };
 	ret->gocKey = key;
-	o->insertChild(ret.get(), o->gocIdx);
+	o->insertOutChild(ret.get(), o->gocIdx);
 	o->gocIdx++;
 	return ret;
 }

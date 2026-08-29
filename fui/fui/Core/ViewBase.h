@@ -9,6 +9,7 @@
 #include "Vec2.h"
 #include "../Urgc/GcList.h"
 
+
 class Canvas;
 class Window;
 class LayoutCell;
@@ -24,6 +25,7 @@ public:
 
 	Mat2d transform;
 	Mat2d _world_transform;
+
 	bool visible = true;
 	std::string cursor = "unset";
 	bool hover = false;
@@ -91,6 +93,8 @@ public:
 	virtual std::string toString() override;
 
 	virtual const char* getClassName() const override { return "ViewBase"; }
+
+	static void registerMeta();
 };
 
 ViewBase* hitTestChildren_withZ(ViewBase* ins, float x, float y);

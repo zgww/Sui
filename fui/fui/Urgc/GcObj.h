@@ -11,5 +11,9 @@ public:
 	//finalize中可能产生新的deref， 那么process时，要忽略无效的target
 	//确认不需要此函数
 	//virtual void finalize() {}; 
+
+
+	void* operator new(std::size_t size);
+	void operator delete(void* ptr);
 };
 

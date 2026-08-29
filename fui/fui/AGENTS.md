@@ -89,6 +89,11 @@ View
 	TableView
 	TextView
 	TreeView
+Meta
+	MetaProperty
+	MetaClass
+	MetaRegistry
+	MetaRegistrar
 	
 需要特别注意， 内存管理使用的是URGC.  主要使用Ref这个类。 要特别注意Ref类是怎么用在局部变量上的，是怎么用在成员变量上的。
 在局部变量使用Ref:

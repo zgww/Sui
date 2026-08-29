@@ -71,6 +71,11 @@
     <ClInclude Include="Core\Keyboard.h" />
     <ClInclude Include="Core\LayoutCell.h" />
     <ClInclude Include="Core\NodeLib.h" />
+    <ClInclude Include="Meta\MetaProperty.h" />
+    <ClInclude Include="Meta\MetaClass.h" />
+    <ClInclude Include="Meta\MetaRegistry.h" />
+    <ClInclude Include="Meta\MetaRegistrar.h" />
+    <ClInclude Include="Meta\Meta.h" />
     <ClInclude Include="Core\Vec4.h" />
     <ClInclude Include="Core\Mat3.h" />
     <ClInclude Include="Core\Quaternion.h" />
@@ -129,6 +134,7 @@
     <ClCompile Include="Naga\Path.cpp" />
     <ClCompile Include="Urgc\urgc.cpp" />
     <ClCompile Include="Core\Color.cpp" />
+    <ClCompile Include="Core\Inset.cpp" />
     <ClCompile Include="Core\Emitter.cpp" />
     <ClCompile Include="Core\Node.cpp" />
     <ClCompile Include="Core\ViewBase.cpp" />
@@ -148,6 +154,8 @@
     <ClCompile Include="Core\Keyboard.cpp" />
     <ClCompile Include="Core\LayoutCell.cpp" />
     <ClCompile Include="Core\NodeLib.cpp" />
+    <ClCompile Include="Meta\MetaClass.cpp" />
+    <ClCompile Include="Meta\MetaRegistry.cpp" />
     <ClCompile Include="Layout\LayoutAlign.cpp" />
     <ClCompile Include="Layout\LayoutLinear.cpp" />
     <ClCompile Include="Layout\LayoutGrid.cpp" />
@@ -207,7 +215,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>

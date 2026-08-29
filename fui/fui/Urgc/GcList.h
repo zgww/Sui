@@ -80,7 +80,7 @@ public:
     }
     std::function<void(void*)> deleter = [](void *p){
         auto obj = (GcObj*)p;
-        printf("GcListDeleter:%s\n", typeid(*(GcObj*)p).name());
+        //printf("GcListDeleter:%s\n", typeid(*(GcObj*)p).name());
         delete obj;
     };
     void set_at(int idx, T *ele)

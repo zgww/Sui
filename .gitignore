@@ -123,3 +123,6 @@
 /fui/fui/x64/Release/fui.lib
 /Sui/build_ninja
 /FuiNinja/build
+/fui/ImageViewer/x64
+/fui/fui/x64
+/fui/stdin.log

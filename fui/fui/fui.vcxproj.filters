@@ -141,6 +141,21 @@
     <ClInclude Include="Core\NodeLib.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Meta\MetaProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Meta\MetaClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Meta\MetaRegistry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Meta\MetaRegistrar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Meta\Meta.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="Core\Vec4.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -296,6 +311,9 @@
     <ClCompile Include="Core\Color.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Inset.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="Core\Emitter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -351,6 +369,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Core\NodeLib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Meta\MetaClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Meta\MetaRegistry.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Layout\LayoutAlign.cpp">
