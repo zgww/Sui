@@ -1,7 +1,5 @@
 module;
 #include <Windows.h>
-#include <commctrl.h>
-#pragma comment(lib, "comctl32.lib")
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -46,6 +44,29 @@ static std::string getIconPath(const std::string& name) {
 	return dir + "icons\\" + name;
 }
 
+static void openConsole() {
+	HWND con = GetConsoleWindow();
+	if (con) {
+		if (IsIconic(con)) ShowWindow(con, SW_RESTORE);
+		SetForegroundWindow(con);
+		return;
+	}
+	AllocConsole();
+	FILE* f;
+	freopen_s(&f, "CONOUT$", "w", stdout);
+	freopen_s(&f, "CONOUT$", "w", stderr);
+	freopen_s(&f, "CONIN$", "r", stdin);
+	SetConsoleOutputCP(65001);
+}
+
+class ImageViewerState;
+
+class TooltipCallback : public ViewCallback {
+public:
+	ImageViewerState* state = nullptr;
+	bool cbDrawSelf(View* div, Canvas* canvas) override;
+};
+
 export class ImageViewerState : public GcObj {
 public:
 	Ref<Window> win{nullptr, this};
@@ -59,64 +80,25 @@ public:
 	ImageCanvasView* canvasPtr = nullptr;
 	ThumbnailBar* thumbPtr = nullptr;
 
-	HWND hTooltip = nullptr;
+	std::string tooltipText;
+	float tooltipX = 0;
+	float tooltipY = 0;
+	View* tooltipOverlay = nullptr;
 
-	void initTooltip() {
-		INITCOMMONCONTROLSEX icex = { sizeof(icex) };
-		icex.dwICC = ICC_BAR_CLASSES;
-		InitCommonControlsEx(&icex);
-
-		hTooltip = CreateWindowExW(
-			WS_EX_TOPMOST, TOOLTIPS_CLASSW, NULL,
-			TTS_ALWAYSTIP | TTS_NOPREFIX,
-			CW_USEDEFAULT, CW_USEDEFAULT,
-			CW_USEDEFAULT, CW_USEDEFAULT,
-			NULL, NULL, GetModuleHandle(NULL), NULL
-		);
-
-		if (hTooltip && win) {
-			TOOLINFOW ti = {};
-			ti.cbSize = sizeof(ti);
-			ti.uFlags = TTF_TRACK | TTF_ABSOLUTE;
-			ti.hwnd = (HWND)win->id;
-			ti.uId = 1;
-			ti.lpszText = (LPWSTR)L"";
-			SendMessageW(hTooltip, TTM_ADDTOOLW, 0, (LPARAM)&ti);
-			SendMessageW(hTooltip, TTM_SETMAXTIPWIDTH, 0, 300);
+	void showTooltip(const std::string& text, float x, float y) {
+		tooltipText = text;
+		tooltipX = x;
+		tooltipY = y + 22;
+		if (tooltipOverlay) {
+			tooltipOverlay->setVisible(true);
 		}
 	}
 
-	void showTooltip(const std::string& text) {
-		if (!hTooltip || !win) return;
-
-		int wlen = MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, nullptr, 0);
-		std::wstring wstr(wlen, L'\0');
-		MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, &wstr[0], wlen);
-
-		TOOLINFOW ti = {};
-		ti.cbSize = sizeof(ti);
-		ti.hwnd = (HWND)win->id;
-		ti.uId = 1;
-		ti.lpszText = (LPWSTR)wstr.c_str();
-		SendMessageW(hTooltip, TTM_UPDATETIPTEXTW, 0, (LPARAM)&ti);
-
-		POINT pt;
-		GetCursorPos(&pt);
-		pt.y += 22;
-		SendMessageW(hTooltip, TTM_TRACKPOSITION, 0, MAKELONG(pt.x, pt.y));
-
-		ti.uFlags = TTF_TRACK | TTF_ABSOLUTE;
-		SendMessageW(hTooltip, TTM_TRACKACTIVATE, TRUE, (LPARAM)&ti);
-	}
-
 	void hideTooltip() {
-		if (!hTooltip || !win) return;
-		TOOLINFOW ti = {};
-		ti.cbSize = sizeof(ti);
-		ti.uFlags = TTF_TRACK | TTF_ABSOLUTE;
-		ti.hwnd = (HWND)win->id;
-		ti.uId = 1;
-		SendMessageW(hTooltip, TTM_TRACKACTIVATE, FALSE, (LPARAM)&ti);
+		tooltipText.clear();
+		if (tooltipOverlay) {
+			tooltipOverlay->setVisible(false);
+		}
 	}
 
 	void render() {
@@ -151,6 +133,9 @@ public:
 								} },
 								{ "关于我们", [=]() {
 									MessageBoxW(nullptr, L"ImageViewer\n\n一个简洁高效的图片查看器\n使用 fui GUI 框架开发", L"关于我们", MB_OK | MB_ICONINFORMATION);
+								} },
+								{ "打开控制台", [=]() {
+									openConsole();
 								} }
 							}}
 						};
@@ -175,10 +160,9 @@ public:
 					o.onClick = CLOSURE([=](MouseEvent* me) {
 						onOpenFile();
 					});
-					Button* btn = &o;
-					o.cbOnHoverChanged = CLOSURE([=]() {
-						if (btn->hover) showTooltip("打开");
-						else hideTooltip();
+					o.cbOnEvent = CLOSURE([=](Event* ev) {
+						if (auto* me = dynamic_cast<MouseEnterEvent*>(ev)) showTooltip("打开", me->clientX, me->clientY);
+						else if (dynamic_cast<MouseLeaveEvent*>(ev)) hideTooltip();
 					});
 				} REND;
 
@@ -196,10 +180,9 @@ public:
 					o.onClick = CLOSURE([=](MouseEvent* me) {
 						if (canvasPtr) canvasPtr->zoomIn();
 					});
-					Button* btn = &o;
-					o.cbOnHoverChanged = CLOSURE([=]() {
-						if (btn->hover) showTooltip("放大");
-						else hideTooltip();
+					o.cbOnEvent = CLOSURE([=](Event* ev) {
+						if (auto* me = dynamic_cast<MouseEnterEvent*>(ev)) showTooltip("放大", me->clientX, me->clientY);
+						else if (dynamic_cast<MouseLeaveEvent*>(ev)) hideTooltip();
 					});
 				} REND;
 
@@ -215,10 +198,9 @@ public:
 					o.onClick = CLOSURE([=](MouseEvent* me) {
 						if (canvasPtr) canvasPtr->zoomOut();
 					});
-					Button* btn = &o;
-					o.cbOnHoverChanged = CLOSURE([=]() {
-						if (btn->hover) showTooltip("缩小");
-						else hideTooltip();
+					o.cbOnEvent = CLOSURE([=](Event* ev) {
+						if (auto* me = dynamic_cast<MouseEnterEvent*>(ev)) showTooltip("缩小", me->clientX, me->clientY);
+						else if (dynamic_cast<MouseLeaveEvent*>(ev)) hideTooltip();
 					});
 				} REND;
 
@@ -234,10 +216,9 @@ public:
 					o.onClick = CLOSURE([=](MouseEvent* me) {
 						if (canvasPtr) canvasPtr->center();
 					});
-					Button* btn = &o;
-					o.cbOnHoverChanged = CLOSURE([=]() {
-						if (btn->hover) showTooltip("适应窗口");
-						else hideTooltip();
+					o.cbOnEvent = CLOSURE([=](Event* ev) {
+						if (auto* me = dynamic_cast<MouseEnterEvent*>(ev)) showTooltip("适应窗口", me->clientX, me->clientY);
+						else if (dynamic_cast<MouseLeaveEvent*>(ev)) hideTooltip();
 					});
 				} REND;
 
@@ -253,10 +234,9 @@ public:
 					o.onClick = CLOSURE([=](MouseEvent* me) {
 						if (canvasPtr) canvasPtr->rotate90();
 					});
-					Button* btn = &o;
-					o.cbOnHoverChanged = CLOSURE([=]() {
-						if (btn->hover) showTooltip("旋转 90°");
-						else hideTooltip();
+					o.cbOnEvent = CLOSURE([=](Event* ev) {
+						if (auto* me = dynamic_cast<MouseEnterEvent*>(ev)) showTooltip("旋转 90°", me->clientX, me->clientY);
+						else if (dynamic_cast<MouseLeaveEvent*>(ev)) hideTooltip();
 					});
 				} REND;
 
@@ -276,10 +256,9 @@ public:
 						GetModuleFileNameA(nullptr, exePath, MAX_PATH);
 						shellExt::registerShellMenu(std::string(exePath));
 					});
-					Button* btn = &o;
-					o.cbOnHoverChanged = CLOSURE([=]() {
-						if (btn->hover) showTooltip("注册右键菜单");
-						else hideTooltip();
+					o.cbOnEvent = CLOSURE([=](Event* ev) {
+						if (auto* me = dynamic_cast<MouseEnterEvent*>(ev)) showTooltip("注册右键菜单", me->clientX, me->clientY);
+						else if (dynamic_cast<MouseLeaveEvent*>(ev)) hideTooltip();
 					});
 				} REND;
 
@@ -325,6 +304,20 @@ public:
 				if (!currentDir.empty() && thumbPtr) {
 					thumbPtr->setDirectory(currentDir);
 					thumbPtr->setSelectedIndex(currentIndex);
+				}
+			} REND;
+
+			// Tooltip overlay (drawn on top, compensates for frame position)
+			R(View) {
+				o.width = 0;
+				o.height = 0;
+				o.needClip = false;
+				o.visible = false;
+				tooltipOverlay = &o;
+				if (o.created) {
+					auto tc = new TooltipCallback();
+					tc->state = this;
+					o.cb = tc;
 				}
 			} REND;
 		} REND;
@@ -391,8 +384,6 @@ export void runImageViewer(const std::string& initialFile) {
 	state->win->moveToCenter();
 	state->win->show();
 
-	state->initTooltip();
-
 	state->win->onClosed = CLOSURE([=](Window* win) {
 		printf("ImageViewer closed\n");
 	});
@@ -402,4 +393,35 @@ export void runImageViewer(const std::string& initialFile) {
 	}
 
 	app->runEventLoop();
+}
+
+bool TooltipCallback::cbDrawSelf(View* div, Canvas* canvas) {
+	if (!state || state->tooltipText.empty()) return true;
+
+	canvas->save();
+	canvas->translate(-div->frame.x, -div->frame.y);
+
+	const char* text = state->tooltipText.c_str();
+	float x = state->tooltipX;
+	float y = state->tooltipY;
+
+	canvas->fontSize(13);
+	canvas->fontFace("sans");
+	float bounds[4];
+	canvas->textBounds(0, 0, text, nullptr, bounds);
+	float textW = bounds[2] - bounds[0];
+
+	float pad = 6.0f;
+	float bgH = 22.0f;
+
+	canvas->beginPath();
+	canvas->roundRect(x, y, textW + pad * 2, bgH, 4.0f);
+	canvas->fillColorByInt32(0xe6000000);
+	canvas->fill();
+
+	canvas->fillColorByInt32(0xffffffff);
+	canvas->text(x + pad, y + 16, text);
+
+	canvas->restore();
+	return true;
 }
