@@ -71,7 +71,7 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPara
 		return 0;
 	}
 	case WM_SIZE:
-		if (g_target && wParam != SIZE_MINIMIZED) {
+		if (g_target && wParam  != SIZE_MINIMIZED) {
 			g_target->Resize(D2D1::SizeU(LOWORD(lParam), HIWORD(lParam)));
 			recreateGradientBrush();
 			//InvalidateRect(hwnd, nullptr, FALSE);
