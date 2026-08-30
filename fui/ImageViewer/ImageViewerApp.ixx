@@ -17,6 +17,7 @@ module;
 #include "Core/MouseEvent.h"
 #include "Core/Event.h"
 #include "Core/Predef.h"
+#include "Core/Timer.h"
 #include "Naga/Path.h"
 #include "Layout/LayoutLinear.h"
 #include "Layout/LayoutAlign.h"
@@ -70,7 +71,7 @@ public:
 export class ImageViewerState : public GcObj {
 public:
 	Ref<Window> win{nullptr, this};
-	Ref<LayoutLinear> root{nullptr, this};
+	Ref<LayoutAlign> root{nullptr, this};
 
 	std::string currentPath;
 	std::string currentDir;
@@ -84,6 +85,17 @@ public:
 	float tooltipX = 0;
 	float tooltipY = 0;
 	View* tooltipOverlay = nullptr;
+	Ref<Timer> invalidRender{ nullptr, this };
+
+	ImageViewerState() {
+		CtorGuard _(this);
+		auto self = Ref(this);
+		self->invalidRender = mkTimerTimeout_notStart(CLOSURE(
+			[=]() {
+				self->render();
+			}
+		), 10);
+	}
 
 	void showTooltip(const std::string& text, float x, float y) {
 		tooltipText = text;
@@ -107,18 +119,49 @@ public:
 		t.scrollbar_barBg = 0x99ffffff;
 
 		RINS(root.get()) {
-			o.direction = "column";
-			o.aiStretch();
+			//o.direction = "column";
+			//o.aiStretch();
+
+
+			R(ImageCanvasView) {
+				canvasPtr = &o;
+				if (o.created) {
+					o.onZoomChanged = CLOSURE([=](float z) {
+						currentZoom = z;
+						invalidRender->restart();
+						//window->invalidReact();
+						//render();
+						});
+				}
+				if (!currentPath.empty()) {
+					o.setSrc(currentPath);
+				}
+				//R(LayoutLinearCell) {
+				//	o.grow = 1;
+				//} REND;
+
+				R(LayoutAlignCell) {
+					o.setCenter();
+					o.sizeRatio.setScalar(1.0f);
+				} REND;
+			} REND;
 
 			// 菜单栏 + 工具栏（同一行）
 			R(LayoutLinear) {
 				o.direction = "row";
-				o.height = 32;
-				o.backgroundColor = 0xff2d2d2d;
 				o.aic();
+				o.height = 32;
+				o.backgroundColor = 0xcc222222;
+
+				R(LayoutAlignCell) {
+					o.setTopCenter();
+					o.sizeRatio.x = 1.0f;
+				} REND;
 
 				R(MenuBar) {
 					R(LayoutLinearCell) { o.grow = 1; } REND;
+					//o.backgroundColor = 0xfffd2d2d;
+
 					if (o.created) {
 						std::vector<MenuBar::MenuItem> items = {
 							{ "文件", {
@@ -152,7 +195,7 @@ public:
 				R(Button) {
 					o.setSrc(getIconPath("open.png"));
 					o.setLabel("");
-					o.setNormalBg(0xff2d2d2d);
+					o.setNormalBg(0x002d2d2d);
 					o.hoverBg = 0xff404040;
 					o.padding.setAxis(0, 0);
 					o.width = 32;
@@ -172,7 +215,7 @@ public:
 				R(Button) {
 					o.setSrc(getIconPath("zoom-in.png"));
 					o.setLabel("");
-					o.setNormalBg(0xff2d2d2d);
+					o.setNormalBg(0x002d2d2d);
 					o.hoverBg = 0xff404040;
 					o.padding.setAxis(0, 0);
 					o.width = 32;
@@ -190,7 +233,7 @@ public:
 				R(Button) {
 					o.setSrc(getIconPath("zoom-out.png"));
 					o.setLabel("");
-					o.setNormalBg(0xff2d2d2d);
+					o.setNormalBg(0x002d2d2d);
 					o.hoverBg = 0xff404040;
 					o.padding.setAxis(0, 0);
 					o.width = 32;
@@ -208,7 +251,7 @@ public:
 				R(Button) {
 					o.setSrc(getIconPath("fit.png"));
 					o.setLabel("");
-					o.setNormalBg(0xff2d2d2d);
+					o.setNormalBg(0x002d2d2d);
 					o.hoverBg = 0xff404040;
 					o.padding.setAxis(0, 0);
 					o.width = 32;
@@ -226,7 +269,7 @@ public:
 				R(Button) {
 					o.setSrc(getIconPath("rotate.png"));
 					o.setLabel("");
-					o.setNormalBg(0xff2d2d2d);
+					o.setNormalBg(0x002d2d2d);
 					o.hoverBg = 0xff404040;
 					o.padding.setAxis(0, 0);
 					o.width = 32;
@@ -246,7 +289,7 @@ public:
 				R(Button) {
 					o.setSrc(getIconPath("register.png"));
 					o.setLabel("");
-					o.setNormalBg(0xff2d2d2d);
+					o.setNormalBg(0x002d2d2d);
 					o.hoverBg = 0xff404040;
 					o.padding.setAxis(0, 0);
 					o.width = 32;
@@ -278,21 +321,6 @@ public:
 				} REND;
 			} REND;
 
-			R(ImageCanvasView) {
-				canvasPtr = &o;
-				if (o.created) {
-					o.onZoomChanged = CLOSURE([=](float z) {
-						currentZoom = z;
-						render();
-					});
-				}
-				if (!currentPath.empty()) {
-					o.setSrc(currentPath);
-				}
-				R(LayoutLinearCell) {
-					o.grow = 1;
-				} REND;
-			} REND;
 
 			R(ThumbnailBar) {
 				thumbPtr = &o;
@@ -305,6 +333,11 @@ public:
 					thumbPtr->setDirectory(currentDir);
 					thumbPtr->setSelectedIndex(currentIndex);
 				}
+
+				R(LayoutAlignCell) {
+					o.setBottomCenter();
+					o.sizeRatio.setX(1.0f);
+				} REND;
 			} REND;
 
 			// Tooltip overlay (drawn on top, compensates for frame position)
@@ -368,7 +401,7 @@ export void runImageViewer(const std::string& initialFile) {
 	Ref<ImageViewerState> state{new ImageViewerState()};
 
 	state->win = Ref(new Window());
-	state->root = Ref(new LayoutLinear());
+	state->root = Ref(new LayoutAlign());
 
 	state->currentPath = initialFile;
 	if (!initialFile.empty()) {

@@ -30,7 +30,7 @@ public:
 	std::vector<MenuItem> menus;
 
 	MenuBar() {
-		backgroundColor = 0xff2d2d2d;
+		//backgroundColor = 0xff2d2d2d;
 		height = 28;
 		direction = "row";
 		alignItems = "center";

@@ -142,8 +142,13 @@ void ScrollArea::react() {
 	auto& o = startInnerReact();
 
 	o.placeKids(this->gocOutKids());
+	_reactScrollBar();
 
+	this->endInnerReact();
+}
 
+void ScrollArea::_reactScrollBar() {
+	auto& o = *this;
 	//horizontal
 	R(ScrollBar) {
 		o.bindScrollArea(this);
@@ -155,10 +160,7 @@ void ScrollArea::react() {
 		o.bindScrollArea(this);
 		this->verScrollBar = &o;
 	} REND;
-
-	this->endInnerReact();
 }
-
 //布局
 void ScrollArea::layout(Frame* ctx) {
 	//自身如果有配置width/height，则需要调整为tight约束

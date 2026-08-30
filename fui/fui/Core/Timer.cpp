@@ -125,6 +125,14 @@ void TimerMgr::startThreadTickAndFire() {
 	}).detach();
 }
 
+Ref<Timer> mkTimerTimeout_notStart(Ref<Closure<void()>> fn, int milliSecond) {
+	Ref<Timer> t{ new Timer() };
+	t->runFunc = fn;
+	t->intervalMs = milliSecond;
+	t->remainMs = milliSecond;
+	//t->start();
+	return t;
+}
 Ref<Timer> mkTimerTimeout(Ref<Closure<void()>> fn, int milliSecond) {
 	Ref<Timer> t{new Timer()};
 	t->runFunc = fn;
@@ -144,7 +152,7 @@ Ref<Timer> mkTimerInterval(Ref<Closure<void()>> fn, int milliSecond) {
 	return t;
 }
 
-Ref<Timer> mkTimerInterval_noStart(Ref<Closure<void()>> fn, int milliSecond) {
+Ref<Timer> mkTimerInterval_notStart(Ref<Closure<void()>> fn, int milliSecond) {
 	Ref<Timer> t{new Timer()};
 	t->isInterval = true;
 	t->runFunc = fn;

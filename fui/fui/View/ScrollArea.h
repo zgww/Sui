@@ -72,6 +72,7 @@ public:
 	Vec2 calc_scroll_size();
 	ScrollArea();
 	void react();
+	void _reactScrollBar();
 	Ref<ScrollBar> verScrollBar{ nullptr, this };
 	Ref < ScrollBar> horScrollBar{ nullptr, this };
 

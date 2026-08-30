@@ -444,19 +444,19 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		}
 		break;
 	}
-	case WM_PAINT:
-	{
-		PAINTSTRUCT ps;
-		BeginPaint(hwnd, &ps);
-		EndPaint(hwnd, &ps);
+	//case WM_PAINT:
+	//{
+	//	PAINTSTRUCT ps;
+	//	BeginPaint(hwnd, &ps);
+	//	EndPaint(hwnd, &ps);
 
-		Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
-		win->layoutAndDraw();
-		break;
-	}
+	//	Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
+	//	win->layoutAndDraw();
+	//	break;
+	//}
 	case WM_SIZE: {
 		App_use()->invalidDraw();
-		InvalidateRect(hwnd, nullptr, FALSE);
+		//InvalidateRect(hwnd, nullptr, FALSE);
 		break;
 	}
 	case WM_MOUSEMOVE: {

@@ -35,8 +35,9 @@ public:
 
 TimerMgr* insTimerMgr();
 Ref<Timer> mkTimerTimeout(Ref<Closure<void()>> fn, int milliSecond);
+Ref<Timer> mkTimerTimeout_notStart(Ref<Closure<void()>> fn, int milliSecond);
 Ref<Timer> mkTimerInterval(Ref<Closure<void()>> fn, int milliSecond);
-Ref<Timer> mkTimerInterval_noStart(Ref<Closure<void()>> fn, int milliSecond);
+Ref<Timer> mkTimerInterval_notStart(Ref<Closure<void()>> fn, int milliSecond);
 
 class AnimStep : public GcObj {
 public:

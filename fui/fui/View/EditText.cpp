@@ -260,7 +260,7 @@ Range mkRange(int start, int end) {
  Timer* EditText::gocDragTimer() {
 	 if (this->drag_timer == nullptr) {
 		 auto self = Ref(this);
-		 this->drag_timer = mkTimerInterval_noStart(CLOSURE([=]() {
+		 this->drag_timer = mkTimerInterval_notStart(CLOSURE([=]() {
 			 printf("drag_timer.....定时器\n");
 			 self->_update_drag();
 			 }), 10);
@@ -802,7 +802,7 @@ Range mkRange(int start, int end) {
 	 CtorGuard g(this);
 
 	 auto self = Ref(this);
-	 self->blink_timer = mkTimerInterval_noStart(CLOSURE([=]() {
+	 self->blink_timer = mkTimerInterval_notStart(CLOSURE([=]() {
 		 self->blink();
 		 }), 600);
  }

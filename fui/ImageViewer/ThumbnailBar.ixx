@@ -25,8 +25,10 @@ public:
 
 	ThumbnailBar() {
 		scrollDirection = "horizontal";
-		backgroundColor = 0xff222222;
-		height = 80;
+		backgroundColor = 0xcc222222;
+		height = 68;
+
+		initInnerReact();
 	}
 
 	virtual const char* getClassName() const override { return "ThumbnailBar"; }
@@ -35,7 +37,7 @@ public:
 		if (directory == dir) return;
 		directory = dir;
 		scanImages();
-		rebuild();
+		react();
 	}
 
 	void setSelectedIndex(int index) {
@@ -47,7 +49,6 @@ public:
 		invalidDraw();
 	}
 
-private:
 	void scanImages() {
 		imageFiles.clear();
 		namespace fs = std::filesystem;
@@ -74,40 +75,44 @@ private:
 		imageFiles = std::move(files);
 	}
 
-	void rebuild() {
-		gocIdx = 0;
-		RINS(this) {
-			o.direction = "row";
-			o.alignItems = "center";
-			o.scrollDirection = "horizontal";
+	void react() {
+		startInnerReact();
+		auto& o = *this;
 
-			for (int i = 0; i < (int)imageFiles.size(); i++) {
-				R(ImageView, i) {
-					o.setSrc(imageFiles[i]);
-					o.setImageMode(ImageMode_HeightFix);
-					o.height = 60;
-					o.margin.setHor(4);
-					o.margin.setVer(4);
-					o.backgroundColor = (i == selectedIndex) ? 0xffcc6600 : 0xff333333;
-					if (i == selectedIndex) {
-						o.margin.setAll(2);
-					}
-					o.cbOnEvent = CLOSURE([=](Event* ev) {
-						if (auto me = dynamic_cast<MouseEvent*>(ev)) {
-							if (me->isClickInBubble()) {
-								int old = selectedIndex;
-								selectedIndex = i;
-								updateHighlight(old);
-								updateHighlight(i);
-								if (onSelect) onSelect->invoke(i);
-								invalidDraw();
-							}
+		o.direction = "row";
+		o.alignItems = "center";
+		o.scrollDirection = "horizontal";
+
+		o.placeKids(this->gocOutKids());
+
+		for (int i = 0; i < (int)imageFiles.size(); i++) {
+			R(ImageView, i) {
+				o.setSrc(imageFiles[i]);
+				o.setImageMode(ImageMode_HeightFix);
+				o.height = 60;
+				o.margin.setHor(4);
+				o.margin.setVer(4);
+				o.backgroundColor = (i == selectedIndex) ? 0xffcc6600 : 0xff333333;
+				if (i == selectedIndex) {
+					o.margin.setAll(2);
+				}
+				o.cbOnEvent = CLOSURE([=](Event* ev) {
+					if (auto me = dynamic_cast<MouseEvent*>(ev)) {
+						if (me->isClickInBubble()) {
+							int old = selectedIndex;
+							selectedIndex = i;
+							updateHighlight(old);
+							updateHighlight(i);
+							if (onSelect) onSelect->invoke(i);
+							invalidDraw();
 						}
-					});
-				} REND;
-			}
-		} REND;
-		invalidLayout();
+					}
+				});
+			} REND;
+		}
+		_reactScrollBar();
+
+		endInnerReact();
 	}
 
 	void updateHighlight(int index) {
