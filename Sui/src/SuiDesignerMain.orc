@@ -33,6 +33,7 @@ import * from "./Sui/Core/Inset.orc"
 import * from "./Sui/Core/Frame.orc"
 import * from "./Sui/Dialog/MessageDialog.orc"
 import * from "./Sui/Layout/LayoutLinear.orc"
+import * from "./Sui/Layout/LayoutGrid.orc"
 import * from "./Sui/Layout/LayoutAlign.orc"
 import * from "./Sui/Layout/RowWrap.orc"
 import * from "./Sui/View/Checkbox.orc"
@@ -414,15 +415,6 @@ void startSuiDesigner(){
         win.setRootView(o)
     }
 
-    // try {
-    //     printf("in tsrdya\n")
-    // } catch (Exception@ e){
-    //     printf("catch exception. \n")
-
-    // } finally {
-    //     printf("hi finally\n")
-
-    // }
 
     win.{
         if 1 {
@@ -1154,6 +1146,8 @@ void test_tmp2(){
         printf("say a.a:%d \n", a.a);
         a.a = -1
     } 
+
+    say()
  
     a.a = 323
     a.print()
@@ -1242,7 +1236,7 @@ int main(){
             printf("finally\n")
         }
     }
-    printf("da2one\n")
+    printf("done\n")
     // Time_sleepMs(1000 * 100);
 
 
@@ -1277,25 +1271,54 @@ int main(){
     // testRay()
     if 1 {
         Window@ w = new Window()
-        new View().{
-            // o.aic().jcc()
-            // o.direction.set("column")
+        new LayoutLinear().{
+            o.direction.set("column")
+            o.aiStretch()
             o.backgroundColor = 0xffefefef;
             w.setRootView(o);
 
-            for int i = 0; i < 2000; i++{
-                mkTextView(o, i + 10000).{
-                    o.margin.setHor(2)
-                    o.text.set("文本块")
-                    // o.setText(str("ksdjf"))
-                    // o.setText(str("文本块").addi(i))
-                    o.color = 0xffff0000
-                    o.setFont_size(14)
+            //菜单
+            layoutLinear(o, 0).{
+                // o.height = 30
+                o.backgroundColor = 0xdd2d2d2d
+                // o.backgroundColor = 0xcc000000
+                o.padding.setAxis(0, 6)
+                String@ btnsStr = str("文件,项目,视图,调试,窗口,帮助")
+                List@ btns = btnsStr.splitByRe(",")
+                MenuBarCtrl@ group = new MenuBarCtrl()
+                group.window = w;
+                for (int i = 0; i < btns.size(); i++){
+                    String@ btn = (String@)btns.get(i)
+                    mkMenuButton(o, i).{
+                        MenuButton@ mbutton = o
+
+                        o.text = btn
+                        o.onMouseMove = ^void(MouseEvent *me){
+                            // printf("onmove:%p\n", mbutton)
+                            group.onmove(mbutton, me)
+                        }
+                        o.onClick =^void(MouseEvent *me){
+                            group.onclick(mbutton, me)
+                        }
+                    }
+                }
+            }
+
+            // mkLayoutGrid(o, 0).{
+            //     o.colCount = 10
+            //     o.rowSize = 50
+            mkRowWrap(o, 0).{
+                for int i = 0; i < 1000; i++{
+                    mkTextView(o, i + 1000).{
+                        o.setText(str("中文第[").addi(i).add("]项."))
+                        o.color = 0xffff0000
+                        o.setFont_size(14)
+                    }
                 }
             }
         }
         w.setSize(400, 400)
-        w.setTitle("你好")
+        w.setTitle("满满满中的窗口2满满的窗口2满满的窗口2满的窗口2")
         w.moveToCenter();
         w.show()
         App_use().runEventLoop();

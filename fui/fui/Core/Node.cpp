@@ -141,7 +141,11 @@ void Node::removeOutChildAt(int idx) {
 	//作为outKids参数存在,适用于innerReact
 	if (_flagUseOutKids) {
 		auto outkids = gocOutKids();
+		auto child = outkids->get(idx);
 		outkids->remove_at(idx);
+		if (child != nullptr) { //outKids实际在这里从渲染树中移除
+			child->removeSelf();
+		}
 		return;
 	}
 
@@ -331,7 +335,7 @@ Node* Node_findChildByKeyAfterIndexBeforeStaticChild(Node* parent, int start, st
 
 void Node_removeUnusedKids(Node* o) {
 	for (int start = o->gocIdx, i = o->getChildrenCount() - 1; i >= start; i--) {
-		o->removeChildAt(i);
+		o->removeOutChildAt(i);
 	}
 	o->gocIdx = 0; //重置
 }
