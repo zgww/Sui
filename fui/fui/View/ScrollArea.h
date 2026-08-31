@@ -12,6 +12,7 @@
 #include <functional>
 
 class ScrollBar;
+class ScrollArea;
 
 static float ScrollView_delta_factor = 0.5;
 
@@ -23,6 +24,7 @@ static float ScrollView_delta_factor = 0.5;
 
 class ScrollModel {
 public:
+	ScrollArea* pScrollArea = NULL;
 	float scroll_left = 0;
 	float scroll_top = 0;
 	std::function< Vec2()> get_scroll_size;

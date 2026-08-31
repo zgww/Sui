@@ -35,7 +35,7 @@ bool ScrollModel::clampScrollOffsetValid() {
 void ScrollModel::on_wheel_event(WheelEvent* evt) {
 	Vec2 client_size = this->get_client_size();
 	Vec2 scroll_size = this->get_scroll_size();
-	if (evt->shift) { //水平
+	if ((pScrollArea && pScrollArea->scrollDirection == "horizontal") || evt->shift) { //水平
 		float max_left = scroll_size.x - client_size.x;
 		this->scroll_left = clampInt(
 			this->scroll_left - evt->deltaY * minFloat(ScrollView_delta_factor, client_size.x / 2.0f),
@@ -51,7 +51,7 @@ void ScrollModel::on_wheel_event(WheelEvent* evt) {
 			maxInt(0.0f, max_top)
 		);
 	}
-	printf("ScrollModel 更新 scroll:%f, %f; delta:%d, shift:%d\n"
+	printf("ScrollModel 更新 scroll:%f, %f; delta:%f, shift:%d\n"
 		, this->scroll_left, this->scroll_top
 		, evt->deltaY, evt->shift
 	);
@@ -126,6 +126,8 @@ ScrollArea::ScrollArea() {
 
 	this->direction = ("column");
 	this->alignItems = ("start");
+
+	scroll_model.pScrollArea = this;
 
 	this->scroll_model.get_scroll_size = [this]() {
 		return this->calc_scroll_size();
