@@ -26,7 +26,7 @@ public:
 
 	~Program() {
 		if (this->id) {
-			printf("hihihi h1i iiii1122\n");
+			printf("hi--hihi ha1i iiii1122\n");
 			GLuint id = this->id;
 
 			//确保在主线程释放

@@ -37,8 +37,8 @@ export struct Ray {
 	Vec3 origin;
 	Vec3 direction;
 
-	void set(Vec3 origin, Vec3 direction) {
 
+	void set(Vec3 origin, Vec3 direction) {
 		this->origin.copy(origin);
 		this->direction.copy(direction);
 	}

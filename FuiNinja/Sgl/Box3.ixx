@@ -3,7 +3,7 @@ module;
 #include "Core/Euler.h"
 #include "Core/Quaternion.h"
 
-export module Sgl:Box3;
+export module Sgl_Box3;
 
 
 
@@ -86,11 +86,9 @@ export struct Box3 {
 	}
 
 	bool isEmpty() {
-
+        
 		// self is a more robust check for empty than ( volume <= 0 ) because volume can get positive with two negative axes
-
 		return (this->max.x < this->min.x) || (this->max.y < this->min.y) || (this->max.z < this->min.z);
-
 	}
 
 	Vec3 getCenter() {

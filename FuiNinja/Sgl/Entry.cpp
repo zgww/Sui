@@ -7,6 +7,7 @@
 #include "Layout/LayoutLinear.h"
 
 import Sgl;
+import Sgl_Box3;
 
 int main() {
 	printf("13hi'\n");
@@ -19,7 +20,7 @@ int main() {
 		o.backgroundColor = 0xffefefef;
 
 		o.jcc().aic();
-		R(TextView) { o.setText("-l天生"); } REND;
+		R(TextView) { o.setText("go whdy什么鬼-l天生"); } REND;
 
 
 		auto win = Ref(new Window());

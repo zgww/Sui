@@ -6,7 +6,7 @@ module;
 
 export module Sgl:Sphere;
 
-import :Box3;
+import Sgl_Box3;
 
 /// 布局上下文
 export struct Sphere {
