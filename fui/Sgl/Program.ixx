@@ -14,7 +14,7 @@ void deleteProgram(GLuint id) {
 	glDeleteProgram(id);
 }
 
-//主类
+//主 类
 export class Program : public GcObj {
 public:
 	GLuint id;
@@ -26,7 +26,7 @@ public:
 
 	~Program() {
 		if (this->id) {
-			printf("hihihi h1i iiii1122\n");
+			printf("hi2hih2i h1i iiii1122\n");
 			GLuint id = this->id;
 
 			//确保在主线程释放

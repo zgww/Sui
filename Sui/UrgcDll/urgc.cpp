@@ -275,8 +275,8 @@ static mutex& getMutexForMakeEventLists() {
 class EventLists {
 public:
 	~EventLists();
-	RefEventItemList* collecting = new RefEventItemList(10000);
-	RefEventItemList* processing = new RefEventItemList(10000);
+	RefEventItemList* collecting = new RefEventItemList(500);
+	RefEventItemList* processing = new RefEventItemList(500);
 }; 
 EventLists::~EventLists() {
 	std::lock_guard<mutex> g(getMutexForMakeEventLists());

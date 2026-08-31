@@ -7,7 +7,7 @@ Slider::Slider() {
 
 	
 	height = 16;
-	cursor = "pointer";
+	cursor = "pointer"; 
 
 
 	circle = new View();

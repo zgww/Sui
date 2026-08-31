@@ -34,6 +34,7 @@ import * from "./Sui/Core/Frame.orc"
 import * from "./Sui/Dialog/MessageDialog.orc"
 import * from "./Sui/Layout/LayoutLinear.orc"
 import * from "./Sui/Layout/LayoutAlign.orc"
+import * from "./Sui/Layout/RowWrap.orc"
 import * from "./Sui/View/Checkbox.orc"
 import * from "./Sui/View/Switch.orc"
 import * from "./Sui/View/Slider.orc"
@@ -413,6 +414,15 @@ void startSuiDesigner(){
         win.setRootView(o)
     }
 
+    // try {
+    //     printf("in tsrdya\n")
+    // } catch (Exception@ e){
+    //     printf("catch exception. \n")
+
+    // } finally {
+    //     printf("hi finally\n")
+
+    // }
 
     win.{
         if 1 {
@@ -1232,7 +1242,7 @@ int main(){
             printf("finally\n")
         }
     }
-    printf("done\n")
+    printf("da2one\n")
     // Time_sleepMs(1000 * 100);
 
 
@@ -1267,15 +1277,21 @@ int main(){
     // testRay()
     if 1 {
         Window@ w = new Window()
-        new LayoutLinear().{
-            o.aic().jcc()
+        new View().{
+            // o.aic().jcc()
+            // o.direction.set("column")
             o.backgroundColor = 0xffefefef;
             w.setRootView(o);
 
-            mkTextView(o, 0).{
-                o.setText(str("do re mi fa so"))
-                o.color = 0xffff0000
-                o.setFont_size(18)
+            for int i = 0; i < 2000; i++{
+                mkTextView(o, i + 10000).{
+                    o.margin.setHor(2)
+                    o.text.set("文本块")
+                    // o.setText(str("ksdjf"))
+                    // o.setText(str("文本块").addi(i))
+                    o.color = 0xffff0000
+                    o.setFont_size(14)
+                }
             }
         }
         w.setSize(400, 400)

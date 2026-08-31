@@ -94,7 +94,7 @@ void TextView::doTextLayout(float maxW, float maxH, Canvas* canvas) {
 		if (line.empty()) {
 			TextLine li;
 			li.text = "";
-			li.w = 0;
+			li.w = 0; 
 			li.h = actualLineHeight;
 			lineInfos.push_back(li);
 			lineCount++;

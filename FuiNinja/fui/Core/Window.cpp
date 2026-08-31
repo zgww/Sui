@@ -444,8 +444,17 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		}
 		break;
 	}
+	case WM_PAINT: {
+		PAINTSTRUCT ps;
+		BeginPaint(hWnd, &ps);
+		EndPaint(hWnd, &ps);
+		auto win = App_use()->findWindowById(winId);
+		win->layoutAndDraw();
+		break;
+	}
 	case WM_SIZE: {
 		App_use()->invalidDraw();
+		InvalidateRect(hwnd, NULL, TRUE);
 		break;
 	}
 	case WM_MOUSEMOVE: {

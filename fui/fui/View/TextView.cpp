@@ -114,8 +114,8 @@ void TextView::doTextLayout(float maxW, float maxH, Canvas* canvas) {
 					li.w = bounds[2] - bounds[0];
 					li.h = actualLineHeight;
 					lineInfos.push_back(li);
-					current.clear();
-					lineCount++;
+					current.clear(); 
+					lineCount++; 
 					break;
 				}
 				current += line[i];

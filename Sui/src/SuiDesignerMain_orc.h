@@ -83,6 +83,7 @@ typedef struct tagVtable_User Vtable_User;
 #include "./Sui/Dialog/MessageDialog_orc.h"
 #include "./Sui/Layout/LayoutLinear_orc.h"
 #include "./Sui/Layout/LayoutAlign_orc.h"
+#include "./Sui/Layout/RowWrap_orc.h"
 #include "./Sui/View/Checkbox_orc.h"
 #include "./Sui/View/Switch_orc.h"
 #include "./Sui/View/Slider_orc.h"

@@ -74,6 +74,7 @@ void Button::onEvent(Event* ev) {
 			//if (self.clickListener){
 				//self.clickListener.onEvent(me);
 			//}
+
 			if (this->onClick) {
 				this->onClick->invoke(me);
 			}

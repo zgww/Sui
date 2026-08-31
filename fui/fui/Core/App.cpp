@@ -59,7 +59,7 @@ void App::removeWindow(Window* win) {
 	}
 
 	if (windows->size() == 0) {
-		printf("App.windows.size == 0\n");
+		printf("App.windows.size == 0   \n");
 		quit();
 	}
 }

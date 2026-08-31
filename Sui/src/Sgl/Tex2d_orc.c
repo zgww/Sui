@@ -272,7 +272,7 @@ bool  Sgl$Tex2d$loadImageByPathCstr(Sgl$Tex2d *  self, const char *  path){
 	stbi_set_flip_vertically_on_load(true) ;
 	unsigned char *  data = stbi_load(path, &width, &height, &channel, 0) ;
 	if (data) {
-		printf("load image. data:%p,  width:%d, height:%d, ch:%d\n", data, width, height, channel) ;
+		printf("  load image. data:%p,  width:%d, height:%d, ch:%d\n", data, width, height, channel) ;
 		if (channel == 4) {
 			self->bind(self) ;
 			self->updateParameters(self) ;
