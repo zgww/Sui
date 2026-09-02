@@ -530,9 +530,6 @@
     <ClCompile Include="Core\WindowWin32.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Win32Nvg\WindowWin32Nvg.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="nanovg\CanvasNvg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -540,6 +537,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="nanovg\nanovg.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32D2D\CanvasD2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32D2D\ImageD2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32D2D\WindowWin32D2D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

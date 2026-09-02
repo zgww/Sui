@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3166cea3-2460-4525-b128-3786609e0430}</ProjectGuid>
+    <ProjectGuid>{8CA78AD3-7C87-4353-9A53-4BCDE82A1319}</ProjectGuid>
     <RootNamespace>ImageViewer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -157,12 +157,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ImageViewer.cpp" />
-    <ClCompile Include="ShellExt.ixx" />
-    <ClCompile Include="MenuBar.ixx" />
-    <ClCompile Include="ImageCanvasView.ixx" />
-    <ClCompile Include="ThumbnailBar.ixx" />
-    <ClCompile Include="ImageViewerApp.ixx" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

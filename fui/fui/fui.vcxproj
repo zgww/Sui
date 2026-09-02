@@ -127,16 +127,13 @@
     <ClInclude Include="View\TreeView.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nanovg\CanvasNvg.cpp" />
     <ClCompile Include="Core\Euler.cpp" />
-    <ClCompile Include="nanovg\ImageNvg.cpp" />
     <ClCompile Include="Core\linmath.h" />
     <ClCompile Include="Core\Quaternion.cpp" />
     <ClCompile Include="Core\Rect.cpp" />
     <ClCompile Include="Core\Vec3.cpp" />
     <ClCompile Include="Core\Mat.cpp" />
     <ClCompile Include="Core\WindowWin32.cpp" />
-    <ClCompile Include="Win32Nvg\WindowWin32Nvg.cpp" />
     <ClCompile Include="Naga\FsUtil.cpp" />
     <ClCompile Include="Naga\MathEx.cpp" />
     <ClCompile Include="Naga\StrUtil.cpp" />
@@ -145,6 +142,8 @@
     <ClCompile Include="Naga\Win32Utf8Util.cpp" />
     <ClCompile Include="Core\Theme.cpp" />
     <ClCompile Include="Naga\Path.cpp" />
+    <ClCompile Include="nanovg\CanvasNvg.cpp" />
+    <ClCompile Include="nanovg\ImageNvg.cpp" />
     <ClCompile Include="nanovg\nanovg.c" />
     <ClCompile Include="Urgc\urgc.cpp" />
     <ClCompile Include="Core\Color.cpp" />
@@ -196,6 +195,9 @@
     <ClCompile Include="View\TableView.cpp" />
     <ClCompile Include="View\TextView.cpp" />
     <ClCompile Include="View\TreeView.cpp" />
+    <ClCompile Include="Win32D2D\CanvasD2D.cpp" />
+    <ClCompile Include="Win32D2D\ImageD2D.cpp" />
+    <ClCompile Include="Win32D2D\WindowWin32D2D.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

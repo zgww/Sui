@@ -12,5 +12,8 @@
   <Project Path="../Sgl/Sgl.vcxproj" Id="9dc77d1e-f9ab-4010-8c60-172f0bb2b05c">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
+  <Project Path="../TestShadow/TestShadow.vcxproj">
+    <BuildDependency Project="fui.vcxproj" />
+  </Project>
   <Project Path="fui.vcxproj" Id="8d41ffd3-a9c3-4a6f-b8a9-5c2101e2eb51" />
 </Solution>

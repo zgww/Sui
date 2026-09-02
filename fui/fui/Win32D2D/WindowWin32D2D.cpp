@@ -24,7 +24,7 @@
 #include <CommCtrl.h>
 #pragma comment (lib, "dwmapi.lib")
 #pragma comment (lib, "Imm32.lib")
-#pragma comment(lib, "comctl32.lib")
+#pragma comment(lib, "comctl32.lib") 
 
 #pragma comment(lib, "gdi32.lib")
 #pragma comment(lib, "user32.lib")
@@ -93,4 +93,21 @@ void Window::cleanData() {
 	}
 	free(d);
 	data = nullptr;
+}
+
+void Window::draw() {
+	auto hwnd = _getWindowHwnd(this);
+	{
+		RECT rect = {};
+		GetClientRect(hwnd, &rect);
+		float w = (float)(rect.right - rect.left);
+		float h = (float)(rect.bottom - rect.top);
+
+		canvas->beginFrame(w, h, devicePixelRatio);
+		if (rootView) {
+			rootView->draw(canvas);
+		}
+		fps.draw(canvas, (int)h);
+		canvas->endFrame();
+	}
 }

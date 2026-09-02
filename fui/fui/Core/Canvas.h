@@ -71,6 +71,11 @@ public:
 	void strokeColor(int r, int g, int b, int a);
 	void strokeWidth(float width);
 
+	// 阴影 (类似 HTML5 canvas shadow)
+	void shadowColor(int r, int g, int b, int a);
+	void shadowOffset(float x, float y);
+	void shadowBlur(float blur);
+
 	void shapeAntiAlias(int enabled);
 	void lineJoin(int join);
 	void lineCap(int cap);

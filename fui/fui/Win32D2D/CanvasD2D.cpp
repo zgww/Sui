@@ -1,4 +1,4 @@
-#include "Canvas.h"
+#include "../Core/Canvas.h"
 
 #include <windows.h>
 #include <objbase.h>
@@ -34,6 +34,10 @@ struct CanvasState {
 	float letterSpacing;
 	float lineHeight;
 	float fontBlur;
+	int shadowColor;
+	float shadowOffsetX;
+	float shadowOffsetY;
+	float shadowBlur;
 };
 
 struct CanvasCtx {
@@ -88,6 +92,12 @@ struct CanvasCtx {
 	float letterSpacing = 0.0f;
 	float lineHeight = 1.0f;
 	float fontBlur = 0.0f;
+
+	// 阴影
+	int shadowColor = 0; // 0 = 透明 = 无阴影
+	float shadowOffsetX = 0;
+	float shadowOffsetY = 0;
+	float shadowBlur = 0;
 
 	IDWriteTextFormat* textFormat = nullptr;
 	std::string textFormatFace;
@@ -288,6 +298,95 @@ static void ensure_stroke_style(CanvasCtx* ctx) {
 	ctx->factory->CreateStrokeStyle(sp, nullptr, 0, &ctx->strokeStyle);
 }
 
+// 阴影是否激活
+static bool shadow_active(CanvasCtx* ctx) {
+	return ctx->shadowColor != 0 && ((ctx->shadowColor >> 24) & 0xFF) != 0;
+}
+
+// 绘制阴影 fill：将几何体以阴影色在偏移位置多次绘制以模拟模糊
+static void draw_shadow_fill(CanvasCtx* ctx) {
+	if (!shadow_active(ctx) || !ctx->pathGeo || !ctx->rt) return;
+
+	float sa = (float)((ctx->shadowColor >> 24) & 0xFF) / 255.0f;
+	D2D1::ColorF sc(
+		(float)((ctx->shadowColor >> 16) & 0xFF) / 255.0f,
+		(float)((ctx->shadowColor >> 8) & 0xFF) / 255.0f,
+		(float)((ctx->shadowColor >> 0) & 0xFF) / 255.0f,
+		sa * ctx->globalAlpha);
+
+	ID2D1SolidColorBrush* brush = nullptr;
+	ctx->rt->CreateSolidColorBrush(sc, &brush);
+	if (!brush) return;
+
+	D2D1::Matrix3x2F saved;
+	ctx->rt->GetTransform(&saved);
+
+	float blur = ctx->shadowBlur;
+	if (blur < 0.1f) {
+		ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(ctx->shadowOffsetX, ctx->shadowOffsetY));
+		ctx->rt->FillGeometry(ctx->pathGeo, brush);
+	} else {
+		int N = (int)(blur * 2);
+		if (N < 8) N = 8;
+		if (N > 64) N = 64;
+		brush->SetOpacity(1.0f / N);
+		for (int i = 0; i < N; i++) {
+			float angle = i * 2.39996f;
+			float r = blur * sqrtf((float)(i + 1) / N);
+			float dx = r * cosf(angle) + ctx->shadowOffsetX;
+			float dy = r * sinf(angle) + ctx->shadowOffsetY;
+			ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(dx, dy));
+			ctx->rt->FillGeometry(ctx->pathGeo, brush);
+		}
+	}
+
+	ctx->rt->SetTransform(saved);
+	brush->Release();
+}
+
+// 绘制阴影 stroke
+static void draw_shadow_stroke(CanvasCtx* ctx) {
+	if (!shadow_active(ctx) || !ctx->pathGeo || !ctx->rt) return;
+
+	ensure_stroke_style(ctx);
+
+	float sa = (float)((ctx->shadowColor >> 24) & 0xFF) / 255.0f;
+	D2D1::ColorF sc(
+		(float)((ctx->shadowColor >> 16) & 0xFF) / 255.0f,
+		(float)((ctx->shadowColor >> 8) & 0xFF) / 255.0f,
+		(float)((ctx->shadowColor >> 0) & 0xFF) / 255.0f,
+		sa * ctx->globalAlpha);
+
+	ID2D1SolidColorBrush* brush = nullptr;
+	ctx->rt->CreateSolidColorBrush(sc, &brush);
+	if (!brush) return;
+
+	D2D1::Matrix3x2F saved;
+	ctx->rt->GetTransform(&saved);
+
+	float blur = ctx->shadowBlur;
+	if (blur < 0.1f) {
+		ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(ctx->shadowOffsetX, ctx->shadowOffsetY));
+		ctx->rt->DrawGeometry(ctx->pathGeo, brush, ctx->strokeW, ctx->strokeStyle);
+	} else {
+		int N = (int)(blur * 2);
+		if (N < 8) N = 8;
+		if (N > 64) N = 64;
+		brush->SetOpacity(1.0f / N);
+		for (int i = 0; i < N; i++) {
+			float angle = i * 2.39996f;
+			float r = blur * sqrtf((float)(i + 1) / N);
+			float dx = r * cosf(angle) + ctx->shadowOffsetX;
+			float dy = r * sinf(angle) + ctx->shadowOffsetY;
+			ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(dx, dy));
+			ctx->rt->DrawGeometry(ctx->pathGeo, brush, ctx->strokeW, ctx->strokeStyle);
+		}
+	}
+
+	ctx->rt->SetTransform(saved);
+	brush->Release();
+}
+
 static void finalize_path(CanvasCtx* ctx) {
 	if (!ctx->sink) return;
 	if (ctx->figureOpen) {
@@ -361,6 +460,10 @@ void Canvas::beginFrame(float w, float h, float devicePixelRatio) {
 	ctx->cap = D2D1_CAP_STYLE_FLAT;
 	ctx->join = D2D1_LINE_JOIN_MITER;
 	ctx->hasScissor = false;
+	ctx->shadowColor = 0;
+	ctx->shadowOffsetX = 0;
+	ctx->shadowOffsetY = 0;
+	ctx->shadowBlur = 0;
 	apply_xform(ctx);
 }
 
@@ -392,6 +495,7 @@ void Canvas::stroke() {
 	finalize_path(ctx);
 	ensure_stroke_style(ctx);
 	push_clip(ctx);
+	draw_shadow_stroke(ctx);
 	ctx->rt->DrawGeometry(ctx->pathGeo, ctx->strokeBrush, ctx->strokeW, ctx->strokeStyle);
 	pop_clip(ctx);
 }
@@ -401,6 +505,7 @@ void Canvas::fill() {
 	if (!ctx || !ctx->rt || !ctx->pathGeo || !ctx->fillBrush) return;
 	finalize_path(ctx);
 	push_clip(ctx);
+	draw_shadow_fill(ctx);
 	ctx->rt->FillGeometry(ctx->pathGeo, ctx->fillBrush);
 	pop_clip(ctx);
 }
@@ -431,6 +536,25 @@ void Canvas::strokeWidth(float width) {
 	CanvasCtx* ctx = (CanvasCtx*)data;
 	if (!ctx) return;
 	ctx->strokeW = width;
+}
+
+void Canvas::shadowColor(int r, int g, int b, int a) {
+	CanvasCtx* ctx = (CanvasCtx*)data;
+	if (!ctx) return;
+	ctx->shadowColor = (a << 24) | (r << 16) | (g << 8) | (b << 0);
+}
+
+void Canvas::shadowOffset(float x, float y) {
+	CanvasCtx* ctx = (CanvasCtx*)data;
+	if (!ctx) return;
+	ctx->shadowOffsetX = x;
+	ctx->shadowOffsetY = y;
+}
+
+void Canvas::shadowBlur(float blur) {
+	CanvasCtx* ctx = (CanvasCtx*)data;
+	if (!ctx) return;
+	ctx->shadowBlur = blur;
 }
 
 void Canvas::shapeAntiAlias(int enabled) {
@@ -537,6 +661,10 @@ void Canvas::save() {
 	s.letterSpacing = ctx->letterSpacing;
 	s.lineHeight = ctx->lineHeight;
 	s.fontBlur = ctx->fontBlur;
+	s.shadowColor = ctx->shadowColor;
+	s.shadowOffsetX = ctx->shadowOffsetX;
+	s.shadowOffsetY = ctx->shadowOffsetY;
+	s.shadowBlur = ctx->shadowBlur;
 	ctx->stack.push_back(s);
 }
 
@@ -564,6 +692,10 @@ void Canvas::restore() {
 	ctx->letterSpacing = s.letterSpacing;
 	ctx->lineHeight = s.lineHeight;
 	ctx->fontBlur = s.fontBlur;
+	ctx->shadowColor = s.shadowColor;
+	ctx->shadowOffsetX = s.shadowOffsetX;
+	ctx->shadowOffsetY = s.shadowOffsetY;
+	ctx->shadowBlur = s.shadowBlur;
 
 	apply_xform(ctx);
 	apply_fill_color(ctx);
@@ -587,6 +719,10 @@ void Canvas::reset() {
 	ctx->letterSpacing = 0.0f;
 	ctx->lineHeight = 1.0f;
 	ctx->fontBlur = 0.0f;
+	ctx->shadowColor = 0;
+	ctx->shadowOffsetX = 0;
+	ctx->shadowOffsetY = 0;
+	ctx->shadowBlur = 0;
 	ctx->stack.clear();
 	if (ctx->strokeStyle) { ctx->strokeStyle->Release(); ctx->strokeStyle = nullptr; }
 	apply_xform(ctx);
@@ -1025,6 +1161,38 @@ void Canvas::text(float x, float y, const char* string) {
 	// 否则按BASELINE处理
 
 	float originY = baselineY - ascent;
+
+	// 阴影
+	if (shadow_active(ctx)) {
+		float sa = (float)((ctx->shadowColor >> 24) & 0xFF) / 255.0f;
+		D2D1::ColorF sc(
+			(float)((ctx->shadowColor >> 16) & 0xFF) / 255.0f,
+			(float)((ctx->shadowColor >> 8) & 0xFF) / 255.0f,
+			(float)((ctx->shadowColor >> 0) & 0xFF) / 255.0f,
+			sa * ctx->globalAlpha);
+		ID2D1SolidColorBrush* shadowBrush = nullptr;
+		ctx->rt->CreateSolidColorBrush(sc, &shadowBrush);
+		if (shadowBrush) {
+			float blur = ctx->shadowBlur;
+			if (blur < 0.1f) {
+				ctx->rt->DrawTextLayout(D2D1::Point2F(originX + ctx->shadowOffsetX, originY + ctx->shadowOffsetY), layout, shadowBrush, D2D1_DRAW_TEXT_OPTIONS_NONE);
+			} else {
+				int N = (int)(blur * 2);
+				if (N < 8) N = 8;
+				if (N > 64) N = 64;
+				shadowBrush->SetOpacity(1.0f / N);
+				for (int i = 0; i < N; i++) {
+					float angle = i * 2.39996f;
+					float r = blur * sqrtf((float)(i + 1) / N);
+					float dx = r * cosf(angle) + ctx->shadowOffsetX;
+					float dy = r * sinf(angle) + ctx->shadowOffsetY;
+					ctx->rt->DrawTextLayout(D2D1::Point2F(originX + dx, originY + dy), layout, shadowBrush, D2D1_DRAW_TEXT_OPTIONS_NONE);
+				}
+			}
+			shadowBrush->Release();
+		}
+	}
+
 	ctx->rt->DrawTextLayout(D2D1::Point2F(originX, originY), layout, ctx->fillBrush, D2D1_DRAW_TEXT_OPTIONS_NONE);
 	layout->Release();
 }

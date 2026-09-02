@@ -80,18 +80,18 @@ void _registerWinClass() {
 	RegisterClassW(&wc);
 }
 
-static HWND _createWindow() {
-	_registerWinClass();
-	HWND hwnd = CreateWindowExW(
-		0,
-		L"fuiWindow",
-		L"",
-		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-		nullptr, nullptr, GetModuleHandle(nullptr), nullptr
-	);
-	return hwnd;
-}
+//static HWND _createWindow() {
+//	_registerWinClass();
+//	HWND hwnd = CreateWindowExW(
+//		0,
+//		L"fuiWindow",
+//		L"",
+//		WS_OVERLAPPEDWINDOW,
+//		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+//		nullptr, nullptr, GetModuleHandle(nullptr), nullptr
+//	);
+//	return hwnd;
+//}
 
 static const char* vkToKeyName(WPARAM vk) {
 	switch (vk) {
@@ -394,19 +394,19 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		}
 		break;
 	}
-				   //case WM_PAINT:
-				   //{
-				   //	PAINTSTRUCT ps;
-				   //	BeginPaint(hwnd, &ps);
-				   //	EndPaint(hwnd, &ps);
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps;
+		BeginPaint(hwnd, &ps);
+		EndPaint(hwnd, &ps);
 
-				   //	Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
-				   //	win->layoutAndDraw();
-				   //	break;
-				   //}
+		Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
+		win->layoutAndDraw();
+		break;
+	}
 	case WM_SIZE: {
 		App_use()->invalidDraw();
-		//InvalidateRect(hwnd, nullptr, FALSE);
+		InvalidateRect(hwnd, nullptr, FALSE);
 		break;
 	}
 	case WM_MOUSEMOVE: {
@@ -641,22 +641,7 @@ void Window::layout() {
 	}
 }
 
-void Window::draw() {
-	auto hwnd = _getWindowHwnd(this);
-	{
-		RECT rect = {};
-		GetClientRect(hwnd, &rect);
-		float w = (float)(rect.right - rect.left);
-		float h = (float)(rect.bottom - rect.top);
 
-		canvas->beginFrame(w, h, devicePixelRatio);
-		if (rootView) {
-			rootView->draw(canvas);
-		}
-		fps.draw(canvas, (int)h);
-		canvas->endFrame();
-	}
-}
 
 bool Window::isVisible() {
 	auto hwnd = _getWindowHwnd(this);

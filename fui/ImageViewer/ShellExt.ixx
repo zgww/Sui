@@ -13,7 +13,7 @@ inline std::wstring toWstr(const std::string& s) {
 	std::wstring w(len, 0);
 	MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, w.data(), len);
 	if (len > 0) w.pop_back();
-	return w;
+	return w; 
 }
 
 inline bool registerFileType(LPCWSTR ext, LPCWSTR menuLabel, LPCWSTR exePath) {

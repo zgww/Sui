@@ -1,4 +1,4 @@
-#include "Image.h"
+#include "../Core/Image.h"
 #include <d2d1.h>
 
 Vec2 Image::size() {
