@@ -6,34 +6,41 @@
 #include "Core/Window.h"
 #include "Layout/RowWrap.h"
 #include "View/TextView.h"
+#include "View/ScrollArea.h"
 
 class ShadowView : public View {
 public:
 	virtual void draw_self(Canvas * canvas) override{
 		canvas->shadowBlur( 10);
-		canvas->shadowColor (0, 0, 0, 255);
-		canvas->shadowOffset(10, 10);
+		canvas->shadowColor (0, 0, 0, 128);
+		canvas->shadowOffset(5, 5);
 		View::draw_self(canvas);
 	}
 };
 void AppMain() {
 	urgc.start_process_thread();
 	auto app = App_use();
-	auto root = Ref(new RowWrap());
+	auto root = Ref(new ScrollArea());
 	RINS(root.get()) {
+
+		o.useMaxWidthConstraint = true;
 		o.backgroundColor = 0xffefefef;
+		R(RowWrap) {
 
-		for (int i = 0; i < 1000; i++) {
-			R(TextView) {
-				o.setText(std::format("第[{}]项", i));
-			} REND;
-		}
+			for (int i = 0; i < 10; i++) {
+				R(TextView, i) {
+					o.setText(std::format("第[{}]项", i));
+				} REND;
+			}
 
-		R(ShadowView) {
-			o.backgroundColor = 0xffff0000;
-			o.width = 100;
-			o.height = 100;
-			o.margin.setAll(20);
+			for (int i = 0; i < 1000; i++) {
+				R(ShadowView, i) {
+					o.backgroundColor = 0xff2d2d2d;
+					o.width = 40;
+					o.height = 40;
+					o.margin.setAll(10);
+				} REND;
+			}
 		} REND;
 
 		auto win = Ref(new Window()); 

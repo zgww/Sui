@@ -2,16 +2,24 @@
 
 #include <windows.h>
 #include <objbase.h>
-#include <d2d1.h>
+#include <d2d1_1.h>
+#include <d2d1effects.h>
+#include <d3d11.h>
+#include <dxgi1_2.h>
 #include <dwrite.h>
 #include <wincodec.h>
 #include <vector>
 #include <string>
+#include <stdio.h>
 
 #pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "windowscodecs.lib")
 #pragma comment(lib, "ole32.lib")
+
 
 // ---------------------------------------------------------------------------
 // 后端内部状态
@@ -41,12 +49,15 @@ struct CanvasState {
 };
 
 struct CanvasCtx {
-	// 共享的全局工厂
-	ID2D1Factory* factory = nullptr;
+	// 工厂
+	ID2D1Factory1* factory1 = nullptr;   // 用于 CreateDevice
+	ID2D1Factory* factory = nullptr;     // 用于 CreatePathGeometry/CreateStrokeStyle
 	IDWriteFactory* dwriteFactory = nullptr;
 
-	// 每个窗口的渲染目标
-	ID2D1HwndRenderTarget* rt = nullptr;
+	// 每个窗口的设备上下文 + 交换链
+	ID2D1DeviceContext* rt = nullptr;
+	IDXGISwapChain1* swapChain = nullptr;
+	ID2D1Bitmap1* targetBitmap = nullptr;
 	HWND hwnd = nullptr;
 
 	// 帧尺寸 / dpi
@@ -99,6 +110,14 @@ struct CanvasCtx {
 	float shadowOffsetY = 0;
 	float shadowBlur = 0;
 
+	// 阴影离屏资源（用 D2D 1.1 Shadow effect）
+	ID2D1DeviceContext* shadowDC = nullptr;
+	ID2D1Bitmap1* shadowBmp = nullptr;
+	ID2D1SolidColorBrush* shadowWhiteBrush = nullptr;
+	ID2D1Effect* shadowEffect = nullptr;
+	float shadowBmpW = 0;
+	float shadowBmpH = 0;
+
 	IDWriteTextFormat* textFormat = nullptr;
 	std::string textFormatFace;
 	float textFormatSize = -1.0f;
@@ -118,20 +137,40 @@ struct CanvasCtx {
 };
 
 // 全局共享工厂（所有窗口共享，保证位图可跨渲染目标使用）
-static ID2D1Factory* g_d2dFactory = nullptr;
+static ID2D1Factory1* g_d2dFactory = nullptr;
+static ID2D1Device* g_d2dDevice = nullptr;
+static ID3D11Device* g_d3dDevice = nullptr;
 static IDWriteFactory* g_dwriteFactory = nullptr;
 static IWICImagingFactory* g_wicFactory = nullptr;
 
 static void ensureFactories() {
-	if (!g_d2dFactory) {
-		D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &g_d2dFactory);
-	}
 	if (!g_dwriteFactory) {
 		DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory), (IUnknown**)&g_dwriteFactory);
 	}
 	if (!g_wicFactory) {
-		auto h = CoCreateInstance(CLSID_WICImagingFactory, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&g_wicFactory));
-		auto err = GetLastError();
+		CoCreateInstance(CLSID_WICImagingFactory, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&g_wicFactory));
+	}
+	if (!g_d2dFactory) {
+		D2D1_FACTORY_OPTIONS opt = {};
+		D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, __uuidof(ID2D1Factory1), &opt, (void**)&g_d2dFactory);
+	}
+	if (!g_d3dDevice && g_d2dFactory) {
+		D3D_FEATURE_LEVEL levels[] = {
+			D3D_FEATURE_LEVEL_11_1, D3D_FEATURE_LEVEL_11_0,
+			D3D_FEATURE_LEVEL_10_1, D3D_FEATURE_LEVEL_10_0
+		};
+		D3D_FEATURE_LEVEL got = D3D_FEATURE_LEVEL_10_0;
+		HRESULT hr = D3D11CreateDevice(
+			nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, D3D11_CREATE_DEVICE_BGRA_SUPPORT,
+			levels, (UINT)(sizeof(levels) / sizeof(levels[0])), D3D11_SDK_VERSION,
+			&g_d3dDevice, &got, nullptr);
+		if (SUCCEEDED(hr) && g_d3dDevice) {
+			IDXGIDevice* dxgiDevice = nullptr;
+			if (SUCCEEDED(g_d3dDevice->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice)) && dxgiDevice) {
+				g_d2dFactory->CreateDevice(dxgiDevice, &g_d2dDevice);
+				dxgiDevice->Release();
+			}
+		}
 	}
 }
 
@@ -209,36 +248,98 @@ void Canvas::init() {
 	ensureFactories();
 }
 
+// 从交换链当前后缓冲重建 target bitmap 并设为渲染目标
+static void set_target_from_swapchain(CanvasCtx* ctx) {
+	if (!ctx->swapChain || !ctx->rt) return;
+	if (ctx->targetBitmap) {
+		ctx->rt->SetTarget(nullptr);
+		ctx->targetBitmap->Release();
+		ctx->targetBitmap = nullptr;
+	}
+	IDXGISurface* surface = nullptr;
+	if (SUCCEEDED(ctx->swapChain->GetBuffer(0, __uuidof(IDXGISurface), (void**)&surface)) && surface) {
+		D2D1_BITMAP_PROPERTIES1 bp = D2D1::BitmapProperties1(
+			D2D1_BITMAP_OPTIONS_TARGET | D2D1_BITMAP_OPTIONS_CANNOT_DRAW,
+			D2D1::PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_IGNORE));
+		ctx->rt->CreateBitmapFromDxgiSurface(surface, &bp, &ctx->targetBitmap);
+		surface->Release();
+		ctx->rt->SetTarget(ctx->targetBitmap);
+	}
+}
+
+static void resize_swapchain(CanvasCtx* ctx, UINT32 w, UINT32 h) {
+	if (!ctx->swapChain || !ctx->rt) return;
+	if (w < 1) w = 1;
+	if (h < 1) h = 1;
+	ctx->rt->SetTarget(nullptr);
+	if (ctx->targetBitmap) { ctx->targetBitmap->Release(); ctx->targetBitmap = nullptr; }
+	ctx->swapChain->ResizeBuffers(0, w, h, DXGI_FORMAT_UNKNOWN, 0);
+	set_target_from_swapchain(ctx);
+}
+
 void Canvas::bindWindow(void* hwnd) {
 	ensureFactories();
-	if (!g_d2dFactory) return;
+	if (!g_d2dFactory || !g_d2dDevice || !g_d3dDevice) return;
 
 	CanvasCtx* ctx = (CanvasCtx*)data;
 	if (!ctx) {
 		ctx = new CanvasCtx();
 		data = ctx;
 	}
+	ctx->factory1 = g_d2dFactory;
 	ctx->factory = g_d2dFactory;
 	ctx->dwriteFactory = g_dwriteFactory;
 	ctx->hwnd = (HWND)hwnd;
-	 
+
 	if (!ctx->rt && ctx->hwnd) {
-		RECT rc{};  
+		RECT rc{};
 		GetClientRect(ctx->hwnd, &rc);
 		UINT w = rc.right > rc.left ? (rc.right - rc.left) : 1;
 		UINT h = rc.bottom > rc.top ? (rc.bottom - rc.top) : 1;
 
-		D2D1_RENDER_TARGET_PROPERTIES props = D2D1::RenderTargetProperties();
-		D2D1_HWND_RENDER_TARGET_PROPERTIES hwndProps =
-			D2D1::HwndRenderTargetProperties(ctx->hwnd, D2D1::SizeU(w, h), D2D1_PRESENT_OPTIONS_NONE);
-		ctx->factory->CreateHwndRenderTarget(props, hwndProps, &ctx->rt);
-
-		if (ctx->rt) {
-			ctx->rt->CreateSolidColorBrush(D2D1::ColorF(0, 0, 0, 1), &ctx->fillSolid);
-			ctx->rt->CreateSolidColorBrush(D2D1::ColorF(0, 0, 0, 1), &ctx->strokeSolid);
-			ctx->fillBrush = ctx->fillSolid;
-			ctx->strokeBrush = ctx->strokeSolid;
+		// 创建交换链
+		IDXGIDevice* dxgiDevice = nullptr;
+		IDXGIAdapter* adapter = nullptr;
+		IDXGIFactory2* dxgiFactory2 = nullptr;
+		if (SUCCEEDED(g_d3dDevice->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice)) && dxgiDevice) {
+			dxgiDevice->GetAdapter(&adapter);
 		}
+		if (adapter) {
+			adapter->GetParent(__uuidof(IDXGIFactory2), (void**)&dxgiFactory2);
+		}
+		if (dxgiFactory2) {
+			DXGI_SWAP_CHAIN_DESC1 scd = {};
+			scd.Width = w;
+			scd.Height = h;
+			scd.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+			scd.SampleDesc.Count = 1;
+			scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+			scd.BufferCount = 2;
+			scd.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+			scd.AlphaMode = DXGI_ALPHA_MODE_IGNORE;
+			dxgiFactory2->CreateSwapChainForHwnd(g_d3dDevice, ctx->hwnd, &scd, nullptr, nullptr, &ctx->swapChain);
+			dxgiFactory2->Release();
+		}
+		if (adapter) adapter->Release();
+		if (dxgiDevice) dxgiDevice->Release();
+
+		// 创建设备上下文
+		g_d2dDevice->CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS_NONE, &ctx->rt);
+
+		if (ctx->swapChain && ctx->rt) {
+				set_target_from_swapchain(ctx);
+				ctx->rt->CreateSolidColorBrush(D2D1::ColorF(0, 0, 0, 1), &ctx->fillSolid);
+				ctx->rt->CreateSolidColorBrush(D2D1::ColorF(0, 0, 0, 1), &ctx->strokeSolid);
+				ctx->fillBrush = ctx->fillSolid;
+				ctx->strokeBrush = ctx->strokeSolid;
+
+				// 阴影离屏资源（D2D 1.1 shadow effect）
+				g_d2dDevice->CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS_NONE, &ctx->shadowDC);
+				if (ctx->shadowDC) {
+					ctx->shadowDC->CreateSolidColorBrush(D2D1::ColorF(1, 1, 1, 1), &ctx->shadowWhiteBrush);
+				}
+				ctx->rt->CreateEffect(CLSID_D2D1Shadow, &ctx->shadowEffect);
+			}
 	}
 }
 
@@ -252,7 +353,13 @@ void Canvas::unbindWindow() {
 	if (ctx->textFormat) { ctx->textFormat->Release(); ctx->textFormat = nullptr; }
 	if (ctx->fillSolid) { ctx->fillSolid->Release(); ctx->fillSolid = nullptr; }
 	if (ctx->strokeSolid) { ctx->strokeSolid->Release(); ctx->strokeSolid = nullptr; }
-	if (ctx->rt) { ctx->rt->Release(); ctx->rt = nullptr; }
+	if (ctx->shadowWhiteBrush) { ctx->shadowWhiteBrush->Release(); ctx->shadowWhiteBrush = nullptr; }
+	if (ctx->shadowEffect) { ctx->shadowEffect->Release(); ctx->shadowEffect = nullptr; }
+	if (ctx->shadowBmp) { ctx->shadowBmp->Release(); ctx->shadowBmp = nullptr; }
+	if (ctx->shadowDC) { ctx->shadowDC->Release(); ctx->shadowDC = nullptr; }
+	if (ctx->rt) { ctx->rt->SetTarget(nullptr); ctx->rt->Release(); ctx->rt = nullptr; }
+	if (ctx->targetBitmap) { ctx->targetBitmap->Release(); ctx->targetBitmap = nullptr; }
+	if (ctx->swapChain) { ctx->swapChain->Release(); ctx->swapChain = nullptr; }
 	ctx->fillBrush = nullptr;
 	ctx->strokeBrush = nullptr;
 	ctx->hwnd = nullptr;
@@ -303,88 +410,165 @@ static bool shadow_active(CanvasCtx* ctx) {
 	return ctx->shadowColor != 0 && ((ctx->shadowColor >> 24) & 0xFF) != 0;
 }
 
-// 绘制阴影 fill：将几何体以阴影色在偏移位置多次绘制以模拟模糊
-static void draw_shadow_fill(CanvasCtx* ctx) {
-	if (!shadow_active(ctx) || !ctx->pathGeo || !ctx->rt) return;
+// 确保阴影离屏资源存在（在 bindWindow 中已创建，这里兜底）
+static void ensure_shadow_resources(CanvasCtx* ctx) {
+	if (!ctx->rt) return;
+	if (!ctx->shadowDC && g_d2dDevice) {
+		g_d2dDevice->CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS_NONE, &ctx->shadowDC);
+	}
+	if (!ctx->shadowWhiteBrush && ctx->shadowDC) {
+		ctx->shadowDC->CreateSolidColorBrush(D2D1::ColorF(1.0f, 1.0f, 1.0f, 1.0f), &ctx->shadowWhiteBrush);
+	}
+	if (!ctx->shadowEffect) {
+		ctx->rt->CreateEffect(CLSID_D2D1Shadow, &ctx->shadowEffect);
+	}
+}
 
-	float sa = (float)((ctx->shadowColor >> 24) & 0xFF) / 255.0f;
-	D2D1::ColorF sc(
-		(float)((ctx->shadowColor >> 16) & 0xFF) / 255.0f,
-		(float)((ctx->shadowColor >> 8) & 0xFF) / 255.0f,
-		(float)((ctx->shadowColor >> 0) & 0xFF) / 255.0f,
-		sa * ctx->globalAlpha);
-
-	ID2D1SolidColorBrush* brush = nullptr;
-	ctx->rt->CreateSolidColorBrush(sc, &brush);
-	if (!brush) return;
-
-	D2D1::Matrix3x2F saved;
-	ctx->rt->GetTransform(&saved);
-
+// 为阴影准备离屏位图（含模糊外扩边距），返回设备空间源矩形
+static bool prepare_shadow_bitmap(CanvasCtx* ctx, const D2D1_RECT_F& bounds, D2D1_RECT_F* outSrc) {
+	if (!(bounds.right > bounds.left && bounds.bottom > bounds.top)) return false;
 	float blur = ctx->shadowBlur;
-	if (blur < 0.1f) {
-		ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(ctx->shadowOffsetX, ctx->shadowOffsetY));
-		ctx->rt->FillGeometry(ctx->pathGeo, brush);
-	} else {
-		int N = (int)(blur * 2);
-		if (N < 8) N = 8;
-		if (N > 64) N = 64;
-		brush->SetOpacity(1.0f / N);
-		for (int i = 0; i < N; i++) {
-			float angle = i * 2.39996f;
-			float r = blur * sqrtf((float)(i + 1) / N);
-			float dx = r * cosf(angle) + ctx->shadowOffsetX;
-			float dy = r * sinf(angle) + ctx->shadowOffsetY;
-			ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(dx, dy));
-			ctx->rt->FillGeometry(ctx->pathGeo, brush);
+	float margin = (blur < 0.1f) ? 2.0f : (blur * 2.0f + 4.0f);
+	D2D1_RECT_F src = D2D1::RectF(bounds.left - margin, bounds.top - margin, bounds.right + margin, bounds.bottom + margin);
+	float bw = src.right - src.left;
+	float bh = src.bottom - src.top;
+	if (bw < 1.0f || bh < 1.0f || bw > 1e7f || bh > 1e7f) return false;
+	UINT32 iw = (UINT32)(bw + 0.5f);
+	UINT32 ih = (UINT32)(bh + 0.5f);
+
+	bool need = !ctx->shadowBmp;
+	if (!need) {
+		D2D1_SIZE_U sz = ctx->shadowBmp->GetPixelSize();
+		if (sz.width != iw || sz.height != ih) need = true;
+	}
+	if (need) {
+		if (ctx->shadowBmp) { ctx->shadowBmp->Release(); ctx->shadowBmp = nullptr; }
+		D2D1_BITMAP_PROPERTIES1 bp = D2D1::BitmapProperties1(
+			D2D1_BITMAP_OPTIONS_TARGET,
+			D2D1::PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_PREMULTIPLIED));
+		HRESULT hr = ctx->shadowDC->CreateBitmap(D2D1::SizeU(iw, ih), nullptr, 0, &bp, &ctx->shadowBmp);
+		printf("[shadow] CreateBitmap %ux%u hr=0x%08X\n", iw, ih, (unsigned)hr);
+		if (SUCCEEDED(hr)) {
+			ctx->shadowBmpW = bw; ctx->shadowBmpH = bh;
 		}
 	}
+	if (!ctx->shadowBmp) return false;
+	*outSrc = src;
+	return true;
+}
 
+// 用 shadow effect 把离屏白色剪影上色并投影到主目标
+static void flush_shadow(CanvasCtx* ctx, const D2D1_RECT_F& src) {
+	ctx->shadowEffect->SetInput(0, ctx->shadowBmp);
+	float sa = ((ctx->shadowColor >> 24) & 0xFF) / 255.0f * ctx->globalAlpha;
+	D2D1_VECTOR_4F c;
+	c.x = ((ctx->shadowColor >> 16) & 0xFF) / 255.0f;
+	c.y = ((ctx->shadowColor >> 8) & 0xFF) / 255.0f;
+	c.z = ((ctx->shadowColor >> 0) & 0xFF) / 255.0f;
+	c.w = sa < 0.0f ? 0.0f : (sa > 1.0f ? 1.0f : sa);
+	ctx->shadowEffect->SetValue(D2D1_SHADOW_PROP_COLOR, c);
+	ctx->shadowEffect->SetValue(D2D1_SHADOW_PROP_BLUR_STANDARD_DEVIATION, ctx->shadowBlur * 0.5f);
+
+	// 阴影内容已是设备/像素坐标，须用恒等变换绘制，避免和 rt 当前变换叠加
+	D2D1::Matrix3x2F saved;
+	ctx->rt->GetTransform(&saved);
+	ctx->rt->SetTransform(D2D1::Matrix3x2F::Identity());
+	ctx->rt->DrawImage(ctx->shadowEffect,
+		D2D1::Point2F(src.left + ctx->shadowOffsetX, src.top + ctx->shadowOffsetY),
+		D2D1_INTERPOLATION_MODE_LINEAR, D2D1_COMPOSITE_MODE_SOURCE_OVER);
 	ctx->rt->SetTransform(saved);
-	brush->Release();
+}
+
+// 绘制阴影 fill：用 shadow effect 生成模糊阴影
+static void draw_shadow_fill(CanvasCtx* ctx) {
+	if (!shadow_active(ctx) || !ctx->pathGeo || !ctx->rt) return;
+	ensure_shadow_resources(ctx);
+	if (!ctx->shadowDC || !ctx->shadowEffect || !ctx->shadowWhiteBrush) {
+		printf("[shadow-fill] missing res dc=%p eff=%p brush=%p\n", (void*)ctx->shadowDC, (void*)ctx->shadowEffect, (void*)ctx->shadowWhiteBrush);
+		return;
+	}
+
+	D2D1::Matrix3x2F cur;
+	ctx->rt->GetTransform(&cur);
+	D2D1_RECT_F bounds;
+	if (FAILED(ctx->pathGeo->GetBounds(&cur, &bounds))) return;
+
+	D2D1_RECT_F src;
+	if (!prepare_shadow_bitmap(ctx, bounds, &src)) return;
+
+	{
+		static int dbg = 0;
+		if (dbg++ < 5) printf("[shadow-fill] bounds(%.1f,%.1f,%.1f,%.1f) src(%.1f,%.1f) off(%.1f,%.1f) blur=%.1f color=0x%08X\n",
+			bounds.left, bounds.top, bounds.right, bounds.bottom,
+			src.left, src.top, ctx->shadowOffsetX, ctx->shadowOffsetY, (double)ctx->shadowBlur, ctx->shadowColor);
+	}
+
+	ctx->shadowDC->SetTarget(ctx->shadowBmp);
+	ctx->shadowDC->BeginDraw();
+	ctx->shadowDC->Clear(D2D1::ColorF(0, 0, 0, 0));
+	ctx->shadowDC->SetAntialiasMode(D2D1_ANTIALIAS_MODE_PER_PRIMITIVE);
+	ctx->shadowDC->SetTransform(D2D1::Matrix3x2F::Translation(-src.left, -src.top) * cur);
+	ctx->shadowDC->FillGeometry(ctx->pathGeo, ctx->shadowWhiteBrush);
+	ctx->shadowDC->EndDraw();
+	ctx->shadowDC->Flush();
+
+	flush_shadow(ctx, src);
 }
 
 // 绘制阴影 stroke
 static void draw_shadow_stroke(CanvasCtx* ctx) {
 	if (!shadow_active(ctx) || !ctx->pathGeo || !ctx->rt) return;
-
+	ensure_shadow_resources(ctx);
+	if (!ctx->shadowDC || !ctx->shadowEffect || !ctx->shadowWhiteBrush) return;
 	ensure_stroke_style(ctx);
 
-	float sa = (float)((ctx->shadowColor >> 24) & 0xFF) / 255.0f;
-	D2D1::ColorF sc(
-		(float)((ctx->shadowColor >> 16) & 0xFF) / 255.0f,
-		(float)((ctx->shadowColor >> 8) & 0xFF) / 255.0f,
-		(float)((ctx->shadowColor >> 0) & 0xFF) / 255.0f,
-		sa * ctx->globalAlpha);
+	D2D1::Matrix3x2F cur;
+	ctx->rt->GetTransform(&cur);
+	D2D1_RECT_F bounds;
+	if (FAILED(ctx->pathGeo->GetBounds(&cur, &bounds))) return;
 
-	ID2D1SolidColorBrush* brush = nullptr;
-	ctx->rt->CreateSolidColorBrush(sc, &brush);
-	if (!brush) return;
+	D2D1_RECT_F src;
+	if (!prepare_shadow_bitmap(ctx, bounds, &src)) return;
 
-	D2D1::Matrix3x2F saved;
-	ctx->rt->GetTransform(&saved);
+	ctx->shadowDC->SetTarget(ctx->shadowBmp);
+	ctx->shadowDC->BeginDraw();
+	ctx->shadowDC->Clear(D2D1::ColorF(0, 0, 0, 0));
+	ctx->shadowDC->SetAntialiasMode(D2D1_ANTIALIAS_MODE_PER_PRIMITIVE);
+	ctx->shadowDC->SetTransform(D2D1::Matrix3x2F::Translation(-src.left, -src.top) * cur);
+	ctx->shadowDC->DrawGeometry(ctx->pathGeo, ctx->shadowWhiteBrush, ctx->strokeW, ctx->strokeStyle);
+	ctx->shadowDC->EndDraw();
+	ctx->shadowDC->Flush();
 
-	float blur = ctx->shadowBlur;
-	if (blur < 0.1f) {
-		ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(ctx->shadowOffsetX, ctx->shadowOffsetY));
-		ctx->rt->DrawGeometry(ctx->pathGeo, brush, ctx->strokeW, ctx->strokeStyle);
-	} else {
-		int N = (int)(blur * 2);
-		if (N < 8) N = 8;
-		if (N > 64) N = 64;
-		brush->SetOpacity(1.0f / N);
-		for (int i = 0; i < N; i++) {
-			float angle = i * 2.39996f;
-			float r = blur * sqrtf((float)(i + 1) / N);
-			float dx = r * cosf(angle) + ctx->shadowOffsetX;
-			float dy = r * sinf(angle) + ctx->shadowOffsetY;
-			ctx->rt->SetTransform(saved * D2D1::Matrix3x2F::Translation(dx, dy));
-			ctx->rt->DrawGeometry(ctx->pathGeo, brush, ctx->strokeW, ctx->strokeStyle);
-		}
-	}
+	flush_shadow(ctx, src);
+}
 
-	ctx->rt->SetTransform(saved);
-	brush->Release();
+// 绘制文本阴影
+static void draw_shadow_text(CanvasCtx* ctx, IDWriteTextLayout* layout, float originX, float originY) {
+	if (!shadow_active(ctx) || !layout) return;
+	ensure_shadow_resources(ctx);
+	if (!ctx->shadowDC || !ctx->shadowEffect || !ctx->shadowWhiteBrush) return;
+
+	DWRITE_TEXT_METRICS m;
+	layout->GetMetrics(&m);
+	if (!(m.width > 0 || m.height > 0)) return;
+
+	D2D1::Matrix3x2F cur;
+	ctx->rt->GetTransform(&cur);
+	D2D1_RECT_F bounds = D2D1::RectF(originX, originY, originX + m.width, originY + m.height);
+
+	D2D1_RECT_F src;
+	if (!prepare_shadow_bitmap(ctx, bounds, &src)) return;
+
+	ctx->shadowDC->SetTarget(ctx->shadowBmp);
+	ctx->shadowDC->BeginDraw();
+	ctx->shadowDC->Clear(D2D1::ColorF(0, 0, 0, 0));
+	ctx->shadowDC->SetAntialiasMode(D2D1_ANTIALIAS_MODE_PER_PRIMITIVE);
+	ctx->shadowDC->SetTransform(D2D1::Matrix3x2F::Translation(-src.left, -src.top) * cur);
+	ctx->shadowDC->DrawTextLayout(D2D1::Point2F(originX, originY), layout, ctx->shadowWhiteBrush, D2D1_DRAW_TEXT_OPTIONS_NONE);
+	ctx->shadowDC->EndDraw();
+	ctx->shadowDC->Flush();
+
+	flush_shadow(ctx, src);
 }
 
 static void finalize_path(CanvasCtx* ctx) {
@@ -431,10 +615,10 @@ void Canvas::beginFrame(float w, float h, float devicePixelRatio) {
 	if (!ctx || !ctx->rt) return;
 
 	if (devicePixelRatio <= 0) devicePixelRatio = 1.0f;
-	D2D1_SIZE_U px = D2D1::SizeU((UINT32)(w * devicePixelRatio + 0.5f), (UINT32)(h * devicePixelRatio + 0.5f));
-	D2D1_SIZE_F cur = ctx->rt->GetSize();
-	if (cur.width != (float)px.width || cur.height != (float)px.height) {
-		ctx->rt->Resize(px);
+	UINT32 pw = (UINT32)(w * devicePixelRatio + 0.5f);
+	UINT32 ph = (UINT32)(h * devicePixelRatio + 0.5f);
+	if (ctx->frameW != w || ctx->frameH != h) {
+		resize_swapchain(ctx, pw, ph);
 	}
 
 	ctx->frameW = w;
@@ -472,6 +656,7 @@ void Canvas::endFrame() {
 	if (!ctx || !ctx->rt) return;
 	finalize_path(ctx);
 	ctx->rt->EndDraw();
+	if (ctx->swapChain) ctx->swapChain->Present(1, 0);
 }
 
 void Canvas::cancelFrame() {
@@ -1162,36 +1347,8 @@ void Canvas::text(float x, float y, const char* string) {
 
 	float originY = baselineY - ascent;
 
-	// 阴影
-	if (shadow_active(ctx)) {
-		float sa = (float)((ctx->shadowColor >> 24) & 0xFF) / 255.0f;
-		D2D1::ColorF sc(
-			(float)((ctx->shadowColor >> 16) & 0xFF) / 255.0f,
-			(float)((ctx->shadowColor >> 8) & 0xFF) / 255.0f,
-			(float)((ctx->shadowColor >> 0) & 0xFF) / 255.0f,
-			sa * ctx->globalAlpha);
-		ID2D1SolidColorBrush* shadowBrush = nullptr;
-		ctx->rt->CreateSolidColorBrush(sc, &shadowBrush);
-		if (shadowBrush) {
-			float blur = ctx->shadowBlur;
-			if (blur < 0.1f) {
-				ctx->rt->DrawTextLayout(D2D1::Point2F(originX + ctx->shadowOffsetX, originY + ctx->shadowOffsetY), layout, shadowBrush, D2D1_DRAW_TEXT_OPTIONS_NONE);
-			} else {
-				int N = (int)(blur * 2);
-				if (N < 8) N = 8;
-				if (N > 64) N = 64;
-				shadowBrush->SetOpacity(1.0f / N);
-				for (int i = 0; i < N; i++) {
-					float angle = i * 2.39996f;
-					float r = blur * sqrtf((float)(i + 1) / N);
-					float dx = r * cosf(angle) + ctx->shadowOffsetX;
-					float dy = r * sinf(angle) + ctx->shadowOffsetY;
-					ctx->rt->DrawTextLayout(D2D1::Point2F(originX + dx, originY + dy), layout, shadowBrush, D2D1_DRAW_TEXT_OPTIONS_NONE);
-				}
-			}
-			shadowBrush->Release();
-		}
-	}
+	// 阴影（用 D2D 1.1 shadow effect，GPU 高斯模糊）
+	draw_shadow_text(ctx, layout, originX, originY);
 
 	ctx->rt->DrawTextLayout(D2D1::Point2F(originX, originY), layout, ctx->fillBrush, D2D1_DRAW_TEXT_OPTIONS_NONE);
 	layout->Release();
