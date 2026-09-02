@@ -491,6 +491,7 @@ public:
 	{
 		return target == v;
 	}
+
 	inline Ref<T>& operator=(const Ref<T>& from)
 	{
 

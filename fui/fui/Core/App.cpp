@@ -18,7 +18,7 @@ App* App_use() {
 		g_app = new App();
 		g_app->init();
 	}
-	return g_app;
+	return g_app.get();
 }
 
 Window* App::findWindowById(int64_t id) {

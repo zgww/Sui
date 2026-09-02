@@ -90,6 +90,9 @@ void Button::react()
 	startInnerReact();
 
 	auto& o = *this;
+
+	o.row().aic().jcc();
+
 	if (src != "") {
 		R(ImageView, LINE_KEY) {
 			o.setSrc(src);

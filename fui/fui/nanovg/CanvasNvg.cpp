@@ -52,6 +52,16 @@ void Canvas::endFrame() {
 	NVGcontext* vg = (NVGcontext*)data;
 	nvgEndFrame(vg);
 }
+// 阴影 (类似 HTML5 canvas shadow)
+void Canvas::shadowColor(int r, int g, int b, int a) {
+
+}
+void Canvas::shadowOffset(float x, float y) {
+
+}
+void Canvas::shadowBlur(float blur) {
+
+}
 
 void Canvas::cancelFrame() {
 	NVGcontext* vg = (NVGcontext*)data;
