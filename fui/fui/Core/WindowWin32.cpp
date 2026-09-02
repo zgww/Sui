@@ -14,7 +14,6 @@
 #include "../View/SystemTrayIcon.h"
 
 
-#ifdef _WIN32
 #include <windows.h>
 #include <windowsx.h>
 #include "../Naga/Win32Utf8Util.h"
@@ -39,6 +38,7 @@ typedef struct {
 
 static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
+HWND _getWindowHwnd(Window* win);
 
 class GetAssisKey {
 public:
@@ -66,7 +66,7 @@ public:
 	bool alt = false;
 };
 
-static void _registerWinClass() {
+void _registerWinClass() {
 	static bool registered = false;
 	if (registered) return;
 	registered = true;
@@ -386,7 +386,7 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	switch (uMsg) {
 	case WM_CLOSE:
 		DestroyWindow(hWnd);
-		break; 
+		break;
 	case WM_DESTROY: {
 		Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
 		if (win) {
@@ -394,16 +394,16 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		}
 		break;
 	}
-	//case WM_PAINT:
-	//{
-	//	PAINTSTRUCT ps;
-	//	BeginPaint(hwnd, &ps);
-	//	EndPaint(hwnd, &ps);
+				   //case WM_PAINT:
+				   //{
+				   //	PAINTSTRUCT ps;
+				   //	BeginPaint(hwnd, &ps);
+				   //	EndPaint(hwnd, &ps);
 
-	//	Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
-	//	win->layoutAndDraw();
-	//	break;
-	//}
+				   //	Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
+				   //	win->layoutAndDraw();
+				   //	break;
+				   //}
 	case WM_SIZE: {
 		App_use()->invalidDraw();
 		//InvalidateRect(hwnd, nullptr, FALSE);
@@ -482,28 +482,28 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		Keyboard_onKeyUp(winId, (int)wParam, keyName, shift, ctrl, alt);
 		break;
 	}
-	//case WM_CHAR: {
-	//	wchar_t wc = (wchar_t)wParam;
-	//	if (wc >= 32) {
-	//		char buf[8] = {0};
-	//		WideCharToMultiByte(CP_UTF8, 0, &wc, 1, buf, sizeof(buf), nullptr, nullptr);
-	//		if (buf[0] != 0) {
-	//			char keyStr[2] = {buf[0], 0};
-	//			Keyboard_onKeyDown(winId, (int)buf[0], keyStr, false, false, false);
-	//		}
-	//	}
-	//	break;
-	//}
+				 //case WM_CHAR: {
+				 //	wchar_t wc = (wchar_t)wParam;
+				 //	if (wc >= 32) {
+				 //		char buf[8] = {0};
+				 //		WideCharToMultiByte(CP_UTF8, 0, &wc, 1, buf, sizeof(buf), nullptr, nullptr);
+				 //		if (buf[0] != 0) {
+				 //			char keyStr[2] = {buf[0], 0};
+				 //			Keyboard_onKeyDown(winId, (int)buf[0], keyStr, false, false, false);
+				 //		}
+				 //	}
+				 //	break;
+				 //}
 
-				/*
- 任意字符键
- BACKSPACE 退格
- ENTER（回车）
- ESC 退出
- SHIFT + ENTER（换行）
- TAB*/
+							 /*
+			  任意字符键
+			  BACKSPACE 退格
+			  ENTER（回车）
+			  ESC 退出
+			  SHIFT + ENTER（换行）
+			  TAB*/
 	case WM_CHAR: return _char(hwnd, wParam, lParam);
-	//case WM_KEYUP: return _key_up(hwnd, wParam, lParam);
+		//case WM_KEYUP: return _key_up(hwnd, wParam, lParam);
 	case WM_SETFOCUS: return _set_focus(hwnd, wParam, lParam);
 	case WM_KILLFOCUS: return _kill_focus(hwnd, wParam, lParam);
 
@@ -550,7 +550,7 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 Window::Window() {
 	CtorGuard _(this);
 
-	Ref<View> defaultView{new View()};
+	Ref<View> defaultView{ new View() };
 	defaultView->backgroundColor = 0x00000000;
 	rootView = defaultView;
 
@@ -587,86 +587,52 @@ void Window::setRootView(ViewBase* v) {
 }
 
 void Window::show() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) ShowWindow(data->hwnd, SW_SHOW);
+	auto hwnd = _getWindowHwnd(this);
+	ShowWindow(hwnd, SW_SHOW);
 	App_use()->invalidDraw();
 }
 
 void Window::hide() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) ShowWindow(data->hwnd, SW_HIDE);
+	auto hwnd = _getWindowHwnd(this);
+	ShowWindow(hwnd, SW_HIDE);
 }
 
 void Window::maximize() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) ShowWindow(data->hwnd, SW_MAXIMIZE);
+	auto hwnd = _getWindowHwnd(this);
+	ShowWindow(hwnd, SW_MAXIMIZE);
 }
 
 void Window::minimize() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) ShowWindow(data->hwnd, SW_MINIMIZE);
+	auto hwnd = _getWindowHwnd(this);
+	ShowWindow(hwnd, SW_MINIMIZE);
 }
 
 void Window::normal() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) ShowWindow(data->hwnd, SW_NORMAL);
+	auto hwnd = _getWindowHwnd(this);
+	ShowWindow(hwnd, SW_NORMAL);
 }
 
 void Window::enable(bool enable) {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) EnableWindow(data->hwnd, enable ? TRUE : FALSE);
+	auto hwnd = _getWindowHwnd(this);
+	EnableWindow(hwnd, enable ? TRUE : FALSE);
 }
 
 void Window::close() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) DestroyWindow(data->hwnd);
+	auto hwnd = _getWindowHwnd(this);
+	DestroyWindow(hwnd);
 }
 
 void Window::setOwner(Window* ownerWindow) {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	WindowDataWin32* ownerData = ownerWindow ? (WindowDataWin32*)ownerWindow->data : nullptr;
-	if (data && ownerData) {
-		SetWindowLongPtr(data->hwnd, GWLP_HWNDPARENT, (LONG_PTR)ownerData->hwnd);
+	auto hwnd = _getWindowHwnd(this);
+	auto ownerHwnd = _getWindowHwnd(ownerWindow);
+	if (data && ownerHwnd) {
+		SetWindowLongPtr(hwnd, GWLP_HWNDPARENT, (LONG_PTR)ownerHwnd);
 	}
 }
 
-void Window::initData() {
-	cleanData();
-
-	WindowDataWin32* data = (WindowDataWin32*)calloc(1, sizeof(WindowDataWin32));
-
-	_registerWinClass();
-	HWND hwnd = _createWindow();
-	SetPropA(hwnd, "fuiWindow", this);
-
-	this->id = (int64_t)hwnd;
-
-	canvas->bindWindow(hwnd);
-
-	HDC hdc = GetDC(hwnd);
-	data->devicePixelRatio = (float)GetDeviceCaps(hdc, LOGPIXELSX) / 96.0f;
-	ReleaseDC(hwnd, hdc);
-
-	data->hwnd = hwnd;
-
-	this->data = data;
-}
-
-void Window::cleanData() {
-	if (!data) return;
-	WindowDataWin32* d = (WindowDataWin32*)data;
-	canvas->unbindWindow();
-	if (d->hwnd) {
-		RemovePropA(d->hwnd, "fuiWindow");
-		DestroyWindow(d->hwnd);
-		d->hwnd = nullptr;
-	}
-	free(d);
-	data = nullptr;
-}
 
 void Window::layout() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
+	auto hwnd = _getWindowHwnd(this);
 	if (data && rootView) {
 		Vec2 clientSize = getClientSize();
 		Frame* ctx = &rootView->frame;
@@ -676,16 +642,14 @@ void Window::layout() {
 }
 
 void Window::draw() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		HWND hwnd = data->hwnd;
-
+	auto hwnd = _getWindowHwnd(this);
+	{
 		RECT rect = {};
 		GetClientRect(hwnd, &rect);
 		float w = (float)(rect.right - rect.left);
 		float h = (float)(rect.bottom - rect.top);
 
-		canvas->beginFrame(w, h, data->devicePixelRatio);
+		canvas->beginFrame(w, h, devicePixelRatio);
 		if (rootView) {
 			rootView->draw(canvas);
 		}
@@ -695,8 +659,8 @@ void Window::draw() {
 }
 
 bool Window::isVisible() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) return IsWindowVisible(data->hwnd) != 0;
+	auto hwnd = _getWindowHwnd(this);
+	return IsWindowVisible(hwnd) != 0;
 	return false;
 }
 
@@ -723,22 +687,22 @@ void Window::onDestroy() {
 }
 
 void Window::setTitle(const char* title) {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
+	auto hwnd = _getWindowHwnd(this);
+	{
 		int wlen = MultiByteToWideChar(CP_UTF8, 0, title, -1, nullptr, 0);
 		wchar_t* wstr = new wchar_t[wlen];
 		MultiByteToWideChar(CP_UTF8, 0, title, -1, wstr, wlen);
-		SetWindowTextW(data->hwnd, wstr);
+		SetWindowTextW(hwnd, wstr);
 		delete[] wstr;
 	}
 }
 
 std::string Window::getTitle() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		int wlen = GetWindowTextLengthW(data->hwnd) + 1;
+	auto hwnd = _getWindowHwnd(this);
+	{
+		int wlen = GetWindowTextLengthW(hwnd) + 1;
 		wchar_t* wstr = new wchar_t[wlen];
-		GetWindowTextW(data->hwnd, wstr, wlen);
+		GetWindowTextW(hwnd, wstr, wlen);
 		int alen = WideCharToMultiByte(CP_UTF8, 0, wstr, -1, nullptr, 0, nullptr, nullptr);
 		std::string result(alen - 1, 0);
 		WideCharToMultiByte(CP_UTF8, 0, wstr, -1, &result[0], alen, nullptr, nullptr);
@@ -749,79 +713,65 @@ std::string Window::getTitle() {
 }
 
 Vec2 Window::getPos() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		RECT rect;
-		GetWindowRect(data->hwnd, &rect);
-		return mkVec2((float)rect.left, (float)rect.top);
-	}
-	return mkVec2(0, 0);
+	auto hwnd = _getWindowHwnd(this);
+	RECT rect;
+	GetWindowRect(hwnd, &rect);
+	return mkVec2((float)rect.left, (float)rect.top);
 }
 
 void Window::setPos(float x, float y) {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		SetWindowPos(data->hwnd, nullptr, (int)x, (int)y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
-	}
+	auto hwnd = _getWindowHwnd(this);
+	SetWindowPos(hwnd, nullptr, (int)x, (int)y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 }
 
 Vec2 Window::getSize() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		RECT rect;
-		GetWindowRect(data->hwnd, &rect);
-		return mkVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
-	}
-	return mkVec2(0, 0);
+	auto hwnd = _getWindowHwnd(this);
+	RECT rect;
+	GetWindowRect(hwnd, &rect);
+	return mkVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
 }
 
 void Window::setSize(float x, float y) {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		RECT rect;
-		GetWindowRect(data->hwnd, &rect);
-		int adjustedW = (int)x;
-		int adjustedH = (int)y;
-		AdjustWindowRect(&rect, GetWindowLong(data->hwnd, GWL_STYLE), FALSE);
-		int nonClientW = (rect.right - rect.left) - (rect.right - rect.left);
-		int nonClientH = (rect.bottom - rect.top) - (rect.bottom - rect.top);
-		SetWindowPos(data->hwnd, nullptr, 0, 0, adjustedW, adjustedH, SWP_NOMOVE | SWP_NOZORDER);
-	}
+	auto hwnd = _getWindowHwnd(this);
+
+	RECT rect;
+	GetWindowRect(hwnd, &rect);
+	int adjustedW = (int)x;
+	int adjustedH = (int)y;
+	AdjustWindowRect(&rect, GetWindowLong(hwnd, GWL_STYLE), FALSE);
+	int nonClientW = (rect.right - rect.left) - (rect.right - rect.left);
+	int nonClientH = (rect.bottom - rect.top) - (rect.bottom - rect.top);
+	SetWindowPos(hwnd, nullptr, 0, 0, adjustedW, adjustedH, SWP_NOMOVE | SWP_NOZORDER);
 }
 
 void Window::setRect(float x, float y, float w, float h) {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		SetWindowPos(data->hwnd, nullptr, (int)x, (int)y, (int)w, (int)h, SWP_NOZORDER);
-	}
+	auto hwnd = _getWindowHwnd(this);
+
+	SetWindowPos(hwnd, nullptr, (int)x, (int)y, (int)w, (int)h, SWP_NOZORDER);
 }
 
 Vec2 Window::getClientSize() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		RECT rect;
-		GetClientRect(data->hwnd, &rect);
-		return mkVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
-	}
-	return mkVec2(0, 0);
+	auto hwnd = _getWindowHwnd(this);
+
+	RECT rect;
+	GetClientRect(hwnd, &rect);
+	return mkVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
 }
 
 Inset Window::getNonClientInset() {
-	WindowDataWin32* data = (WindowDataWin32*)this->data;
-	if (data) {
-		RECT winRect, clientRect;
-		GetWindowRect(data->hwnd, &winRect);
-		GetClientRect(data->hwnd, &clientRect);
-		POINT pt{ clientRect.left, clientRect.top };
-		ClientToScreen(data->hwnd, &pt);
-		Inset ret;
-		ret.left = (float)(pt.x - winRect.left);
-		ret.top = (float)(pt.y - winRect.top);
-		ret.right = (float)(winRect.right - (pt.x + clientRect.right - clientRect.left));
-		ret.bottom = (float)(winRect.bottom - (pt.y + clientRect.bottom - clientRect.top));
-		return ret;
-	}
-	return mkInset0();
+	auto hwnd = _getWindowHwnd(this);
+
+	RECT winRect, clientRect;
+	GetWindowRect(hwnd, &winRect);
+	GetClientRect(hwnd, &clientRect);
+	POINT pt{ clientRect.left, clientRect.top };
+	ClientToScreen(hwnd, &pt);
+	Inset ret;
+	ret.left = (float)(pt.x - winRect.left);
+	ret.top = (float)(pt.y - winRect.top);
+	ret.right = (float)(winRect.right - (pt.x + clientRect.right - clientRect.left));
+	ret.bottom = (float)(winRect.bottom - (pt.y + clientRect.bottom - clientRect.top));
+	return ret;
 }
 
 void Window::moveToCenter() {
@@ -844,7 +794,7 @@ void DragCrossWindowIndicator::start() {
 	requestAnimationFrame(CLOSURE([=]() -> bool {
 		self->onDragMove(mkVec2(0, 0));
 		return !self->dragging;
-	}));
+		}));
 }
 
 void DragCrossWindowIndicator::end() {
@@ -859,38 +809,3 @@ void DragCrossWindowIndicator::onDragMove(Vec2 clientPos) {
 
 
 
-
-
-#else
-
-Window::Window() {}
-Window::~Window() {}
-void Window::setTransparent() {}
-void Window::setRootView(ViewBase* v) {}
-void Window::show() {}
-void Window::hide() {}
-void Window::maximize() {}
-void Window::minimize() {}
-void Window::normal() {}
-void Window::enable(bool) {}
-void Window::close() {}
-void Window::setOwner(Window*) {}
-void Window::initData() {}
-void Window::cleanData() {}
-void Window::layout() {}
-void Window::draw() {}
-bool Window::isVisible() { return false; }
-void Window::layoutAndDraw() {}
-void Window::onDestroy() {}
-void Window::setTitle(const char*) {}
-std::string Window::getTitle() { return ""; }
-Vec2 Window::getPos() { return mkVec2(0, 0); }
-void Window::setPos(float, float) {}
-Vec2 Window::getSize() { return mkVec2(0, 0); }
-void Window::setSize(float, float) {}
-void Window::setRect(float, float, float, float) {}
-Vec2 Window::getClientSize() { return mkVec2(0, 0); }
-Inset Window::getNonClientInset() { return mkInset0(); }
-void Window::moveToCenter() {}
-
-#endif

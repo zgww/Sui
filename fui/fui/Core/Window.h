@@ -11,6 +11,7 @@ class ViewBase;
 class View;
 class App;
 
+
 class Window : public Emitter {
 public:
 	int64_t id = 0;
@@ -23,6 +24,7 @@ public:
 	Ref<Closure<void(Window*)>> onClosed{nullptr, this};
 
 	void* data = nullptr;
+	double devicePixelRatio = 1.0;
 	int layoutTimes = 0;
 
 	Window();

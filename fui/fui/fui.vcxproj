@@ -22,6 +22,10 @@
     <ClInclude Include="Core\Defines_win.h" />
     <ClInclude Include="Core\Theme.h" />
     <ClInclude Include="Core\Mat.h" />
+    <ClInclude Include="GL\eglew.h" />
+    <ClInclude Include="GL\glew.h" />
+    <ClInclude Include="GL\glxew.h" />
+    <ClInclude Include="GL\wglew.h" />
     <ClInclude Include="Naga\FsUtil.h" />
     <ClInclude Include="Naga\MathEx.h" />
     <ClInclude Include="Naga\StrUtil.h" />
@@ -29,6 +33,13 @@
     <ClInclude Include="Naga\Utf8Util.h" />
     <ClInclude Include="Naga\Win32Utf8Util.h" />
     <ClInclude Include="Naga\Path.h" />
+    <ClInclude Include="nanovg\fontstash.h" />
+    <ClInclude Include="nanovg\nanovg.h" />
+    <ClInclude Include="nanovg\nanovg_gl.h" />
+    <ClInclude Include="nanovg\nanovg_gl_utils.h" />
+    <ClInclude Include="nanovg\stb_image.h" />
+    <ClInclude Include="nanovg\stb_image_write.h" />
+    <ClInclude Include="nanovg\stb_truetype.h" />
     <ClInclude Include="Urgc\GcList.h" />
     <ClInclude Include="Urgc\GcMap.h" />
     <ClInclude Include="Urgc\GcObj.h" />
@@ -116,15 +127,16 @@
     <ClInclude Include="View\TreeView.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core\CanvasD2D.cpp" />
+    <ClCompile Include="nanovg\CanvasNvg.cpp" />
     <ClCompile Include="Core\Euler.cpp" />
-    <ClCompile Include="Core\ImageD2D.cpp" />
+    <ClCompile Include="nanovg\ImageNvg.cpp" />
     <ClCompile Include="Core\linmath.h" />
     <ClCompile Include="Core\Quaternion.cpp" />
     <ClCompile Include="Core\Rect.cpp" />
     <ClCompile Include="Core\Vec3.cpp" />
     <ClCompile Include="Core\Mat.cpp" />
-    <ClCompile Include="Core\WindowD2D.cpp" />
+    <ClCompile Include="Core\WindowWin32.cpp" />
+    <ClCompile Include="Win32Nvg\WindowWin32Nvg.cpp" />
     <ClCompile Include="Naga\FsUtil.cpp" />
     <ClCompile Include="Naga\MathEx.cpp" />
     <ClCompile Include="Naga\StrUtil.cpp" />
@@ -133,6 +145,7 @@
     <ClCompile Include="Naga\Win32Utf8Util.cpp" />
     <ClCompile Include="Core\Theme.cpp" />
     <ClCompile Include="Naga\Path.cpp" />
+    <ClCompile Include="nanovg\nanovg.c" />
     <ClCompile Include="Urgc\urgc.cpp" />
     <ClCompile Include="Core\Color.cpp" />
     <ClCompile Include="Core\Inset.cpp" />

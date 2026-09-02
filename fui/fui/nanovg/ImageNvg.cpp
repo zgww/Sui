@@ -1,6 +1,6 @@
-#include "Image.h"
-#include "nanovg/nanovg.h"
-#include "Canvas.h"
+#include "../Core/Image.h"
+#include "../nanovg/nanovg.h"
+#include "../Core/Canvas.h"
 
 Vec2 Image::size() {
 	return mkVec2(width(), height());

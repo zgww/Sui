@@ -1,6 +1,6 @@
-#include "Canvas.h"
+#include "../Core/Canvas.h"
 
-#include <glew.h>
+#include "../GL/glew.h"
 #define NANOVG_GL3_IMPLEMENTATION
 #include "../nanovg/nanovg.h"
 #include "../nanovg/nanovg_gl.h"
@@ -16,6 +16,18 @@
 
 
 static Canvas* gCanvas;
+
+
+NVGcolor mkNVGColorByInt(int color) {
+	unsigned char a = (((color) >> 24) & 0xFF);
+	unsigned char r = (((color) >> 16) & 0xFF);
+	unsigned char g = (((color) >> 8) & 0xFF);
+	unsigned char b = (((color) >> 0) & 0xFF);
+	return nvgRGBA(r, g, b, a);
+}
+
+
+
 
 Canvas::Canvas() {
 	gCanvas = this; 
@@ -290,23 +302,23 @@ void Canvas::imagePattern(bool fill, float ox, float oy, float ex, float ey, flo
 	if (fill) nvgFillPaint((NVGcontext*)data, p); else nvgStrokePaint((NVGcontext*)data, p);
 }
 
-int Canvas::_createImageRGBA(int w, int h, int imgFlags, const unsigned char* imgData) {
-	return nvgCreateImageRGBA((NVGcontext*)data, w, h, imgFlags, imgData);
+static int _createImageRGBA(NVGcontext*vg, int w, int h, int imgFlags, const unsigned char* imgData) {
+	return nvgCreateImageRGBA(vg, w, h, imgFlags, imgData);
 }
 
 Ref<Image> Canvas::createImageRGBA(int w, int h, const unsigned char* imgData) {
 	Ref<Image> img{new Image()};
-	img->_img = _createImageRGBA(w, h, 0, imgData);
+	img->_img = _createImageRGBA((NVGcontext*)data, w, h, 0, imgData);
 	return img;
 }
 
-int Canvas::_createImage(const char* path) {
+static int _createImage(void *data, const char* path) {
 	return nvgCreateImage((NVGcontext*)data, path, 0);
 }
 
 Ref<Image> Canvas::createImage(const char* path) {
 	Ref<Image> img{new Image()};
-	img->_img = _createImage(path);
+	img->_img = _createImage(data, path);
 	if (img->_img) return img;
 	return nullptr;
 }

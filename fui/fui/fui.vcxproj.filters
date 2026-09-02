@@ -300,6 +300,39 @@
     <ClInclude Include="Core\Mat.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GL\wglew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\eglew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glxew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nanovg\fontstash.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nanovg\nanovg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nanovg\nanovg_gl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nanovg\nanovg_gl_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nanovg\stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nanovg\stb_image_write.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nanovg\stb_truetype.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -494,13 +527,19 @@
     <ClCompile Include="Core\Quaternion.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Core\CanvasD2D.cpp">
+    <ClCompile Include="Core\WindowWin32.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Core\WindowD2D.cpp">
+    <ClCompile Include="Win32Nvg\WindowWin32Nvg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Core\ImageD2D.cpp">
+    <ClCompile Include="nanovg\CanvasNvg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="nanovg\ImageNvg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="nanovg\nanovg.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
