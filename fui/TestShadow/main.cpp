@@ -7,6 +7,15 @@
 #include "Layout/RowWrap.h"
 #include "View/TextView.h"
 
+class ShadowView : public View {
+public:
+	virtual void draw_self(Canvas * canvas) override{
+		canvas->shadowBlur( 10);
+		canvas->shadowColor (0, 0, 0, 255);
+		canvas->shadowOffset(10, 10);
+		View::draw_self(canvas);
+	}
+};
 void AppMain() {
 	urgc.start_process_thread();
 	auto app = App_use();
@@ -14,11 +23,18 @@ void AppMain() {
 	RINS(root.get()) {
 		o.backgroundColor = 0xffefefef;
 
-		for (int i = 0; i < 2000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			R(TextView) {
 				o.setText(std::format("第[{}]项", i));
 			} REND;
 		}
+
+		R(ShadowView) {
+			o.backgroundColor = 0xffff0000;
+			o.width = 100;
+			o.height = 100;
+			o.margin.setAll(20);
+		} REND;
 
 		auto win = Ref(new Window()); 
 		win->setRootView(root);
