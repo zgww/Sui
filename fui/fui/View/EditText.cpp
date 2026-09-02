@@ -361,7 +361,7 @@ Range mkRange(int start, int end) {
 	 if (this->value.empty() && !this->placeholder.empty()) {
 		 // nvgFillColor(vg, nvgRGBA(255,255,255,64));
 		 canvas->fillColorByInt32((this->color));
-		 canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_BASELINE);
+		 canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_BASELINE);
 		 canvas->text(x + h * 0.3f, 
 			 y + lineYStart  + metrics.ascender, //h * 0.5f, 
 			 this->placeholder.c_str());
@@ -375,7 +375,7 @@ Range mkRange(int start, int end) {
 		 //canvas->fill();
 
 		 canvas->fillColorByInt32(this->color);
-		 canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_BASELINE);
+		 canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_BASELINE);
 		 float textX = x + startOffset + this->draw_offset;
 
 		 canvas->text(textX,

@@ -144,6 +144,9 @@ void App::processMessageList() {
 }
 
 void App::init() {
+	CoInitialize(NULL); 
+
+
 	TimerMgr* mgr = insTimerMgr();
 	if (mgr) {
 		mgr->startThreadTick();

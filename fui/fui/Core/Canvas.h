@@ -5,6 +5,38 @@
 #include "Image.h"
 #include "Color.h"
 
+// 文本对齐标志（水平/垂直可组合）
+enum CanvasAlign {
+	CANVAS_ALIGN_LEFT = 1 << 0,
+	CANVAS_ALIGN_CENTER = 1 << 1,
+	CANVAS_ALIGN_RIGHT = 1 << 2,
+
+	CANVAS_ALIGN_TOP = 1 << 3,
+	CANVAS_ALIGN_MIDDLE = 1 << 4,
+	CANVAS_ALIGN_BOTTOM = 1 << 5,
+	CANVAS_ALIGN_BASELINE = 1 << 6,
+};
+
+// 路径绕向
+enum CanvasWinding {
+	CANVAS_CCW = 1,		// 实心形状
+	CANVAS_CW = 2,		// 挖洞
+};
+
+// 线帽
+enum CanvasLineCap {
+	CANVAS_CAP_BUTT = 0,
+	CANVAS_CAP_ROUND = 1,
+	CANVAS_CAP_SQUARE = 2,
+};
+
+// 线连接
+enum CanvasLineJoin {
+	CANVAS_JOIN_MITER = 0,
+	CANVAS_JOIN_ROUND = 1,
+	CANVAS_JOIN_BEVEL = 2,
+};
+
 class TextMetrics {
 public:
 	float ascender;
@@ -19,6 +51,11 @@ public:
 	Canvas();
 	virtual ~Canvas();
 	void init();
+
+	// Direct2D后端: 将画布绑定到原生窗口（创建渲染目标）
+	void bindWindow(void* hwnd);
+	// Direct2D后端: 解除窗口绑定并释放渲染目标
+	void unbindWindow();
 
 	void beginFrame(float w, float h, float devicePixelRatio);
 	void endFrame();
@@ -92,9 +129,7 @@ public:
 	void radialGradient(bool fill, float cx, float cy, float inr, float outr, int icol, int ocol);
 	void imagePattern(bool fill, float ox, float oy, float ex, float ey, float angle, Image* image, float alpha);
 
-	int _createImageRGBA(int w, int h, int imgFlags, const unsigned char* imgData);
 	Ref<Image> createImageRGBA(int w, int h, const unsigned char* imgData);
-	int _createImage(const char* path);
 	Ref<Image> createImage(const char* path);
 
 	static Canvas* getInstance();

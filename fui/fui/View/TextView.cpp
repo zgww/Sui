@@ -222,7 +222,7 @@ void TextView::draw_self(Canvas* canvas) {
 	canvas->fillColorByInt32(color);
 	canvas->fontSize(fontSize);
 	canvas->fontFace(fontFace.c_str());
-	canvas->textAlign(NVG_ALIGN_LEFT | NVG_ALIGN_TOP);
+	canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_TOP);
 
 	float pl = padding.left + border.l.w;
 	float pt = padding.top + border.t.w;

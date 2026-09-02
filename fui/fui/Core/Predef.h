@@ -13,7 +13,6 @@
 #include "../Urgc/GcObj.h"
 #include "../Urgc/GcList.h"
 #include "../Urgc/GcMap.h"
-#include "../nanovg/nanovg.h"
 #include "../Naga/MathEx.h"
 
 // Math constants

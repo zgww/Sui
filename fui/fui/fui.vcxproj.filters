@@ -305,9 +305,6 @@
     <ClCompile Include="Urgc\urgc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="nanovg\nanovg.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Color.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -324,12 +321,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Core\View.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Canvas.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Window.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Core\App.cpp">
@@ -402,9 +393,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\ImageView.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Image.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="View\Button.cpp">
@@ -504,6 +492,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Core\Quaternion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\CanvasD2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\WindowD2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ImageD2D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

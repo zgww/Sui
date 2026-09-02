@@ -127,12 +127,46 @@ inline unsigned char colorGetR(int color) { return (((color) >> 16) & 0xFF); }
 inline unsigned char colorGetG(int color) { return (((color) >> 8) & 0xFF); }
 inline unsigned char colorGetB(int color) { return (((color) >> 0) & 0xFF); }
 
-inline NVGcolor mkNVGColorByInt(int color) {
-	unsigned char a = (((color) >> 24) & 0xFF);
-	unsigned char r = (((color) >> 16) & 0xFF);
-	unsigned char g = (((color) >> 8) & 0xFF);
-	unsigned char b = (((color) >> 0) & 0xFF);
-	return nvgRGBA(r, g, b, a);
+// h: [0,1]循环  s,l: [0,1]  （与nanovg nvgHSLA算法一致）
+inline Rgba mkRgbaByHsla(float h, float s, float l, unsigned char a) {
+	float m1, m2;
+	h = fmodf(h, 1.0f);
+	if (h < 0.0f) h += 1.0f;
+	if (s < 0.0f) s = 0.0f;
+	if (s > 1.0f) s = 1.0f;
+	if (l < 0.0f) l = 0.0f;
+	if (l > 1.0f) l = 1.0f;
+	m2 = l <= 0.5f ? (l * (1 + s)) : (l + s - l * s);
+	m1 = 2 * l - m2;
+	float rf, gf, bf;
+	{
+		float v = h + 1.0f / 3.0f;
+		if (v < 0) v += 1;
+		if (v > 1) v -= 1;
+		if (m2 < m1) rf = m1; else if (v < 1.0f / 6.0f) rf = m1 + (m2 - m1) * 6 * v;
+		else if (v < 0.5f) rf = m2;
+		else if (v < 2.0f / 3.0f) rf = m1 + (m2 - m1) * (2.0f / 3.0f - v) * 6;
+		else rf = m1;
+	}
+	{
+		float v = h;
+		if (v < 0) v += 1;
+		if (v > 1) v -= 1;
+		if (m2 < m1) gf = m1; else if (v < 1.0f / 6.0f) gf = m1 + (m2 - m1) * 6 * v;
+		else if (v < 0.5f) gf = m2;
+		else if (v < 2.0f / 3.0f) gf = m1 + (m2 - m1) * (2.0f / 3.0f - v) * 6;
+		else gf = m1;
+	}
+	{
+		float v = h - 1.0f / 3.0f;
+		if (v < 0) v += 1;
+		if (v > 1) v -= 1;
+		if (m2 < m1) bf = m1; else if (v < 1.0f / 6.0f) bf = m1 + (m2 - m1) * 6 * v;
+		else if (v < 0.5f) bf = m2;
+		else if (v < 2.0f / 3.0f) bf = m1 + (m2 - m1) * (2.0f / 3.0f - v) * 6;
+		else bf = m1;
+	}
+	return mkRgba((unsigned char)(rf * 255.0f), (unsigned char)(gf * 255.0f), (unsigned char)(bf * 255.0f), a);
 }
 
 Hsla rgbaToHsla(Rgba rgba);
@@ -160,8 +194,7 @@ inline int Hsva::toRgbaInt() const {
 }
 
 inline Rgba Hsla::toRgba() const {
-	NVGcolor c = nvgHSLA(h, s, l, a);
-	return mkRgbaByFloat(c.r, c.g, c.b, c.a);
+	return mkRgbaByHsla(h, s, l, a);
 }
 
 inline int Hsla::toRgbaInt() const {

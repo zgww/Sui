@@ -6,7 +6,8 @@
 
 class Image : public GcObj {
 public:
-	int _img = 0;
+	// Direct2D位图指针 (ID2D1Bitmap*)
+	void* bitmap = nullptr;
 
 	// 如果是纹理，需要保持对纹理对象的引用
 	Ref<GcObj> data{ nullptr, this };

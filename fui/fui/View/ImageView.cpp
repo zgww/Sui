@@ -3,7 +3,7 @@
 
 
 void ImageView::setSrc(std::string src) {
-	if (this->src == src) {
+	if (this->src == src && _isImageValid()) {
 		return;
 	}
 	this->src = src;
@@ -12,6 +12,9 @@ void ImageView::setSrc(std::string src) {
 		auto canvas = Canvas::getInstance();
 		if (canvas) {
 			_img = canvas->createImage(src.c_str());
+			if (!_isImageValid()) {
+				printf("ImageView::setSrc failed to load image: %s\n", src.c_str());
+			}
 		}
 	}
 	else {
