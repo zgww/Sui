@@ -6,10 +6,14 @@ project(Fui)
 # 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_C_STANDARD 11)
+
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)  # <--- This is the key fix
 # set(C_STANDARD 11)
 
-# set(CMAKE_C_COMPILER "clang")
-# set(CMAKE_CXX_COMPILER "clang++")
+# set(CMAKE_C_COMPILER "E:\\pf\\vs2026\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl")
+# set(CMAKE_CXX_COMPILER "E:\\pf\\vs2026\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl")
+# set(CMAKE_LINKER "E:\\pf\\vs2026\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe")
 # set(CMAKE_LINKER "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\bin\\lld-link.exe")
 # set(CMAKE_LINKER "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe")
 # set(CMAKE_LINKER "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\Hostx64\\x64\\link.exe")
@@ -20,20 +24,20 @@ include_directories(fui/GL)
 
 add_definitions(
     -D_CRT_SECURE_NO_WARNINGS 
-    -D_DEBUG
+    # -D_DEBUG
     -DNAGA_STATIC
     -DURGC_STATICAPI
     -D_CONSOLE
     -D_AMD64_
     -DUNICODE
 )
-add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
+# add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
 # set(FLAGS "-ftime-trace  -Wno-int-conversion -Wno-microsoft-enum-forward-reference  -Wno-compare-distinct-pointer-types -Wno-ignored-attributes -Wno-unsequenced -Wno-incompatible-pointer-types")
 # set(FLAGS "-fno-lto  -Wno-int-conversion -Wno-microsoft-enum-forward-reference  -Wno-compare-distinct-pointer-types -Wno-ignored-attributes -Wno-unsequenced -Wno-incompatible-pointer-types")
 set(WARN_FLAGS "-fexceptions -Wno-int-conversion -Wno-unused-command-line-argument -Wno-microsoft-enum-forward-reference  -Wno-compare-distinct-pointer-types -Wno-ignored-attributes -Wno-unsequenced -Wno-incompatible-pointer-types")
 # set(FLAGS "-O0  -fsanitize=address  -fsanitize-recover=address -fno-stack-protector -fno-omit-frame-pointer")
 # set(FLAGS "-O0  -Xclang --dependent-lib=libcmt -Xclang --dependent-lib=oldnames")
-set(FLAGS "-O0  ")
+# set(FLAGS "-O0  ")
 
 # set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
@@ -74,19 +78,19 @@ file(GLOB src
 
 add_executable(Fui
     ${src}
-    Sgl/Entry.cpp
+    # Sgl/Entry.cpp
     # resource.rc
 )
 
 # C++20 module interface units
-file(GLOB sgl_modules CONFIGURE_DEPENDS Sgl/*.ixx)
-target_sources(Fui
-  PRIVATE
-  FILE_SET sgl_modules TYPE CXX_MODULES FILES ${sgl_modules}
-)
+# file(GLOB sgl_modules CONFIGURE_DEPENDS Sgl/*.ixx)
+# target_sources(Fui
+#   PRIVATE
+#   FILE_SET sgl_modules TYPE CXX_MODULES FILES ${sgl_modules}
+# )
 
 # Scan regular sources (e.g. Sgl/Entry.cpp) for module imports
-set_target_properties(Fui PROPERTIES CXX_SCAN_FOR_MODULES ON)
+# set_target_properties(Fui PROPERTIES CXX_SCAN_FOR_MODULES ON)
 
 # ADD_LIBRARY(UrgcDll SHARED ${UrgcDll_Src})
 

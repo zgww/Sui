@@ -22,14 +22,14 @@ class Checkbox extends ImageView {
 
 	void ctor(){
 		self.setChecked(false)
-	}
-
+	}   
+ 
 	void setChecked(bool v){
 		self.checked = v
-		if (self.checked){
+		if (self.checked){  
 			if (self.onSrc != null){
 				self.setSrc(self.onSrc)
-			}
+			}  
 		} else {
 			if (self.offSrc != null){
 				self.setSrc(self.offSrc)

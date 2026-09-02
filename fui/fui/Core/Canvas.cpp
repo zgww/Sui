@@ -18,7 +18,7 @@
 static Canvas* gCanvas;
 
 Canvas::Canvas() {
-	gCanvas = this;
+	gCanvas = this; 
 }
 Canvas::~Canvas() {
 	if (gCanvas == this) {

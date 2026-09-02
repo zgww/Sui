@@ -13,6 +13,7 @@ import :Light;
 export class PointLight : public Light {
 public:
 
+
     int color = 0xffffffff;
     float intensity;
     float distance = 300;

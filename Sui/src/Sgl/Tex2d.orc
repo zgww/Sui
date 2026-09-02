@@ -46,7 +46,7 @@ class Tex2d {
     void setWrapClampToBorder(int color){
         self.wrapS = GL_CLAMP_TO_BORDER;
         self.wrapT = GL_CLAMP_TO_BORDER;
-
+   
         self.bind()
         Rgbaf c = mkRgbafByInt(color)
         glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, (float*)&c)
@@ -117,7 +117,7 @@ class Tex2d {
         stbi_set_flip_vertically_on_load(true);
         unsigned char *data = stbi_load(path, &width, &height, &channel, 0);
         if data {
-            printf("load image. data:%p,  width:%d, height:%d, ch:%d\n", data, width, height, channel);
+            printf("  load image. data:%p,  width:%d, height:%d, ch:%d\n", data, width, height, channel);
 
             if channel == 4 {
                 // self.active(0)

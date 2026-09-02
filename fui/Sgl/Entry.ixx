@@ -9,7 +9,7 @@
 import Sgl;
 
 int main() {
-	printf("13hi'\n");
+	printf("13h222i'\n");
 	urgc.start_process_thread();
 
 	auto app = App_use();

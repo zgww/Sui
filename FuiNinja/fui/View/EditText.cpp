@@ -87,6 +87,8 @@ Range mkRange(int start, int end) {
 		 this->set_collapse_pos(delta < 0 ? r.start : r.end);
 	 }
 
+	 
+
  }
 
  std::string Selection::backspace() {

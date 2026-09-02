@@ -145,6 +145,7 @@ class  TextLayout {
 		if (!self.dirty){
 			return
 		}
+		// if 1 {return}
 		self.dirty = false
 		
 		// bool c0 = t.changed(text, "text");

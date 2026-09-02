@@ -288,7 +288,7 @@ class DrawButton extends LayoutLinear{
 			}
 		}
 		if (ev instanceof ViewEvent){
-
+				 
 			ViewEvent *ve = (ViewEvent*)ev
 
 			// printf("Button.onEvent: %s isCapture:%d\n", Object_getClassName(ev), ve.isCapture)
@@ -366,7 +366,7 @@ class MenuButton extends LayoutLinear{
 			ViewEvent *ve = (ViewEvent*)ev
 
 			// printf("Button.onEvent: %s isCapture:%d\n", Object_getClassName(ev), ve.isCapture)
-
+ 
 		}
 	}
 	^void(MouseEvent *me) onClick = null
@@ -377,7 +377,9 @@ Button@ mkButton(void* parent, long long key){
     void *addr =  __builtin_return_address(0)
     void *sp = key ? (void*)key: addr
     return (Button@)gocNode(sp, (Node*)parent, Button)
+
 }
+
 
 
 DrawButton@ mkDrawButton(void* parent, long long key){
