@@ -149,7 +149,7 @@ public:
 			// 菜单栏 + 工具栏（同一行）
 			R(LayoutLinear) {
 				o.direction = "row";
-				o.aic();
+				o.aic().jcc();
 				o.height = 32;
 				o.backgroundColor = 0xcc222222;
 
@@ -312,11 +312,12 @@ public:
 						int zoomPct = (int)std::round(currentZoom * 100);
 						label = fname + "  " + std::to_string(zoomPct) + "%";
 					} else {
-						label = "No image loaded";
+						label = "还没有加载图片";
 					}
 					o.setText(label);
 					o.setColor(0xffcccccc);
 					o.setFontSize(13);
+					//o.backgroundColor = 0x99ff0000;
 					o.margin.setHor(12);
 				} REND;
 			} REND;

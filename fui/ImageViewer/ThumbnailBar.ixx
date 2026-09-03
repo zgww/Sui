@@ -7,6 +7,7 @@ module;
 
 #include "View/ScrollArea.h"
 #include "View/ImageView.h"
+#include "View/HoverViewEffect.h"
 #include "Core/Node.h"
 #include "Core/Vec2.h"
 #include "Core/MouseEvent.h"
@@ -90,24 +91,43 @@ public:
 				o.setSrc(imageFiles[i]);
 				o.setImageMode(ImageMode_HeightFix);
 				o.height = 60;
-				o.margin.setHor(4);
-				o.margin.setVer(4);
-				o.backgroundColor = (i == selectedIndex) ? 0xffcc6600 : 0xff333333;
-				if (i == selectedIndex) {
-					o.margin.setAll(2);
-				}
-				o.cbOnEvent = CLOSURE([=](Event* ev) {
-					if (auto me = dynamic_cast<MouseEvent*>(ev)) {
-						if (me->isClickInBubble()) {
+				o.padding.setAll(4);
+				o.margin.setAll(4);
+				o.border.setAll(2, 0xffff0000);
+				o.cursor = "pointer";
+				//o.backgroundColor = (i == selectedIndex) ? 0xffcc6600 : 0xff333333;
+				//if (i == selectedIndex) {
+				//	o.margin.setAll(2);
+				//}
+				//o.cbOnEvent = CLOSURE([=](Event* ev) {
+				//	if (auto me = dynamic_cast<MouseEvent*>(ev)) {
+				//		if (me->isClickInBubble()) {
+				//			int old = selectedIndex;
+				//			selectedIndex = i;
+				//			updateHighlight(old);
+				//			updateHighlight(i);
+				//			if (onSelect) onSelect->invoke(i);
+				//			invalidDraw();
+				//		}
+				//	}
+				//});
+				R(HoverViewEffect) {
+					o.activeBackgroundColor = 0xffcc6600;
+					o.backgroundColor = 0xff333333;
+					o.hoverBackgroundColor = 0xffff5555;
+					o.border.setAll(2, 0x00ff0000);
+					o.hoverBorder.setAll(2, 0x66ffffff);
+					o.activeBorder.setAll(2, 0xffffffff);
+					o.isActive = i == selectedIndex;
+					o.onClick = CLOSURE([=](MouseEvent* me) {
 							int old = selectedIndex;
 							selectedIndex = i;
 							updateHighlight(old);
 							updateHighlight(i);
 							if (onSelect) onSelect->invoke(i);
 							invalidDraw();
-						}
-					}
-				});
+						});
+				}REND;
 			} REND;
 		}
 		_reactScrollBar();

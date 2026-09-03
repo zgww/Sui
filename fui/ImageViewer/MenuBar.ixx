@@ -57,7 +57,7 @@ public:
 				o.setColor(0xffe0e0e0);
 				o.setFontSize(13);
 				o.padding.setAxis(4, 10);
-				o.height = 22;
+				//o.height = 22;
 				o.cursor = "pointer";
 
 				R(HoverViewEffect) {

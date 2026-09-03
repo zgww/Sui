@@ -222,15 +222,18 @@ void TextView::draw_self(Canvas* canvas) {
 	canvas->fillColorByInt32(color);
 	canvas->fontSize(fontSize);
 	canvas->fontFace(fontFace.c_str());
-	canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_TOP);
+	canvas->textAlign(CANVAS_ALIGN_LEFT );
 
 	float pl = padding.left + border.l.w;
 	float pt = padding.top + border.t.w;
 
-
+	//pt = 0.f;
 	auto tm = canvas->textMetrics();
 	for (auto& li : lineInfos) {
-		canvas->text(li.x + pl + areaX, li.y + pt - tm.descender, li.text.c_str());
+		canvas->text(li.x + pl + areaX, li.y + pt 
+			+ tm.ascender
+			//- tm.descender
+			, li.text.c_str());
 	}
 }
 

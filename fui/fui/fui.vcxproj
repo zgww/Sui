@@ -142,9 +142,7 @@
     <ClCompile Include="Naga\Win32Utf8Util.cpp" />
     <ClCompile Include="Core\Theme.cpp" />
     <ClCompile Include="Naga\Path.cpp" />
-    <ClCompile Include="nanovg\CanvasNvg.cpp" />
-    <ClCompile Include="nanovg\ImageNvg.cpp" />
-    <ClCompile Include="nanovg\nanovg.c" />
+    <ClCompile Include="CanvasSkia\CanvasSkia.cpp" />
     <ClCompile Include="Urgc\urgc.cpp" />
     <ClCompile Include="Core\Color.cpp" />
     <ClCompile Include="Core\Inset.cpp" />
@@ -195,7 +193,7 @@
     <ClCompile Include="View\TableView.cpp" />
     <ClCompile Include="View\TextView.cpp" />
     <ClCompile Include="View\TreeView.cpp" />
-    <ClCompile Include="Win32Nvg\WindowWin32Nvg.cpp" />
+    <ClCompile Include="Win32Skia\WindowWin32Skia.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
@@ -256,7 +254,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;URGC_STATICAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\skia;$(ProjectDir)lib\angle2\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -278,7 +276,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;URGC_STATICAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\skia;$(ProjectDir)lib\angle2\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -298,7 +296,7 @@
       <PreprocessorDefinitions>_DEBUG;NAGA_STATIC;URGC_STATICAPI;_CONSOLE;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\skia;$(ProjectDir)lib\angle2\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -321,7 +319,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;NAGA_STATIC;URGC_STATICAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\skia;$(ProjectDir)lib\angle2\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
