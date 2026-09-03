@@ -17,6 +17,7 @@
 #include "include/codec/SkCodec.h"
 #include "include/codec/SkPngDecoder.h"
 #include "include/core/SkBitmap.h"
+#include "include/core/SkBlurTypes.h"
 #include "include/core/SkCanvas.h"
 #include "include/core/SkColor.h"
 #include "include/core/SkColorSpace.h"
@@ -26,6 +27,7 @@
 #include "include/core/SkFontMgr.h"
 #include "include/core/SkFontStyle.h"
 #include "include/core/SkImage.h"
+#include "include/core/SkMaskFilter.h"
 #include "include/core/SkPaint.h"
 #include "include/core/SkPath.h"
 #include "include/core/SkPathBuilder.h"
@@ -455,16 +457,27 @@ static void draw_frame() {
 
 	canvas->clear(SK_ColorWHITE);
 
-	// 窗口中心: 200x100 长方形
+	// 窗口中心: 200x100 长方形 (阴影 blur=10, offset=5,5)
+	SkRect rect = SkRect::MakeXYWH(
+		(g_width - 200.0f) * 0.5f, (g_height - 100.0f) * 0.5f, 200.0f, 100.0f);
+
+	// 阴影: 阴影体 = 矩形平移(5,5), 高斯模糊; HTML5 shadowBlur=10 按 Chrome 惯例换算 sigma=blur/2
+	const SkScalar shadowBlur   = 10.0f;
+	const SkScalar shadowOffset = 5.0f;
+	SkPaint shadowPaint;
+	shadowPaint.setAntiAlias(true);
+	shadowPaint.setColor(SkColorSetARGB(89, 0, 0, 0));
+	shadowPaint.setMaskFilter(SkMaskFilter::MakeBlur(
+		kNormal_SkBlurStyle, shadowBlur * 0.5f, true));
+	canvas->drawRect(rect.makeOffset(shadowOffset, shadowOffset), shadowPaint);
+
 	SkPaint paint;
 	paint.setAntiAlias(true);
 	paint.setColor(SkColorSetRGB(0x2F, 0x6F, 0xDB));
-	SkRect rect = SkRect::MakeXYWH(
-		(g_width - 200.0f) * 0.5f, (g_height - 100.0f) * 0.5f, 200.0f, 100.0f);
 	canvas->drawRect(rect, paint);
 
 	// 窗口中间偏上: 文本 "skia, 你好"
-	static const char kText[] = "skia, 你好。是😒😍🤦‍♀️🤷‍♀️🐱‍👤🤳🌹😎😢😢";
+	static const char kText[] = "skia, 你好。是♀";
 	SkFont font(g_typeface, 48.0f);
 	SkFontMetrics metrics;
 	font.getMetrics(&metrics);
