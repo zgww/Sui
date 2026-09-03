@@ -14,6 +14,7 @@
     <BuildDependency Project="fui.vcxproj" />
   </Project>
   <Project Path="../SkiaDemo/SkiaDemo.vcxproj" />
+  <Project Path="../SpriteFrames/SpriteFrames.vcxproj" />
   <Project Path="../TestShadow/TestShadow.vcxproj" Id="8ca78ad3-7c87-4353-9a53-4bcde82a1319">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
