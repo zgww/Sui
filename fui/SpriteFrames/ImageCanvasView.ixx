@@ -118,8 +118,9 @@ public:
 			Vec2 sz = getSizeWithoutMargin();
 			float cx = sz.x / 2.0f;
 			float cy = sz.y / 2.0f;
-			float mx = we->clientX - frame.x - cx;
-			float my = we->clientY - frame.y - cy;
+			Vec2 absPos = localToWorld(margin.left, margin.top);
+			float mx = we->clientX - absPos.x - cx;
+			float my = we->clientY - absPos.y - cy;
 			panX = mx - (mx - panX) * (zoom / oldZoom);
 			panY = my - (my - panY) * (zoom / oldZoom);
 
@@ -289,8 +290,10 @@ private:
 		if (imgW <= 0 || imgH <= 0) return false;
 
 		Vec2 sz = getSizeWithoutMargin();
-		float vx = me->clientX - frame.x;
-		float vy = me->clientY - frame.y;
+		// frame.x/y 是相对父容器的局部坐标，需用 localToWorld 取内容原点在窗口客户区的全局位置
+		Vec2 absPos = localToWorld(margin.left, margin.top);
+		float vx = me->clientX - absPos.x;
+		float vy = me->clientY - absPos.y;
 		float cx = vx - (sz.x / 2.0f + panX);
 		float cy = vy - (sz.y / 2.0f + panY);
 

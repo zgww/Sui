@@ -28,6 +28,7 @@ module;
 #include "View/EditText.h"
 #include "View/ScrollArea.h"
 #include "View/HoverViewEffect.h"
+#include "View/SplitterView.h"
 #include "Dialog/FileDialog.h"
 #include "Urgc/Urgc.h"
 
@@ -552,58 +553,76 @@ public:
 						o.backgroundColor = 0xff262626;
 						o.padding.setAll(8);
 
-						R(TextView) {
-							o.setText("动画列表");
-							o.setColor(0xffaaaaaa);
-							o.setFontSize(12);
-							o.margin.bottom = 6;
-						} REND;
+						R(LayoutLinearCell) { o.grow = 1; } REND;
 
-						R(AnimationListView) {
-							listPtr = &o;
-							o.info = info.get();
-							o.selectedIndex = curAnimIndex;
-							if (o.created) {
-								o.onSelect = CLOSURE([=](int i) {
-									self->onSelectAnim(i);
-								});
-							}
-							R(LayoutLinearCell) { o.grow = 1; } REND;
-						} REND;
-
-						R(TextView) {
-							o.setText("动画预览");
-							o.setColor(0xffaaaaaa);
-							o.setFontSize(12);
-							o.margin.top = 8;
-							o.margin.bottom = 2;
-						} REND;
-
-						R(SpritePreviewView) {
-							previewPtr = &o;
-							o.height = 150;
-							o.backgroundColor = 0xff1b1b1b;
-						} REND;
 
 						R(LayoutLinear) {
-							o.direction = "row";
-							o.aic();
-							o.margin.top = 6;
+							o.column();
+							o.backgroundColor = 0xffff2626;
 
-							R(Button) {
-								o.setLabel("播放");
-								styleToolBtn(o);
-								o.onClick = CLOSURE([=](MouseEvent* me) { self->startPreview(); });
+							R(LayoutLinearCell) { o.grow = 1; } REND;
+							R(TextView) {
+								o.setText("动画列表");
+								o.setColor(0xffaaaaaa);
+								o.setFontSize(12);
+								o.margin.bottom = 6;
 							} REND;
 
-							R(Button) {
-								o.setLabel("停止");
-								styleToolBtn(o);
-								o.onClick = CLOSURE([=](MouseEvent* me) { self->stopPreview(); });
+							R(AnimationListView) {
+								o.backgroundColor = 0xffffff26;
+								listPtr = &o;
+								o.info = info.get();
+								o.selectedIndex = curAnimIndex;
+								if (o.created) {
+									o.onSelect = CLOSURE([=](int i) {
+										self->onSelectAnim(i);
+									});
+								}
+								R(LayoutLinearCell) { o.grow = 1; } REND;
+							} REND;
+						} REND;
+
+						R(SplitterView) {}REND;
+
+						R(LayoutLinear) {
+							o.column();
+
+							R(LayoutLinearCell) { o.grow = 1; } REND;
+							R(TextView) {
+								o.setText("动画预览");
+								o.setColor(0xffaaaaaa);
+								o.setFontSize(12);
+								o.margin.top = 8;
+								o.margin.bottom = 2;
+							} REND;
+
+							R(SpritePreviewView) {
+								previewPtr = &o;
+								o.height = 150;
+								o.backgroundColor = 0xff1b1b1b;
+							} REND;
+
+							R(LayoutLinear) {
+								o.direction = "row";
+								o.aic();
+								o.margin.top = 6;
+
+								R(Button) {
+									o.setLabel("播放");
+									styleToolBtn(o);
+									o.onClick = CLOSURE([=](MouseEvent* me) { self->startPreview(); });
+								} REND;
+
+								R(Button) {
+									o.setLabel("停止");
+									styleToolBtn(o);
+									o.onClick = CLOSURE([=](MouseEvent* me) { self->stopPreview(); });
+								} REND;
 							} REND;
 						} REND;
 					} REND;
 
+					R(SplitterView) {}REND;
 					// ===== 中间：画布 =====
 					R(ImageCanvasView) {
 						canvasPtr = &o;
@@ -617,8 +636,10 @@ public:
 						if (!info->image.empty()) {
 							o.setSrc(info->image);
 						}
-						R(LayoutLinearCell) { o.grow = 1; } REND;
+						R(LayoutLinearCell) { o.grow = 3; } REND;
 					} REND;
+
+					//R(SplitterView) {}REND;
 
 					// ===== 右侧：表单 =====
 					R(LayoutLinear) {
@@ -627,6 +648,8 @@ public:
 						o.width = 250;
 						o.backgroundColor = 0xff262626;
 						o.padding.setAll(8);
+
+						//R(LayoutLinearCell) { o.grow = 1; } REND;
 
 						R(TextView) {
 							o.setText("精灵表属性");
@@ -664,7 +687,7 @@ public:
 							o.setText("当前动画");
 							o.setColor(0xff999999);
 							o.setFontSize(12);
-							o.setWrap(true);
+							//o.setWrap(true);
 							o.margin.top = 14;
 						} REND;
 					} REND;

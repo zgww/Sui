@@ -69,6 +69,14 @@ SplitterView::SplitterView() {
 
 void SplitterView::react() {
 	backgroundColor = hover ? hoverBg : normalBg;
+
+	LayoutLinear* ll = dynamic_cast<LayoutLinear*>(parent.get());
+	if (ll) {
+		bool isHor = ll->calcIsHor();
+		cursor = isHor ? "sizewe" : "sizens";
+	}
+
+
 	invalidDraw();
 }
 
