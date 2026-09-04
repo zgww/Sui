@@ -10,11 +10,14 @@
   <Project Path="../ImageViewer/ImageViewer.vcxproj" Id="3166cea3-2460-4525-b128-3786609e0430">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
+  <Project Path="../RecuPeg/RecuPeg.vcxproj" Id="c15adc5a-0905-4555-9abb-b86466ec5c30" />
   <Project Path="../Sgl/Sgl.vcxproj" Id="9dc77d1e-f9ab-4010-8c60-172f0bb2b05c">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
   <Project Path="../SkiaDemo/SkiaDemo.vcxproj" />
-  <Project Path="../SpriteFrames/SpriteFrames.vcxproj" />
+  <Project Path="../SpriteFrames/SpriteFrames.vcxproj">
+    <BuildDependency Project="fui.vcxproj" />
+  </Project>
   <Project Path="../TestShadow/TestShadow.vcxproj" Id="8ca78ad3-7c87-4353-9a53-4bcde82a1319">
     <BuildDependency Project="fui.vcxproj" />
   </Project>

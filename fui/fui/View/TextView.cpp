@@ -89,7 +89,9 @@ void TextView::doTextLayout(float maxW, float maxH, Canvas* canvas) {
 	}
 
 	int lineCount = 0;
-	for (const auto& line : lines) {
+	//for (const auto& line : lines) {
+	for (int i = 0; i < lines.size(); i++){
+		auto& line = lines[i];
 		if (maxLine > 0 && lineCount >= maxLine) break;
 
 		if (line.empty()) {
@@ -102,6 +104,7 @@ void TextView::doTextLayout(float maxW, float maxH, Canvas* canvas) {
 			continue;
 		}
 
+		//有utf-8的bug. wrap时没有按字符拆开
 		if (wrap && maxW > 0 && maxW != infinity) {
 			std::string current;
 			std::string bestFit;
