@@ -1197,6 +1197,10 @@ class User {
     int age = 123;
 }
 int main(){
+    if 1 {
+        printf("1\n")
+        getchar();
+    }
     urgc_start_process_thread();
     windowInit()
 
