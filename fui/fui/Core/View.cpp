@@ -289,6 +289,7 @@ void View::drawSelfBorder(Canvas* canvas) {
 			canvas->beginPath();
 			if (border.t.w <= 1.001f) {
 				canvas->strokeWidth(1.0f);
+				canvas->strokeWidth(border.t.w);
 				canvas->roundRect(0.5f, 0.5f, w - 0.5f, h - 0.5f, radius.tl);
 			} else {
 				canvas->roundRect(0.5f, 0.5f, w - 0.5f, h - 0.5f, radius.tl);
@@ -297,7 +298,7 @@ void View::drawSelfBorder(Canvas* canvas) {
 			canvas->strokeColorByInt32(border.t.color);
 			canvas->stroke();
 		} else {
-			if (border.t.w > 0.0f) {
+			if (border.t.w >= 0.0f) {
 				canvas->beginPath();
 				canvas->moveTo(0.5f, 0.5f);
 				canvas->lineTo(w + 0.5f, 0.5f);

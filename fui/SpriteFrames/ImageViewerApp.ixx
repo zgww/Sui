@@ -599,6 +599,7 @@ public:
 						R(LayoutLinear) {
 							o.column();
 							o.aiStretch();
+							o.border.t.set(0.0, 0x39ffffff);
 
 							R(LayoutLinearCell) { o.grow = 1; } REND;
 							R(TextView) {
