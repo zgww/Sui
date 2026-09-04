@@ -4,6 +4,16 @@
 #include "../Core/App.h"
 #include "../Meta/MetaRegistry.h"
 
+// 返回 s 中从 i（位于合法字符边界）开始的 UTF-8 字符的字节长度；非法字节按 1 处理，避免越界
+static int utf8CharLen(const std::string& s, size_t i) {
+	unsigned char c = (unsigned char)s[i];
+	if (c < 0x80) return 1;
+	if ((c & 0xE0) == 0xC0) return 2;
+	if ((c & 0xF0) == 0xE0) return 3;
+	if ((c & 0xF8) == 0xF0) return 4;
+	return 1;
+}
+
 void TextView::setText(const std::string& t) {
 	if (text != t) {
 		text = t;
@@ -104,51 +114,68 @@ void TextView::doTextLayout(float maxW, float maxH, Canvas* canvas) {
 			continue;
 		}
 
-		//有utf-8的bug. wrap时没有按字符拆开
 		if (wrap && maxW > 0 && maxW != infinity) {
+			// 按 UTF-8 码点拆分，避免多字节字符（中文等）被逐字节拆断后产生非法序列导致测量崩溃
+			std::vector<std::string> chars;
+			for (size_t i = 0; i < line.size(); ) {
+				int len = utf8CharLen(line, i);
+				if (len < 1 || i + (size_t)len > line.size()) len = 1;
+				chars.push_back(line.substr(i, len));
+				i += len;
+			}
+
 			std::string current;
 			std::string bestFit;
 			float bounds[4] = {0};
-			for (size_t i = 0; i <= line.size(); i++) {
-				if (i == line.size()) {
-					TextLine li;
-					li.text = current;
-					measureText(canvas, current.c_str(), bounds);
-					li.w = bounds[2] - bounds[0];
-					li.h = actualLineHeight;
-					lineInfos.push_back(li);
-					current.clear(); 
-					lineCount++; 
+			size_t ci = 0;
+			while (true) {
+				if (ci == chars.size()) {
+					if (!current.empty()) {
+						TextLine li;
+						li.text = current;
+						measureText(canvas, current.c_str(), bounds);
+						li.w = bounds[2] - bounds[0];
+						li.h = actualLineHeight;
+						lineInfos.push_back(li);
+						lineCount++;
+					}
 					break;
 				}
-				current += line[i];
+
+				const std::string& ch = chars[ci];
+				current += ch;
 				measureText(canvas, current.c_str(), bounds);
 				float textW = bounds[2] - bounds[0];
-				if (textW > maxW && current.size() > 1) {
+
+				if (textW > maxW && current.size() > ch.size()) {
 					if (overflowEllipsis && maxLine > 0 && lineCount >= maxLine - 1) {
+						std::string fit = bestFit.empty() ? current.substr(0, current.size() - ch.size()) : bestFit;
 						TextLine li;
-						std::string ellipsisText = current.substr(0, current.size() - 1) + "..";
+						std::string ellipsisText = fit + "..";
 						measureText(canvas, ellipsisText.c_str(), bounds);
 						li.text = ellipsisText;
 						li.w = bounds[2] - bounds[0];
 						li.h = actualLineHeight;
 						lineInfos.push_back(li);
 						lineCount++;
-						current.clear();
 						break;
 					}
+
 					TextLine li;
-					li.text = bestFit.empty() ? current.substr(0, current.size() - 1) : bestFit;
+					li.text = bestFit.empty() ? current.substr(0, current.size() - ch.size()) : bestFit;
 					measureText(canvas, li.text.c_str(), bounds);
 					li.w = bounds[2] - bounds[0];
 					li.h = actualLineHeight;
 					lineInfos.push_back(li);
 					lineCount++;
-					current = std::string(1, line[i]);
+
+					current = ch;
 					bestFit.clear();
+					ci++;
 					if (maxLine > 0 && lineCount >= maxLine) break;
 				} else {
 					bestFit = current;
+					ci++;
 				}
 			}
 		} else {

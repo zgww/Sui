@@ -31,6 +31,7 @@ module;
 #include "View/SplitterView.h"
 #include "Dialog/FileDialog.h"
 #include "Urgc/Urgc.h"
+#include "Naga/Path.h"
 
 export module ImageViewerApp;
 import ImageCanvasView;
@@ -80,6 +81,10 @@ static bool isSpriteExt(const std::string& path) {
 	return ext == ".json" || ext == ".sfs" || ext == ".sframes";
 }
 
+static std::string iconPath(const std::string& name) {
+	return Path_resolveFromExecutionDir("icons/" + name);
+}
+
 static std::string ensureJsonExt(const std::string& path) {
 	namespace fs = std::filesystem;
 	std::string ext = fs::path(path).extension().string();
@@ -92,6 +97,7 @@ class SpritePreviewView : public View {
 public:
 	SpriteSheetInfo* info = nullptr;
 	SpriteSheetAnim* anim = nullptr;
+	std::string curImagePath;
 
 	void play();
 	void stop();
@@ -119,8 +125,9 @@ public:
 			return;
 		}
 
-		if (!_img) {
+		if (!_img || curImagePath != info->image) {
 			_img = canvas->createImage(info->image.c_str());
+			curImagePath = info->image;
 		}
 		if (!_img) {
 			drawEmpty(canvas, sz.x, sz.y, "加载失败");
@@ -195,7 +202,7 @@ private:
 
 void SpritePreviewView::play() {
 	if (!info || !anim) return;
-	if (_playingAnim == anim && timer) return; // 已在播放同一动画
+	if (_playingAnim == anim && timer ) return; // 已在播放同一动画
 
 	stop();
 
@@ -264,8 +271,8 @@ public:
 				o.setColor(0xffe0e0e0);
 				o.setFontSize(13);
 				o.textAlign = "left";
-				o.height = 32;
-				o.padding.setHor(10);
+				//o.height = 32;
+				o.padding.setAll(10);
 				o.cursor = "pointer";
 
 				R(HoverViewEffect) {
@@ -511,30 +518,34 @@ public:
 					o.padding.setHor(8);
 
 					R(Button) {
-						o.setLabel("打开图片");
-						styleToolBtn(o);
-						o.onClick = CLOSURE([=](MouseEvent* me) { self->onOpenImage(); });
-					} REND;
+							o.setLabel("打开图片");
+							o.setSrc(iconPath("open_image.png"));
+							styleToolBtn(o);
+							o.onClick = CLOSURE([=](MouseEvent* me) { self->onOpenImage(); });
+						} REND;
 
-					R(Button) {
-						o.setLabel("保存");
-						styleToolBtn(o);
-						o.onClick = CLOSURE([=](MouseEvent* me) { self->onSave(); });
-					} REND;
+						R(Button) {
+							o.setLabel("保存");
+							o.setSrc(iconPath("save.png"));
+							styleToolBtn(o);
+							o.onClick = CLOSURE([=](MouseEvent* me) { self->onSave(); });
+						} REND;
 
-					R(View) { o.width = 1; o.height = 22; o.backgroundColor = 0xff3a3a3a; o.margin.setHor(5); } REND;
+						R(View) { o.width = 1; o.height = 22; o.backgroundColor = 0xff3a3a3a; o.margin.setHor(5); } REND;
 
-					R(Button) {
-						o.setLabel("添加动画");
-						styleToolBtn(o);
-						o.onClick = CLOSURE([=](MouseEvent* me) { self->onNewAnim(); });
-					} REND;
+						R(Button) {
+							o.setLabel("添加动画");
+							o.setSrc(iconPath("add_anim.png"));
+							styleToolBtn(o);
+							o.onClick = CLOSURE([=](MouseEvent* me) { self->onNewAnim(); });
+						} REND;
 
-					R(Button) {
-						o.setLabel("删除动画");
-						styleToolBtn(o);
-						o.onClick = CLOSURE([=](MouseEvent* me) { self->onDeleteAnim(); });
-					} REND;
+						R(Button) {
+							o.setLabel("删除动画");
+							o.setSrc(iconPath("delete_anim.png"));
+							styleToolBtn(o);
+							o.onClick = CLOSURE([=](MouseEvent* me) { self->onDeleteAnim(); });
+						} REND;
 				} REND;
 
 				// 主体：左列表 + 中间画布 + 右表单
@@ -550,7 +561,7 @@ public:
 						o.direction = "column";
 						o.aiStretch();
 						o.width = 230;
-						o.backgroundColor = 0xff262626;
+						//o.backgroundColor = 0xff262626;
 						o.padding.setAll(8);
 
 						R(LayoutLinearCell) { o.grow = 1; } REND;
@@ -558,7 +569,8 @@ public:
 
 						R(LayoutLinear) {
 							o.column();
-							o.backgroundColor = 0xffff2626;
+							o.aiStretch();
+							//o.backgroundColor = 0xffff2626;
 
 							R(LayoutLinearCell) { o.grow = 1; } REND;
 							R(TextView) {
@@ -569,7 +581,7 @@ public:
 							} REND;
 
 							R(AnimationListView) {
-								o.backgroundColor = 0xffffff26;
+								//o.backgroundColor = 0xffffff26;
 								listPtr = &o;
 								o.info = info.get();
 								o.selectedIndex = curAnimIndex;
@@ -586,6 +598,7 @@ public:
 
 						R(LayoutLinear) {
 							o.column();
+							o.aiStretch();
 
 							R(LayoutLinearCell) { o.grow = 1; } REND;
 							R(TextView) {
@@ -594,12 +607,6 @@ public:
 								o.setFontSize(12);
 								o.margin.top = 8;
 								o.margin.bottom = 2;
-							} REND;
-
-							R(SpritePreviewView) {
-								previewPtr = &o;
-								o.height = 150;
-								o.backgroundColor = 0xff1b1b1b;
 							} REND;
 
 							R(LayoutLinear) {
@@ -619,6 +626,16 @@ public:
 									o.onClick = CLOSURE([=](MouseEvent* me) { self->stopPreview(); });
 								} REND;
 							} REND;
+
+
+							R(SpritePreviewView) {
+								previewPtr = &o;
+								//o.height = 150;
+								o.backgroundColor = 0xff1b1b1b;
+
+								R(LayoutLinearCell) { o.grow = 1; } REND;
+							} REND;
+
 						} REND;
 					} REND;
 
