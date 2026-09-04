@@ -701,8 +701,8 @@ public:
 						R(TextView) {
 							std::string cur = curAnim ? curAnim->name : "无";
 							std::string cnt = curAnim ? std::to_string(curAnim->coords->size()) : "0";
-							//o.setText("当前动画: " + cur + " (" + cnt + " 帧)\n点击画布帧加入动画，Ctrl+点击移除");
-							o.setText("当前动画");
+							o.setText("当前动画:  " + cur + " (" + cnt + " 帧)\n点击画布帧加入动画，Ctrl+点击移除");
+							//o.setText("当前动画");
 							o.setColor(0xff999999);
 							o.setFontSize(12);
 							//o.setWrap(true);
