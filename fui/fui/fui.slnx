@@ -4,12 +4,14 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="../AngleDemo/AngleDemo.vcxproj" Id="f82fd699-de16-451d-b2f6-2a1d5e82166e" />
+  <Project Path="../ffmpeg_cpp_1/ffmpeg_cpp_1.vcxproj" Id="8a85a5b1-570d-41a5-b13b-a20cfcfcd4b2" />
   <Project Path="../FuiTestMain/FuiTestMain.vcxproj" Id="27f22c75-dc49-4617-8dbd-0188db8dbf07">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
   <Project Path="../ImageViewer/ImageViewer.vcxproj" Id="3166cea3-2460-4525-b128-3786609e0430">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
+  <Project Path="../opencv_1/opencv_1.vcxproj" Id="b32d8d4c-0247-4716-97ef-c940ee012ce4" />
   <Project Path="../RecuPeg/RecuPeg.vcxproj" Id="c15adc5a-0905-4555-9abb-b86466ec5c30" />
   <Project Path="../Sgl/Sgl.vcxproj" Id="9dc77d1e-f9ab-4010-8c60-172f0bb2b05c">
     <BuildDependency Project="fui.vcxproj" />
