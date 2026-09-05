@@ -78,7 +78,9 @@ int main(int argc, char* argv[]) {
     // 4. 准备像素格式转换 (从视频原生格式 -> RGB24)
     struct SwsContext* sws_ctx = sws_getContext(
         codec_ctx->width, codec_ctx->height, codec_ctx->pix_fmt,
-        codec_ctx->width, codec_ctx->height, AV_PIX_FMT_RGB24,
+        codec_ctx->width, codec_ctx->height, 
+        AV_PIX_FMT_RGB24,
+        //AV_PIX_FMT_RGBA,
         SWS_BILINEAR, NULL, NULL, NULL);
 
 
@@ -86,7 +88,10 @@ int main(int argc, char* argv[]) {
     uint8_t* dst_data[4] = { 0 };
     int dst_linesize[4] = { 0 };
     // 分配 RGB24 内存
-    auto ret = av_image_alloc(dst_data, dst_linesize, codec_ctx->width, codec_ctx->height, AV_PIX_FMT_RGB24, 1);
+    auto ret = av_image_alloc(dst_data, dst_linesize, codec_ctx->width, codec_ctx->height, 
+        //AV_PIX_FMT_RGBA,
+        AV_PIX_FMT_RGB24,
+        1);
     if (ret < 0) {
         fprintf(stderr, "无法分配目标图像内存\n");
         return -1;
