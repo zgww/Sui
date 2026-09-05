@@ -151,15 +151,15 @@
       <PreprocessorDefinitions>NDEBUG;SKIA_DLL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)lib\skia;$(ProjectDir)lib\angle2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\pe\opencv\opencv\build\include;$(ProjectDir)lib\skia;$(ProjectDir)lib\angle2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 /FS %(AdditionalOptions)</AdditionalOptions>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>skia.dll.lib;libEGL.dll.lib;libGLESv2.dll.lib;gdi32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\pe\opencv\opencv\build\x64\vc16\lib;$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world500.lib;skia.dll.lib;libEGL.dll.lib;libGLESv2.dll.lib;gdi32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(ProjectDir)lib\skia.dll" "$(OutDir)" &amp;&amp; xcopy /y /d "$(ProjectDir)lib\libEGL.dll" "$(OutDir)" &amp;&amp; xcopy /y /d "$(ProjectDir)lib\libGLESv2.dll" "$(OutDir)"</Command>

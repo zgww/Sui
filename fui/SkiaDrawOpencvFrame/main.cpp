@@ -452,7 +452,7 @@ static bool create_backbuffer(int w, int h) {
 	return true;
 }
 
-static void draw_frame() {
+static void draw_frame(cv::Mat& mat) {
 	if (!g_skSurface) return;
 	SkCanvas* canvas = g_skSurface->getCanvas();
 
@@ -460,7 +460,7 @@ static void draw_frame() {
 
 	// 窗口中心: 200x100 长方形 (阴影 blur=10, offset=5,5)
 	SkRect rect = SkRect::MakeXYWH(
-		(g_width - 200.0f) * 0.5f, (g_height - 100.0f) * 0.5f, 200.0f, 100.0f);
+		(g_width - 200.0f) * 0.5f + 0.f, (g_height - 100.0f) * 0.5f + 150.f, 200.0f, 100.0f);
 
 	// 阴影: 阴影体 = 矩形平移(5,5), 高斯模糊; HTML5 shadowBlur=10 按 Chrome 惯例换算 sigma=blur/2
 	const SkScalar shadowBlur   = 10.0f;
@@ -483,8 +483,8 @@ static void draw_frame() {
 	SkFontMetrics metrics;
 	font.getMetrics(&metrics);
 	SkScalar textWidth = font.measureText(kText, strlen(kText), SkTextEncoding::kUTF8);
-	SkScalar x = (g_width - textWidth) * 0.5f;
-	SkScalar textCenterY = g_height * 0.35f;
+	SkScalar x = (g_width - textWidth) * 0.5f + 0.f;
+	SkScalar textCenterY = g_height * 0.35f + 150.f;
 	SkScalar y = textCenterY - (metrics.fAscent + metrics.fDescent) * 0.5f;
 
 	SkPaint textPaint;
@@ -541,6 +541,21 @@ static void draw_frame() {
 		canvas->restore();
 	}
 
+	//绘制opencv视频帧
+	SkImageInfo info = SkImageInfo::Make(
+		mat.cols, mat.rows,
+		kBGRA_8888_SkColorType,
+		kPremul_SkAlphaType
+	);
+
+	//SkBi pixmap(info, mat.data, mat.step);
+	// 直接将 mat 的像素写入 skiaCanvas 的 (x, y) 位置
+	// 零拷贝，不经过 SkImage 转换
+	int rowSize = mat.elemSize() * mat.cols;
+	size_t step = mat.step;
+	canvas->writePixels(info, mat.data, rowSize,  10, 10);
+
+
 	skgpu::ganesh::FlushAndSubmit(g_skSurface.get());
 	eglSwapBuffers(g_display, g_surface);
 }
@@ -563,18 +578,25 @@ int main() {
 	cv::VideoCapture vc;
 	//auto vc = cv::VideoCapture("http://vjs.zencdn.net/v/oceans.mp4");
 	cv::Mat img;
+	cv::Mat frame_bgra;
 	vc.open("http://vjs.zencdn.net/v/oceans.mp4", cv::CAP_ANY);
-	while (vc.isOpened()) {
-		auto ok = vc.read(img);
-		if (ok) {
-			// 3. 创建一个名为 "Display" 的窗口，并显示图片
-			cv::imshow("Display", img);
-		}
-		int key = cv::waitKey(30) & 0xff;
-		if (key == 'q' || key == 27) {
-			break;
-		}
-	}
+	//while (vc.isOpened()) {
+	//	auto ok = vc.read(img);
+	//	if (ok) {
+	//		// 2. 核心步骤：BGR (3通道) -> BGRA (4通道)
+	//		// 这一步是必须的，OpenCV 底层使用了 SIMD 优化，速度很快
+	//		cv::cvtColor(img, frame_bgra, cv::COLOR_BGR2BGRA);
+	//		// 3. 创建一个名为 "Display" 的窗口，并显示图片
+	//		cv::imshow("Display", img);
+	//	}
+	//	int key = cv::waitKey(30) & 0xff;
+	//	if (key == 'q' || key == 27) {
+	//		break;
+	//	}
+	//}
+	//MessageBoxW(NULL, L"异常?", L"标题",
+	//	MB_YESNO | MB_ICONQUESTION);
+
 
 
 	HINSTANCE hInstance = GetModuleHandleW(nullptr);
@@ -591,7 +613,7 @@ int main() {
 		return 1;
 	}
 
-	const int clientW = 1000, clientH = 700;
+	const int clientW = 1000, clientH = 1000;
 	RECT rc = {0, 0, clientW, clientH};
 	AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 	int sw = GetSystemMetrics(SM_CXSCREEN);
@@ -636,7 +658,17 @@ int main() {
 			g_height = h;
 			create_backbuffer(w, h);
 		}
-		draw_frame();
+
+		auto ok = vc.read(img);
+		if (ok) {
+			// 2. 核心步骤：BGR (3通道) -> BGRA (4通道)
+			// 这一步是必须的，OpenCV 底层使用了 SIMD 优化，速度很快
+			cv::cvtColor(img, frame_bgra, cv::COLOR_BGR2BGRA);
+			// 3. 创建一个名为 "Display" 的窗口，并显示图片
+			//cv::imshow("Display", img);
+		}
+
+		draw_frame(frame_bgra);
 	}
 
 	g_skSurface.reset();
