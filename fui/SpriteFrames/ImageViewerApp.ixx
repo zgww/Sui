@@ -657,7 +657,7 @@ public:
 						R(LayoutLinearCell) { o.grow = 3; } REND;
 					} REND;
 
-					//R(SplitterView) {}REND;
+					R(SplitterView) {}REND;
 
 					// ===== 右侧：表单 =====
 					R(LayoutLinear) {
@@ -667,7 +667,7 @@ public:
 						o.backgroundColor = 0xff262626;
 						o.padding.setAll(8);
 
-						//R(LayoutLinearCell) { o.grow = 1; } REND;
+						R(LayoutLinearCell) { o.grow = 1; } REND;
 
 						R(TextView) {
 							o.setText("精灵表属性");
@@ -753,9 +753,11 @@ private:
 			R(EditText, key) {
 				o.width = 90;
 				o.height = 26;
+				o.padding.setHor(6);
 				o.placeholder = label;
 				o.setColor(0xffe0e0e0);
 				o.setPlaceholder_color(0xff666666);
+				o.border.setAll(1, 0xff666666);
 				if (o.created) {
 					o.onValueChanged = CLOSURE([=](EditText* et) {
 						onChange(et->getValue());

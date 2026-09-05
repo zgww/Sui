@@ -161,6 +161,18 @@ public:
 		}
 		return nullptr;
 	}
+	template<typename T>
+	T* findChildByClass() {
+		int l = getChildrenCount();
+		for (int i = 0; i < l; i++) {
+			Node* kid = getChild(i);
+			if (kid) {
+				T* found = dynamic_cast<T*>(kid);
+				if (found) return found;
+			}
+		}
+		return nullptr;
+	}
 
 	virtual std::string toString();
 

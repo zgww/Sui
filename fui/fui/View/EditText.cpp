@@ -294,95 +294,113 @@ Range mkRange(int start, int end) {
 
 	 // Edit
 	 // bg = nvgBoxGradient(vg, x+1,y+1+1.5f, w-2,h-2, 3,4, nvgRGBA(255,255,255,32), nvgRGBA(32,32,32,32));
-	 canvas->beginPath();
-	 canvas->roundRect(x + 1, y + 1, w - 2, h - 2, 4 - 1);
-	 canvas->boxGradient(true, x + 1, y + 1 + 1.5f, w - 2, h - 2, 3, 4, mkIntByRgba(255, 255, 255, 32), mkIntByRgba(0, 0, 0, 32));
-	 canvas->fill();
+	 //canvas->beginPath();
+	 ////canvas->strokeColor()
+	 //canvas->roundRect(x + 1, y + 1, w - 2, h - 2, 4 - 1);
+	 ////canvas->fillColorByInt32(this->backgroundColor);
+	 ////canvas->boxGradient(true, x + 1, y + 1 + 1.5f, w - 2, h - 2, 3, 4, mkIntByRgba(255, 255, 255, 32), mkIntByRgba(0, 0, 0, 32));
+	 ////canvas->fill();
+	 //canvas->strokeColorByInt32(0xff333333);
+	 //canvas->stroke();
 
 	 // canvas->beginPath();
 	 // canvas->roundRect( x+0.5f,y+0.5f, w-1,h-1, 4-0.5f);
 	 // canvas->strokeColorByInt32( mkIntByRgba(255,255,255, 48));
 	 // canvas->stroke();
 
-	 canvas->fontSize(this->font_size);
-	 // nvgFontFace(vg, "sans");
+	 {
+		 canvas->save();
+		 canvas->translate(
+			 padding.left + border.l.w,
+			 padding.top + border.t.w
+		 );
 
-	 // float x = this->margin.left
-	 // float y = this->margin.top
-	 // float w = this->layoutCtx.width - this->margin.hor()
-	 // float h = this->layoutCtx.height - this->margin.ver()
-	 float hor = this->margin.hor();
-	 float ver = this->margin.ver();
-	 float startOffset = 0.0; //h * 0.3
-	 float scissorW = w - startOffset * 2;// h * 0.3 
+		 {
+			 canvas->fontSize(this->font_size);
+			 // nvgFontFace(vg, "sans");
 
-	 Range range = this->selection.get_asc_range();
-	 float caretY = 4;
+			 // float x = this->margin.left
+			 // float y = this->margin.top
+			 // float w = this->layoutCtx.width - this->margin.hor()
+			 // float h = this->layoutCtx.height - this->margin.ver()
+			 float hor = this->margin.hor();
+			 float ver = this->margin.ver();
+			 float startOffset = 0.0; //h * 0.3
+			 float scissorW = w - startOffset * 2;// h * 0.3 
+
+			 Range range = this->selection.get_asc_range();
+			 float caretY = 4;
 
 
-	 //绘制光标
-	 if (this->caret->isBlinking() && this->caret->show) {
-		 // float draw_offset = 0 //绘制偏移，用来处理溢出
-		 float caretX = startOffset
-			 - 2  // x of position是绘制开始的位置，所以要向左偏一点到中间
-			 + this->draw_offset
-			 + this->get_x_of_position(range.start);
-		 canvas->fillColorByInt32((this->caret_color));//nvgRGBA(255, 255, 255, 128));
-		 canvas->beginPath();
-		 canvas->rect(maxFloat(0, caretX + 1), caretY, 2, h - caretY * 2); // 2 )
-		 canvas->fill();
+
+			 //绘制光标
+			 if (this->caret->isBlinking() && this->caret->show) {
+				 // float draw_offset = 0 //绘制偏移，用来处理溢出
+				 float caretX = startOffset
+					 - 2  // x of position是绘制开始的位置，所以要向左偏一点到中间
+					 + this->draw_offset
+					 + this->get_x_of_position(range.start);
+				 canvas->fillColorByInt32((this->caret_color));//nvgRGBA(255, 255, 255, 128));
+				 canvas->beginPath();
+				 canvas->rect(maxFloat(0, caretX + 1), caretY, 2, h - caretY * 2); // 2 )
+				 canvas->fill();
+			 }
+
+			 //裁切
+			 canvas->intersectScissor(startOffset, 0.0f, scissorW, h);
+
+			 //绘制选区
+			 if (this->selection.is_range()) {
+				 float x = this->get_x_of_position(range.start) + this->draw_offset;
+				 float end_x = this->get_x_of_position(range.end) + this->draw_offset;
+				 // Rect rect = SkRect::MakeXYWH(x, 0, end_x - x, content_size.h);
+				 //绘制选中区域
+				 // SkPaint p;
+				 // p.setColor(0xc97ed3ff);
+				 // canvas->drawRect(rect, p);
+				 canvas->fillColorByInt32(0xc97ed3ff); //nvgRGBA(255, 255, 255, 128));
+				 // nvgFillColor(vg, mkNVGColorByInt(0xffdddddd)) //nvgRGBA(255, 255, 255, 128));
+				 canvas->beginPath();
+				 canvas->rect(x, caretY, end_x - x, h - caretY * 2);
+				 canvas->fill();
+			 }
+			 //绘制ime合成
+			 this->draw_editing(canvas, h);
+
+
+			 auto metrics = canvas->textMetrics();
+			 float lineYStart = (contentRect.h - metrics.lineh) / 2.0f;
+			 //占位内容
+			 if (this->value.empty() && !this->placeholder.empty()) {
+				 // nvgFillColor(vg, nvgRGBA(255,255,255,64));
+				 canvas->fillColorByInt32((this->color));
+				 canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_BASELINE);
+				 canvas->text(x + h * 0.3f,
+					 y + lineYStart + metrics.ascender, //h * 0.5f, 
+					 this->placeholder.c_str());
+			 }
+			 //绘制文本
+			 if (!this->value.empty()) {
+				 // nvgFillColor(vg, nvgRGBA(255,255,255,255));
+				 //canvas->beginPath();
+				 //canvas->rect(0, lineYStart, 100, metrics.lineh);
+				 //canvas->fillColorByInt32(0x33ff0000);
+				 //canvas->fill();
+
+				 canvas->fillColorByInt32(this->color);
+				 canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_BASELINE);
+				 float textX = x + startOffset + this->draw_offset;
+
+				 canvas->text(textX,
+					 y + lineYStart + metrics.ascender, //h * 0.5f, 
+					 this->value.c_str());
+			 }
+
+		 }
+		 canvas->restore();
 	 }
 
-	 //裁切
-	 canvas->intersectScissor(startOffset, 0.0f, scissorW, h);
-
-	 //绘制选区
-	 if (this->selection.is_range()) {
-		 float x = this->get_x_of_position(range.start) + this->draw_offset;
-		 float end_x = this->get_x_of_position(range.end) + this->draw_offset;
-		 // Rect rect = SkRect::MakeXYWH(x, 0, end_x - x, content_size.h);
-		 //绘制选中区域
-		 // SkPaint p;
-		 // p.setColor(0xc97ed3ff);
-		 // canvas->drawRect(rect, p);
-		 canvas->fillColorByInt32(0xc97ed3ff); //nvgRGBA(255, 255, 255, 128));
-		 // nvgFillColor(vg, mkNVGColorByInt(0xffdddddd)) //nvgRGBA(255, 255, 255, 128));
-		 canvas->beginPath();
-		 canvas->rect(x, caretY, end_x - x, h - caretY * 2);
-		 canvas->fill();
-	 }
-	 //绘制ime合成
-	 this->draw_editing(canvas, h);
-
-
-	 auto metrics = canvas->textMetrics();
-	 float lineYStart = (contentRect.h - metrics.lineh) / 2.0f;
-	 //占位内容
-	 if (this->value.empty() && !this->placeholder.empty()) {
-		 // nvgFillColor(vg, nvgRGBA(255,255,255,64));
-		 canvas->fillColorByInt32((this->color));
-		 canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_BASELINE);
-		 canvas->text(x + h * 0.3f, 
-			 y + lineYStart  + metrics.ascender, //h * 0.5f, 
-			 this->placeholder.c_str());
-	 }
-	 //绘制文本
-	 if (!this->value.empty()) {
-		 // nvgFillColor(vg, nvgRGBA(255,255,255,255));
-		 //canvas->beginPath();
-		 //canvas->rect(0, lineYStart, 100, metrics.lineh);
-		 //canvas->fillColorByInt32(0x33ff0000);
-		 //canvas->fill();
-
-		 canvas->fillColorByInt32(this->color);
-		 canvas->textAlign(CANVAS_ALIGN_LEFT | CANVAS_ALIGN_BASELINE);
-		 float textX = x + startOffset + this->draw_offset;
-
-		 canvas->text(textX,
-			 y + lineYStart  + metrics.ascender, //h * 0.5f, 
-			 this->value.c_str());
-	 }
-
+	 
  }
 
  void EditText::onEvent(Event* evt) {
@@ -614,7 +632,7 @@ Range mkRange(int start, int end) {
  int EditText::get_char_position_by_client_x(int client_x) {
 	 Rect absRect = this->get_abs_rect();
 	 Rect lr = this->getContentLocalRect();
-	 float dx = client_x - absRect.x;// + lr.x;// lr.get_content_client_pos().x;
+	 float dx = client_x - absRect.x - lr.x;// + lr.x;// lr.get_content_client_pos().x;
 	 float x_from_start = dx - this->draw_offset; //相对于字符串原点
 	 int guess_pos = (int)(x_from_start / maxInt(1, this->font_size + 2));
 

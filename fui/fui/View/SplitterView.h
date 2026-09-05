@@ -22,5 +22,7 @@ public:
 	void onHoverChanged() override;
 	void react() override;
 
+	void updateSiblingsGrow(Drag* d);
+
 	virtual const char* getClassName() const override { return "SplitterView"; }
 };
