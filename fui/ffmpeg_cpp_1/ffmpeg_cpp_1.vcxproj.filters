@@ -18,5 +18,8 @@
     <ClCompile Include="ffmpeg_cpp_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ffmpeg_cpp_hw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

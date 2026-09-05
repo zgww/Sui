@@ -124,7 +124,7 @@ static int init_hw_decoder(AVFormatContext* fmt_ctx,
     return video_stream_idx;
 }
 
-int main2(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {
     //if (argc < 2) {
     //    printf("用法: %s <输入视频路径>\n", argv[0]);
     //    return 1;
@@ -158,7 +158,7 @@ int main2(int argc, char* argv[]) {
 
 
     AVHWDeviceType hw_type = AV_HWDEVICE_TYPE_CUDA;
-    hw_type = AV_HWDEVICE_TYPE_D3D11VA;
+    //hw_type = AV_HWDEVICE_TYPE_D3D11VA;
     video_stream_idx = init_hw_decoder(fmt_ctx, &codec_ctx, hw_type);
     if (video_stream_idx < 0) return 1;
 
@@ -183,7 +183,9 @@ int main2(int argc, char* argv[]) {
 
     // 4. 准备像素格式转换 (从视频原生格式 -> RGB24)
     struct SwsContext* sws_ctx = sws_getContext(
-        codec_ctx->width, codec_ctx->height, codec_ctx->pix_fmt,
+        codec_ctx->width, codec_ctx->height, 
+        AV_PIX_FMT_NV12,
+        //codec_ctx->pix_fmt,
         codec_ctx->width, codec_ctx->height, 
         AV_PIX_FMT_RGB24,
         //AV_PIX_FMT_RGBA,
@@ -209,31 +211,46 @@ int main2(int argc, char* argv[]) {
 
     // 5. 分配 Packet 和 Frame
     pkt = av_packet_alloc();
-    frame = av_frame_alloc();
+    frame = av_frame_alloc();// CPU 帧
     AVFrame* hw_frame = av_frame_alloc();   // GPU 帧
-    AVFrame* sw_frame = av_frame_alloc();   // CPU 帧
 
     int cnt = 0;
     // 6. 读取并解码，直到拿到第一帧
     while (av_read_frame(fmt_ctx, pkt) >= 0) {
         if (pkt->stream_index == video_stream_idx) {
             avcodec_send_packet(codec_ctx, pkt);
-            while (avcodec_receive_frame(codec_ctx, frame) == 0) {
-                // 成功解码出一帧，进行像素转换
-                auto height_of_slice = sws_scale(sws_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0,
-                    codec_ctx->height, dst_data, dst_linesize);
-
-                if (height_of_slice > 0) {
-                    // 保存为图片
-                    save_ppm(dst_data[0], dst_linesize[0], codec_ctx->width, codec_ctx->height, out_filename);
-                    printf("成功提取第%d帧并保存为 %s\n", cnt, out_filename);
-                    cnt++;
-                    if (cnt > 30) {
-                        goto cleanup; // 只要第一帧，直接跳到清理阶段
+            while (avcodec_receive_frame(codec_ctx, hw_frame) == 0) {
+                if (hw_frame->format == g_hw_pix_fmt) {
+                    // ====== 关键：将帧从 GPU 显存传输到 CPU 内存 ======
+                    ret = av_hwframe_transfer_data(frame, hw_frame, 0);
+                    if (ret < 0) {
+                        std::cerr << "[ERROR] GPU->CPU 帧传输失败" << std::endl;
+                        continue;
                     }
-                }
-                else {
-                    printf("sws_scale 异常:%d\n", height_of_slice);
+                    // 现在 sw_frame 中包含 CPU 可访问的像素数据
+                    // sw_frame->data[0], sw_frame->linesize[0] 等可正常使用
+                    std::cout << "[HW] 解码帧 #"
+                        << " (" << frame->width << "x" << frame->height << ")"
+                        << " format" << frame->format
+                        << std::endl;
+
+
+                    // 成功解码出一帧，进行像素转换
+                    auto height_of_slice = sws_scale(sws_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0,
+                        codec_ctx->height, dst_data, dst_linesize);
+
+                    if (height_of_slice > 0) {
+                        // 保存为图片
+                        save_ppm(dst_data[0], dst_linesize[0], codec_ctx->width, codec_ctx->height, out_filename);
+                        printf("成功提取第%d帧并保存为 %s\n", cnt, out_filename);
+                        cnt++;
+                        if (cnt > 30) {
+                            goto cleanup; // 只要第一帧，直接跳到清理阶段
+                        }
+                    }
+                    else {
+                        printf("sws_scale 异常:%d\n", height_of_slice);
+                    }
                 }
 
             }
