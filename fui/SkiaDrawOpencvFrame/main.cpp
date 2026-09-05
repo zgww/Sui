@@ -553,7 +553,9 @@ static void draw_frame(cv::Mat& mat) {
 	// 零拷贝，不经过 SkImage 转换
 	int rowSize = mat.elemSize() * mat.cols;
 	size_t step = mat.step;
-	canvas->writePixels(info, mat.data, rowSize,  10, 10);
+	for (int i = 0; i < 4; i++) {
+		canvas->writePixels(info, mat.data, rowSize, 10 + i * 50, 10 + i * 50);
+	}
 
 
 	skgpu::ganesh::FlushAndSubmit(g_skSurface.get());
@@ -579,7 +581,8 @@ int main() {
 	//auto vc = cv::VideoCapture("http://vjs.zencdn.net/v/oceans.mp4");
 	cv::Mat img;
 	cv::Mat frame_bgra;
-	vc.open("http://vjs.zencdn.net/v/oceans.mp4", cv::CAP_ANY);
+	//vc.open("http://vjs.zencdn.net/v/oceans.mp4", cv::CAP_ANY);
+	vc.open("./oceans.mp4", cv::CAP_ANY);
 	//while (vc.isOpened()) {
 	//	auto ok = vc.read(img);
 	//	if (ok) {
