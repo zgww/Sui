@@ -45,6 +45,9 @@
 #include "include/ports/SkTypeface_win.h"
 #include <opencv2/opencv.hpp>
 
+#include <dwmapi.h>
+#pragma comment(lib, "dwmapi.lib")
+
 static const wchar_t* kWindowTitle = L"SkiaDemo - Skia + ANGLE(GLES3)";
 
 static EGLDisplay g_display = EGL_NO_DISPLAY;
@@ -553,7 +556,7 @@ static void draw_frame(cv::Mat& mat) {
 	// 零拷贝，不经过 SkImage 转换
 	int rowSize = mat.elemSize() * mat.cols;
 	size_t step = mat.step;
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 2; i++) {
 		canvas->writePixels(info, mat.data, rowSize, 10 + i * 50, 10 + i * 50);
 	}
 
@@ -564,8 +567,33 @@ static void draw_frame(cv::Mat& mat) {
 
 static LRESULT CALLBACK wnd_proc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	switch (msg) {
+	case WM_CREATE:
+		// This plays together with WM_NCALCSIZE.
+		{
+			MARGINS m{ 0, 0, 0, 1 };
+			DwmExtendFrameIntoClientArea(hwnd, &m);
+			return 0;
+		}
 	case WM_ERASEBKGND:
 		return 1;
+
+	case WM_NCCALCSIZE: {
+		// Returning 0 from the message when wParam is TRUE removes the standard
+		// frame, but keeps the window shadow.
+		if (wParam == TRUE) {
+			//SetWindowLong(hwnd, DWL_MSGRESULT, 0);
+			return 0;
+			//return TRUE;
+		}
+		return FALSE;
+	}    
+	case WM_NCHITTEST: {
+		// Returning HTCAPTION allows the user to move the window around by
+		// clicking anywhere. Depending on the mouse coordinates passed in LPARAM,
+		// you may return other values to enable resizing.
+		//SetWindowLong(hwnd, DWL_MSGRESULT, HTCAPTION);
+		return HTCAPTION;
+	}
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
