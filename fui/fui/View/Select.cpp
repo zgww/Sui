@@ -16,12 +16,12 @@ void Select::appendOption(std::string text) {
 void Select::react() {
 	auto& o = startInnerReact();
 
-	R(TextView) {
+	RN(TextView) {
 		std::string text = getLabel();
 		o.setText(text == "" ? ("please select") : text);
 	} REND;
 
-	R(TextView) {
+	RN(TextView) {
 		o.setText(
 			this->isActive
 			? (" ^ ")

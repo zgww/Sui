@@ -2,8 +2,56 @@
 #include <stdio.h>
 #include <d2d1.h>
 #include "Urgc/Urgc.h"
+#include <rttr/type.h>
+#include <rttr/variant.h>
+#include <rttr/property.h>
+#include <rttr/method.h>
+#include "Core/Emitter.h"
+#include "Core/Node.h"
+#include "Core/View.h"
+#include "Core/Rect.h"
 
 #pragma comment(lib, "d2d1.lib")
+
+static bool rttr_check_type(const char* name) {
+	rttr::type t = rttr::type::get_by_name(name);
+	if (!t.is_valid()) { printf("[FAIL] type '%s' not registered\n", name); return false; }
+	printf("[OK]   %-9s props=%-3zu methods=%-3zu bases=%zu\n",
+		name, t.get_properties().size(), t.get_methods().size(), t.get_base_classes().size());
+	return true;
+}
+
+static int rttr_verify() {
+	printf("==== RTTR runtime verification ====\n");
+	bool ok = true;
+	const char* names[] = { "Emitter","Node","ViewBase","View","Rect","Inset","Vec2","Edge","Border","Frame" };
+	for (const char* n : names) ok &= rttr_check_type(n);
+
+	struct Pair { const char* d; const char* b; };
+	Pair pairs[] = { {"View","ViewBase"}, {"ViewBase","Node"}, {"Node","Emitter"} };
+	for (auto& p : pairs) {
+		rttr::type d = rttr::type::get_by_name(p.d);
+		rttr::type b = rttr::type::get_by_name(p.b);
+		bool derived = d.is_valid() && b.is_valid() && d.is_derived_from(b);
+		printf("%-11s is_derived_from %-9s : %s\n", p.d, p.b, derived ? "true" : "false");
+		ok &= derived;
+	}
+
+	rttr::type tRect = rttr::type::get_by_name("Rect");
+	rttr::variant inst = tRect.create();
+	if (!inst.is_valid()) { printf("[FAIL] Rect create failed\n"); ok = false; }
+	else {
+		rttr::property px = tRect.get_property("x");
+		bool set_ok = px.set_value(inst, 5.0f);
+		float got = px.get_value(inst).to_float();
+		float r = tRect.get_method("right").invoke(inst).to_float();
+		printf("Rect: set x=5 -> %s, get x=%.1f, right()=%.1f\n", set_ok ? "ok" : "FAIL", got, r);
+		ok &= set_ok && got == 5.0f && r == 5.0f;
+	}
+
+	printf("==== RTTR verification %s ====\n", ok ? "PASSED" : "FAILED");
+	return ok ? 0 : 1;
+}
 
 static ID2D1Factory* g_factory = nullptr;
 static ID2D1HwndRenderTarget* g_target = nullptr;
@@ -98,10 +146,14 @@ public:
 //	LPSTR     lpCmdLine,
 //	int       nShowCmd
 //) {
-int main() {
+int main(int argc, char** argv) {
 	urgc.start_process_thread();
-	
+
 	SetConsoleOutputCP(65001);
+
+	if (argc > 1 && strcmp(argv[1], "--rttr") == 0) {
+		return rttr_verify();
+	}
 
 	if (FAILED(D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &g_factory))) {
 		printf("D2D1CreateFactory failed\n");

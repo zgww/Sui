@@ -52,7 +52,7 @@ public:
 
 
 		for (int i = 0; i < (int)menus.size(); i++) {
-			R(TextView, i) {
+			RN(TextView, i) {
 				o.setText(menus[i].label);
 				o.setColor(0xffe0e0e0);
 				o.setFontSize(13);
@@ -60,7 +60,7 @@ public:
 				//o.height = 22;
 				o.cursor = "pointer";
 
-				R(HoverViewEffect) {
+				RN(HoverViewEffect) {
 					o.backgroundColor = 0x00ffffff;
 					o.hoverBackgroundColor = 0xff3a3a3a;
 					o.activeBackgroundColor = 0xff3a6dcf;

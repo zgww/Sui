@@ -288,8 +288,8 @@ void ColorView::react() {
 	this->direction = ("column");
 	this->alignItems = ("stretch");
 
-	R(LayoutLinear) {
-		R(ColorPalete) {
+	RN(LayoutLinear) {
+		RN(ColorPalete) {
 			o.indicatorPos.set(this->hsva.s, this->hsva.v);
 
 			o.color = svColor;
@@ -310,7 +310,7 @@ void ColorView::react() {
 				this->invalidReact();
 				});
 		} REND;
-		R(ColorPalete) {
+		RN(ColorPalete) {
 			o.indicatorPos.y = this->hsva.h / 360.0f;
 			printf("hue:%f\n", this->hsva.h);
 
@@ -329,7 +329,7 @@ void ColorView::react() {
 				});
 		} REND;
 
-		R(ColorPalete) {
+		RN(ColorPalete) {
 			o.indicatorPos.y = this->hsva.a / 255.0f;
 
 			o.kind = ("alpha");
@@ -349,8 +349,8 @@ void ColorView::react() {
 				});
 		} REND;
 	} REND;
-	R(LayoutLinear) {
-		R(View) {
+	RN(LayoutLinear) {
+		RN(View) {
 			o.backgroundColor = this->hsva.toRgbaInt();
 			o.width = 16;
 			o.height = 16;
@@ -359,24 +359,24 @@ void ColorView::react() {
 			o.margin.setVer(6);
 			o.margin.right = 6;
 		} REND;
-		R(LayoutLinear) {
+		RN(LayoutLinear) {
 			o.direction = ("column");
 			o.alignItems = ("start");
 			if (this->showHsva) {
-				R(TextView, LINE_KEY) {
+				RN(TextView, LINE_KEY) {
 					std::string s = this->hsva.toString();
 					o.setText(s);
 				} REND;
 			}
 			if (this->showRgba) {
-				R(TextView, LINE_KEY) {
+				RN(TextView, LINE_KEY) {
 					Rgba r = this->hsva.toRgba();
 					std::string s = r.toString();
 					o.setText(s);
 				} REND;
 			}
 			if (this->showHsla) {
-				R(TextView, LINE_KEY) {
+				RN(TextView, LINE_KEY) {
 					Rgba r = this->hsva.toRgba();
 					Hsla hsl = rgbaToHsla(r);
 

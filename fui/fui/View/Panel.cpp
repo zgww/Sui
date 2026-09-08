@@ -49,18 +49,18 @@ void Panel::react()
 	auto& o = *this;
 	startInnerReact();
 
-	R(LayoutLinear) {
+	RN(LayoutLinear) {
 		o.direction = "row";
 		//o.backgroundColor = 0xff0000ff;
 
-		R(HoverViewEffect) {
+		RN(HoverViewEffect) {
 			auto self = Ref(this);
 			o.onClick = CLOSURE([=](MouseEvent* e) {
 				self->setOpen(!self->open);
 				});
 		} REND;
 
-		R(TextView) {
+		RN(TextView) {
 			std::string text = open ? "V " : "> ";
 			if (this->title != "") {
 				text += this->title;

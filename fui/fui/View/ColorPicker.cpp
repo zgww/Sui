@@ -34,7 +34,7 @@ void ColorPicker::showWindow_colorPalete() {
 		// mkTextView(o, 0).{
 		// 	o.setText(str("你好"))
 		// }
-		R(ColorView) {
+		RN(ColorView) {
 			if (o.created) {
 				o.hsva = mkHsva_byInt(this->backgroundColor);
 			}

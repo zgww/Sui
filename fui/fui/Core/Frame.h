@@ -4,6 +4,7 @@
 #include "Inset.h"
 #include "Vec2.h"
 #include "Rect.h"
+#include <format>
 
 struct Frame {
 	int timesInOneLayout = 0;

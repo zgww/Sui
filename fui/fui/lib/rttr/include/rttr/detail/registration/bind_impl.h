@@ -156,8 +156,8 @@ class registration::bind<detail::ctor, Class_Type, acc_level, Ctor_Args...> : pu
             auto wrapper = detail::make_rref(std::move(m_ctor));
             auto reg_func = [wrapper]()
             {
-                type_register::constructor(type::get<Class_Type>(), std::move(wrapper.m_value));
-                type_register::destructor(type::get<Class_Type>(), detail::make_unique<destructor_wrapper<Class_Type>>());
+                type_register::constructor(rttr::type::get<Class_Type>(), std::move(wrapper.m_value));
+                type_register::destructor(rttr::type::get<Class_Type>(), detail::make_unique<destructor_wrapper<Class_Type>>());
             };
             m_reg_exec->add_registration_func(this, std::move(reg_func));
         }
@@ -309,7 +309,7 @@ class registration::bind<detail::ctor_func, Class_Type, F, acc_level> : public r
             auto wrapper = detail::make_rref(std::move(m_ctor));
             auto reg_func = [wrapper]()
             {
-                type_register::constructor(type::get<Class_Type>(), std::move(wrapper.m_value));
+                type_register::constructor(rttr::type::get<Class_Type>(), std::move(wrapper.m_value));
             };
 
             m_reg_exec->add_registration_func(this, reg_func);
@@ -403,7 +403,7 @@ class registration::bind<detail::prop, Class_Type, A, acc_level> : public regist
                 m_prop = create_default_property(m_acc);
         
             m_prop->set_name(m_name);
-            m_prop->set_declaring_type(type::get<Class_Type>());
+            m_prop->set_declaring_type(rttr::type::get<Class_Type>());
             // register the underlying type with the following call:
             m_prop->get_type();
         
@@ -493,7 +493,7 @@ class registration::bind<detail::prop, Class_Type, A1, A2, acc_level> : public r
                 m_prop = create_default_property(m_getter, m_setter);
 
             m_prop->set_name(m_name);
-            m_prop->set_declaring_type(type::get<Class_Type>());
+            m_prop->set_declaring_type(rttr::type::get<Class_Type>());
             // register the underlying type with the following call:
             m_prop->get_type();
             auto wrapper = detail::make_rref(std::move(m_prop));
@@ -581,7 +581,7 @@ class registration::bind<detail::prop_readonly, Class_Type, A, acc_level> : publ
                 m_prop = create_default_property(m_acc);
 
             m_prop->set_name(m_name);
-            m_prop->set_declaring_type(type::get<Class_Type>());
+            m_prop->set_declaring_type(rttr::type::get<Class_Type>());
             // register the underlying type with the following call:
             m_prop->get_type();
             auto wrapper = detail::make_rref(std::move(m_prop));
@@ -712,7 +712,7 @@ class registration::bind<detail::meth, Class_Type, F, acc_level> : public regist
                 m_meth = create_default_method(m_func);
 
             m_meth->set_name(m_name);
-            m_meth->set_declaring_type(type::get<Class_Type>());
+            m_meth->set_declaring_type(rttr::type::get<Class_Type>());
             // register the underlying type with the following call:
             m_meth->get_return_type();
             m_meth->get_parameter_infos();
@@ -720,7 +720,7 @@ class registration::bind<detail::meth, Class_Type, F, acc_level> : public regist
             auto wrapper = detail::make_rref(std::move(m_meth));
             auto reg_func = [wrapper]()
             {
-                type_register::method(type::get<Class_Type>(), std::move(wrapper.m_value));
+                type_register::method(rttr::type::get<Class_Type>(), std::move(wrapper.m_value));
             };
             m_reg_exec->add_registration_func(this, std::move(reg_func));
         }
@@ -778,10 +778,10 @@ class registration::bind<detail::enum_, Class_Type, Enum_Type> : public registra
             using namespace detail;
 
             m_reg_exec->add_registration_func(this);
-            type_register::custom_name(type::get<Enum_Type>(), name);
+            type_register::custom_name(rttr::type::get<Enum_Type>(), name);
 
             if (!std::is_same<Class_Type, void>::value)
-                m_declared_type = type::get<Class_Type>();
+                m_declared_type = rttr::type::get<Class_Type>();
         }
 
         ~bind()
@@ -797,7 +797,7 @@ class registration::bind<detail::enum_, Class_Type, Enum_Type> : public registra
             auto wrapper = detail::make_rref(std::move(m_enum));
             auto reg_func = [wrapper]()
             {
-                type_register::enumeration(type::get<Enum_Type>(), std::move(wrapper.m_value));
+                type_register::enumeration(rttr::type::get<Enum_Type>(), std::move(wrapper.m_value));
             };
             m_reg_exec->add_registration_func(this, std::move(reg_func));
         }

@@ -315,7 +315,7 @@ void TreeSelfCtrlView::react() {
 	auto& o = startInnerReact();
 
 
-	R(HoverViewEffect){
+	RN(HoverViewEffect){
 		// o.backgroundColor = idx % 2 == 1 ? 0xffffffff: 0
 		// o.backgroundColor =  0xffff0000
 		o.isActive = isSelected;
@@ -329,7 +329,7 @@ void TreeSelfCtrlView::react() {
 			printf("Scene.cbOnHoverChanged:%d\n", v->hover);
 			});
 	} REND;
-	R(ImageView){
+	RN(ImageView){
 		o.width = 12;
 		o.height = 12;
 		o.margin.right = 6;

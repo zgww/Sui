@@ -34,14 +34,14 @@ void TableView::react() {
 void TableView::renderHead() {
 	Node& o = *this;
 
-	R(LayoutLinear){
+	RN(LayoutLinear){
 		o.height = rowHeight;
 		o.direction = ("row");
 
 		int l = columns.size();
 		for (int i = 0; i < l; i++) {
 			auto col = columns[i];
-			R(LayoutLinear, i) {
+			RN(LayoutLinear, i) {
 				o.direction = ("row");
 				o.justifyContent = ("center");
 				o.width = col->width;
@@ -52,7 +52,7 @@ void TableView::renderHead() {
 					renderTh->invoke(o, i);
 				}
 				else {
-					R(TextView) {
+					RN(TextView) {
 						o.setColor(0xff555555);
 						o.setText(col->label);
 					} REND;
@@ -65,7 +65,7 @@ void TableView::renderHead() {
 void TableView::renderBody() {
 	Node& o = *this;
 	for (int r = 0; r < rowCount; r++) {
-		R(LayoutLinear, r){
+		RN(LayoutLinear, r){
 			o.height = rowHeight;
 				// o.width = 400
 			o.direction=("row");
@@ -75,7 +75,7 @@ void TableView::renderBody() {
 			int l = columns.size();
 			for (int i = 0; i < l; i++) {
 				auto col = columns[i];
-				R(LayoutLinear, i){
+				RN(LayoutLinear, i){
 					//o.backgroundColor = 0x33ffff00;
 					o.direction=("row");
 					o.justifyContent=("center");
@@ -87,7 +87,7 @@ void TableView::renderBody() {
 						renderTd->invoke(o, r, i);
 					}
 					else {
-						R(TextView, i) {
+						RN(TextView, i) {
 							o.setColor(0xffffffff);
 							o.setText(("-"));
 						} REND;

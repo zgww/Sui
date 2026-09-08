@@ -125,7 +125,7 @@
       <PreprocessorDefinitions>_DEBUG;SKIA_DLL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)lib\skia;E:\pe\opencv\opencv\build\include;$(ProjectDir)lib\angle2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\skia;E:\pe\opencv\opencv\build\include;$(SolutionDir)lib\angle2\include;$(ProjectDir)lib\angle2\include;$(SolutionDir)lib\skia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 /FS %(AdditionalOptions)</AdditionalOptions>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>

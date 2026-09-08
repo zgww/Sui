@@ -3,10 +3,18 @@
 #include <stdio.h>
 #include "Naga/Utf8Util.h"
 
+
+#include <rttr/rttr_enable.h>
+
 import ImageViewerApp;
 
-void AppMain() {
+class Tmp {
+	RTTR_ENABLE();
+public:
+};
 
+void AppMain() {
+	Tmp t;
 }
 
 int wWinMain(

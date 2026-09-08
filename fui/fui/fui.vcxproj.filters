@@ -350,6 +350,18 @@
     <ClCompile Include="Core\Node.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Vec2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Edge.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Border.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Frame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="Core\ViewBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

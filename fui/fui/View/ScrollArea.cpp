@@ -152,13 +152,13 @@ void ScrollArea::react() {
 void ScrollArea::_reactScrollBar() {
 	auto& o = *this;
 	//horizontal
-	R(ScrollBar) {
+	RN(ScrollBar) {
 		o.bindScrollArea(this);
 		o.isVer = false;
 		this->horScrollBar = &o;
 	} REND;
 	//vertical
-	R(ScrollBar) {
+	RN(ScrollBar) {
 		o.bindScrollArea(this);
 		this->verScrollBar = &o;
 	} REND;

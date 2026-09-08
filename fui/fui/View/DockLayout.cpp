@@ -368,7 +368,7 @@ void DockLayout::_reactDockItem(DockItem* item) {
 				// DockSplitterInfo@ info = new DockSplitterInfo()
 				// 2000用来表示 splitterView
 				// 这个key的选择，极端情况下可能会导致key重复? 如果item的值不同得很刚好
-				R(DockSplitterView, ((long long)item) + 2000 + i) {
+				RN(DockSplitterView, ((long long)item) + 2000 + i) {
 					o.z = 10;
 					o.drag->onDrag = CLOSURE([=](Drag* d) {
 						// printf("drag i:%d, index:%d\n", i, index);
@@ -387,7 +387,7 @@ void DockLayout::_reactDockItem(DockItem* item) {
 		}
 	}
 	if (item->type == (TAB)) {
-		R(LayoutLinear, (long long)item) {
+		RN(LayoutLinear, (long long)item) {
 			// o.backgroundColor = 0xffffffff
 			o.needClip = true;
 			item->view = &o;
@@ -435,7 +435,7 @@ void DockLayout::_onEvent_tabItemHead(Event* e, DockItem* kid) {
 // ^void (Event *e) _onEvent_tabItem 
 void DockLayout::_reactTabHeads(DockItem* tab, ViewBase& o) {
 	auto self = Ref(this);
-	R(LayoutLinear) {
+	RN(LayoutLinear) {
 		o.direction = ("row");
 		// o.backgroundColor = 0xff0000ff
 		o.backgroundColor = this->tabHeadBg;
@@ -443,7 +443,7 @@ void DockLayout::_reactTabHeads(DockItem* tab, ViewBase& o) {
 		for (int i = 0; i < l; i++) {
 			Ref<DockItem> kid = tab->children->get(i);
 			if (kid->type == (ITEM)) {
-				R(LayoutLinear, (long long)kid.get()) {
+				RN(LayoutLinear, (long long)kid.get()) {
 					// printf("设置tabHead cbOnEvent:%p %s\n", kid, kid->id.c_str());
 					o.cbOnEvent = CLOSURE(
 						[=](Event* e) { 
@@ -462,13 +462,13 @@ void DockLayout::_reactTabHeads(DockItem* tab, ViewBase& o) {
 void DockLayout::_reactTabContent(DockItem* tab, ViewBase &o) {
 	auto self = Ref(this);
 
-	R(LayoutLinear) {
+	RN(LayoutLinear) {
 		o.direction = ("column");
 		o.alignItems = ("stretch");
 		// o.backgroundColor = 0xffffff00
 		// o.padding.setAll(10)
 
-		R(LayoutLinearCell) {
+		RN(LayoutLinearCell) {
 			o.grow = 1;
 		} REND;
 

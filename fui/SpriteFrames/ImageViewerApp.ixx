@@ -261,7 +261,7 @@ public:
 
 		int n = info ? info->anims->size() : 0;
 		for (int i = 0; i < n; i++) {
-			R(TextView, i) {
+			RN(TextView, i) {
 				SpriteSheetAnim* anim = self->info ? self->info->anims->get(i) : nullptr;
 				std::string t;
 				if (anim) {
@@ -275,7 +275,7 @@ public:
 				o.padding.setAll(10);
 				o.cursor = "pointer";
 
-				R(HoverViewEffect) {
+				RN(HoverViewEffect) {
 					o.backgroundColor = (i == self->selectedIndex) ? 0x60407fff : 0x00333333;
 					o.hoverBackgroundColor = 0xff3a3a3a;
 					o.activeBackgroundColor = 0xff3a6dcf;
@@ -477,8 +477,8 @@ public:
 
 		RINS(root.get()) {
 			// 主容器：纵向排列
-			R(LayoutLinear) {
-				R(LayoutAlignCell) {
+			RN(LayoutLinear) {
+				RN(LayoutAlignCell) {
 					o.setCenter();
 					o.sizeRatio.setScalar(1.0f);
 				} REND;
@@ -488,7 +488,7 @@ public:
 				o.backgroundColor = 0xff1e1e1e;
 
 				// 菜单栏
-				R(MenuBar) {
+				RN(MenuBar) {
 					if (o.created) {
 						std::vector<MenuBar::MenuItem> items = {
 							{ "文件", {
@@ -510,37 +510,37 @@ public:
 				} REND;
 
 				// 工具栏
-				R(LayoutLinear) {
+				RN(LayoutLinear) {
 					o.direction = "row";
 					o.aic();
 					o.height = 40;
 					o.backgroundColor = 0xff2d2d2d;
 					o.padding.setHor(8);
 
-					R(Button) {
+					RN(Button) {
 							o.setLabel("打开图片");
 							o.setSrc(iconPath("open_image.png"));
 							styleToolBtn(o);
 							o.onClick = CLOSURE([=](MouseEvent* me) { self->onOpenImage(); });
 						} REND;
 
-						R(Button) {
+						RN(Button) {
 							o.setLabel("保存");
 							o.setSrc(iconPath("save.png"));
 							styleToolBtn(o);
 							o.onClick = CLOSURE([=](MouseEvent* me) { self->onSave(); });
 						} REND;
 
-						R(View) { o.width = 1; o.height = 22; o.backgroundColor = 0xff3a3a3a; o.margin.setHor(5); } REND;
+						RN(View) { o.width = 1; o.height = 22; o.backgroundColor = 0xff3a3a3a; o.margin.setHor(5); } REND;
 
-						R(Button) {
+						RN(Button) {
 							o.setLabel("添加动画");
 							o.setSrc(iconPath("add_anim.png"));
 							styleToolBtn(o);
 							o.onClick = CLOSURE([=](MouseEvent* me) { self->onNewAnim(); });
 						} REND;
 
-						R(Button) {
+						RN(Button) {
 							o.setLabel("删除动画");
 							o.setSrc(iconPath("delete_anim.png"));
 							styleToolBtn(o);
@@ -550,37 +550,37 @@ public:
 
 				// 主体：左列表 + 中间画布 + 右表单
 
-				R(LayoutLinear) {
+				RN(LayoutLinear) {
 					o.direction = "row";
 					o.aiStretch();
 
-					R(LayoutLinearCell) { o.grow = 1; } REND;
+					RN(LayoutLinearCell) { o.grow = 1; } REND;
 
 					// ===== 左侧：动画列表 + 预览 =====
-					R(LayoutLinear) {
+					RN(LayoutLinear) {
 						o.direction = "column";
 						o.aiStretch();
 						o.width = 230;
 						//o.backgroundColor = 0xff262626;
 						o.padding.setAll(8);
 
-						R(LayoutLinearCell) { o.grow = 1; } REND;
+						RN(LayoutLinearCell) { o.grow = 1; } REND;
 
 
-						R(LayoutLinear) {
+						RN(LayoutLinear) {
 							o.column();
 							o.aiStretch();
 							//o.backgroundColor = 0xffff2626;
 
-							R(LayoutLinearCell) { o.grow = 1; } REND;
-							R(TextView) {
+							RN(LayoutLinearCell) { o.grow = 1; } REND;
+							RN(TextView) {
 								o.setText("动画列表");
 								o.setColor(0xffaaaaaa);
 								o.setFontSize(12);
 								o.margin.bottom = 6;
 							} REND;
 
-							R(AnimationListView) {
+							RN(AnimationListView) {
 								//o.backgroundColor = 0xffffff26;
 								listPtr = &o;
 								o.info = info.get();
@@ -590,19 +590,19 @@ public:
 										self->onSelectAnim(i);
 									});
 								}
-								R(LayoutLinearCell) { o.grow = 1; } REND;
+								RN(LayoutLinearCell) { o.grow = 1; } REND;
 							} REND;
 						} REND;
 
-						R(SplitterView) {}REND;
+						RN(SplitterView) {}REND;
 
-						R(LayoutLinear) {
+						RN(LayoutLinear) {
 							o.column();
 							o.aiStretch();
 							o.border.t.set(0.0, 0x39ffffff);
 
-							R(LayoutLinearCell) { o.grow = 1; } REND;
-							R(TextView) {
+							RN(LayoutLinearCell) { o.grow = 1; } REND;
+							RN(TextView) {
 								o.setText("动画预览");
 								o.setColor(0xffaaaaaa);
 								o.setFontSize(12);
@@ -610,18 +610,18 @@ public:
 								o.margin.bottom = 2;
 							} REND;
 
-							R(LayoutLinear) {
+							RN(LayoutLinear) {
 								o.direction = "row";
 								o.aic();
 								o.margin.top = 6;
 
-								R(Button) {
+								RN(Button) {
 									o.setLabel("播放");
 									styleToolBtn(o);
 									o.onClick = CLOSURE([=](MouseEvent* me) { self->startPreview(); });
 								} REND;
 
-								R(Button) {
+								RN(Button) {
 									o.setLabel("停止");
 									styleToolBtn(o);
 									o.onClick = CLOSURE([=](MouseEvent* me) { self->stopPreview(); });
@@ -629,20 +629,20 @@ public:
 							} REND;
 
 
-							R(SpritePreviewView) {
+							RN(SpritePreviewView) {
 								previewPtr = &o;
 								//o.height = 150;
 								o.backgroundColor = 0xff1b1b1b;
 
-								R(LayoutLinearCell) { o.grow = 1; } REND;
+								RN(LayoutLinearCell) { o.grow = 1; } REND;
 							} REND;
 
 						} REND;
 					} REND;
 
-					R(SplitterView) {}REND;
+					RN(SplitterView) {}REND;
 					// ===== 中间：画布 =====
-					R(ImageCanvasView) {
+					RN(ImageCanvasView) {
 						canvasPtr = &o;
 						o.info = info.get();
 						o.curAnim = curAnim;
@@ -654,22 +654,22 @@ public:
 						if (!info->image.empty()) {
 							o.setSrc(info->image);
 						}
-						R(LayoutLinearCell) { o.grow = 3; } REND;
+						RN(LayoutLinearCell) { o.grow = 3; } REND;
 					} REND;
 
-					R(SplitterView) {}REND;
+					RN(SplitterView) {}REND;
 
 					// ===== 右侧：表单 =====
-					R(LayoutLinear) {
+					RN(LayoutLinear) {
 						o.direction = "column";
 						o.aiStretch();
 						o.width = 250;
 						o.backgroundColor = 0xff262626;
 						o.padding.setAll(8);
 
-						R(LayoutLinearCell) { o.grow = 1; } REND;
+						RN(LayoutLinearCell) { o.grow = 1; } REND;
 
-						R(TextView) {
+						RN(TextView) {
 							o.setText("精灵表属性");
 							o.setColor(0xffaaaaaa);
 							o.setFontSize(12);
@@ -698,7 +698,7 @@ public:
 							self->restartPreview();
 						});
 
-						R(TextView) {
+						RN(TextView) {
 							std::string cur = curAnim ? curAnim->name : "无";
 							std::string cnt = curAnim ? std::to_string(curAnim->coords->size()) : "0";
 							o.setText("当前动画:  " + cur + " (" + cnt + " 帧)\n点击画布帧加入动画，Ctrl+点击移除");
@@ -738,19 +738,19 @@ private:
 	void formField(Node& parent, const std::string& label, const std::string& key, std::function<void(const std::string&)> onChange) {
 		auto self = Ref(this);
 		auto& o = parent;
-		R(LayoutLinear) {
+		RN(LayoutLinear) {
 			o.direction = "row";
 			o.aic();
 			o.height = 38;
 
-			R(TextView) {
+			RN(TextView) {
 				o.setText(label);
 				o.setColor(0xffcccccc);
 				o.setFontSize(13);
 				o.width = 60;
 			} REND;
 
-			R(EditText, key) {
+			RN(EditText, key) {
 				o.width = 90;
 				o.height = 26;
 				o.padding.setHor(6);

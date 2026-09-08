@@ -111,14 +111,15 @@
       <PreprocessorDefinitions>_DEBUG;NAGA_STATIC;URGC_STATICAPI;_CONSOLE;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\fui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\fui;..\fui\lib\rttr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>fui.lib;skia.dll.lib;libEGL.dll.lib;libGLESv2.dll.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutputPath);$(SolutionDir)lib;..\fui\x64\$(Configuration);..\fui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fui.lib;librttr_core_s_d.lib;skia.dll.lib;libEGL.dll.lib;libGLESv2.dll.lib;d2d1.lib;d3d11.lib;dxgi.lib;dwrite.lib;windowscodecs.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutputPath);$(SolutionDir)lib;..\fui\x64\$(Configuration);..\fui\lib;..\fui\lib\rttr\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/WHOLEARCHIVE:fui.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -133,14 +134,15 @@
       <PreprocessorDefinitions>NDEBUG;NAGA_STATIC;URGC_STATICAPI;_CONSOLE;_AMD64_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\fui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\fui;..\fui\lib\rttr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>fui.lib;skia.dll.lib;libEGL.dll.lib;libGLESv2.dll.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutputPath);$(SolutionDir)lib;..\fui\x64\$(Configuration);..\fui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fui.lib;librttr_core_s.lib;skia.dll.lib;libEGL.dll.lib;libGLESv2.dll.lib;d2d1.lib;d3d11.lib;dxgi.lib;dwrite.lib;windowscodecs.lib;gdi32.lib;user32.lib;Comdlg32.lib;Shell32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutputPath);$(SolutionDir)lib;..\fui\x64\$(Configuration);..\fui\lib;..\fui\lib\rttr\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/WHOLEARCHIVE:fui.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>

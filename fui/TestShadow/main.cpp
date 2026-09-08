@@ -45,7 +45,7 @@ public:
 
 
 		for (int i = 0; i < (int)menus.size(); i++) {
-			R(TextView, i) {
+			RN(TextView, i) {
 				o.setText(menus[i].label);
 				//o.setColor(0xffe0e0e0);
 				o.setColor(0xffe0e0e0);
@@ -54,7 +54,7 @@ public:
 				o.height = 22;
 				o.cursor = "pointer";
 
-				R(HoverViewEffect) {
+				RN(HoverViewEffect) {
 					o.backgroundColor = 0x00ffffff;
 					o.hoverBackgroundColor = 0xff3a3a3a;
 					o.activeBackgroundColor = 0xff3a6dcf;
@@ -163,11 +163,11 @@ void AppMain() {
 		o.backgroundColor = 0xffefefef;
 		o.backgroundColor = 0xff999999;
 
-		R(LayoutLinear) {
+		RN(LayoutLinear) {
 			o.row().aic();
 
-			R(MenuBar) {
-				R(LayoutLinearCell) { o.grow = 1; } REND;
+			RN(MenuBar) {
+				RN(LayoutLinearCell) { o.grow = 1; } REND;
 				//o.backgroundColor = 0xfffd2d2d;
 
 				if (o.created) {
@@ -197,12 +197,12 @@ void AppMain() {
 			} REND;
 
 			//占满
-			R(View) {
-				R(LayoutLinearCell) {} REND;
+			RN(View) {
+				RN(LayoutLinearCell) {} REND;
 			} REND;
 
 			// Open
-			R(Button) {
+			RN(Button) {
 				o.setSrc(Path_resolveFromExecutionDir("icon/open.png"));
 				o.setLabel("打开");
 				o.labelColor = 0xffffffff;
@@ -221,16 +221,16 @@ void AppMain() {
 			} REND;
 		} REND;
 
-		R(RowWrap) {
+		RN(RowWrap) {
 
 			for (int i = 0; i < 10; i++) {
-				R(TextView, i) {
+				RN(TextView, i) {
 					o.setText(std::format("第[{}]项", i));
 				} REND;
 			}
 
 			for (int i = 0; i < 1000; i++) {
-				R(ShadowView, i) {
+				RN(ShadowView, i) {
 					o.backgroundColor = 0xff2d2d2d;
 					o.width = 40;
 					o.height = 40;

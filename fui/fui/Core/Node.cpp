@@ -1,6 +1,9 @@
 #include "Node.h"
 #include "Timer.h"
 #include "App.h"
+#include "Window.h"
+
+//#include <rttr/registration>
 
 // Global animation frame list
 static Ref<GcList<Closure<bool()>>> g_animationFrameList;
@@ -339,3 +342,30 @@ void Node_removeUnusedKids(Node* o) {
 	}
 	o->gocIdx = 0; //重置
 }
+//
+//RTTR_REGISTRATION
+//{
+//	using namespace rttr;
+//
+//	registration::class_<Node>("Node")
+//		.constructor<>()(policy::ctor::as_raw_ptr)
+//		.property("name", &Node::name)
+//		.property("slot", &Node::slot)
+//		.property("gocIdx", &Node::gocIdx)
+//		.property("gocKey", &Node::gocKey)
+//		.property("mounted", &Node::mounted)
+//		.property("created", &Node::created)
+//		.method("getClassName", &Node::getClassName)
+//		.method("toString", &Node::toString)
+//		.method("getChild", &Node::getChild)
+//		.method("getChildrenCount", &Node::getChildrenCount)
+//		.method("indexOf", &Node::indexOf)
+//		.method("appendChild", &Node::appendChild)
+//		.method("insertChild", &Node::insertChild)
+//		.method("removeChild", &Node::removeChild)
+//		.method("removeChildAt", &Node::removeChildAt)
+//		.method("removeAllChildren", &Node::removeAllChildren)
+//		.method("removeSelf", &Node::removeSelf)
+//		.method("getWindow", &Node::getWindow)
+//		.method("setMounted", &Node::setMounted);
+//}

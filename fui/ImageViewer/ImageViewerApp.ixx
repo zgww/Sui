@@ -123,7 +123,7 @@ public:
 			//o.aiStretch();
 
 
-			R(ImageCanvasView) {
+			RN(ImageCanvasView) {
 				canvasPtr = &o;
 				if (o.created) {
 					o.onZoomChanged = CLOSURE([=](float z) {
@@ -140,26 +140,26 @@ public:
 				//	o.grow = 1;
 				//} REND;
 
-				R(LayoutAlignCell) {
+				RN(LayoutAlignCell) {
 					o.setCenter();
 					o.sizeRatio.setScalar(1.0f);
 				} REND;
 			} REND;
 
 			// 菜单栏 + 工具栏（同一行）
-			R(LayoutLinear) {
+			RN(LayoutLinear) {
 				o.direction = "row";
 				o.aic().jcc();
 				o.height = 32;
 				o.backgroundColor = 0xcc222222;
 
-				R(LayoutAlignCell) {
+				RN(LayoutAlignCell) {
 					o.setTopCenter();
 					o.sizeRatio.x = 1.0f;
 				} REND;
 
-				R(MenuBar) {
-					R(LayoutLinearCell) { o.grow = 1; } REND;
+				RN(MenuBar) {
+					RN(LayoutLinearCell) { o.grow = 1; } REND;
 					//o.backgroundColor = 0xfffd2d2d;
 
 					if (o.created) {
@@ -187,12 +187,12 @@ public:
 				} REND;
 
 				//占满
-				R(View) { 
-					R(LayoutLinearCell) {} REND;
+				RN(View) { 
+					RN(LayoutLinearCell) {} REND;
 				} REND;
 
 				// Open
-				R(Button) {
+				RN(Button) {
 					o.setSrc(getIconPath("open.png"));
 					o.setLabel("");
 					o.setNormalBg(0x002d2d2d);
@@ -209,10 +209,10 @@ public:
 					});
 				} REND;
 
-				R(View) { o.width = 2; o.height = 20; o.backgroundColor = 0xff1a1a1a; o.margin.setHor(4); } REND;
+				RN(View) { o.width = 2; o.height = 20; o.backgroundColor = 0xff1a1a1a; o.margin.setHor(4); } REND;
 
 				// Zoom In
-				R(Button) {
+				RN(Button) {
 					o.setSrc(getIconPath("zoom-in.png"));
 					o.setLabel("");
 					o.setNormalBg(0x002d2d2d);
@@ -230,7 +230,7 @@ public:
 				} REND;
 
 				// Zoom Out
-				R(Button) {
+				RN(Button) {
 					o.setSrc(getIconPath("zoom-out.png"));
 					o.setLabel("");
 					o.setNormalBg(0x002d2d2d);
@@ -248,7 +248,7 @@ public:
 				} REND;
 
 				// Fit
-				R(Button) {
+				RN(Button) {
 					o.setSrc(getIconPath("fit.png"));
 					o.setLabel("");
 					o.setNormalBg(0x002d2d2d);
@@ -266,7 +266,7 @@ public:
 				} REND;
 
 				// Rotate
-				R(Button) {
+				RN(Button) {
 					o.setSrc(getIconPath("rotate.png"));
 					o.setLabel("");
 					o.setNormalBg(0x002d2d2d);
@@ -283,10 +283,10 @@ public:
 					});
 				} REND;
 
-				R(View) { o.width = 2; o.height = 20; o.backgroundColor = 0xff1a1a1a; o.margin.setHor(4); } REND;
+				RN(View) { o.width = 2; o.height = 20; o.backgroundColor = 0xff1a1a1a; o.margin.setHor(4); } REND;
 
 				// Register Shell Menu
-				R(Button) {
+				RN(Button) {
 					o.setSrc(getIconPath("register.png"));
 					o.setLabel("");
 					o.setNormalBg(0x002d2d2d);
@@ -305,7 +305,7 @@ public:
 					});
 				} REND;
 
-				R(TextView) {
+				RN(TextView) {
 					std::string label;
 					if (!currentPath.empty()) {
 						std::string fname = Path_basename(currentPath);
@@ -323,7 +323,7 @@ public:
 			} REND;
 
 
-			R(ThumbnailBar) {
+			RN(ThumbnailBar) {
 				thumbPtr = &o;
 				if (o.created) {
 					o.onSelect = CLOSURE([=](int index) {
@@ -335,14 +335,14 @@ public:
 					thumbPtr->setSelectedIndex(currentIndex);
 				}
 
-				R(LayoutAlignCell) {
+				RN(LayoutAlignCell) {
 					o.setBottomCenter();
 					o.sizeRatio.setX(1.0f);
 				} REND;
 			} REND;
 
 			// Tooltip overlay (drawn on top, compensates for frame position)
-			R(View) {
+			RN(View) {
 				o.width = 0;
 				o.height = 0;
 				o.needClip = false;

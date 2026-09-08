@@ -87,7 +87,7 @@ public:
 		o.placeKids(this->gocOutKids());
 
 		for (int i = 0; i < (int)imageFiles.size(); i++) {
-			R(ImageView, i) {
+			RN(ImageView, i) {
 				o.setSrc(imageFiles[i]);
 				o.setImageMode(ImageMode_HeightFix);
 				o.height = 60;
@@ -111,7 +111,7 @@ public:
 				//		}
 				//	}
 				//});
-				R(HoverViewEffect) {
+				RN(HoverViewEffect) {
 					o.activeBackgroundColor = 0xffcc6600;
 					o.backgroundColor = 0xff333333;
 					o.hoverBackgroundColor = 0xffff5555;

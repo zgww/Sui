@@ -1,5 +1,7 @@
 #include "Rect.h"
 
+//#include <rttr/registration>
+
 
 Rect Rect::containsPositionIn5Patch(float px, float py, Rect centerRect) {
 	Rect ret = containsPositionIn5Patch_withOutType(
@@ -123,3 +125,35 @@ Vec2 Rect::containsPositionIn9Patch(float px, float py) {
 	// return -1
 	return mkVec2(-1, -1);
 }
+//
+//RTTR_REGISTRATION
+//{
+//	using namespace rttr;
+//
+//	registration::class_<Rect>("Rect")
+//		.constructor<>()(policy::ctor::as_object)
+//		.constructor(static_cast<Rect(*)(float, float, float, float)>(&mkRect))
+//		.property("x", &Rect::x)
+//		.property("y", &Rect::y)
+//		.property("w", &Rect::w)
+//		.property("h", &Rect::h)
+//		.method("toString", &Rect::toString)
+//		.method("setAll", &Rect::setAll)
+//		.method("set_ltrb", &Rect::set_ltrb)
+//		.method("isEmpty", &Rect::isEmpty)
+//		.method("containsPosition", &Rect::containsPosition)
+//		.method("right", &Rect::right)
+//		.method("bottom", &Rect::bottom)
+//		.method("centerX", &Rect::centerX)
+//		.method("centerY", &Rect::centerY)
+//		.method("centerPos", &Rect::centerPos)
+//		.method("leftTop", &Rect::leftTop)
+//		.method("leftBottom", &Rect::leftBottom)
+//		.method("rightTop", &Rect::rightTop)
+//		.method("rightBottom", &Rect::rightBottom)
+//		.method("offset", &Rect::offset)
+//		.method("inset", &Rect::inset)
+//		.method("normal", &Rect::normal)
+//		.method("isIntersect", &Rect::isIntersect)
+//		.method("equals", &Rect::equals);
+//}

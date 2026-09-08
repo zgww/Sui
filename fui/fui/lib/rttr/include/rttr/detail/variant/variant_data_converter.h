@@ -983,8 +983,8 @@ struct RTTR_API convert_from<float>
 {
     static RTTR_INLINE bool to(const float& from, bool& to)
     {
-        to = !(from <= std::numeric_limits<float>::min() && 
-               from >= -1 * std::numeric_limits<float>::min());
+        to = !(from <= (std::numeric_limits<float>::min)() && 
+               from >= -1 * (std::numeric_limits<float>::min)());
 
         return true;
     }
@@ -1059,8 +1059,8 @@ struct RTTR_API convert_from<double>
 {
     static RTTR_INLINE bool to(const double& from, bool& to)
     {
-        to = !(from <= std::numeric_limits<double>::min() && 
-               from >= -1 * std::numeric_limits<double>::min());
+        to = !(from <= (std::numeric_limits<double>::min)() && 
+               from >= -1 * (std::numeric_limits<double>::min)());
 
         return true;
     }
@@ -1112,8 +1112,8 @@ struct RTTR_API convert_from<double>
 
     static RTTR_INLINE bool to(const double& from, float& to)
     {
-        RTTR_CONSTEXPR_OR_CONST double float_min = -1 * std::numeric_limits<float>::max();
-        RTTR_CONSTEXPR_OR_CONST double float_max = std::numeric_limits<float>::max();
+        RTTR_CONSTEXPR_OR_CONST double float_min = -1 * (std::numeric_limits<float>::max)();
+        RTTR_CONSTEXPR_OR_CONST double float_max = (std::numeric_limits<float>::max)();
         if (from < float_min || from > float_max)
             return false;
 

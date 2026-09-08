@@ -9,6 +9,9 @@
 #include "Vec2.h"
 #include "../Urgc/GcList.h"
 
+//#include "rttr/detail/misc/misc_type_traits.h"
+//#include <rttr/rttr_enable.h>
+
 
 class Canvas;
 class Window;
@@ -16,6 +19,7 @@ class LayoutCell;
 class App;
 
 class ViewBase : public Node {
+	//RTTR_ENABLE(Node)
 public:
 	std::string hitTestType = "normal";
 	Inset hitTestPadding;

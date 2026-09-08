@@ -94,14 +94,14 @@ void Button::react()
 	o.row().aic().jcc();
 
 	if (src != "") {
-		R(ImageView, LINE_KEY) {
+		RN(ImageView, LINE_KEY) {
 			o.setSrc(src);
 			o.margin.right = !src.empty() && !label.empty() ? 6.f : 0.f;
 		}REND;
 	}
 
 	if (label != "") {
-		R(TextView, LINE_KEY) {
+		RN(TextView, LINE_KEY) {
 			o.setText(label);
 			//o.backgroundColor = 0xff0000ff;
 			o.color = labelColor;

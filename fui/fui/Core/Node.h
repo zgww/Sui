@@ -4,6 +4,7 @@
 #include "Emitter.h"
 #include "../Urgc/GcList.h"
 #include "../Urgc/GcMap.h"
+//#include <rttr/rttr_enable.h>
 #include <string>
 #include <format>
 class Node;
@@ -48,7 +49,7 @@ class Window;
 #define LINE_KEY (TO_STRING(__LINE__)  "L")
 
 // 根据类型 get or create
-#define R(Type, ...) {auto _tmp = Node_getOrCreate<Type>(&o, ##__VA_ARGS__); auto& o = *_tmp.get();
+#define RN(Type, ...) {auto _tmp = Node_getOrCreate<Type>(&o, ##__VA_ARGS__); auto& o = *_tmp.get();
 // 参数就是节点了，不需要再get or create. 主要是在匹配REND进行清理
 #define RINS(n) {auto& o = *n;
 #define REND Node_removeUnusedKids(&o); o.react();} 
@@ -68,6 +69,7 @@ void requestAnimationFrame(Ref<Closure<bool()>> fn);
 void tickAnimationFrames();
 
 class Node : public Emitter {
+	//RTTR_ENABLE(Emitter)
 public:
 	Ref<GcList<Node>> children{ new GcList<Node>(), this };
 	Ref<Node> parent{nullptr, this};
