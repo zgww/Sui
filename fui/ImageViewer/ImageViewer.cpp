@@ -6,7 +6,7 @@
 
 #include <rttr/rttr_enable.h>
 
-import ImageViewerApp;
+#include "ImageViewerApp.h"
 
 class Tmp {
 	RTTR_ENABLE();

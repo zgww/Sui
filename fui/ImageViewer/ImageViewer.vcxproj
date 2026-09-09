@@ -158,11 +158,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ImageViewer.cpp" />
-    <ClCompile Include="ShellExt.ixx" />
-    <ClCompile Include="MenuBar.ixx" />
-    <ClCompile Include="ImageCanvasView.ixx" />
-    <ClCompile Include="ThumbnailBar.ixx" />
-    <ClCompile Include="ImageViewerApp.ixx" />
+    <ClCompile Include="ShellExt.cpp" />
+    <ClCompile Include="MenuBar.cpp" />
+    <ClCompile Include="ImageCanvasView.cpp" />
+    <ClCompile Include="ThumbnailBar.cpp" />
+    <ClCompile Include="ImageViewerApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ShellExt.h" />
+    <ClInclude Include="MenuBar.h" />
+    <ClInclude Include="ImageCanvasView.h" />
+    <ClInclude Include="ThumbnailBar.h" />
+    <ClInclude Include="ImageViewerApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

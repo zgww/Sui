@@ -4,28 +4,45 @@
     <ClCompile Include="ImageViewer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ShellExt.ixx">
-      <Filter>模块</Filter>
+    <ClCompile Include="ShellExt.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MenuBar.ixx">
-      <Filter>模块</Filter>
+    <ClCompile Include="MenuBar.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ImageCanvasView.ixx">
-      <Filter>模块</Filter>
+    <ClCompile Include="ImageCanvasView.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ThumbnailBar.ixx">
-      <Filter>模块</Filter>
+    <ClCompile Include="ThumbnailBar.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ImageViewerApp.ixx">
-      <Filter>模块</Filter>
+    <ClCompile Include="ImageViewerApp.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ShellExt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuBar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageCanvasView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ThumbnailBar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageViewerApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="源文件">
       <UniqueIdentifier>{a1a1a1a1-1111-1111-1111-111111111111}</UniqueIdentifier>
     </Filter>
-    <Filter Include="模块">
-      <UniqueIdentifier>{b2b2b2b2-2222-2222-2222-222222222222}</UniqueIdentifier>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{c3c3c3c3-3333-3333-3333-333333333333}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

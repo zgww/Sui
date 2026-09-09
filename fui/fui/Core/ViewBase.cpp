@@ -6,7 +6,7 @@
 #include "../Urgc/GcList.h"
 #include "../Meta/MetaRegistry.h"
 
-//#include <rttr/registration>
+#include <rttr/registration>
 
 Ref<GcList<LayoutCell>> ViewBase::gocLayoutCells() {
 	if (!layoutCells) {
@@ -309,30 +309,30 @@ void ViewBase::registerMeta() {
 	reg.property("hover", &ViewBase::hover);
 	reg.property("z", &ViewBase::z);
 }
-//
-//RTTR_REGISTRATION
-//{
-//	using namespace rttr;
-//
-//	registration::class_<ViewBase>("ViewBase")
-//		.constructor<>()(policy::ctor::as_raw_ptr)
-//		.property("hitTestType", &ViewBase::hitTestType)
-//		.property("hitTestPadding", &ViewBase::hitTestPadding)
-//		.property("frame", &ViewBase::frame)
-//		.property("visible", &ViewBase::visible)
-//		.property("cursor", &ViewBase::cursor)
-//		.property("hover", &ViewBase::hover)
-//		.property("z", &ViewBase::z)
-//		.method("getClassName", &ViewBase::getClassName)
-//		.method("toString", &ViewBase::toString)
-//		.method("setVisible", &ViewBase::setVisible)
-//		.method("setHover", &ViewBase::setHover)
-//		.method("getChildViewAt", &ViewBase::getChildViewAt)
-//		.method("getChildAsView", &ViewBase::getChildAsView)
-//		.method("getChildrenViewCount", &ViewBase::getChildrenViewCount)
-//		.method("viewIndexInParent", &ViewBase::viewIndexInParent)
-//		.method("hitTest", &ViewBase::hitTest)
-//		.method("localToWorld", &ViewBase::localToWorld)
-//		.method("worldToLocal", &ViewBase::worldToLocal)
-//		.method("getScreenRect", &ViewBase::getScreenRect);
-//}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ViewBase>("ViewBase")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("hitTestType", &ViewBase::hitTestType)
+		.property("hitTestPadding", &ViewBase::hitTestPadding)
+		.property("frame", &ViewBase::frame)
+		.property("visible", &ViewBase::visible)
+		.property("cursor", &ViewBase::cursor)
+		.property("hover", &ViewBase::hover)
+		.property("z", &ViewBase::z)
+		.method("getClassName", &ViewBase::getClassName)
+		.method("toString", &ViewBase::toString)
+		.method("setVisible", &ViewBase::setVisible)
+		.method("setHover", &ViewBase::setHover)
+		.method("getChildViewAt", &ViewBase::getChildViewAt)
+		.method("getChildAsView", &ViewBase::getChildAsView)
+		.method("getChildrenViewCount", &ViewBase::getChildrenViewCount)
+		.method("viewIndexInParent", &ViewBase::viewIndexInParent)
+		.method("hitTest", &ViewBase::hitTest)
+		.method("localToWorld", &ViewBase::localToWorld)
+		.method("worldToLocal", &ViewBase::worldToLocal)
+		.method("getScreenRect", &ViewBase::getScreenRect);
+}

@@ -1,22 +1,21 @@
-module;
+#include "ShellExt.h"
+
 #include <Windows.h>
+#include <Shlobj.h>
 #include <string>
 #include <vector>
-#include <Shlobj.h>
 
-export module ShellExt;
+namespace shellExt {
 
-export namespace shellExt {
-
-inline std::wstring toWstr(const std::string& s) {
+static std::wstring toWstr(const std::string& s) {
 	int len = MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, nullptr, 0);
 	std::wstring w(len, 0);
 	MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, w.data(), len);
 	if (len > 0) w.pop_back();
-	return w; 
+	return w;
 }
 
-inline bool registerFileType(LPCWSTR ext, LPCWSTR menuLabel, LPCWSTR exePath) {
+static bool registerFileType(LPCWSTR ext, LPCWSTR menuLabel, LPCWSTR exePath) {
 	// HKCU\Software\Classes\SystemFileAssociations\.ext\shell\ImageViewer
 	std::wstring baseKey = L"Software\\Classes\\SystemFileAssociations\\";
 	baseKey += ext;
@@ -47,7 +46,7 @@ inline bool registerFileType(LPCWSTR ext, LPCWSTR menuLabel, LPCWSTR exePath) {
 	return true;
 }
 
-inline bool unregisterFileType(LPCWSTR ext) {
+static bool unregisterFileType(LPCWSTR ext) {
 	std::wstring baseKey = L"Software\\Classes\\SystemFileAssociations\\";
 	baseKey += ext;
 	baseKey += L"\\shell";
@@ -67,7 +66,7 @@ inline bool unregisterFileType(LPCWSTR ext) {
 	return false;
 }
 
-inline void registerShellMenu(const std::string& exePath) {
+void registerShellMenu(const std::string& exePath) {
 	auto wpath = toWstr(exePath);
 	LPCWSTR menuLabel = L"用 ImageViewer 打开";
 	LPCWSTR exts[] = {
@@ -80,7 +79,7 @@ inline void registerShellMenu(const std::string& exePath) {
 	SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, nullptr, nullptr);
 }
 
-inline void unregisterShellMenu() {
+void unregisterShellMenu() {
 	LPCWSTR exts[] = {
 		L".jpg", L".jpeg", L".png", L".bmp", L".gif",
 		L".webp", L".tga", L".tiff", L".tif", L".ico", L".psd"

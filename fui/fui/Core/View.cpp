@@ -3,7 +3,7 @@
 #include "Color.h"
 #include "../Meta/MetaRegistry.h"
 
-//#include <rttr/registration>
+#include <rttr/registration>
 
 Rect View::getViewRect_baseClient() {
 	Rect vr = getViewRect();
@@ -364,35 +364,35 @@ void View::registerMeta() {
 	reg.property("margin", &View::margin);
 }
 //
-//RTTR_REGISTRATION
-//{
-//	using namespace rttr;
-//
-//	registration::class_<View>("View")
-//		.constructor<>()(policy::ctor::as_raw_ptr)
-//		.property("size", &View::size)
-//		.property("needClip", &View::needClip)
-//		.property("width", &View::width)
-//		.property("height", &View::height)
-//		.property("desiredWidth", &View::desiredWidth)
-//		.property("desiredHeight", &View::desiredHeight)
-//		.property("minWidth", &View::minWidth)
-//		.property("maxWidth", &View::maxWidth)
-//		.property("minHeight", &View::minHeight)
-//		.property("maxHeight", &View::maxHeight)
-//		.property("border", &View::border)
-//		.property("radius", &View::radius)
-//		.property("padding", &View::padding)
-//		.property("margin", &View::margin)
-//		.property("boxShadow", &View::boxShadow)
-//		.property("backgroundColor", &View::backgroundColor)
-//		.method("getClassName", &View::getClassName)
-//		.method("setWidth", &View::setWidth)
-//		.method("setHeight", &View::setHeight)
-//		.method("getFrameRect", &View::getFrameRect)
-//		.method("getViewRect", &View::getViewRect)
-//		.method("getContentRect", &View::getContentRect)
-//		.method("getViewSize", &View::getViewSize)
-//		.method("getOutWidth", &View::getOutWidth)
-//		.method("getOutHeight", &View::getOutHeight);
-//}
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<View>("View")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("size", &View::size)
+		.property("needClip", &View::needClip)
+		.property("width", &View::width)
+		.property("height", &View::height)
+		.property("desiredWidth", &View::desiredWidth)
+		.property("desiredHeight", &View::desiredHeight)
+		.property("minWidth", &View::minWidth)
+		.property("maxWidth", &View::maxWidth)
+		.property("minHeight", &View::minHeight)
+		.property("maxHeight", &View::maxHeight)
+		.property("border", &View::border)
+		.property("radius", &View::radius)
+		.property("padding", &View::padding)
+		.property("margin", &View::margin)
+		.property("boxShadow", &View::boxShadow)
+		.property("backgroundColor", &View::backgroundColor)
+		.method("getClassName", &View::getClassName)
+		.method("setWidth", &View::setWidth)
+		.method("setHeight", &View::setHeight)
+		.method("getFrameRect", &View::getFrameRect)
+		.method("getViewRect", &View::getViewRect)
+		.method("getContentRect", &View::getContentRect)
+		.method("getViewSize", &View::getViewSize)
+		.method("getOutWidth", &View::getOutWidth)
+		.method("getOutHeight", &View::getOutHeight);
+}

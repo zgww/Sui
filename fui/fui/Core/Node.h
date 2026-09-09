@@ -54,6 +54,8 @@ class Window;
 #define RINS(n) {auto& o = *n;
 #define REND Node_removeUnusedKids(&o); o.react();} 
 
+#define R_BARE_END o.react();} 
+
 template <class T>
 bool isSameNodeType(Node* curNode) {
 	auto typeName = typeid(T).name();

@@ -1,6 +1,6 @@
 #include "Rect.h"
 
-//#include <rttr/registration>
+#include <rttr/registration>
 
 
 Rect Rect::containsPositionIn5Patch(float px, float py, Rect centerRect) {
