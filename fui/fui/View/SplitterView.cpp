@@ -1,6 +1,8 @@
 #include "SplitterView.h"
 #include "../Core/Cursor.h"
 
+#include <rttr/registration>
+
 SplitterView::SplitterView() {
 	CtorGuard g(this);
 
@@ -202,4 +204,18 @@ void SplitterView::onEvent(Event* ev) {
 
 void SplitterView::onHoverChanged() {
 	invalidReact();
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<SplitterView>("SplitterView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("hoverBg", &SplitterView::hoverBg)
+		.property("normalBg", &SplitterView::normalBg)
+		.property("prevGrow", &SplitterView::prevGrow)
+		.property("nextGrow", &SplitterView::nextGrow)
+		.method("updateSiblingsGrow", &SplitterView::updateSiblingsGrow)
+		.method("getClassName", &SplitterView::getClassName);
 }

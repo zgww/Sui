@@ -6,6 +6,7 @@
 #include "../Core/MouseEvent.h"
 #include "ColorPalete.h"
 #include <string>
+#include <rttr/rttr_enable.h>
 
 
 class ColorPicker :public View {
@@ -22,4 +23,6 @@ public:
 
 	virtual void onEvent(Event* e) override;
 	void onMouseEvent(MouseEvent* me);
+
+	RTTR_ENABLE(View)
 };

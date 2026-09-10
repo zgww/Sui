@@ -2,6 +2,8 @@
 
 #include "./Mat.h"
 
+#include <rttr/registration>
+
 Euler* Euler::set(float x, float y, float z, const char* order) {
 
 	this->x = x;
@@ -198,4 +200,33 @@ float* Euler::toArray(float* array, int offset) {
 	array[offset + 2] = this->z;
 	// array[ offset + 3 ] = this->_order;
 	return array;
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Euler>("Euler")
+		.constructor<>()(policy::ctor::as_object)
+		.constructor(static_cast<Euler(*)(float, float, float)>(&mkEuler))
+		.property("x", &Euler::x)
+		.property("y", &Euler::y)
+		.property("z", &Euler::z)
+		.method("toString", &Euler::toString)
+		.method("isXYZ", &Euler::isXYZ)
+		.method("isYXZ", &Euler::isYXZ)
+		.method("isZXY", &Euler::isZXY)
+		.method("isZYX", &Euler::isZYX)
+		.method("isYZX", &Euler::isYZX)
+		.method("isXZY", &Euler::isXZY)
+		.method("clone", &Euler::clone)
+		.method("copy", &Euler::copy)
+		.method("setFromRotationMatrix", &Euler::setFromRotationMatrix)
+		.method("setFromQuaternion", &Euler::setFromQuaternion)
+		.method("setFromVector3", &Euler::setFromVector3)
+		.method("reorder", &Euler::reorder)
+		.method("set", &Euler::set)
+		.method("equals", &Euler::equals)
+		.method("fromArray", &Euler::fromArray)
+		.method("toArray", &Euler::toArray);
 }

@@ -1,6 +1,8 @@
 #include "./Quaternion.h"
 #include "./Mat.h"
 
+#include <rttr/registration>
+
 Quaternion* Quaternion::setFromRotationMatrix(Mat& m) {
 
 	// http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
@@ -204,4 +206,41 @@ Quaternion* Quaternion::setFromUnitVectors(Vec3 vFrom, Vec3 vTo) {
 
 	return self.normalizeLocal();
 
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Quaternion>("Quaternion")
+		.constructor<>()(policy::ctor::as_object)
+		.constructor(static_cast<Quaternion(*)(float, float, float, float)>(&mkQuaternion))
+		.property("x", &Quaternion::x)
+		.property("y", &Quaternion::y)
+		.property("z", &Quaternion::z)
+		.property("w", &Quaternion::w)
+		.method("toString", &Quaternion::toString)
+		.method("set", &Quaternion::set)
+		.method("clone", &Quaternion::clone)
+		.method("copy", &Quaternion::copy)
+		.method("identity", &Quaternion::identity)
+		.method("multiplyLocal", &Quaternion::multiplyLocal)
+		.method("setFromRotationMatrix", &Quaternion::setFromRotationMatrix)
+		.method("premultiplyLocal", &Quaternion::premultiplyLocal)
+		.method("multiplyQuaternionsLocal", &Quaternion::multiplyQuaternionsLocal)
+		.method("conjugateLocal", &Quaternion::conjugateLocal)
+		.method("invertLocal", &Quaternion::invertLocal)
+		.method("dot", &Quaternion::dot)
+		.method("lengthSq", &Quaternion::lengthSq)
+		.method("length", &Quaternion::length)
+		.method("normalizeLocal", &Quaternion::normalizeLocal)
+		.method("angleTo", &Quaternion::angleTo)
+		.method("rotateTowardsLocal", &Quaternion::rotateTowardsLocal)
+		.method("slerpLocal", &Quaternion::slerpLocal)
+		.method("setFromAxisAngle", &Quaternion::setFromAxisAngle)
+		.method("setFromEuler", &Quaternion::setFromEuler)
+		.method("setFromUnitVectors", &Quaternion::setFromUnitVectors)
+		.method("equals", &Quaternion::equals)
+		.method("multiplyVec3", &Quaternion::multiplyVec3)
+		.method("sqrHalfThetaSqrt", &Quaternion::sqrHalfThetaSqrt);
 }

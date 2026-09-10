@@ -2,6 +2,8 @@
 #include "../Core/Rect.h"
 #include "../Core/Canvas.h"
 
+#include <rttr/registration>
+
 Slider::Slider() {
 	CtorGuard g(this);
 
@@ -111,4 +113,21 @@ void Slider::onEvent(Event* ev) {
 		float v = (me->clientX - r.x) / r.w;
 		setRatio(v);
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Slider>("Slider")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("ratio", &Slider::ratio)
+		.property("fromValue", &Slider::fromValue)
+		.property("toValue", &Slider::toValue)
+		.method("setRatio", &Slider::setRatio)
+		.method("getValue", &Slider::getValue)
+		.method("setRatioByValue", &Slider::setRatioByValue)
+		.method("calcToX", &Slider::calcToX)
+		.method("calcToY", &Slider::calcToY)
+		.method("getClassName", &Slider::getClassName);
 }

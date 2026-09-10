@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include <functional>
+#include <rttr/rttr_enable.h>
 //
 //class TreeState : public GcObj {
 //public:
@@ -64,4 +65,6 @@ public:
 	void react() override;
 
 	virtual const char* getClassName() const override { return "TreeSelfCtrlView"; }
+
+	RTTR_ENABLE(LayoutLinear)
 };

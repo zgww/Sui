@@ -11,7 +11,7 @@
 #include "Vec2.h"
 #include "Frame.h"
 #include "Rect.h"
-//#include <rttr/rttr_enable.h>
+#include <rttr/rttr_enable.h>
 
 class Canvas;
 class ViewCallback;
@@ -26,7 +26,7 @@ public:
 };
 
 class View : public ViewBase {
-	//RTTR_ENABLE(ViewBase)
+	RTTR_ENABLE(ViewBase)
 public:
 	Vec2 size;
 	bool needClip = false;

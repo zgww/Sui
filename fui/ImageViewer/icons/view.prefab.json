@@ -1,0 +1,66 @@
+{
+  "type": "LayoutLinear",
+  "height": 40,
+			"padding": {
+				"left": 10, "right":10
+			},
+  "backgroundColor": -16776961,
+  "children":[
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+            "backgroundColor": "0xff00ff00"
+	},
+	{
+		  "type": "Button",
+		  "src":"icons/rotate.png",
+		  "label": "Submit"
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	}
+]
+}

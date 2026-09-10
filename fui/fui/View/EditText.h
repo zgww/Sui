@@ -8,6 +8,7 @@
 #include "../Core/Focus.h"
 #include "../Core/Theme.h"
 #include <string>
+#include <rttr/rttr_enable.h>
 //
 //class EditText : public View {
 //public:
@@ -39,7 +40,7 @@
 //	void onUnmounting() override;
 //
 //	virtual const char* getClassName() const override { return "EditText"; }
-//};
+//
 
 struct Range {
 	int start;
@@ -208,4 +209,5 @@ public:
 	void set_text_editing(TextEditingEvent* evt);
 	// 选择全部
 	void selectAll();
+	RTTR_ENABLE(View)
 };

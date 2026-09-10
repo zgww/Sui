@@ -11,6 +11,7 @@
 #include <string>
 #include <functional>
 #include <memory>
+#include <rttr/rttr_enable.h>
 
 class TableViewColumn : public GcObj {
 public:
@@ -43,4 +44,6 @@ public:
 	void addColumn(int width, const std::string& label);
 
 	virtual const char* getClassName() const override { return "TableView"; }
+
+	RTTR_ENABLE(LayoutLinear)
 };

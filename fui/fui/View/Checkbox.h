@@ -3,6 +3,7 @@
 #include "../Core/Predef.h"
 #include "../Core/View.h"
 #include "../Core/MouseEvent.h"
+#include <rttr/rttr_enable.h>
 
 class Checkbox : public View {
 public:
@@ -19,4 +20,6 @@ public:
 	void onEvent(Event* ev) override;
 
 	virtual const char* getClassName() const override { return "Checkbox"; }
+
+	RTTR_ENABLE(View)
 };

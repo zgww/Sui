@@ -2,6 +2,8 @@
 #include "TextView.h"
 #include "../Core/NodeLib.h"
 
+#include <rttr/registration>
+
 
 
 void DockItem::fromJson() {
@@ -827,4 +829,51 @@ void DockSplitterView::onEvent(Event* e) {
 
 void DockSplitterView::onHoverChanged() {
 	this->invalidReact();
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<DockItem>("DockItem")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("intId", &DockItem::intId)
+		.property("id", &DockItem::id)
+		.property("isHorizontal", &DockItem::isHorizontal)
+		.property("type", &DockItem::type)
+		.property("width", &DockItem::width)
+		.property("weight", &DockItem::weight)
+		.property("_sumContentSize", &DockItem::_sumContentSize)
+		.property("_sumFlexSize", &DockItem::_sumFlexSize)
+		.property("_sumWeight", &DockItem::_sumWeight)
+		.property("tabActiveIndex", &DockItem::tabActiveIndex)
+		.method("fromJson", &DockItem::fromJson)
+		.method("toJson", &DockItem::toJson)
+		.method("setTabActiveIndex", &DockItem::setTabActiveIndex)
+		.method("setSelfActive_inTab", &DockItem::setSelfActive_inTab)
+		.method("calcWeight_ofKid_forDragSplitter", &DockItem::calcWeight_ofKid_forDragSplitter)
+		.method("appendChild", &DockItem::appendChild)
+		.method("removeSelf", &DockItem::removeSelf)
+		.method("insertBefore", &DockItem::insertBefore)
+		.method("insertAfter", &DockItem::insertAfter)
+		.method("insertOffset", &DockItem::insertOffset)
+		.method("removeChild", &DockItem::removeChild)
+		.method("tryGetParentTab", &DockItem::tryGetParentTab)
+		.method("printTree", &DockItem::printTree)
+		.method("isEmptySplitter", &DockItem::isEmptySplitter)
+		.method("isEmptyTab", &DockItem::isEmptyTab);
+
+	registration::class_<DockLayout>("DockLayout")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("splitterSize", &DockLayout::splitterSize)
+		.property("minItemSize", &DockLayout::minItemSize)
+		.property("tabHeadBg", &DockLayout::tabHeadBg)
+		.method("doDrop", &DockLayout::doDrop)
+		.method("getClassName", &DockLayout::getClassName);
+
+	registration::class_<DockSplitterView>("DockSplitterView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("hoverBg", &DockSplitterView::hoverBg)
+		.property("normalBg", &DockSplitterView::normalBg)
+		.method("getClassName", &DockSplitterView::getClassName);
 }

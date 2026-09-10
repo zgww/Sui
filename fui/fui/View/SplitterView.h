@@ -6,6 +6,7 @@
 #include "../Core/MouseEvent.h"
 #include "Drag.h"
 #include "../Layout/LayoutLinear.h"
+#include <rttr/rttr_enable.h>
 
 class SplitterView : public View {
 public:
@@ -25,4 +26,6 @@ public:
 	void updateSiblingsGrow(Drag* d);
 
 	virtual const char* getClassName() const override { return "SplitterView"; }
+
+	RTTR_ENABLE(View)
 };

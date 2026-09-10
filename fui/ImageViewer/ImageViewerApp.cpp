@@ -37,6 +37,8 @@
 
 #include <rttr/registration>
 
+#include "JsonSerialization/NodeTreeIO.h"
+
 static std::string getIconPath(const std::string& name) {
 	char exePath[MAX_PATH];
 	GetModuleFileNameA(nullptr, exePath, MAX_PATH);
@@ -177,13 +179,92 @@ void ImageViewerState::render() {
 					Ref<View> view = v.get_value<View*>();
 					if (view) {
 						printf("v:%p\n", view.get());
-						view->width = 100;
+						view->width = 200;
 						view->height = 20;
 						view->backgroundColor = 0xffff0000;
 						auto succ = t.set_property_value("backgroundColor", v, (int)0xff00ff00);
 
 						o.appendChild(view);
 						o.gocIdx++;
+					}
+
+					// JSON 方式创建另一个 view（width=50, height=40, backgroundColor=0xff0000ff）
+					std::string jsonErr;
+					std::string json = R"({
+  "type": "LayoutLinear",
+  "height": 40,
+			"padding": {
+				"left": 10, "right":10
+			},
+  "backgroundColor": -16776961,
+  "children":[
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+		  "backgroundColor": -16711681
+	},
+	{
+		  "type": "Button",
+		  "src":"icons/rotate.png",
+		  "label": "Submit"
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	},
+	{
+		  "type": "View",
+		  "width": 30,
+		  "height": 20,
+			"margin": {
+				"left": 10
+			},
+		  "backgroundColor": -1
+	}
+]
+})";
+					json = Path_readText("icons/view.prefab.json");
+					Ref<Node> jsonView = io::nodeTreeFromJson(json, &jsonErr);
+					if (jsonView) {
+						printf("jsonView:%p\n", jsonView.get());
+						o.appendChild(jsonView.get());
+						o.gocIdx++;
+					}
+					else {
+						printf("nodeTreeFromJson failed: %s\n", jsonErr.c_str());
 					}
 				}
 			} R_BARE_END;

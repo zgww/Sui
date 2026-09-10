@@ -3,6 +3,8 @@
 #include "../Core/Window.h"
 #include "../Core/Cursor.h"
 
+#include <rttr/registration>
+
 void Drag::setStatus(const char* status) {
 	isDragChecking = false;
 	isDragStart = false;
@@ -113,4 +115,25 @@ void Drag::onListenerEvent(Event* ev) {
 			if (onDrag) onDrag->invoke(this);
 		}
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Drag>("Drag")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("currentClientPos", &Drag::currentClientPos)
+		.property("downClientPos", &Drag::downClientPos)
+		.property("deltaPos", &Drag::deltaPos)
+		.property("cursor", &Drag::cursor)
+		.property("isDragChecking", &Drag::isDragChecking)
+		.property("isDragStart", &Drag::isDragStart)
+		.property("isDragging", &Drag::isDragging)
+		.property("isDragEnd", &Drag::isDragEnd)
+		.property("moveThreshold", &Drag::moveThreshold)
+		.property("mouseDownButton", &Drag::mouseDownButton)
+		.method("setStatus", &Drag::setStatus)
+		.method("onMouseDown", &Drag::onMouseDown)
+		.method("getClassName", &Drag::getClassName);
 }

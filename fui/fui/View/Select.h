@@ -6,6 +6,7 @@
 #include "TextView.h"
 #include <vector>
 #include <string>
+#include <rttr/rttr_enable.h>
 
 class Select : public LayoutLinear {
 public:
@@ -36,4 +37,6 @@ public:
 
 
 	virtual const char* getClassName() const override { return "Select"; }
+
+	RTTR_ENABLE(LayoutLinear)
 };

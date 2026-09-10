@@ -10,6 +10,7 @@
 
 #include "../Core/Theme.h"
 #include <functional>
+#include <rttr/rttr_enable.h>
 
 class ScrollBar;
 class ScrollArea;
@@ -89,6 +90,8 @@ public:
 	void draw(Canvas* canvas);
 	ViewBase* hitTest(float x, float y);
 
+
+	RTTR_ENABLE(LayoutLinear)
 };
 
 class ScrollBar :public View {
@@ -112,4 +115,6 @@ public:
 
 	void bindScrollArea(ScrollArea* area);
 	void draw_self(Canvas* canvas);
+
+	RTTR_ENABLE(View)
 };

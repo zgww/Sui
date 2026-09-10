@@ -4,6 +4,8 @@
 #include <format>
 #include "Core/MouseEvent.h"
 
+#include <rttr/registration>
+
 Button::Button() {
 	CtorGuard(this);
 
@@ -110,4 +112,26 @@ void Button::react()
 	}
 
 	endInnerReact();
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Button>("Button")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("label", &Button::label)
+		.property("src", &Button::src)
+		.property("iconSize", &Button::iconSize)
+		.property("labelColor", &Button::labelColor)
+		.property("fontSize", &Button::fontSize)
+		.property("normalBg", &Button::normalBg)
+		.property("hoverBg", &Button::hoverBg)
+		.property("activeBg", &Button::activeBg)
+		.method("setLabel", &Button::setLabel)
+		.method("setSrc", &Button::setSrc)
+		.method("setFontSize", &Button::setFontSize)
+		.method("setLabelColor", &Button::setLabelColor)
+		.method("setNormalBg", &Button::setNormalBg)
+		.method("getClassName", &Button::getClassName);
 }

@@ -1,6 +1,8 @@
 #include "Select.h"
 #include "./MenuNative.h"
 
+#include <rttr/registration>
+
 void Select::appendOptionCStr(const char* text) {
 	if (text) {
 		this->options.push_back((text));
@@ -117,4 +119,21 @@ Select::Select() {
 	this->padding.setAxis(4, 8);
 
 	initInnerReact();
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Select>("Select")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("selectedIndex", &Select::selectedIndex)
+		.property("isActive", &Select::isActive)
+		.property("value", &Select::value)
+		.method("appendOptionCStr", &Select::appendOptionCStr)
+		.method("appendOption", &Select::appendOption)
+		.method("getLabel", &Select::getLabel)
+		.method("setIsActive", &Select::setIsActive)
+		.method("setValue", &Select::setValue)
+		.method("getClassName", &Select::getClassName);
 }

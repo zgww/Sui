@@ -1,5 +1,7 @@
 #include "ProgressView.h"
 
+#include <rttr/registration>
+
 ProgressView::ProgressView() {
 	backgroundColor = trackColor;
 	width = 200;
@@ -30,4 +32,17 @@ void ProgressView::draw_self(Canvas* canvas) {
 		canvas->fillColorByInt32(fillColor);
 		canvas->fill();
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ProgressView>("ProgressView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("value", &ProgressView::value)
+		.property("trackColor", &ProgressView::trackColor)
+		.property("fillColor", &ProgressView::fillColor)
+		.method("setValue", &ProgressView::setValue)
+		.method("getClassName", &ProgressView::getClassName);
 }

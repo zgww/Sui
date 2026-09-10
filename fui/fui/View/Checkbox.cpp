@@ -1,6 +1,8 @@
 #include "Checkbox.h"
 #include "../Core/Canvas.h"
 
+#include <rttr/registration>
+
 Checkbox::Checkbox() {
 	width = 16;
 	height = 16;
@@ -54,4 +56,19 @@ void Checkbox::onEvent(Event* ev) {
 		setChecked(!checked);
 		me->stopPropagation();
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Checkbox>("Checkbox")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("checked", &Checkbox::checked)
+		.property("checkColor", &Checkbox::checkColor)
+		.property("uncheckedBg", &Checkbox::uncheckedBg)
+		.property("checkedBg", &Checkbox::checkedBg)
+		.property("borderColor", &Checkbox::borderColor)
+		.method("setChecked", &Checkbox::setChecked)
+		.method("getClassName", &Checkbox::getClassName);
 }

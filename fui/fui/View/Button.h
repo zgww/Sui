@@ -4,6 +4,7 @@
 #include "../Core/View.h"
 #include "../Layout/LayoutLinear.h"
 #include "../Core/MouseEvent.h"
+#include <rttr/rttr_enable.h>
 
 class ImageView;
 class TextView;
@@ -31,4 +32,6 @@ public:
 	void react() override;
 
 	virtual const char* getClassName() const override { return "Button"; }
+
+	RTTR_ENABLE(LayoutLinear)
 };

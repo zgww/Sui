@@ -1,6 +1,8 @@
 #include "Mat.h"
 #include "linmath.h"
 
+#include <rttr/registration>
+
 
 
 Mat mkMatIdentity() {
@@ -1093,4 +1095,70 @@ Mat* Mat::makeRotationFromEuler(Euler& euler) {
 
 	return this;
 
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Mat>("Mat")
+		.constructor<>()(policy::ctor::as_object)
+		.property("data", &Mat::data)
+		.method("set", &Mat::set)
+		.method("identity", &Mat::identity)
+		.method("clone", &Mat::clone)
+		.method("copy", &Mat::copy)
+		.method("copyPosition", &Mat::copyPosition)
+		.method("extractYRotationMatrix", &Mat::extractYRotationMatrix)
+		.method("extractBasis", &Mat::extractBasis)
+		.method("mkVec3FromMatrixColumn", &Mat::mkVec3FromMatrixColumn)
+		.method("makeBasis", &Mat::makeBasis)
+		.method("extractRotationLocal", &Mat::extractRotationLocal)
+		.method("makeRotationFromEuler", &Mat::makeRotationFromEuler)
+		.method("makeRotationFromQuaternion", &Mat::makeRotationFromQuaternion)
+		.method("toQuaternionAsRotationMatrix", &Mat::toQuaternionAsRotationMatrix)
+		.method("lookAtLocal", &Mat::lookAtLocal)
+		.method("multiplyLocal", &Mat::multiplyLocal)
+		.method("premultiplyLocal", &Mat::premultiplyLocal)
+		.method("multiplyMatricesLocal", &Mat::multiplyMatricesLocal)
+		.method("multiplyScalarLocal", &Mat::multiplyScalarLocal)
+		.method("determinant", &Mat::determinant)
+		.method("transposeLocal", &Mat::transposeLocal)
+		.method("setPosition", &Mat::setPosition)
+		.method("invertLocal", &Mat::invertLocal)
+		.method("scaleVec3", &Mat::scaleVec3)
+		.method("getMaxScaleOnAxis", &Mat::getMaxScaleOnAxis)
+		.method("makeTranslation", &Mat::makeTranslation)
+		.method("makeRotationX", &Mat::makeRotationX)
+		.method("makeRotationY", &Mat::makeRotationY)
+		.method("makeRotationZ", &Mat::makeRotationZ)
+		.method("makeRotationAxis", &Mat::makeRotationAxis)
+		.method("makeScale", &Mat::makeScale)
+		.method("makeShear", &Mat::makeShear)
+		.method("compose", &Mat::compose)
+		.method("decompose", &Mat::decompose)
+		.method("makePerspective", &Mat::makePerspective)
+		.method("makeOrthographic", &Mat::makeOrthographic)
+		.method("equals", &Mat::equals)
+		.method("fromArray", &Mat::fromArray)
+		.method("toArray", &Mat::toArray)
+		.method("applyToVec3", &Mat::applyToVec3)
+		.method("transformDirection", &Mat::transformDirection)
+		.method("rotationMatrixToEulerXYZ", &Mat::rotationMatrixToEulerXYZ)
+		.method("rotateX", &Mat::rotateX)
+		.method("rotateY", &Mat::rotateY)
+		.method("rotateZ", &Mat::rotateZ)
+		.method("rotate", &Mat::rotate)
+		.method("scale", &Mat::scale)
+		.method("setTranslate", &Mat::setTranslate)
+		.method("translate", &Mat::translate)
+		.method("invert", &Mat::invert)
+		.method("invertthis", &Mat::invertthis)
+		.method("frustum", &Mat::frustum)
+		.method("ortho", &Mat::ortho)
+		.method("perspective", &Mat::perspective)
+		.method("mul", &Mat::mul)
+		.method("lookAtFake", &Mat::lookAtFake)
+		.method("mulVec3", &Mat::mulVec3)
+		.method("mulVec4", &Mat::mulVec4);
 }

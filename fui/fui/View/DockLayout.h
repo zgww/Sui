@@ -18,6 +18,7 @@
 #include "drag.h"
 #include <vector>
 #include <string>
+#include <rttr/rttr_enable.h>
 
 #define SPLITTER "splitter"
 #define TAB "tab"
@@ -195,6 +196,8 @@ public:
 
 	ViewBase* hitTestChildren(float x, float y);
 
+
+	RTTR_ENABLE(View)
 };
 
 class DockSplitterView :public View {
@@ -220,4 +223,6 @@ public:
 	// }
 
 	void onHoverChanged();
+
+	RTTR_ENABLE(View)
 };

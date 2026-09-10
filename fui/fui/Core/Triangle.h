@@ -13,10 +13,10 @@ struct Triangle {
 	Triangle(const Vec3& a_, const Vec3& b_, const Vec3& c_) : a(a_), b(b_), c(c_) {}
 
 	std::string toString() const {
-		char b[256];
-		snprintf(b, sizeof(b), "Triangle(a:%s, b:%s, c:%s)",
+		char buf[256];
+		snprintf(buf, sizeof(buf), "Triangle(a:%s, b:%s, c:%s)",
 			a.toString().c_str(), b.toString().c_str(), c.toString().c_str());
-		return std::string(b);
+		return std::string(buf);
 	}
 
 	Triangle* set(const Vec3& a_, const Vec3& b_, const Vec3& c_) {

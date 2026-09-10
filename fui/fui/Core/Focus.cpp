@@ -1,6 +1,8 @@
 #include "Focus.h"
 #include "Node.h"
 
+#include <rttr/registration>
+
 void Focus::focus(Node* node) {
 	if (node == focusNode) return;
 	if (focusNode != nullptr) {
@@ -38,4 +40,24 @@ Focus* insFocus() {
 		g_focus = new Focus();
 	}
 	return g_focus;
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<FocusEvent>("FocusEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("isFocus", &FocusEvent::isFocus)
+		.property("isBlur", &FocusEvent::isBlur)
+		.method("init", &FocusEvent::init);
+
+	registration::class_<Focus>("Focus")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.method("focus", &Focus::focus)
+		.method("blurNode", &Focus::blurNode)
+		.method("blur", &Focus::blur)
+		.method("getFocusNode", &Focus::getFocusNode)
+		.method("isFocus", &Focus::isFocus)
+		.method("hasFocus", &Focus::hasFocus);
 }

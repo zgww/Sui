@@ -11,6 +11,7 @@
 #include "../Layout/LayoutLinear.h"
 #include "Drag.h"
 #include <string>
+#include <rttr/rttr_enable.h>
 
 
 /// 颜色盘
@@ -48,6 +49,8 @@ public:
 	//饱和度和亮度
 	void drawSv(Canvas* pcanvas, int w, int h);
 	void draw_self(Canvas* canvas);
+
+	RTTR_ENABLE(View)
 };
 
 class ColorView : public LayoutLinear {
@@ -73,4 +76,6 @@ public:
 	void setColor(int c);
 	void draw_self(Canvas* canvas);
 	void react();
+
+	RTTR_ENABLE(LayoutLinear)
 };

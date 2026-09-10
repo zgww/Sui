@@ -4,7 +4,7 @@
 #include "Emitter.h"
 #include "../Urgc/GcList.h"
 #include "../Urgc/GcMap.h"
-//#include <rttr/rttr_enable.h>
+#include <rttr/rttr_enable.h>
 #include <string>
 #include <format>
 class Node;
@@ -71,7 +71,7 @@ void requestAnimationFrame(Ref<Closure<bool()>> fn);
 void tickAnimationFrames();
 
 class Node : public Emitter {
-	//RTTR_ENABLE(Emitter)
+	RTTR_ENABLE(Emitter)
 public:
 	Ref<GcList<Node>> children{ new GcList<Node>(), this };
 	Ref<Node> parent{nullptr, this};

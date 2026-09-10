@@ -1,4 +1,4 @@
-#include "EditText.h"
+﻿#include "EditText.h"
 #include "../Core/canvas.h"
 #include "../Core/Window.h"
 #include "../Core/Focus.h"
@@ -9,6 +9,8 @@
 #include "../Core/Theme.h"
 #include "../Core/Mouse.h"
 #include <string>
+
+#include <rttr/registration>
 
 
 Range mkRange(int start, int end) {
@@ -475,7 +477,7 @@ Range mkRange(int start, int end) {
 			 if (this->selection.is_range()) {
 				 std::string v = this->selection.get_range_value();
 				 Clipboard_setText(v.c_str());
-				 printf("\n已复制:%s\n\n", v);
+				 printf("\n已复制:%s\n\n", v.c_str());
 			 }
 			 // if (this->selection.is_range()) {
 			 // 	//SDL_SetClipboardText(selection.get_range_value().c_str());
@@ -870,3 +872,79 @@ Range mkRange(int start, int end) {
 		 this->cb_notify->invoke(this);
 	 }
  }
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Range>("Range")
+		.constructor<>()(policy::ctor::as_object)
+		.property("start", &Range::start)
+		.property("end", &Range::end);
+
+	registration::class_<Selection>("Selection")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("start", &Selection::start)
+		.property("end", &Selection::end)
+		.method("get_range_value", &Selection::get_range_value)
+		.method("is_collapse", &Selection::is_collapse)
+		.method("is_range", &Selection::is_range)
+		.method("get_asc_range", &Selection::get_asc_range)
+		.method("clamp_pos", &Selection::clamp_pos)
+		.method("set_collapse_pos", &Selection::set_collapse_pos)
+		.method("set_start", &Selection::set_start)
+		.method("set_end", &Selection::set_end)
+		.method("move_delta", &Selection::move_delta)
+		.method("backspace", &Selection::backspace)
+		.method("del_range", &Selection::del_range)
+		.method("delete_act", &Selection::delete_act)
+		.method("insert", &Selection::insert);
+
+	registration::class_<Caret>("Caret")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("show", &Caret::show)
+		.method("isBlinking", &Caret::isBlinking)
+		.method("setShow", &Caret::setShow)
+		.method("blink", &Caret::blink)
+		.method("start", &Caret::start)
+		.method("stop", &Caret::stop)
+		.method("restart", &Caret::restart);
+
+	registration::class_<EditText>("EditText")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("value", &EditText::value)
+		.property("font_size", &EditText::font_size)
+		.property("font_face", &EditText::font_face)
+		.property("color", &EditText::color)
+		.property("caret_color", &EditText::caret_color)
+		.property("font_weight", &EditText::font_weight)
+		.property("placeholder", &EditText::placeholder)
+		.property("placeholder_color", &EditText::placeholder_color)
+		.property("draw_offset", &EditText::draw_offset)
+		.property("_caret_x", &EditText::_caret_x)
+		.property("selection", &EditText::selection)
+		.method("setValue_notInFocus", &EditText::setValue_notInFocus)
+		.method("setValue", &EditText::setValue)
+		.method("getValue", &EditText::getValue)
+		.method("setFont_size", &EditText::setFont_size)
+		.method("getFont_size", &EditText::getFont_size)
+		.method("setFont_face", &EditText::setFont_face)
+		.method("getFont_face", &EditText::getFont_face)
+		.method("setColor", &EditText::setColor)
+		.method("getColor", &EditText::getColor)
+		.method("setCaret_color", &EditText::setCaret_color)
+		.method("getCaret_color", &EditText::getCaret_color)
+		.method("setFont_weight", &EditText::setFont_weight)
+		.method("getFont_weight", &EditText::getFont_weight)
+		.method("setPlaceholder", &EditText::setPlaceholder)
+		.method("getPlaceholder", &EditText::getPlaceholder)
+		.method("setPlaceholder_color", &EditText::setPlaceholder_color)
+		.method("getPlaceholder_color", &EditText::getPlaceholder_color)
+		.method("notify_changed", &EditText::notify_changed)
+		.method("set_value", &EditText::set_value)
+		.method("gocDragTimer", &EditText::gocDragTimer)
+		.method("selectAll", &EditText::selectAll)
+		.method("blur", &EditText::blur)
+		.method("get_x_of_position", &EditText::get_x_of_position)
+		.method("getClassName", &EditText::getClassName);
+}

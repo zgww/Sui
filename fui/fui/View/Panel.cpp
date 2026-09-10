@@ -2,6 +2,8 @@
 #include "TextView.h"
 #include "../View/HoverViewEffect.h"
 
+#include <rttr/registration>
+
 Panel::Panel() {
 	CtorGuard g(this);
 
@@ -88,3 +90,18 @@ void Panel::react()
 //		me->stopPropagation();
 //	}
 //}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Panel>("Panel")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("title", &Panel::title)
+		.property("open", &Panel::open)
+		.property("titleColor", &Panel::titleColor)
+		.property("titleFontSize", &Panel::titleFontSize)
+		.method("setTitle", &Panel::setTitle)
+		.method("setOpen", &Panel::setOpen)
+		.method("getClassName", &Panel::getClassName);
+}

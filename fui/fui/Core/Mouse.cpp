@@ -6,6 +6,8 @@
 #include "Cursor.h"
 #include "../Urgc/GcList.h"
 
+#include <rttr/registration>
+
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -199,4 +201,24 @@ Vec2 Mouse_getPosOfWindow(Window* window) {
 		return mkVec2(pos.x - winPos.x, pos.y - winPos.y);
 	}
 	return mkVec2(0.f, 0.f);
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<MouseData>("MouseData")
+		.constructor<>()(policy::ctor::as_object)
+		.property("clientX", &MouseData::clientX)
+		.property("clientY", &MouseData::clientY)
+		.property("button", &MouseData::button)
+		.property("windowId", &MouseData::windowId)
+		.property("isMouseDown", &MouseData::isMouseDown)
+		.property("isMouseMove", &MouseData::isMouseMove)
+		.property("isMouseUp", &MouseData::isMouseUp)
+		.property("isDoubleClick", &MouseData::isDoubleClick)
+		.property("uid", &MouseData::uid)
+		.property("shift", &MouseData::shift)
+		.property("alt", &MouseData::alt)
+		.property("ctrl", &MouseData::ctrl);
 }

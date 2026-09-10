@@ -22,6 +22,8 @@
 
 #include <dwmapi.h>
 #include <CommCtrl.h>
+
+#include <rttr/registration>
 #pragma comment (lib, "dwmapi.lib")
 #pragma comment (lib, "Imm32.lib")
 #pragma comment(lib, "comctl32.lib")
@@ -791,6 +793,53 @@ void DragCrossWindowIndicator::onDragMove(Vec2 clientPos) {
 	_dragMove();
 }
 
+RTTR_REGISTRATION
+{
+	using namespace rttr;
 
+	registration::class_<Window>("Window")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("id", &Window::id)
+		.property("fps", &Window::fps)
+		.property("borderless", &Window::borderless)
+		.property("devicePixelRatio", &Window::devicePixelRatio)
+		.property("layoutTimes", &Window::layoutTimes)
+		.method("setTransparent", &Window::setTransparent)
+		.method("initData", &Window::initData)
+		.method("cleanData", &Window::cleanData)
+		.method("setRootView", &Window::setRootView)
+		.method("show", &Window::show)
+		.method("hide", &Window::hide)
+		.method("maximize", &Window::maximize)
+		.method("minimize", &Window::minimize)
+		.method("normal", &Window::normal)
+		.method("enable", &Window::enable)
+		.method("close", &Window::close)
+		.method("setOwner", &Window::setOwner)
+		.method("layoutAndDraw", &Window::layoutAndDraw)
+		.method("layout", &Window::layout)
+		.method("draw", &Window::draw)
+		.method("isVisible", &Window::isVisible)
+		.method("onDestroy", &Window::onDestroy)
+		.method("setTitle", &Window::setTitle)
+		.method("getTitle", &Window::getTitle)
+		.method("getPos", &Window::getPos)
+		.method("setPos", &Window::setPos)
+		.method("getSize", &Window::getSize)
+		.method("setSize", &Window::setSize)
+		.method("setRect", &Window::setRect)
+		.method("getClientSize", &Window::getClientSize)
+		.method("getNonClientInset", &Window::getNonClientInset)
+		.method("moveToCenter", &Window::moveToCenter)
+		.method("getClassName", &Window::getClassName);
 
-
+	registration::class_<DragCrossWindowIndicator>("DragCrossWindowIndicator")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("dragging", &DragCrossWindowIndicator::dragging)
+		.method("_start", &DragCrossWindowIndicator::_start)
+		.method("_end", &DragCrossWindowIndicator::_end)
+		.method("_dragMove", &DragCrossWindowIndicator::_dragMove)
+		.method("start", &DragCrossWindowIndicator::start)
+		.method("end", &DragCrossWindowIndicator::end)
+		.method("onDragMove", &DragCrossWindowIndicator::onDragMove);
+}

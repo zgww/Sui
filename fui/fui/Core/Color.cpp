@@ -1,6 +1,8 @@
 #include "Color.h"
 #include "Vec2.h"
 
+#include <rttr/registration>
+
 std::string Rgbaf::toString() const {
 	char buf[256];
 	snprintf(buf, sizeof(buf), "Rgbaf(%f,%f,%f,%f)", r, g, b, a);
@@ -166,4 +168,54 @@ Rgba hsvaToRgba(Hsva hsv) {
 		}
 	}
 	return rgb;
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Rgbaf>("Rgbaf")
+		.constructor<>()(policy::ctor::as_object)
+		.constructor(static_cast<Rgbaf(*)(float, float, float, float)>(&mkRgbaf))
+		.constructor(static_cast<Rgbaf(*)(int)>(&mkRgbafByInt))
+		.property("r", &Rgbaf::r)
+		.property("g", &Rgbaf::g)
+		.property("b", &Rgbaf::b)
+		.property("a", &Rgbaf::a)
+		.method("toString", &Rgbaf::toString)
+		.method("toRgba", &Rgbaf::toRgba)
+		.method("toInt", &Rgbaf::toInt);
+
+	registration::class_<Rgba>("Rgba")
+		.constructor<>()(policy::ctor::as_object)
+		.constructor(static_cast<Rgba(*)(unsigned char, unsigned char, unsigned char, unsigned char)>(&mkRgba))
+		.constructor(static_cast<Rgba(*)(int)>(&mkRgbaByInt))
+		.property("r", &Rgba::r)
+		.property("g", &Rgba::g)
+		.property("b", &Rgba::b)
+		.property("a", &Rgba::a)
+		.method("toInt", &Rgba::toInt)
+		.method("toString", &Rgba::toString);
+
+	registration::class_<Hsla>("Hsla")
+		.constructor<>()(policy::ctor::as_object)
+		.constructor(static_cast<Hsla(*)(float, float, float, unsigned char)>(&mkHsla))
+		.property("h", &Hsla::h)
+		.property("s", &Hsla::s)
+		.property("l", &Hsla::l)
+		.property("a", &Hsla::a)
+		.method("toRgba", &Hsla::toRgba)
+		.method("toRgbaInt", &Hsla::toRgbaInt)
+		.method("toString", &Hsla::toString);
+
+	registration::class_<Hsva>("Hsva")
+		.constructor<>()(policy::ctor::as_object)
+		.constructor(static_cast<Hsva(*)(float, float, float, unsigned char)>(&mkHsva))
+		.property("h", &Hsva::h)
+		.property("s", &Hsva::s)
+		.property("v", &Hsva::v)
+		.property("a", &Hsva::a)
+		.method("toRgba", &Hsva::toRgba)
+		.method("toRgbaInt", &Hsva::toRgbaInt)
+		.method("toString", &Hsva::toString);
 }

@@ -6,6 +6,7 @@
 #include "../Core/Frame.h"
 #include <vector>
 #include <string>
+#include <rttr/rttr_enable.h>
 
 
 /**
@@ -58,4 +59,6 @@ public:
 	virtual const char* getClassName() const override { return "TextView"; }
 
 	static void registerMeta();
+
+	RTTR_ENABLE(View)
 };

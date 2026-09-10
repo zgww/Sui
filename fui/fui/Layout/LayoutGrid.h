@@ -6,6 +6,7 @@
 #include "../Core/Vec2.h"
 #include "../Core/Frame.h"
 #include <vector>
+#include <rttr/rttr_enable.h>
 
 class LayoutGridCell : public LayoutCell {
 public:
@@ -63,4 +64,6 @@ public:
 	void layoutContent(Frame* ctx) override;
 
 	virtual const char* getClassName() const override { return "LayoutGrid"; }
+
+	RTTR_ENABLE(View)
 };

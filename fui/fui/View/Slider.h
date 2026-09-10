@@ -4,6 +4,7 @@
 #include "../Core/View.h"
 #include "../Core/MouseEvent.h"
 #include "Drag.h"
+#include <rttr/rttr_enable.h>
 
 class Slider : public View {
 public:
@@ -25,4 +26,6 @@ public:
 	void onEvent(Event* ev) override;
 
 	virtual const char* getClassName() const override { return "Slider"; }
+
+	RTTR_ENABLE(View)
 };

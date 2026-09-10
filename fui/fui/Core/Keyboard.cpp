@@ -3,6 +3,8 @@
 #include "Window.h"
 #include "App.h"
 
+#include <rttr/registration>
+
 KeyEvent* newKeyEvent_fromKeyboardData(KeyboardData* kd) {
 	Ref<KeyEvent> event{new KeyEvent()};
 	event->char_code = kd->char_code;
@@ -56,4 +58,19 @@ void Keyboard_onKeyUp(int64_t windowId, int char_code, const char* key, bool shi
 void printKeyboardData(KeyboardData* kd) {
 	printf("KeyboardData: char_code:%d key:%s down:%d up:%d shift:%d ctrl:%d alt:%d\n",
 		kd->char_code, kd->key ? kd->key : "", kd->isKeyDown, kd->isKeyUp, kd->shift, kd->ctrl, kd->alt);
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<KeyboardData>("KeyboardData")
+		.constructor<>()(policy::ctor::as_object)
+		.property("char_code", &KeyboardData::char_code)
+		.property("windowId", &KeyboardData::windowId)
+		.property("isKeyDown", &KeyboardData::isKeyDown)
+		.property("isKeyUp", &KeyboardData::isKeyUp)
+		.property("shift", &KeyboardData::shift)
+		.property("ctrl", &KeyboardData::ctrl)
+		.property("alt", &KeyboardData::alt);
 }

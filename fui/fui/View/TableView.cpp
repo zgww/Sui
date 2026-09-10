@@ -3,6 +3,8 @@
 #include "../Core/NodeLib.h"
 #include <cmath>
 
+#include <rttr/registration>
+
 std::shared_ptr<TableViewColumn> mkTableViewColumn(int width, const std::string& label) {
 	auto col = std::make_shared<TableViewColumn>();
 	col->width = width;
@@ -204,4 +206,27 @@ void TableView::onMouseEvent(MouseEvent* e) {
 		hoverRow = -1;
 		invalidDraw();
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<TableViewColumn>("TableViewColumn")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("width", &TableViewColumn::width)
+		.property("label", &TableViewColumn::label);
+
+	registration::class_<TableView>("TableView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("rowHeight", &TableView::rowHeight)
+		.property("rowCount", &TableView::rowCount)
+		.property("hoverRow", &TableView::hoverRow)
+		.property("hoverCol", &TableView::hoverCol)
+		.property("hoverStartX", &TableView::hoverStartX)
+		.property("hoverEndX", &TableView::hoverEndX)
+		.method("renderHead", &TableView::renderHead)
+		.method("renderBody", &TableView::renderBody)
+		.method("addColumn", &TableView::addColumn)
+		.method("getClassName", &TableView::getClassName);
 }

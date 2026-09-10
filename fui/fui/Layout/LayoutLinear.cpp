@@ -1,3 +1,4 @@
+#include <rttr/registration>
 #include "LayoutLinear.h"
 #include "../Core/ViewBase.h"
 
@@ -286,4 +287,16 @@ void LayoutLinear::layoutContent(Frame* ctx) {
 void LayoutLinear::layout(Frame* ctx) {
 	maxCrossSize = 0.0f;
 	View::layout(ctx);
+}
+
+// ---- rttr ???????? JSON ??????----
+RTTR_REGISTRATION
+{
+    using namespace rttr;
+    registration::class_<LayoutLinear>("LayoutLinear")
+        .constructor<>()(policy::ctor::as_raw_ptr)
+        .property("direction", &LayoutLinear::direction)
+        .property("justifyContent", &LayoutLinear::justifyContent)
+        .property("alignItems", &LayoutLinear::alignItems)
+        .property("maxCrossSize", &LayoutLinear::maxCrossSize);
 }

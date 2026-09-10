@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "Naga/Utf8Util.h"
 
-import ImageViewerApp;
+#include "ImageViewerApp.h"
 
 void AppMain() {
 

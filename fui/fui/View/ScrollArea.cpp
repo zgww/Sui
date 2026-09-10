@@ -1,6 +1,8 @@
 #include "ScrollArea.h"
 #include "../Core/Canvas.h"
 
+#include <rttr/registration>
+
 //确保偏移在有效的范围内,返回是否有变
 bool ScrollModel::clampScrollOffsetValid() {
 	Vec2 client_size = this->get_client_size();
@@ -466,4 +468,45 @@ void ScrollBar::draw_self(Canvas* canvas) {
 		canvas->roundRect(barPos, barY, barLen, barH, r);
 		canvas->fill();
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ScrollModel>("ScrollModel")
+		.constructor<>()(policy::ctor::as_object)
+		.property("scroll_left", &ScrollModel::scroll_left)
+		.property("scroll_top", &ScrollModel::scroll_top)
+		.method("clampScrollOffsetValid", &ScrollModel::clampScrollOffsetValid)
+		.method("on_wheel_event", &ScrollModel::on_wheel_event)
+		.method("get_h_rate", &ScrollModel::get_h_rate)
+		.method("get_v_rate", &ScrollModel::get_v_rate)
+		.method("get_h_length", &ScrollModel::get_h_length)
+		.method("get_v_length", &ScrollModel::get_v_length)
+		.method("get_v_pos", &ScrollModel::get_v_pos)
+		.method("calc_scroll_left_by_bar_pos", &ScrollModel::calc_scroll_left_by_bar_pos)
+		.method("calc_scroll_top_by_bar_pos", &ScrollModel::calc_scroll_top_by_bar_pos)
+		.method("get_h_pos", &ScrollModel::get_h_pos)
+		.method("bar_length", &ScrollModel::bar_length);
+
+	registration::class_<ScrollArea>("ScrollArea")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("scroll_model", &ScrollArea::scroll_model)
+		.property("contentCtx", &ScrollArea::contentCtx)
+		.property("useMaxWidthConstraint", &ScrollArea::useMaxWidthConstraint)
+		.property("useMinWidthConstraint", &ScrollArea::useMinWidthConstraint)
+		.property("scrollDirection", &ScrollArea::scrollDirection)
+		.method("calc_scroll_size", &ScrollArea::calc_scroll_size)
+		.method("fireScrollChanged", &ScrollArea::fireScrollChanged)
+		.method("onWheelEvent", &ScrollArea::onWheelEvent)
+		.method("getClassName", &ScrollArea::getClassName);
+
+	registration::class_<ScrollBar>("ScrollBar")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("isVer", &ScrollBar::isVer)
+		.method("setHover", &ScrollBar::setHover)
+		.method("canLayoutByParent", &ScrollBar::canLayoutByParent)
+		.method("bindScrollArea", &ScrollBar::bindScrollArea)
+		.method("getClassName", &ScrollBar::getClassName);
 }

@@ -1,6 +1,8 @@
 #include "Fps.h"
 #include "Canvas.h"
 
+#include <rttr/registration>
+
 void Fps::endFrame() {
 	endMs = time_unixMs();
 	drawCostMs = drawEndMs - drawStartMs;
@@ -29,4 +31,30 @@ void Fps::draw(Canvas* canvas, int h) {
 	snprintf(text, sizeof(text), "ms:%lld/%lld/%lld", (long long)costMs, (long long)layoutCostMs, (long long)drawCostMs);
 	canvas->text(6, 26, text);
 	canvas->restore();
+}
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Fps>("Fps")
+		.constructor<>()(policy::ctor::as_object)
+		.property("fps", &Fps::fps)
+		.property("layoutFps", &Fps::layoutFps)
+		.property("drawFps", &Fps::drawFps)
+		.property("costMs", &Fps::costMs)
+		.property("layoutCostMs", &Fps::layoutCostMs)
+		.property("drawCostMs", &Fps::drawCostMs)
+		.property("startMs", &Fps::startMs)
+		.property("endMs", &Fps::endMs)
+		.property("layoutStartMs", &Fps::layoutStartMs)
+		.property("layoutEndMs", &Fps::layoutEndMs)
+		.property("drawStartMs", &Fps::drawStartMs)
+		.property("drawEndMs", &Fps::drawEndMs)
+		.method("startFrame", &Fps::startFrame)
+		.method("endFrame", &Fps::endFrame)
+		.method("startLayout", &Fps::startLayout)
+		.method("endLayout", &Fps::endLayout)
+		.method("startDraw", &Fps::startDraw)
+		.method("endDraw", &Fps::endDraw)
+		.method("draw", &Fps::draw);
 }

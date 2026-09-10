@@ -3,6 +3,8 @@
 #include "../Core/NodeLib.h"
 #include "../Core/Inset.h"
 
+#include <rttr/registration>
+
 static char* new_createChessBg_inMemory(int w, int h, int r, int g, int b, int a) {
 	char* data = (char*)malloc(w * h * 4);
 	int hw = w / 2;
@@ -389,4 +391,29 @@ void ColorView::react() {
 	} REND;
 
 	this->endInnerReact();
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ColorPalete>("ColorPalete")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("indicatorPos", &ColorPalete::indicatorPos)
+		.property("color", &ColorPalete::color)
+		.property("xDraggale", &ColorPalete::xDraggale)
+		.property("yDraggale", &ColorPalete::yDraggale)
+		.property("kind", &ColorPalete::kind)
+		.property("indicatorKind", &ColorPalete::indicatorKind)
+		.method("calcIndicatorPosInPixel", &ColorPalete::calcIndicatorPosInPixel)
+		.method("onDrag", &ColorPalete::onDrag);
+
+	registration::class_<ColorView>("ColorView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("hsva", &ColorView::hsva)
+		.property("showRgba", &ColorView::showRgba)
+		.property("showHsva", &ColorView::showHsva)
+		.property("showHsla", &ColorView::showHsla)
+		.method("setColor", &ColorView::setColor)
+		.method("fire_onChanged", &ColorView::fire_onChanged);
 }

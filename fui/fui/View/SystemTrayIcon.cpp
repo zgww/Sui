@@ -9,6 +9,8 @@
 #include "../Core/Defines_win.h"
 #endif
 
+#include <rttr/registration>
+
 static int gTrayUid = 100;
 static std::vector<SystemTrayIcon*> gTrays;
 static bool gAtExitRegistered = false;
@@ -136,4 +138,18 @@ void SystemTrayIcon_onMouseData(MouseData* md) {
 		n->create(root);
 		n->showAtMouse();
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<SystemTrayIcon>("SystemTrayIcon")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("uid", &SystemTrayIcon::uid)
+		.property("iconPath", &SystemTrayIcon::iconPath)
+		.method("setIconPath", &SystemTrayIcon::setIconPath)
+		.method("init", &SystemTrayIcon::init)
+		.method("destroy", &SystemTrayIcon::destroy)
+		.method("getClassName", &SystemTrayIcon::getClassName);
 }

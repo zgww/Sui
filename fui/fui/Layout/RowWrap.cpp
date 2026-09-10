@@ -1,3 +1,4 @@
+#include <rttr/registration>
 #include "RowWrap.h"
 #include "../Core/ViewBase.h"
 
@@ -64,4 +65,15 @@ void RowWrap::layoutContent(Frame* contentCtx) {
 		}
 	}
 	positionChildren(contentCtx);
+}
+
+// ---- rttr ???????? JSON ??????----
+RTTR_REGISTRATION
+{
+    using namespace rttr;
+    registration::class_<RowWrap>("RowWrap")
+        .constructor<>()(policy::ctor::as_raw_ptr)
+        .property("alignItems", &RowWrap::alignItems)
+        .property("rowGap", &RowWrap::rowGap)
+        .property("colGap", &RowWrap::colGap);
 }

@@ -1,7 +1,10 @@
 #include "./Vec3.h"
+#include "./Mat3.h"
 #include "./Quaternion.h"
 #include "./Mat.h"
 #include "./Euler.h"
+
+#include <rttr/registration>
 Vec3* Vec3::fromArray(float* array, int offset) {
 	x = array[offset];
 	y = array[offset + 1];
@@ -83,4 +86,71 @@ Vec3* Vec3::applyMatrix4Local(Mat& m) {
 
 	return this;
 
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Vec3>("Vec3")
+		.constructor<>()(policy::ctor::as_object)
+		.constructor(static_cast<Vec3(*)(float, float, float)>(&mkVec3))
+		.property("x", &Vec3::x)
+		.property("y", &Vec3::y)
+		.property("z", &Vec3::z)
+		.method("toString", &Vec3::toString)
+		.method("width", &Vec3::width)
+		.method("height", &Vec3::height)
+		.method("fromArray", &Vec3::fromArray)
+		.method("toArray", &Vec3::toArray)
+		.method("set", &Vec3::set)
+		.method("setScalar", &Vec3::setScalar)
+		.method("setX", &Vec3::setX)
+		.method("setY", &Vec3::setY)
+		.method("setZ", &Vec3::setZ)
+		.method("setComponent", &Vec3::setComponent)
+		.method("getComponent", &Vec3::getComponent)
+		.method("clone", &Vec3::clone)
+		.method("copy", &Vec3::copy)
+		.method("addLocal", &Vec3::addLocal)
+		.method("addScalarLocal", &Vec3::addScalarLocal)
+		.method("addVectorsLocal", &Vec3::addVectorsLocal)
+		.method("addScaledVectorLocal", &Vec3::addScaledVectorLocal)
+		.method("subLocal", &Vec3::subLocal)
+		.method("subScalarLocal", &Vec3::subScalarLocal)
+		.method("subVectorsLocal", &Vec3::subVectorsLocal)
+		.method("multiplyLocal", &Vec3::multiplyLocal)
+		.method("multiplyScalarLocal", &Vec3::multiplyScalarLocal)
+		.method("setFromEuler", &Vec3::setFromEuler)
+		.method("setFromMatrixPosition", &Vec3::setFromMatrixPosition)
+		.method("minLocal", &Vec3::minLocal)
+		.method("maxLocal", &Vec3::maxLocal)
+		.method("floorLocal", &Vec3::floorLocal)
+		.method("ceilLocal", &Vec3::ceilLocal)
+		.method("roundLocal", &Vec3::roundLocal)
+		.method("negateLocal", &Vec3::negateLocal)
+		.method("dot", &Vec3::dot)
+		.method("lengthSq", &Vec3::lengthSq)
+		.method("length", &Vec3::length)
+		.method("manhattanLength", &Vec3::manhattanLength)
+		.method("normalizeLocal", &Vec3::normalizeLocal)
+		.method("normalize", &Vec3::normalize)
+		.method("setLength", &Vec3::setLength)
+		.method("distanceTo", &Vec3::distanceTo)
+		.method("distanceToSquared", &Vec3::distanceToSquared)
+		.method("scale", &Vec3::scale)
+		.method("add", &Vec3::add)
+		.method("sub", &Vec3::sub)
+		.method("cross", &Vec3::cross)
+		.method("lerpLocal", &Vec3::lerpLocal)
+		.method("clampLocal", &Vec3::clampLocal)
+		.method("equals", &Vec3::equals)
+		.method("crossLocal", &Vec3::crossLocal)
+		.method("crossVectorsLocal", &Vec3::crossVectorsLocal)
+		.method("applyQuaternionLocal", &Vec3::applyQuaternionLocal)
+		.method("clamp", &Vec3::clamp)
+		.method("clampScalar", &Vec3::clampScalar)
+		.method("clampLength", &Vec3::clampLength)
+		.method("applyMatrix4", &Vec3::applyMatrix4)
+		.method("applyMatrix4Local", &Vec3::applyMatrix4Local);
 }

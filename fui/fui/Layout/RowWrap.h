@@ -5,6 +5,7 @@
 #include "../Core/Vec2.h"
 #include "../Core/Frame.h"
 #include "../Core/Rect.h"
+#include <rttr/rttr_enable.h>
 
 class RowWrap : public View {
 public:
@@ -17,4 +18,6 @@ public:
 	void layoutContent(Frame* contentCtx) override;
 
 	virtual const char* getClassName() const override { return "RowWrap"; }
+
+	RTTR_ENABLE(View)
 };

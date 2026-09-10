@@ -7,6 +7,7 @@
 #include "../Core/Border.h"
 #include "../Core/Event.h"
 #include "../Core/MouseEvent.h"
+#include <rttr/rttr_enable.h>
 
 class HoverViewEffect : public Node {
 public:
@@ -33,4 +34,6 @@ public:
 	void onUnmounting() override;
 
 	virtual const char* getClassName() const override { return "HoverViewEffect"; }
+
+	RTTR_ENABLE(Node)
 };

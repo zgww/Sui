@@ -1,5 +1,7 @@
 #include "HoverViewEffect.h"
 
+#include <rttr/registration>
+
 void HoverViewEffect::onMounted() {
 	Node* p = parent;
 	if (p) {
@@ -75,4 +77,22 @@ void HoverViewEffect::onUnmounting() {
 			applyEffect();
 		}
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<HoverViewEffect>("HoverViewEffect")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("backgroundColor", &HoverViewEffect::backgroundColor)
+		.property("border", &HoverViewEffect::border)
+		.property("hoverBackgroundColor", &HoverViewEffect::hoverBackgroundColor)
+		.property("hoverBorder", &HoverViewEffect::hoverBorder)
+		.property("activeBackgroundColor", &HoverViewEffect::activeBackgroundColor)
+		.property("activeBorder", &HoverViewEffect::activeBorder)
+		.property("hoverCursor", &HoverViewEffect::hoverCursor)
+		.property("isActive", &HoverViewEffect::isActive)
+		.method("applyEffect", &HoverViewEffect::applyEffect)
+		.method("getClassName", &HoverViewEffect::getClassName);
 }

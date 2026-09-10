@@ -7,6 +7,8 @@
 #include "../Naga/Utf8Util.h"
 #endif
 
+#include <rttr/registration>
+
 static int gMenuId = 10000;
 static Ref<MenuNative> currentMenuNative = nullptr;
 
@@ -227,4 +229,31 @@ void MenuNative_doCommand(int64_t windowId, int commandId) {
 	if (currentMenuNative && currentMenuNative->root) {
 		currentMenuNative->dispatchCommand(currentMenuNative->root, nullptr, commandId);
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<MenuNativeItem>("MenuNativeItem")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("commandId", &MenuNativeItem::commandId)
+		.property("id", &MenuNativeItem::id)
+		.property("cmd", &MenuNativeItem::cmd)
+		.property("label", &MenuNativeItem::label)
+		.method("append", &MenuNativeItem::append);
+
+	registration::class_<MenuNative>("MenuNative")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("id", &MenuNative::id)
+		.property("windowId", &MenuNative::windowId)
+		.method("create", &MenuNative::create)
+		.method("show", &MenuNative::show)
+		.method("showAt", &MenuNative::showAt)
+		.method("showAtScreenPosition", &MenuNative::showAtScreenPosition)
+		.method("showAtMouse", &MenuNative::showAtMouse)
+		.method("onDismiss", &MenuNative::onDismiss)
+		.method("destroy", &MenuNative::destroy)
+		.method("dispatchCommand", &MenuNative::dispatchCommand)
+		.method("getClassName", &MenuNative::getClassName);
 }

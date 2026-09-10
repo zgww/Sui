@@ -5,6 +5,8 @@
 #include "Cursor.h"
 #include "../Urgc/GcList.h"
 
+#include <rttr/registration>
+
 bool MouseEvent::isClick() {
 	if (isMouseUp) {
 		float dx = clientX - mouseDownClientX;
@@ -181,4 +183,61 @@ void propagateViewEvent(ViewEvent* event) {
 	}
 
 	event->currentTarget = nullptr;
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ViewEvent>("ViewEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("isCapture", &ViewEvent::isCapture)
+		.method("isBubble", &ViewEvent::isBubble);
+
+	registration::class_<ClickRecord>("ClickRecord")
+		.constructor<>()(policy::ctor::as_object)
+		.property("downX", &ClickRecord::downX)
+		.property("downY", &ClickRecord::downY)
+		.property("downTime", &ClickRecord::downTime)
+		.property("button", &ClickRecord::button);
+
+	registration::class_<MouseEvent>("MouseEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("clientX", &MouseEvent::clientX)
+		.property("clientY", &MouseEvent::clientY)
+		.property("ndcPos", &MouseEvent::ndcPos)
+		.property("button", &MouseEvent::button)
+		.property("mouseDownClientX", &MouseEvent::mouseDownClientX)
+		.property("mouseDownClientY", &MouseEvent::mouseDownClientY)
+		.property("isMouseDown", &MouseEvent::isMouseDown)
+		.property("isMouseUp", &MouseEvent::isMouseUp)
+		.property("isMouseMove", &MouseEvent::isMouseMove)
+		.property("isWheel", &MouseEvent::isWheel)
+		.property("ctrl", &MouseEvent::ctrl)
+		.property("shift", &MouseEvent::shift)
+		.property("alt", &MouseEvent::alt)
+		.property("isDblClick", &MouseEvent::isDblClick)
+		.method("isClick", &MouseEvent::isClick)
+		.method("isClickInBubble", &MouseEvent::isClickInBubble)
+		.method("isDblClickInBubble", &MouseEvent::isDblClickInBubble)
+		.method("toString", &MouseEvent::toString);
+
+	registration::class_<MouseEnterEvent>("MouseEnterEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr);
+
+	registration::class_<MouseLeaveEvent>("MouseLeaveEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr);
+
+	registration::class_<WheelEvent>("WheelEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("deltaY", &WheelEvent::deltaY)
+		.property("deltaX", &WheelEvent::deltaX);
+
+	registration::class_<MouseEventListener>("MouseEventListener")
+		.method("onEvent", &MouseEventListener::onEvent);
+
+	registration::class_<HoverSentive>("HoverSentive")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.method("onmousemove", &HoverSentive::onmousemove)
+		.method("onmouseleave", &HoverSentive::onmouseleave);
 }

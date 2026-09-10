@@ -3,6 +3,7 @@
 #include "../Core/Predef.h"
 #include "../Core/View.h"
 #include "../Core/MouseEvent.h"
+#include <rttr/rttr_enable.h>
 
 class Switch : public View {
 public:
@@ -20,4 +21,6 @@ public:
 	void onEvent(Event* ev) override;
 
 	virtual const char* getClassName() const override { return "Switch"; }
+
+	RTTR_ENABLE(View)
 };

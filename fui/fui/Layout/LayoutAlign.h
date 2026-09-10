@@ -5,6 +5,7 @@
 #include "../Core/LayoutCell.h"
 #include "../Core/Vec2.h"
 #include "../Core/Frame.h"
+#include <rttr/rttr_enable.h>
 
 class LayoutAlignCell : public LayoutCell {
 public:
@@ -63,4 +64,6 @@ public:
 	void getAnchorAndAlign_byView(ViewBase* view, Vec2* anchor, Vec2* align);
 
 	virtual const char* getClassName() const override { return "LayoutAlign"; }
+
+	RTTR_ENABLE(View)
 };

@@ -4,6 +4,8 @@
 #include "../Core/NodeLib.h"
 #include "../Core/Screen.h"
 
+#include <rttr/registration>
+
 
 void ColorPicker::fire_onChanged(int newcolor) {
 	if (this->onChanged) {
@@ -77,4 +79,14 @@ void ColorPicker::onMouseEvent(MouseEvent* me) {
 		// }
 		// this->drag.onMouseDown(me)
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ColorPicker>("ColorPicker")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.method("fire_onChanged", &ColorPicker::fire_onChanged)
+		.method("showWindow_colorPalete", &ColorPicker::showWindow_colorPalete);
 }

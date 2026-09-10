@@ -5,6 +5,7 @@
 #include "../Core/MouseEvent.h"
 #include "TextView.h"
 #include <functional>
+#include <rttr/rttr_enable.h>
 
 class Panel : public LayoutLinear {
 public:
@@ -29,4 +30,6 @@ public:
 	void react();
 
 	virtual const char* getClassName() const override { return "Panel"; }
+
+	RTTR_ENABLE(LayoutLinear)
 };

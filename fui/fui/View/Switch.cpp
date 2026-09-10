@@ -1,6 +1,8 @@
 #include "Switch.h"
 #include "../Core/Canvas.h"
 
+#include <rttr/registration>
+
 Switch::Switch() {
 	CtorGuard(this);
 
@@ -56,4 +58,19 @@ void Switch::onEvent(Event* ev) {
 		setChecked(!checked);
 		me->stopPropagation();
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Switch>("Switch")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("checked", &Switch::checked)
+		.property("circleSize", &Switch::circleSize)
+		.property("trackOnColor", &Switch::trackOnColor)
+		.property("trackOffColor", &Switch::trackOffColor)
+		.method("setChecked", &Switch::setChecked)
+		.method("calcToX", &Switch::calcToX)
+		.method("getClassName", &Switch::getClassName);
 }

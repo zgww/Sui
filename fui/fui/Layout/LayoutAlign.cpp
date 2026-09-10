@@ -1,3 +1,4 @@
+#include <rttr/registration>
 #include "LayoutAlign.h"
 #include "../Core/ViewBase.h"
 
@@ -92,4 +93,15 @@ void LayoutAlign::getAnchorAndAlign_byView(ViewBase* view, Vec2* anchor, Vec2* a
 		*anchor = this->anchor;
 		*align = this->align;
 	}
+}
+
+// ---- rttr ???????? JSON ??????----
+RTTR_REGISTRATION
+{
+    using namespace rttr;
+    registration::class_<LayoutAlign>("LayoutAlign")
+        .constructor<>()(policy::ctor::as_raw_ptr)
+        .property("anchor", &LayoutAlign::anchor)
+        .property("align", &LayoutAlign::align)
+        .property("useMaxConstraint", &LayoutAlign::useMaxConstraint);
 }

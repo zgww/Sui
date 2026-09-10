@@ -10,7 +10,7 @@
 #include "../Urgc/GcList.h"
 
 //#include "rttr/detail/misc/misc_type_traits.h"
-//#include <rttr/rttr_enable.h>
+#include <rttr/rttr_enable.h>
 
 
 class Canvas;
@@ -19,7 +19,7 @@ class LayoutCell;
 class App;
 
 class ViewBase : public Node {
-	//RTTR_ENABLE(Node)
+	RTTR_ENABLE(Node)
 public:
 	std::string hitTestType = "normal";
 	Inset hitTestPadding;

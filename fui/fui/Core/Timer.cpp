@@ -3,6 +3,8 @@
 #include "../Urgc/GcList.h"
 #include <thread>
 
+#include <rttr/registration>
+
 void Timer::restart() {
 	cancel();
 	start();
@@ -223,4 +225,46 @@ void AnimStep::_start() {
 
 void AnimStep::cancel() {
 	running = false;
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Timer>("Timer")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("alive", &Timer::alive)
+		.property("isInterval", &Timer::isInterval)
+		.property("intervalMs", &Timer::intervalMs)
+		.property("remainMs", &Timer::remainMs)
+		.property("name", &Timer::name)
+		.method("restart", &Timer::restart)
+		.method("start", &Timer::start)
+		.method("cancel", &Timer::cancel)
+		.method("fire", &Timer::fire)
+		.method("onTick", &Timer::onTick);
+
+	registration::class_<TimerMgr>("TimerMgr")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.method("addItemOnce", &TimerMgr::addItemOnce)
+		.method("addItem", &TimerMgr::addItem)
+		.method("fire", &TimerMgr::fire)
+		.method("tick", &TimerMgr::tick)
+		.method("clearDeadTimers", &TimerMgr::clearDeadTimers)
+		.method("startThreadTick", &TimerMgr::startThreadTick)
+		.method("startThreadTickAndFire", &TimerMgr::startThreadTickAndFire);
+
+	registration::class_<AnimStep>("AnimStep")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("running", &AnimStep::running)
+		.property("runningCnt", &AnimStep::runningCnt)
+		.property("elapsedMs", &AnimStep::elapsedMs)
+		.property("prevElapsedMs", &AnimStep::prevElapsedMs)
+		.property("prevMs", &AnimStep::prevMs)
+		.method("start", &AnimStep::start)
+		.method("nextByMs", &AnimStep::nextByMs)
+		.method("next", &AnimStep::next)
+		.method("tick", &AnimStep::tick)
+		.method("_start", &AnimStep::_start)
+		.method("cancel", &AnimStep::cancel);
 }

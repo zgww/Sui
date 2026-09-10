@@ -5,6 +5,8 @@
 #include "Timer.h"
 #include "../Urgc/GcList.h"
 #include <chrono>
+
+#include <rttr/registration>
 #include <thread>
 
 #ifdef _WIN32
@@ -207,4 +209,26 @@ bool App_repaintWindowById(int64_t id) {
 	if (!win) return false;
 	win->layoutAndDraw();
 	return true;
+}
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<App>("App")
+		.property("_reactDirty", &App::_reactDirty)
+		.property("_invalidDraw", &App::_invalidDraw)
+		.method("findWindowById", &App::findWindowById)
+		.method("addWindow", &App::addWindow)
+		.method("removeWindow", &App::removeWindow)
+		.method("layoutAndDrawAllWindows", &App::layoutAndDrawAllWindows)
+		.method("quit", &App::quit)
+		.method("invalidDraw", &App::invalidDraw)
+		.method("invalidLayout", &App::invalidLayout)
+		.method("processDirtyReacts", &App::processDirtyReacts)
+		.method("processRecuDirtyReacts", &App::processRecuDirtyReacts)
+		.method("processMessageList", &App::processMessageList)
+		.method("init", &App::init)
+		.method("runEventLoop", &App::runEventLoop);
+
+	registration::class_<AppEventLoopMessage>("AppEventLoopMessage");
 }

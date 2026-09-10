@@ -4,6 +4,7 @@
 #include "../Core/View.h"
 #include "../Core/Image.h"
 #include "../Core/Canvas.h"
+#include <rttr/rttr_enable.h>
 
 enum ImageMode {
 	ImageMode_WrapContent,
@@ -73,6 +74,8 @@ public:
 	}
 
 	virtual void draw_self(Canvas* canvas) override;
+
+	RTTR_ENABLE(View)
 };
 
 

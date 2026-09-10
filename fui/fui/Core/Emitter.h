@@ -2,7 +2,7 @@
 
 #include "Predef.h"
 #include "Event.h"
-//#include <rttr/rttr_enable.h>
+#include <rttr/rttr_enable.h>
 
 class Emitter;
 
@@ -14,7 +14,7 @@ public:
 };
 
 class Emitter : public Listener {
-	//RTTR_ENABLE()
+	RTTR_ENABLE()
 public:
 	Ref<GcList<Listener>> listeners{new GcList<Listener>(), this};
 	Ref<Listener> listener{nullptr, this};

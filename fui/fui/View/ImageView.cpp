@@ -1,6 +1,7 @@
 #include "ImageView.h"
 #include "../Core/Window.h"
 
+#include <rttr/registration>
 
 void ImageView::setSrc(std::string src) {
 	if (this->src == src && _isImageValid()) {
@@ -172,4 +173,41 @@ void ImageView::draw_self(Canvas* canvas) {
 		// canvas->drawImageRect(_img, src, dst, opt, nullptr, SkCanvas::kFast_SrcRectConstraint);
 	}
 
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ImageModeCalc>("ImageModeCalc")
+		.constructor<>()(policy::ctor::as_object)
+		.property("sw", &ImageModeCalc::sw)
+		.property("sh", &ImageModeCalc::sh)
+		.property("dw", &ImageModeCalc::dw)
+		.property("dh", &ImageModeCalc::dh)
+		.property("sx", &ImageModeCalc::sx)
+		.property("sy", &ImageModeCalc::sy)
+		.property("dx", &ImageModeCalc::dx)
+		.property("dy", &ImageModeCalc::dy)
+		.property("sr", &ImageModeCalc::sr)
+		.property("dr", &ImageModeCalc::dr)
+		.property("scale", &ImageModeCalc::scale)
+		.method("getSrcRect", &ImageModeCalc::getSrcRect)
+		.method("getDstRect", &ImageModeCalc::getDstRect)
+		.method("calc", &ImageModeCalc::calc)
+		.method("calc_contain", &ImageModeCalc::calc_contain)
+		.method("calc_cover", &ImageModeCalc::calc_cover);
+
+	registration::class_<ImageView>("ImageView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("src", &ImageView::src)
+		.property("imageMode", &ImageView::imageMode)
+		.property("pos", &ImageView::pos)
+		.property("ratio", &ImageView::ratio)
+		.property("calc", &ImageView::calc)
+		.method("setRatio", &ImageView::setRatio)
+		.method("setSrc", &ImageView::setSrc)
+		.method("setImageMode", &ImageView::setImageMode)
+		.method("_isImageValid", &ImageView::_isImageValid)
+		.method("getClassName", &ImageView::getClassName);
 }

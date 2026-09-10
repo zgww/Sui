@@ -4,6 +4,8 @@
 #include "../Core/App.h"
 #include "../Meta/MetaRegistry.h"
 
+#include <rttr/registration>
+
 // 返回 s 中从 i（位于合法字符边界）开始的 UTF-8 字符的字节长度；非法字节按 1 处理，避免越界
 static int utf8CharLen(const std::string& s, size_t i) {
 	unsigned char c = (unsigned char)s[i];
@@ -279,4 +281,39 @@ void TextView::registerMeta() {
 	reg.property("maxLine", &TextView::maxLine);
 	reg.property("overflowEllipsis", &TextView::overflowEllipsis);
 	reg.property("fontFace", &TextView::fontFace);
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<TextView::TextLine>("TextLine")
+		.constructor<>()(policy::ctor::as_object)
+		.property("text", &TextView::TextLine::text)
+		.property("x", &TextView::TextLine::x)
+		.property("y", &TextView::TextLine::y)
+		.property("w", &TextView::TextLine::w)
+		.property("h", &TextView::TextLine::h);
+
+	registration::class_<TextView>("TextView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("text", &TextView::text)
+		.property("fontSize", &TextView::fontSize)
+		.property("fontFace", &TextView::fontFace)
+		.property("color", &TextView::color)
+		.property("textAlign", &TextView::textAlign)
+		.property("lineHeight", &TextView::lineHeight)
+		.property("wrap", &TextView::wrap)
+		.property("maxLine", &TextView::maxLine)
+		.property("overflowEllipsis", &TextView::overflowEllipsis)
+		.property("areaX", &TextView::areaX)
+		.property("layoutDirty", &TextView::layoutDirty)
+		.method("setText", &TextView::setText)
+		.method("setFontSize", &TextView::setFontSize)
+		.method("setColor", &TextView::setColor)
+		.method("setTextAlign", &TextView::setTextAlign)
+		.method("setWrap", &TextView::setWrap)
+		.method("setMaxLine", &TextView::setMaxLine)
+		.method("setLineHeight", &TextView::setLineHeight)
+		.method("getClassName", &TextView::getClassName);
 }

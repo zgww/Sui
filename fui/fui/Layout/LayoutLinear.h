@@ -7,6 +7,7 @@
 #include "../Core/Frame.h"
 #include "../Urgc/GcList.h"
 #include <vector>
+#include <rttr/rttr_enable.h>
 
 class LayoutLinearCell : public LayoutCell {
 public:
@@ -55,4 +56,6 @@ public:
 	LayoutLinear& row() { direction = "row"; return *this; }
 
 	virtual const char* getClassName() const override { return "LayoutLinear"; }
+
+	RTTR_ENABLE(View)
 };

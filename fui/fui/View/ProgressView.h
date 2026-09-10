@@ -3,6 +3,7 @@
 #include "../Core/Predef.h"
 #include "../Core/View.h"
 #include "../Core/Canvas.h"
+#include <rttr/rttr_enable.h>
 
 class ProgressView : public View {
 public:
@@ -15,4 +16,6 @@ public:
 	void draw_self(Canvas* canvas) override;
 
 	virtual const char* getClassName() const override { return "ProgressView"; }
+
+	RTTR_ENABLE(View)
 };

@@ -1,5 +1,7 @@
 #include "Cursor.h"
 
+#include <rttr/registration>
+
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -59,3 +61,16 @@ bool Cursor::setCursor(const char* c) { if (isLocked) return false; cursor = c; 
 void Cursor::setIsLocked(bool v) { isLocked = v; }
 void Cursor::_updateCursor() {}
 #endif
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<Cursor>("Cursor")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("isLocked", &Cursor::isLocked)
+		.property("cursor", &Cursor::cursor)
+		.method("init", &Cursor::init)
+		.method("setCursor", &Cursor::setCursor)
+		.method("setIsLocked", &Cursor::setIsLocked)
+		.method("_updateCursor", &Cursor::_updateCursor);
+}

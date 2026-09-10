@@ -7,6 +7,8 @@
 #include "../Core/Frame.h"
 #include "../Naga/Path.h"
 
+#include <rttr/registration>
+
 //
 //void* TreeState::getById(const std::string& id) {
 //	return _getById(id, &roots);
@@ -355,4 +357,20 @@ void TreeSelfCtrlView::react() {
 
 	placeKids(gocOutKids());
 	endInnerReact();
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<TreeSelfCtrlView>("TreeSelfCtrlView")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("open", &TreeSelfCtrlView::open)
+		.property("hasKids", &TreeSelfCtrlView::hasKids)
+		.property("deep", &TreeSelfCtrlView::deep)
+		.property("isSelected", &TreeSelfCtrlView::isSelected)
+		.method("calcVisible", &TreeSelfCtrlView::calcVisible)
+		.method("clearSelect", &TreeSelfCtrlView::clearSelect)
+		.method("updateForOpen", &TreeSelfCtrlView::updateForOpen)
+		.method("getClassName", &TreeSelfCtrlView::getClassName);
 }

@@ -4,6 +4,8 @@
 #include "Focus.h"
 #include "App.h"
 
+#include <rttr/registration>
+
 void TextEventBase::dispatch() {
 	if (!window) return;
 	Focus* focus = insFocus();
@@ -82,4 +84,43 @@ void dispatchEventToFocusNode(Event* evt, Window* window) {
 	if (!evt->isStopPropagation && window != nullptr) {
 		window->emit(evt);
 	}
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<TextEventBase>("TextEventBase")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.method("dispatch", &TextEventBase::dispatch);
+
+	registration::class_<TextEditingEvent>("TextEditingEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("text", &TextEditingEvent::text)
+		.property("start", &TextEditingEvent::start)
+		.property("length", &TextEditingEvent::length)
+		.method("reset", &TextEditingEvent::reset)
+		.method("is_editing", &TextEditingEvent::is_editing)
+		.method("total_rune_length", &TextEditingEvent::total_rune_length);
+
+	registration::class_<TextInputEvent>("TextInputEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("text", &TextInputEvent::text);
+
+	registration::class_<KeyEvent>("KeyEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("char_code", &KeyEvent::char_code)
+		.property("key", &KeyEvent::key)
+		.property("isKeyDown", &KeyEvent::isKeyDown)
+		.property("isKeyUp", &KeyEvent::isKeyUp)
+		.property("shift", &KeyEvent::shift)
+		.property("ctrl", &KeyEvent::ctrl)
+		.property("alt", &KeyEvent::alt)
+		.method("setIsKeyDown", &KeyEvent::setIsKeyDown)
+		.method("dispatch", &KeyEvent::dispatch);
+
+	registration::class_<WindowFocusEvent>("WindowFocusEvent")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.property("isFocus", &WindowFocusEvent::isFocus)
+		.property("isBlur", &WindowFocusEvent::isBlur);
 }

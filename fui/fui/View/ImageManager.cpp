@@ -1,5 +1,7 @@
 #include "ImageManager.h"
 
+#include <rttr/registration>
+
 Ref<Image> ImageManager::get(Canvas* canvas, const std::string& path) {
 	auto it = cache.find(path);
 	if (it != cache.end()) {
@@ -19,4 +21,14 @@ void ImageManager::clear() {
 ImageManager* insImageManager() {
 	static Ref<ImageManager> ins{new ImageManager()};
 	return ins.get();
+}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+
+	registration::class_<ImageManager>("ImageManager")
+		.constructor<>()(policy::ctor::as_raw_ptr)
+		.method("clear", &ImageManager::clear)
+		.method("getClassName", &ImageManager::getClassName);
 }

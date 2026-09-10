@@ -167,6 +167,8 @@
     <ClCompile Include="Core\Keyboard.cpp" />
     <ClCompile Include="Core\LayoutCell.cpp" />
     <ClCompile Include="Core\NodeLib.cpp" />
+    <ClCompile Include="Core\RTTR_Core_Math.cpp" />
+    <ClCompile Include="Core\RTTR_Core_UI.cpp" />
     <ClCompile Include="Meta\MetaClass.cpp" />
     <ClCompile Include="Meta\MetaRegistry.cpp" />
     <ClCompile Include="Layout\LayoutAlign.cpp" />
@@ -198,6 +200,8 @@
     <ClCompile Include="View\TextView.cpp" />
     <ClCompile Include="View\TreeView.cpp" />
     <ClCompile Include="Win32Skia\WindowWin32Skia.cpp" />
+    <ClCompile Include="JsonSerialization\NodeTreeIO.cpp" />
+    
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

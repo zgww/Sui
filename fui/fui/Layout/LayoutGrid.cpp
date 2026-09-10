@@ -1,3 +1,4 @@
+#include <rttr/registration>
 #include "LayoutGrid.h"
 #include "../Core/ViewBase.h"
 
@@ -251,4 +252,21 @@ void LayoutGrid::layoutContent(Frame* ctx) {
 	}
 
 	ctx->setHeight(maxHeight);
+}
+
+// ---- rttr ???????? JSON ??????----
+RTTR_REGISTRATION
+{
+    using namespace rttr;
+    registration::class_<LayoutGrid>("LayoutGrid")
+        .constructor<>()(policy::ctor::as_raw_ptr)
+        .property("maxCrossSize", &LayoutGrid::maxCrossSize)
+        .property("colSpan", &LayoutGrid::colSpan)
+        .property("rowSpan", &LayoutGrid::rowSpan)
+        .property("colCount", &LayoutGrid::colCount)
+        .property("rowSize", &LayoutGrid::rowSize)
+        .property("rowSizeRatio", &LayoutGrid::rowSizeRatio)
+        .property("rowCount", &LayoutGrid::rowCount)
+        .property("colGap", &LayoutGrid::colGap)
+        .property("rowGap", &LayoutGrid::rowGap);
 }
