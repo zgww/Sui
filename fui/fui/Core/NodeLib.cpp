@@ -1,8 +1,9 @@
-#include "NodeLib.h"
+﻿#include "NodeLib.h"
 #include "../Layout/LayoutLinear.h"
 #include "../View/TextView.h"
 #include "../View/ImageView.h"
 #include "../View/HoverViewEffect.h"
+#include "../View/ListItemHoverEffect.h"
 #include "../View/Button.h"
 #include "../View/EditText.h"
 
@@ -20,6 +21,10 @@ ImageView* gocImageView(Node* parent, long long key) {
 
 HoverViewEffect* gocHoverViewEffect(Node* parent, long long key) {
 	return gocNode<HoverViewEffect>(parent, key);
+}
+
+ListItemHoverEffect* gocListItemHoverEffect(Node* parent, long long key) {
+	return gocNode<ListItemHoverEffect>(parent, key);
 }
 
 Button* gocButton(Node* parent, long long key) {

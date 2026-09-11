@@ -1,0 +1,303 @@
+{
+  "type": "LayoutLinear",
+  "width": 780,
+  "height": 560,
+  "direction": "column",
+  "alignItems": "stretch",
+  "backgroundColor": "#ff1b1f27",
+  "children": [
+    {
+      "type": "LayoutLinear",
+      "height": 46,
+      "direction": "row",
+      "alignItems": "center",
+      "backgroundColor": "#ff2a2f3a",
+      "padding": { "left": 12 },
+      "children": [
+        {
+          "type": "Button",
+          "label": "标签",
+          "width": 100,
+          "height": 30,
+          "fontSize": 15,
+          "labelColor": "#ffe8eaed",
+          "backgroundColor": "#ff2d5b8f"
+        },
+        {
+          "type": "Button",
+          "label": "提交",
+          "width": 100,
+          "height": 30,
+          "fontSize": 13,
+          "labelColor": "#ffe8eaed",
+          "backgroundColor": "#ff2d5b8f"
+        },
+        {
+          "type": "Button",
+          "label": "刷新",
+          "width": 100,
+          "height": 30,
+          "fontSize": 13,
+          "labelColor": "#ffe8eaed",
+          "backgroundColor": "#ff2d5b8f"
+        },
+        {
+          "type": "Button",
+          "label": "进入项目",
+          "width": 100,
+          "height": 30,
+          "fontSize": 13,
+          "labelColor": "#ffe8eaed",
+          "backgroundColor": "#ff3a74c4",
+          "margin": { "left": 8 }
+        },
+        {
+          "type": "Button",
+          "label": "删除选中的项目",
+          "width": 132,
+          "height": 30,
+          "fontSize": 13,
+          "labelColor": "#ffe8eaed",
+          "backgroundColor": "#ff8f3a3a",
+          "margin": { "left": 8 }
+        }
+      ]
+    },
+    {
+      "type": "ScrollArea",
+      "height": 514,
+      "direction": "column",
+      "alignItems": "stretch",
+      "scrollDirection": "vertical",
+      "backgroundColor": "#ff1b1f27",
+      "children": [
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "fui", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/Sui/fui/fui", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "ImageViewer", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/Sui/fui/ImageViewer", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "isActive": true,
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "PrefabRealtimeViewer", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/Sui/fui/PrefabRealtimeViewer", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "DemoSandbox", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/playground/DemoSandbox", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "UiKitchen", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/playground/UiKitchen", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "WidgetGallery", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/samples/WidgetGallery", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "AnimationLab", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/samples/AnimationLab", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "LayoutShowcase", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/samples/LayoutShowcase", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "SkiaPlayground", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/experiments/SkiaPlayground", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "NodeTreeDemo", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/experiments/NodeTreeDemo", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "RttProbe", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+            { "type": "TextView", "text": "F:/ws/tests/RttProbe", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        },
+        {
+          "type": "LayoutLinear",
+          "height": 44,
+          "direction": "row",
+          "alignItems": "center",
+          "backgroundColor": "#ff22262e",
+          "margin": { "bottom": 2 },
+          "children": [
+            {
+              "type": "ListItemHoverEffect",
+              "backgroundColor": "#ff22262e",
+              "hoverBackgroundColor": "#ff2e3a4a",
+              "activeBackgroundColor": "#ff2d5b8f"
+            },
+            { "type": "TextView", "text": "ScrollStress", "fontSize": 14, "color": "#ffe8eaed", "width": 200, "textAlign": "left", "margin": { "left": 14 } },
+        {
+          "type": "Button",
+          "label": "刷新2",
+          "width": 100,
+          "height": 30,
+          "fontSize": 13,
+          "labelColor": "#ffe8eaed",
+          "backgroundColor": "#ff2d5b8f"
+        },
+            { "type": "TextView", "text": "F:/ws/tests/ScrollStress", "fontSize": 11, "color": "#ff7a8291", "margin": { "left": 8 } }
+          ]
+        }
+      ]
+    }
+  ]
+}

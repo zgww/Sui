@@ -112,6 +112,7 @@
     <ClInclude Include="View\Drag.h" />
     <ClInclude Include="View\EditText.h" />
     <ClInclude Include="View\HoverViewEffect.h" />
+    <ClInclude Include="View\ListItemHoverEffect.h" />
     <ClInclude Include="View\ImageView.h" />
     <ClInclude Include="View\MenuNative.h" />
     <ClInclude Include="View\Panel.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="View\Drag.cpp" />
     <ClCompile Include="View\EditText.cpp" />
     <ClCompile Include="View\HoverViewEffect.cpp" />
+    <ClCompile Include="View\ListItemHoverEffect.cpp" />
     <ClCompile Include="View\ImageView.cpp" />
     <ClCompile Include="View\MenuNative.cpp" />
     <ClCompile Include="View\Panel.cpp" />

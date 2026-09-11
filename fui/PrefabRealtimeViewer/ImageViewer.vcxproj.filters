@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ImageViewer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellExt.ixx">
+      <Filter>模块</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuBar.ixx">
+      <Filter>模块</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageCanvasView.ixx">
+      <Filter>模块</Filter>
+    </ClCompile>
+    <ClCompile Include="ThumbnailBar.ixx">
+      <Filter>模块</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageViewerApp.ixx">
+      <Filter>模块</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{a1a1a1a1-1111-1111-1111-111111111111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="模块">
+      <UniqueIdentifier>{b2b2b2b2-2222-2222-2222-222222222222}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

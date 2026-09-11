@@ -1,0 +1,74 @@
+{
+  "type": "LayoutLinear",
+  "width": 640,
+  "height": 360,
+  "direction": "row",
+  "alignItems": "center",
+  "justifyContent": "center",
+  "padding": {
+    "left": 20,
+    "top": 20,
+    "right": 20,
+    "bottom": 20
+  },
+  "backgroundColor": "#22262e",
+  "children": [
+    {
+      "type": "LayoutLinear",
+      "width": 220,
+      "height": 200,
+      "direction": "column",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "margin": {
+        "right": 16
+      },
+      "backgroundColor": "#2d5b8f",
+      "children": [
+        {
+          "type": "TextView",
+          "text": "Hello Prefab",
+          "fontSize": 22,
+          "color": "#ffffffff"
+        },
+        {
+          "type": "TextView",
+          "text": "实时预览测试",
+          "fontSize": 15,
+          "color": "#c8d4e4",
+          "margin": {
+            "top": 8
+          }
+        }
+      ]
+    },
+    {
+      "type": "LayoutLinear",
+      "width": 300,
+      "height": 200,
+      "direction": "column",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "backgroundColor": "#3a4250",
+      "children": [
+        {
+          "type": "Button",
+          "label": "Submit",
+          "width": 120,
+          "height": 36,
+          "backgroundColor": "#1677ff"
+        },
+        {
+          "type": "Button",
+          "label": "Cancel",
+          "width": 120,
+          "height": 36,
+          "backgroundColor": "#5a6474",
+          "margin": {
+            "top": 12
+          }
+        }
+      ]
+    }
+  ]
+}

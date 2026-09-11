@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "../Core/Predef.h"
 #include "../Core/Node.h"
@@ -30,7 +30,7 @@ public:
 
 	void onMounted() override;
 	void react() override;
-	void applyEffect();
+	virtual void applyEffect();
 	void onUnmounting() override;
 
 	virtual const char* getClassName() const override { return "HoverViewEffect"; }

@@ -12,6 +12,7 @@
     <BuildDependency Project="fui.vcxproj" />
   </Project>
   <Project Path="../opencv_1/opencv_1.vcxproj" Id="b32d8d4c-0247-4716-97ef-c940ee012ce4" />
+  <Project Path="../PrefabRealtimeViewer/PrefabRealtimeViewer.vcxproj" Id="e0838ce4-fc4b-4a6c-bac0-a01052ed4ea5" />
   <Project Path="../RecuPeg/RecuPeg.vcxproj" Id="c15adc5a-0905-4555-9abb-b86466ec5c30" />
   <Project Path="../Sgl/Sgl.vcxproj" Id="9dc77d1e-f9ab-4010-8c60-172f0bb2b05c">
     <BuildDependency Project="fui.vcxproj" />
