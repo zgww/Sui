@@ -45,6 +45,14 @@ bool Timer::onTick(int dtMs) {
 
 static Ref<TimerMgr> g_timerMgr;
 
+// 保护 TimerMgr items/fireings 的复合操作（tick 遍历 / fire 遍历 / addItem 并发）。
+// GcListWithLock 只保证单次方法内原子，跨方法复合遍历无整体锁，
+// 主线程创建 Timer 与后台 tick 线程并发时会导致索引错位、Timer 丢失或
+// vector 越界（表现：第二个 Timer 创建后其他 Timer 停止 fire）。
+// 注意：不能用 TimerMgr 成员锁 —— rttr 反射要求类可拷贝（variant<T>），
+// std::recursive_mutex 不可拷贝会触发 C2338 static_assert。
+static std::recursive_mutex g_timerMutex;
+
 TimerMgr* insTimerMgr() {
 	if (!g_timerMgr) {
 		g_timerMgr = new TimerMgr();
@@ -53,16 +61,19 @@ TimerMgr* insTimerMgr() {
 }
 
 void TimerMgr::addItemOnce(Timer* timer) {
+	std::lock_guard<std::recursive_mutex> g(g_timerMutex);
 	if (!items->include(timer)) {
 		items->push(timer);
 	}
 }
 
 void TimerMgr::addItem(Timer* timer) {
+	std::lock_guard<std::recursive_mutex> g(g_timerMutex);
 	items->push(timer);
 }
 
 void TimerMgr::fire() {
+	std::lock_guard<std::recursive_mutex> g(g_timerMutex);
 	if (fireings->size() > 0) {
 		int l = fireings->size();
 		for (int i = 0; i < l; i++) {
@@ -76,6 +87,7 @@ void TimerMgr::fire() {
 }
 
 void TimerMgr::tick(int dtMs) {
+	std::lock_guard<std::recursive_mutex> g(g_timerMutex);
 	int l = items->size();
 	for (int i = 0; i < l; i++) {
 		Timer* timer = items->get(i);
@@ -90,6 +102,7 @@ void TimerMgr::tick(int dtMs) {
 }
 
 void TimerMgr::clearDeadTimers() {
+	std::lock_guard<std::recursive_mutex> g(g_timerMutex);
 	for (int i = items->size() - 1; i >= 0; i--) {
 		Timer* timer = items->get(i);
 		if (timer && !timer->alive) {

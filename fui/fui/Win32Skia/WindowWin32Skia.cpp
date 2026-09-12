@@ -38,6 +38,8 @@
 #include "../Naga/Win32Utf8Util.h"
 
 #include <EGL/egl.h>
+#include <EGL/eglext.h>
+#include <EGL/eglext_angle.h>
 #include <GLES3/gl3.h>
 
 #include <dwmapi.h>
@@ -94,15 +96,45 @@ static GrGLFuncPtr _egl_get_proc(void*, const char name[]) {
 }
 
 // 全局初始化 EGL(ANGLE) 显示与配置, 进程内只执行一次
+// 若调用方通过 skiaSetExternalD3D11Device 注入了外部 D3D11 设备
+// （HwVideoPlayerView 的 FFmpeg D3D11VA 硬解用同一设备），则 ANGLE 基于该设备
+// 创建 Display，使解码纹理可以 EGLImage 零拷贝导入，全程不经过 CPU。
 static bool _ensure_egl() {
 	if (g_eglDisplay != EGL_NO_DISPLAY) {
 		return true;
 	}
-	g_eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+
+	void* externalDev = skiaGetExternalD3D11Device();
+	if (externalDev) {
+		PFNEGLCREATEDEVICEANGLEPROC pfnCreateDevice = (PFNEGLCREATEDEVICEANGLEPROC)eglGetProcAddress("eglCreateDeviceANGLE");
+		PFNEGLGETPLATFORMDISPLAYEXTPROC pfnGetPlatformDisplay = (PFNEGLGETPLATFORMDISPLAYEXTPROC)eglGetProcAddress("eglGetPlatformDisplayEXT");
+		if (!pfnCreateDevice || !pfnGetPlatformDisplay) {
+			printf("fui skia: EGL device creation ext not available, fallback to default display\n");
+			externalDev = nullptr;
+		} else {
+			EGLDeviceEXT eglDevice = pfnCreateDevice(EGL_D3D11_DEVICE_ANGLE, externalDev, nullptr);
+			if (eglDevice == EGL_NO_DEVICE_EXT) {
+				printf("fui skia: eglCreateDeviceANGLE failed (0x%x), fallback to default display\n", eglGetError());
+				externalDev = nullptr;
+			} else {
+				g_eglDisplay = pfnGetPlatformDisplay(EGL_PLATFORM_DEVICE_EXT, eglDevice, nullptr);
+				if (g_eglDisplay == EGL_NO_DISPLAY) {
+					printf("fui skia: eglGetPlatformDisplayEXT failed (0x%x), fallback to default display\n", eglGetError());
+					externalDev = nullptr;
+				}
+			}
+		}
+	}
+
+	if (g_eglDisplay == EGL_NO_DISPLAY) {
+		g_eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+	}
 	if (g_eglDisplay == EGL_NO_DISPLAY) {
 		printf("fui skia: eglGetDisplay failed\n");
 		return false;
 	}
+	skiaSetEGLDisplay(g_eglDisplay);
+
 	EGLint major = 0, minor = 0;
 	if (!eglInitialize(g_eglDisplay, &major, &minor)) {
 		printf("fui skia: eglInitialize failed (0x%x)\n", eglGetError());

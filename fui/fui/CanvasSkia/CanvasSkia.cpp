@@ -96,6 +96,45 @@ struct SkiaCtx {
 static SkiaCtx* g_skiaCtx = nullptr;
 static Canvas* gCanvas = nullptr;
 
+// ---- 全 GPU 视频播放：外部 D3D11 设备 / EGL Display 共享状态 ----
+static void* g_externalD3D11Device = nullptr;
+static void* g_eglDisplay = nullptr;
+
+void skiaSetExternalD3D11Device(void* d3d11Device) {
+    g_externalD3D11Device = d3d11Device;
+}
+
+void* skiaGetExternalD3D11Device() {
+    return g_externalD3D11Device;
+}
+
+void skiaSetEGLDisplay(void* eglDisplay) {
+    g_eglDisplay = eglDisplay;
+}
+
+void* skiaGetEGLDisplay() {
+    return g_eglDisplay;
+}
+
+void* skiaCanvasGetGrContext() {
+    return g_skiaCtx ? (void*)g_skiaCtx->grContext : nullptr;
+}
+
+void skiaCanvasDrawImageAtRect(void* skImage, float sx, float sy, float sw, float sh,
+                               float dx, float dy, float dw, float dh, float alpha) {
+    if (!g_skiaCtx || !g_skiaCtx->skCanvas || !skImage) return;
+    if (sw <= 0 || sh <= 0 || dw <= 0 || dh <= 0) return;
+    SkImage* im = (SkImage*)skImage;
+    SkRect src = SkRect::MakeXYWH(sx, sy, sw, sh);
+    SkRect dst = SkRect::MakeXYWH(dx, dy, dw, dh);
+    SkPaint p;
+    p.setAntiAlias(true);
+    p.setAlphaf(alpha);
+    g_skiaCtx->skCanvas->drawImageRect(im, src, dst,
+        SkSamplingOptions(SkFilterMode::kLinear), &p,
+        SkCanvas::kStrict_SrcRectConstraint);
+}
+
 // ---------------------------------------------------------------------------
 // 辅助
 // ---------------------------------------------------------------------------
