@@ -95,6 +95,10 @@ void Button::react()
 
 	o.row().aic().jcc();
 
+	this->backgroundColor = isActive 
+		? this->activeBg 
+		: this->hover ? this->hoverBg: this->normalBg;
+
 	if (src != "") {
 		RN(ImageView, LINE_KEY) {
 			o.setSrc(src);

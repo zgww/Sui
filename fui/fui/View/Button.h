@@ -19,6 +19,7 @@ public:
 	int normalBg = 0xff1677ff;
 	int hoverBg = 0xee1677ff;
 	int activeBg = 0xdd1677ff;
+	bool isActive = false;
 
 	Ref<Closure<void(MouseEvent*)>> onClick{nullptr, this};
 

@@ -9,7 +9,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{C82E4A5D-9D4E-4F4B-9C66-8F3E1B5A6D02}</ProjectGuid>
+    <ProjectGuid>{09A6607D-D7AB-4A46-8AB7-E0722536A309}</ProjectGuid>
     <RootNamespace>RemoteDeskClient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
