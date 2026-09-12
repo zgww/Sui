@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8F3F3965-CAB7-4CA1-89BA-96ADE6037184}</ProjectGuid>
+    <ProjectGuid>{F10A870A-7E26-42B3-B016-E702FF0DAD00}</ProjectGuid>
     <RootNamespace>fui_hw_video_player</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

@@ -127,9 +127,17 @@ static AVPixelFormat _getHwFormat(AVCodecContext*, const AVPixelFormat* fmts) {
 // ============================ Impl ==========================================
 
 struct HwVideoPlayerView::Impl {
-    // ---- 共享 GPU 设备（进程级，与 fui/ANGLE 共用）----
+    // ---- 共享渲染设备（进程级，与 fui/ANGLE/Skia 共用）----
     static Microsoft::WRL::ComPtr<ID3D11Device>        s_dev;
     static Microsoft::WRL::ComPtr<ID3D11DeviceContext> s_ctx;
+
+    // ---- 每路独立解码设备（与共享渲染设备隔离）----
+    // 解码线程独占使用 decDev/decD3DCtx，渲染主线程独占 s_dev —— 两者不共用
+    // D3D11 immediate context，彻底规避跨线程并发崩溃（avcodec-63 0xC0000005）。
+    // 解码纹理带 D3D11_RESOURCE_MISC_SHARED，渲染线程 OpenSharedResource
+    // 导入共享设备后 EGLImage（同一 GPU 显存，仍为零拷贝，无像素回读）。
+    Microsoft::WRL::ComPtr<ID3D11Device>        decDev;
+    Microsoft::WRL::ComPtr<ID3D11DeviceContext> decD3DCtx;
 
     // ---- 渲染槽（仅主线程访问）----
     // 三槽轮换：显示帧所在槽 = (slotCur+2)%3，释放槽 = (slotCur+1)%3。
@@ -183,12 +191,19 @@ struct HwVideoPlayerView::Impl {
     int  decodeNext(AVFrame* out);
 
     // ---- 渲染（主线程）----
-    bool makeImageFromHwFrame(AVFrame* hwFrame, Slot& slot);
+    bool makeImageFromHwFrame(ID3D11Texture2D* sharedTex, int slice, AVFrame* hwFrame, Slot& slot);
     void releaseSlot(Slot& s);
 };
 
 Microsoft::WRL::ComPtr<ID3D11Device>        HwVideoPlayerView::Impl::s_dev;
 Microsoft::WRL::ComPtr<ID3D11DeviceContext> HwVideoPlayerView::Impl::s_ctx;
+
+// ---- 全局统计（多视图并发验证）----
+static std::atomic<long long> g_totalShownAll{0};
+static std::atomic<int>       g_instanceCount{0};
+
+long long HwVideoPlayerView::totalShownAll() { return g_totalShownAll.load(); }
+int       HwVideoPlayerView::instanceCount() { return g_instanceCount.load(); }
 
 // ====================== FFmpeg 硬解（解码线程）===============================
 
@@ -236,7 +251,24 @@ bool HwVideoPlayerView::Impl::initDecoder() {
     printf("HwVideoPlayerView: hw decode %s via D3D11VA (pix_fmt=%s)\n",
            codec->name, av_get_pix_fmt_name(hwPixFmt));
 
-    // 用共享 D3D11 设备创建 FFmpeg d3d11va 设备上下文 —— 与 ANGLE 同一设备（零拷贝前提）
+    // 每路独立 D3D11 设备（解码线程专用，与共享渲染设备隔离 —— 零拷贝前提不变：
+    // 纹理带 SHARED 标志，渲染线程 OpenSharedResource 到共享设备后 EGLImage）
+    if (!decDev) {
+        D3D_FEATURE_LEVEL levels[] = {
+            D3D_FEATURE_LEVEL_11_1, D3D_FEATURE_LEVEL_11_0, D3D_FEATURE_LEVEL_10_1, D3D_FEATURE_LEVEL_10_0
+        };
+        HRESULT hr = D3D11CreateDevice(
+            nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr,
+            D3D11_CREATE_DEVICE_VIDEO_SUPPORT | D3D11_CREATE_DEVICE_BGRA_SUPPORT,
+            levels, _countof(levels), D3D11_SDK_VERSION,
+            decDev.GetAddressOf(), nullptr, decD3DCtx.GetAddressOf());
+        if (FAILED(hr)) {
+            printf("HwVideoPlayerView: per-instance D3D11CreateDevice failed 0x%08x\n", (unsigned)hr);
+            return false;
+        }
+    }
+
+    // 用本路解码设备创建 FFmpeg d3d11va 设备上下文
     hwDevRef = av_hwdevice_ctx_alloc(AV_HWDEVICE_TYPE_D3D11VA);
     if (!hwDevRef) {
         printf("HwVideoPlayerView: av_hwdevice_ctx_alloc failed\n");
@@ -246,12 +278,12 @@ bool HwVideoPlayerView::Impl::initDecoder() {
     AVD3D11VADeviceContext* d3d11va = (AVD3D11VADeviceContext*)hwdev->hwctx;
 
     // FFmpeg 释放时会对这两个接口 Release，此处先 AddRef
-    s_dev.Get()->AddRef();
-    s_ctx.Get()->AddRef();
-    d3d11va->device         = s_dev.Get();
-    d3d11va->device_context = s_ctx.Get();
+    decDev.Get()->AddRef();
+    decD3DCtx.Get()->AddRef();
+    d3d11va->device         = decDev.Get();
+    d3d11va->device_context = decD3DCtx.Get();
     d3d11va->BindFlags = D3D11_BIND_DECODER | D3D11_BIND_SHADER_RESOURCE;
-    d3d11va->MiscFlags = D3D11_RESOURCE_MISC_SHARED;
+    d3d11va->MiscFlags = D3D11_RESOURCE_MISC_SHARED;   // 供渲染线程 OpenSharedResource 零拷贝导入
 
     ret = av_hwdevice_ctx_init(hwDevRef);
     if (ret < 0) {
@@ -325,9 +357,58 @@ int HwVideoPlayerView::Impl::decodeNext(AVFrame* out) {
 }
 
 void HwVideoPlayerView::Impl::decodeLoop() {
-    // v1 已改为主线程同步解码（tickFrame 内 decodeNext）。
-    // 曾验证：解码线程 + 渲染主线程共用 D3D11 immediate context 会随机崩溃
-    // （avcodec-63.dll 0xC0000005），故本函数不再使用，保留仅为说明历史架构。
+    // 解码线程：使用本路独立设备 decDev/decD3DCtx（initDecoder 内创建），
+    // 与渲染主线程（s_dev）无 D3D11 并发。
+    // 产出的帧（AVFrame 引用）入队，渲染线程 OpenSharedResource 导入共享设备后零拷贝渲染。
+    if (!initDecoder()) {
+        status = "open failed";
+        printf("[decode] FAIL: initDecoder failed (status=%s)\n", status.c_str());
+        return;
+    }
+    opened = true;
+    status = "playing";
+    printf("HwVideoPlayerView: opened, video=%dx%d (async decode thread, zero-copy GPU)\n",
+           videoW.load(), videoH.load());
+
+    AVFrame* frame = av_frame_alloc();
+    if (!frame) return;
+
+    // 生产-消费同步：队列有界（cap 6），满则阻塞等渲染线程消费一帧。
+    // 这样解码速率=渲染速率，不会全速白解丢帧，也不会提前 eos。
+    while (!stopReq) {
+        {
+            std::unique_lock<std::mutex> lk(qMutex);
+            qCv.wait(lk, [&] { return stopReq || (int)q.size() < 6; });
+            if (stopReq) break;
+        }
+        int r = decodeNext(frame);
+        if (r == 1) {
+            {
+                std::lock_guard<std::mutex> lk(qMutex);
+                AVFrame* copy = av_frame_alloc();
+                if (copy) {
+                    if (av_frame_ref(copy, frame) >= 0) {
+                        q.push_back(copy);
+                        framesDecoded++;
+                    } else {
+                        av_frame_free(&copy);
+                    }
+                }
+            }
+            qCv.notify_all();
+            av_frame_unref(frame);
+        } else if (r == -1) {
+            {
+                std::lock_guard<std::mutex> lk(qMutex);
+                eos = true;
+            }
+            qCv.notify_all();
+            break;
+        }
+    }
+
+    av_frame_free(&frame);
+    printf("HwVideoPlayerView: decode thread exit (framesDecoded=%lld)\n", framesDecoded.load());
 }
 
 // ============ 解码帧 -> EGLImage -> GL 纹理 -> Skia 图像（全 GPU，零拷贝）====
@@ -344,28 +425,24 @@ static SkYUVColorSpace _pickYuvCs(const AVFrame* f) {
     }
 }
 
-bool HwVideoPlayerView::Impl::makeImageFromHwFrame(AVFrame* hwFrame, Slot& slot) {
+bool HwVideoPlayerView::Impl::makeImageFromHwFrame(ID3D11Texture2D* tex, int slice, AVFrame* hwFrame, Slot& slot) {
     EGLDisplay display = (EGLDisplay)skiaGetEGLDisplay();
     GrDirectContext* gr = (GrDirectContext*)skiaCanvasGetGrContext();
     if (display == EGL_NO_DISPLAY || !gr) {
         printf("HwVideoPlayerView: fui skia context not ready (display=%p gr=%p)\n", display, (void*)gr);
         return false;
     }
-
-    // D3D11VA 帧布局：data[0]=ID3D11Texture2D*（数组纹理），data[1]=数组切片索引
-    ID3D11Texture2D* tex = reinterpret_cast<ID3D11Texture2D*>(hwFrame->data[0]);
-    int slice = static_cast<int>(reinterpret_cast<intptr_t>(hwFrame->data[1]));
     if (!tex) {
         printf("HwVideoPlayerView: hw frame has no D3D11 texture\n");
         return false;
     }
 
-    // 持有解码帧引用：渲染完成前解码器不得复用该纹理缓冲
+    // 持有解码帧引用（FFmpeg 帧池）：渲染完成前解码器不得复用该纹理缓冲
     slot.hwFrame = av_frame_alloc();
     if (!slot.hwFrame) return false;
     av_frame_ref(slot.hwFrame, hwFrame);
 
-    // GPU 零拷贝：D3D11 纹理 -> ANGLE EGLImage（Y/UV 两个平面，数组切片）
+    // GPU 零拷贝：共享设备上的 D3D11 纹理 -> ANGLE EGLImage（Y/UV 两个平面，数组切片）
     EGLint yAttrs[]  = { EGL_D3D11_TEXTURE_PLANE_ANGLE, 0,
                          EGL_D3D11_TEXTURE_ARRAY_SLICE_ANGLE, slice, EGL_NONE };
     EGLint uvAttrs[] = { EGL_D3D11_TEXTURE_PLANE_ANGLE, 1,
@@ -503,12 +580,14 @@ void HwVideoPlayerView::Impl::releaseSlot(Slot& s) {
 HwVideoPlayerView::HwVideoPlayerView() {
     d = new Impl();
     _fitMode = 0;
+    g_instanceCount++;
 }
 
 HwVideoPlayerView::~HwVideoPlayerView() {
     // 窗口关闭/进程退出路径：只做安全清理。
     // 注意 fui 窗口销毁时 ANGLE EGL display 可能已被终止，
     // 因此不在这里释放 GL/EGL/Skia 资源（GPU 资源随进程退出自动回收）。
+    g_instanceCount--;
     stopTickTimer();
     Impl* p = d;
     if (!p) return;
@@ -593,23 +672,13 @@ bool HwVideoPlayerView::open(const std::string& mediaUrl) {
     d->paused = false;
     d->lastFrameUs = 0;
 
-    // v1：主线程同步初始化解码器（与渲染同线程，D3D11 immediate context 无并发）
+    // 起解码线程：线程内 initDecoder（独立设备）并持续产帧入队
     Impl* p = d;
-    if (!p->initDecoder()) {
-        p->status = "open failed";
-        return false;
-    }
-    p->renderFrame = av_frame_alloc();
-    if (!p->renderFrame) {
-        p->status = "open failed";
-        return false;
-    }
-    p->opened = true;
-    p->status = "playing";
-    printf("HwVideoPlayerView: opened, video=%dx%d (decode+render on UI thread, zero-copy GPU)\n",
-           p->videoW.load(), p->videoH.load());
+    p->decThread = std::thread([p]() {
+        p->decodeLoop();
+    });
 
-    // 帧驱动定时器：主线程每 8ms 轮询一次，tickFrame 内按视频帧率节流
+    // 帧驱动定时器：主线程每 8ms 轮询一次，tickFrame 内取帧渲染（按视频帧率节流）
     auto self = Ref(this);
     _tickTimer = mkTimerInterval(CLOSURE([=]() {
         if (self.get()) self->tickFrame();
@@ -765,35 +834,64 @@ void HwVideoPlayerView::tickFrame() {
         if (nowUs - p->lastFrameUs < intervalUs) break;   // 已追平当前时间
         p->lastFrameUs += intervalUs;
 
-        // v1：主线程同步解码一帧（解码器与渲染共用同一线程，无 D3D11 并发）
-        int r = p->decodeNext(p->renderFrame);
-        if (r == 1) {
-            // 三槽轮换：先释放最旧槽（已 flush 且 curImage 已切走，无引用），
-            // 再渲染新帧到当前槽并更新显示帧。
-            p->releaseSlot(p->slots[(p->slotCur + 1) % 3]);
-            bool ok = p->makeImageFromHwFrame(p->renderFrame, p->slots[p->slotCur]);
-            if (ok) {
-                p->curImage = p->slots[p->slotCur].image;
-                p->framesShown++;
+        // 从解码线程队列取一帧
+        AVFrame* frame = nullptr;
+        {
+            std::lock_guard<std::mutex> lk(p->qMutex);
+            if (!p->q.empty()) {
+                frame = p->q.front();
+                p->q.pop_front();
             }
-            p->slotCur = (p->slotCur + 1) % 3;
-            av_frame_unref(p->renderFrame);
-            p->framesDecoded++;
-            needDraw = true;
-
-            long long shown = p->framesShown.load();
-            if (shown <= 5 || shown % 300 == 0) {
-                printf("HwVideoPlayerView: rendered %lld frames on GPU (zero-copy) | decoded %lld | %s\n",
-                       shown, p->framesDecoded.load(), p->status.c_str());
-            }
-        } else if (r == -1) {
-            p->eos = true;
-            if (p->status != "ended") {
+        }
+        if (frame) p->qCv.notify_all();   // 唤醒解码线程继续产帧（队满阻塞解除）
+        if (!frame) {
+            if (p->eos && p->status != "ended") {
                 p->status = "ended";
                 printf("HwVideoPlayerView: playback ended, total frames rendered: %lld\n", p->framesShown.load());
                 stopTickTimer();
             }
             break;
+        }
+
+        // 零拷贝导入共享渲染设备：解码纹理（独立设备，SHARED）-> OpenSharedResource -> EGLImage
+        Microsoft::WRL::ComPtr<ID3D11Texture2D> sharedTex;
+        bool sharedOk = false;
+        ID3D11Texture2D* decTex = reinterpret_cast<ID3D11Texture2D*>(frame->data[0]);
+        if (decTex && Impl::s_dev) {
+            Microsoft::WRL::ComPtr<IDXGIResource> res;
+            HANDLE shareH = nullptr;
+            if (SUCCEEDED(decTex->QueryInterface(__uuidof(IDXGIResource), (void**)&res)) &&
+                SUCCEEDED(res->GetSharedHandle(&shareH)) && shareH &&
+                SUCCEEDED(Impl::s_dev->OpenSharedResource(shareH, __uuidof(ID3D11Texture2D),
+                                                          (void**)&sharedTex))) {
+                sharedOk = true;
+            }
+        }
+        if (!sharedOk) {
+            av_frame_unref(frame);
+            av_frame_free(&frame);
+            break;
+        }
+
+        // 三槽轮换：先释放最旧槽（已 flush 且 curImage 已切走，无引用），
+        // 再渲染新帧到当前槽并更新显示帧。
+        p->releaseSlot(p->slots[(p->slotCur + 1) % 3]);
+        int slice = static_cast<int>(reinterpret_cast<intptr_t>(frame->data[1]));
+        bool ok = p->makeImageFromHwFrame(sharedTex.Get(), slice, frame, p->slots[p->slotCur]);
+        if (ok) {
+            p->curImage = p->slots[p->slotCur].image;
+            p->framesShown++;
+            g_totalShownAll++;
+        }
+        p->slotCur = (p->slotCur + 1) % 3;
+        av_frame_unref(frame);
+        av_frame_free(&frame);
+        needDraw = true;
+
+        long long shown = p->framesShown.load();
+        if (shown <= 5 || shown % 300 == 0) {
+            printf("HwVideoPlayerView: rendered %lld frames on GPU (zero-copy) | decoded %lld | %s\n",
+                   shown, p->framesDecoded.load(), p->status.c_str());
         }
     }
 

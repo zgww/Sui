@@ -1,10 +1,14 @@
 // ============================================================================
-// main.cpp —— fui + HwVideoPlayerView 全 GPU 视频播放演示
+// main.cpp —— fui + HwVideoPlayerView 全 GPU 视频播放演示（支持多路并发）
 // ----------------------------------------------------------------------------
 // 用法：
-//   fui_hw_video_player.exe [mediaUrl]
-//   mediaUrl 可以是本地文件路径或 http(s):// 网络流地址。
-//   不传参数时播放默认测试视频。
+//   fui_hw_video_player.exe [mediaUrl] [count]
+//     mediaUrl : 本地文件路径或 http(s):// 网络流地址（默认播放测试视频）
+//     count    : 并发播放实例数（默认 1；count>1 时网格平铺同时播放）
+//   示例：
+//     fui_hw_video_player.exe E:\...\oceans.mp4           单路
+//     fui_hw_video_player.exe E:\...\oceans.mp4 40        40 路同时播放
+//     fui_hw_video_player.exe https://.../v.mp4 40        40 路 URL 播放
 //
 // 全链路 GPU 加速（解码 -> 渲染不经过 CPU）：
 //   输入媒体 URL
@@ -17,18 +21,20 @@
 #include <Windows.h>
 #include <cstdio>
 #include <string>
+#include <vector>
 
 #include "Core/App.h"
 #include "Core/Window.h"
 #include "Urgc/Urgc.h"
+#include "Layout/RowWrap.h"
 
 #include "HwVideoPlayerView.h"
 
-static void runPlayer(const std::string& mediaUrl) {
+static void runPlayer(const std::string& mediaUrl, int count) {
     SetConsoleOutputCP(65001);
     setvbuf(stdout, nullptr, _IONBF, 0);
     setvbuf(stderr, nullptr, _IONBF, 0);
-    printf("[main] step 1: start\n");
+    printf("[main] step 1: start (count=%d)\n", count);
 
     urgc.start_process_thread();
     printf("[main] step 2: urgc started\n");
@@ -46,41 +52,76 @@ static void runPlayer(const std::string& mediaUrl) {
 
     Ref<Window> win{ new Window() };
     printf("[main] step 5: window created\n");
-    Ref<HwVideoPlayerView> player{ new HwVideoPlayerView() };
-    printf("[main] step 6: player created\n");
 
-    win->setRootView(player.get());
-    win->setTitle("fui HwVideoPlayerView - FFmpeg D3D11VA -> Skia GPU (zero-copy)");
-    win->setSize(1280, 720);
+    // ---- 多路并发：RowWrap 网格平铺 ----
+    std::vector<Ref<HwVideoPlayerView>> players;
+    Ref<RowWrap> root{ new RowWrap() };
+
+    const float cw = 256.0f, ch = 144.0f;   // 每格 256x144（16:9）
+    const float gap = 4.0f;
+    const int   cols = (count <= 1) ? 1 : 8;
+    const int   rows = (count <= 1) ? 1 : (count + cols - 1) / cols;
+    const int   winW = (int)(cols * cw + (cols - 1) * gap) + 16;
+    const int   winH = (int)(rows * ch + (rows - 1) * gap) + 48;
+
+    root->width = (float)winW;
+    root->height = (float)winH;
+    root->rowGap = gap;
+    root->colGap = gap;
+    root->backgroundColor = 0xff101010;
+
+    int okCount = 0;
+    for (int i = 0; i < count; i++) {
+        Ref<HwVideoPlayerView> player{ new HwVideoPlayerView() };
+        player->width = cw;
+        player->height = ch;
+        player->setFitMode(1);
+        root->appendChild(player.get());
+        players.push_back(player);
+        if (player->open(mediaUrl)) {
+            okCount++;
+        } else {
+            printf("[main] player[%d] open failed: %s\n", i, player->getStatusText().c_str());
+        }
+    }
+    printf("[main] step 6: opened %d/%d players\n", okCount, count);
+
+    win->setRootView(root.get());
+    win->setTitle(std::format("fui HwVideoPlayerView x{} - FFmpeg D3D11VA -> Skia GPU (zero-copy)", count).c_str());
+    win->setSize(winW, winH);
     win->moveToCenter();
     win->show();
-    printf("[main] step 7: window shown\n");
+    printf("[main] step 7: window shown %dx%d\n", winW, winH);
 
     printf("input media: %s\n", mediaUrl.c_str());
-    if (!player->open(mediaUrl)) {
-        printf("FATAL: open failed. status=%s\n", player->getStatusText().c_str());
-    } else {
-        printf("playing. video=%dx%d\n", player->getVideoWidth(), player->getVideoHeight());
-        printf("pipeline: D3D11VA hw-decode -> EGLImage zero-copy -> Skia GPU render (no CPU pixel path)\n");
-
-        // 验证用：播放 3 秒后从窗口 GL 表面读回一帧存 BMP（确认 GPU 画面真实渲染）。
-        // 注意：Timer 由 TimerMgr 全局列表持有，局部变量块结束即析构会留下
-        // 悬垂指针（后台 tick 线程访问已回收 Timer → UB 并停掉其他 Timer），
-        // 因此必须用 static 保活到进程结束。
-        // fui TimerMgr 复合遍历已加整体锁（g_timerMutex），多 Timer 并发安全。
-        static Ref<Timer> g_capTimer;
-        g_capTimer = mkTimerInterval(CLOSURE([=]() {
-            static int capDone = 0;
-            if (!capDone && player->getVideoWidth() > 0) {
-                capDone = 1;
-                player->saveCurrentFrame("frame_capture.bmp");
-            }
-        }), 3000);
-    }
+    printf("pipeline: D3D11VA hw-decode -> EGLImage zero-copy -> Skia GPU render (no CPU pixel path)\n");
     printf("[main] step 8: enter event loop\n");
 
+    // 统计 Timer：每 5 秒打印全实例累计渲染帧数与帧率（static 保活，避免 TimerMgr 悬垂）
+    static Ref<Timer> g_statTimer;
+    g_statTimer = mkTimerInterval(CLOSURE([=]() {
+        static long long lastTotal = 0;
+        static double lastSec = 0.0;
+        static int capAt = 0;
+        long long total = HwVideoPlayerView::totalShownAll();
+        double now = (double)GetTickCount64() / 1000.0;
+        double dt = now - lastSec;
+        if (dt >= 5.0) {
+            double fpsAll = (total - lastTotal) / dt;
+            printf("[stat] instances=%d totalShown=%lld allFps=%.1f perInstance=%.1f fps\n",
+                   HwVideoPlayerView::instanceCount(), total, fpsAll,
+                   fpsAll / (HwVideoPlayerView::instanceCount() > 0 ? HwVideoPlayerView::instanceCount() : 1));
+            lastTotal = total;
+            lastSec = now;
+            // 验证：首个统计点后截一次整窗网格画面（40 路异步解码/OpenSharedResource 版）
+            if (++capAt == 2 && !players.empty() && players[0].get() != nullptr) {
+                players[0]->saveCurrentFrame("E:\\ws\\Sui\\fui\\fui_hw_video_player\\grid_capture.bmp");
+            }
+        }
+    }), 1000);
+
     win->onClosed = CLOSURE([=](Window* w) {
-        printf("window closed. status=%s\n", player->getStatusText().c_str());
+        printf("window closed. totalShown=%lld\n", HwVideoPlayerView::totalShownAll());
     });
 
     app->runEventLoop();
@@ -88,9 +129,11 @@ static void runPlayer(const std::string& mediaUrl) {
 
 int main(int argc, char* argv[]) {
     const char* url = "E:\\ws\\Sui\\fui\\SkiaDrawOpencvFrame\\oceans.mp4";
-    if (argc > 1) {
-        url = argv[1];
-    }
-    runPlayer(url);
+    int count = 50;
+    if (argc > 1) url = argv[1];
+    if (argc > 2) count = atoi(argv[2]);
+    if (count < 1) count = 1;
+    if (count > 100) count = 100;
+    runPlayer(url, count);
     return 0;
 }

@@ -63,6 +63,10 @@ public:
     static bool ensureSharedGpuDevice();
     static void* sharedD3D11Device();
 
+    // 全部实例累计渲染帧数（多视图并发验证用，主线程安全）
+    static long long totalShownAll();
+    static int instanceCount();
+
     // 全屏/拉伸模式（默认 contain 等比缩放居中）
     void setFitMode(int mode);   // 0=contain  1=fill(拉伸铺满)
     int getFitMode() const { return _fitMode; }

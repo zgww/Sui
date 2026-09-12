@@ -1,0 +1,910 @@
+[main] step 1: start (count=40)
+[main] step 2: urgc started
+[main] step 3: App_use ok
+HwVideoPlayerView: shared D3D11 device created (0x000001DE9565D1D8, feature 0xb100) and injected into fui
+[main] step 4: shared gpu device injected
+[main] step 5: window created
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+T1789183439549#   48-   0I0 处理事件[31]结束, 耗时:1 ms 0ms. cost ref:20,17us, deref:11, 3us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.010248
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+T1789183440847#   88-   0I0 处理事件[19]结束, 耗时:1 ms 0ms. cost ref:14,22us, deref:5, 5us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.019016
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HEAP summary:5:
+	分配:39
+	提交:43
+	保留:51
+	最大:51
+#  203-   0I0 
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+HwVideoPlayerView: container=mov,mp4,m4a,3gp,3g2,mj2 | 960x400 | yuv420p
+HwVideoPlayerView: hw decode h264 via D3D11VA (pix_fmt=d3d11)
+HwVideoPlayerView: video 960x400, target 23.98 fps
+HwVideoPlayerView: opened, video=960x400 (decode+render on UI thread, zero-copy GPU)
+[main] step 6: opened 40/40 players
+取得窗口焦点:00000000000C08BE
+取得窗口 焦点。。。。
+[main] step 7: window shown 2092x784
+input media: E:\ws\Sui\fui\SkiaDrawOpencvFrame\oceans.mp4
+pipeline: D3D11VA hw-decode -> EGLImage zero-copy -> Skia GPU render (no CPU pixel path)
+[main] step 8: enter event loop
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+T1789183445134#  215-   0I0 处理事件[131]结束, 耗时:1 ms 0ms. cost ref:88,63us, deref:43, 6us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046088
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+T1789183445693#  215-   0I0 处理事件[2]结束, 耗时:1 ms 0ms. cost ref:1,3us, deref:1, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046088
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HEAP summary:5:
+	分配:96
+	提交:101
+	保留:116
+	最大:116
+#  215-   0I0 
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+HwVideoPlayerView: rendered 1 frames on GPU (zero-copy) | decoded 1 | playing
+HwVideoPlayerView: rendered 2 frames on GPU (zero-copy) | decoded 2 | playing
+HwVideoPlayerView: rendered 3 frames on GPU (zero-copy) | decoded 3 | playing
+HwVideoPlayerView: rendered 4 frames on GPU (zero-copy) | decoded 4 | playing
+HwVideoPlayerView: rendered 5 frames on GPU (zero-copy) | decoded 5 | playing
+[perf] avg decode=1.95ms  makeImage=0.14ms  (40-view load)
+[stat] instances=40 totalShown=720 allFps=0.1 perInstance=0.0 fps
+[perf] avg decode=2.42ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=2.84ms  makeImage=0.09ms  (40-view load)
+HEAP summary:5:
+	分配:123
+	提交:130
+	保留:147
+	最大:147
+#  216-   0I0 
+T1789183457425#  216-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,7us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+T1789183457705#  216-   0I0 处理事件[167]结束, 耗时:1 ms 0ms. cost ref:84,38us, deref:83, 10us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.37ms  makeImage=0.10ms  (40-view load)
+T1789183458106#  216-   0I0 处理事件[4]结束, 耗时:1 ms 0ms. cost ref:2,2us, deref:2, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+T1789183459061#  216-   0I0 处理事件[167]结束, 耗时:1 ms 0ms. cost ref:84,34us, deref:83, 19us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.69ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.56ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=2640 allFps=340.4 perInstance=8.5 fps
+[perf] avg decode=3.06ms  makeImage=0.11ms  (40-view load)
+T1789183462580#  216-   0I0 处理事件[173]结束, 耗时:1 ms 0ms. cost ref:86,70us, deref:87, 16us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.32ms  makeImage=0.11ms  (40-view load)
+T1789183463230#  216-   0I0 处理事件[165]结束, 耗时:1 ms 0ms. cost ref:83,47us, deref:82, 30us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.49ms  makeImage=0.14ms  (40-view load)
+HEAP summary:5:
+	分配:123
+	提交:130
+	保留:147
+	最大:147
+#  216-   0I0 
+[perf] avg decode=2.37ms  makeImage=0.11ms  (40-view load)
+T1789183465182#  216-   0I0 处理事件[169]结束, 耗时:1 ms 0ms. cost ref:84,48us, deref:85, 68us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.49ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=4560 allFps=371.2 perInstance=9.3 fps
+HwVideoPlayerView: saved frame capture to grid_capture.bmp (2076x745)
+[perf] avg decode=2.38ms  makeImage=0.12ms  (40-view load)
+T1789183467764#  216-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,2us, deref:4, 32us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+T1789183468229#  216-   0I0 处理事件[6]结束, 耗时:1 ms 0ms. cost ref:3,1us, deref:3, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.51ms  makeImage=0.13ms  (40-view load)
+T1789183469367#  216-   0I0 处理事件[172]结束, 耗时:1 ms 0ms. cost ref:85,34us, deref:87, 11us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.69ms  makeImage=0.09ms  (40-view load)
+T1789183470016#  216-   0I0 处理事件[169]结束, 耗时:1 ms 0ms. cost ref:85,28us, deref:84, 15us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.62ms  makeImage=0.09ms  (40-view load)
+HEAP summary:5:
+	分配:126
+	提交:143
+	保留:147
+	最大:147
+#  216-   0I0 
+T1789183471394#  216-   0I0 处理事件[168]结束, 耗时:1 ms 0ms. cost ref:84,34us, deref:84, 14us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.51ms  makeImage=0.09ms  (40-view load)
+[stat] instances=40 totalShown=6480 allFps=331.2 perInstance=8.3 fps
+[perf] avg decode=2.93ms  makeImage=0.09ms  (40-view load)
+T1789183473654#  216-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,7us, deref:4, 4us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.69ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.52ms  makeImage=0.09ms  (40-view load)
+T1789183476175#  216-   0I0 处理事件[171]结束, 耗时:1 ms 0ms. cost ref:85,34us, deref:86, 15us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.18ms  makeImage=0.14ms  (40-view load)
+HEAP summary:5:
+	分配:123
+	提交:143
+	保留:147
+	最大:147
+#  216-   0I0 
+[perf] avg decode=2.43ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=8400 allFps=361.4 perInstance=9.0 fps
+[perf] avg decode=2.41ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.30ms  makeImage=0.12ms  (40-view load)
+[perf] avg decode=2.47ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=2.50ms  makeImage=0.11ms  (40-view load)
+[stat] instances=40 totalShown=10320 allFps=379.2 perInstance=9.5 fps
+[perf] avg decode=2.25ms  makeImage=0.11ms  (40-view load)
+HEAP summary:5:
+	分配:127
+	提交:143
+	保留:147
+	最大:147
+#  216-   0I0 
+[perf] avg decode=2.72ms  makeImage=0.10ms  (40-view load)
+T1789183483991#  216-   0I0 处理事件[168]结束, 耗时:1 ms 0ms. cost ref:83,27us, deref:85, 14us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.34ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.65ms  makeImage=0.14ms  (40-view load)
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+[perf] avg decode=2.55ms  makeImage=0.11ms  (40-view load)
+HwVideoPlayerView: rendered 300 frames on GPU (zero-copy) | decoded 300 | playing
+[stat] instances=40 totalShown=12240 allFps=262.0 perInstance=6.6 fps
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  216-   0I0 
+[perf] avg decode=2.61ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=3.04ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.60ms  makeImage=0.10ms  (40-view load)
+T1789183492808#  216-   0I0 处理事件[165]结束, 耗时:1 ms 0ms. cost ref:83,39us, deref:82, 16us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.45ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.52ms  makeImage=0.11ms  (40-view load)
+T1789183495443#  216-   0I0 处理事件[167]结束, 耗时:1 ms 0ms. cost ref:84,63us, deref:83, 18us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.50ms  makeImage=0.09ms  (40-view load)
+[stat] instances=40 totalShown=14400 allFps=346.5 perInstance=8.7 fps
+HEAP summary:5:
+	分配:127
+	提交:145
+	保留:163
+	最大:163
+#  216-   0I0 
+[perf] avg decode=2.71ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=2.30ms  makeImage=0.12ms  (40-view load)
+[perf] avg decode=2.44ms  makeImage=0.10ms  (40-view load)
+T1789183499434#  216-   0I0 处理事件[163]结束, 耗时:1 ms 0ms. cost ref:82,22us, deref:81, 9us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.44ms  makeImage=0.13ms  (40-view load)
+[stat] instances=40 totalShown=16320 allFps=362.5 perInstance=9.1 fps
+[perf] avg decode=2.58ms  makeImage=0.09ms  (40-view load)
+T1789183502131#  216-   0I0 处理事件[167]结束, 耗时:1 ms 0ms. cost ref:84,53us, deref:83, 20us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+T1789183502596#  216-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,3us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.49ms  makeImage=0.09ms  (40-view load)
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  216-   0I0 
+[perf] avg decode=2.44ms  makeImage=0.13ms  (40-view load)
+[perf] avg decode=2.62ms  makeImage=0.11ms  (40-view load)
+T1789183505660#  216-   0I0 处理事件[8]结束, 耗时:0 ms 1ms. cost ref:4,3us, deref:4, 3us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.45ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=18240 allFps=358.3 perInstance=9.0 fps
+[perf] avg decode=2.48ms  makeImage=0.13ms  (40-view load)
+[perf] avg decode=2.24ms  makeImage=0.12ms  (40-view load)
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  216-   0I0 
+[perf] avg decode=2.70ms  makeImage=0.12ms  (40-view load)
+T1789183509888#  216-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,3us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[perf] avg decode=2.55ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.34ms  makeImage=0.12ms  (40-view load)
+T1789183511547#  216-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,3us, deref:4, 18us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046184
+[stat] instances=40 totalShown=20160 allFps=367.9 perInstance=9.2 fps
+[perf] avg decode=2.76ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.60ms  makeImage=0.12ms  (40-view load)
+mouse enter:
+mouse enter:
+[perf] avg decode=2.27ms  makeImage=0.12ms  (40-view load)
+T1789183515369#  219-   0I0 处理事件[168]结束, 耗时:1 ms 0ms. cost ref:84,39us, deref:84, 7us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+HEAP summary:5:
+	分配:127
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.42ms  makeImage=0.11ms  (40-view load)
+丢失窗口焦点:00000000000C08BE
+丢失窗口 焦点。。。。
+T1789183516034#  219-   0I0 处理事件[168]结束, 耗时:1 ms 0ms. cost ref:83,56us, deref:85, 18us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.43ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=22080 allFps=357.2 perInstance=8.9 fps
+[perf] avg decode=2.56ms  makeImage=0.14ms  (40-view load)
+[perf] avg decode=2.68ms  makeImage=0.12ms  (40-view load)
+T1789183520433#  219-   0I0 处理事件[4]结束, 耗时:1 ms 0ms. cost ref:2,3us, deref:2, 1us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.65ms  makeImage=0.12ms  (40-view load)
+[perf] avg decode=2.31ms  makeImage=0.12ms  (40-view load)
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+T1789183522260#  219-   0I0 处理事件[167]结束, 耗时:1 ms 0ms. cost ref:84,38us, deref:83, 14us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+T1789183524039#  219-   0I0 处理事件[2]结束, 耗时:1 ms 0ms. cost ref:1,3us, deref:1, 1us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+[perf] avg decode=3.01ms  makeImage=0.10ms  (40-view load)
+HwVideoPlayerView: rendered 600 frames on GPU (zero-copy) | decoded 600 | playing
+[stat] instances=40 totalShown=24000 allFps=252.3 perInstance=6.3 fps
+取得窗口焦点:00000000000C08BE
+取得窗口 焦点。。。。
+mouse leave:
+mouse enter:
+[perf] avg decode=2.64ms  makeImage=0.09ms  (40-view load)
+T1789183526329#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,4us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+丢失窗口焦点:00000000000C08BE
+丢失窗口 焦点。。。。
+T1789183527121#  219-   0I0 处理事件[171]结束, 耗时:1 ms 0ms. cost ref:85,34us, deref:86, 11us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.46ms  makeImage=0.11ms  (40-view load)
+T1789183527708#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,4us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+T1789183528111#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,3us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.40ms  makeImage=0.10ms  (40-view load)
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.66ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=25920 allFps=351.1 perInstance=8.8 fps
+T1789183530487#  219-   0I0 处理事件[165]结束, 耗时:1 ms 0ms. cost ref:82,47us, deref:83, 12us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.45ms  makeImage=0.11ms  (40-view load)
+T1789183531445#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,1us, deref:4, 4us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+T1789183531788#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,6us, deref:4, 4us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.75ms  makeImage=0.11ms  (40-view load)
+T1789183532563#  219-   0I0 处理事件[169]结束, 耗时:1 ms 0ms. cost ref:85,43us, deref:84, 12us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.43ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.64ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.91ms  makeImage=0.10ms  (40-view load)
+HEAP summary:5:
+	分配:127
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[stat] instances=40 totalShown=27840 allFps=340.4 perInstance=8.5 fps
+T1789183536170#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,6us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.68ms  makeImage=0.10ms  (40-view load)
+T1789183537332#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,5us, deref:4, 1us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.46ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=2.77ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.69ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.41ms  makeImage=0.11ms  (40-view load)
+[stat] instances=40 totalShown=29760 allFps=341.3 perInstance=8.5 fps
+T1789183541698#  219-   0I0 处理事件[4]结束, 耗时:1 ms 0ms. cost ref:2,4us, deref:2, 7us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.80ms  makeImage=0.09ms  (40-view load)
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.64ms  makeImage=0.10ms  (40-view load)
+T1789183543703#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,12us, deref:4, 11us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.63ms  makeImage=0.13ms  (40-view load)
+[perf] avg decode=2.29ms  makeImage=0.12ms  (40-view load)
+[perf] avg decode=2.47ms  makeImage=0.13ms  (40-view load)
+[stat] instances=40 totalShown=31680 allFps=360.4 perInstance=9.0 fps
+[perf] avg decode=2.22ms  makeImage=0.13ms  (40-view load)
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.84ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.36ms  makeImage=0.12ms  (40-view load)
+T1789183550857#  219-   0I0 处理事件[10]结束, 耗时:1 ms 0ms. cost ref:5,2us, deref:5, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+T1789183551074#  219-   0I0 处理事件[175]结束, 耗时:1 ms 0ms. cost ref:87,27us, deref:88, 7us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.42ms  makeImage=0.13ms  (40-view load)
+[perf] avg decode=2.50ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=33600 allFps=362.5 perInstance=9.1 fps
+[perf] avg decode=2.39ms  makeImage=0.13ms  (40-view load)
+T1789183553644#  219-   0I0 处理事件[171]结束, 耗时:1 ms 0ms. cost ref:85,76us, deref:86, 22us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.68ms  makeImage=0.10ms  (40-view load)
+T1789183554973#  219-   0I0 处理事件[173]结束, 耗时:1 ms 0ms. cost ref:86,39us, deref:87, 12us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.58ms  makeImage=0.10ms  (40-view load)
+T1789183556344#  219-   0I0 处理事件[173]结束, 耗时:1 ms 0ms. cost ref:86,74us, deref:87, 18us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.69ms  makeImage=0.09ms  (40-view load)
+[stat] instances=40 totalShown=35520 allFps=355.2 perInstance=8.9 fps
+[perf] avg decode=2.40ms  makeImage=0.10ms  (40-view load)
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+[perf] avg decode=2.59ms  makeImage=0.10ms  (40-view load)
+HwVideoPlayerView: rendered 900 frames on GPU (zero-copy) | decoded 900 | playing
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.77ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.41ms  makeImage=0.10ms  (40-view load)
+[stat] instances=40 totalShown=36960 allFps=240.0 perInstance=6.0 fps
+[perf] avg decode=2.60ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.75ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=2.22ms  makeImage=0.13ms  (40-view load)
+[perf] avg decode=2.43ms  makeImage=0.11ms  (40-view load)
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.72ms  makeImage=0.11ms  (40-view load)
+[stat] instances=40 totalShown=38880 allFps=358.2 perInstance=9.0 fps
+T1789183569250#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,2us, deref:4, 1us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.87ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.42ms  makeImage=0.10ms  (40-view load)
+[perf] avg decode=2.66ms  makeImage=0.13ms  (40-view load)
+T1789183573186#  219-   0I0 处理事件[171]结束, 耗时:1 ms 0ms. cost ref:85,52us, deref:86, 10us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.43ms  makeImage=0.12ms  (40-view load)
+HEAP summary:5:
+	分配:126
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.80ms  makeImage=0.11ms  (40-view load)
+[stat] instances=40 totalShown=40800 allFps=342.3 perInstance=8.6 fps
+T1789183575687#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,21us, deref:4, 3us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.38ms  makeImage=0.10ms  (40-view load)
+T1789183576900#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,4us, deref:4, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.66ms  makeImage=0.11ms  (40-view load)
+[perf] avg decode=2.33ms  makeImage=0.12ms  (40-view load)
+[perf] avg decode=2.53ms  makeImage=0.09ms  (40-view load)
+[stat] instances=40 totalShown=42720 allFps=361.4 perInstance=9.0 fps
+[perf] avg decode=2.49ms  makeImage=0.11ms  (40-view load)
+HEAP summary:5:
+	分配:128
+	提交:145
+	保留:163
+	最大:163
+#  219-   0I0 
+[perf] avg decode=2.54ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=2.59ms  makeImage=0.09ms  (40-view load)
+[perf] avg decode=2.41ms  makeImage=0.10ms  (40-view load)
+T1789183584163#  219-   0I0 处理事件[8]结束, 耗时:1 ms 0ms. cost ref:4,5us, deref:4, 3us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+T1789183584317#  219-   0I0 处理事件[20]结束, 耗时:1 ms 0ms. cost ref:10,3us, deref:10, 2us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.046352
+[perf] avg decode=2.31ms  makeImage=0.12ms  (40-view load)
+[stat] instances=40 totalShown=44640 allFps=366.8 perInstance=9.2 fps
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HwVideoPlayerView: playback ended, total frames rendered: 1116
+HEAP summary:5:
+	分配:121
+	提交:145
+	保留:163
+	最大:163
+#  139-   0I0 
+[stat] instances=40 totalShown=44640 allFps=0.0 perInstance=0.0 fps
+HEAP summary:5:
+	分配:121
+	提交:145
+	保留:163
+	最大:163
+#  139-   0I0 
+[stat] instances=40 totalShown=44640 allFps=0.0 perInstance=0.0 fps
+HEAP summary:5:
+	分配:121
+	提交:145
+	保留:163
+	最大:163
+#  139-   0I0 
+[stat] instances=40 totalShown=44640 allFps=0.0 perInstance=0.0 fps
+mouse leave:
+mouse enter:
+T1789183604551#  139-  13I0 处理事件[44]结束, 耗时:1 ms 0ms. cost ref:26,25us, deref:18, 20us guard:0, 0us degurad:0, 0us setDeleter:0, 0us  gcObjSize(MB):0.038672
+取得窗口焦点:00000000000C08BE
+取得窗口 焦点。。。。
+HEAP summary:5:
+	分配:121
+	提交:145
+	保留:163
+	最大:163
+#  139-   0I0 
+[stat] instances=40 totalShown=44640 allFps=0.0 perInstance=0.0 fps
+[stat] instances=40 totalShown=44640 allFps=0.0 perInstance=0.0 fps
+HEAP summary:5:
+	分配:121
+	提交:145
+	保留:163
+	最大:163
+#  139-   0I0 
+丢失窗口焦点:00000000000C08BE
+丢失窗口 焦点。。。。
+window closed. totalShown=44640
+App.windows.size == 0   
