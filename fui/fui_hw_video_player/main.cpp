@@ -113,9 +113,12 @@ static void runPlayer(const std::string& mediaUrl, int count) {
                    fpsAll / (HwVideoPlayerView::instanceCount() > 0 ? HwVideoPlayerView::instanceCount() : 1));
             lastTotal = total;
             lastSec = now;
-            // 验证：首个统计点后截一次整窗网格画面（40 路异步解码/OpenSharedResource 版）
+            // 验证：不同播放时刻各截一次（对比 EGLImage 缓存内容是否跟随更新）
             if (++capAt == 2 && !players.empty() && players[0].get() != nullptr) {
-                players[0]->saveCurrentFrame("E:\\ws\\Sui\\fui\\fui_hw_video_player\\grid_capture.bmp");
+                players[0]->saveCurrentFrame("E:\\ws\\Sui\\fui\\fui_hw_video_player\\capA.bmp");
+            }
+            if (capAt == 3 && !players.empty() && players[0].get() != nullptr) {
+                players[0]->saveCurrentFrame("E:\\ws\\Sui\\fui\\fui_hw_video_player\\capB.bmp");
             }
         }
     }), 1000);

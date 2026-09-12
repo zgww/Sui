@@ -83,8 +83,11 @@ extern "C" {
 #include <cstdio>
 #include <cstring>
 #include <deque>
+#include <map>
+#include <memory>
 #include <mutex>
 #include <thread>
+#include <unordered_map>
 
 // ============================ 常量与工具 =====================================
 
@@ -144,18 +147,31 @@ struct HwVideoPlayerView::Impl {
     // 被释放的槽必定"已在上一次 endFrame flushAndSubmit 完成绘制"且
     // "curImage 已切走（无 SkImage 引用）"，避免提前删除 GPU 仍在使用的纹理
     // （NVIDIA 驱动 nvwgf2umx 对此类 use-after-delete 直接崩溃 0xC0000005）。
-    struct Slot {
-        AVFrame*     hwFrame = nullptr;      // 引用解码帧（保纹理缓冲不被复用）
+    //
+    // 缓存化（零重建）：d3d11va 解码帧池是固定 ~N 个共享纹理循环复用，
+    // 同一 (共享纹理, slice) 的 EGLImage/GL 纹理/SkImage 建一次后常驻缓存
+    // （EGLImage 锚定的是 D3D11 纹理对象，内容由 GPU 更新自动跟随，无需重建）。
+    // 三槽只负责"持有 AVFrame 引用"防止解码器复用未渲染完的帧池纹理。
+    struct CachedSlot {                       // 常驻缓存项（锚定一个帧池纹理切片）
         EGLImageKHR  yImg  = EGL_NO_IMAGE_KHR;
         EGLImageKHR  uvImg = EGL_NO_IMAGE_KHR;
         GLuint       yTex = 0;
         GLuint       uvTex = 0;
         sk_sp<SkImage> image;
     };
+    struct Slot {
+        AVFrame*     hwFrame = nullptr;       // 引用解码帧（保纹理缓冲不被复用）
+        std::shared_ptr<CachedSlot> cs;       // 指向缓存项（常驻，不随帧销毁）
+    };
     Slot slots[3];
     int  slotCur = 0;
-    sk_sp<SkImage> curImage;                 // 当前显示帧（引用 slots 中某一帧的图像）
+    sk_sp<SkImage> curImage;                  // 当前显示帧（引用缓存项中的图像）
     int64_t lastFrameUs = 0;
+
+    // 帧池纹理缓存（仅主线程访问）：(共享纹理指针, 数组切片) -> 常驻 EGLImage/GL/SkImage
+    std::map<std::pair<ID3D11Texture2D*, int>, std::shared_ptr<CachedSlot>> texCache;
+    // 共享 handle -> 共享设备纹理（OpenSharedResource 结果缓存，保证指针稳定）
+    std::unordered_map<HANDLE, Microsoft::WRL::ComPtr<ID3D11Texture2D>> sharedTexCache;
 
     // ---- FFmpeg（open 时在主线程创建，close 时主线程清理）----
     AVFormatContext* fmtCtx = nullptr;
@@ -442,38 +458,49 @@ bool HwVideoPlayerView::Impl::makeImageFromHwFrame(ID3D11Texture2D* tex, int sli
     if (!slot.hwFrame) return false;
     av_frame_ref(slot.hwFrame, hwFrame);
 
-    // GPU 零拷贝：共享设备上的 D3D11 纹理 -> ANGLE EGLImage（Y/UV 两个平面，数组切片）
+    // 缓存命中：同一 (共享纹理, slice) 的 EGLImage/GL/SkImage 建一次常驻复用。
+    // EGLImage 锚定 D3D11 纹理对象，帧池内容由 GPU 解码更新自动跟随，无需重建。
+    auto key = std::make_pair(tex, slice);
+    auto it = texCache.find(key);
+    if (it != texCache.end()) {
+        slot.cs = it->second;
+        if (slot.cs->image) return true;          // 完整命中（EGLImage/GL/SkImage 都在）
+        slot.cs.reset();                          // 不完整缓存项：重建
+    }
+
+    // 未命中：创建 EGLImage Y/UV（GPU 零拷贝，锚定 D3D11 纹理数组切片）
+    auto cs = std::make_shared<CachedSlot>();
     EGLint yAttrs[]  = { EGL_D3D11_TEXTURE_PLANE_ANGLE, 0,
                          EGL_D3D11_TEXTURE_ARRAY_SLICE_ANGLE, slice, EGL_NONE };
     EGLint uvAttrs[] = { EGL_D3D11_TEXTURE_PLANE_ANGLE, 1,
                          EGL_D3D11_TEXTURE_ARRAY_SLICE_ANGLE, slice, EGL_NONE };
-    slot.yImg = eglCreateImageKHR(display, EGL_NO_CONTEXT, EGL_D3D11_TEXTURE_ANGLE,
-                                  reinterpret_cast<EGLClientBuffer>(tex), yAttrs);
-    if (slot.yImg == EGL_NO_IMAGE_KHR) {
+    cs->yImg = eglCreateImageKHR(display, EGL_NO_CONTEXT, EGL_D3D11_TEXTURE_ANGLE,
+                                 reinterpret_cast<EGLClientBuffer>(tex), yAttrs);
+    if (cs->yImg == EGL_NO_IMAGE_KHR) {
         printf("HwVideoPlayerView: eglCreateImageKHR(Y) failed 0x%x\n", eglGetError());
-        releaseSlot(slot);
         return false;
     }
-    slot.uvImg = eglCreateImageKHR(display, EGL_NO_CONTEXT, EGL_D3D11_TEXTURE_ANGLE,
-                                   reinterpret_cast<EGLClientBuffer>(tex), uvAttrs);
-    if (slot.uvImg == EGL_NO_IMAGE_KHR) {
+    cs->uvImg = eglCreateImageKHR(display, EGL_NO_CONTEXT, EGL_D3D11_TEXTURE_ANGLE,
+                                  reinterpret_cast<EGLClientBuffer>(tex), uvAttrs);
+    if (cs->uvImg == EGL_NO_IMAGE_KHR) {
         printf("HwVideoPlayerView: eglCreateImageKHR(UV) failed 0x%x\n", eglGetError());
-        releaseSlot(slot);
+        eglDestroyImageKHR(display, cs->yImg);
+        cs->yImg = EGL_NO_IMAGE_KHR;
         return false;
     }
 
     // EGLImage -> GL 纹理（Y: R8，UV: RG8，NV12 平面 1 尺寸减半）
-    glGenTextures(1, &slot.yTex);
-    glBindTexture(GL_TEXTURE_2D, slot.yTex);
-    glEGLImageTargetTexture2DOES(GL_TEXTURE_2D, slot.yImg);
+    glGenTextures(1, &cs->yTex);
+    glBindTexture(GL_TEXTURE_2D, cs->yTex);
+    glEGLImageTargetTexture2DOES(GL_TEXTURE_2D, cs->yImg);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-    glGenTextures(1, &slot.uvTex);
-    glBindTexture(GL_TEXTURE_2D, slot.uvTex);
-    glEGLImageTargetTexture2DOES(GL_TEXTURE_2D, slot.uvImg);
+    glGenTextures(1, &cs->uvTex);
+    glBindTexture(GL_TEXTURE_2D, cs->uvTex);
+    glEGLImageTargetTexture2DOES(GL_TEXTURE_2D, cs->uvImg);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -486,13 +513,12 @@ bool HwVideoPlayerView::Impl::makeImageFromHwFrame(ID3D11Texture2D* tex, int sli
     // 不要再给 GrBackendFormats::MakeGL 传 GL_RED/GL_RG 外部格式（会 abort）。
     int vw = videoW.load(), vh = videoH.load();
     if (vw <= 0 || vh <= 0) {
-        releaseSlot(slot);
         return false;
     }
     GrGLTextureInfo yInfo{};
-    yInfo.fTarget = GL_TEXTURE_2D; yInfo.fID = slot.yTex;  yInfo.fFormat = GL_R8;
+    yInfo.fTarget = GL_TEXTURE_2D; yInfo.fID = cs->yTex;  yInfo.fFormat = GL_R8;
     GrGLTextureInfo uvInfo{};
-    uvInfo.fTarget = GL_TEXTURE_2D; uvInfo.fID = slot.uvTex; uvInfo.fFormat = GL_RG8;
+    uvInfo.fTarget = GL_TEXTURE_2D; uvInfo.fID = cs->uvTex; uvInfo.fFormat = GL_RG8;
 
     GrBackendTexture yBT  = GrBackendTextures::MakeGL(vw, vh, skgpu::Mipmapped::kNo, yInfo, "hwdec_y");
     GrBackendTexture uvBT = GrBackendTextures::MakeGL(vw / 2, vh / 2, skgpu::Mipmapped::kNo, uvInfo, "hwdec_uv");
@@ -504,12 +530,14 @@ bool HwVideoPlayerView::Impl::makeImageFromHwFrame(ID3D11Texture2D* tex, int sli
                         _pickYuvCs(hwFrame));
     GrYUVABackendTextures yuvaTextures(yuvaInfo, planes, kTopLeft_GrSurfaceOrigin);
 
-    slot.image = SkImages::TextureFromYUVATextures(gr, yuvaTextures);
-    if (!slot.image) {
+    cs->image = SkImages::TextureFromYUVATextures(gr, yuvaTextures);
+    if (!cs->image) {
         printf("HwVideoPlayerView: SkImages::TextureFromYUVATextures failed\n");
-        releaseSlot(slot);
         return false;
     }
+
+    texCache[key] = cs;                        // 入缓存（常驻，close 时统一销毁）
+    slot.cs = cs;
     return true;
 }
 
@@ -559,20 +587,11 @@ bool HwVideoPlayerView::saveCurrentFrame(const char* bmpPath) {
 }
 
 void HwVideoPlayerView::Impl::releaseSlot(Slot& s) {
-    s.image.reset();
-    if (s.yTex)  { glDeleteTextures(1, &s.yTex);  s.yTex = 0; }
-    if (s.uvTex) { glDeleteTextures(1, &s.uvTex); s.uvTex = 0; }
-    if (s.yImg != EGL_NO_IMAGE_KHR) {
-        EGLDisplay display = (EGLDisplay)skiaGetEGLDisplay();
-        if (display != EGL_NO_DISPLAY) eglDestroyImageKHR(display, s.yImg);
-        s.yImg = EGL_NO_IMAGE_KHR;
-    }
-    if (s.uvImg != EGL_NO_IMAGE_KHR) {
-        EGLDisplay display = (EGLDisplay)skiaGetEGLDisplay();
-        if (display != EGL_NO_DISPLAY) eglDestroyImageKHR(display, s.uvImg);
-        s.uvImg = EGL_NO_IMAGE_KHR;
-    }
+    // 缓存化后：三槽只负责释放 AVFrame 引用（放行解码器复用帧池纹理）。
+    // EGLImage/GL/SkImage 属缓存项（texCache 持有），close 时统一销毁，
+    // 不再每帧删建 —— 绘制中的 SkImage 由引用计数保护，无 use-after-delete。
     if (s.hwFrame) { av_frame_unref(s.hwFrame); av_frame_free(&s.hwFrame); }
+    s.cs.reset();
 }
 
 // ============================ 生命周期 =======================================
@@ -604,9 +623,13 @@ HwVideoPlayerView::~HwVideoPlayerView() {
         av_frame_free(&f);
     }
     p->curImage.reset();
-    p->slots[0].image.reset();
-    p->slots[1].image.reset();
-    p->slots[2].image.reset();
+    p->releaseSlot(p->slots[0]);
+    p->releaseSlot(p->slots[1]);
+    p->releaseSlot(p->slots[2]);
+    // 缓存项（EGLImage/GL/SkImage）与 EGL display 同生命周期：析构时 display 可能已销毁，
+    // 不在此释放（GPU 资源随进程退出回收），仅释放 D3D11 接口引用。
+    p->texCache.clear();
+    p->sharedTexCache.clear();
     if (p->renderFrame) { av_frame_free(&p->renderFrame); p->renderFrame = nullptr; }
     // ffmpeg 清理
     if (p->decCtx) { avcodec_free_context(&p->decCtx); p->decCtx = nullptr; }
@@ -737,6 +760,21 @@ void HwVideoPlayerView::close() {
     p->slotCur = 0;
     p->lastFrameUs = 0;
 
+    // 统一销毁帧池纹理缓存（EGLImage/GL 纹理/SkImage 常驻项）
+    EGLDisplay ed = (EGLDisplay)skiaGetEGLDisplay();
+    if (ed != EGL_NO_DISPLAY) {
+        for (auto& kv : p->texCache) {
+            Impl::CachedSlot& cs = *kv.second;
+            if (cs.yImg != EGL_NO_IMAGE_KHR) eglDestroyImageKHR(ed, cs.yImg);
+            if (cs.uvImg != EGL_NO_IMAGE_KHR) eglDestroyImageKHR(ed, cs.uvImg);
+            cs.yImg = cs.uvImg = EGL_NO_IMAGE_KHR;
+            if (cs.yTex)  { glDeleteTextures(1, &cs.yTex);  cs.yTex = 0; }
+            if (cs.uvTex) { glDeleteTextures(1, &cs.uvTex); cs.uvTex = 0; }
+        }
+    }
+    p->texCache.clear();
+    p->sharedTexCache.clear();
+
     // 释放主线程同步解码帧
     if (p->renderFrame) { av_frame_free(&p->renderFrame); p->renderFrame = nullptr; }
 
@@ -853,7 +891,8 @@ void HwVideoPlayerView::tickFrame() {
             break;
         }
 
-        // 零拷贝导入共享渲染设备：解码纹理（独立设备，SHARED）-> OpenSharedResource -> EGLImage
+        // 零拷贝导入共享渲染设备：解码纹理（独立设备，SHARED）-> OpenSharedResource -> EGLImage。
+        // 按共享 handle 缓存导入结果：同一帧池纹理的导入对象指针稳定，EGLImage 缓存键才有效。
         Microsoft::WRL::ComPtr<ID3D11Texture2D> sharedTex;
         bool sharedOk = false;
         ID3D11Texture2D* decTex = reinterpret_cast<ID3D11Texture2D*>(frame->data[0]);
@@ -861,10 +900,16 @@ void HwVideoPlayerView::tickFrame() {
             Microsoft::WRL::ComPtr<IDXGIResource> res;
             HANDLE shareH = nullptr;
             if (SUCCEEDED(decTex->QueryInterface(__uuidof(IDXGIResource), (void**)&res)) &&
-                SUCCEEDED(res->GetSharedHandle(&shareH)) && shareH &&
-                SUCCEEDED(Impl::s_dev->OpenSharedResource(shareH, __uuidof(ID3D11Texture2D),
-                                                          (void**)&sharedTex))) {
-                sharedOk = true;
+                SUCCEEDED(res->GetSharedHandle(&shareH)) && shareH) {
+                auto sit = p->sharedTexCache.find(shareH);
+                if (sit != p->sharedTexCache.end()) {
+                    sharedTex = sit->second;
+                    sharedOk = true;
+                } else if (SUCCEEDED(Impl::s_dev->OpenSharedResource(
+                           shareH, __uuidof(ID3D11Texture2D), (void**)&sharedTex))) {
+                    p->sharedTexCache[shareH] = sharedTex;
+                    sharedOk = true;
+                }
             }
         }
         if (!sharedOk) {
@@ -878,8 +923,8 @@ void HwVideoPlayerView::tickFrame() {
         p->releaseSlot(p->slots[(p->slotCur + 1) % 3]);
         int slice = static_cast<int>(reinterpret_cast<intptr_t>(frame->data[1]));
         bool ok = p->makeImageFromHwFrame(sharedTex.Get(), slice, frame, p->slots[p->slotCur]);
-        if (ok) {
-            p->curImage = p->slots[p->slotCur].image;
+        if (ok && p->slots[p->slotCur].cs) {
+            p->curImage = p->slots[p->slotCur].cs->image;
             p->framesShown++;
             g_totalShownAll++;
         }
