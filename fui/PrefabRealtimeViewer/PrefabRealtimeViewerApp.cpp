@@ -884,7 +884,7 @@ void PrefabState::openStandalone(const std::string& path, bool borderless) {
 		//v->backgroundColor = 0xffff0000;
 	}
 
-	Window* win = new Window();
+	auto win = Ref(new Window());
 	win->borderless = borderless;
 	win->setRootView(dynamic_cast<ViewBase*>(root.get()));
 	applyStandaloneStyle(win, dw, dh, borderless);

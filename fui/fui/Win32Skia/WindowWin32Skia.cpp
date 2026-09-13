@@ -296,7 +296,7 @@ void Window::draw() {
 			//printf("Window draw.  recreate surface w:%d, h:%d\n", w, h);
 		}
 
-		eglMakeCurrent(g_eglDisplay, data->surface, data->surface, data->context);
+		auto ok = eglMakeCurrent(g_eglDisplay, data->surface, data->surface, data->context);
 		//glViewport(0, 0, w, h);
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// 绑定本帧渲染目标, 然后通过Canvas接口绘制

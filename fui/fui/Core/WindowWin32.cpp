@@ -557,7 +557,9 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		EndPaint(hwnd, &ps);
 
 		Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
-		win->layoutAndDraw();
+		if (win) {
+			win->layoutAndDraw();
+		}
 		break;
 	}
 	case WM_ERASEBKGND: {
