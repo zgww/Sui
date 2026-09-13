@@ -543,6 +543,40 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		// lParam是消息类型
 		return _ontrayicon(hWnd, wParam, lParam);
 	}
+	case WM_NCHITTEST: {
+		// 1. 先让系统默认处理，获取基础的命中测试结果
+		LRESULT hit = DefWindowProc(hwnd, uMsg, wParam, lParam);
+
+		// 2. 如果鼠标在客户区 (HTCLIENT) 内，我们进行自定义判断
+		if (hit == HTCLIENT) {
+			// 获取鼠标相对于屏幕的坐标
+			POINT pt;
+			pt.x = GET_X_LPARAM(lParam);
+			pt.y = GET_Y_LPARAM(lParam);
+
+			// 转换为相对于窗口客户区的坐标
+			ScreenToClient(hwnd, &pt);
+
+			// 【方案 A：顶部区域拖拽】（推荐，类似 Chrome/VSCode）
+			// 假设窗口顶部 40 像素为拖拽区域（根据你的实际 UI 标题栏高度调整）
+			if (pt.y < 40) {
+				return HTCAPTION; // 告诉 Windows：这里当作标题栏处理，自动开启拖拽
+			}
+
+			// 【方案 B：整个窗口拖拽，但要避开 UI 控件】
+			// 如果你希望点击空白处就能拖拽，但点击按钮/输入框时不拖拽，
+			// 你需要在这里询问你的 UI 框架（如 ImGui, Qt 等）：
+			// if (IsMouseOverUIControl(pt.x, pt.y)) {
+			//     return HTCLIENT; // 点在控件上，正常响应点击
+			// } else {
+			//     return HTCAPTION; // 点在空白背景上，拖拽窗口
+			// }
+		}
+
+		// 3. 其他区域（如边缘、系统按钮等）保持系统默认行为
+		return hit;
+	}
+
 	default:
 		return DefWindowProc(hWnd, uMsg, wParam, lParam);
 	}

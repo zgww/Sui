@@ -1,0 +1,187 @@
+{
+  "type": "LayoutLinear",
+  "width": 1280,
+  "height": 800,
+  "direction": "row",
+  "alignItems": "start",
+  "backgroundColor": "#fff7f8fa",
+  "children": [
+    {
+      "type": "LayoutLinear",
+      "width": 232,
+      "height": 800,
+      "direction": "column",
+      "alignItems": "start",
+      "backgroundColor": "#fff7f8fa",
+      "children": [
+        {
+          "type": "LayoutLinear", "width": 232, "height": 64, "direction": "row", "alignItems": "center",
+          "children": [
+            { "type": "LayoutLinear", "width": 28, "height": 28, "backgroundColor": "#ff2d8cf0",
+              "radius": { "tl": 7, "tr": 7, "bl": 7, "br": 7 }, "margin": { "left": 20 } },
+            { "type": "TextView", "text": "RemoteDesk", "fontSize": 18, "color": "#ff2d8cf0", "margin": { "left": 10 } }
+          ]
+        },
+        { "type": "Button", "label": "个人中心", "width": 192, "height": 40, "fontSize": 14, "isActive": true,
+          "labelColor": "#ff2d8cf0", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "远程控制", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "设备列表", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "文件中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "游戏与应用中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "镜像屏/扩展屏", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "屏幕墙", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "高级设置", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "LayoutLinear", "width": 232, "height": 308, "direction": "column" },
+        {
+          "type": "LayoutLinear", "width": 192, "height": 72, "direction": "column", "alignItems": "start",
+          "backgroundColor": "#ffffffff", "padding": { "left": 14, "top": 14, "right": 14, "bottom": 14 },
+          "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "margin": { "left": 20, "bottom": 14 },
+          "children": [
+            { "type": "TextView", "text": "VIP+ 多控一", "fontSize": 13, "color": "#ff1a1a1a" },
+            { "type": "TextView", "text": "最高直降 ¥158", "fontSize": 12, "color": "#ff8a8f99", "margin": { "top": 6 } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LayoutLinear",
+      "width": 1048,
+      "height": 800,
+      "direction": "column",
+      "alignItems": "start",
+      "backgroundColor": "#ffffffff",
+      "children": [
+        {
+          "type": "LayoutLinear", "width": 1048, "height": 56, "direction": "row", "alignItems": "center",
+          "backgroundColor": "#ffffffff", "border": { "b": { "w": 1, "color": "#ffe5e6eb" } },
+          "children": [
+            { "type": "TextView", "text": "个人中心", "fontSize": 17, "color": "#ff1a1a1a", "margin": { "left": 24 } },
+            { "type": "TextView", "text": "·  账号资料", "fontSize": 13, "color": "#ff8a8f99", "margin": { "left": 12 } },
+            { "type": "LayoutLinear", "width": 700, "height": 56, "direction": "row" }
+          ]
+        },
+        {
+          "type": "LayoutLinear", "width": 1048, "height": 744, "direction": "column", "alignItems": "start",
+          "backgroundColor": "#fff7f8fa", "padding": { "left": 28, "top": 24, "right": 28, "bottom": 24 },
+          "children": [
+            {
+              "type": "LayoutLinear", "width": 992, "height": 156, "direction": "row", "alignItems": "center",
+              "backgroundColor": "#ffffffff", "padding": { "left": 28, "top": 24, "right": 28, "bottom": 24 },
+              "radius": { "tl": 12, "tr": 12, "bl": 12, "br": 12 },
+              "border": { "t": { "w": 1, "color": "#ffe5e6eb" }, "r": { "w": 1, "color": "#ffe5e6eb" },
+                "b": { "w": 1, "color": "#ffe5e6eb" }, "l": { "w": 1, "color": "#ffe5e6eb" } },
+              "children": [
+                { "type": "LayoutLinear", "width": 88, "height": 88, "backgroundColor": "#ff2d8cf0",
+                  "radius": { "tl": 44, "tr": 44, "bl": 44, "br": 44 } },
+                {
+                  "type": "LayoutLinear", "width": 520, "height": 96, "direction": "column", "alignItems": "start",
+                  "margin": { "left": 24 },
+                  "children": [
+                    { "type": "TextView", "text": "苏生", "fontSize": 24, "color": "#ff1a1a1a" },
+                    { "type": "TextView", "text": "账号 136****1920  ·  ID 88291023", "fontSize": 13, "color": "#ff8a8f99",
+                      "margin": { "top": 10 } },
+                    {
+                      "type": "LayoutLinear", "height": 28, "direction": "row", "alignItems": "center",
+                      "margin": { "top": 12 },
+                      "children": [
+                        { "type": "Button", "label": "个人版", "width": 72, "height": 26, "fontSize": 12,
+                          "labelColor": "#ff2d8cf0", "normalBg": "#ffe8f3ff", "hoverBg": "#ffd6e9ff", "activeBg": "#ffd6e9ff",
+                          "radius": { "tl": 13, "tr": 13, "bl": 13, "br": 13 }, "needClip": true },
+                        { "type": "Button", "label": "已实名认证", "width": 92, "height": 26, "fontSize": 12,
+                          "labelColor": "#ff52a41a", "normalBg": "#ffeafbe0", "hoverBg": "#ffdcf5cf", "activeBg": "#ffdcf5cf",
+                          "radius": { "tl": 13, "tr": 13, "bl": 13, "br": 13 }, "margin": { "left": 10 }, "needClip": true }
+                      ]
+                    }
+                  ]
+                },
+                { "type": "LayoutLinear", "width": 280, "height": 96, "direction": "row" },
+                { "type": "Button", "label": "升级专业版", "width": 120, "height": 40, "fontSize": 14,
+                  "labelColor": "#ffffffff", "normalBg": "#ff2d8cf0", "hoverBg": "#ff1f7ad8", "activeBg": "#ff1f7ad8",
+                  "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "needClip": true }
+              ]
+            },
+            {
+              "type": "LayoutLinear", "width": 992, "height": 500, "direction": "column", "alignItems": "start",
+              "backgroundColor": "#ffffffff", "padding": { "left": 28, "top": 24, "right": 28, "bottom": 24 },
+              "radius": { "tl": 12, "tr": 12, "bl": 12, "br": 12 },
+              "border": { "t": { "w": 1, "color": "#ffe5e6eb" }, "r": { "w": 1, "color": "#ffe5e6eb" },
+                "b": { "w": 1, "color": "#ffe5e6eb" }, "l": { "w": 1, "color": "#ffe5e6eb" } },
+              "margin": { "top": 16 },
+              "children": [
+                { "type": "TextView", "text": "基本资料", "fontSize": 16, "color": "#ff1a1a1a", "width": 936 },
+                {
+                  "type": "LayoutLinear", "width": 936, "height": 56, "direction": "row", "alignItems": "center",
+                  "margin": { "top": 16 },
+                  "children": [
+                    { "type": "TextView", "text": "昵称", "fontSize": 14, "color": "#ff8a8f99", "width": 90 },
+                    { "type": "EditText", "value": "苏生", "font_size": 14, "color": "#ff1a1a1a",
+                      "width": 440, "height": 38, "backgroundColor": "#fff2f3f5",
+                      "padding": { "left": 12, "right": 12 },
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 } }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 936, "height": 56, "direction": "row", "alignItems": "center",
+                  "children": [
+                    { "type": "TextView", "text": "手机号", "fontSize": 14, "color": "#ff8a8f99", "width": 90 },
+                    { "type": "EditText", "value": "136****1920", "font_size": 14, "color": "#ff1a1a1a",
+                      "width": 440, "height": 38, "backgroundColor": "#fff2f3f5",
+                      "padding": { "left": 12, "right": 12 },
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 } }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 936, "height": 56, "direction": "row", "alignItems": "center",
+                  "children": [
+                    { "type": "TextView", "text": "邮箱", "fontSize": 14, "color": "#ff8a8f99", "width": 90 },
+                    { "type": "EditText", "value": "sush**@example.com", "font_size": 14, "color": "#ff1a1a1a",
+                      "width": 440, "height": 38, "backgroundColor": "#fff2f3f5",
+                      "padding": { "left": 12, "right": 12 },
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 } }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 936, "height": 56, "direction": "row", "alignItems": "center",
+                  "children": [
+                    { "type": "TextView", "text": "所在地区", "fontSize": 14, "color": "#ff8a8f99", "width": 90 },
+                    { "type": "EditText", "value": "中国 · 福建 · 厦门", "font_size": 14, "color": "#ff1a1a1a",
+                      "width": 440, "height": 38, "backgroundColor": "#fff2f3f5",
+                      "padding": { "left": 12, "right": 12 },
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 } }
+                  ]
+                },
+                { "type": "LayoutLinear", "width": 936, "height": 24, "direction": "column" },
+                {
+                  "type": "LayoutLinear", "width": 936, "height": 40, "direction": "row", "alignItems": "center",
+                  "children": [
+                    { "type": "Button", "label": "编辑资料", "width": 120, "height": 40, "fontSize": 14,
+                      "labelColor": "#ffffffff", "normalBg": "#ff2d8cf0", "hoverBg": "#ff1f7ad8", "activeBg": "#ff1f7ad8",
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "needClip": true },
+                    { "type": "Button", "label": "修改密码", "width": 120, "height": 40, "fontSize": 14,
+                      "labelColor": "#ff4e5969", "normalBg": "#fff2f3f5", "hoverBg": "#ffe5e8ee", "activeBg": "#ffe5e8ee",
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "margin": { "left": 12 }, "needClip": true }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

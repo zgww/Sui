@@ -1,0 +1,177 @@
+{
+  "type": "LayoutLinear",
+  "width": 1280,
+  "height": 800,
+  "direction": "column",
+  "alignItems": "center",
+  "justifyContent": "center",
+  "backgroundColor": "#fff7f8fa",
+  "children": [
+    {
+      "type": "LayoutLinear",
+      "width": 416,
+      "height": 560,
+      "direction": "column",
+      "alignItems": "start",
+      "backgroundColor": "#ffffffff",
+      "padding": { "left": 40, "top": 40, "right": 40, "bottom": 32 },
+      "radius": { "tl": 14, "tr": 14, "bl": 14, "br": 14 },
+      "border": {
+        "t": { "w": 1, "color": "#ffeef0f3" },
+        "r": { "w": 1, "color": "#ffeef0f3" },
+        "b": { "w": 1, "color": "#ffeef0f3" },
+        "l": { "w": 1, "color": "#ffeef0f3" }
+      },
+      "boxShadow": { "dx": 0, "dy": 10, "sigmaX": 30, "sigmaY": 30, "color": "#14000000" },
+      "children": [
+        {
+          "type": "LayoutLinear",
+          "width": 336,
+          "height": 40,
+          "direction": "row",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "LayoutLinear",
+              "width": 34,
+              "height": 34,
+              "backgroundColor": "#ff2d8cf0",
+              "radius": { "tl": 9, "tr": 9, "bl": 9, "br": 9 }
+            },
+            {
+              "type": "TextView",
+              "text": "RemoteDesk",
+              "fontSize": 23,
+              "color": "#ff2d8cf0",
+              "margin": { "left": 10 }
+            }
+          ]
+        },
+        {
+          "type": "TextView",
+          "text": "账号登录",
+          "fontSize": 21,
+          "color": "#ff1a1a1a",
+          "width": 336,
+          "margin": { "top": 28 }
+        },
+        {
+          "type": "TextView",
+          "text": "安全 · 稳定 · 高效的远程协助",
+          "fontSize": 13,
+          "color": "#ff8a8f99",
+          "width": 336,
+          "margin": { "top": 8 }
+        },
+        {
+          "type": "TextView",
+          "text": "账号",
+          "fontSize": 13,
+          "color": "#ff8a8f99",
+          "width": 336,
+          "margin": { "top": 26 }
+        },
+        {
+          "type": "EditText",
+          "value": "",
+          "placeholder": "请输入手机号 / 邮箱",
+          "font_size": 15,
+          "color": "#ff8a8f99",
+          "placeholder_color": "#ffb0b6bf",
+          "caret_color": "#ff2d8cf0",
+          "width": 336,
+          "height": 46,
+          "backgroundColor": "#fff2f3f5",
+          "padding": { "left": 14, "right": 14 },
+          "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 },
+          "margin": { "top": 8 }
+        },
+        {
+          "type": "TextView",
+          "text": "密码",
+          "fontSize": 13,
+          "color": "#ff8a8f99",
+          "width": 336,
+          "margin": { "top": 18 }
+        },
+        {
+          "type": "EditText",
+          "value": "",
+          "placeholder": "请输入密码",
+          "font_size": 15,
+          "color": "#ff8a8f99",
+          "placeholder_color": "#ffb0b6bf",
+          "caret_color": "#ff2d8cf0",
+          "width": 336,
+          "height": 46,
+          "backgroundColor": "#fff2f3f5",
+          "padding": { "left": 14, "right": 14 },
+          "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 },
+          "margin": { "top": 8 }
+        },
+        {
+          "type": "LayoutLinear",
+          "width": 336,
+          "height": 22,
+          "direction": "row",
+          "alignItems": "center",
+          "margin": { "top": 16 },
+          "children": [
+            {
+              "type": "Checkbox",
+              "checked": true,
+              "backgroundColor": "#ff2d8cf0",
+              "checkedBg": "#ff2d8cf0",
+              "checkColor": "#ffffffff",
+              "uncheckedBg": "#ffffffff",
+              "borderColor": "#ffc9ced6",
+              "width": 16,
+              "height": 16
+            },
+            {
+              "type": "TextView",
+              "text": "记住密码",
+              "fontSize": 13,
+              "color": "#ff4e5969",
+              "margin": { "left": 8 }
+            },
+            { "type": "LayoutLinear", "width": 168, "height": 22, "direction": "row" },
+            {
+              "type": "TextView",
+              "text": "忘记密码？",
+              "fontSize": 13,
+              "color": "#ff2d8cf0"
+            }
+          ]
+        },
+        {
+          "type": "Button",
+          "label": "登 录",
+          "width": 336,
+          "height": 46,
+          "fontSize": 16,
+          "labelColor": "#ffffffff",
+          "normalBg": "#ff2d8cf0",
+          "hoverBg": "#ff1f7ad8",
+          "activeBg": "#ff1f7ad8",
+          "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 },
+          "margin": { "top": 26 }
+        },
+        {
+          "type": "LayoutLinear",
+          "width": 336,
+          "height": 22,
+          "direction": "row",
+          "alignItems": "center",
+          "justifyContent": "space-between",
+          "margin": { "top": 20 },
+          "children": [
+            { "type": "TextView", "text": "注册新账号", "fontSize": 13, "color": "#ff2d8cf0" },
+            { "type": "TextView", "text": "其他方式登录", "fontSize": 13, "color": "#ff8a8f99" }
+          ]
+        }
+      ]
+    }
+  ]
+}

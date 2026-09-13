@@ -1,0 +1,236 @@
+{
+  "type": "LayoutLinear",
+  "width": 1280,
+  "height": 800,
+  "direction": "row",
+  "alignItems": "start",
+  "backgroundColor": "#fff7f8fa",
+  "children": [
+    {
+      "type": "LayoutLinear",
+      "width": 232,
+      "height": 800,
+      "direction": "column",
+      "alignItems": "start",
+      "backgroundColor": "#fff7f8fa",
+      "children": [
+        {
+          "type": "LayoutLinear", "width": 232, "height": 64, "direction": "row", "alignItems": "center",
+          "children": [
+            { "type": "LayoutLinear", "width": 28, "height": 28, "backgroundColor": "#ff2d8cf0",
+              "radius": { "tl": 7, "tr": 7, "bl": 7, "br": 7 }, "margin": { "left": 20 } },
+            { "type": "TextView", "text": "RemoteDesk", "fontSize": 18, "color": "#ff2d8cf0", "margin": { "left": 10 } }
+          ]
+        },
+        { "type": "Button", "label": "个人中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "远程控制", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "设备列表", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "文件中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "游戏与应用中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "镜像屏/扩展屏", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "屏幕墙", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "高级设置", "width": 192, "height": 40, "fontSize": 14, "isActive": true,
+          "labelColor": "#ff2d8cf0", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "LayoutLinear", "width": 232, "height": 308, "direction": "column" },
+        {
+          "type": "LayoutLinear", "width": 192, "height": 72, "direction": "column", "alignItems": "start",
+          "backgroundColor": "#ffffffff", "padding": { "left": 14, "top": 14, "right": 14, "bottom": 14 },
+          "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "margin": { "left": 20, "bottom": 14 },
+          "children": [
+            { "type": "TextView", "text": "VIP+ 多控一", "fontSize": 13, "color": "#ff1a1a1a" },
+            { "type": "TextView", "text": "最高直降 ¥158", "fontSize": 12, "color": "#ff8a8f99", "margin": { "top": 6 } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LayoutLinear",
+      "width": 1048,
+      "height": 800,
+      "direction": "column",
+      "alignItems": "start",
+      "backgroundColor": "#ffffffff",
+      "children": [
+        {
+          "type": "LayoutLinear", "width": 1048, "height": 56, "direction": "row", "alignItems": "center",
+          "backgroundColor": "#ffffffff", "border": { "b": { "w": 1, "color": "#ffe5e6eb" } },
+          "children": [
+            { "type": "TextView", "text": "高级设置", "fontSize": 17, "color": "#ff1a1a1a", "margin": { "left": 24 } },
+            { "type": "TextView", "text": "·  偏好与运行参数", "fontSize": 13, "color": "#ff8a8f99", "margin": { "left": 12 } },
+            { "type": "LayoutLinear", "width": 686, "height": 56, "direction": "row" }
+          ]
+        },
+        {
+          "type": "LayoutLinear", "width": 1048, "height": 744, "direction": "row", "alignItems": "start",
+          "backgroundColor": "#fff7f8fa", "padding": { "left": 28, "top": 24, "right": 28, "bottom": 24 },
+          "children": [
+            {
+              "type": "LayoutLinear", "width": 200, "height": 696, "direction": "column", "alignItems": "start",
+              "backgroundColor": "#ffffffff", "padding": { "left": 14, "top": 14, "right": 14, "bottom": 14 },
+              "radius": { "tl": 12, "tr": 12, "bl": 12, "br": 12 },
+              "border": { "t": { "w": 1, "color": "#ffe5e6eb" }, "r": { "w": 1, "color": "#ffe5e6eb" },
+                "b": { "w": 1, "color": "#ffe5e6eb" }, "l": { "w": 1, "color": "#ffe5e6eb" } },
+              "children": [
+                { "type": "TextView", "text": "设置分类", "fontSize": 12, "color": "#ff8a8f99", "width": 172, "margin": { "left": 6, "top": 4 } },
+                { "type": "Button", "label": "常规设置", "width": 172, "height": 40, "fontSize": 13, "isActive": true,
+                  "labelColor": "#ff2d8cf0", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+                  "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "top": 10 }, "needClip": true },
+                { "type": "Button", "label": "显示与画质", "width": 172, "height": 40, "fontSize": 13,
+                  "labelColor": "#ff1a1a1a", "normalBg": "#ffffffff", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+                  "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "top": 4 }, "needClip": true },
+                { "type": "Button", "label": "控制与输入", "width": 172, "height": 40, "fontSize": 13,
+                  "labelColor": "#ff1a1a1a", "normalBg": "#ffffffff", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+                  "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "top": 4 }, "needClip": true },
+                { "type": "Button", "label": "网络与传输", "width": 172, "height": 40, "fontSize": 13,
+                  "labelColor": "#ff1a1a1a", "normalBg": "#ffffffff", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+                  "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "top": 4 }, "needClip": true },
+                { "type": "Button", "label": "安全与隐私", "width": 172, "height": 40, "fontSize": 13,
+                  "labelColor": "#ff1a1a1a", "normalBg": "#ffffffff", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+                  "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "top": 4 }, "needClip": true },
+                { "type": "Button", "label": "关于本软件", "width": 172, "height": 40, "fontSize": 13,
+                  "labelColor": "#ff1a1a1a", "normalBg": "#ffffffff", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+                  "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "top": 4 }, "needClip": true }
+              ]
+            },
+            { "type": "LayoutLinear", "width": 20, "height": 696, "direction": "row" },
+            {
+              "type": "LayoutLinear", "width": 772, "height": 696, "direction": "column", "alignItems": "start",
+              "backgroundColor": "#ffffffff", "padding": { "left": 28, "top": 24, "right": 28, "bottom": 24 },
+              "radius": { "tl": 12, "tr": 12, "bl": 12, "br": 12 },
+              "border": { "t": { "w": 1, "color": "#ffe5e6eb" }, "r": { "w": 1, "color": "#ffe5e6eb" },
+                "b": { "w": 1, "color": "#ffe5e6eb" }, "l": { "w": 1, "color": "#ffe5e6eb" } },
+              "children": [
+                { "type": "TextView", "text": "常规设置", "fontSize": 16, "color": "#ff1a1a1a", "width": 716 },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "margin": { "top": 12 },
+                  "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "开机自动启动", "fontSize": 14, "color": "#ff1a1a1a", "width": 480 },
+                    { "type": "LayoutLinear", "width": 200, "height": 44, "direction": "row" },
+                    { "type": "Checkbox", "checked": true, "backgroundColor": "#ff2d8cf0", "checkedBg": "#ff2d8cf0", "checkColor": "#ffffffff",
+                      "uncheckedBg": "#ffffffff", "borderColor": "#ffc9ced6", "width": 18, "height": 18 }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "启动后最小化到系统托盘", "fontSize": 14, "color": "#ff1a1a1a", "width": 480 },
+                    { "type": "LayoutLinear", "width": 200, "height": 44, "direction": "row" },
+                    { "type": "Checkbox", "checked": true, "backgroundColor": "#ff2d8cf0", "checkedBg": "#ff2d8cf0", "checkColor": "#ffffffff",
+                      "uncheckedBg": "#ffffffff", "borderColor": "#ffc9ced6", "width": 18, "height": 18 }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "关闭主窗口时最小化而非退出", "fontSize": 14, "color": "#ff1a1a1a", "width": 480 },
+                    { "type": "LayoutLinear", "width": 200, "height": 44, "direction": "row" },
+                    { "type": "Checkbox", "checked": false, "backgroundColor": "#ffffffff", "checkedBg": "#ff2d8cf0", "checkColor": "#ffffffff",
+                      "uncheckedBg": "#ffffffff", "borderColor": "#ffc9ced6", "width": 18, "height": 18 }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "保持后台在线（允许被远程唤醒）", "fontSize": 14, "color": "#ff1a1a1a", "width": 480 },
+                    { "type": "LayoutLinear", "width": 200, "height": 44, "direction": "row" },
+                    { "type": "Checkbox", "checked": true, "backgroundColor": "#ff2d8cf0", "checkedBg": "#ff2d8cf0", "checkColor": "#ffffffff",
+                      "uncheckedBg": "#ffffffff", "borderColor": "#ffc9ced6", "width": 18, "height": 18 }
+                  ]
+                },
+                { "type": "TextView", "text": "显示与画质", "fontSize": 16, "color": "#ff1a1a1a", "width": 716, "margin": { "top": 18 } },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "margin": { "top": 10 }, "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "远程画面偏好（流畅 → 高清）", "fontSize": 14, "color": "#ff1a1a1a", "width": 360 },
+                    { "type": "Slider", "ratio": 0.7, "fromValue": 0, "toValue": 100, "width": 240, "height": 24,
+                      "margin": { "left": 12 } },
+                    { "type": "TextView", "text": " 高清", "fontSize": 12, "color": "#ff8a8f99" }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "默认缩放方式", "fontSize": 14, "color": "#ff1a1a1a", "width": 360 },
+                    { "type": "Button", "label": "自适应", "width": 96, "height": 32, "fontSize": 13, "isActive": true,
+                      "labelColor": "#ff2d8cf0", "normalBg": "#ffffffff", "hoverBg": "#fff2f3f5", "activeBg": "#ffe8f3ff",
+                      "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "needClip": true },
+                    { "type": "Button", "label": "原始尺寸", "width": 96, "height": 32, "fontSize": 13,
+                      "labelColor": "#ff8a8f99", "normalBg": "#ffffffff", "hoverBg": "#fff2f3f5", "activeBg": "#ffe8f3ff",
+                      "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 8 }, "needClip": true }
+                  ]
+                },
+                { "type": "TextView", "text": "网络与传输", "fontSize": 16, "color": "#ff1a1a1a", "width": 716, "margin": { "top": 18 } },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "margin": { "top": 10 }, "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "优先 UDP 直连（P2P 打洞）", "fontSize": 14, "color": "#ff1a1a1a", "width": 480 },
+                    { "type": "LayoutLinear", "width": 200, "height": 44, "direction": "row" },
+                    { "type": "Checkbox", "checked": true, "backgroundColor": "#ff2d8cf0", "checkedBg": "#ff2d8cf0", "checkColor": "#ffffffff",
+                      "uncheckedBg": "#ffffffff", "borderColor": "#ffc9ced6", "width": 18, "height": 18 }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "border": { "b": { "w": 1, "color": "#fff2f3f5" } },
+                  "children": [
+                    { "type": "TextView", "text": "最大上行码率 (Mbps)", "fontSize": 14, "color": "#ff1a1a1a", "width": 360 },
+                    { "type": "EditText", "value": "8", "font_size": 14, "color": "#ff1a1a1a",
+                      "width": 200, "height": 34, "backgroundColor": "#fff2f3f5",
+                      "padding": { "left": 12, "right": 12 },
+                      "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 } }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 44, "direction": "row", "alignItems": "center",
+                  "children": [
+                    { "type": "TextView", "text": "中继服务器地址", "fontSize": 14, "color": "#ff1a1a1a", "width": 360 },
+                    { "type": "EditText", "value": "relay.remotedesk.io:3478", "font_size": 14, "color": "#ff1a1a1a",
+                      "width": 320, "height": 34, "backgroundColor": "#fff2f3f5",
+                      "padding": { "left": 12, "right": 12 },
+                      "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 } }
+                  ]
+                },
+                { "type": "LayoutLinear", "width": 716, "height": 24, "direction": "column" },
+                {
+                  "type": "LayoutLinear", "width": 716, "height": 40, "direction": "row", "alignItems": "center",
+                  "children": [
+                    { "type": "Button", "label": "恢复默认", "width": 110, "height": 38, "fontSize": 14,
+                      "labelColor": "#ff4e5969", "normalBg": "#fff2f3f5", "hoverBg": "#ffe5e8ee", "activeBg": "#ffe5e8ee",
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "needClip": true },
+                    { "type": "LayoutLinear", "width": 466, "height": 40, "direction": "row" },
+                    { "type": "Button", "label": "保存设置", "width": 120, "height": 38, "fontSize": 14,
+                      "labelColor": "#ffffffff", "normalBg": "#ff2d8cf0", "hoverBg": "#ff1f7ad8", "activeBg": "#ff1f7ad8",
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "needClip": true }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

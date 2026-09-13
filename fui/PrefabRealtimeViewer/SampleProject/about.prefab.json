@@ -1,0 +1,145 @@
+{
+  "type": "LayoutLinear",
+  "width": 1280,
+  "height": 800,
+  "direction": "row",
+  "alignItems": "start",
+  "backgroundColor": "#fff7f8fa",
+  "children": [
+    {
+      "type": "LayoutLinear",
+      "width": 232,
+      "height": 800,
+      "direction": "column",
+      "alignItems": "start",
+      "backgroundColor": "#fff7f8fa",
+      "children": [
+        {
+          "type": "LayoutLinear", "width": 232, "height": 64, "direction": "row", "alignItems": "center",
+          "children": [
+            { "type": "LayoutLinear", "width": 28, "height": 28, "backgroundColor": "#ff2d8cf0",
+              "radius": { "tl": 7, "tr": 7, "bl": 7, "br": 7 }, "margin": { "left": 20 } },
+            { "type": "TextView", "text": "RemoteDesk", "fontSize": 18, "color": "#ff2d8cf0", "margin": { "left": 10 } }
+          ]
+        },
+        { "type": "Button", "label": "个人中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "远程控制", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "设备列表", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "文件中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "游戏与应用中心", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "镜像屏/扩展屏", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "屏幕墙", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "Button", "label": "高级设置", "width": 192, "height": 40, "fontSize": 14,
+          "labelColor": "#ff1a1a1a", "normalBg": "#fff7f8fa", "hoverBg": "#ffeceef1", "activeBg": "#ffe8f3ff",
+          "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 20, "top": 2 }, "needClip": true },
+        { "type": "LayoutLinear", "width": 232, "height": 308, "direction": "column" },
+        {
+          "type": "LayoutLinear", "width": 192, "height": 72, "direction": "column", "alignItems": "start",
+          "backgroundColor": "#ffffffff", "padding": { "left": 14, "top": 14, "right": 14, "bottom": 14 },
+          "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "margin": { "left": 20, "bottom": 14 },
+          "children": [
+            { "type": "TextView", "text": "VIP+ 多控一", "fontSize": 13, "color": "#ff1a1a1a" },
+            { "type": "TextView", "text": "最高直降 ¥158", "fontSize": 12, "color": "#ff8a8f99", "margin": { "top": 6 } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LayoutLinear",
+      "width": 1048,
+      "height": 800,
+      "direction": "column",
+      "alignItems": "start",
+      "backgroundColor": "#ffffffff",
+      "children": [
+        {
+          "type": "LayoutLinear", "width": 1048, "height": 56, "direction": "row", "alignItems": "center",
+          "backgroundColor": "#ffffffff", "border": { "b": { "w": 1, "color": "#ffe5e6eb" } },
+          "children": [
+            { "type": "TextView", "text": "关于 RemoteDesk", "fontSize": 17, "color": "#ff1a1a1a", "margin": { "left": 24 } },
+            { "type": "TextView", "text": "·  版本与产品信息", "fontSize": 13, "color": "#ff8a8f99", "margin": { "left": 12 } },
+            { "type": "LayoutLinear", "width": 688, "height": 56, "direction": "row" }
+          ]
+        },
+        {
+          "type": "LayoutLinear", "width": 1048, "height": 744, "direction": "column", "alignItems": "center",
+          "backgroundColor": "#fff7f8fa", "padding": { "left": 28, "top": 24, "right": 28, "bottom": 24 },
+          "children": [
+            {
+              "type": "LayoutLinear", "width": 992, "height": 696, "direction": "column", "alignItems": "center",
+              "backgroundColor": "#ffffffff", "padding": { "left": 40, "top": 36, "right": 40, "bottom": 32 },
+              "radius": { "tl": 12, "tr": 12, "bl": 12, "br": 12 },
+              "border": { "t": { "w": 1, "color": "#ffe5e6eb" }, "r": { "w": 1, "color": "#ffe5e6eb" },
+                "b": { "w": 1, "color": "#ffe5e6eb" }, "l": { "w": 1, "color": "#ffe5e6eb" } },
+              "children": [
+                { "type": "LayoutLinear", "width": 84, "height": 84, "backgroundColor": "#ff2d8cf0",
+                  "radius": { "tl": 20, "tr": 20, "bl": 20, "br": 20 } },
+                { "type": "TextView", "text": "RemoteDesk", "fontSize": 28, "color": "#ff2d8cf0", "margin": { "top": 18 } },
+                { "type": "TextView", "text": "Version 1.0.0  (Build 2026.09.12)", "fontSize": 13, "color": "#ff8a8f99",
+                  "margin": { "top": 10 } },
+                { "type": "LayoutLinear", "width": 620, "height": 1, "backgroundColor": "#fff0f1f3",
+                  "margin": { "top": 28 } },
+                { "type": "TextView",
+                  "text": "RemoteDesk 是一款基于全 GPU 硬件解码与 GPU 直渲染的高性能远程协助软件，",
+                  "fontSize": 14, "color": "#ff4e5969", "width": 880, "textAlign": "center",
+                  "margin": { "top": 28 } },
+                { "type": "TextView",
+                  "text": "支持跨平台桌面控制、文件传输、多屏协同、屏幕墙与端到端加密，让远程操作如本机般流畅。",
+                  "fontSize": 14, "color": "#ff4e5969", "width": 880, "textAlign": "center",
+                  "margin": { "top": 8 } },
+                { "type": "LayoutLinear", "width": 720, "height": 24, "direction": "column" },
+                {
+                  "type": "LayoutLinear", "width": 720, "height": 30, "direction": "row", "alignItems": "center",
+                  "justifyContent": "center",
+                  "children": [
+                    { "type": "TextView", "text": "官方网站：", "fontSize": 14, "color": "#ff8a8f99" },
+                    { "type": "TextView", "text": "www.remotedesk.io", "fontSize": 14, "color": "#ff2d8cf0" },
+                    { "type": "TextView", "text": "      用户协议", "fontSize": 14, "color": "#ff2d8cf0" },
+                    { "type": "TextView", "text": "    隐私政策", "fontSize": 14, "color": "#ff2d8cf0" }
+                  ]
+                },
+                {
+                  "type": "LayoutLinear", "width": 720, "height": 30, "direction": "row", "alignItems": "center",
+                  "justifyContent": "center",
+                  "children": [
+                    { "type": "TextView", "text": "渲染引擎：Skia + GPU 直渲染     视频：FFmpeg 硬解 / NVENC 硬编     传输：TCP 中转 + P2P",
+                      "fontSize": 12, "color": "#ff8a8f99" }
+                  ]
+                },
+                { "type": "LayoutLinear", "width": 720, "height": 150, "direction": "column" },
+                {
+                  "type": "LayoutLinear", "height": 42, "direction": "row", "alignItems": "center",
+                  "children": [
+                    { "type": "LayoutLinear", "width": 10, "height": 10, "backgroundColor": "#ff52c41a",
+                      "radius": { "tl": 5, "tr": 5, "bl": 5, "br": 5 } },
+                    { "type": "TextView", "text": " 当前已是最新版本", "fontSize": 13, "color": "#ff52a41a" },
+                    { "type": "Button", "label": "检查更新", "width": 130, "height": 42, "fontSize": 14,
+                      "labelColor": "#ffffffff", "normalBg": "#ff2d8cf0", "hoverBg": "#ff1f7ad8", "activeBg": "#ff1f7ad8",
+                      "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 }, "margin": { "left": 24 }, "needClip": true }
+                  ]
+                },
+                { "type": "LayoutLinear", "width": 720, "height": 60, "direction": "column" },
+                { "type": "TextView", "text": "© 2026 RemoteDesk Team. 保留所有权利。", "fontSize": 12,
+                  "color": "#ffb0b6bf", "textAlign": "center", "width": 720 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

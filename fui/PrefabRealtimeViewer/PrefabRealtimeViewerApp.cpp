@@ -1,4 +1,4 @@
-﻿#include "PrefabRealtimeViewerApp.h"
+#include "PrefabRealtimeViewerApp.h"
 
 #include <Windows.h>
 #include <fstream>
@@ -23,6 +23,11 @@
 #include "Naga/Path.h"
 #include "Urgc/Urgc.h"
 #include "JsonSerialization/NodeTreeIO.h"
+
+#include <Windows.h>
+#include <dwmapi.h>
+
+#pragma comment(lib, "dwmapi.lib")
 
 namespace fs = std::filesystem;
 
@@ -87,6 +92,52 @@ static std::vector<std::string> scanDirNames(const std::string& dir) {
 		names.push_back((std::get<1>(e) ? "D:" : "F:") + std::get<0>(e));
 	}
 	return names;
+}
+
+// 让窗口客户区精确等于 cw×ch：borderless=true 时去掉标题栏/边框（WS_POPUP，
+// 保留 WS_SYSMENU 以支持 Alt+F4，任务栏仍显示图标）；false 时为普通可缩放窗口。
+// fui 的 Window 构造时固定用 WS_OVERLAPPEDWINDOW 建窗，这里在 show 之前改样式，
+// 并由目标客户区尺寸经 AdjustWindowRectEx 反推整窗尺寸，保证 prefab 1:1 显示。
+static void applyStandaloneStyle(Window* win, float cw, float ch, bool borderless) {
+	HWND hwnd = (HWND)win->id;
+	if (!hwnd) return;
+
+	DWORD style = borderless
+		? (WS_POPUP | WS_THICKFRAME | WS_SYSMENU)
+		: (DWORD)WS_OVERLAPPEDWINDOW;
+	DWORD ex = (DWORD)GetWindowLongPtrW(hwnd, GWL_EXSTYLE);
+	if (borderless) ex |= WS_EX_APPWINDOW; // 无边框也在任务栏留图标，方便关闭
+
+	RECT rc{ 0, 0, (LONG)cw, (LONG)ch };
+	AdjustWindowRectEx(&rc, style, FALSE, ex);
+	LONG outerW = rc.right - rc.left;
+	LONG outerH = rc.bottom - rc.top;
+
+	SetWindowLongPtrW(hwnd, GWL_STYLE, (LONG_PTR)style);
+	SetWindowLongPtrW(hwnd, GWL_EXSTYLE, (LONG_PTR)ex);
+	win->setSize((float)outerW, (float)outerH);
+	// 让样式（去标题栏/边框）立即生效，但保持刚设置的尺寸与位置不变
+	SetWindowPos(hwnd, nullptr, 0, 0, 0, 0,
+		SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+
+	// ================= 新增：恢复 DWM 阴影 =================
+	if (borderless) {
+		// 将非客户区向客户区内部扩展 1 像素
+		// 这会触发 DWM 绘制窗口阴影，且不会改变你计算好的 outerW/outerH
+		MARGINS margins = { 1, 1, 1, 1 }; // 左, 右, 上, 下
+		DwmExtendFrameIntoClientArea(hwnd, &margins);
+
+
+		// 启用 Windows 11 原生圆角 (DWMWA_WINDOW_CORNER_PREFERENCE = 33)
+		enum DWM_WINDOW_CORNER_PREFERENCE {
+			DWMWCP_DEFAULT = 0,
+			DWMWCP_DONOTROUND = 1,
+			DWMWCP_ROUND = 2,
+			DWMWCP_ROUNDSMALL = 3
+		};
+		DWM_WINDOW_CORNER_PREFERENCE pref = DWMWCP_ROUND;
+		DwmSetWindowAttribute(hwnd, 33, &pref, sizeof(pref));
+	}
 }
 
 // ==================== 自绘图标 ====================
@@ -212,6 +263,8 @@ PrefabState::PrefabState() {
 }
 
 void PrefabState::tickWatch() {
+	// 独立窗口的回收/热刷新不依赖主窗口是否打开
+	tickStandalone();
 	if (!mainWin || !mainRoot) return;
 	// 预览文件变化 → 重新导入刷新预览
 	if (!previewPath.empty()) {
@@ -349,7 +402,8 @@ void PrefabState::enterProject() {
 		mainWin->close();
 		mainWin = nullptr;
 		mainRoot = nullptr;
-		previewArea = nullptr;
+		previewScroll = nullptr;
+		previewContainer = nullptr;
 		dirWrap = nullptr;
 	}
 	currentDir = dir;
@@ -443,6 +497,12 @@ void PrefabState::renderMain() {
 					mkMenuNativeItem(root.get(), "刷新预览", CLOSURE([=](MenuNativeItem*) {
 						if (!previewPath.empty()) openPrefab(previewPath);
 					}));
+					mkMenuNativeItem(root.get(), "当前 Prefab · 独立窗口打开", CLOSURE([=](MenuNativeItem*) {
+						if (!previewPath.empty()) openStandalone(previewPath, false);
+					}));
+					mkMenuNativeItem(root.get(), "当前 Prefab · 无边框窗口打开", CLOSURE([=](MenuNativeItem*) {
+						if (!previewPath.empty()) openStandalone(previewPath, true);
+					}));
 					auto menu = MenuNative::mk(root.get());
 					menu->showAtMouse();
 				});
@@ -492,21 +552,35 @@ void PrefabState::renderMain() {
 				o.margin.left = 18;
 			} REND;
 		} REND;
-		// ---- 预览视图 ----
-		RN(LayoutAlign) {
-			RN(LayoutLinearCell) { o.grow = 1.0f; } REND;
+		// ---- 预览视图（双向可滚动：prefab 大于视口时可滚轮/滚动条查看，小时水平居中）----
+		RN(ScrollArea) {
+			RN(LayoutLinearCell) { o.grow = 1.0f; o.alignSelf = "stretch"; } REND;
+			o.scrollDirection = "both";
+			o.direction = "column";
+			o.alignItems = "center";
+			o.padding.setAll(28);
 			o.backgroundColor = 0xff15181e;
-			previewArea = &o;
-			if (!previewRoot) {
-				RN(TextView) {
-					RN(LayoutAlignCell) { o.setCenter(); o.sizeRatio.setScalar(1.0f); } REND;
-					o.text = previewHint;
-					o.textAlign = "center";
-					o.fontSize = 14;
-					o.color = 0xff7a8291;
-					o.wrap = true;
-				} REND;
-			}
+			previewScroll = &o;
+			// 内容容器：普通 LayoutLinear（不重写 react、_flagUseOutKids=false），命令式
+			// appendChild 的 JSON 节点会直接进入 children（直接挂 ScrollArea 只会进 outKids、
+			// 不参与布局绘制）——与底部“ScrollArea>RowWrap>文件项”同一模式。
+			RN(LayoutLinear) {
+				RN(LayoutLinearCell) { o.grow = -1.0f; } REND; // 自然内容尺寸，不弹性拉伸
+				o.direction = "column";
+				o.alignItems = "center";
+				previewContainer = &o;
+				if (!previewRoot) {
+					RN(TextView) {
+						o.text = previewHint;
+						o.textAlign = "center";
+						o.fontSize = 14;
+						o.color = 0xff7a8291;
+						o.wrap = true;
+						o.width = 720;
+						o.margin.top = 120;
+					} REND;
+				}
+			} REND;
 		} REND;
 		// ---- 目录文件视图 ----
 		RN(LayoutLinear) {
@@ -652,6 +726,14 @@ void PrefabState::backDir() {
 
 void PrefabState::showDirItemMenu(const std::string& path, bool isDir) {
 	auto root = Ref(new MenuNativeItem());
+	if (!isDir) {
+		mkMenuNativeItem(root.get(), "在独立窗口打开", CLOSURE([=](MenuNativeItem*) {
+			openStandalone(path, false);
+		}));
+		mkMenuNativeItem(root.get(), "在无边框窗口打开", CLOSURE([=](MenuNativeItem*) {
+			openStandalone(path, true);
+		}));
+	}
 	mkMenuNativeItem(root.get(), isDir ? "删除目录" : "删除文件", CLOSURE([=](MenuNativeItem*) {
 		deleteEntry(path);
 	}));
@@ -696,39 +778,45 @@ void PrefabState::deleteEntry(const std::string& path) {
 
 void PrefabState::setPreviewHint(const std::string& text) {
 	previewHint = text;
-	if (previewArea) {
+	if (previewScroll) {
 		previewRoot = nullptr;
 		renderPreview();
 	}
 }
 
 void PrefabState::renderPreview() {
-	if (!previewArea) return;
-	previewArea->removeAllChildren();
+	if (!previewContainer) return;
+	previewContainer->removeAllChildren();
+	// 复位滚动偏移
+	if (previewScroll) {
+		previewScroll->scroll_model.scroll_left = 0;
+		previewScroll->scroll_model.scroll_top = 0;
+	}
 	if (!previewRoot) {
-		RINS(previewArea.get()) {
-			RN(TextView) {
-				RN(LayoutAlignCell) { o.setCenter(); o.sizeRatio.setScalar(1.0f); } REND;
-				o.text = previewHint;
-				o.textAlign = "center";
-				o.fontSize = 14;
-				o.color = 0xff7a8291;
-				o.wrap = true;
-			} REND;
-		} REND;
+		Ref<TextView> hint{ new TextView() };
+		hint->text = previewHint;
+		hint->textAlign = "center";
+		hint->fontSize = 14;
+		hint->color = 0xff7a8291;
+		hint->wrap = true;
+		hint->width = 720;
+		hint->margin.top = 120;
+		Ref<LayoutLinearCell> hc{ new LayoutLinearCell() }; hc->grow = -1.0f;
+		hint->appendChild(hc.get());
+		previewContainer->appendChild(hint.get());
 		App_use()->invalidDraw();
 		return;
 	}
-	previewArea->appendChild(previewRoot.get());
-	// previewRoot 的子节点来自 JSON 导入，不能用 RN 静态匹配（gocIdx=0 已是业务节点会抛
-	// "static node type is different"）。直接追加 LayoutAlignCell：它只继承 Node（非
-	// ViewBase），业务布局遍历时会被自动跳过，挂载时自动登记到父的 layoutCells 供 LayoutAlign 读取。
+	// previewContainer 是普通 LayoutLinear（非 react 节点），命令式 appendChild 直接进
+	// children，可正常参与布局/绘制。previewRoot 是 JSON 导入的外部节点、不会自动配 cell，
+	// 这里补一个 grow=-1（固定设计尺寸、不弹性分配）、alignSelf 留空（继承容器
+	// alignItems=center 水平居中）的 LayoutLinearCell。
+	previewContainer->appendChild(previewRoot.get());
 	if (auto* vb = dynamic_cast<ViewBase*>(previewRoot.get())) {
-		if (!vb->getLayoutCellByType<LayoutAlignCell>()) {
-			Ref<LayoutAlignCell> alignCell{ new LayoutAlignCell() };
-			alignCell->setCenter();
-			alignCell->sizeRatio.setScalar(1.0f);
-			vb->appendChild(alignCell.get());
+		if (!vb->getLayoutCellByType<LayoutLinearCell>()) {
+			Ref<LayoutLinearCell> cell{ new LayoutLinearCell() };
+			cell->grow = -1.0f;
+			vb->appendChild(cell.get());
 		}
 	}
 	App_use()->invalidDraw();
@@ -758,13 +846,83 @@ void PrefabState::openPrefab(const std::string& path) {
 	}
 }
 
+// 在独立窗口打开 prefab：borderless=false 为普通带标题栏窗口；true 为无边框窗口。
+// 窗口客户区尺寸取 prefab 根节点的设计宽高（缺省 1280×800），做到 1:1 呈现。
+void PrefabState::openStandalone(const std::string& path, bool borderless) {
+	std::string json = readFileText(path);
+	if (json.empty()) {
+		MessageBoxW(nullptr, L"无法读取文件", L"独立窗口", MB_OK | MB_ICONWARNING);
+		return;
+	}
+	std::string err;
+	Ref<Node> root = io::nodeTreeFromJson(json, &err);
+	if (!root) {
+		std::string msg = "Prefab 导入失败";
+		if (!err.empty()) msg += ":\n" + err;
+		std::wstring wmsg;
+		int wlen = MultiByteToWideChar(CP_UTF8, 0, msg.c_str(), -1, nullptr, 0);
+		if (wlen > 0) { wmsg.resize(wlen); MultiByteToWideChar(CP_UTF8, 0, msg.c_str(), -1, &wmsg[0], wlen); }
+		MessageBoxW(nullptr, wmsg.c_str(), L"独立窗口", MB_OK | MB_ICONWARNING);
+		return;
+	}
+	// 取 prefab 设计尺寸（NaN/非法时回退 1280×800）
+	float dw = 1280.0f, dh = 800.0f;
+	if (auto* v = dynamic_cast<View*>(root.get())) {
+		if (v->width == v->width && v->width > 1.0f) dw = v->width;   // NaN != NaN
+		if (v->height == v->height && v->height > 1.0f) dh = v->height;
+	}
+
+	Window* win = new Window();
+	win->setRootView(dynamic_cast<ViewBase*>(root.get()));
+	applyStandaloneStyle(win, dw, dh, borderless);
+	std::string title = (borderless ? std::string("[无边框] ") : std::string()) + Path_basename(path);
+	win->setTitle(title.c_str());
+	win->moveToCenter();
+	win->show();
+
+	StandaloneEntry e;
+	e.win = win;
+	e.hwndId = win->id;
+	e.path = path;
+	e.stamp = fileStamp(path);
+	e.borderless = borderless;
+	standalone.push_back(e);
+	printf("[PrefabRealtimeViewer] open standalone (%s): %s\n", borderless ? "borderless" : "normal", path.c_str());
+}
+
+void PrefabState::reloadStandalone(StandaloneEntry& e) {
+	if (!e.win || !IsWindow((HWND)e.hwndId)) return;
+	std::string json = readFileText(e.path);
+	if (json.empty()) return;
+	std::string err;
+	Ref<Node> root = io::nodeTreeFromJson(json, &err);
+	if (!root) { printf("[PrefabRealtimeViewer] standalone reload failed: %s\n", err.c_str()); return; }
+	e.win->setRootView(dynamic_cast<ViewBase*>(root.get()));
+	App_use()->invalidDraw();
+}
+
+void PrefabState::tickStandalone() {
+	// 用户已关闭的窗口（IsWindow=false）剔除；仍开着的按文件时间戳热刷新
+	standalone.erase(std::remove_if(standalone.begin(), standalone.end(),
+		[&](StandaloneEntry& e) -> bool {
+			if (!IsWindow((HWND)e.hwndId)) return true;
+			int64_t st = fileStamp(e.path);
+			if (st != 0 && st != e.stamp) {
+				e.stamp = st;
+				reloadStandalone(e);
+			}
+			return false;
+		}), standalone.end());
+}
+
 void PrefabState::closeMainWindow() {
 	if (mainWin) {
 		mainWin->close();
 	}
 	mainWin = nullptr;
 	mainRoot = nullptr;
-	previewArea = nullptr;
+	previewScroll = nullptr;
+	previewContainer = nullptr;
 	dirWrap = nullptr;
 	previewRoot = nullptr;
 	previewPath.clear();

@@ -1,0 +1,129 @@
+{
+  "type": "LayoutLinear",
+  "width": 1280,
+  "height": 800,
+  "direction": "column",
+  "alignItems": "start",
+  "backgroundColor": "#ff000000",
+  "children": [
+    {
+      "type": "LayoutLinear",
+      "width": 1280,
+      "height": 52,
+      "direction": "row",
+      "alignItems": "center",
+      "backgroundColor": "#ff20242c",
+      "padding": { "left": 16, "right": 16 },
+      "children": [
+        {
+          "type": "LayoutLinear",
+          "width": 300,
+          "height": 40,
+          "direction": "row",
+          "alignItems": "center",
+          "children": [
+            { "type": "LayoutLinear", "width": 9, "height": 9, "backgroundColor": "#ff52c41a",
+              "radius": { "tl": 5, "tr": 5, "bl": 5, "br": 5 } },
+            { "type": "TextView", "text": "DESKTOP-WIN11", "fontSize": 14, "color": "#ffffffff", "margin": { "left": 8 } },
+            { "type": "TextView", "text": " 1920×1080 · 已连接", "fontSize": 12, "color": "#ff9aa3b2" }
+          ]
+        },
+        { "type": "LayoutLinear", "width": 178, "height": 40, "direction": "row" },
+        {
+          "type": "LayoutLinear",
+          "height": 36,
+          "direction": "row",
+          "alignItems": "center",
+          "children": [
+            { "type": "Button", "label": "全屏", "width": 44, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "needClip": true },
+            { "type": "Button", "label": "Ctrl+Alt+Del", "width": 96, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 6 }, "needClip": true },
+            { "type": "Button", "label": "键鼠", "width": 44, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 6 }, "needClip": true },
+            { "type": "Button", "label": "剪贴板", "width": 60, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 6 }, "needClip": true },
+            { "type": "Button", "label": "文件", "width": 44, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 6 }, "needClip": true },
+            { "type": "Button", "label": "截屏", "width": 44, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 6 }, "needClip": true },
+            { "type": "Button", "label": "录制", "width": 44, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 6 }, "needClip": true },
+            { "type": "Button", "label": "画质", "width": 44, "height": 34, "fontSize": 12, "labelColor": "#ffe8eaed",
+              "normalBg": "#00000000", "hoverBg": "#33ffffff", "activeBg": "#55ffffff",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "margin": { "left": 6 }, "needClip": true }
+          ]
+        },
+        { "type": "LayoutLinear", "width": 178, "height": 40, "direction": "row" },
+        {
+          "type": "LayoutLinear",
+          "width": 110,
+          "height": 40,
+          "direction": "row",
+          "alignItems": "center",
+          "justifyContent": "end",
+          "children": [
+            { "type": "Button", "label": "断开连接", "width": 96, "height": 34, "fontSize": 13, "labelColor": "#ffffffff",
+              "normalBg": "#fff5222d", "hoverBg": "#ffd93026", "activeBg": "#ffd93026",
+              "radius": { "tl": 6, "tr": 6, "bl": 6, "br": 6 }, "needClip": true }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LayoutLinear",
+      "width": 1280,
+      "height": 712,
+      "direction": "column",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "backgroundColor": "#ff000000",
+      "children": [
+        {
+          "type": "LayoutLinear",
+          "width": 960,
+          "height": 540,
+          "direction": "column",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "backgroundColor": "#ff0e1116",
+          "radius": { "tl": 8, "tr": 8, "bl": 8, "br": 8 },
+          "border": {
+            "t": { "w": 1, "color": "#ff2a2f3a" }, "r": { "w": 1, "color": "#ff2a2f3a" },
+            "b": { "w": 1, "color": "#ff2a2f3a" }, "l": { "w": 1, "color": "#ff2a2f3a" }
+          },
+          "children": [
+            { "type": "TextView", "text": "被控端远程桌面画面", "fontSize": 18, "color": "#ffc9ced6", "textAlign": "center" },
+            { "type": "TextView", "text": "1920 × 1080 @ 60Hz · H.265 硬解码 · 全 GPU 渲染", "fontSize": 13, "color": "#ff7a8291",
+              "textAlign": "center", "margin": { "top": 12 } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LayoutLinear",
+      "width": 1280,
+      "height": 36,
+      "direction": "row",
+      "alignItems": "center",
+      "backgroundColor": "#ff20242c",
+      "padding": { "left": 16, "right": 16 },
+      "children": [
+        { "type": "TextView", "text": "延迟 28ms", "fontSize": 12, "color": "#ff52c41a" },
+        { "type": "TextView", "text": "码率 4.2 Mbps", "fontSize": 12, "color": "#ff9aa3b2", "margin": { "left": 18 } },
+        { "type": "TextView", "text": "帧率 60 FPS", "fontSize": 12, "color": "#ff9aa3b2", "margin": { "left": 18 } },
+        { "type": "TextView", "text": "H.265 / NVENC", "fontSize": 12, "color": "#ff9aa3b2", "margin": { "left": 18 } },
+        { "type": "LayoutLinear", "width": 560, "height": 36, "direction": "row" },
+        { "type": "TextView", "text": "缩放 100%", "fontSize": 12, "color": "#ff9aa3b2", "margin": { "right": 18 } },
+        { "type": "TextView", "text": "AES-256 端到端加密", "fontSize": 12, "color": "#ff9aa3b2" }
+      ]
+    }
+  ]
+}

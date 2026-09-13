@@ -16,7 +16,7 @@
   <Project Path="../opencv_1/opencv_1.vcxproj" Id="b32d8d4c-0247-4716-97ef-c940ee012ce4" />
   <Project Path="../PrefabRealtimeViewer/PrefabRealtimeViewer.vcxproj" Id="e0838ce4-fc4b-4a6c-bac0-a01052ed4ea5" />
   <Project Path="../RecuPeg/RecuPeg.vcxproj" Id="c15adc5a-0905-4555-9abb-b86466ec5c30" />
-  <Project Path="../RemoteDeskClient/RemoteDeskClient.vcxproj" />
+  <Project Path="../RemoteDeskClient/RemoteDeskClient.vcxproj" Id="09a6607d-d7ab-4a46-8ab7-e0722536a309" />
   <Project Path="../RemoteDeskServer/RemoteDeskServer.vcxproj" Id="5fe1a6c0-432c-4d84-8a53-a91951cbac0b" />
   <Project Path="../Sgl/Sgl.vcxproj" Id="9dc77d1e-f9ab-4010-8c60-172f0bb2b05c">
     <BuildDependency Project="fui.vcxproj" />
