@@ -385,7 +385,135 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	int64_t winId = (int64_t)hWnd;
 	auto hwnd = hWnd;
 
+	Window* win = (Window*)GetPropA(hWnd, "fuiWindow");
+	if (win) {
+		//win->borderless = true;
+	}
 	switch (uMsg) {
+	case WM_CREATE:
+		// This plays together with WM_NCALCSIZE.
+	{
+		MARGINS m{ 0, 0, 0, 1 };
+		DwmExtendFrameIntoClientArea(hwnd, &m);
+		return 0;
+	}
+
+	//case WM_NCCALCSIZE: {
+	//	// Returning 0 from the message when wParam is TRUE removes the standard
+	//	// frame, but keeps the window shadow.
+	//	if (wParam == TRUE) {
+	//		//SetWindowLong(hwnd, DWL_MSGRESULT, 0);
+	//		return 0;
+	//		//return TRUE;
+	//	}
+	//	return FALSE;
+	//}
+	//case WM_NCHITTEST: {
+	//	// Returning HTCAPTION allows the user to move the window around by
+	//	// clicking anywhere. Depending on the mouse coordinates passed in LPARAM,
+	//	// you may return other values to enable resizing.
+	//	//SetWindowLong(hwnd, DWL_MSGRESULT, HTCAPTION);
+	//	return HTCAPTION;
+	//}
+
+		//阴影
+		case WM_ACTIVATE:
+		{
+			if (win && win->borderless) {
+				//MARGINS margins = { 1, 1, 1, 1 };
+				MARGINS margins = { 0, 0, 0, 1 };
+				HRESULT hr = S_OK;
+				hr = DwmExtendFrameIntoClientArea(hwnd, &margins);
+				return hr;
+			}
+			break;
+		}
+
+		case WM_NCCALCSIZE:
+		{
+			if (win && win->borderless) {
+				if (wParam)
+				{
+					NCCALCSIZE_PARAMS* lp = (LPNCCALCSIZE_PARAMS)lParam;
+					if (IsZoomed(hwnd))//最大化时修正客户区外边距
+					{
+						lp->rgrc[0].left += 8;
+						lp->rgrc[0].top += 8;
+						lp->rgrc[0].right -= 8;
+						lp->rgrc[0].bottom -= 8;
+					}
+				}
+				return 0;//去除非客户区
+			}
+			break;
+		}
+
+		case WM_NCHITTEST:
+		{
+			if (win && win->borderless) {
+				//处理resize
+				//标记只处理resize
+				bool isResize = false;
+
+				//鼠标点击的坐标
+				POINT ptMouse = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
+				//窗口矩形
+				RECT rcWindow;
+				GetWindowRect(hwnd, &rcWindow);
+				RECT rcFrame = { 0,0,0,0 };
+				AdjustWindowRectEx(&rcFrame, WS_OVERLAPPEDWINDOW & ~WS_CAPTION, FALSE, NULL);
+				USHORT uRow = 1;
+				USHORT uCol = 1;
+				bool fOnResizeBorder = false;
+
+				//确认鼠标指针是否在top或者bottom
+				if (ptMouse.y >= rcWindow.top && ptMouse.y < rcWindow.top + 1)
+				{
+					fOnResizeBorder = (ptMouse.y < (rcWindow.top - rcFrame.top));
+					uRow = 0;
+					isResize = true;
+				}
+				else if (ptMouse.y < rcWindow.bottom && ptMouse.y >= rcWindow.bottom - 5)
+				{
+					uRow = 2;
+					isResize = true;
+				}
+				//确认鼠标指针是否在left或者right
+				if (ptMouse.x >= rcWindow.left && ptMouse.x < rcWindow.left + 5)
+				{
+					uCol = 0; // left side
+					isResize = true;
+				}
+				else if (ptMouse.x < rcWindow.right && ptMouse.x >= rcWindow.right - 5)
+				{
+					uCol = 2; // right side
+					isResize = true;
+				}
+				if (ptMouse.x >= rcWindow.left + 300 && ptMouse.x <= rcWindow.right - 135 && ptMouse.y > rcWindow.top + 3 && ptMouse.y <= rcWindow.top + 30)
+				{
+					return HTCAPTION;
+				}
+
+				LRESULT hitTests[3][3] =
+				{
+					{ HTTOPLEFT,    fOnResizeBorder ? HTTOP : HTCAPTION,    HTTOPRIGHT },
+					{ HTLEFT,       HTNOWHERE,     HTRIGHT },
+					{ HTBOTTOMLEFT, HTBOTTOM, HTBOTTOMRIGHT },
+				};
+
+				if (isResize == true)
+				{
+					return hitTests[uRow][uCol];
+				}
+				else
+				{
+					break;
+				}
+			}
+			break;
+		}
+
+
 	case WM_CLOSE:
 		DestroyWindow(hWnd);
 		break;
@@ -398,6 +526,7 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	}
 	case WM_PAINT:
 	{
+		printf("WM_PAINT\n");
 		PAINTSTRUCT ps;
 		BeginPaint(hwnd, &ps);
 		EndPaint(hwnd, &ps);
@@ -406,7 +535,11 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		win->layoutAndDraw();
 		break;
 	}
+	case WM_ERASEBKGND: {
+		return 1;  // 告诉系统"我处理了"，阻止 GDI 擦除背景
+	}
 	case WM_SIZE: {
+		printf("WM_SIZE\n");
 		App_use()->invalidDraw();
 		InvalidateRect(hwnd, nullptr, FALSE);
 		break;
@@ -543,44 +676,42 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		// lParam是消息类型
 		return _ontrayicon(hWnd, wParam, lParam);
 	}
-	case WM_NCHITTEST: {
-		// 1. 先让系统默认处理，获取基础的命中测试结果
-		LRESULT hit = DefWindowProc(hwnd, uMsg, wParam, lParam);
+	//case WM_NCHITTEST: {
+	//	// 1. 先让系统默认处理，获取基础的命中测试结果
+	//	LRESULT hit = DefWindowProc(hwnd, uMsg, wParam, lParam);
 
-		// 2. 如果鼠标在客户区 (HTCLIENT) 内，我们进行自定义判断
-		if (hit == HTCLIENT) {
-			// 获取鼠标相对于屏幕的坐标
-			POINT pt;
-			pt.x = GET_X_LPARAM(lParam);
-			pt.y = GET_Y_LPARAM(lParam);
+	//	// 2. 如果鼠标在客户区 (HTCLIENT) 内，我们进行自定义判断
+	//	if (hit == HTCLIENT) {
+	//		// 获取鼠标相对于屏幕的坐标
+	//		POINT pt;
+	//		pt.x = GET_X_LPARAM(lParam);
+	//		pt.y = GET_Y_LPARAM(lParam);
 
-			// 转换为相对于窗口客户区的坐标
-			ScreenToClient(hwnd, &pt);
+	//		// 转换为相对于窗口客户区的坐标
+	//		ScreenToClient(hwnd, &pt);
 
-			// 【方案 A：顶部区域拖拽】（推荐，类似 Chrome/VSCode）
-			// 假设窗口顶部 40 像素为拖拽区域（根据你的实际 UI 标题栏高度调整）
-			if (pt.y < 40) {
-				return HTCAPTION; // 告诉 Windows：这里当作标题栏处理，自动开启拖拽
-			}
+	//		// 【方案 A：顶部区域拖拽】（推荐，类似 Chrome/VSCode）
+	//		// 假设窗口顶部 40 像素为拖拽区域（根据你的实际 UI 标题栏高度调整）
+	//		if (pt.y < 40) {
+	//			return HTCAPTION; // 告诉 Windows：这里当作标题栏处理，自动开启拖拽
+	//		}
 
-			// 【方案 B：整个窗口拖拽，但要避开 UI 控件】
-			// 如果你希望点击空白处就能拖拽，但点击按钮/输入框时不拖拽，
-			// 你需要在这里询问你的 UI 框架（如 ImGui, Qt 等）：
-			// if (IsMouseOverUIControl(pt.x, pt.y)) {
-			//     return HTCLIENT; // 点在控件上，正常响应点击
-			// } else {
-			//     return HTCAPTION; // 点在空白背景上，拖拽窗口
-			// }
-		}
+	//		// 【方案 B：整个窗口拖拽，但要避开 UI 控件】
+	//		// 如果你希望点击空白处就能拖拽，但点击按钮/输入框时不拖拽，
+	//		// 你需要在这里询问你的 UI 框架（如 ImGui, Qt 等）：
+	//		// if (IsMouseOverUIControl(pt.x, pt.y)) {
+	//		//     return HTCLIENT; // 点在控件上，正常响应点击
+	//		// } else {
+	//		//     return HTCAPTION; // 点在空白背景上，拖拽窗口
+	//		// }
+	//	}
 
-		// 3. 其他区域（如边缘、系统按钮等）保持系统默认行为
-		return hit;
+	//	// 3. 其他区域（如边缘、系统按钮等）保持系统默认行为
+	//	return hit;
+	//}
+
 	}
-
-	default:
-		return DefWindowProc(hWnd, uMsg, wParam, lParam);
-	}
-	return 0;
+	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
 Window::Window() {
@@ -686,7 +817,10 @@ bool Window::isVisible() {
 }
 
 void Window::layoutAndDraw() {
-	if (!isVisible()) return;
+	if (!isVisible()) {
+		//printf("draw Window !isVisible\n");
+		return;
+	}
 	layoutTimes++;
 	fps.startFrame();
 	{
@@ -696,6 +830,7 @@ void Window::layoutAndDraw() {
 	}
 	{
 		fps.startDraw();
+		printf("draw Window\n");
 		draw();
 		fps.endDraw();
 	}

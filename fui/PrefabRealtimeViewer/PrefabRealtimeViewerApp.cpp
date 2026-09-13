@@ -101,6 +101,9 @@ static std::vector<std::string> scanDirNames(const std::string& dir) {
 static void applyStandaloneStyle(Window* win, float cw, float ch, bool borderless) {
 	HWND hwnd = (HWND)win->id;
 	if (!hwnd) return;
+	if (0) {
+		return;
+	}
 
 	DWORD style = borderless
 		? (WS_POPUP | WS_THICKFRAME | WS_SYSMENU)
@@ -124,7 +127,8 @@ static void applyStandaloneStyle(Window* win, float cw, float ch, bool borderles
 	if (borderless) {
 		// 将非客户区向客户区内部扩展 1 像素
 		// 这会触发 DWM 绘制窗口阴影，且不会改变你计算好的 outerW/outerH
-		MARGINS margins = { 1, 1, 1, 1 }; // 左, 右, 上, 下
+		//MARGINS margins = { 1, 1, 1, 1 }; // 左, 右, 上, 下
+		MARGINS margins = {0, 0, 0, 1 }; // 左, 右, 上, 下
 		DwmExtendFrameIntoClientArea(hwnd, &margins);
 
 
@@ -870,9 +874,12 @@ void PrefabState::openStandalone(const std::string& path, bool borderless) {
 	if (auto* v = dynamic_cast<View*>(root.get())) {
 		if (v->width == v->width && v->width > 1.0f) dw = v->width;   // NaN != NaN
 		if (v->height == v->height && v->height > 1.0f) dh = v->height;
+
+		//v->backgroundColor = 0xffff0000;
 	}
 
 	Window* win = new Window();
+	win->borderless = borderless;
 	win->setRootView(dynamic_cast<ViewBase*>(root.get()));
 	applyStandaloneStyle(win, dw, dh, borderless);
 	std::string title = (borderless ? std::string("[无边框] ") : std::string()) + Path_basename(path);

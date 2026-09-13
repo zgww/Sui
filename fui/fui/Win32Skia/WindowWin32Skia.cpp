@@ -256,48 +256,79 @@ void Window::cleanData() {
 
 void Window::draw() {
 	WindowDataWin32Skia* data = (WindowDataWin32Skia*)this->data;
-	if (!data || data->surface == EGL_NO_SURFACE || !data->grContext) return;
+	if (!data || data->surface == EGL_NO_SURFACE || !data->grContext) {
+		printf("Window draw failed.  no surface\n");
+		return;
+	}
 
 	RECT rect = {};
 	GetClientRect(data->hwnd, &rect);
 	int w = rect.right - rect.left;
 	int h = rect.bottom - rect.top;
-	if (w <= 0 || h <= 0) return;
+	if (w <= 0 || h <= 0) {
+		printf("Window draw failed.  no size\n");
+		return;
+	}
 
-	// 窗口尺寸变化时重建后台缓冲
-	if (!data->skSurface || data->width != w || data->height != h) {
-		data->skSurface.reset();
-		EGLint stencilBits = 0, sampleCnt = 0;
-		eglGetConfigAttrib(g_eglDisplay, g_eglConfig, EGL_STENCIL_SIZE, &stencilBits);
-		eglGetConfigAttrib(g_eglDisplay, g_eglConfig, EGL_SAMPLES, &sampleCnt);
+	bool sizeChanged = !data->skSurface || data->width != w || data->height != h;
 
-		GrGLFramebufferInfo fbInfo;
-		fbInfo.fFBOID = 0;
-		fbInfo.fFormat = GL_RGBA8;
-		GrBackendRenderTarget rt = GrBackendRenderTargets::MakeGL(w, h, sampleCnt, stencilBits, fbInfo);
+		if (!data->skSurface || data->width != w || data->height != h) {
+			data->skSurface.reset();
+			EGLint stencilBits = 0, sampleCnt = 0;
+			eglGetConfigAttrib(g_eglDisplay, g_eglConfig, EGL_STENCIL_SIZE, &stencilBits);
+			eglGetConfigAttrib(g_eglDisplay, g_eglConfig, EGL_SAMPLES, &sampleCnt);
 
-		data->skSurface = SkSurfaces::WrapBackendRenderTarget(
-			data->grContext.get(), rt, kBottomLeft_GrSurfaceOrigin,
-			kRGBA_8888_SkColorType, nullptr, nullptr);
-		data->width = w;
-		data->height = h;
-		if (!data->skSurface) {
-			printf("fui skia: WrapBackendRenderTarget failed (%dx%d)\n", w, h);
-			return;
+			GrGLFramebufferInfo fbInfo;
+			fbInfo.fFBOID = 0;
+			fbInfo.fFormat = GL_RGBA8;
+			GrBackendRenderTarget rt = GrBackendRenderTargets::MakeGL(w, h, sampleCnt, stencilBits, fbInfo);
+
+			data->skSurface = SkSurfaces::WrapBackendRenderTarget(
+				data->grContext.get(), rt, kBottomLeft_GrSurfaceOrigin,
+				kRGBA_8888_SkColorType, nullptr, nullptr);
+			data->width = w;
+			data->height = h;
+			if (!data->skSurface) {
+				printf("fui skia: WrapBackendRenderTarget failed (%dx%d)\n", w, h);
+				return;
+			}
+
+			//printf("Window draw.  recreate surface w:%d, h:%d\n", w, h);
 		}
-	}
 
-	eglMakeCurrent(g_eglDisplay, data->surface, data->surface, data->context);
+		eglMakeCurrent(g_eglDisplay, data->surface, data->surface, data->context);
+		//glViewport(0, 0, w, h);
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		// 绑定本帧渲染目标, 然后通过Canvas接口绘制
+		skiaCanvasBindFrame(data->skSurface.get(), data->grContext.get());
 
-	// 绑定本帧渲染目标, 然后通过Canvas接口绘制
-	skiaCanvasBindFrame(data->skSurface.get(), data->grContext.get());
+		if (sizeChanged) {
+			// ANGLE(D3D11) 在 eglSwapBuffers 尾部才检查窗口尺寸并重建 swapchain:
+			// 先用旧尺寸后台缓冲 present, 然后重建(旧帧内容被丢弃, 新后台缓冲未初始化)。
+			// 因此尺寸变化后的第一帧渲染进的是旧 swapchain, 画面停留在旧内容;
+			// 第二帧才渲染进新尺寸缓冲并正常 present。
+			// 检测到尺寸变化时本帧渲染两遍, 保证最后一帧落进重建后的 swapchain。
 
-	canvas->beginFrame((float)w, (float)h, data->devicePixelRatio);
-	if (rootView) {
-		rootView->draw(canvas);
-	}
-	fps.draw(canvas, h);
-	canvas->endFrame();
 
-	eglSwapBuffers(g_eglDisplay, data->surface);
+			//eglMakeCurrent(g_eglDisplay, data->surface, data->surface, data->context);
+			//skiaCanvasBindFrame(data->skSurface.get(), data->grContext.get());
+			//canvas->beginFrame((float)w, (float)h, data->devicePixelRatio);
+			//canvas->endFrame();
+			EGLBoolean ret = eglSwapBuffers(g_eglDisplay, data->surface);
+			if (!ret) {
+				printf("inner eglSwapBuffers failed! Error: 0x%x\n", eglGetError());
+			}
+		}
+
+		canvas->beginFrame((float)w, (float)h, data->devicePixelRatio);
+		if (rootView) {
+			rootView->draw(canvas);
+		}
+		fps.draw(canvas, h);
+		canvas->endFrame();
+
+		EGLBoolean ret = eglSwapBuffers(g_eglDisplay, data->surface);
+		if (!ret) {
+			printf("eglSwapBuffers failed! Error: 0x%x\n", eglGetError());
+		}
 }
