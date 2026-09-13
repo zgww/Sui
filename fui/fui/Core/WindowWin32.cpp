@@ -390,13 +390,13 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		//win->borderless = true;
 	}
 	switch (uMsg) {
-	case WM_CREATE:
-		// This plays together with WM_NCALCSIZE.
-	{
-		MARGINS m{ 0, 0, 0, 1 };
-		DwmExtendFrameIntoClientArea(hwnd, &m);
-		return 0;
-	}
+	//case WM_CREATE:
+	//	// This plays together with WM_NCALCSIZE.
+	//{
+	//	MARGINS m{ 0, 0, 0, 1 };
+	//	DwmExtendFrameIntoClientArea(hwnd, &m);
+	//	return 0;
+	//}
 
 	//case WM_NCCALCSIZE: {
 	//	// Returning 0 from the message when wParam is TRUE removes the standard
@@ -416,19 +416,44 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	//	return HTCAPTION;
 	//}
 
-		//阴影
+		// 阴影：WM_CREATE 已 DwmExtendFrameIntoClientArea 一次。这里不再重复调用，
+		// 否则每次激活/失焦都会触发 DWM 重新计算帧，无边框窗口切换窗口时会闪出边框。
 		case WM_ACTIVATE:
 		{
-			if (win && win->borderless) {
-				//MARGINS margins = { 1, 1, 1, 1 };
-				MARGINS margins = { 0, 0, 0, 1 };
-				HRESULT hr = S_OK;
-				hr = DwmExtendFrameIntoClientArea(hwnd, &margins);
-				return hr;
-			}
 			break;
 		}
 
+		//case WM_NCPAINT:
+		//{
+		//	//HDC hdc;
+		//	//hdc = GetDCEx(hwnd, (HRGN)wParam, DCX_WINDOW | DCX_INTERSECTRGN);
+		//	//// 在此 DC 中绘制
+		//	//ReleaseDC(hwnd, hdc);
+  //          // 直接返回 0，阻止系统绘制任何非客户区（包括边框、滚动条等）
+		//	return 0;
+		//}        
+		//// 【关键修复 1】拦截非活动状态的重绘
+		//case WM_NCACTIVATE:
+		//	// wParam == FALSE 表示窗口失去焦点 (inactive)
+		//	// 返回 TRUE 告诉系统：“我已经处理了，请不要绘制非活动状态的灰色边框”
+		//	if (wParam == FALSE) {
+		//		return TRUE;
+		//	}
+		//	break;
+		case WM_NCACTIVATE:
+		{
+			if (win && win->borderless) {
+				return TRUE; // 阻止 DWM 按激活状态重绘非客户区（失焦灰边/激活亮边）
+			}
+			break;
+		}
+		case WM_NCPAINT:
+		{
+			if (win && win->borderless) {
+				return 0; // 阻止非客户区绘制：无边框窗口不画任何边框/边线
+			}
+			break;
+		}
 		case WM_NCCALCSIZE:
 		{
 			if (win && win->borderless) {
@@ -714,6 +739,14 @@ static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
+void Window::setBorderless(bool v) {
+	borderless = v;
+	if (this->borderless) {
+		MARGINS m{ 0, 0, 0, 1 };
+		auto hwnd = _getWindowHwnd(this);
+		DwmExtendFrameIntoClientArea(hwnd, &m);
+	}
+}
 Window::Window() {
 	CtorGuard _(this);
 

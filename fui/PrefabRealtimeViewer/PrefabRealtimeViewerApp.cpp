@@ -111,14 +111,18 @@ static void applyStandaloneStyle(Window* win, float cw, float ch, bool borderles
 	DWORD ex = (DWORD)GetWindowLongPtrW(hwnd, GWL_EXSTYLE);
 	if (borderless) ex |= WS_EX_APPWINDOW; // 无边框也在任务栏留图标，方便关闭
 
-	RECT rc{ 0, 0, (LONG)cw, (LONG)ch };
-	AdjustWindowRectEx(&rc, style, FALSE, ex);
-	LONG outerW = rc.right - rc.left;
-	LONG outerH = rc.bottom - rc.top;
-
 	SetWindowLongPtrW(hwnd, GWL_STYLE, (LONG_PTR)style);
 	SetWindowLongPtrW(hwnd, GWL_EXSTYLE, (LONG_PTR)ex);
-	win->setSize((float)outerW, (float)outerH);
+	// 无边框窗口：fui WM_NCCALCSIZE 返回 0 使客户区=整窗，直接按设计尺寸设置即可精确 1:1；
+	// 普通窗口：需经 AdjustWindowRectEx 反推整窗尺寸，让客户区等于设计尺寸。
+	float setW = cw, setH = ch;
+	if (!borderless) {
+		RECT rc{ 0, 0, (LONG)cw, (LONG)ch };
+		AdjustWindowRectEx(&rc, style, FALSE, ex);
+		setW = (float)(rc.right - rc.left);
+		setH = (float)(rc.bottom - rc.top);
+	}
+	win->setSize(setW, setH);
 	// 让样式（去标题栏/边框）立即生效，但保持刚设置的尺寸与位置不变
 	SetWindowPos(hwnd, nullptr, 0, 0, 0, 0,
 		SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
@@ -132,14 +136,16 @@ static void applyStandaloneStyle(Window* win, float cw, float ch, bool borderles
 		DwmExtendFrameIntoClientArea(hwnd, &margins);
 
 
-		// 启用 Windows 11 原生圆角 (DWMWA_WINDOW_CORNER_PREFERENCE = 33)
+		// 无边框窗口必须关闭 Win11 原生圆角 (DWMWA_WINDOW_CORNER_PREFERENCE = 33)：
+		// 圆角外沿是 DWM 绘制的 1px 描边，切换窗口（激活态变化）时会被重绘出来，
+		// 与框架层 WM_NCACTIVATE/WM_NCPAINT 拦截配合才能做到真正无边框。
 		enum DWM_WINDOW_CORNER_PREFERENCE {
 			DWMWCP_DEFAULT = 0,
 			DWMWCP_DONOTROUND = 1,
 			DWMWCP_ROUND = 2,
 			DWMWCP_ROUNDSMALL = 3
 		};
-		DWM_WINDOW_CORNER_PREFERENCE pref = DWMWCP_ROUND;
+		DWM_WINDOW_CORNER_PREFERENCE pref = DWMWCP_DONOTROUND;
 		DwmSetWindowAttribute(hwnd, 33, &pref, sizeof(pref));
 	}
 }

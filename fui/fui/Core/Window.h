@@ -21,6 +21,7 @@ public:
 	Ref<Canvas> canvas{nullptr, this};
 
 	bool borderless = false;
+	void setBorderless(bool v);
 	Ref<Closure<void(Window*)>> onClosed{nullptr, this};
 
 	void* data = nullptr;
