@@ -1,6 +1,8 @@
 
 typedef struct tagSuiCore$Vtable_Object SuiCore$Vtable_Object;
 typedef struct tagVtable_SuiCore$Vtable_Object Vtable_SuiCore$Vtable_Object;
+typedef struct tagSuiCore$User SuiCore$User;
+typedef struct tagVtable_SuiCore$User Vtable_SuiCore$User;
 
 
 #ifndef define_struct___SuiCore__test_generic_orc_h__
@@ -63,6 +65,28 @@ Object*  SuiCore$Vtable_Object$create(Object **  __outRef__, SuiCore$Vtable_Obje
 
 Object*  SuiCore$mkObj(Object **  __outRef__, SuiCore$Vtable_Object *  vt);
 extern Object*  SuiCore$mkObjExtern(Object **  __outRef__, SuiCore$Vtable_Object *  vt);
+
+// 虚表
+struct tagVtable_SuiCore$User {
+	Vtable_Object super;
+};
+//虚表实例
+extern Vtable_SuiCore$User _vtable_SuiCore$User;
+
+// class refc:1
+struct tagSuiCore$User {
+	Object super; 
+	void  (*say) (SuiCore$User *  self);
+};
+Vtable_SuiCore$User* Vtable_SuiCore$User_init(Vtable_SuiCore$User* pvt);
+void SuiCore$User_init_fields(SuiCore$User *self);
+void SuiCore$User_init(SuiCore$User *self, void *pOwner);
+SuiCore$User * SuiCore$User_new(void *pOwner);
+void SuiCore$User_fini(SuiCore$User *self);
+
+void  SuiCore$User$say(SuiCore$User *  self);
+
+void  SuiCore$main();
 
 
 

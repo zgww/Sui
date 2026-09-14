@@ -1195,10 +1195,24 @@ void testThrow(){
 }
 class User {
     int age = 123;
+    void say(){
+        printf("User.age is :%d\n", self.age)
+    }
 }
+T@ mkObj<T>(Vtable_Object<T>* vt) {
+	T@ obj = null
+    vt.make(&obj);
+	return obj;
+}
+
 int main(){
     if 1 {
         printf("1\n")
+        User@ usr = mkObj(User);
+        usr.age = 3333;
+        usr.say();
+        mkObj(User).say();
+
         getchar();
     }
     urgc_start_process_thread();

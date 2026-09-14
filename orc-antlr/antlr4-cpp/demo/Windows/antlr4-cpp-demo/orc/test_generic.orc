@@ -10,3 +10,11 @@ T@ mkObj<T>(Vtable_Object<T>* vt) {
 }
 
 extern T@ mkObjExtern<T>(Vtable_Object<T>* vt);
+
+class User {
+    void say(){
+    }
+}
+void main(){
+    mkObj(User).say()
+}
