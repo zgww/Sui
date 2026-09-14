@@ -132,6 +132,7 @@ static void runPlayer(const std::string& mediaUrl, int count) {
 
 int main(int argc, char* argv[]) {
     const char* url = "E:\\ws\\Sui\\fui\\SkiaDrawOpencvFrame\\oceans.mp4";
+    url = "F:\\ws\\Sui\\fui\\fui\\x64\\Release\\oceans.mp4";
     int count = 50;
     if (argc > 1) url = argv[1];
     if (argc > 2) count = atoi(argv[2]);

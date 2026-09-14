@@ -5,9 +5,6 @@
 
 #define NOMINMAX
 
-#include <mutex>
-
-static std::mutex g_eglMutex;  // 全局串行化所有 EGL/Skia GL 访问: 渲染线程与消息线程并发创建/销毁/渲染窗口会导致 ANGLE 内部访问冲突
 
 // Skia 头文件须在 fui 头文件之前包含: fui 的 Core/Node.h 定义了 R/STATIC/CLASS 等宏,
 // 会污染 Skia 模板(如 GrGLFunctions.h 中的模板参数 R), 导致 C1075。
@@ -169,9 +166,19 @@ static bool _ensure_egl() {
 	return true;
 }
 
+// 全局串行化所有 EGL/Skia GL 访问: 渲染线程与消息线程会并发创建/销毁/渲染窗口,
+// 并发操作 ANGLE 的 EGLDisplay/上下文会访问冲突。用 SRWLOCK(编译期零初始化, 无静态构造)。
+static SRWLOCK g_eglLock = SRWLOCK_INIT;
+struct EglLockGuard {
+	SRWLOCK* l;
+	EglLockGuard(SRWLOCK* p) : l(p) { AcquireSRWLockExclusive(l); }
+	~EglLockGuard() { ReleaseSRWLockExclusive(l); }
+};
+
 void Window::initData() {
-	std::lock_guard<std::mutex> _glock(g_eglMutex);
+
 	cleanData();
+	EglLockGuard _glock(&g_eglLock);
 
 	WindowDataWin32Skia* data = new WindowDataWin32Skia();
 
@@ -224,11 +231,9 @@ void Window::initData() {
 }
 
 void Window::cleanData() {
-	std::lock_guard<std::mutex> _glock(g_eglMutex);
+	EglLockGuard _glock(&g_eglLock);
 	if (!data) return;
 	WindowDataWin32Skia* d = (WindowDataWin32Skia*)data;
-	printf("[cleanData] begin %p hwnd=%p skSurf=%p grCtx=%p surf=%p ctx=%p\n", this, d->hwnd, d->skSurface.get(), d->grContext.get(), d->surface, d->context);
-	printf("[cleanData] thread=%u this=%p begin\n", (unsigned)GetCurrentThreadId(), this);
 	// 先解除共享 SkiaCtx 对本窗口渲染资源的缓存绑定，防止窗口销毁后 endFrame 访问野指针
 	skiaCanvasUnbindIf(d->skSurface.get(), d->grContext.get());
 
@@ -262,12 +267,11 @@ void Window::cleanData() {
 		d->hwnd = nullptr;
 	}
 	delete d;
-	printf("[cleanData] end %p\n", this);
 	data = nullptr;
 }
 
 void Window::draw() {
-	std::lock_guard<std::mutex> _glock(g_eglMutex);
+	EglLockGuard _glock(&g_eglLock);
 	WindowDataWin32Skia* data = (WindowDataWin32Skia*)this->data;
 	if (!data || data->surface == EGL_NO_SURFACE || !data->grContext) {
 		printf("Window draw failed.  no surface\n");
@@ -310,13 +314,10 @@ void Window::draw() {
 		}
 
 		auto ok = eglMakeCurrent(g_eglDisplay, data->surface, data->surface, data->context);
-	printf("[draw] %p eglMakeCurrent ret=%d err=0x%x\n", this, (int)ok, (unsigned)eglGetError());
-	printf("[draw] thread=%u this=%p\n", (unsigned)GetCurrentThreadId(), this);
 		//glViewport(0, 0, w, h);
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// 绑定本帧渲染目标, 然后通过Canvas接口绘制
 		skiaCanvasBindFrame(data->skSurface.get(), data->grContext.get());
-	printf("[draw] %p bind %dx%d skSurf=%p gr=%p\n", this, w, h, data->skSurface.get(), data->grContext.get());
 
 		if (sizeChanged) {
 			// ANGLE(D3D11) 在 eglSwapBuffers 尾部才检查窗口尺寸并重建 swapchain:
@@ -328,31 +329,22 @@ void Window::draw() {
 
 			//eglMakeCurrent(g_eglDisplay, data->surface, data->surface, data->context);
 			//skiaCanvasBindFrame(data->skSurface.get(), data->grContext.get());
-	printf("[draw] %p bind %dx%d skSurf=%p gr=%p\n", this, w, h, data->skSurface.get(), data->grContext.get());
 			//canvas->beginFrame((float)w, (float)h, data->devicePixelRatio);
-	printf("[draw] %p beginFrame\n", this);
 			//canvas->endFrame();
-	printf("[draw] %p endFrame-2 err=0x%x\n", this, (unsigned)eglGetError());
-	printf("[draw] %p endFrame skSurf=%p gr=%p\n", this, data->skSurface.get(), data->grContext.get());
 			EGLBoolean ret = eglSwapBuffers(g_eglDisplay, data->surface);
-	printf("[draw] %p swap ret=%d err=0x%x\n", this, (int)ret, (unsigned)eglGetError());
 			if (!ret) {
 				printf("inner eglSwapBuffers failed! Error: 0x%x\n", eglGetError());
 			}
 		}
 
 		canvas->beginFrame((float)w, (float)h, data->devicePixelRatio);
-	printf("[draw] %p beginFrame\n", this);
 		if (rootView) {
 			rootView->draw(canvas);
 		}
 		fps.draw(canvas, h);
 		canvas->endFrame();
-	printf("[draw] %p endFrame-2 err=0x%x\n", this, (unsigned)eglGetError());
-	printf("[draw] %p endFrame skSurf=%p gr=%p\n", this, data->skSurface.get(), data->grContext.get());
 
 		EGLBoolean ret = eglSwapBuffers(g_eglDisplay, data->surface);
-	printf("[draw] %p swap ret=%d err=0x%x\n", this, (int)ret, (unsigned)eglGetError());
 		if (!ret) {
 			printf("eglSwapBuffers failed! Error: 0x%x\n", eglGetError());
 		}

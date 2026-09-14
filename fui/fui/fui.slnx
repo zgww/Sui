@@ -5,7 +5,9 @@
   </Configurations>
   <Project Path="../AngleDemo/AngleDemo.vcxproj" Id="f82fd699-de16-451d-b2f6-2a1d5e82166e" />
   <Project Path="../ffmpeg_cpp_1/ffmpeg_cpp_1.vcxproj" Id="8a85a5b1-570d-41a5-b13b-a20cfcfcd4b2" />
-  <Project Path="../ffmpeg_hw_skia_gpu_render/ffmpeg_hw_skia_gpu_render.vcxproj" Id="8f3f3965-cab7-4ca1-89ba-96ade6037184" />
+  <Project Path="../ffmpeg_hw_skia_gpu_render/ffmpeg_hw_skia_gpu_render.vcxproj" Id="8f3f3965-cab7-4ca1-89ba-96ade6037184">
+    <BuildDependency Project="fui.vcxproj" />
+  </Project>
   <Project Path="../FuiTestMain/FuiTestMain.vcxproj" Id="27f22c75-dc49-4617-8dbd-0188db8dbf07">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
