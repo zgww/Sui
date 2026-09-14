@@ -1,4 +1,4 @@
-// Generated from d:/ws/Sui/orc-antlr/antlr4-cpp/demo/Orc.g4 by ANTLR 4.13.1
+// Generated from f:/ws/Sui/orc-antlr/antlr4-cpp/demo/Orc.g4 by ANTLR 4.13.1
 
     #include "OrcParserBase.h"
 
@@ -619,6 +619,18 @@ public class OrcBaseListener implements OrcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterThrowStatement(OrcParser.ThrowStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitThrowStatement(OrcParser.ThrowStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterReturnStatement(OrcParser.ReturnStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -667,6 +679,42 @@ public class OrcBaseListener implements OrcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterForInit(OrcParser.ForInitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForInit(OrcParser.ForInitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForVarDeclaration(OrcParser.ForVarDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForVarDeclaration(OrcParser.ForVarDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForVarInitDeclarator(OrcParser.ForVarInitDeclaratorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForVarInitDeclarator(OrcParser.ForVarInitDeclaratorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSelectionStatement(OrcParser.SelectionStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -674,6 +722,42 @@ public class OrcBaseListener implements OrcListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSelectionStatement(OrcParser.SelectionStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTryStatement(OrcParser.TryStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTryStatement(OrcParser.TryStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCatchClause(OrcParser.CatchClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCatchClause(OrcParser.CatchClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFinallyClause(OrcParser.FinallyClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFinallyClause(OrcParser.FinallyClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

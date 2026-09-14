@@ -240,7 +240,6 @@ type
     | pointer
     | ref
     | typeQualifier? Struct? Id
-    | genericTypeUsage
     ;
 
 closureType
@@ -269,11 +268,11 @@ typeQualifier
     ;
 
 pointer
-    : typeQualifier? (primitiveType | (Struct? Id) | genericTypeUsage) (typeQualifier* '*' typeQualifier*)+
+    : typeQualifier? (primitiveType | (Struct? Id)) (typeQualifier* '*' typeQualifier*)+
     ;
 
 ref
-    : (Struct? Id | genericTypeUsage) '@'
+    : Struct? Id '@'
     ;
 
 primitiveType
@@ -351,30 +350,9 @@ functionDefinition
     : type Id argumentsDeclaration block
     ;
 
-// generic function definition: T@ mkObj<T>(Vtable_Object<T> vt){...}
-genericFunctionDefinition
-    : type Id genericParameterList argumentsDeclaration block
-    ;
-
-// generic extern function declaration: extern T@ mkObj<T>(Vtable_Object<T> vt);
-genericExternFunctionDeclaration
-    : Extern type Id genericParameterList argumentsDeclaration eos
-    ;
-
-genericParameterList
-    : '<' Id '>'
-    ;
-
-// generic type usage: Vtable_Object<T>
-genericTypeUsage
-    : Id '<' Id '>'
-    ;
-
 globalFunctionDefinition
     : Static? functionDefinition
     | Static? externFunctionDeclaration
-    | Static? genericFunctionDefinition
-    | Static? genericExternFunctionDeclaration
     ;
 
 globalVarDeclaration

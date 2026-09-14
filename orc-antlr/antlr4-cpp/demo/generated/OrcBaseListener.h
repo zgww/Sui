@@ -276,6 +276,18 @@ public:
   virtual void enterFunctionDefinition(OrcParser::FunctionDefinitionContext * /*ctx*/) override { }
   virtual void exitFunctionDefinition(OrcParser::FunctionDefinitionContext * /*ctx*/) override { }
 
+  virtual void enterGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext * /*ctx*/) override { }
+  virtual void exitGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext * /*ctx*/) override { }
+
+  virtual void enterGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext * /*ctx*/) override { }
+  virtual void exitGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext * /*ctx*/) override { }
+
+  virtual void enterGenericParameterList(OrcParser::GenericParameterListContext * /*ctx*/) override { }
+  virtual void exitGenericParameterList(OrcParser::GenericParameterListContext * /*ctx*/) override { }
+
+  virtual void enterGenericTypeUsage(OrcParser::GenericTypeUsageContext * /*ctx*/) override { }
+  virtual void exitGenericTypeUsage(OrcParser::GenericTypeUsageContext * /*ctx*/) override { }
+
   virtual void enterGlobalFunctionDefinition(OrcParser::GlobalFunctionDefinitionContext * /*ctx*/) override { }
   virtual void exitGlobalFunctionDefinition(OrcParser::GlobalFunctionDefinitionContext * /*ctx*/) override { }
 

@@ -193,6 +193,14 @@ public:
 
     virtual std::any visitFunctionDefinition(OrcParser::FunctionDefinitionContext *context) = 0;
 
+    virtual std::any visitGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext *context) = 0;
+
+    virtual std::any visitGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext *context) = 0;
+
+    virtual std::any visitGenericParameterList(OrcParser::GenericParameterListContext *context) = 0;
+
+    virtual std::any visitGenericTypeUsage(OrcParser::GenericTypeUsageContext *context) = 0;
+
     virtual std::any visitGlobalFunctionDefinition(OrcParser::GlobalFunctionDefinitionContext *context) = 0;
 
     virtual std::any visitGlobalVarDeclaration(OrcParser::GlobalVarDeclarationContext *context) = 0;

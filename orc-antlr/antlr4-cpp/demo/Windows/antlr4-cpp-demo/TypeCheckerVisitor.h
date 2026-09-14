@@ -65,6 +65,8 @@ public:
 
 	//�����Ƿ��ж���
 	bool isTypeNameDefined(std::string typeName);
+	//判断 typeName 是否为所在函数(擦除型泛型函数)的泛型参数
+	bool isEnclosingGenericFunctionParam(antlr4::tree::ParseTree* tree, std::string typeName);
 
 
 	void checkIsNumber(OrcParser::SingleExpressionContext* ctx);

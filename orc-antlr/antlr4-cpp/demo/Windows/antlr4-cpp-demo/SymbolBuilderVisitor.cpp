@@ -250,6 +250,7 @@ std::any SymbolBuilderVisitor::visitGlobalFunctionDefinition(OrcParser::GlobalFu
 			auto typeFn = ast_createSymbolTypeFunction(
 				fn->type(), fn->argumentsDeclaration()
 			);
+			ast_detectGenericFunction(typeFn, fn);
 			//auto typeFn = std::make_shared<SymbolTypeFunction>();
 			//typeFn->returnType = typeContext_toSymbolType(fn->type());
 
@@ -275,6 +276,7 @@ std::any SymbolBuilderVisitor::visitGlobalFunctionDefinition(OrcParser::GlobalFu
 			auto typeFn = ast_createSymbolTypeFunction(
 				fn->type(), fn->argumentsDeclaration()
 			);
+			ast_detectGenericFunction(typeFn, fn);
 			/*auto typeFn = std::make_shared<SymbolTypeFunction>();
 			typeFn->returnType = typeContext_toSymbolType(fn->type());*/
 
@@ -286,6 +288,44 @@ std::any SymbolBuilderVisitor::visitGlobalFunctionDefinition(OrcParser::GlobalFu
 			def->fullname = ast_mkFullname_byPrefix(space->packageName, def->name);
 			space->symbols.push_back(def);
 
+
+			return defaultResult();
+		}
+	}
+
+	{ //泛型函数定义
+		auto fn = n->genericFunctionDefinition();
+		if (fn) {
+			auto typeFn = ast_createSymbolTypeFunction(
+				fn->type(), fn->argumentsDeclaration()
+			);
+			ast_detectGenericFunction(typeFn, fn);
+
+			auto def = std::make_shared<SymbolDefinitionFunction>();
+			def->type = typeFn;
+			def->name = fn->Id()->getText();
+			def->setRangeByRuleContext(fn->Id());
+			def->fullname = isStatic ? def->name : ast_mkFullname_byPrefix(space->packageName, def->name);
+			space->symbols.push_back(def);
+
+			return defaultResult();
+		}
+	}
+
+	{ //泛型外部函数声明
+		auto fn = n->genericExternFunctionDeclaration();
+		if (fn) {
+			auto typeFn = ast_createSymbolTypeFunction(
+				fn->type(), fn->argumentsDeclaration()
+			);
+			ast_detectGenericFunction(typeFn, fn);
+
+			auto def = std::make_shared<SymbolDefinitionFunction>();
+			def->type = typeFn;
+			def->name = fn->Id()->getText();
+			def->setRangeByRuleContext(fn->Id());
+			def->fullname = ast_mkFullname_byPrefix(space->packageName, def->name);
+			space->symbols.push_back(def);
 
 			return defaultResult();
 		}

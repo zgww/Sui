@@ -7,6 +7,7 @@
     <LocalDebuggerCommandArguments>w</LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\..\..\Sui\src</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArgumentsHistory>w|</LocalDebuggerCommandArgumentsHistory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
     <LocalDebuggerCommandArguments>c "D:\ws\Sui\orc-antlr\antlr4-cpp\demo\Windows\bin\vs-2022\x64\Release DLL\a.orc"</LocalDebuggerCommandArguments>

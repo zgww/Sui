@@ -274,6 +274,18 @@ public:
   virtual void enterFunctionDefinition(OrcParser::FunctionDefinitionContext *ctx) = 0;
   virtual void exitFunctionDefinition(OrcParser::FunctionDefinitionContext *ctx) = 0;
 
+  virtual void enterGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext *ctx) = 0;
+  virtual void exitGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext *ctx) = 0;
+
+  virtual void enterGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext *ctx) = 0;
+  virtual void exitGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext *ctx) = 0;
+
+  virtual void enterGenericParameterList(OrcParser::GenericParameterListContext *ctx) = 0;
+  virtual void exitGenericParameterList(OrcParser::GenericParameterListContext *ctx) = 0;
+
+  virtual void enterGenericTypeUsage(OrcParser::GenericTypeUsageContext *ctx) = 0;
+  virtual void exitGenericTypeUsage(OrcParser::GenericTypeUsageContext *ctx) = 0;
+
   virtual void enterGlobalFunctionDefinition(OrcParser::GlobalFunctionDefinitionContext *ctx) = 0;
   virtual void exitGlobalFunctionDefinition(OrcParser::GlobalFunctionDefinitionContext *ctx) = 0;
 

@@ -272,6 +272,7 @@ nlohmann::json dumpJsonAsObjectArray(std::vector<std::shared_ptr<T>> vec) {
 
 std::string json_getString(nlohmann::json& jo, std::string key);
 int json_getInt(nlohmann::json& jo, std::string key);
+bool json_getBool(nlohmann::json& jo, std::string key);
 
 class Object {
 public:
@@ -315,10 +316,14 @@ public:
 class SymbolTypePointer : public SymbolTypeWithTypeName {
 public:
 	int pointerLevel = 1; //几级指针
+	std::string genericTypeArg; //泛型实参, 如 Vtable_Object<T>* 中的 T. 空=非泛型
 	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
 
 	virtual std::string toString() { 
 		auto s = getNakeTypeName();
+		if (!genericTypeArg.empty()) {
+			s += "<" + genericTypeArg + ">";
+		}
 		for (int i = 0; i < pointerLevel; i++) {
 			s += "*";
 		}
@@ -328,10 +333,12 @@ public:
 	virtual void fromJson(nlohmann::json& jo) {
 		SymbolTypeWithTypeName::fromJson(jo);
 		pointerLevel = json_getInt(jo, "pointerLevel");
+		genericTypeArg = json_getString(jo, "genericTypeArg");
 	}
 	virtual void toJson(nlohmann::json& jo) {
 		SymbolTypeWithTypeName::toJson(jo);
 		jo["pointerLevel"] = pointerLevel;
+		jo["genericTypeArg"] = genericTypeArg;
 	}
 	virtual bool is_nakeTypeName_isPrimitiveType();
 
@@ -376,13 +383,53 @@ public:
 class SymbolTypeRef : public SymbolTypeWithTypeName {
 public:
 	bool isWeak = false; //用于closureType. 表示，不需要为此生成urgc的设置代码.一般用于临时变量暂存用的
+	std::string genericTypeArg; //泛型实参, 如 Vtable_Object<T>@ 中的 T. 空=非泛型
 	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
 	virtual std::shared_ptr<SymbolTypePointer> toSymbolTypePointer() ;
 
 	virtual std::string toString() {
-		auto s = getNakeTypeName() + "@";
+		auto s = getNakeTypeName();
+		if (!genericTypeArg.empty()) {
+			s += "<" + genericTypeArg + ">";
+		}
+		s += "@";
 		return s;
 	};
+	virtual void fromJson(nlohmann::json& jo) {
+		SymbolTypeWithTypeName::fromJson(jo);
+		isWeak = json_getBool(jo, "isWeak");
+		genericTypeArg = json_getString(jo, "genericTypeArg");
+	}
+	virtual void toJson(nlohmann::json& jo) {
+		SymbolTypeWithTypeName::toJson(jo);
+		jo["isWeak"] = isWeak;
+		jo["genericTypeArg"] = genericTypeArg;
+	}
+	virtual bool isAssignable(
+		std::shared_ptr<SymbolType> rightType,
+		std::shared_ptr<SymbolSpace> leftSpace,
+		std::shared_ptr<SymbolSpace> rightSpace
+	) override;
+};
+
+//泛型用法类型: Vtable_Object<T> (擦除型, 基名+类型实参, 仅用于代码提示)
+class SymbolTypeGenericUsage : public SymbolTypeWithTypeName {
+public:
+	std::string typeArg; //泛型实参, 如 Vtable_Object<T> 中的 T
+	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
+
+	virtual std::string toString() {
+		return getNakeTypeName() + "<" + typeArg + ">";
+	};
+
+	virtual void fromJson(nlohmann::json& jo) {
+		SymbolTypeWithTypeName::fromJson(jo);
+		typeArg = json_getString(jo, "typeArg");
+	}
+	virtual void toJson(nlohmann::json& jo) {
+		SymbolTypeWithTypeName::toJson(jo);
+		jo["typeArg"] = typeArg;
+	}
 	virtual bool isAssignable(
 		std::shared_ptr<SymbolType> rightType,
 		std::shared_ptr<SymbolSpace> leftSpace,
@@ -438,6 +485,8 @@ class SymbolTypeFunction : public SymbolTypeWithTypeName {
 public:
 	std::shared_ptr<SymbolType> returnType = nullptr;
 	std::vector<std::shared_ptr<SymbolTypeArg>> args;
+	bool isGeneric = false; //擦除型泛型函数
+	std::string genericParamName; //泛型参数名, 如 mkObj<T> 中的 T
 	//std::vector<std::shared_ptr<SymbolType>> argTypes;
 	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
 
@@ -460,11 +509,15 @@ public:
 		SymbolTypeWithTypeName::fromJson(jo);
 		returnType = parseJsonToT<SymbolType>(jo["returnType"]);
 		parseJsonToObjectArray<SymbolTypeArg>(jo["args"], args);
+		isGeneric = json_getBool(jo, "isGeneric");
+		genericParamName = json_getString(jo, "genericParamName");
 	}
 	virtual void toJson(nlohmann::json& jo) {
 		SymbolTypeWithTypeName::toJson(jo);
 		jo["returnType"] = dumpJson(returnType.get());
 		jo["args"] = dumpJsonAsObjectArray(args);
+		jo["isGeneric"] = isGeneric;
+		jo["genericParamName"] = genericParamName;
 	}
 };
 
@@ -1002,6 +1055,9 @@ std::shared_ptr<SymbolTypeFunction> ast_createSymbolTypeFunction(
 	OrcParser::TypeContext* returnType,
 	OrcParser::ArgumentsDeclarationContext* argumentsDeclaration
 );
+
+//显式声明的擦除型泛型函数标记: T@ mkObj<T>(Vtable_Object<T> vt){...}
+void ast_detectGenericFunction(std::shared_ptr<SymbolTypeFunction> typeFn, antlr4::tree::ParseTree* fnCtx);
 VarInfo ast_findVarInfoByVarName(
 	antlr4::tree::ParseTree* tree, string varName,
 	std::shared_ptr<SymbolSpace> space //如果有传入，就会顺着找导入的其他变量

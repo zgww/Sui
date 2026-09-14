@@ -674,6 +674,25 @@ std::any GenOrcCodeVisitor::visitFunctionPointerVarDeclaration(OrcParser::Functi
 	return ret;
 }
 
+//生成泛型函数声明 (擦除型: <T> 不输出到C代码)
+std::any GenOrcCodeVisitor::visitGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext* ctx) {
+	auto type = visitReturnString(ctx->type());
+	auto args = visitReturnString(ctx->argumentsDeclaration());
+	auto name = ctx->fullname.empty() ? ctx->Id()->getText() : ctx->fullname;
+	auto block = visitReturnString(ctx->block());
+
+	return type + " " + name + args + block + "\n";
+}
+
+//生成泛型extern函数声明 (擦除型: <T> 不输出到C代码)
+std::any GenOrcCodeVisitor::visitGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext* ctx) {
+	auto type = visitReturnString(ctx->type());
+	auto args = visitReturnString(ctx->argumentsDeclaration());
+	auto name = ctx->fullname.empty() ? ctx->Id()->getText() : ctx->fullname;
+
+	return std::string("extern ") + type + " " + name + args + "\n";
+}
+
 //生成函数声明
 
 std::any GenOrcCodeVisitor::visitFunctionDefinition(OrcParser::FunctionDefinitionContext* ctx) {
