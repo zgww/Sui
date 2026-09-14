@@ -119,8 +119,8 @@ Object*  SuiCore$Vtable_Object$create(Object **  __outRef__, SuiCore$Vtable_Obje
 
 
 
-Object*  SuiCore$mkObj(Object **  __outRef__, SuiCore$Vtable_Object vt){
-	URGC_VAR_CLEANUP Object*  obj = vt.create((obj = NULL,&obj), vt) ;
+Object*  SuiCore$mkObj(Object **  __outRef__, SuiCore$Vtable_Object *  vt){
+	URGC_VAR_CLEANUP Object*  obj = vt->create((obj = NULL,&obj), vt) ;
 	return obj; 
 }
 

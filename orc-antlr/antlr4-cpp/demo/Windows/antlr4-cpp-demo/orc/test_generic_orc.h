@@ -61,8 +61,8 @@ void SuiCore$Vtable_Object_fini(SuiCore$Vtable_Object *self);
 
 Object*  SuiCore$Vtable_Object$create(Object **  __outRef__, SuiCore$Vtable_Object *  self);
 
-Object*  SuiCore$mkObj(Object **  __outRef__, SuiCore$Vtable_Object vt);
-extern Object*  SuiCore$mkObjExtern(Object **  __outRef__, SuiCore$Vtable_Object vt);
+Object*  SuiCore$mkObj(Object **  __outRef__, SuiCore$Vtable_Object *  vt);
+extern Object*  SuiCore$mkObjExtern(Object **  __outRef__, SuiCore$Vtable_Object *  vt);
 
 
 

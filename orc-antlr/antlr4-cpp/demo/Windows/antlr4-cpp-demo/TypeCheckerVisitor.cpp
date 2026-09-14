@@ -480,6 +480,7 @@ std::any TypeCheckerVisitor::visitIdentifierExpression(OrcParser::IdentifierExpr
 		|| varName.starts_with("sizeof")
 		|| varName.starts_with("offsetof")
 		|| varName.starts_with("metaStructOf")
+		|| varName.starts_with("printf")
 		
 		) { //���õ�
 
@@ -680,7 +681,7 @@ std::any TypeCheckerVisitor::visitType(OrcParser::TypeContext* ctx)
 {
 	auto declType = typeContext_toSymbolType(ctx);
 	//��������Ƿ����
-	if (declType && !isTypeNameDefined(declType->getNakeTypeName())) {
+	if (declType && !isTypeNameDefined(declType->getNakeTypeName()) && !isEnclosingGenericFunctionParam(ctx, declType->getNakeTypeName())) {
 		addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
 		throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
 	}

@@ -499,6 +499,133 @@ std::string SymbolTypeWithHostSpace::getPointStarText_ofType()
 	return ret;
 }
 
+// 擦除型泛型：调用点实例化返回类型（T@ -> User@ / 推导失败擦除为 Object@）
+static std::shared_ptr<SymbolType> ast_instantiateGenericType(std::shared_ptr<SymbolType> type,
+	const std::string& paramName, const std::string& typeArg) {
+	if (!type) {
+		return nullptr;
+	}
+	auto ref = std::dynamic_pointer_cast<SymbolTypeRef>(type);
+	if (ref) {
+		if (ref->typeName == paramName) {
+			auto r = std::make_shared<SymbolTypeRef>();
+			r->typeName = typeArg;
+			r->isWeak = ref->isWeak;
+			return r;
+		}
+		return ref;
+	}
+	auto ptr = std::dynamic_pointer_cast<SymbolTypePointer>(type);
+	if (ptr) {
+		if (ptr->typeName == paramName) {
+			auto r = std::make_shared<SymbolTypePointer>();
+			r->typeName = typeArg;
+			r->pointerLevel = ptr->pointerLevel;
+			return r;
+		}
+		return ptr;
+	}
+	auto gu = std::dynamic_pointer_cast<SymbolTypeGenericUsage>(type);
+	if (gu) {
+		if (gu->typeArg == paramName) {
+			auto r = std::make_shared<SymbolTypeGenericUsage>();
+			r->typeName = gu->typeName;
+			r->typeArg = typeArg;
+			return r;
+		}
+		return gu;
+	}
+	return type;
+}
+
+// 取泛型形参类型中出现的泛型参数名（T），无则返回空串
+static std::string ast_getGenericTypeArgName(std::shared_ptr<SymbolType> type) {
+	if (!type) {
+		return "";
+	}
+	auto gu = std::dynamic_pointer_cast<SymbolTypeGenericUsage>(type);
+	if (gu && !gu->typeArg.empty()) {
+		return gu->typeArg;
+	}
+	auto ptr = std::dynamic_pointer_cast<SymbolTypePointer>(type);
+	if (ptr && !ptr->genericTypeArg.empty()) {
+		return ptr->genericTypeArg;
+	}
+	auto ref = std::dynamic_pointer_cast<SymbolTypeRef>(type);
+	if (ref && !ref->genericTypeArg.empty()) {
+		return ref->genericTypeArg;
+	}
+	return "";
+}
+
+// 擦除型泛型函数调用：从实参推导泛型实参。当前支持：实参为类名标识符（如 mkObj(User)），
+// 对应形参是 Vtable_Object<T> / Vtable_Object<T>* 形式时，T := 类名。
+static std::string ast_deduceGenericTypeArg(OrcParser::CallExpressionContext* ex,
+	std::shared_ptr<SymbolTypeFunction> fnType, std::shared_ptr<SymbolSpace> space) {
+	if (!ex || !fnType || fnType->genericParamName.empty()) {
+		return "";
+	}
+	auto args = ex->arguments();
+	if (!args) {
+		return "";
+	}
+	auto argExprs = args->singleExpression();
+	auto fnArgs = fnType->args;
+	for (size_t i = 0; i < argExprs.size(); i++) {
+		std::shared_ptr<SymbolTypeArg> formalArg;
+		if (i < fnArgs.size()) {
+			formalArg = fnArgs[i];
+		}
+		if (formalArg) {
+			if (ast_getGenericTypeArgName(formalArg->type) != fnType->genericParamName) {
+				continue;
+			}
+		}
+		auto ident = dynamic_cast<OrcParser::IdentifierExpressionContext*>(argExprs[i]);
+		if (!ident) {
+			continue;
+		}
+		auto varInfo = ast_findVarInfoByVarName(ident, ident->Id()->getText(), space);
+		if (varInfo.symbolDefinition
+			&& std::dynamic_pointer_cast<SymbolDefinitionClass>(varInfo.symbolDefinition)) {
+			return ident->Id()->getText();
+		}
+	}
+	return "";
+}
+
+// 擦除型泛型调用：TranslateVisitor 已改写实参（第一个是 outRef 的 (Object**)&tmpReturn_N），
+// 从形如 Vtable_SuiCore$User_init(...) 的 vtable 实参中提取类型实参名（User）
+static std::string ast_deduceGenericTypeArg_fromVtableArg(OrcParser::CallExpressionContext* ex) {
+	if (!ex) {
+		return "";
+	}
+	auto args = ex->arguments();
+	if (!args) {
+		return "";
+	}
+	for (auto* e : args->singleExpression()) {
+		auto call = dynamic_cast<OrcParser::CallExpressionContext*>(e);
+		if (!call) {
+			continue;
+		}
+		auto ident = dynamic_cast<OrcParser::IdentifierExpressionContext*>(call->singleExpression());
+		if (!ident) {
+			continue;
+		}
+		auto name = ident->Id()->getText();
+		if (name.rfind("Vtable_", 0) == 0) {
+			auto pos = name.rfind('$');
+			auto base = pos == std::string::npos ? name : name.substr(pos + 1);
+			auto len = base.size();
+			if (len > 5 && base.substr(len - 5) == "_init") {
+				return base.substr(0, len - 5);
+			}
+		}
+	}
+	return "";
+}
+
 // 计算表达式结果的类型符号定义
 // 如果是四则运算，返回数字类型
 std::shared_ptr<SymbolTypeWithHostSpace> ast__calcSymbolTypeOfExpressionResult(OrcParser::SingleExpressionContext *expr, 
@@ -522,6 +649,25 @@ std::shared_ptr<SymbolTypeWithHostSpace> ast__calcSymbolTypeOfExpressionResult(O
 				//auto fnDef = dynamic_cast<SymbolDefinitionFunction*>(fn->findSymbolDefinition());
 				//返回 函数返回值 的符号定义
 				if (fnType && fnType->returnType) {
+					//擦除型泛型函数调用：由实参推导泛型实参并实例化返回类型
+					if (fnType->isGeneric && !fnType->genericParamName.empty()) {
+						auto typeArg = ast_deduceGenericTypeArg(ex, fnType, space);
+						if (!typeArg.empty()) {
+							auto instType = ast_instantiateGenericType(fnType->returnType,
+								fnType->genericParamName, typeArg);
+							if (instType) {
+								auto ret = SymbolTypeWithHostSpace::mk(instType, fn->hostSpace);
+								return ret;
+							}
+						}
+						//推导失败：擦除型语义，T 擦除为 Object
+						auto erasedType = ast_instantiateGenericType(fnType->returnType,
+							fnType->genericParamName, "Object");
+						if (erasedType) {
+							auto ret = SymbolTypeWithHostSpace::mk(erasedType, fn->hostSpace);
+							return ret;
+						}
+					}
 					auto ret = SymbolTypeWithHostSpace::mk(fnType->returnType, fn->hostSpace);
 					return ret;
 				}
@@ -1018,6 +1164,14 @@ std::shared_ptr<SymbolTypeWithHostSpace> ast__calcSymbolTypeOfExpressionResult(O
 				auto ret = SymbolTypeWithHostSpace::mk(symbolType, space);
 				//cost.stat("malloc");
 				//cost.print("malloc");
+				return ret;
+			}
+			if (varName == "printf") { //C 内置可变参数函数，类型求值特判
+				auto symbolType = std::make_shared<SymbolTypeFunction>();
+				auto retType = std::make_shared<SymbolTypePrimitiveType>();
+				retType->typeName = "int";
+				symbolType->returnType = retType;
+				auto ret = SymbolTypeWithHostSpace::mk(symbolType, space);
 				return ret;
 			}
 			if (varName == "metaStructOf") {
@@ -3899,11 +4053,25 @@ public:
 					assignNull->translateVisited = true;
 
 					seq->insert( assignNull );
-					seq->insert(
-						mk->getAddress(
+					{
+						OrcParser::SingleExpressionContext* addrExpr = mk->getAddress(
 							mk->identifierExpression(returnVarName)
-						)
-					);
+						);
+						std::shared_ptr<SymbolTypeFunction> callerFnType;
+						auto callerIdent = dynamic_cast<OrcParser::IdentifierExpressionContext*>(ctx->singleExpression());
+						if (callerIdent) {
+							auto callerTypeInfo = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
+							callerFnType = callerTypeInfo ? std::dynamic_pointer_cast<SymbolTypeFunction>(callerTypeInfo->type) : nullptr;
+						}
+						if (callerFnType && callerFnType->isGeneric) {
+							//泛型函数：__outRef__ 形参被擦除为 Object**，实参需要显式 (Object**) 转换
+							addrExpr = mk->castExpression(
+								mk->type(mk->pointer(mk->primitiveType("Object"), 2)),
+								addrExpr
+							);
+						}
+						seq->insert(addrExpr);
+					}
 					args->insert(quote, 0); //添加se
 				}  
 				else {
@@ -3924,12 +4092,26 @@ public:
 					varDeclarationStatement->translateVisited = true;
 
 					//添加outRef变量：    fn(&tmpReturn_0_0)
-					args->insert(
-						mk->getAddress(
+					//泛型函数：__outRef__ 形参被擦除为 Object**，实参需要显式 (Object**) 转换
+					{
+						OrcParser::SingleExpressionContext* outRefExpr = mk->getAddress(
 							mk->identifierExpression(tmpReturn_varName)
-						)
-						, 0); //添加se
-
+						);
+						//泛型只支持全局函数，调用点函数名必须是标识符（方法调用 memberDot 不走此路径）
+						std::shared_ptr<SymbolTypeFunction> callerFnType;
+						auto callerIdent = dynamic_cast<OrcParser::IdentifierExpressionContext*>(ctx->singleExpression());
+						if (callerIdent) {
+							auto callerTypeInfo = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
+							callerFnType = callerTypeInfo ? std::dynamic_pointer_cast<SymbolTypeFunction>(callerTypeInfo->type) : nullptr;
+						}
+						if (callerFnType && callerFnType->isGeneric) {
+							outRefExpr = mk->castExpression(
+								mk->type(mk->pointer(mk->primitiveType("Object"), 2)),
+								outRefExpr
+							);
+						}
+						args->insert(outRefExpr, 0); //添加se
+					}
 
 					//不在函数内部，在成员变量的初始化表达式,需要特别处理tmpReturn变量的位置
 					auto found = ast_findAncestorByType<OrcParser::ClassFieldDeclarationContext>(ctx);
@@ -5357,8 +5539,41 @@ public:
 		auto fn = visitReturnString(ctx->singleExpression());
 		auto args = visitReturnString(ctx->arguments());
 
+		//擦除型泛型调用：返回类型在定义处被擦除为 Object*，调用点实例化出具体类型后，
+		//需要显式 cast 回具体类类型（如 mkObj(User) => (SuiCore$User*)SuiCore$mkObj(...)）
+		//泛型只支持全局函数，调用点函数名必须是标识符（方法调用 memberDot 跳过，避免类型计算递归崩溃）
+		std::string castPrefix;
+		{
+			auto callerIdent = dynamic_cast<OrcParser::IdentifierExpressionContext*>(ctx->singleExpression());
+			if (callerIdent) {
+				//只对符号空间中有定义的函数做类型计算（C 内置如 urgc_set_var_for_return 无符号定义，跳过）
+				auto fnDef = space->findSymbolDefinitionByName_includeImports(callerIdent->Id()->getText());
+				if (!fnDef) {
+					callerIdent = nullptr;
+				}
+			}
+			if (callerIdent) {
+				auto callerTypeInfo = ast_calcSymbolTypeOfExpressionResult(ctx->singleExpression(), space);
+				auto callerFnType = callerTypeInfo ? std::dynamic_pointer_cast<SymbolTypeFunction>(callerTypeInfo->type) : nullptr;
+				if (callerFnType && callerFnType->isGeneric) {
+					auto typeArg = ast_deduceGenericTypeArg_fromVtableArg(ctx);
+					if (typeArg.empty()) {
+						typeArg = ast_deduceGenericTypeArg(ctx, callerFnType, space);
+					}
+					if (!typeArg.empty()) {
+						auto retType = ast_instantiateGenericType(callerFnType->returnType, callerFnType->genericParamName, typeArg);
+						auto retRef = std::dynamic_pointer_cast<SymbolTypeRef>(retType);
+						if (retRef && retRef->typeName != "Object") {
+							auto def = space->findSymbolDefinitionByName_includeImports(retRef->typeName);
+							auto cname = def ? def->fullname : retRef->typeName;
+							castPrefix = std::format("({}*)", cname);
+						}
+					}
+				}
+			}
+		}
 		CostUsGuard g(this);
-		return fn + args;
+		return castPrefix + fn + args;
 	}
 
 	virtual std::any visitBitShiftExpression(OrcParser::BitShiftExpressionContext* ctx) override {
