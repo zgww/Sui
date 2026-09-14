@@ -769,7 +769,7 @@ Window::Window() {
 }
 
 Window::~Window() {
-	cleanData();
+	//cleanData();
 	printf("release Window %p\n", this);
 }
 
@@ -873,6 +873,8 @@ void Window::layoutAndDraw() {
 }
 
 void Window::onDestroy() {
+
+	cleanData();
 	App* app = App_use();
 	app->removeWindow(this);
 }

@@ -225,6 +225,17 @@ void skiaCanvasBindFrame(SkSurface* surface, GrDirectContext* grContext) {
 	g_skiaCtx->grContext = grContext;
 }
 
+void skiaCanvasUnbindIf(SkSurface* surface, GrDirectContext* grContext) {
+	if (!g_skiaCtx) return;
+	// 仅当全局缓存仍指向该窗口的资源时才解除，避免误伤其他窗口当前帧的绑定
+	if (surface && g_skiaCtx->skCanvas == surface->getCanvas()) {
+		g_skiaCtx->skCanvas = nullptr;
+	}
+	if (grContext && g_skiaCtx->grContext == grContext) {
+		g_skiaCtx->grContext = nullptr;
+	}
+}
+
 // ---------------------------------------------------------------------------
 // Canvas 实现
 // ---------------------------------------------------------------------------
