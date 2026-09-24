@@ -1,0 +1,169 @@
+<html style="margin:0;padding:0;">
+<div style="width:100%;box-sizing:border-box;font-family:'Segoe UI','Microsoft YaHei',sans-serif;color:#1A1B1C;background:#fff;padding:24px;line-height:1.5;">
+
+  <h2 style="margin:0 0 4px;font-size:20px;">用"树"表达状态流转？先分清三种"树"</h2>
+  <div style="color:#5F6670;font-size:13px;margin-bottom:16px;">层次状态机 HSM、行为树 BT、纯状态树是三种不同范式；结论先行：流转本身是图不是树，但"结构"用树、"任务"用行为树确有价值。</div>
+
+  <!-- 前提纠正 -->
+  <div style="border-left:3px solid #9A6A2F;background:#FCF9F3;border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:20px;font-size:13px;box-sizing:border-box;">
+    <b>前提：状态"流转"天然是图，不是树。</b>树要求<b>单父、无环、根→叶单向</b>；而真实流转里大量存在
+    <span style="display:inline-block;border:1px solid #9A6A2F;border-radius:4px;padding:1px 7px;margin:2px;background:#fff;">回环：就位优化 →超时→ 移动中（重试）</span>
+    <span style="display:inline-block;border:1px solid #9A6A2F;border-radius:4px;padding:1px 7px;margin:2px;background:#fff;">回退：充电完成 → 空闲（回到更早状态）</span>
+    <span style="display:inline-block;border:1px solid #9A6A2F;border-radius:4px;padding:1px 7px;margin:2px;background:#fff;">多入口：空闲可被复位/急停解除/上电等多个事件进入</span>
+    纯树表达这些只能靠"复制状态节点"hack，导致同一状态出现多份、当前态无法追踪。
+  </div>
+
+  <!-- 三种范式 -->
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+
+    <!-- HSM -->
+    <div style="flex:1 1 340px;min-width:320px;border:1.5px solid #4F6B9A;border-radius:8px;padding:14px;background:#F7F9FC;box-sizing:border-box;">
+      <div style="font-weight:700;color:#4F6B9A;font-size:15px;margin-bottom:2px;">① 层次状态机 HSM</div>
+      <div style="font-size:12px;color:#5F6670;margin-bottom:10px;">状态<b>嵌套</b>状态；事件从叶子沿父链<b>冒泡</b>，父级可放公共迁移。树表达的是"包含结构"。</div>
+      <svg viewBox="0 0 320 178" style="width:100%;height:auto;display:block;">
+        <rect x="8" y="8" width="304" height="162" rx="8" fill="#EEF2F8" stroke="#4F6B9A" stroke-width="1.5"/>
+        <text x="20" y="26" font-size="12" fill="#4F6B9A" font-weight="700">复合状态：自动模式</text>
+        <!-- 公共迁移 -->
+        <rect x="196" y="14" width="104" height="20" rx="4" fill="#F3E9D8" stroke="#9A6A2F"/>
+        <text x="248" y="28" font-size="11" fill="#9A6A2F" text-anchor="middle">急停→安全态(公共)</text>
+        <rect x="24" y="44" width="128" height="110" rx="6" fill="#fff" stroke="#8AA0C4"/>
+        <text x="88" y="60" font-size="11" fill="#4F6B9A" text-anchor="middle">子状态：巡检中</text>
+        <rect x="40" y="72" width="96" height="22" rx="4" fill="#DDE6F2" stroke="#4F6B9A"/>
+        <text x="88" y="87" font-size="11" fill="#1A1B1C" text-anchor="middle">导航到点</text>
+        <rect x="40" y="102" width="96" height="22" rx="4" fill="#DDE6F2" stroke="#4F6B9A"/>
+        <text x="88" y="117" font-size="11" fill="#1A1B1C" text-anchor="middle">检测</text>
+        <rect x="172" y="44" width="128" height="110" rx="6" fill="#fff" stroke="#8AA0C4"/>
+        <text x="236" y="60" font-size="11" fill="#4F6B9A" text-anchor="middle">子状态：充电对接</text>
+        <rect x="188" y="72" width="96" height="22" rx="4" fill="#DDE6F2" stroke="#4F6B9A"/>
+        <text x="236" y="87" font-size="11" fill="#1A1B1C" text-anchor="middle">移动中</text>
+        <rect x="188" y="102" width="96" height="22" rx="4" fill="#DDE6F2" stroke="#4F6B9A"/>
+        <text x="236" y="117" font-size="11" fill="#1A1B1C" text-anchor="middle">充电中</text>
+        <!-- 冒泡箭头 -->
+        <path d="M88 70 C 88 36, 248 34, 248 30" fill="none" stroke="#9A6A2F" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="150" y="172" font-size="10.5" fill="#9A6A2F" text-anchor="middle">子状态不处理的事件（如急停）向上冒泡给父状态</text>
+      </svg>
+      <div style="font-size:12.5px;margin-top:8px;"><b style="color:#35705A;">适合：</b>多个状态共享急停/暂停/故障迁移、模式嵌套、进入父态自动入初始子态、history 记忆。</div>
+      <div style="font-size:12.5px;color:#5F6670;"><b>成本：</b>嵌套盒子编辑器、事件冒泡优先级、逐层 enter/exit、history 语义，内核复杂度上升一档。</div>
+    </div>
+
+    <!-- BT -->
+    <div style="flex:1 1 340px;min-width:320px;border:1.5px solid #35705A;border-radius:8px;padding:14px;background:#F4F8F6;box-sizing:border-box;">
+      <div style="font-weight:700;color:#35705A;font-size:15px;margin-bottom:2px;">② 行为树 BT</div>
+      <div style="font-size:12px;color:#5F6670;margin-bottom:10px;">节点不是状态而是<b>被 tick 的行为</b>，返回 成功/运行中/失败；树表达的是"任务分解与决策"。</div>
+      <svg viewBox="0 0 320 178" style="width:100%;height:auto;display:block;">
+        <!-- root selector -->
+        <rect x="120" y="6" width="80" height="22" rx="4" fill="#DCEAE3" stroke="#35705A"/>
+        <text x="160" y="21" font-size="11" fill="#1A1B1C" text-anchor="middle">? 选择(兜底)</text>
+        <!-- retry decorator -->
+        <rect x="20" y="52" width="92" height="22" rx="4" fill="#EFE3CC" stroke="#9A6A2F"/>
+        <text x="66" y="67" font-size="11" fill="#1A1B1C" text-anchor="middle">↻ 重试3次</text>
+        <!-- sequence -->
+        <rect x="124" y="52" width="92" height="22" rx="4" fill="#DCEAE3" stroke="#35705A"/>
+        <text x="170" y="67" font-size="11" fill="#1A1B1C" text-anchor="middle">→ 顺序</text>
+        <!-- timeout -->
+        <rect x="228" y="52" width="80" height="22" rx="4" fill="#EFE3CC" stroke="#9A6A2F"/>
+        <text x="268" y="67" font-size="11" fill="#1A1B1C" text-anchor="middle">⏱ 超时60s</text>
+        <!-- leaves -->
+        <rect x="6" y="104" width="80" height="26" rx="4" fill="#fff" stroke="#35705A"/>
+        <text x="46" y="121" font-size="10.5" fill="#1A1B1C" text-anchor="middle">避障检测</text>
+        <rect x="92" y="104" width="74" height="26" rx="4" fill="#fff" stroke="#35705A"/>
+        <text x="129" y="117" font-size="10.5" fill="#1A1B1C" text-anchor="middle">导航到</text><text x="129" y="128" font-size="10.5" fill="#1A1B1C" text-anchor="middle">充电点</text>
+        <rect x="172" y="104" width="74" height="26" rx="4" fill="#fff" stroke="#35705A"/>
+        <text x="209" y="121" font-size="10.5" fill="#1A1B1C" text-anchor="middle">对接就位</text>
+        <rect x="232" y="104" width="76" height="26" rx="4" fill="#fff" stroke="#35705A"/>
+        <text x="270" y="121" font-size="10.5" fill="#1A1B1C" text-anchor="middle">开始充电</text>
+        <!-- edges -->
+        <path d="M160 28 L66 52 M160 28 L170 52 M160 28 L268 52" stroke="#9AA6A0" stroke-width="1.2" fill="none"/>
+        <path d="M66 74 L46 104 M66 74 L129 104 M170 74 L209 104 M268 74 L270 104" stroke="#9AA6A0" stroke-width="1.2" fill="none"/>
+        <text x="160" y="158" font-size="10.5" fill="#35705A" text-anchor="middle">每 tick 从根往下执行；Running 记忆位置，失败自动兜底/重试/超时</text>
+        <text x="160" y="172" font-size="10.5" fill="#5F6670" text-anchor="middle">重试/超时/顺序/并行是<b>内置节点</b>，不必画状态和回线</text>
+      </svg>
+      <div style="font-size:12.5px;margin-top:8px;"><b style="color:#35705A;">适合：</b>巡检/对接等<b>有步骤、重试、超时、失败兜底、反应式</b>的任务（Nav2/ROS 主流做法）。</div>
+      <div style="font-size:12.5px;color:#5F6670;"><b>成本：</b>另一套范式与编辑器；不擅长长期模态（充电中/手动模式），每 tick 重评估。</div>
+    </div>
+
+    <!-- 纯状态树：否定 -->
+    <div style="flex:1 1 340px;min-width:320px;border:1.5px solid #A14E50;border-radius:8px;padding:14px;background:#FBF4F4;box-sizing:border-box;">
+      <div style="font-weight:700;color:#A14E50;font-size:15px;margin-bottom:2px;">③ 纯状态树（状态做节点、迁移做父子边）</div>
+      <div style="font-size:12px;color:#5F6670;margin-bottom:10px;">把"流转"本身画成树——<b>不推荐</b>，表达力倒退。</div>
+      <svg viewBox="0 0 320 178" style="width:100%;height:auto;display:block;">
+        <rect x="120" y="8" width="80" height="24" rx="4" fill="#F3D9DA" stroke="#A14E50"/>
+        <text x="160" y="24" font-size="11" fill="#1A1B1C" text-anchor="middle">空闲</text>
+        <rect x="40" y="60" width="80" height="24" rx="4" fill="#F3D9DA" stroke="#A14E50"/>
+        <text x="80" y="76" font-size="11" fill="#1A1B1C" text-anchor="middle">去充电</text>
+        <rect x="200" y="60" width="80" height="24" rx="4" fill="#F3D9DA" stroke="#A14E50"/>
+        <text x="240" y="76" font-size="11" fill="#1A1B1C" text-anchor="middle">巡检</text>
+        <rect x="10" y="112" width="80" height="24" rx="4" fill="#F3D9DA" stroke="#A14E50"/>
+        <text x="50" y="128" font-size="10.5" fill="#1A1B1C" text-anchor="middle">移动中</text>
+        <rect x="100" y="112" width="80" height="24" rx="4" fill="#F3D9DA" stroke="#A14E50"/>
+        <text x="140" y="128" font-size="10.5" fill="#1A1B1C" text-anchor="middle">充电中</text>
+        <path d="M160 32 L80 60 M160 32 L240 60 M80 84 L50 112 M80 84 L140 112" stroke="#C49A9B" stroke-width="1.2"/>
+        <!-- 红色无法表达 -->
+        <path d="M50 124 C 20 90, 20 40, 120 22" fill="none" stroke="#A14E50" stroke-width="1.4" stroke-dasharray="5 3"/>
+        <text x="26" y="160" font-size="10.5" fill="#A14E50">充电完回空闲 / 超时重试回环：</text>
+        <text x="26" y="173" font-size="10.5" fill="#A14E50">树里没有这条边，只能复制节点 ✗</text>
+      </svg>
+      <div style="font-size:12.5px;margin-top:8px;"><b style="color:#A14E50;">问题：</b>树只能表达"分解/包含"，表达不了"可能回 A、可能去 B、还可能循环"的流转。</div>
+    </div>
+  </div>
+
+  <!-- 对照表 -->
+  <h3 style="font-size:15px;margin:22px 0 8px;">对照：与现有 FsmSpec 的关系</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead><tr style="background:#F2F2EF;text-align:left;">
+      <th style="border:1px solid #E4E3DD;padding:7px 10px;width:96px;">范式</th>
+      <th style="border:1px solid #E4E3DD;padding:7px 10px;">最擅长</th>
+      <th style="border:1px solid #E4E3DD;padding:7px 10px;">在本项目的位置</th>
+      <th style="border:1px solid #E4E3DD;padding:7px 10px;width:120px;">改动量</th>
+    </tr></thead>
+    <tbody>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:700;color:#4F6B9A;">HSM</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">长期模式、公共迁移复用、嵌套封装</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">FsmSpec 的"子状态机激活 + LIFO 栈"已是 HSM 的<b>受限子集</b>；补复合状态/事件冒泡/父级公共迁移/history 即可平滑升级，<b>不推翻</b></td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;color:#9A6A2F;">中（演进而非重写）</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:700;color:#35705A;">行为树</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">步骤序列、重试/超时/兜底、并行、随时反应（避障/急停）</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">替代的是"<b>某个状态内部的任务流程</b>"（巡检/对接），经 handler 当动作执行器接入；不替代顶层模式管理</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;color:#9A6A2F;">中（新增一层，并存）</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:700;color:#A14E50;">纯状态树</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">仅适合无环、单向、不回头的向导式流程</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">机器人有大量重试/回退/循环，<b>不适用</b></td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;color:#A14E50;">—（不建议）</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 推荐混合架构 -->
+  <h3 style="font-size:15px;margin:22px 0 8px;">推荐：不是二选一，而是 FSM/HSM 管模式 + BT 管任务</h3>
+  <svg viewBox="0 0 720 250" style="width:100%;height:auto;display:block;border:1px solid #E4E3DD;border-radius:8px;background:#FAFAF8;">
+    <!-- 顶层 FSM -->
+    <text x="20" y="24" font-size="12" font-weight="700" fill="#4F6B9A">顶层模式（HSM/FSM，事件驱动、长期模态）</text>
+    <rect x="20" y="34" width="96" height="40" rx="6" fill="#DDE6F2" stroke="#4F6B9A"/><text x="68" y="58" font-size="12" fill="#1A1B1C" text-anchor="middle">待机</text>
+    <rect x="136" y="34" width="96" height="40" rx="6" fill="#DDE6F2" stroke="#4F6B9A"/><text x="184" y="58" font-size="12" fill="#1A1B1C" text-anchor="middle">手动</text>
+    <rect x="252" y="34" width="96" height="40" rx="6" fill="#4F6B9A" stroke="#4F6B9A"/><text x="300" y="52" font-size="12" fill="#fff" text-anchor="middle">自动</text><text x="300" y="66" font-size="10" fill="#DDE6F2" text-anchor="middle">(当前)</text>
+    <rect x="368" y="34" width="96" height="40" rx="6" fill="#DDE6F2" stroke="#4F6B9A"/><text x="416" y="58" font-size="12" fill="#1A1B1C" text-anchor="middle">充电</text>
+    <rect x="484" y="34" width="96" height="40" rx="6" fill="#F3D9DA" stroke="#A14E50"/><text x="532" y="58" font-size="12" fill="#1A1B1C" text-anchor="middle">故障/急停</text>
+    <path d="M116 54 H136 M232 54 H252 M348 54 H368 M464 54 H484" stroke="#9AA6A0" stroke-width="1.2"/>
+    <!-- 公共急停 -->
+    <path d="M300 74 V92" stroke="#A14E50" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <text x="312" y="88" font-size="10.5" fill="#A14E50">任何模式急停都到故障态（HSM 公共迁移/冒泡）</text>
+    <!-- 自动状态内部 BT -->
+    <text x="20" y="112" font-size="12" font-weight="700" fill="#35705A">"自动"状态内部：巡检任务行为树（每 tick 反应式执行）</text>
+    <rect x="280" y="120" width="120" height="26" rx="5" fill="#DCEAE3" stroke="#35705A"/><text x="340" y="137" font-size="11" fill="#1A1B1C" text-anchor="middle">→ 顺序：巡检</text>
+    <rect x="40" y="178" width="110" height="44" rx="5" fill="#fff" stroke="#35705A"/><text x="95" y="196" font-size="10.5" fill="#1A1B1C" text-anchor="middle">导航到点</text><text x="95" y="211" font-size="10" fill="#5F6670" text-anchor="middle">含避障/重试</text>
+    <rect x="170" y="178" width="110" height="44" rx="5" fill="#fff" stroke="#35705A"/><text x="225" y="196" font-size="10.5" fill="#1A1B1C" text-anchor="middle">停留检测</text><text x="225" y="211" font-size="10" fill="#5F6670" text-anchor="middle">超时/失败兜底</text>
+    <rect x="300" y="178" width="110" height="44" rx="5" fill="#fff" stroke="#35705A"/><text x="355" y="196" font-size="10.5" fill="#1A1B1C" text-anchor="middle">上报结果</text>
+    <rect x="430" y="178" width="110" height="44" rx="5" fill="#fff" stroke="#35705A"/><text x="485" y="196" font-size="10.5" fill="#1A1B1C" text-anchor="middle">下一点 / 完成</text>
+    <path d="M340 146 C 340 160, 95 160, 95 178 M340 146 C 300 162, 225 162, 225 178 M340 146 V178 M340 146 C 400 162, 485 162, 485 178" stroke="#9AA6A0" stroke-width="1.1" fill="none"/>
+    <text x="600" y="135" font-size="10.5" fill="#5F6670">BT 作为该状态的</text><text x="600" y="149" font-size="10.5" fill="#5F6670">动作执行器，经</text><text x="600" y="163" font-size="10.5" fill="#5F6670">handler 调 BoardSrv</text>
+  </svg>
+
+  <div style="margin-top:14px;padding:12px;border:1px solid #E4E3DD;border-radius:8px;font-size:13px;background:#fff;box-sizing:border-box;">
+    <b>怎么决定要不要做、先做哪个？看你的真实痛点：</b><br>
+    · 若痛点是「急停/暂停/故障迁移在每个状态下都要重复连一遍、模式有明显包含关系」→ 走 <b style="color:#4F6B9A;">HSM 演进</b>（在 FsmSpec 上加复合状态 + 事件冒泡 + 公共迁移）。<br>
+    · 若痛点是「巡检/对接里的顺序、重试、超时、失败兜底要画一堆状态和回线，图越来越密」→ 给该状态内部引入 <b style="color:#35705A;">行为树</b>（重试/超时/顺序是内置节点，节点数和回线大幅减少，且天然反应式）。<br>
+    · 若只是觉得「树看起来比图整齐」→ <b style="color:#A14E50;">不建议</b>为整齐换范式，会丢掉回环/回退/多入口。<br>
+    <b>务实路径：</b>FsmSpec 先保持现状跑通 RobotCtrl；等真出现上面某类痛点，再按 HSM（结构复用）或 BT（任务流程）按需演进，二者都能挂在现有 handler 接缝上，不必推倒重来。
+  </div>
+
+</div>
+</html>

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "updated": "2026-09-21",
+  "note": "航点树动作点上「检测框」可绑定的算法类型目录。前端检视器的检测框列表直接读本文件（经 /api/waypoint-prefab/algorithms），改完刷新页面即可生效，不需要重启后端。id 是写进 DetectBoxNode.algorithm 的值，必须唯一且稳定——改名可以，改 id 会让已绑好的框认不出来。",
+  "algorithms": [
+    { "id": "switch_state", "name": "开关分合状态", "category": "状态识别", "color": "#0064fa", "description": "识别断路器 / 刀闸的分闸、合闸位置" },
+    { "id": "indicator_light", "name": "指示灯状态", "category": "状态识别", "color": "#0064fa", "description": "识别指示灯亮 / 灭及颜色" },
+    { "id": "cabinet_door", "name": "柜门开合", "category": "状态识别", "color": "#0064fa", "description": "识别配电柜门是否关严" },
+    { "id": "valve_state", "name": "阀门状态", "category": "状态识别", "color": "#0064fa", "description": "识别阀门手轮 / 手柄朝向" },
+
+    { "id": "meter_pointer", "name": "指针表读数", "category": "表计读数", "color": "#00b42a", "description": "读取指针式仪表的示数" },
+    { "id": "meter_digital", "name": "数字表读数", "category": "表计读数", "color": "#00b42a", "description": "识别数码管 / 液晶读数" },
+    { "id": "meter_level", "name": "液位计读数", "category": "表计读数", "color": "#00b42a", "description": "读取液位、油位高度" },
+    { "id": "counter_read", "name": "计数器读数", "category": "表计读数", "color": "#00b42a", "description": "识别电表 / 水表累计读数" },
+
+    { "id": "insulator_damage", "name": "绝缘子破损", "category": "缺陷检测", "color": "#ff7d00", "description": "检测绝缘子裂纹、缺片、闪络痕迹" },
+    { "id": "equipment_rust", "name": "设备锈蚀", "category": "缺陷检测", "color": "#ff7d00", "description": "检测金属件锈蚀、掉漆" },
+    { "id": "cable_damage", "name": "线缆破损", "category": "缺陷检测", "color": "#ff7d00", "description": "检测线缆外皮破损、老化" },
+    { "id": "water_leak", "name": "渗漏水渍", "category": "缺陷检测", "color": "#ff7d00", "description": "检测墙面 / 地面渗漏水痕" },
+
+    { "id": "person_intrusion", "name": "人员入侵", "category": "安全告警", "color": "#f53f3f", "description": "检测禁入区域出现人员" },
+    { "id": "smoke_fire", "name": "烟雾火焰", "category": "安全告警", "color": "#f53f3f", "description": "检测烟雾、明火" },
+    { "id": "foreign_object", "name": "异物悬挂", "category": "安全告警", "color": "#f53f3f", "description": "检测设备上悬挂、堆积的异物" },
+    { "id": "helmet_check", "name": "安全帽佩戴", "category": "安全告警", "color": "#f53f3f", "description": "检测作业人员是否佩戴安全帽" }
+  ]
+}

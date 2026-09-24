@@ -1,0 +1,188 @@
+{
+  "python": "3.11.16",
+  "arch": "aarch64",
+  "platform": "Linux-6.8.0-138-generic-aarch64-with-glibc2.41",
+  "synthetic": true,
+  "results": [
+    {
+      "points": 1000,
+      "file_mib": 0.614,
+      "python_retained_mib": 2.066,
+      "python_peak_mib": 3.11,
+      "read_parse": {
+        "median_ms": 9.646913,
+        "p95_ms": 9.80242,
+        "repeats": 20,
+        "batch": 1
+      },
+      "build_indexes": {
+        "median_ms": 0.404747,
+        "p95_ms": 0.433007,
+        "repeats": 20,
+        "batch": 1
+      },
+      "read_parse_scan": {
+        "median_ms": 9.717219,
+        "p95_ms": 9.959203,
+        "repeats": 20,
+        "batch": 1
+      },
+      "memory_scan_last_id": {
+        "median_ms": 0.067291,
+        "p95_ms": 0.091722,
+        "repeats": 50,
+        "batch": 1
+      },
+      "memory_index_id": {
+        "median_ms": 9.2e-05,
+        "p95_ms": 9.4e-05,
+        "repeats": 50,
+        "batch": 10000
+      },
+      "memory_equipment_page": {
+        "median_ms": 0.000344,
+        "p95_ms": 0.000358,
+        "repeats": 50,
+        "batch": 1000
+      },
+      "memory_keyword_type_filter": {
+        "median_ms": 0.167748,
+        "p95_ms": 0.204344,
+        "repeats": 50,
+        "batch": 1
+      },
+      "serialize_50_rows": {
+        "median_ms": 0.56675,
+        "p95_ms": 0.602791,
+        "repeats": 50,
+        "batch": 1
+      },
+      "atomic_publish": {
+        "median_ms": 49.425079,
+        "p95_ms": 50.002969,
+        "repeats": 5,
+        "batch": 1
+      }
+    },
+    {
+      "points": 10000,
+      "file_mib": 6.167,
+      "python_retained_mib": 20.566,
+      "python_peak_mib": 31.155,
+      "read_parse": {
+        "median_ms": 117.605343,
+        "p95_ms": 134.158701,
+        "repeats": 20,
+        "batch": 1
+      },
+      "build_indexes": {
+        "median_ms": 4.814144,
+        "p95_ms": 4.871064,
+        "repeats": 20,
+        "batch": 1
+      },
+      "read_parse_scan": {
+        "median_ms": 117.357119,
+        "p95_ms": 133.436388,
+        "repeats": 20,
+        "batch": 1
+      },
+      "memory_scan_last_id": {
+        "median_ms": 1.036508,
+        "p95_ms": 1.061108,
+        "repeats": 50,
+        "batch": 1
+      },
+      "memory_index_id": {
+        "median_ms": 9.5e-05,
+        "p95_ms": 9.7e-05,
+        "repeats": 50,
+        "batch": 10000
+      },
+      "memory_equipment_page": {
+        "median_ms": 0.000356,
+        "p95_ms": 0.000376,
+        "repeats": 50,
+        "batch": 1000
+      },
+      "memory_keyword_type_filter": {
+        "median_ms": 1.72019,
+        "p95_ms": 1.751021,
+        "repeats": 50,
+        "batch": 1
+      },
+      "serialize_50_rows": {
+        "median_ms": 0.554219,
+        "p95_ms": 0.5943,
+        "repeats": 50,
+        "batch": 1
+      },
+      "atomic_publish": {
+        "median_ms": 452.501141,
+        "p95_ms": 452.599363,
+        "repeats": 5,
+        "batch": 1
+      }
+    },
+    {
+      "points": 50000,
+      "file_mib": 30.963,
+      "python_retained_mib": 104.648,
+      "python_peak_mib": 156.162,
+      "read_parse": {
+        "median_ms": 781.118341,
+        "p95_ms": 985.908482,
+        "repeats": 20,
+        "batch": 1
+      },
+      "build_indexes": {
+        "median_ms": 37.763711,
+        "p95_ms": 38.298055,
+        "repeats": 20,
+        "batch": 1
+      },
+      "read_parse_scan": {
+        "median_ms": 796.340166,
+        "p95_ms": 1048.046492,
+        "repeats": 20,
+        "batch": 1
+      },
+      "memory_scan_last_id": {
+        "median_ms": 12.595667,
+        "p95_ms": 12.784325,
+        "repeats": 50,
+        "batch": 1
+      },
+      "memory_index_id": {
+        "median_ms": 9.4e-05,
+        "p95_ms": 9.8e-05,
+        "repeats": 50,
+        "batch": 10000
+      },
+      "memory_equipment_page": {
+        "median_ms": 0.000345,
+        "p95_ms": 0.000361,
+        "repeats": 50,
+        "batch": 1000
+      },
+      "memory_keyword_type_filter": {
+        "median_ms": 12.672569,
+        "p95_ms": 12.852607,
+        "repeats": 50,
+        "batch": 1
+      },
+      "serialize_50_rows": {
+        "median_ms": 0.528911,
+        "p95_ms": 0.558492,
+        "repeats": 50,
+        "batch": 1
+      },
+      "atomic_publish": {
+        "median_ms": 2246.086653,
+        "p95_ms": 2249.48204,
+        "repeats": 5,
+        "batch": 1
+      }
+    }
+  ]
+}

@@ -158,3 +158,4 @@
 /orc-antlr/antlr4-cpp/_orc
 /orc-antlr/antlr4-cpp/demo/Windows/antlr4-cpp-demo/orc/_orc
 /orc-antlr/antlr4-cpp/*.log
+/llvm

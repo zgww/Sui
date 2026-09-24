@@ -1,0 +1,27 @@
+{
+  "points": 10000,
+  "requests": 100,
+  "concurrency": 10,
+  "page_size": 50,
+  "file_mib": 6.642,
+  "median_ms": 56.15,
+  "p95_ms": 68.49,
+  "max_ms": 76.21,
+  "cold_batch_max_ms": 168.81,
+  "reload_ms": 1097.76,
+  "reload_samples_ms": [
+    1121.91,
+    1085.83,
+    1097.76
+  ],
+  "components": {
+    "store_global_filter_median_ms": 1.952,
+    "store_equipment_filter_median_ms": 0.574,
+    "sqlite_binding_query_median_ms": 0.444,
+    "json_response_encoding_median_ms": 0.591
+  },
+  "server_separate_process": true,
+  "retained_python_mib": 24.33,
+  "reload_peak_python_mib": 73.4,
+  "notes": "Real loopback TCP Uvicorn; 10 persistent HTTP clients, 10 warmup and 100 measured requests; engineer dependency mocked; real temporary SQLite with empty bindings; no TLS or real device. Client/server share host; server_separate_process indicates independent GIL (Linux) versus shared GIL (Windows fallback). Reload median of 3; tracemalloc excludes old snapshot allocations."
+}

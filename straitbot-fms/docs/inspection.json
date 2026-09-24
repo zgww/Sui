@@ -1,0 +1,3514 @@
+{
+    "waypoint": [
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": -0.001,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 29892,
+                        "zoom": 1.0,
+                        "tilt": 0.0,
+                        "pan": 359.99,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.0,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5439973cfc437c3f869a53",
+                    "id": "c57585cee18020ade8f5dfb478de8597",
+                    "type": 1000,
+                    "steer_point_name": "高压室人员入侵"
+                }
+            ],
+            "index": 1,
+            "id": "d279f355dbb4e4b2a0c1050364c4b914",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 0.653,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [],
+            "index": 2,
+            "id": "1ecd738f106a094375ef942531e2f78d",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 0.393,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39409,
+                        "zoom": 2.7,
+                        "tilt": -18.76,
+                        "pan": 292.79,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.5659999847412109,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a62bed53cfc437c3f86ad25",
+                    "id": "affdc51c2544abddf82b025825696594",
+                    "type": 1000,
+                    "steer_point_name": "G10联络柜"
+                }
+            ],
+            "index": 3,
+            "id": "1706e393156249244cf9656c23b987d6",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 0.61,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39409,
+                        "zoom": 2.7,
+                        "tilt": -21.29,
+                        "pan": 295.27,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.5659999847412109,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a62be3c3cfc437c3f86ad1e",
+                    "id": "5a6a9cf85d90267332a9e803d577bc3b",
+                    "type": 1000,
+                    "steer_point_name": "G10联络柜"
+                }
+            ],
+            "index": 4,
+            "id": "3d77f9f72d970a66400a99b54b22b462",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 0.799,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 48601,
+                        "zoom": 5.8,
+                        "tilt": -14.87,
+                        "pan": 288.19,
+                        "focal_len": 2276
+                    },
+                    "lift_height": 0.5659999847412109,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a62bcd33cfc437c3f86ad0a",
+                    "id": "015368e6ee07a3d967341c6ebd148bb3",
+                    "type": 1000,
+                    "steer_point_name": "G10联络柜"
+                }
+            ],
+            "index": 5,
+            "id": "a68b9259adf8253ee9ec5bd1fb180374",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 0.654,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30377,
+                        "zoom": 1.1,
+                        "tilt": -18.31,
+                        "pan": 280.49,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.55364585,
+                                    "h": 0.6351852,
+                                    "x": 0.33177084,
+                                    "y": 0.11018518
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102121553"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5442d93cfc437c3f869a6e",
+                    "id": "cd7bd198061e559481e96a7be19482a9",
+                    "type": 1000,
+                    "steer_point_name": "G10联络柜"
+                }
+            ],
+            "index": 6,
+            "id": "a64efbc0feab964e8dbb4fa38f0f5f80",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 1.417,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [],
+            "index": 7,
+            "id": "bf71a7d99101d07e235bf697d6eb1d6e",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 1.417,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 48960,
+                        "zoom": 6.0,
+                        "tilt": -8.52,
+                        "pan": 284.41,
+                        "focal_len": 2715
+                    },
+                    "lift_height": 0.46700000762939453,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a558b7a3cfc437c3f869c01",
+                    "id": "7bca8f72138c0c662b5de39b8cae1813",
+                    "type": 1000,
+                    "steer_point_name": "G9出线柜"
+                }
+            ],
+            "index": 8,
+            "id": "c8aa0652b656958a4925761b27142925",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 1.418,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 31529,
+                        "zoom": 1.3,
+                        "tilt": -18.31,
+                        "pan": 280.49,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a54435d3cfc437c3f869a76",
+                    "id": "bce104969f19fa96af698335124a957a",
+                    "type": 1000,
+                    "steer_point_name": "G9出线柜"
+                }
+            ],
+            "index": 9,
+            "id": "1881c1c65c1d90fdf17e4683556534c7",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 1.418,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 31529,
+                        "zoom": 1.3,
+                        "tilt": -18.31,
+                        "pan": 280.48,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.47291666,
+                                    "h": 0.65462965,
+                                    "x": 0.46354166,
+                                    "y": 0.12592593
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102120535"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5446d33cfc437c3f869a8a",
+                    "id": "115e924e7b324861947ae98b0409a05e",
+                    "type": 1000,
+                    "steer_point_name": "G9出线柜"
+                }
+            ],
+            "index": 10,
+            "id": "45ef001131ecc0eda2408b97ae17534c",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.082,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30443,
+                        "zoom": 1.1,
+                        "tilt": -17.71,
+                        "pan": 279.61,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a547e073cfc437c3f869ae3",
+                    "id": "120142025945050c794e07e39ecc238f",
+                    "type": 1000,
+                    "steer_point_name": "G8出线柜"
+                }
+            ],
+            "index": 11,
+            "id": "ffb74bd49bd1ed7de7fef137942244d7",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.081,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29909,
+                        "zoom": 1.0,
+                        "tilt": -19.2,
+                        "pan": 287.37,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.4819999933242798,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66efdc0a4aae62c4bbee66",
+                    "id": "090040787e77efffd4c9bdc61791633b",
+                    "type": 7,
+                    "steer_point_name": "G8出线柜"
+                }
+            ],
+            "index": 12,
+            "id": "e35146041b0c528b0fda031c446eb617",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.082,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 48134,
+                        "zoom": 5.4,
+                        "tilt": -12.96,
+                        "pan": 288.26,
+                        "focal_len": 2276
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5481933cfc437c3f869af1",
+                    "id": "41c10f129936011f4bd33e9b60cd9071",
+                    "type": 1000,
+                    "steer_point_name": "G8出线柜"
+                }
+            ],
+            "index": 13,
+            "id": "29115b9f47bf7796cc54b02cc2379f34",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.082,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30026,
+                        "zoom": 1.0,
+                        "tilt": -12.96,
+                        "pan": 288.26,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.41145834,
+                                    "h": 0.70092595,
+                                    "x": 0.55885416,
+                                    "y": 0.018518519
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102119518"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a54831a3cfc437c3f869af9",
+                    "id": "baacd6d77bce6a535f6c07080cc48bc9",
+                    "type": 1000,
+                    "steer_point_name": "G8出线柜"
+                }
+            ],
+            "index": 14,
+            "id": "dc058ce3efe347852e431a3b42aeee69",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.65,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29909,
+                        "zoom": 1.0,
+                        "tilt": -19.21,
+                        "pan": 287.36,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.4819999933242798,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66ef9d0a4aae62c4bbee60",
+                    "id": "5f3681cfa0bbc8dd9eaa903a2ed9972c",
+                    "type": 7,
+                    "steer_point_name": "G7出线柜"
+                }
+            ],
+            "index": 15,
+            "id": "bcec975d49d5e335e08a83ae1790eb48",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.651,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 33048,
+                        "zoom": 1.5,
+                        "tilt": -19.06,
+                        "pan": 285.38,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5484ea3cfc437c3f869b05",
+                    "id": "565b35376766a7d0c81b860638a99e8d",
+                    "type": 1000,
+                    "steer_point_name": "G7出线柜"
+                }
+            ],
+            "index": 16,
+            "id": "f2cd3ca793f1d28b3cf2835da74a38d0",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.651,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 47407,
+                        "zoom": 5.09,
+                        "tilt": -11.73,
+                        "pan": 294.71,
+                        "focal_len": 2276
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5486bd3cfc437c3f869b0c",
+                    "id": "f4af69661cadb1e8533ced999bbb2921",
+                    "type": 1000,
+                    "steer_point_name": "G7出线柜"
+                }
+            ],
+            "index": 17,
+            "id": "59729e2e93775f9a0c74d98d54ea22a5",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 2.651,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30961,
+                        "zoom": 1.2,
+                        "tilt": -26.83,
+                        "pan": 290.19,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.4515625,
+                                    "h": 0.6240741,
+                                    "x": 0.49947917,
+                                    "y": 0.20555556
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102118501"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5487783cfc437c3f869b1c",
+                    "id": "16eb9513f66ec723af92cdb73b946d8e",
+                    "type": 1000,
+                    "steer_point_name": "G7出线柜"
+                }
+            ],
+            "index": 18,
+            "id": "ad3c4df8547942b30533d7a4999169f8",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.199,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29842,
+                        "zoom": 1.0,
+                        "tilt": -18.8,
+                        "pan": 287.37,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.4819999933242798,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66ef440a4aae62c4bbee5c",
+                    "id": "8526a979ecd16b62cd12732ae4e01227",
+                    "type": 7,
+                    "steer_point_name": "G6出线柜"
+                }
+            ],
+            "index": 19,
+            "id": "1900806a2be31d3af3073746f581f2f9",
+            "type": 1
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.2,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 34542,
+                        "zoom": 1.7,
+                        "tilt": -19.87,
+                        "pan": 290.15,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.53125,
+                                    "h": 0.63055557,
+                                    "x": 0.41302082,
+                                    "y": 0.13055556
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102117484"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a54884d3cfc437c3f869b29",
+                    "id": "f9d09f0b77248d022aee08b9270660d1",
+                    "type": 1000,
+                    "steer_point_name": "G6出线柜"
+                }
+            ],
+            "index": 20,
+            "id": "afe299eb9b85cefc4a6d91df5dab710c",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.2,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 34542,
+                        "zoom": 1.7,
+                        "tilt": -19.87,
+                        "pan": 290.15,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a548a0a3cfc437c3f869b3a",
+                    "id": "cc456cf83bbf3904c97bba8ad3c37887",
+                    "type": 1000,
+                    "steer_point_name": "G6出线柜"
+                }
+            ],
+            "index": 21,
+            "id": "36a4c96fc539eeeb4012d7f533a97fe7",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.2,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 45328,
+                        "zoom": 4.3,
+                        "tilt": -12.39,
+                        "pan": 301.22,
+                        "focal_len": 1842
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a548b573cfc437c3f869b49",
+                    "id": "0c72d775bad462a5d84a871de6964596",
+                    "type": 1000,
+                    "steer_point_name": "G6出线柜"
+                }
+            ],
+            "index": 22,
+            "id": "7a156a8b607f9433605270b458bec0f2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.866,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29842,
+                        "zoom": 1.0,
+                        "tilt": -18.8,
+                        "pan": 287.37,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.4819999933242798,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66eeee0a4aae62c4bbee56",
+                    "id": "dcb61f36d3be1c8f661fc82d8499a1aa",
+                    "type": 7,
+                    "steer_point_name": "G5出线柜"
+                }
+            ],
+            "index": 23,
+            "id": "c1e4647c0fe25fda436a767b9ab22935",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.867,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 34476,
+                        "zoom": 1.7,
+                        "tilt": -19.85,
+                        "pan": 289.22,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.5125,
+                                    "h": 0.69166666,
+                                    "x": 0.40364584,
+                                    "y": 0.121296294
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102116467"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a548c283cfc437c3f869b50",
+                    "id": "bd57b418b2696c63ff08f6107714b99a",
+                    "type": 1000,
+                    "steer_point_name": "G5出线柜"
+                }
+            ],
+            "index": 24,
+            "id": "e3ed8a9dbf3e1f96651e2ce6a545e0b2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.867,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 34476,
+                        "zoom": 1.7,
+                        "tilt": -19.85,
+                        "pan": 289.22,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a548c4b3cfc437c3f869b59",
+                    "id": "d459a5e872448574463dd113316f3cc3",
+                    "type": 1000,
+                    "steer_point_name": "G5出线柜"
+                }
+            ],
+            "index": 25,
+            "id": "b95ce3e5aaf4677a43c1ef1da230f4f2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 3.867,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 46506,
+                        "zoom": 4.7,
+                        "tilt": -12.58,
+                        "pan": 298.6,
+                        "focal_len": 1842
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a548d6d3cfc437c3f869b60",
+                    "id": "8655ef3e7c0798d1ead54ef008cce5a2",
+                    "type": 1000,
+                    "steer_point_name": "G5出线柜"
+                }
+            ],
+            "index": 26,
+            "id": "8b5b5a682d26505737fe6b5ca94c2c12",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 4.528,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29842,
+                        "zoom": 1.0,
+                        "tilt": -18.8,
+                        "pan": 287.38,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.4819999933242798,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66ee8a0a4aae62c4bbee52",
+                    "id": "b97069050417e7f34f684a62a58052b5",
+                    "type": 7,
+                    "steer_point_name": "G4压变柜"
+                }
+            ],
+            "index": 27,
+            "id": "7debb2f40e64b375d634dd9cbfd5a5b9",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 4.529,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 43425,
+                        "zoom": 3.7,
+                        "tilt": -32.44,
+                        "pan": 283.24,
+                        "focal_len": 1405
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a548eec3cfc437c3f869b67",
+                    "id": "d60db5f590c6471a997231fb56ef1c1f",
+                    "type": 1000,
+                    "steer_point_name": "G4压变柜"
+                }
+            ],
+            "index": 28,
+            "id": "12920ef4c47f2f4f24ef083fac97d2f7",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 4.529,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38767,
+                        "zoom": 2.5,
+                        "tilt": -11.56,
+                        "pan": 289.51,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5490373cfc437c3f869b6d",
+                    "id": "a897488193c7c245a7ae7911322c3f7e",
+                    "type": 1000,
+                    "steer_point_name": "G4压变柜"
+                }
+            ],
+            "index": 29,
+            "id": "2ab52892ead1f64ba76cc5721b41f46c",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 4.529,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 48134,
+                        "zoom": 5.4,
+                        "tilt": -13.36,
+                        "pan": 305.42,
+                        "focal_len": 2276
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5490c13cfc437c3f869b74",
+                    "id": "4fa4bca9d876ae0ce4a27f4daf9f4b08",
+                    "type": 1000,
+                    "steer_point_name": "G4压变柜"
+                }
+            ],
+            "index": 30,
+            "id": "1bfca2d49afddd7d62534b31d60b642a",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 4.529,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30043,
+                        "zoom": 1.0,
+                        "tilt": -23.46,
+                        "pan": 287.68,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.5578125,
+                                    "h": 0.68703705,
+                                    "x": 0.3265625,
+                                    "y": 0.13518518
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102115450"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5491433cfc437c3f869b7b",
+                    "id": "af173f8f15d06ba5554de3e2f72f9a7c",
+                    "type": 1000,
+                    "steer_point_name": "G4压变柜"
+                }
+            ],
+            "index": 31,
+            "id": "d5e02ffa6d4c886174809d2eb6868855",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 5.387,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29842,
+                        "zoom": 1.0,
+                        "tilt": -18.8,
+                        "pan": 287.36,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.4819999933242798,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66ed4d0a4aae62c4bbee46",
+                    "id": "fc17a4997813ac1640e50e33c8a3911e",
+                    "type": 7,
+                    "steer_point_name": "G3记量柜"
+                }
+            ],
+            "index": 32,
+            "id": "7744724d7dd37674100d3f758f68f6b2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 5.388,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 44485,
+                        "zoom": 4.0,
+                        "tilt": -16.01,
+                        "pan": 275.23,
+                        "focal_len": 1842
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5492023cfc437c3f869b88",
+                    "id": "b3166a69b16393ed8ea467a2c0262cc4",
+                    "type": 1000,
+                    "steer_point_name": "G3记量柜"
+                }
+            ],
+            "index": 33,
+            "id": "dbc2bc7398b587dfdf6326c41649fe2d",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 5.388,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 41088,
+                        "zoom": 3.0,
+                        "tilt": -11.56,
+                        "pan": 299.02,
+                        "focal_len": 1405
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5493393cfc437c3f869b90",
+                    "id": "97268eadbae5f6c424317aff88ec94d1",
+                    "type": 1000,
+                    "steer_point_name": "G3记量柜"
+                }
+            ],
+            "index": 34,
+            "id": "411e8391883bb990d753610f8802ca80",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 5.388,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30059,
+                        "zoom": 1.0,
+                        "tilt": -32.11,
+                        "pan": 292.28,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.5416667,
+                                    "h": 0.6824074,
+                                    "x": 0.4171875,
+                                    "y": 0.24722221
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102114440"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5494973cfc437c3f869b97",
+                    "id": "faa42ca90884e52d230594bd9036bbb8",
+                    "type": 1000,
+                    "steer_point_name": "G3记量柜"
+                }
+            ],
+            "index": 35,
+            "id": "5e3513df43afbbe3ec2a07456597b128",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.066,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29842,
+                        "zoom": 1.0,
+                        "tilt": -18.8,
+                        "pan": 287.36,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.4819999933242798,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66ecf20a4aae62c4bbee42",
+                    "id": "991c087a8360eb13f1eb336952a375df",
+                    "type": 7,
+                    "steer_point_name": "G2进线柜"
+                }
+            ],
+            "index": 36,
+            "id": "b1a78fe54e2f699432ad5755c23d73a9",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.067,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 34434,
+                        "zoom": 1.7,
+                        "tilt": -14.0,
+                        "pan": 295.0,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5495333cfc437c3f869ba0",
+                    "id": "a2e94396da69e72ddea8d7d4d0b658d1",
+                    "type": 1000,
+                    "steer_point_name": "G2进线柜"
+                }
+            ],
+            "index": 37,
+            "id": "3758e6c906b28e1dd65b7f7023da565a",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.067,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 47775,
+                        "zoom": 5.3,
+                        "tilt": -14.0,
+                        "pan": 308.95,
+                        "focal_len": 2276
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5497323cfc437c3f869bad",
+                    "id": "19603166be541f74f29dcac441aff0a5",
+                    "type": 1000,
+                    "steer_point_name": "G2进线柜"
+                }
+            ],
+            "index": 38,
+            "id": "696d7ba4d81e5e2335de92c88cc833e1",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.067,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 29892,
+                        "zoom": 1.0,
+                        "tilt": 0.03,
+                        "pan": 285.03,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.0,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.5671875,
+                                    "h": 0.58148146,
+                                    "x": 0.33177084,
+                                    "y": 0.38796297
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102113422"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a670a9edcd1060242dbaca9",
+                    "id": "deaa5ef5009ddab70207f9584b69c81e",
+                    "type": 1000,
+                    "steer_point_name": "G2进线柜"
+                }
+            ],
+            "index": 39,
+            "id": "f6efe3114d27f7d741927708d61c77bd",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.803,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29842,
+                        "zoom": 1.0,
+                        "tilt": -18.78,
+                        "pan": 287.34,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.8349999785423279,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66ec4b0a4aae62c4bbee3c",
+                    "id": "07f5fe39b91e02edce3fa7d8d71650da",
+                    "type": 7,
+                    "steer_point_name": "G1隔离柜"
+                }
+            ],
+            "index": 40,
+            "id": "076473711a2e5e043de04b13fdc89b06",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.803,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 48192,
+                        "zoom": 5.5,
+                        "tilt": -12.65,
+                        "pan": 306.82,
+                        "focal_len": 2276
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5498683cfc437c3f869bca",
+                    "id": "285fd34ade234e74c720ea05841e138a",
+                    "type": 1000,
+                    "steer_point_name": "G1隔离柜"
+                }
+            ],
+            "index": 41,
+            "id": "ca48a79733a6bad60e2a1b4fd1e5175f",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.803,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36763,
+                        "zoom": 2.0,
+                        "tilt": -12.65,
+                        "pan": 291.72,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5498f03cfc437c3f869bd1",
+                    "id": "4765d26fa544625665ba555dbbf283f4",
+                    "type": 1000,
+                    "steer_point_name": "G1隔离柜"
+                }
+            ],
+            "index": 42,
+            "id": "1fd43c58f12ef799d7792b7611630f95",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 6.803,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30043,
+                        "zoom": 1.0,
+                        "tilt": -12.65,
+                        "pan": 291.72,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5139999985694885,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.56822914,
+                                    "h": 0.58148146,
+                                    "x": 0.27239582,
+                                    "y": 0.13055556
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005102112402"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5499293cfc437c3f869bd8",
+                    "id": "6b28a8fec88326ad244fb32cdeb7cddf",
+                    "type": 1000,
+                    "steer_point_name": "G1隔离柜"
+                }
+            ],
+            "index": 43,
+            "id": "04a8180b849f6be9fbbfbf775b728045",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 7.947,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 46873,
+                        "zoom": 6.0,
+                        "tilt": -20.55,
+                        "pan": 16.12,
+                        "focal_len": 2715
+                    },
+                    "lift_height": 0.0,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a558ee23cfc437c3f869c2d",
+                    "id": "19075fe8a1d76a3acbf7336fa7908cbb",
+                    "type": 1000,
+                    "steer_point_name": "202高压室应急灯"
+                }
+            ],
+            "index": 44,
+            "id": "d7b197d461bb57ffc8da9e8cfb3f521a",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.247,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35160,
+                        "zoom": 1.8,
+                        "tilt": -0.19,
+                        "pan": 282.08,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.7269999980926514,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.5296875,
+                                    "h": 0.8740741,
+                                    "x": 0.42916667,
+                                    "y": 0.08148148
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101109392"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5591873cfc437c3f869c41",
+                    "id": "469053b0ad20e0edcfe79926d4252d08",
+                    "type": 1000,
+                    "steer_point_name": "1D8柜"
+                }
+            ],
+            "index": 45,
+            "id": "24cb9ac6b15542e2a33134b487a641e8",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.247,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35177,
+                        "zoom": 1.8,
+                        "tilt": -18.92,
+                        "pan": 282.08,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.7269999980926514,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a5590a03cfc437c3f869c33",
+                    "id": "bed36ad5108cc42dfe1b6e7297956503",
+                    "type": 1000,
+                    "steer_point_name": "1D8柜"
+                }
+            ],
+            "index": 46,
+            "id": "f8464a49c048154e896a3d8173cef344",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.766,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36204,
+                        "zoom": 1.9,
+                        "tilt": -2.58,
+                        "pan": 289.97,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5730000138282776,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55d2bf3cfc437c3f869c65",
+                    "id": "7eb7ea1a755fcdf4ab90aac5af630298",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 47,
+            "id": "33f8f345bb39752af564a8386d1f9149",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35778,
+                        "zoom": 1.9,
+                        "tilt": -20.72,
+                        "pan": 289.31,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5690000057220459,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55d7ed3cfc437c3f869c6f",
+                    "id": "544a02df7a3f16b21d7c395403756392",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 48,
+            "id": "23f15d920b66dcc77c7966ff64d76632",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35778,
+                        "zoom": 1.9,
+                        "tilt": -20.72,
+                        "pan": 289.31,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.8970000147819519,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55d8873cfc437c3f869c75",
+                    "id": "151e91d0605f3f25bbc757c095ed0f32",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 49,
+            "id": "9ca8a62fb411c15abd21b6097893b420",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35745,
+                        "zoom": 1.9,
+                        "tilt": -5.3,
+                        "pan": 289.31,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.8970000147819519,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55d9353cfc437c3f869c7c",
+                    "id": "2fdc5cd3ac0e7753363d1497b741aaa4",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 50,
+            "id": "ee7e30e5d0f37310afe915b957efa51f",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35745,
+                        "zoom": 1.9,
+                        "tilt": -16.74,
+                        "pan": 289.31,
+                        "focal_len": 535
+                    },
+                    "lift_height": 1.1480000019073486,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55d9e73cfc437c3f869c82",
+                    "id": "48de414dbd28209d3a1ee2fe319ec115",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 51,
+            "id": "97aded9b03408efa5bfe56feba9ecfb9",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35711,
+                        "zoom": 1.9,
+                        "tilt": -14.64,
+                        "pan": 289.31,
+                        "focal_len": 535
+                    },
+                    "lift_height": 1.253999948501587,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55da8e3cfc437c3f869c88",
+                    "id": "122d4c9280f49d9a5ef2177b19475d03",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 52,
+            "id": "e55e2704b087e07627be13e6aaa6e244",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37256,
+                        "zoom": 2.1,
+                        "tilt": -2.52,
+                        "pan": 289.31,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.3049999475479126,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55db2b3cfc437c3f869c8e",
+                    "id": "192bb6f79ff3e4474bf35f7aa179a936",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 53,
+            "id": "236a8ed08c93cab592c9a268bba9c123",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35269,
+                        "zoom": 1.8,
+                        "tilt": 11.46,
+                        "pan": 289.31,
+                        "focal_len": 535
+                    },
+                    "lift_height": 1.3049999475479126,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55dc283cfc437c3f869c94",
+                    "id": "0e1c5f80ed74bae6a3c70c1a332f1698",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                },
+                {
+                    "ptz_param": {
+                        "focus": 38124,
+                        "zoom": 2.4,
+                        "tilt": 9.38,
+                        "pan": 287.92,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.3140000104904175,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a66bfe6dcd1060242dbac03",
+                    "id": "7d5c719264d98207d6e01d49ad224697",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 54,
+            "id": "45f33b672b35d95a7b0cbadaf7c5c41c",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37590,
+                        "zoom": 2.29,
+                        "tilt": 19.8,
+                        "pan": 289.31,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.3049999475479126,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55dcc63cfc437c3f869ca2",
+                    "id": "03594fec1792b7f542346b3f094cef44",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 55,
+            "id": "06d7c1c616444aad5b68d2acc9c283ed",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 14.765,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37698,
+                        "zoom": 2.29,
+                        "tilt": -24.15,
+                        "pan": 273.71,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.3049999475479126,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.37864584,
+                                    "h": 0.8759259,
+                                    "x": 0.4421875,
+                                    "y": 0.049074072
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101108388"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55dd9a3cfc437c3f869cad",
+                    "id": "9c1b8cf942da488f45b61c2782ee67aa",
+                    "type": 1000,
+                    "steer_point_name": "1D7柜"
+                }
+            ],
+            "index": 56,
+            "id": "02acc4e4fd5aa857a1adac6c4a5832e5",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.512,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36905,
+                        "zoom": 2.1,
+                        "tilt": -24.15,
+                        "pan": 279.95,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.6620000004768372,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55de9a3cfc437c3f869cb6",
+                    "id": "d6618f3cfd8971ddcf012a18543fb10e",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 57,
+            "id": "05558692f6b8951d1b5bd43b123a5cc4",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.512,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36897,
+                        "zoom": 2.1,
+                        "tilt": -11.59,
+                        "pan": 279.95,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.6620000004768372,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55df1c3cfc437c3f869cbd",
+                    "id": "dff057e3dc4158f3f4de85ca20ed0347",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 58,
+            "id": "b778097c3b5427530f2c1b67599a7a7f",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.512,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36897,
+                        "zoom": 2.1,
+                        "tilt": -17.35,
+                        "pan": 279.69,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.8289999961853027,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55e0713cfc437c3f869cc4",
+                    "id": "dc027248aaef3bcde05ea0caa344bc84",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 59,
+            "id": "e6072efa2dfb0ed244a9a218b3fa6d7e",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.512,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36888,
+                        "zoom": 2.1,
+                        "tilt": -1.13,
+                        "pan": 279.45,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.8289999961853027,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55e0e73cfc437c3f869ccb",
+                    "id": "ee4e4c73991cc54073af3d6ff3c98945",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 60,
+            "id": "2f5414f2ca5774c77069a62e214b993a",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.512,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36888,
+                        "zoom": 2.1,
+                        "tilt": -17.02,
+                        "pan": 279.45,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.1399999856948853,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55e1703cfc437c3f869cd1",
+                    "id": "84691d06706742f7e1318336777a6d6d",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                },
+                {
+                    "ptz_param": {
+                        "focus": 36245,
+                        "zoom": 2.0,
+                        "tilt": -31.58,
+                        "pan": 279.24,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.315000057220459,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56dbad3cfc437c3f869cdf",
+                    "id": "1c4e87b2b7e66af0e43650967c62f237",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 61,
+            "id": "aa3bc1487360b3147bce2b1e52be2e45",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.512,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36872,
+                        "zoom": 2.1,
+                        "tilt": -2.28,
+                        "pan": 279.45,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.1399999856948853,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a55e64b3cfc437c3f869cd7",
+                    "id": "81f03b18594695698c2a2f15141d309d",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 62,
+            "id": "086b052664886e6fb25ef321af17f7cf",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.511,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36245,
+                        "zoom": 2.0,
+                        "tilt": -1.2,
+                        "pan": 279.24,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.315000057220459,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56db1f3cfc437c3f869cdd",
+                    "id": "84303f398bd1a01eeda2c6894f4c3c05",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 63,
+            "id": "973c360ffc6dea950b8275fc90be37bd",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.511,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38308,
+                        "zoom": 2.4,
+                        "tilt": 10.22,
+                        "pan": 279.24,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.315000057220459,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56dc333cfc437c3f869ce6",
+                    "id": "f27ce3e45b8cb82e3edfea13438cd72d",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 64,
+            "id": "31a4cc28389a1399822684fd235b1f29",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.511,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38900,
+                        "zoom": 2.6,
+                        "tilt": 20.42,
+                        "pan": 279.24,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.315000057220459,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56dcd33cfc437c3f869cec",
+                    "id": "b194b5f9a325ad1d639bb71cfc4f0522",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 65,
+            "id": "ffc064316f4190c1d472b5cbd01d1cf0",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 15.511,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39034,
+                        "zoom": 2.6,
+                        "tilt": -16.83,
+                        "pan": 279.24,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.315000057220459,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.3890625,
+                                    "h": 0.90462965,
+                                    "x": 0.5234375,
+                                    "y": 0.062962964
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101107333"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56dd563cfc437c3f869cf2",
+                    "id": "37c35669b984d8edef2e68adadfab7e7",
+                    "type": 1000,
+                    "steer_point_name": "1D6柜"
+                }
+            ],
+            "index": 66,
+            "id": "a0dcb932218ef189a13296471be2bae5",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35886,
+                        "zoom": 1.9,
+                        "tilt": -16.83,
+                        "pan": 279.29,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5830000042915344,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ddc83cfc437c3f869cfb",
+                    "id": "14e3029bed9c95d5b7221abc8dc6ead1",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 67,
+            "id": "55a5862b7f340cd02e9fef4938b9fafe",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 35870,
+                        "zoom": 1.9,
+                        "tilt": -6.67,
+                        "pan": 279.22,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.5830000042915344,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56de773cfc437c3f869d05",
+                    "id": "30d337692083edd46a35d0d2b51913ed",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 68,
+            "id": "f90893e608562f21d87e2894f05c3fbe",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37999,
+                        "zoom": 2.29,
+                        "tilt": 6.09,
+                        "pan": 277.78,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.5830000042915344,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56defc3cfc437c3f869d0e",
+                    "id": "3d2f717514d6214cc668162baa3153d8",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 69,
+            "id": "0fb4d7b7184f9c086dde79ee0ae1c939",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36855,
+                        "zoom": 2.1,
+                        "tilt": -33.66,
+                        "pan": 277.78,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.1640000343322754,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56df833cfc437c3f869d14",
+                    "id": "8ff8a4bdfdcfb4f6870efe2f880c78dc",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 70,
+            "id": "fc57f539f934f17e544dffddf3ebf503",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36838,
+                        "zoom": 2.1,
+                        "tilt": -21.87,
+                        "pan": 277.78,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.1640000343322754,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56dfe03cfc437c3f869d1a",
+                    "id": "3a7ce9690f2251dd40051611557b44b4",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 71,
+            "id": "1932e003d9621dbb7be759c8d6d27f4c",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36780,
+                        "zoom": 2.1,
+                        "tilt": -4.89,
+                        "pan": 277.78,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.1640000343322754,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e0413cfc437c3f869d23",
+                    "id": "1182ca6f61ef9b71775dab537b650d33",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 72,
+            "id": "aa5c83429a36b3c7683863e099c76a23",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 36780,
+                        "zoom": 2.1,
+                        "tilt": -4.89,
+                        "pan": 277.78,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2990000247955322,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e09d3cfc437c3f869d29",
+                    "id": "3d34786cc19d1e788fcc179f4706c929",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 73,
+            "id": "4363ee2559697df7116abb13bc7c37f3",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37640,
+                        "zoom": 2.29,
+                        "tilt": 7.1,
+                        "pan": 276.1,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2990000247955322,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e1123cfc437c3f869d2f",
+                    "id": "5adc017c8ea15f67d50fac66acd53f34",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 74,
+            "id": "c4a2113b6587baebb1acbf3d14d970c2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39301,
+                        "zoom": 2.7,
+                        "tilt": 19.93,
+                        "pan": 276.1,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2990000247955322,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e16b3cfc437c3f869d35",
+                    "id": "1cacc40f147f1c4a36b9bbcdce0114d8",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 75,
+            "id": "dbe71ac188355bc75abdeb0994c73334",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.183,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39451,
+                        "zoom": 2.7,
+                        "tilt": -10.25,
+                        "pan": 276.1,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2990000247955322,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.2109375,
+                                    "h": 0.9157407,
+                                    "x": 0.6666667,
+                                    "y": 0.06111111
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101106278"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e1c63cfc437c3f869d3b",
+                    "id": "8917c030ad24b7e3746748137d76bb1b",
+                    "type": 1000,
+                    "steer_point_name": "1D5柜"
+                }
+            ],
+            "index": 76,
+            "id": "de36b5fbcb3e8f2d4de0130360fac459",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.816,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37957,
+                        "zoom": 2.29,
+                        "tilt": -26.0,
+                        "pan": 278.72,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.652999997138977,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e2793cfc437c3f869d43",
+                    "id": "561ea98354762e76e088d31c07696422",
+                    "type": 1000,
+                    "steer_point_name": "1D4柜"
+                }
+            ],
+            "index": 77,
+            "id": "535e0bf207999f5302af4424df86c77b",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.816,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37965,
+                        "zoom": 2.29,
+                        "tilt": -17.84,
+                        "pan": 278.72,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.652999997138977,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e2e13cfc437c3f869d4a",
+                    "id": "9c7422bf6c20e7f0a5599a8b80dcb4bf",
+                    "type": 1000,
+                    "steer_point_name": "1D4柜"
+                }
+            ],
+            "index": 78,
+            "id": "35efd6234fc7eb6ac98914594fc706ef",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.816,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37949,
+                        "zoom": 2.29,
+                        "tilt": -3.56,
+                        "pan": 278.72,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.652999997138977,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e35a3cfc437c3f869d51",
+                    "id": "f694a4f374590ab1e17434bdd30688ad",
+                    "type": 1000,
+                    "steer_point_name": "1D4柜"
+                }
+            ],
+            "index": 79,
+            "id": "076a04f49948606277fc336e734f0fb6",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.816,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37974,
+                        "zoom": 2.29,
+                        "tilt": -35.45,
+                        "pan": 277.44,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2799999713897705,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e3f23cfc437c3f869d58",
+                    "id": "981b9675433f6abf59e8e90317653e9a",
+                    "type": 1000,
+                    "steer_point_name": "1D4柜"
+                }
+            ],
+            "index": 80,
+            "id": "8c5ad1120fee050fd73b7d326e7ea066",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.816,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37923,
+                        "zoom": 2.29,
+                        "tilt": -9.99,
+                        "pan": 277.44,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2799999713897705,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e45f3cfc437c3f869d5f",
+                    "id": "23c429831e5216ca6996e164b2e86b15",
+                    "type": 1000,
+                    "steer_point_name": "1D4柜"
+                }
+            ],
+            "index": 81,
+            "id": "a25a5c8a9ad1eb476ec73d0cfd1849fd",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.816,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39485,
+                        "zoom": 2.7,
+                        "tilt": 13.96,
+                        "pan": 277.45,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2799999713897705,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e4e23cfc437c3f869d66",
+                    "id": "78d4e804f6d0979678a97fe4bd72db9c",
+                    "type": 1000,
+                    "steer_point_name": "1D4柜"
+                }
+            ],
+            "index": 82,
+            "id": "3ed58faeff8e74f80b0b06635be14114",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 16.816,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39627,
+                        "zoom": 2.7,
+                        "tilt": -26.25,
+                        "pan": 277.45,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2799999713897705,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.21927084,
+                                    "h": 0.8175926,
+                                    "x": 0.64166665,
+                                    "y": 0.037037037
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101105223"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e56b3cfc437c3f869d6c",
+                    "id": "01b2357a70b2f8681d763f4617a0f6d8",
+                    "type": 1000,
+                    "steer_point_name": "1D4柜"
+                }
+            ],
+            "index": 83,
+            "id": "8f9e673762b3bfb6c636492f631027bb",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 17.483,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38875,
+                        "zoom": 2.5,
+                        "tilt": -33.06,
+                        "pan": 275.62,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.6930000185966492,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e6663cfc437c3f869d75",
+                    "id": "96dd6d7f15043b9f465a87e11305cacf",
+                    "type": 1000,
+                    "steer_point_name": "1D3柜"
+                }
+            ],
+            "index": 84,
+            "id": "94e56ad0f44bdf4d2fcda9a766702555",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 17.483,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37439,
+                        "zoom": 2.2,
+                        "tilt": -20.22,
+                        "pan": 275.62,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.6930000185966492,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e6e53cfc437c3f869d7c",
+                    "id": "da0cdd569c91c393628eb0332e5d9638",
+                    "type": 1000,
+                    "steer_point_name": "1D3柜"
+                }
+            ],
+            "index": 85,
+            "id": "325375789cc692b24b315ea76c0184d2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 17.483,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38984,
+                        "zoom": 2.6,
+                        "tilt": 3.55,
+                        "pan": 275.62,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.6930000185966492,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e7503cfc437c3f869d83",
+                    "id": "1a08c6b1afa59b265a261aa43ae1b5bc",
+                    "type": 1000,
+                    "steer_point_name": "1D3柜"
+                }
+            ],
+            "index": 86,
+            "id": "400b60329ef49efc45cf8f15dcdf0fc4",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 17.483,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37715,
+                        "zoom": 2.29,
+                        "tilt": -20.37,
+                        "pan": 275.16,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2580000162124634,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e7ee3cfc437c3f869d89",
+                    "id": "836116e31cd7a09fcba839b79bc8e175",
+                    "type": 1000,
+                    "steer_point_name": "1D3柜"
+                }
+            ],
+            "index": 87,
+            "id": "aeaf7b8b3b12e8f9173b614bf91bcbce",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 17.483,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37673,
+                        "zoom": 2.29,
+                        "tilt": 4.76,
+                        "pan": 275.16,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2580000162124634,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e8763cfc437c3f869d90",
+                    "id": "c17892ee73fe11f8df58d258a53650ac",
+                    "type": 1000,
+                    "steer_point_name": "1D3柜"
+                }
+            ],
+            "index": 88,
+            "id": "6555a239104b3007d42e506aca8751ab",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 17.483,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 37706,
+                        "zoom": 2.29,
+                        "tilt": -21.02,
+                        "pan": 275.16,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2580000162124634,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.23645833,
+                                    "h": 0.8601852,
+                                    "x": 0.6640625,
+                                    "y": 0.07962963
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101104186"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e8e13cfc437c3f869d96",
+                    "id": "226b0dccdfca7d896d40b945c2258e13",
+                    "type": 1000,
+                    "steer_point_name": "1D3柜"
+                }
+            ],
+            "index": 89,
+            "id": "25d21e89dc6251f14e0fb432071ebcff",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38566,
+                        "zoom": 2.5,
+                        "tilt": -36.49,
+                        "pan": 277.93,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.7039999961853027,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e9763cfc437c3f869d9f",
+                    "id": "be9c02de4417bdd25a7d911ee35faf17",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 90,
+            "id": "7d0c857f7dcf2993ccb472cbb3322b39",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38583,
+                        "zoom": 2.5,
+                        "tilt": -25.41,
+                        "pan": 277.93,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.7039999961853027,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56e9de3cfc437c3f869da5",
+                    "id": "6194cc9a0d7cf4b2b14ea259f85b57cc",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                },
+                {
+                    "ptz_param": {
+                        "focus": 38550,
+                        "zoom": 2.5,
+                        "tilt": -11.45,
+                        "pan": 277.93,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.7039999961853027,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ea3c3cfc437c3f869da8",
+                    "id": "5843a2354c722cf4607e0f3cb09ba939",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 91,
+            "id": "48f85eb1ccd78224416633ae76a54569",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38541,
+                        "zoom": 2.5,
+                        "tilt": -10.23,
+                        "pan": 277.93,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.7039999961853027,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56eb9d3cfc437c3f869db5",
+                    "id": "eef36fc9b59828e16f146b0118f003e9",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 92,
+            "id": "edb64c94417bc8848319d61033b4ac79",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38525,
+                        "zoom": 2.5,
+                        "tilt": -0.79,
+                        "pan": 278.41,
+                        "focal_len": 969
+                    },
+                    "lift_height": 0.7039999961853027,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ec1c3cfc437c3f869dbc",
+                    "id": "131e50f5a7c421da5776ea210eb6676c",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 93,
+            "id": "2482ee28e56d08b325d8a884d72f7ad2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38575,
+                        "zoom": 2.5,
+                        "tilt": -32.98,
+                        "pan": 277.24,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2350000143051147,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ec8f3cfc437c3f869dc2",
+                    "id": "2cf8027dbfa698c8bfbe5e7afc0298c1",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 94,
+            "id": "1a7e169dec2b68067a75e2a4e902e73d",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 38508,
+                        "zoom": 2.5,
+                        "tilt": -9.48,
+                        "pan": 276.5,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2350000143051147,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ecf63cfc437c3f869dc9",
+                    "id": "f6fe45cada487d5241720407329968e5",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 95,
+            "id": "07e64f17f736e12d68e3ec675be3fd0c",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39251,
+                        "zoom": 2.7,
+                        "tilt": 13.0,
+                        "pan": 276.5,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2350000143051147,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ed7f3cfc437c3f869dcf",
+                    "id": "7ba1d888c5515062d28dcf26197a7189",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 96,
+            "id": "1f51c62131e25e2b85926e404f70f57f",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.096,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 39351,
+                        "zoom": 2.7,
+                        "tilt": -33.8,
+                        "pan": 277.35,
+                        "focal_len": 969
+                    },
+                    "lift_height": 1.2350000143051147,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.43020833,
+                                    "h": 0.63796294,
+                                    "x": 0.4703125,
+                                    "y": 0.09537037
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101103155"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ede33cfc437c3f869dd8",
+                    "id": "5d0094a8e16eba031baf1df74f9a1bf6",
+                    "type": 1000,
+                    "steer_point_name": "1D2柜"
+                }
+            ],
+            "index": 97,
+            "id": "681ab54011a127521a3413b1afc67a59",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.89,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 34743,
+                        "zoom": 1.8,
+                        "tilt": -14.59,
+                        "pan": 283.84,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.38199999928474426,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56ee7a3cfc437c3f869de1",
+                    "id": "e74946b11f3bf5549ae08624dd649036",
+                    "type": 1000,
+                    "steer_point_name": "进线柜GCK"
+                }
+            ],
+            "index": 98,
+            "id": "406ec09d4c66550654b8438f750b38f4",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.89,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 31069,
+                        "zoom": 1.2,
+                        "tilt": -14.59,
+                        "pan": 283.84,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.7860000133514404,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56efd13cfc437c3f869deb",
+                    "id": "249f0875b2d3ea5c1d69a84526f513fe",
+                    "type": 1000,
+                    "steer_point_name": "进线柜GCK"
+                }
+            ],
+            "index": 99,
+            "id": "c8370d0fe923f01fe30d6932fb1a9e38",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.89,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 31069,
+                        "zoom": 1.2,
+                        "tilt": 2.88,
+                        "pan": 283.84,
+                        "focal_len": 535
+                    },
+                    "lift_height": 1.3209999799728394,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56f0453cfc437c3f869df2",
+                    "id": "51ebd706b9d2f142f6192d424a82e81b",
+                    "type": 1000,
+                    "steer_point_name": "进线柜GCK"
+                }
+            ],
+            "index": 100,
+            "id": "2d9640c4f8517fd51b5c44aeb3a1d152",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 18.89,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 31069,
+                        "zoom": 1.2,
+                        "tilt": -14.49,
+                        "pan": 283.84,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.6340000033378601,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.3203125,
+                                    "h": 0.84537035,
+                                    "x": 0.55885416,
+                                    "y": 0.058333334
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101102112"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56f0b13cfc437c3f869df8",
+                    "id": "96f7e6214d1f4c07c2c5a479a5dcd921",
+                    "type": 1000,
+                    "steer_point_name": "进线柜GCK"
+                }
+            ],
+            "index": 101,
+            "id": "b0243c9bf68a0f220882960e0b795782",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 20.158,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 31086,
+                        "zoom": 1.2,
+                        "tilt": -24.66,
+                        "pan": 283.88,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.9919999837875366,
+                    "thermometry_points": [
+                        {
+                            "thermometry_param": {
+                                "enable_reflective": 1,
+                                "emissivity": 0.96,
+                                "rect": {
+                                    "w": 0.7104167,
+                                    "h": 0.49722221,
+                                    "x": 0.2203125,
+                                    "y": 0.20092593
+                                },
+                                "distance": 300,
+                                "reflective_temperature": 0.0
+                            },
+                            "id": "100005101101102"
+                        }
+                    ],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56f1643cfc437c3f869e01",
+                    "id": "72c68ced17993f70df451ecb958a07b9",
+                    "type": 1000,
+                    "steer_point_name": "干式变压器"
+                }
+            ],
+            "index": 102,
+            "id": "b613b18fbf329211d6f2ee4f173d4c8e",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 20.158,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "pdd_channel": 1,
+                    "ptz_param": {
+                        "focus": 29959,
+                        "zoom": 1.0,
+                        "tilt": -12.18,
+                        "pan": 283.56,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.7390000224113464,
+                    "thermometry_points": [],
+                    "id": "b37f4563a334fe8d8d7e1df621d5f4e4",
+                    "type": 7,
+                    "steer_point_name": "干式变压器"
+                }
+            ],
+            "index": 103,
+            "id": "3e1910aab7dc58b8a968e630455f4175",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 20.158,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 31069,
+                        "zoom": 1.2,
+                        "tilt": -60.42,
+                        "pan": 7.18,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.9919999837875366,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56f2c13cfc437c3f869e12",
+                    "id": "5cab34a3ccc6c131ff5798149a952db0",
+                    "type": 1000,
+                    "steer_point_name": "202低压室应急灯"
+                }
+            ],
+            "index": 104,
+            "id": "e4825805dd217e1d1a14f4c1a6e54bc2",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 20.932,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "duration": 10000,
+                    "ptz_param": {
+                        "focus": 31203,
+                        "zoom": 1.2,
+                        "tilt": -29.36,
+                        "pan": 300.35,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.9919999837875366,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56f3183cfc437c3f869e18",
+                    "id": "b184b2bc21578fccb728acb6016d74d1",
+                    "type": 3,
+                    "steer_point_name": "干式变压器"
+                }
+            ],
+            "index": 105,
+            "id": "d1bd4b8c45a3f7e7b334bb0d32e4ebf8",
+            "type": 0
+        },
+        {
+            "pose": {
+                "theta": 0.0,
+                "point": {
+                    "x": 20.932,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "action": [
+                {
+                    "ptz_param": {
+                        "focus": 30953,
+                        "zoom": 1.2,
+                        "tilt": 7.26,
+                        "pan": 185.97,
+                        "focal_len": 535
+                    },
+                    "lift_height": 0.0,
+                    "thermometry_points": [],
+                    "snap_shot_url": "http://192.168.62.62:18880/prod/robot/center/file/downloadFileById?file_id=6a56f3df3cfc437c3f869e22",
+                    "id": "65b04645c481a8c48dfcbd9937892854",
+                    "type": 1000,
+                    "steer_point_name": "低压室人员入侵"
+                }
+            ],
+            "index": 106,
+            "id": "3305cbf858423677c1b5459b1743dbe1",
+            "type": 0
+        }
+    ],
+    "substationMapsId": "90570c9d64a86d801db13778d2c4433b",
+    "name": "111",
+    "id": "83ca6c2f767480ec0d8ca6d00cca0b54",
+    "plan": "be2e5e0d11b93ea6387651590a9e1713"
+}

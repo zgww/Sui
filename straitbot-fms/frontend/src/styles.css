@@ -1,0 +1,1210 @@
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  background: #f0f2f5;
+}
+* { box-sizing: border-box; }
+
+/* Quiet scrollbars shared by the shell, trees, tables and dialogs. */
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: rgba(100, 122, 148, .24);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover { background: rgba(100, 122, 148, .48); }
+*::-webkit-scrollbar-thumb:active { background: rgba(100, 122, 148, .64); }
+*::-webkit-scrollbar-button { display: none; }
+
+/* Firefox uses the standard API; keep Chromium's explicit 6px sizing. */
+@supports not selector(::-webkit-scrollbar) {
+  * { scrollbar-width: thin; scrollbar-color: rgba(100, 122, 148, .24) transparent; }
+  *:hover { scrollbar-color: rgba(100, 122, 148, .48) transparent; }
+}
+
+@media (forced-colors: active) {
+  * { scrollbar-width: auto; scrollbar-color: auto; }
+  *::-webkit-scrollbar { width: auto; height: auto; }
+  *::-webkit-scrollbar-thumb { background: CanvasText; }
+}
+
+@media (max-width: 768px) {
+  .page-container { padding: 8px !important; }
+  .semi-table { font-size: 13px; }
+}
+
+.page-container { padding: 16px; }
+.card-shadow { box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.flex { display: flex; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.mt-12 { margin-top: 12px; }
+.mt-8 { margin-top: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.text-muted { color: #909399; font-size: 13px; }
+.text-mono { font-family: 'Consolas', 'Monaco', monospace; }
+.log-box {
+  background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 6px;
+  font-family: 'Consolas', monospace; font-size: 12px; white-space: pre-wrap;
+  word-break: break-all; max-height: 480px; overflow: auto;
+}
+.stat-card .num { font-size: 28px; font-weight: 600; }
+.stat-card .lbl { color: #909399; font-size: 13px; }
+.online-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+.dot-on { background: #67c23a; }
+.dot-off { background: #c0c4cc; }
+.dot-warn { background: #e6a23c; }
+
+/* 航点树编排：拖拽节点时同父多选节点整体高亮，便于确认拖动范围 */
+.wp-prefab-node-sel {
+  background: var(--semi-color-primary-light-default);
+  border-radius: 4px;
+}
+
+/* ---------- 航点树编排：三栏可拖拽布局 ---------- */
+.wp3-wrap {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  /* 撑满内容区剩余高度，各栏内部自行滚动 */
+  height: calc(100vh - 190px);
+  min-height: 480px;
+}
+.wp3-tree {
+  flex-shrink: 0;
+  min-width: 200px;
+  overflow: auto;
+}
+.wp3-tree .semi-card,
+.wp3-right .semi-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.wp3-tree .semi-card-body,
+.wp3-right .semi-card-body {
+  flex: 1;
+  overflow: auto;
+}
+.wp3-inspector {
+  flex: 1;
+  min-width: 240px;
+  overflow: auto;
+  padding: 0 8px;
+}
+.wp3-inspector .semi-card { height: auto; }
+.wp3-inspector .semi-card-body { overflow: auto; }
+/* 地图卡片不跟着内容一起滚动，画布高度由组件按 px 控制 */
+.wp3-inspector > .semi-card:first-child { flex-shrink: 0; }
+.wp3-inspector > .semi-card:last-child { flex: 1; min-height: 0; }
+
+/* ---------- 轨道地图 ---------- */
+.wp3-map {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.wp3-map-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--semi-color-border);
+}
+.wp3-map-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--semi-color-border);
+  margin: 0 4px;
+}
+.wp3-map-hint {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  margin-left: 4px;
+}
+/* Tooltip 与 Dropdown 之间的"事件垫片"：两者都要往自己直接子元素上挂事件，
+   中间隔一个真实 DOM 节点，谁也不会把谁的 onClick 吃掉。
+   inline-flex 是为了不让 span 影响按钮在工具栏里的排布。 */
+.wp3-map-trigger { display: inline-flex; }
+/* 图层开关下拉框的内容：整行可点（Checkbox 本身只有小方块能点，很难命中） */
+.wp3-map-layer {
+  min-width: 132px;
+  padding: 4px 0;
+}
+.wp3-map-layer-title {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  padding: 2px 12px 6px;
+}
+.wp3-map-layer-item {
+  padding: 4px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.wp3-map-layer-item:hover {
+  background: var(--semi-color-fill-0);
+}
+/* 让整行都是点击区（Checkbox 撑满行宽），不然只有小方块和文字能点 */
+.wp3-map-layer-item .semi-checkbox {
+  width: 100%;
+}
+.wp3-map-count {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  white-space: nowrap;
+}
+.wp3-map-zoom {
+  font-size: 12px;
+  color: var(--semi-color-text-1);
+  min-width: 44px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.wp3-map-foot {
+  font-size: 11px;
+  color: var(--semi-color-text-2);
+  line-height: 1.5;
+}
+/* 提示栏里的"轨道总长"：稍微提亮 + 等宽数字，滚轮缩放时数字不会左右跳 */
+.wp3-map-len {
+  color: var(--semi-color-text-1);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: help;
+  border-bottom: 1px dashed var(--semi-color-border);
+}
+.wp3-map-canvas-wrap {
+  width: 100%;
+  position: relative;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--semi-color-bg-2);
+}
+.wp3-map-canvas-wrap canvas { touch-action: none; }
+
+/* 平移途中指针常会划出画布，此时 canvas 的 cursor 就不作数了。
+   给 body 挂一个类把光标"锁"住，免得划过树/检视器时光标来回跳。
+   !important 是必须的——否则会被子元素各自的 cursor 覆盖。 */
+body.wp3-panning,
+body.wp3-panning * {
+  cursor: grabbing !important;
+}
+
+/* 右键菜单：只盖住画布区域（.wp3-map-canvas-wrap 已 overflow:hidden），
+   所以不需要 fixed + 全局遮罩，也就不会误伤页面其它区域的点击。 */
+.wp3-map-ctx-host {
+  position: absolute;
+  inset: 0;
+}
+.wp3-map-ctx {
+  position: absolute;
+  z-index: 20;
+  min-width: 148px;
+  padding: 4px;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  background: var(--semi-color-bg-3, var(--semi-color-bg-2));
+  box-shadow: var(--semi-shadow-elevated, 0 4px 12px rgba(0, 0, 0, .14));
+}
+.wp3-map-ctx-item {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--semi-color-text-0);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+.wp3-map-ctx-item:hover:not(:disabled) {
+  background: var(--semi-color-fill-0);
+}
+.wp3-map-ctx-item:disabled {
+  color: var(--semi-color-text-3);
+  cursor: not-allowed;
+}
+.wp3-right {
+  flex-shrink: 0;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+/* 右栏第一张卡片（视频）用固定高度，其余（控制）吃掉剩余空间 */
+.wp3-right > .semi-card:first-child {
+  height: auto;
+  flex-shrink: 0;
+}
+.wp3-right > .semi-card:first-child .semi-card-body { overflow: hidden; }
+.wp3-right > .semi-card:last-child { flex: 1; min-height: 0; }
+
+.wp3-handle {
+  width: 6px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: var(--semi-color-border);
+  border-radius: 3px;
+  margin: 0 5px;
+  transition: background .15s;
+}
+.wp3-handle-v {
+  height: 6px;
+  flex-shrink: 0;
+  cursor: row-resize;
+  background: var(--semi-color-border);
+  border-radius: 3px;
+  margin: 8px 0;
+  transition: background .15s;
+}
+.wp3-handle:hover, .wp3-handle:active,
+.wp3-handle-v:hover, .wp3-handle-v:active,
+.pf3-handle:hover, .pf3-handle:active {
+  background: var(--semi-color-primary);
+}
+/* 拖动期间锁住光标与文本选择，避免划过 iframe/视频时光标乱跳 */
+body.wp-resizing-h, body.wp-resizing-h * { cursor: col-resize !important; user-select: none !important; }
+body.wp-resizing-v, body.wp-resizing-v * { cursor: row-resize !important; user-select: none !important; }
+
+/* ---------- Prefab 编排：目录 / 节点树 / 检视器 三栏可拖拽 ----------
+   左右两栏宽度可拖，中间的节点树吃掉剩下的（改左右 = 改三栏的宽窄）。 */
+.pf3-wrap {
+  display: flex;
+  align-items: stretch;
+  height: calc(100vh - 190px);
+  min-height: 480px;
+}
+.pf3-col {
+  flex-shrink: 0;
+  min-width: 200px;
+  overflow: auto;
+}
+.pf3-mid {
+  flex: 1;
+  min-width: 240px;
+  overflow: auto;
+  padding: 0 6px;
+}
+/* 卡片撑满栏高，内容各自滚动（否则长检视器会把整页撑长，分隔条就不齐了） */
+.pf3-wrap .semi-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.pf3-wrap .semi-card-body {
+  flex: 1;
+  overflow: auto;
+}
+.pf3-handle {
+  width: 6px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: var(--semi-color-border);
+  border-radius: 3px;
+  margin: 0 4px;
+  transition: background .15s;
+}
+
+/* 树节点行内布局：图标 | 名称 | 标签。
+   名称用**全名**（文件带 .prefab.json），长名字靠省略号收，
+   后缀要尽量保住——所以省略点放在名称上而不是整行上。
+   `.pf3-name` 的 min-width:0 是 flex 省略的必要条件（默认 min-width:auto 不会缩）。 */
+.pf3-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  min-width: 0;
+}
+.pf3-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+/* 选中/悬停时展开成完整名称，不至于只能靠 title 提示 */
+.semi-tree-option:hover .pf3-name,
+.semi-tree-option-selected .pf3-name {
+  flex: 1 1 auto;
+}
+
+/* ---------- 检测框绑定工具（拍照动作点检视器第一项） ---------- */
+.dbx {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  margin-bottom: 14px;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  background: var(--semi-color-fill-0);
+}
+.dbx-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+/* 工具条里的分组竖线：把"用什么工具"和"看多清楚"分开，不靠间距硬猜 */
+.dbx-sep {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background: var(--semi-color-border);
+  flex: 0 0 auto;
+}
+.dbx-canvas-wrap { width: 100%; position: relative; }
+.dbx-canvas {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 4px;
+  /* 画框时别让浏览器把手势抢去做滚动/选中 */
+  touch-action: none;
+}
+/* 画布右键菜单：绝对定位在画布容器里，坐标来自 pointerup 的画布内偏移 */
+.dbx-ctx {
+  position: absolute;
+  z-index: 20;
+  min-width: 140px;
+  padding: 4px;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  background: var(--semi-color-bg-4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+}
+.dbx-ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--semi-color-text-0);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+.dbx-ctx-item:hover { background: var(--semi-color-fill-1); }
+
+/* 检测框列表里的算法按钮：**按内容宽度**（不撑满整列），
+   但算法名可能很长，所以给个上限 + 省略号，别把行挤歪 */
+.dbx-algo { flex: 0 1 auto; min-width: 0; max-width: 170px; }
+.dbx-algo .semi-button {
+  max-width: 100%;
+  justify-content: flex-start;
+}
+/* 省略号要打在**内层 span** 上：Semi 把 children 包在一个 <span> 里
+   （Button.js），按钮自身的 text-overflow 管不到子元素的文字，
+   写在按钮上只会把长算法名硬裁掉，看不出后面还有内容。
+   挤的时候靠它收缩（父级 flex-shrink: 1 + min-width: 0），行不会被撑破。 */
+.dbx-algo .semi-button > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- 选择算法窗口（非模态，和绑定测点共用 .mw 外壳） ---- */
+.alg-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.alg-pick-group { display: flex; flex-direction: column; gap: 8px; }
+.alg-pick-cat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--semi-color-text-0);
+  border-left: 3px solid var(--semi-color-primary);
+  padding-left: 8px;
+}
+.alg-pick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+.alg-pick-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  background: var(--semi-color-bg-1);
+  color: var(--semi-color-text-0);
+  font-size: 13px;
+  text-align: left;
+}
+/* 卡片**不可点**（用户明确要求）：不给 cursor: pointer、也不加 hover 高亮，
+   免得看着像"点一下就设上了"——要设置就点下面的按钮 */
+.alg-pick-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+/* 当前绑定的那个：用主色描边 + 淡底，别只靠文字——扫一眼要能认出来 */
+.alg-pick-card.is-on {
+  border-color: var(--semi-color-primary);
+  background: var(--semi-color-primary-light-default);
+}
+/* 算法示意图：卡片里默认裁成 96px 高的一条，点一下（.is-big）放开高度看全图。
+   图是 base64 内联在 algorithms.json 里的，尺寸别给太大——显示这么点就够 */
+.alg-pick-img {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 4px;
+  background: var(--semi-color-fill-0);
+  cursor: zoom-in;
+}
+.alg-pick-card.is-big .alg-pick-img {
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  cursor: zoom-out;
+}
+/* 没上传过的占位：虚线框 + 一句提示，别做成能点的样子 */
+.alg-pick-img.is-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  font-size: 11px;
+  color: var(--semi-color-text-2);
+  border-style: dashed;
+  cursor: default;
+}
+.alg-pick-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  margin-bottom: 2px;
+}
+.alg-pick-name { font-weight: 600; }
+.alg-pick-id {
+  font-size: 11px;
+  color: var(--semi-color-text-2);
+  font-family: var(--semi-font-family-mono, monospace);
+}
+.alg-pick-desc {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  line-height: 1.4;
+}
+/* ---- 检测框：已绑测点的行/序号牌 ----
+   颜色只在"绑没绑测点"这一件事上做区分，跟算法色互不干扰 */
+.dbx-row.is-bound { box-shadow: inset 3px 0 0 var(--semi-color-success); }
+.dbx-pts.is-bound {
+  color: var(--semi-color-success);
+  font-weight: 500;
+}
+
+/* ---- 非模态窗口外壳（components/ModelessWindow.tsx）
+       绑定测点、选择算法两个窗口共用：无遮罩、不锁滚动，可拖标题栏平移、
+       拖右下角手柄改大小 ---- */
+.mw {
+  position: fixed;
+  z-index: 1050;                 /* 压过 Semi Modal(1000)，压不过 Toast */
+  display: flex;
+  flex-direction: column;
+  /* 宽高由 JS 给（clampSize 夹过），这里**不要再写 max-height**：
+     两边都夹会互相打架，把内容区挤掉几像素。 */
+  border: 1px solid var(--semi-color-border);
+  border-radius: 8px;
+  background: var(--semi-color-bg-4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .18);
+  overflow: hidden;
+}
+/* 拖动 / 缩放中：禁掉选中，不然拖一下就把标题文字刷蓝 */
+.mw.is-drag { user-select: none; }
+.mw.is-resize { user-select: none; }
+.mw-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--semi-color-border);
+  background: var(--semi-color-fill-0);
+  cursor: move;
+}
+.mw-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--semi-color-text-0);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mw-hint {
+  flex: 1 1 auto;
+  font-size: 11px;
+  color: var(--semi-color-text-2);
+}
+.mw-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 12px;
+}
+.mw-foot {
+  display: flex;
+  justify-content: flex-end;
+  /* 右边多留 20px 给缩放手柄：按钮紧贴右下角的话手柄会压住「关闭」的角，
+     点那儿变成"开始缩放"而不是关闭。20 > 手柄宽 16 */
+  padding: 8px 20px 8px 12px;
+  border-top: 1px solid var(--semi-color-border);
+  background: var(--semi-color-fill-0);
+}
+/* 右下角缩放手柄：压在窗口角上，不占布局（absolute），
+   两条斜线就是"这里能拖"的视觉暗示，别做得太抢眼 */
+.mw-grip {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+  background:
+    linear-gradient(135deg, transparent 0 42%, var(--semi-color-text-3) 42% 50%, transparent 50% 100%),
+    linear-gradient(135deg, transparent 0 70%, var(--semi-color-text-3) 70% 78%, transparent 78% 100%);
+  border-bottom-right-radius: 8px;   /* 跟窗口圆角对齐 */
+  opacity: .55;
+  transition: opacity .15s;
+}
+.mw-grip:hover { opacity: 1; }
+
+.bp {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+/* 窗口能拖大拖小了，树就得**跟着窗口长**（`flex:1` + `min-height:0`），
+   不能再写死 `max-height:300px`——那样把窗口拉高了树还是那么点，白拉。
+   `.bp` 是挂在 `.mw-body` 上的（见 ModelessWindow 的 `bodyClass`），
+   所以它本身就是那个"有确定高度的 flex 容器"，这里 flex:1 才有东西可分。 */
+.bp-tree {
+  flex: 1 1 auto;
+  min-height: 120px;
+  overflow: auto;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  background: var(--semi-color-bg-1);
+  padding: 4px;
+}
+.bp-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 0;
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+}
+.bp-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--semi-color-text-0);
+}
+.bp-row:hover { background: var(--semi-color-fill-0); }
+.bp-row.is-sel { background: var(--semi-color-primary-light-default); }
+/* 已绑走的测点：绿色 + 加粗，扫一眼就知道哪些已经用过了。
+   被**别处**（别的航点 / 别的框 / 测温点）占住的用橙色：它不能再绑，
+   跟"本框已绑"（可以解绑）不是一回事，颜色得分开 */
+.bp-row.is-bound .bp-name { color: var(--semi-color-success); font-weight: 600; }
+.bp-row.is-taken .bp-name { color: var(--semi-color-warning); font-weight: 600; }
+/* 绑在哪的路径（航点 / 动作点 / 检测框 #n）：可能很长，不能把行撑破 */
+.bp-path {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--semi-color-text-2);
+}
+.bp-caret {
+  width: 14px;
+  flex: 0 0 auto;
+  color: var(--semi-color-text-2);
+  display: inline-flex;
+}
+.bp-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bp-meta {
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: var(--semi-color-text-2);
+}
+.bp-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+/* 右键菜单：Semi Dropdown 负责定位，这里只管长相 */
+.bp-ctx {
+  min-width: 180px;
+  padding: 4px;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  background: var(--semi-color-bg-4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+}
+.bp-ctx-item {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--semi-color-text-0);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+}
+/* hover 要放过 disabled：灰着的菜单项（"已绑在 xxx"）不该看着还能点 */
+.bp-ctx-item:hover:not([disabled]) { background: var(--semi-color-fill-1); }
+.bp-ctx-item[disabled] {
+  color: var(--semi-color-text-2);
+  cursor: default;
+}
+
+.alg-pick-on {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 11px;
+  color: var(--semi-color-primary);
+}
+
+.dbx-hint {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  min-height: 16px;
+}
+.dbx-empty {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  padding: 8px 0;
+}
+.dbx-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 190px;
+  overflow: auto;
+}
+.dbx-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.dbx-row:hover { background: var(--semi-color-fill-1); }
+/* 选中态只加边框不改底色：底色会盖住列表自己的 hover，反而看不出选了哪个 */
+.dbx-row.is-sel {
+  border-color: var(--semi-color-warning);
+  background: var(--semi-color-warning-light-default);
+}
+.dbx-idx {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 9px;
+  color: #fff;
+  font-size: 11px;
+}
+/* 测点名 + 取消绑定是**一组**，整组靠右撑开。
+   margin-left: auto 必须打在组上：打在名字上（旧写法）会把按钮甩到名字左边、
+   再被 auto 推到最右，按钮和名字中间隔一大片空白，看不出它解哪个测点。 */
+.dbx-pt {
+  flex: 0 1 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  margin-left: auto;
+}
+.dbx-pts {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--semi-color-text-2);
+}
+.dbx-sel {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  word-break: break-all;
+}
+/* 选中框的「检测流程」选择：一行内标签 + 下拉，检视器这一栏很窄，
+   放不下时靠 flex-wrap 把下拉换到下一行，不溢出 */
+.dbx-flow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.dbx-flow-label {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+}
+
+/* ---------- 「航点指定」挑选面板（巡检计划编排） ----------
+   树视图 + 地图画布共用一份"已选"状态。样式跟着面板走（而不是塞进
+   航点树页面的 wp3-* 里），因为它们只在检视器那一栏里出现。 */
+.pp-tree {
+  max-height: 260px;
+  overflow: auto;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin-top: 6px;
+}
+/* 树行：整行可点（点选/Shift 范围选都靠它），所以 cursor 必须给 pointer。
+   勾选框是**纯展示**的（点击由行接管，见 PlanNodeTools 的注释），
+   不然 Semi 的 Checkbox 自己也会触发一次，一开一关正好抵消。 */
+.pp-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+.pp-row .semi-checkbox {
+  pointer-events: none;
+}
+.pp-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pp-row-on .pp-name {
+  font-weight: 600;
+}
+/* 分组行：与叶子行同一套"整行可点"（点行 = 展开/收起），只是字小一号色浅一档。
+   勾选框单独占一格 `.pp-pick`：点它只勾整枝、不展开，所以必须把点击掐在这一层
+   （冒到行上就会"勾一下顺便收起"，没法连着勾几个分组）。 */
+.pp-row-group {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+}
+.pp-row-part .pp-name {
+  font-weight: 600;
+}
+.pp-pick {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.pp-cnt {
+  font-size: 11px;
+  color: var(--semi-color-text-3);
+}
+.pp-map {
+  margin-top: 8px;
+}
+.pp-hint {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  margin-top: 6px;
+}
+
+/* ---------- 巡检日志详情窗口（左树 + 右检视器） ----------
+   复用 `.mw` 窗口外壳与 `.wp3-handle` 分隔条，只加业务内的布局与节点样式。 */
+.ird {
+  display: flex;
+  flex-direction: column;
+  /* 窗口内自己排，不要 .mw-body 的默认内边距（要贴边撑满） */
+  padding: 0;
+  overflow: hidden;
+}
+/* 顶部一条摘要：一行放不下就换行，别撑破窗口 */
+.ird-summary {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--semi-color-text-1);
+  border-bottom: 1px solid var(--semi-color-border);
+  background: var(--semi-color-fill-0);
+}
+.ird-summary b { color: var(--semi-color-text-0); }
+.ird-sep { color: var(--semi-color-border); }
+.ird-poll-note {
+  color: var(--semi-color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---- 工具栏：跟随刷新开关 / 展开收起 / 刷新 / 宿主自带 ---- */
+.ird-tools {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--semi-color-border);
+}
+.ird-tools-gap { flex: 1; }
+
+.ird-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 200px;
+}
+.ird-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px;
+  color: var(--semi-color-danger);
+}
+
+/* 左树 | 分隔条 | 右检视器 */
+.ird-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  padding: 8px 10px 10px;
+}
+.ird-tree {
+  flex-shrink: 0;
+  min-width: 180px;
+  overflow: auto;
+  padding-right: 6px;
+  /* 右键菜单按容器定位（left/top 是相对它的偏移），所以必须是定位祖先 */
+  position: relative;
+}
+/* ---- 树的右键菜单 ----
+   视觉沿用画布那套 `.dbx-ctx`，但定位在**树容器**里而不是画布上。
+   注意 z-index 要压过 Semi 的树行，否则菜单会被后面的行盖住。 */
+.ird-ctx {
+  position: absolute;
+  z-index: 20;
+  min-width: 172px;
+  padding: 4px;
+  border: 1px solid var(--semi-color-border);
+  border-radius: 6px;
+  background: var(--semi-color-bg-4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+}
+/* 菜单头：把右键的那个节点名字显示出来。
+   树里同名节点很多（比如好几个"G10联络柜"），不标出来容易点错。 */
+.ird-ctx-head {
+  padding: 4px 8px 6px;
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--semi-color-border);
+  font-size: 11px;
+  color: var(--semi-color-text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ird-ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--semi-color-text-0);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+.ird-ctx-item:hover:not(:disabled) { background: var(--semi-color-fill-1); }
+/* 叶子节点：没有"展开子树"这回事，置灰而不是让它点了没反应 */
+.ird-ctx-item:disabled { color: var(--semi-color-text-3); cursor: default; }
+/* 右侧的"不含自己 / 含自己"小注，用来区分两组语义 */
+.ird-ctx-note {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--semi-color-text-3);
+}
+.ird-ctx-sep {
+  height: 1px;
+  margin: 4px 6px;
+  background: var(--semi-color-border);
+}
+.ird-inspector {
+  flex: 1;
+  min-width: 240px;
+  overflow: auto;
+  padding-left: 8px;
+}
+
+/* ---- 树节点行 ---- */
+.ird-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  max-width: 100%;
+}
+.ird-node-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ird-node.is-notice .ird-node-label {
+  color: var(--semi-color-text-3);
+  font-style: italic;
+}
+.ird-node-tag { flex-shrink: 0; }
+.ird-node-meta {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--semi-color-text-3);
+}
+
+/* ---- 检视器 ---- */
+.ird-insp-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--semi-color-border);
+}
+.ird-insp-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--semi-color-text-0);
+  word-break: break-all;
+}
+.ird-group { margin-top: 12px; }
+.ird-group-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--semi-color-text-2);
+  margin-bottom: 6px;
+}
+/* 字段：左边固定宽标签、右边值自适应。值可能很长（URL / 路径），
+   所以标签不许被压缩、值要能断行 */
+.ird-field {
+  display: flex;
+  gap: 8px;
+  padding: 3px 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.ird-field-label {
+  flex: 0 0 88px;
+  color: var(--semi-color-text-2);
+  text-align: right;
+}
+.ird-field-value {
+  flex: 1;
+  min-width: 0;
+  color: var(--semi-color-text-0);
+  word-break: break-all;
+}
+.ird-field-value.is-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+}
+/* 长文本（JSON / 错误原因）：整块显示、可滚动，不要横向撑破窗口 */
+.ird-field-value.is-block {
+  white-space: pre-wrap;
+  max-height: 160px;
+  overflow: auto;
+  background: var(--semi-color-fill-0);
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+.ird-field-value.is-danger { color: var(--semi-color-danger); }
+
+/* 图片缩略图：点了开大图 */
+.ird-thumb {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 42px;
+  border-radius: 4px;
+  border: 1px solid var(--semi-color-border);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.ird-thumb.is-big {
+  flex: none;
+  width: 108px;
+  height: 80px;
+  position: relative;
+}
+.ird-thumb-cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, .5);
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* ---------- 检测图 / 大图（"图看不全"的修复点） ----------
+   ⚠️ 这一段是踩过坑之后的写法，别改回 Semi `<Image>` + `maxHeight`：
+   Semi 的 `Image` 外层是 `.semi-image` 容器，`maxHeight` 加在**容器**上，
+   里面的 `<img>` 仍按原始宽高比铺开 —— "框高 260、图高 800"，多出来的被裁掉，
+   滚动条拉到底也只看到上面 1/3。
+
+   正解：**裸 `<img>` + `width:100%` + `height:auto`**，让高度跟着宽度算，
+   图就完整撑开；纵向滚动交给外层的 `.ird-inspector`（它是 `overflow:auto`）。 */
+.ird-figure {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  /* 不能让祖先的 max-height 把它压扁 —— 显式清掉，避免被别的规则带上 */
+  max-height: none;
+  border-radius: 4px;
+  border: 1px solid var(--semi-color-border);
+  background: var(--semi-color-fill-0);
+  cursor: zoom-in;
+}
+/* 检视器里"原图"入口：跟在分组标题后面，小而不抢眼 */
+.ird-img-open {
+  margin-left: 8px;
+  font-weight: 400;
+  font-size: 12px;
+}
+/* 大图预览（Modal 里）：自适应视口，别超出屏幕 */
+.ird-figure.is-big {
+  width: auto;
+  max-width: 86vw;
+  max-height: 76vh;
+  object-fit: contain;
+  cursor: default;
+}
+
+/* 动作点检视器「使用当前云台位姿」工具，与下方检测框工具留间距 */
+.wp-ptz-pose-tool { margin-bottom: 8px; }
+
+/* ---------- 推理留痕（请求参数 / 同步响应 / 算法结果，三段可折叠） ---------- */
+.ird-infer { display: flex; flex-direction: column; gap: 6px; }
+.ird-infer-item {
+  border: 1px solid var(--semi-color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ird-infer-item.is-error { border-color: var(--semi-color-danger); }
+.ird-infer-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 5px 8px;
+  border: none;
+  background: var(--semi-color-fill-0);
+  font-size: 12px;
+  color: var(--semi-color-text-1);
+  cursor: pointer;
+  text-align: left;
+}
+.ird-infer-item.is-error .ird-infer-head { color: var(--semi-color-danger); }
+.ird-infer-json {
+  margin: 0;
+  padding: 8px;
+  max-height: 280px;
+  overflow: auto;
+  background: var(--semi-color-bg-1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--semi-color-text-0);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ---------- 巡检日志详情页（独立路由 /inspection/log/:id） ----------
+   这是"浏览器新标签页"的载体：内容区铺满视口，比页面内浮层宽裕得多。
+   `.ird` 在这里由 `.ild-card` 撑高，两栏各自滚动。 */
+/* 让页面高度撑满，卡片才能吃到"剩余高度"（否则卡片按内容高，图一长整页滚） */
+.ild-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+/*
+   卡片撑满剩余高度，并把内部高度约束住：`.ird` 是 flex 列，
+   `.ird-wrap`（左树 | 右检视器）是 flex:1 + min-height:0 —— 只有这条链上
+   每一层都不给"撑破"的机会，右栏的 `overflow:auto` 才会真正生效，
+   而不是把整页顶长（那样工具栏会被滚出视野，开关就找不到了）。
+*/
+.ild-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ild-card > .semi-card-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* 详情主体：占满卡片剩余高度 */
+.ild-card .ird {
+  flex: 1;
+  min-height: 0;
+}

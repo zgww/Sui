@@ -1,0 +1,196 @@
+{
+  "_comment": "Straitbot 物模型定义 — 定义机器人的属性、配置、服务、事件。可 UI 编辑。",
+  "_version": "1.0",
+
+  "product_types": {
+    "0": "室内挂轨",
+    "1": "室外挂轨",
+    "2": "Mini挂轨",
+    "3": "室内轮式",
+    "4": "室外轮式"
+  },
+
+  "status_map": {
+    "0": "正常运行",
+    "1": "开始充电",
+    "2": "充电中",
+    "3": "前往充电",
+    "4": "自检中",
+    "5": "巡检中",
+    "6": "巡检暂停",
+    "7": "巡检挂起",
+    "8": "前往电梯"
+  },
+
+  "properties": {
+    "identity": {
+      "sn":           { "type": "string", "desc": "序列号" },
+      "robot_id":     { "type": "int",    "desc": "本体 ID" },
+      "product_type": { "type": "int",    "desc": "产品类型", "map": "product_types" }
+    },
+    "version": {
+      "application":  { "type": "string", "desc": "上位机版本" },
+      "firmware":     { "type": "string", "desc": "下位机固件" },
+      "hardware":     { "type": "string", "desc": "硬件版本" },
+      "hardware_sn":  { "type": "string", "desc": "硬件 SN" },
+      "motion":       { "type": "string", "desc": "运动模块版本" },
+      "sdk":          { "type": "string", "desc": "SDK 版本" }
+    },
+    "runtime": {
+      "status":        { "type": "int",   "unit": "",    "desc": "状态 ID", "map": "status_map", "cmd": 21 },
+      "doing":         { "type": "string","unit": "",    "desc": "正在做的事", "cmd": 21 },
+      "cpu":           { "type": "float", "unit": "%",   "desc": "CPU 使用率", "cmd": 21 },
+      "temperature":   { "type": "float", "unit": "°C",  "desc": "CPU 温度", "cmd": 21 },
+      "speed":         { "type": "float", "unit": "m/s", "desc": "当前速度", "cmd": 21 },
+      "angular_speed": { "type": "float", "unit": "°/s", "desc": "角速度", "cmd": 21 },
+      "battery":       { "type": "int",   "unit": "%",   "desc": "电量", "cmd": 21 },
+      "pose_x":        { "type": "float", "unit": "m",   "desc": "X 坐标", "cmd": 21 },
+      "pose_y":        { "type": "float", "unit": "m",   "desc": "Y 坐标", "cmd": 21 },
+      "theta":         { "type": "float", "unit": "°",   "desc": "偏航角", "cmd": 21 },
+      "floor":         { "type": "int",   "unit": "",    "desc": "楼层", "cmd": 21 }
+    },
+    "power": {
+      "mode":      { "type": "int",   "desc": "0 电池 / 1 外接", "cmd": 22 },
+      "voltage":   { "type": "float", "unit": "V", "desc": "电压", "cmd": 22 },
+      "current":   { "type": "float", "unit": "A", "desc": "电流", "cmd": 22 },
+      "capacity":  { "type": "int",   "unit": "%", "desc": "容量", "cmd": 22 },
+      "remaining": { "type": "int",   "unit": "%", "desc": "剩余电量", "cmd": 22 },
+      "charging":  { "type": "int",   "desc": "充电中", "cmd": 22 }
+    },
+    "connections": {
+      "chassis":  { "type": "bool", "desc": "下位机连接", "cmd": 21 },
+      "server":   { "type": "bool", "desc": "服务器连接", "cmd": 21 },
+      "elevator": { "type": "bool", "desc": "电梯连接", "cmd": 21 }
+    },
+    "ptz": {
+      "pan":  { "type": "float", "unit": "°", "desc": "水平角度", "cmd": 35 },
+      "tilt": { "type": "float", "unit": "°", "desc": "垂直角度", "cmd": 35 },
+      "zoom": { "type": "float", "desc": "变倍", "cmd": 35 }
+    }
+  },
+
+  "configs": {
+    "motion": {
+      "move_speed":        { "type": "float", "unit": "m/s", "desc": "行进速度", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "angular_speed":     { "type": "float", "unit": "°/s", "desc": "角速度",   "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "is_ring":           { "type": "bool",  "desc": "环形轨道", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "limit_position_x":  { "type": "array", "desc": "X 限位 [min,max]", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "limit_position_y":  { "type": "array", "desc": "Y 限位 [min,max]", "writable": true, "cmd_get": 4, "cmd_set": 5 }
+    },
+    "battery": {
+      "low":                  { "type": "int", "unit": "%", "desc": "低电量阈值", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "normal":               { "type": "int", "unit": "%", "desc": "恢复正常",   "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "low_voltage":          { "type": "float", "desc": "低电压阈值", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "charge_full_current":  { "type": "float", "desc": "满电充电电流", "writable": true, "cmd_get": 4, "cmd_set": 5 }
+    },
+    "home_pose": {
+      "x":     { "type": "float", "desc": "Home X", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "y":     { "type": "float", "desc": "Home Y", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "theta": { "type": "float", "desc": "Home 角度", "writable": true, "cmd_get": 4, "cmd_set": 5 }
+    },
+    "inplace_tolerance": {
+      "distance": { "type": "float", "unit": "m",  "desc": "距离容差", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "angle":    { "type": "float", "unit": "°",  "desc": "角度容差", "writable": true, "cmd_get": 4, "cmd_set": 5 },
+      "duration": { "type": "int",   "unit": "ms", "desc": "时间容差", "writable": true, "cmd_get": 4, "cmd_set": 5 }
+    }
+  },
+
+  "services": {
+    "motion": {
+      "move":         { "cmd": 32, "params": ["command", "instant_speed"], "desc": "运动控制" },
+      "setPose":      { "cmd": 31, "params": ["point", "theta", "ptz"], "desc": "设定位姿" },
+      "resetAndHome": { "cmd": 33, "params": ["go_home"], "desc": "复位返航" },
+      "emergencyStop":{ "cmd": 51, "params": ["emergency_stop"], "desc": "急停(挂轨)" },
+      "getPose":      { "cmd": 30, "params": [], "desc": "获取位姿" }
+    },
+    "ptz": {
+      "getPose":  { "cmd": 35, "params": [], "desc": "云台位姿" },
+      "setPose":  { "cmd": 36, "params": ["pan", "tilt", "zoom"], "desc": "设云台位姿" },
+      "action":   { "cmd": 37, "params": ["command", "stop", "channel"], "desc": "云台动作" },
+      "capture":  { "cmd": 38, "params": ["command", "duration"], "desc": "拍照/录像/测温" }
+    },
+    "lift": {
+      "getStatus": { "cmd": 40, "params": [], "desc": "升降杆状态" },
+      "control":   { "cmd": 41, "params": ["command", "height"], "desc": "升降杆控制" }
+    },
+    "power": {
+      "getInfo": { "cmd": 22, "params": [], "desc": "电源信息" },
+      "charge":  { "cmd": 23, "params": ["action", "pile_index"], "desc": "充电控制" }
+    },
+    "inspection": {
+      "create":  { "cmd": 100, "params": ["file", "content", "schedule"], "desc": "创建巡检" },
+      "control": { "cmd": 101, "params": ["control", "inspection_id", "target_floor", "target_waypoint"], "desc": "控制巡检" },
+      "getInfo": { "cmd": 102, "params": ["inspection_id"], "desc": "巡检信息" }
+    },
+    "map": {
+      "control":     { "cmd": 90, "params": ["type", "x_begin", "x_end"], "desc": "建图控制" },
+      "getProgress": { "cmd": 91, "params": [], "desc": "建图进度" },
+      "getLabels":   { "cmd": 93, "params": ["type", "floor"], "desc": "地图标签" }
+    },
+    "elevator": {
+      "call":     { "cmd": 130, "params": ["floor"], "desc": "呼叫电梯" },
+      "takeFloor":{ "cmd": 132, "params": ["floor", "ctrlType", "comeOut"], "desc": "乘梯到楼层" }
+    },
+    "audio": {
+      "play": { "cmd": 47, "params": ["command", "file"], "desc": "音频播放" }
+    },
+    "pdd": {
+      "detect": { "cmd": 48, "params": ["command"], "desc": "局放检测" }
+    },
+    "selfcheck": {
+      "start":    { "cmd": 7, "params": [], "desc": "触发自检" },
+      "getResult":{ "cmd": 8, "params": [], "desc": "自检结果" }
+    },
+    "alert": {
+      "list":         { "cmd": 10, "params": [], "desc": "告警列表" },
+      "clearNav":     { "cmd": 12, "params": [], "desc": "清除导航告警" },
+      "clearDriver":  { "cmd": 13, "params": ["device_id"], "desc": "清除驱动器告警" }
+    }
+  },
+
+  "alerts": {
+    "10001": "下位机不支持的功能",
+    "10002": "数值超出有效范围",
+    "10003": "下位机正在初始化坐标",
+    "10010": "超过限速",
+    "10011": "移动驱动器告警",
+    "10012": "升降杆皮带反卷",
+    "10013": "超出最远距离",
+    "10014": "已到达限位",
+    "10020": "漏读",
+    "10100": "驱动器告警",
+    "10101": "水平驱动器告警",
+    "10401": "升降杆驱动器告警",
+    "11001": "局放驱动器告警",
+    "12001": "开门器连接失败",
+    "12002": "开门器设备告警",
+    "20000": "未初始化",
+    "20001": "嵌入式板未连接",
+    "20002": "与服务器断开连接",
+    "20003": "请求超时",
+    "20100": "巡检数据解析失败",
+    "20101": "有巡检正在执行",
+    "20102": "当前没有巡检在执行",
+    "20105": "电量低",
+    "20106": "充电失败",
+    "20107": "轻度打滑",
+    "20108": "中度打滑",
+    "20109": "严重打滑",
+    "20110": "底盘异常",
+    "20111": "急停开关触发",
+    "20114": "定位异常",
+    "20115": "规划异常",
+    "20116": "控制异常",
+    "20117": "决策异常",
+    "20118": "充电桩故障",
+    "20300": "云台初始化失败",
+    "20301": "云台登录失败",
+    "20302": "云台断开连接",
+    "20303": "云台操作失败",
+    "20305": "云台已触发避障",
+    "21001": "前方障碍",
+    "21002": "后方障碍",
+    "22000": "切换楼层时报错",
+    "22001": "控制电梯时出错"
+  }
+}

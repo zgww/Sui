@@ -1,0 +1,105 @@
+<html style="margin:0;padding:0;">
+<div style="width:100%;box-sizing:border-box;font-family:'Segoe UI','Microsoft YaHei',sans-serif;color:#1A1B1C;background:#fff;padding:24px;line-height:1.5;">
+
+  <h2 style="margin:0 0 4px;font-size:20px;">rail/sm.py 分层状态机现状 · 设计评审图</h2>
+  <div style="color:#5F6670;font-size:13px;margin-bottom:20px;">基于源码逐行整理。虚线＝子状态机激活；<span style="color:#A14E50;font-weight:600;">红色标注</span>＝设计/实现缺陷定位。</div>
+
+  <!-- 四个状态机 -->
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:stretch;">
+
+    <!-- main -->
+    <div style="flex:1 1 230px;min-width:230px;border:1.5px solid #4F6B9A;border-radius:8px;padding:12px;background:#F7F9FC;box-sizing:border-box;">
+      <div style="font-weight:700;color:#4F6B9A;font-size:14px;margin-bottom:8px;">mainSm（主状态机）</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+        <div style="border:1px solid #4F6B9A;border-radius:6px;padding:5px 8px;background:#fff;">启动</div>
+        <div style="text-align:center;color:#5F6670;font-size:11px;">有未完成任务 / 无 ↓</div>
+        <div style="border:1px solid #4F6B9A;border-radius:6px;padding:5px 8px;background:#fff;">空闲</div>
+        <div style="color:#5F6670;font-size:11px;padding-left:8px;">电量不足·长期不动 → 去充电<br>进入手控 → 手控模式<br>收到巡检 → 巡检中</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <div style="flex:1;border:1px dashed #4F6B9A;border-radius:6px;padding:5px 8px;background:#EEF2F8;font-size:12px;">巡检中<br><span style="color:#4F6B9A;">enter → 激活 inspSm</span></div>
+          <div style="flex:1;border:1px dashed #4F6B9A;border-radius:6px;padding:5px 8px;background:#EEF2F8;font-size:12px;">去充电<br><span style="color:#4F6B9A;">enter → 激活 chargeSm</span></div>
+        </div>
+        <div style="border:1px solid #4F6B9A;border-radius:6px;padding:5px 8px;background:#fff;font-size:12px;">手控模式 <span style="color:#5F6670;">(20min 无指令→空闲)</span></div>
+      </div>
+    </div>
+
+    <!-- charge -->
+    <div style="flex:1 1 230px;min-width:230px;border:1.5px solid #9A6A2F;border-radius:8px;padding:12px;background:#FCF9F3;box-sizing:border-box;">
+      <div style="font-weight:700;color:#9A6A2F;font-size:14px;margin-bottom:8px;">chargeSm（充电）</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+        <div style="border:1px solid #9A6A2F;border-radius:6px;padding:5px 8px;background:#fff;">start → 移动中</div>
+        <div style="border:1px solid #9A6A2F;border-radius:6px;padding:5px 8px;background:#fff;">就位优化</div>
+        <div style="border:1px solid #9A6A2F;border-radius:6px;padding:5px 8px;background:#fff;">充电微挪 ⇄ 微挪开始</div>
+        <div style="border:1px solid #9A6A2F;border-radius:6px;padding:5px 8px;background:#fff;">充电中</div>
+        <div style="font-size:11px;color:#5F6670;">充电一直丢失 → 回充电微挪；充电到阈值 → stop</div>
+        <div style="border:1px solid #A14E50;background:#FBEDED;border-radius:6px;padding:6px 8px;color:#A14E50;font-size:12px;">⚠ 微挪分支每个 tick(100ms) 调一次 setTimeout → 定时器无限堆积</div>
+      </div>
+    </div>
+
+    <!-- floor -->
+    <div style="flex:1 1 230px;min-width:230px;border:1.5px solid #35705A;border-radius:8px;padding:12px;background:#F3F8F5;box-sizing:border-box;">
+      <div style="font-weight:700;color:#35705A;font-size:14px;margin-bottom:8px;">floorSm（切楼层）</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+        <div style="border:1px solid #35705A;border-radius:6px;padding:5px 8px;background:#fff;">start → 到轿厢前</div>
+        <div style="border:1px solid #35705A;border-radius:6px;padding:5px 8px;background:#fff;">进轿厢前安全检测(tick60)</div>
+        <div style="border:1px solid #35705A;border-radius:6px;padding:5px 8px;background:#fff;">进轿厢 → 切楼层</div>
+        <div style="border:1px solid #35705A;border-radius:6px;padding:5px 8px;background:#fff;">出轿厢安全检测(tick60) → 出轿厢</div>
+        <div style="border:1px solid #35705A;border-radius:6px;padding:5px 8px;background:#fff;">出轿厢完成 → 切换楼层完成 → stop</div>
+        <div style="border:1px solid #A14E50;background:#FBEDED;border-radius:6px;padding:6px 8px;color:#A14E50;font-size:12px;">⚠ mainSm 中没有任何路径激活 floorSm（无入口）；多处 setState('') 空状态名</div>
+      </div>
+    </div>
+
+    <!-- insp -->
+    <div style="flex:1 1 230px;min-width:230px;border:1.5px solid #5F6670;border-radius:8px;padding:12px;background:#F6F7F8;box-sizing:border-box;">
+      <div style="font-weight:700;color:#5F6670;font-size:14px;margin-bottom:8px;">inspSm（巡检）</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+        <div style="border:1px solid #5F6670;border-radius:6px;padding:5px 8px;background:#fff;">start → 航点开始</div>
+        <div style="border:1px solid #5F6670;border-radius:6px;padding:5px 8px;background:#fff;">移动到航点</div>
+        <div style="border:1px solid #5F6670;border-radius:6px;padding:5px 8px;background:#fff;">动作点开始 → 调整云台位姿</div>
+        <div style="border:1px solid #5F6670;border-radius:6px;padding:5px 8px;background:#fff;">执行动作 → 动作完成 ↺</div>
+        <div style="border:1px solid #5F6670;border-radius:6px;padding:5px 8px;background:#fff;">航点耗尽 → 巡检完成 → stop</div>
+        <div style="border:1px solid #A14E50;background:#FBEDED;border-radius:6px;padding:6px 8px;color:#A14E50;font-size:12px;">⚠ 源码两处把 sm 误写成 si（NameError）；子机 stop 后无 complete 回连主状态机</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- tick 内核数据流 -->
+  <h3 style="font-size:15px;margin:24px 0 8px;">Sm 内核：一个 tick 内的信号流</h3>
+  <div style="border:1px solid #E4E3DD;border-radius:8px;padding:14px;background:#FAFAF8;box-sizing:border-box;font-size:13px;">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <div style="border:1px solid #5F6670;border-radius:6px;padding:6px 10px;background:#fff;">emit(signal)<br><span style="color:#5F6670;font-size:11px;">周期/超时/外部信号</span></div>
+      <span style="color:#5F6670;">→</span>
+      <div style="border:1px solid #5F6670;border-radius:6px;padding:6px 10px;background:#fff;">acts FIFO 队列<br><span style="color:#5F6670;font-size:11px;">exit/enter 也入队</span></div>
+      <span style="color:#5F6670;">→</span>
+      <div style="border:1px solid #5F6670;border-radius:6px;padding:6px 10px;background:#fff;">applyAct()<br><span style="color:#A14E50;font-size:11px;">每 tick 只 pop 1 个</span></div>
+      <span style="color:#5F6670;">→</span>
+      <div style="border:1px solid #5F6670;border-radius:6px;padding:6px 10px;background:#fff;">behXxx()：一串独立 if(st==…)<br><span style="color:#A14E50;font-size:11px;">非 elif，迁移后继续 fall-through</span></div>
+      <span style="color:#5F6670;">→</span>
+      <div style="border:1px solid #5F6670;border-radius:6px;padding:6px 10px;background:#fff;">setState()<br><span style="color:#A14E50;font-size:11px;">exit 中再迁移直接 raise</span></div>
+    </div>
+    <div style="margin-top:10px;color:#5F6670;font-size:12px;">后果：① 同 tick 内可能用“新状态 + 旧信号”连续穿越多个状态（级联迁移）；② 一 tick 多信号被积压，时序不确定；③ stop() 只发 exit、不清 st，signalMove 靠 <code>st is None</code> 判启动 → 子机无法二次激活。</div>
+  </div>
+
+  <!-- 问题分级 -->
+  <h3 style="font-size:15px;margin:24px 0 8px;">问题分级</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead>
+      <tr style="background:#F2F2EF;text-align:left;">
+        <th style="border:1px solid #E4E3DD;padding:7px 10px;width:70px;">级别</th>
+        <th style="border:1px solid #E4E3DD;padding:7px 10px;">问题</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;color:#A14E50;font-weight:700;">P0</td><td style="border:1px solid #E4E3DD;padding:7px 10px;">无法编译运行：中文逗号(L395/398)、TS 语法 <code>[] as SmTimeoutSignal[]</code>(L124)、<code>broadcastSignal</code> 缺冒号(L327)、<code>si</code>/<code>moevSt</code> 未定义、缩进错误；全项目零引用、零测试。</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;color:#A14E50;font-weight:700;">P1</td><td style="border:1px solid #E4E3DD;padding:7px 10px;">内核：if 非 elif 级联迁移；单信号槽 + FIFO 每 tick 一个导致信号积压；setTimeout 不随状态切换清理且微挪分支每 tick 新增（泄漏）；子机 stop 后不可重入；子机结束无 complete 回连。</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;color:#9A6A2F;font-weight:700;">P1</td><td style="border:1px solid #E4E3DD;padding:7px 10px;">集成：async/sync 边界混乱（await 同步函数、缺 import asyncio）；动作未走 BoardSrv/RobotCtrl 命令队列；与已完成的前端 FsmEditor（.fsm.json：状态机/状态/信号迁移/状态机激活三 pin）是两套模型，未打通。</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;color:#9A6A2F;font-weight:700;">P2</td><td style="border:1px solid #E4E3DD;padding:7px 10px;">建模：模块级全局单例 robotState/mainSm（不支持多机、难测试）；状态类用类注解当字段（访问即 AttributeError）；pydantic 字段写成赋值；中文命名/拼写错误/空状态名；无日志与并发保护。</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:16px;padding:12px;border-left:3px solid #4F6B9A;background:#F7F9FC;font-size:13px;border-radius:0 6px 6px 0;">
+    <b>可取的方向：</b>分层并行状态机（main + 充/层/巡子机）、信号队列 + 动作对象、周期 tick 信号 + 带状态匹配的超时、enter/exit 成对与进入重置计时——概念选型正确，业务流程拆解完整。建议把内核改造成由 FsmSpec 解释执行的声明式运行时，而非继续在 behXxx 里堆 if/else。
+  </div>
+
+</div>
+</html>

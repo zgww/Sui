@@ -1,0 +1,11 @@
+{
+  "points": 10000, "requests": 100, "concurrency": 10, "page_size": 50,
+  "file_mib": 5.992, "median_ms": 139.06, "p95_ms": 185.62, "max_ms": 209.88,
+  "cold_batch_max_ms": 219.32, "reload_ms": 2176.98,
+  "reload_samples_ms": [2151.1, 2176.98, 2285.51],
+  "components": {"store_global_filter_median_ms": 9.311, "store_equipment_filter_median_ms": 2.888,
+    "sqlite_binding_query_median_ms": 0.444, "json_response_encoding_median_ms": 0.584},
+  "server_separate_process": true,
+  "retained_python_mib": 29.76, "reload_peak_python_mib": 67.52,
+  "notes": "192.168.6.88 ARM64 isolated fms-point-archive-test-env. Real loopback TCP Uvicorn; separate server process; 10 persistent clients, 10 warmup and 100 measured requests; engineer dependency mocked; real temporary SQLite with empty bindings; no TLS or real device. Client/server share host CPU. Reload median of 3; tracemalloc excludes old snapshot allocations."
+}
