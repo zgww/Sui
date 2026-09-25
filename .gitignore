@@ -193,3 +193,11 @@
 /orc-antlr/antlr4-cpp/demo/Windows/antlr4-cpp-demo/orc/_orc
 /orc-antlr/antlr4-cpp/*.log
 /llvm
+/cpp_orc_mixed/x64
+/cpp_orc_mixed/.vs
+/cpp_orc_mixed/_orc
+/cpp_orc_mixed/cpp_orc_mixed
+/cpp_orc_mixed/stdin.log
+/fui/FuiOrc/x64
+/fui/FuiOrc/_orc
+/fui/FuiOrc/stdin.log

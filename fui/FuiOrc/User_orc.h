@@ -34,6 +34,7 @@ typedef struct tagVtable_User Vtable_User;
 #define ____User_orc_h__
 
 //include  importHeadCode
+#include "./Orc/String_orc.h"
 
 
 #ifdef __cplusplus
@@ -41,6 +42,7 @@ extern "C"{
 #endif
 
 //代码内容
+extern Orc$String*  _httpGet(Orc$String **  __outRef__, const char *  url, int  port, const char *  path, int *  status);
 void  say();
 
 // 虚表
@@ -50,11 +52,13 @@ struct tagVtable_User {
 //虚表实例
 extern Vtable_User _vtable_User;
 
-// class refc:1
+// class refc:0
 struct tagUser {
 	Object super; 
 	int  age ;
 	void  (*say) (User *  self, const char *  msg);
+	void  (*hi) (User *  self);
+	void  (**onSay)(void *  self);
 };
 Vtable_User* Vtable_User_init(Vtable_User* pvt);
 void User_init_fields(User *self);
@@ -65,6 +69,7 @@ void User_fini(User *self);
 void  User$ctor(User *  self);
 void  User$dtor(User *  self);
 void  User$say(User *  self, const char *  msg);
+void  User$hi(User *  self);
 
 User*  orcMain(User **  __outRef__);
 

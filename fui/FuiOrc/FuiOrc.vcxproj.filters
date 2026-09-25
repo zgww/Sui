@@ -81,6 +81,9 @@
     <ClCompile Include="Orc\Time_win32_extern.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Net\http_extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="User.orc" />

@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FuiOrc.cpp" />
+    <ClCompile Include="Net\http_extern.cpp" />
     <ClCompile Include="Orc\List_extern.cpp" />
     <ClCompile Include="Orc\List_orc.c" />
     <ClCompile Include="Orc\Map_extern.cpp" />

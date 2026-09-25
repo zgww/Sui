@@ -57,6 +57,8 @@ void reactRoot(LayoutLinear *root, User *user) {
 
                     OrcRef<User> user;
                     User_new(&user);
+                    //orcMain(&user);
+                    urgc.watchTarget = user.get();
                     user->say(user, "这是新的user1");
                     });
             } REND;

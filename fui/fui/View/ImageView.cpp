@@ -9,7 +9,7 @@ void ImageView::setSrc(std::string src) {
 	}
 	this->src = src;
 	if (!src.empty()) {
-
+		 
 		auto canvas = Canvas::getInstance();
 		if (canvas) {
 			_img = canvas->createImage(src.c_str());

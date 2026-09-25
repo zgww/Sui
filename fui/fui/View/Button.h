@@ -7,7 +7,7 @@
 #include <rttr/rttr_enable.h>
 
 class ImageView;
-class TextView;
+class TextView; 
 
 class Button : public LayoutLinear {
 public:
