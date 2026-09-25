@@ -679,7 +679,7 @@ void Urgc::process_on_thread()
 
 				auto target = (GcObj*)e.target;
 				//printf("处理事件:%d optype:%d :%p=>%p type:%s\n", i, e.op_type, e.source, e.target, typeid(*(GcObj*)e.target).name());
-				//printf("处理事件:%d optype:%d :%p=>%p deleter:%s\n", i, e.op_type, e.source, e.target, e.deleter ?"has":"none");
+				// printf("处理事件:%d optype:%d :%p=>%p deleter:%s\n", i, e.op_type, e.source, e.target, e.deleter ?"has":"none");
 			//for (auto& e : list) {
 				if (e.op_type == 0) {
 					long long t0 = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();

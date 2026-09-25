@@ -1195,13 +1195,36 @@ void testThrow(){
 }
 class User {
     int age = 123;
+    void ctor(){
+        printf("创建user\n")
+    }
+    void dtor(){
+
+        printf("dtor User:%p\n", self)
+    }
+    void say(){
+        printf("Hi Im user. age is :%d\n", self.age)
+    }
+}
+extern void testCppRef();
+
+User@ mkUser(){
+    return new User()
 }
 int main(){
+    urgc_start_process_thread();
     if 1 {
+        {
+            User@ u = new User()
+            u.age = 9888;
+            u.say()
+        }
+
         printf("1\n")
+        testCppRef()
+        printf("end testCppRef\n")
         getchar();
     }
-    urgc_start_process_thread();
     windowInit()
 
     {

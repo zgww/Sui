@@ -165,6 +165,8 @@ public:
 
     virtual std::any visitRef(OrcParser::RefContext *context) = 0;
 
+    virtual std::any visitGenericTypeUsage(OrcParser::GenericTypeUsageContext *context) = 0;
+
     virtual std::any visitPrimitiveType(OrcParser::PrimitiveTypeContext *context) = 0;
 
     virtual std::any visitEnumDefinition(OrcParser::EnumDefinitionContext *context) = 0;

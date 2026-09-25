@@ -232,6 +232,9 @@ public:
   virtual void enterRef(OrcParser::RefContext *ctx) = 0;
   virtual void exitRef(OrcParser::RefContext *ctx) = 0;
 
+  virtual void enterGenericTypeUsage(OrcParser::GenericTypeUsageContext *ctx) = 0;
+  virtual void exitGenericTypeUsage(OrcParser::GenericTypeUsageContext *ctx) = 0;
+
   virtual void enterPrimitiveType(OrcParser::PrimitiveTypeContext *ctx) = 0;
   virtual void exitPrimitiveType(OrcParser::PrimitiveTypeContext *ctx) = 0;
 

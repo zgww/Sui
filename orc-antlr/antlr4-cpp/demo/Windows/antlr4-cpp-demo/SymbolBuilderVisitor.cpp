@@ -250,6 +250,8 @@ std::any SymbolBuilderVisitor::visitGlobalFunctionDefinition(OrcParser::GlobalFu
 			auto typeFn = ast_createSymbolTypeFunction(
 				fn->type(), fn->argumentsDeclaration()
 			);
+			//擦除型泛型识别(仅全局函数; 成员函数走visitMethodDeclaration, 不识别泛型)
+			ast_detectGenericFunction(typeFn, space);
 			//auto typeFn = std::make_shared<SymbolTypeFunction>();
 			//typeFn->returnType = typeContext_toSymbolType(fn->type());
 
@@ -275,6 +277,8 @@ std::any SymbolBuilderVisitor::visitGlobalFunctionDefinition(OrcParser::GlobalFu
 			auto typeFn = ast_createSymbolTypeFunction(
 				fn->type(), fn->argumentsDeclaration()
 			);
+			//擦除型泛型识别(仅全局函数)
+			ast_detectGenericFunction(typeFn, space);
 			/*auto typeFn = std::make_shared<SymbolTypeFunction>();
 			typeFn->returnType = typeContext_toSymbolType(fn->type());*/
 

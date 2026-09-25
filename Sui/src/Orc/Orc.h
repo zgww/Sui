@@ -399,7 +399,125 @@ void orc_collectLiveObject_onFini(Object *obj);
 void orc_collectLiveObject_report();
 
 //<<<<<<<<<<<<
-
 #ifdef __cplusplus
 }
+#endif
+
+#ifdef __cplusplus
+
+#include "../../UrgcDll/Urgc.h"
+
+template<class T>
+class OrcRef
+{
+public:
+	
+
+	OrcRef() {}
+	OrcRef(T* p/*, std::function<void(void*)> deleter = nullptr*/) {
+		set_target(p);
+	}
+	OrcRef(const OrcRef& from) {
+		void* ori_source = source;
+
+		//复制构造。当lambda捕获时
+		if (source == (GcObj*)ROOT_REF && Ref_get_global_source() != nullptr)
+			source = Ref_get_global_source();
+
+		set_target(from.target);
+	}
+	OrcRef(T* p, void* source/*, std::function<void(void*)> deleter = nullptr*/) {
+		this->source = source;
+
+		set_target(p);
+	}
+
+	~OrcRef() {
+		deref();
+		// printf("\tRef释放完成:\n");
+	}
+	inline void set_target(T* target) {
+		if (this->target == target) return;
+
+		deref();
+		this->target = target;
+		ref();
+	}
+
+
+	inline void deref() {
+		if (target) {
+			// urgc.deref(source, (GcObj*)target);// , typeid(T).name());
+			urgc_deref_class(source, (Object*)target);
+			printf("OrcRef.deref:%p=>%p\n", source, target);
+			target = nullptr;
+		}
+	}
+	inline void ref() {
+		if (target) {
+			urgc.ref(source, (GcObj*)target, nullptr);// typeid(target).name());// , deleter, typeid(T).name());
+		}
+	}
+	inline T* get() const {
+		return target;
+	}
+	inline T* operator->() const {
+		return target;
+	}
+	//inline operator T*() const {
+	//	return target;
+	//}
+	inline T operator *() const {
+		return *target;
+	}
+	T** operator&()
+	{
+		return &target;
+	}
+	inline operator T* () {
+		return target;
+	}
+	//operator bool() const {
+	//	return target != nullptr;
+	//}
+	/*bool operator==(const Ref<T>& v) const
+	{
+		return target == v.get();
+	}*/
+	inline bool operator==(const std::nullptr_t& v) const
+	{
+		return target == v;
+	}
+	inline OrcRef<T>& operator=(const Ref<T>& from)
+	{
+
+		// printf("\tRef 赋值:%p=>%p\n", source, from.target);
+		deref();
+		// printf("\tRef 赋值先解引用:%p=>%p\n", source, from.target);
+		target = from.target;
+		ref();
+		// printf("\tRef 赋值引用:%p=>%p\n", source, from.target);
+		return *this;
+	}
+	inline OrcRef<T>& operator=(T* from)
+	{
+		// printf("\tRef 赋值:%p=>%p\n", source, from.target);
+		deref();
+
+		// printf("\tRef 赋值先解引用:%p=>%p\n", source, from.target);
+		target = from;
+		ref();
+		// printf("\tRef 赋值引用:%p=>%p\n", source, from.target);
+		return *this;
+	}
+	template <typename E>
+	inline E dy_cast() const {
+		return dynamic_cast<E>(target);
+	}
+
+
+public:
+	T* target = nullptr; // 被引用的内存
+	void* source = (void*)ROOT_REF; // 上级
+};
 #endif

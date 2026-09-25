@@ -239,6 +239,7 @@ type
     | closureType
     | pointer
     | ref
+    | genericTypeUsage
     | typeQualifier? Struct? Id
     ;
 
@@ -268,11 +269,19 @@ typeQualifier
     ;
 
 pointer
-    : typeQualifier? (primitiveType | (Struct? Id)) (typeQualifier* '*' typeQualifier*)+
+    : typeQualifier? (primitiveType | (Struct? Id) | genericTypeUsage) (typeQualifier* '*' typeQualifier*)+
     ;
 
 ref
-    : Struct? Id '@'
+    : (Struct? Id | genericTypeUsage) '@'
+    ;
+
+//Java 风格泛型类型用法（擦除型，仅用于代码提示，不做模板展开）：
+//  Vtable_Object<T> —— 只支持一个类型实参，不支持嵌套泛型；
+//  实参必须是类型参数名（Id）：基本数据类型是独立 token（非 Id），语法上即被排除；
+//  结构体名也是 Id，语法上可接受，是否合法由语义层校验（应为未声明的类型参数名）。
+genericTypeUsage
+    : Id '<' Id '>'
     ;
 
 primitiveType

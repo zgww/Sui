@@ -234,6 +234,9 @@ public:
   virtual void enterRef(OrcParser::RefContext * /*ctx*/) override { }
   virtual void exitRef(OrcParser::RefContext * /*ctx*/) override { }
 
+  virtual void enterGenericTypeUsage(OrcParser::GenericTypeUsageContext * /*ctx*/) override { }
+  virtual void exitGenericTypeUsage(OrcParser::GenericTypeUsageContext * /*ctx*/) override { }
+
   virtual void enterPrimitiveType(OrcParser::PrimitiveTypeContext * /*ctx*/) override { }
   virtual void exitPrimitiveType(OrcParser::PrimitiveTypeContext * /*ctx*/) override { }
 

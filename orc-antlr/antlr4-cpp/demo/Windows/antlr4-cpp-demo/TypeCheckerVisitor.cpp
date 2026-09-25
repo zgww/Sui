@@ -153,6 +153,22 @@ bool TypeCheckerVisitor::isTypeNameDefined(std::string typeName)
 	return true;
 }
 
+//判断类型名是否是所在函数(擦除型泛型函数)的泛型参数, 如 T@ 中的 T
+bool TypeCheckerVisitor::isEnclosingGenericFunctionParam(antlr4::tree::ParseTree* tree, std::string typeName)
+{
+	auto fnCtx = ast_findAncestorByType<OrcParser::FunctionDefinitionContext>(tree);
+	if (fnCtx) {
+		auto fnSym = space->findSymbolDefinitionByName_includeImports(fnCtx->Id()->getText());
+		if (fnSym) {
+			auto fnType = std::dynamic_pointer_cast<SymbolTypeFunction>(fnSym->getType());
+			if (fnType && fnType->isGeneric && fnType->genericParamName == typeName) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 void TypeCheckerVisitor::checkIsNumber(OrcParser::SingleExpressionContext* ctx)
 {
 	if (!isNumber(ctx)) {
@@ -488,8 +504,11 @@ std::any TypeCheckerVisitor::visitCastExpression(OrcParser::CastExpressionContex
 
 	//��������Ƿ����
 	if (!isTypeNameDefined(declType->getNakeTypeName())) {
-		addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
-		throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
+		//擦除型泛型参数(如 (T@)expr)不报"undefined Type"
+		if (!isEnclosingGenericFunctionParam(ctx, declType->getNakeTypeName())) {
+			addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
+			throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
+		}
 	}
 
 	//�������ƥ��
@@ -507,9 +526,12 @@ std::any TypeCheckerVisitor::visitVarDeclaration(OrcParser::VarDeclarationContex
 	auto declType = typeContext_toSymbolType(ctx->type());
 	//��������Ƿ����
 	if (declType && !isTypeNameDefined(declType->getNakeTypeName())) {
-		isTypeNameDefined(declType->getNakeTypeName());
-		addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
-		throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
+		//擦除型泛型参数(如 T@ obj)不报"undefined Type"
+		if (!isEnclosingGenericFunctionParam(ctx, declType->getNakeTypeName())) {
+			isTypeNameDefined(declType->getNakeTypeName());
+			addTypeErrorByParseTree(ctx, std::format("undefined Type:{}", declType->getNakeTypeName()));
+			throw buildErrorWithLine(std::format("undefined Type:{}", declType->getNakeTypeName()), ctx);
+		}
 	}
 
 
@@ -523,9 +545,12 @@ std::any TypeCheckerVisitor::visitVarDeclaration(OrcParser::VarDeclarationContex
 		}
 	
 		if (!isAssignable(declType, ctx->singleExpression(), space)) {
-			isAssignable(declType, ctx->singleExpression(), space);
-			addTypeErrorByParseTree(ctx, std::format("init type error"));
-			throw buildErrorWithLine("init type error", ctx);
+			//擦除语义: 泛型参数类型(T@/T*)可接受任意同形式的初值
+			if (!isEnclosingGenericFunctionParam(ctx, declType->getNakeTypeName())) {
+				isAssignable(declType, ctx->singleExpression(), space);
+				addTypeErrorByParseTree(ctx, std::format("init type error"));
+				throw buildErrorWithLine("init type error", ctx);
+			}
 		}
 	}
 

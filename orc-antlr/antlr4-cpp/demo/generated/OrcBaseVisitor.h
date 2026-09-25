@@ -304,6 +304,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitGenericTypeUsage(OrcParser::GenericTypeUsageContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitPrimitiveType(OrcParser::PrimitiveTypeContext *ctx) override {
     return visitChildren(ctx);
   }

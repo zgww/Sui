@@ -339,6 +339,7 @@ extern Vtable_User _vtable_User;
 struct tagUser {
 	Object super; 
 	int  age ;
+	void  (*say) (User *  self);
 };
 Vtable_User* Vtable_User_init(Vtable_User* pvt);
 void User_init_fields(User *self);
@@ -346,7 +347,12 @@ void User_init(User *self, void *pOwner);
 User * User_new(void *pOwner);
 void User_fini(User *self);
 
+void  User$ctor(User *  self);
+void  User$dtor(User *  self);
+void  User$say(User *  self);
 
+extern void  testCppRef();
+User*  mkUser(User **  __outRef__);
 int  main();
 void  testTransparency();
 

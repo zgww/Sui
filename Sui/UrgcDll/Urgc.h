@@ -406,6 +406,7 @@ public:
 
 	~Ref() {
 		// printf("Ref释放:%p=>%p\n", source, target);
+
 #ifdef NO_URGC_REF
 		target = nullptr;
 #else
@@ -431,7 +432,7 @@ public:
 	inline void deref() {
 		if (target) {
 			urgc.deref(source, (GcObj*)target);// , typeid(T).name());
-			// printf("Ref.deref:%p=>%p\n", source, target);
+			printf("Ref.deref:%p=>%p\n", source, target);
 			target = nullptr;
 		}
 	}
