@@ -1,8 +1,8 @@
 #pragma once
 
+#include <rttr/rttr_enable.h>
 #include "Predef.h"
 #include "Event.h"
-#include <rttr/rttr_enable.h>
 
 class Emitter;
 

@@ -363,9 +363,6 @@
     <ClCompile Include="Win32Skia\WindowWin32Skia.cpp" />
     <ClCompile Include="JsonSerialization\NodeTreeIO.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="rttr\detail\base\version.rc" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
