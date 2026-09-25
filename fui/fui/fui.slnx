@@ -8,6 +8,9 @@
   <Project Path="../ffmpeg_hw_skia_gpu_render/ffmpeg_hw_skia_gpu_render.vcxproj" Id="8f3f3965-cab7-4ca1-89ba-96ade6037184">
     <BuildDependency Project="fui.vcxproj" />
   </Project>
+  <Project Path="../FuiOrc/FuiOrc.vcxproj" Id="1f6217cb-59e7-4346-aa68-fa82f1eb68ef">
+    <BuildDependency Project="fui.vcxproj" />
+  </Project>
   <Project Path="../FuiTestMain/FuiTestMain.vcxproj" Id="27f22c75-dc49-4617-8dbd-0188db8dbf07">
     <BuildDependency Project="fui.vcxproj" />
   </Project>

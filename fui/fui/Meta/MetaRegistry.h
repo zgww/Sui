@@ -42,16 +42,16 @@ private:
 	std::unordered_map<std::string, MetaClass> classes;
 
 public:
-	template<typename T, typename Parent = void>
-	MetaClassRegistrar<T> registerClass() {
-		std::string name = metaClassName<T>();
-		std::string parentName;
-		if constexpr (!std::is_void_v<Parent>) {
-			parentName = metaClassName<Parent>();
-		}
-		registerClass(name, parentName);
-		return MetaClassRegistrar<T>(name, this);
-	}
+	//template<typename T, typename Parent = void>
+	//MetaClassRegistrar<T> registerClass() {
+	//	//std::string name = metaClassName<T>();
+	//	//std::string parentName;
+	//	//if constexpr (!std::is_void_v<Parent>) {
+	//	//	parentName = metaClassName<Parent>();
+	//	//}
+	//	//registerClass(name, parentName);
+	//	//return MetaClassRegistrar<T>(name, this);
+	//}
 };
 
 #include "MetaRegistrar.h"

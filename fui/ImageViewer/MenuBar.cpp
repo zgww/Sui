@@ -17,6 +17,8 @@
 #include "View/HoverViewEffect.h"
 #include "Urgc/UrgcIndex.h"
 
+
+
 MenuBar::MenuBar() {
 	//backgroundColor = 0xff2d2d2d;
 	height = 28;
@@ -126,3 +128,4 @@ void MenuBar::closePopup() {
 	}
 	invalidReact();
 }
+

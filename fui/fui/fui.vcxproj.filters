@@ -333,6 +333,396 @@
     <ClInclude Include="nanovg\stb_truetype.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="View\ListItemHoverEffect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\base\core_prerequisites.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\base\pch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\base\version.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\comparable_types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_array_equal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_array_equal_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_array_less.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_array_less_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_equal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_equal_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_less.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\comparison\compare_less_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\constructor\constructor_invoker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\constructor\constructor_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\constructor\constructor_wrapper_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\constructor\constructor_wrapper_defaults.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\conversion\number_conversion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\conversion\std_conversion_functions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\default_arguments\default_arguments.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\default_arguments\invoke_with_defaults.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\destructor\destructor_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\destructor\destructor_wrapper_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\enumeration\enum_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\enumeration\enumeration_helper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\enumeration\enumeration_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\enumeration\enumeration_wrapper_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\filter\filter_item_funcs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\argument_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\array_range_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\associative_mapper_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\enum_flags_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\instance_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\rttr_cast_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\sequential_mapper_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\string_view_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\impl\wrapper_mapper_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\library\library_p.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\metadata\metadata.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\metadata\metadata_handler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\method\method_accessor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\method\method_invoker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\method\method_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\method\method_wrapper_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\argument_extractor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\argument_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\class_item_mapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\data_address_container.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\flat_map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\flat_multimap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\function_traits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\iterator_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\misc_type_traits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\register_wrapper_mapper_conversion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\sequential_container_type_traits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\std_type_traits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\template_type_trait.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\template_type_trait_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\misc\utility.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\parameter_info\parameter_info_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\parameter_info\parameter_info_wrapper_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\parameter_info\parameter_infos.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\parameter_info\parameter_infos_compare.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\parameter_info\parameter_names.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\policies\ctor_policies.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\policies\meth_policies.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\policies\prop_policies.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\property\property_accessor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\property\property_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\property\property_wrapper_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\property\property_wrapper_func.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\property\property_wrapper_member_func.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\property\property_wrapper_member_object.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\property\property_wrapper_object.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\registration\bind_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\registration\bind_types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\registration\register_base_class_from_accessor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\registration\registration_executer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\registration\registration_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\registration\registration_manager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\registration\registration_state_saver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\accessor_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\base_classes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\get_create_variant_func.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\get_derived_info_func.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_comparator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_converter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_name.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_register.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_register_p.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\type\type_string_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant\variant_compare.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant\variant_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant\variant_data_converter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant\variant_data_policy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant\variant_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant_associative_view\variant_associative_view_creator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant_associative_view\variant_associative_view_creator_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant_associative_view\variant_associative_view_private.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant_sequential_view\variant_sequential_view_creator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant_sequential_view\variant_sequential_view_creator_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\detail\variant_sequential_view\variant_sequential_view_private.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\access_levels.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\argument.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\array_range.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\associative_mapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\constructor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\destructor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\enum_flags.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\enumeration.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\filter_item.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\instance.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\library.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\method.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\parameter_info.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\policy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\property.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\registration.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\registration_friend.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\rttr_cast.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\rttr_enable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\sequential_mapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\string_view.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\variant.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\variant_associative_view.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\variant_sequential_view.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rttr\wrapper_mapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Urgc\urgc.cpp">
@@ -530,9 +920,6 @@
     <ClCompile Include="Core\Mat.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Core\linmath.h">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Euler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -542,17 +929,121 @@
     <ClCompile Include="Core\WindowWin32.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="nanovg\CanvasNvg.cpp">
+    <ClCompile Include="CanvasSkia\CanvasSkia.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="nanovg\ImageNvg.cpp">
+    <ClCompile Include="Core\RTTR_Core_Math.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="nanovg\nanovg.c">
+    <ClCompile Include="Core\RTTR_Core_UI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Win32Nvg\WindowWin32Nvg.cpp">
+    <ClCompile Include="View\ListItemHoverEffect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Win32Skia\WindowWin32Skia.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonSerialization\NodeTreeIO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\comparison\compare_equal.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\comparison\compare_less.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\constructor\constructor_wrapper_base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\conversion\std_conversion_functions.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\destructor\destructor_wrapper_base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\enumeration\enumeration_helper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\enumeration\enumeration_wrapper_base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\library\library_unix.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\library\library_win.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\method\method_wrapper_base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\misc\standard_types.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\parameter_info\parameter_info_wrapper_base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\property\property_wrapper_base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\registration\registration_executer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\registration\registration_state_saver.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\type\type_data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\type\type_register.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\detail\variant\variant_compare.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\constructor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\destructor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\enumeration.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\library.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\method.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\parameter_info.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\policy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\property.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\registration.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\type.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\variant.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\variant_associative_view.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rttr\variant_sequential_view.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="rttr\detail\base\version.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

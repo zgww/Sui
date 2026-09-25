@@ -75,6 +75,7 @@ static Urgc *_urgc = new Urgc(); //不释放。防止程序结束时，无序提
 Urgc& urgc = *_urgc;
 //static unsigned long ROOT_REF = -1l;
 
+// 分配次数
 static std::atomic_int memcnt = 0;
 static std::vector<void*> free_later_list;
 static std::vector<void*> free_ing_list;
@@ -797,7 +798,7 @@ void Urgc::process_on_thread()
 				int objCount = target_in_ref_mgr.size();
 				int _memcnt = memcnt.load();;
 
-				printf("T%lld#%5d-%4dI%d 处理事件[%d]结束, 耗时:%lld ms %lldms. cost ref:%d,%lldus, deref:%d, %lldus guard:%d, %lldus degurad:%d, %lldus setDeleter:%d, %lldus  gcObjSize(MB):%f\n", 
+				printf("T%lld objCnt:%5d Del:%4d I%d 处理事件[cnt=%d]结束, 耗时:%lld ms %lldms. cost ref:%d,%lldus, deref:%d, %lldus guard:%d, %lldus degurad:%d, %lldus setDeleter:%d, %lldus  gcObjSize(MB):%f\n", 
 					ms3, objCount, delete_cnt, _memcnt,
 					count, ms2 - ms, ms3 - ms2, 
 					refCount, refCostUs, 

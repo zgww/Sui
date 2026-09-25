@@ -46,7 +46,7 @@ std::vector<std::pair<std::string, rttr::property>> collectProps(Node* n)
     {
         if (p.get_metadata("NO_SERIALIZE"))
             continue;
-        std::string pn = p.get_name();
+        std::string pn = p.get_name().to_string();
         if (pn == "type" || pn == "children")
             continue; // 保留键
         if (m.find(pn) == m.end())
@@ -105,7 +105,7 @@ bool writeObjectProps(const rttr::instance& obj, JsonWriter& w)
     {
         if (p.get_metadata("NO_SERIALIZE"))
             continue;
-        std::string pn = p.get_name();
+        std::string pn = p.get_name().to_string();
         if (pn == "type" || pn == "children")
             continue;
         rttr::variant pv = p.get_value(obj);
@@ -177,7 +177,7 @@ bool writeVariant(const rttr::variant& var, JsonWriter& w)
         rttr::enumeration e = t.get_enumeration();
         if (e.is_valid())
         {
-            std::string name = e.value_to_name(rttr::argument(var));
+            std::string name = e.value_to_name(rttr::argument(var)).to_string();
             if (!name.empty())
             {
                 w.String(name);
@@ -208,7 +208,7 @@ void writeNode(Node* n, JsonWriter& w, int depth)
     std::string typeName;
     const rttr::type dyn = dynamicTypeOf(n);
     if (dyn.is_valid())
-        typeName = dyn.get_name();
+        typeName = dyn.get_name().to_string();
     else
         typeName = n->getClassName();
     w.String(typeName.c_str());
@@ -309,7 +309,7 @@ bool setPropValue(const rttr::property& prop, const rttr::instance& obj,
             enumVar = e.name_to_value(jv.GetString());
         else if (jv.IsNumber())
         {
-            std::string name = e.value_to_name(rttr::argument(jv.GetUint64()));
+            std::string name = e.value_to_name(rttr::argument(jv.GetUint64())).to_string();
             if (!name.empty())
                 enumVar = e.name_to_value(name);
         }
@@ -426,7 +426,7 @@ bool fromJsonIntoInstance(rttr::instance obj, const rapidjson::Value& json, std:
     {
         if (p.get_metadata("NO_SERIALIZE"))
             continue;
-        std::string pn = p.get_name();
+        std::string pn = p.get_name().to_string();
         if (pn == "type" || pn == "children")
             continue;
         auto it = json.FindMember(pn.c_str());
@@ -507,7 +507,7 @@ Ref<Node> buildNode(const rapidjson::Value& v, std::string* err, int depth)
     {
         if (p.get_metadata("NO_SERIALIZE"))
             continue;
-        std::string pn = p.get_name();
+        std::string pn = p.get_name().to_string();
         if (pn == "type" || pn == "children")
             continue;
         if (pn == "margin") {

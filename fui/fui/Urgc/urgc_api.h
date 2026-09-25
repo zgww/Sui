@@ -57,8 +57,8 @@ Project$User* Project$User$returnRef(Project$User * * __outRef__, Project$User *
 //声明并初始化urgc变量,并指定deleter
 // #define URGC_VAR_WITH_DELETER(type, name, initExpr, deleter)  URGC_VAR_CLEANUP type name = urgc_init_var_with_deleter(&name, (initExpr), deleter)
 
-URGC_DLLAPI inline void urgc_ref(void* source, void *target, void (*deleter)(void*));
-URGC_DLLAPI inline void urgc_deref(void* source, void *target);
+URGC_DLLAPI void urgc_ref(void* source, void *target, void (*deleter)(void*));
+URGC_DLLAPI void urgc_deref(void* source, void *target);
 URGC_DLLAPI void urgc_guard(void* p, void (*deleter)(void*));
 URGC_DLLAPI void urgc_deguard(void* p);
 URGC_DLLAPI void urgc_set_deleter(void* p, void (*deleter)(void*));

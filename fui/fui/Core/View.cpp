@@ -350,18 +350,18 @@ void View::draw_self(Canvas* canvas) {
 }
 
 void View::registerMeta() {
-	auto reg = MetaRegistry::instance()->registerClass<View, ViewBase>();
+	//auto reg = MetaRegistry::instance()->registerClass<View, ViewBase>();
 
-	reg.property("width", &View::width);
-	reg.property("height", &View::height);
-	reg.property("minWidth", &View::minWidth);
-	reg.property("maxWidth", &View::maxWidth);
-	reg.property("minHeight", &View::minHeight);
-	reg.property("maxHeight", &View::maxHeight);
-	reg.property("backgroundColor", &View::backgroundColor);
-	reg.property("needClip", &View::needClip);
-	reg.property("padding", &View::padding);
-	reg.property("margin", &View::margin);
+	//reg.property("width", &View::width);
+	//reg.property("height", &View::height);
+	//reg.property("minWidth", &View::minWidth);
+	//reg.property("maxWidth", &View::maxWidth);
+	//reg.property("minHeight", &View::minHeight);
+	//reg.property("maxHeight", &View::maxHeight);
+	//reg.property("backgroundColor", &View::backgroundColor);
+	//reg.property("needClip", &View::needClip);
+	//reg.property("padding", &View::padding);
+	//reg.property("margin", &View::margin);
 }
 //
 RTTR_REGISTRATION

@@ -1,5 +1,8 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
+#include "rttr/registration"
+
+
 // 如果是 C++ 编译，需要告诉编译器 FFmpeg 是 C 库
 #ifdef __cplusplus
 extern "C" {
@@ -16,6 +19,18 @@ extern "C" {
 #include <string.h>
 #include <Windows.h>
 #include <iostream>
+
+
+class User {
+public:
+};
+RTTR_REGISTRATION
+{
+    using namespace rttr;
+
+    registration::class_<User>("User")
+    ;
+}
 
 static AVBufferRef* g_hw_device_ctx = nullptr;
 static AVPixelFormat g_hw_pix_fmt = AV_PIX_FMT_NONE;

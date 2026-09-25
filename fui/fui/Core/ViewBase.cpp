@@ -302,12 +302,12 @@ ViewBase* hitTestChildren_withZ(ViewBase* ins, float x, float y) {
 }
 
 void ViewBase::registerMeta() {
-	auto reg = MetaRegistry::instance()->registerClass<ViewBase, Node>();
+	//auto reg = MetaRegistry::instance()->registerClass<ViewBase, Node>();
 
-	reg.property("visible", &ViewBase::visible);
-	reg.property("cursor", &ViewBase::cursor);
-	reg.property("hover", &ViewBase::hover);
-	reg.property("z", &ViewBase::z);
+	//reg.property("visible", &ViewBase::visible);
+	//reg.property("cursor", &ViewBase::cursor);
+	//reg.property("hover", &ViewBase::hover);
+	//reg.property("z", &ViewBase::z);
 }
 
 RTTR_REGISTRATION

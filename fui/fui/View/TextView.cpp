@@ -270,17 +270,17 @@ void TextView::draw_self(Canvas* canvas) {
 }
 
 void TextView::registerMeta() {
-	auto reg = MetaRegistry::instance()->registerClass<TextView, View>();
+	//auto reg = MetaRegistry::instance()->registerClass<TextView, View>();
 
-	reg.property("text", &TextView::text);
-	reg.property("fontSize", &TextView::fontSize);
-	reg.property("color", &TextView::color);
-	reg.property("textAlign", &TextView::textAlign);
-	reg.property("lineHeight", &TextView::lineHeight);
-	reg.property("wrap", &TextView::wrap);
-	reg.property("maxLine", &TextView::maxLine);
-	reg.property("overflowEllipsis", &TextView::overflowEllipsis);
-	reg.property("fontFace", &TextView::fontFace);
+	//reg.property("text", &TextView::text);
+	//reg.property("fontSize", &TextView::fontSize);
+	//reg.property("color", &TextView::color);
+	//reg.property("textAlign", &TextView::textAlign);
+	//reg.property("lineHeight", &TextView::lineHeight);
+	//reg.property("wrap", &TextView::wrap);
+	//reg.property("maxLine", &TextView::maxLine);
+	//reg.property("overflowEllipsis", &TextView::overflowEllipsis);
+	//reg.property("fontFace", &TextView::fontFace);
 }
 
 RTTR_REGISTRATION

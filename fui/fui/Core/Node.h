@@ -56,12 +56,7 @@ class Window;
 
 #define R_BARE_END o.react();} 
 
-template <class T>
-bool isSameNodeType(Node* curNode) {
-	auto typeName = typeid(T).name();
-	auto nodeTypeName = typeid(*curNode).name();
-	return _strcmpi(typeName, nodeTypeName) == 0;
-}
+
 
 void Node_removeUnusedKids(Node* o);
 Node* Node_findChildByKeyAfterIndexBeforeStaticChild(Node* parent, int start, std::string& key);
@@ -270,3 +265,9 @@ Ref<T> Node_getOrCreate(Ref<Node>& o, long long key) {
 	return Node_getOrCreate<T>(n, std::to_string(key));
 }
 
+template <class T>
+bool isSameNodeType(Node* curNode) {
+	auto typeName = typeid(T).name();
+	auto nodeTypeName = typeid(*curNode).name();
+	return _strcmpi(typeName, nodeTypeName) == 0;
+}

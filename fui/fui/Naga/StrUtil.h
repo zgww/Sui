@@ -2,6 +2,7 @@
 
 #include "./NagaPredef.h"
 #include <string>
+#include <vector>
 
 #ifdef __cplusplus
 
