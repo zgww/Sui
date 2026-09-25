@@ -5,6 +5,7 @@
 
 #define NOMINMAX
 
+
 // Skia 头文件须在 fui 头文件之前包含: fui 的 Core/Node.h 定义了 R/STATIC/CLASS 等宏,
 // 会污染 Skia 模板(如 GrGLFunctions.h 中的模板参数 R), 导致 C1075。
 #include "include/core/SkColorSpace.h"
@@ -165,8 +166,19 @@ static bool _ensure_egl() {
 	return true;
 }
 
+// 全局串行化所有 EGL/Skia GL 访问: 渲染线程与消息线程会并发创建/销毁/渲染窗口,
+// 并发操作 ANGLE 的 EGLDisplay/上下文会访问冲突。用 SRWLOCK(编译期零初始化, 无静态构造)。
+static SRWLOCK g_eglLock = SRWLOCK_INIT;
+struct EglLockGuard {
+	SRWLOCK* l;
+	EglLockGuard(SRWLOCK* p) : l(p) { AcquireSRWLockExclusive(l); }
+	~EglLockGuard() { ReleaseSRWLockExclusive(l); }
+};
+
 void Window::initData() {
+
 	cleanData();
+	EglLockGuard _glock(&g_eglLock);
 
 	WindowDataWin32Skia* data = new WindowDataWin32Skia();
 
@@ -219,8 +231,11 @@ void Window::initData() {
 }
 
 void Window::cleanData() {
+	EglLockGuard _glock(&g_eglLock);
 	if (!data) return;
 	WindowDataWin32Skia* d = (WindowDataWin32Skia*)data;
+	// 先解除共享 SkiaCtx 对本窗口渲染资源的缓存绑定，防止窗口销毁后 endFrame 访问野指针
+	skiaCanvasUnbindIf(d->skSurface.get(), d->grContext.get());
 
 	if (g_eglDisplay != EGL_NO_DISPLAY && d->context != EGL_NO_CONTEXT && d->surface != EGL_NO_SURFACE) {
 		// 绑定上下文后清理GL/Skia资源
@@ -233,6 +248,7 @@ void Window::cleanData() {
 		eglMakeCurrent(g_eglDisplay, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
 	} else {
 		d->skSurface.reset();
+
 		d->grContext.reset();
 	}
 	if (g_eglDisplay != EGL_NO_DISPLAY) {
@@ -255,6 +271,7 @@ void Window::cleanData() {
 }
 
 void Window::draw() {
+	EglLockGuard _glock(&g_eglLock);
 	WindowDataWin32Skia* data = (WindowDataWin32Skia*)this->data;
 	if (!data || data->surface == EGL_NO_SURFACE || !data->grContext) {
 		printf("Window draw failed.  no surface\n");

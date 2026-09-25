@@ -195,6 +195,8 @@ public:
 
 	//生成函数声明
 	virtual std::any visitFunctionDefinition(OrcParser::FunctionDefinitionContext* ctx) override;
+	virtual std::any visitGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext* ctx) override;
+	virtual std::any visitGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext* ctx) override;
 
 	//生成函数声明
 	virtual std::any visitGlobalFunctionDefinition(OrcParser::GlobalFunctionDefinitionContext* ctx) override;

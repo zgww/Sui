@@ -1,0 +1,112 @@
+<html style="margin:0;padding:0;">
+<div style="width:100%;box-sizing:border-box;font-family:'Segoe UI','Microsoft YaHei',sans-serif;color:#1A1B1C;background:#fff;padding:24px;line-height:1.5;">
+
+  <h2 style="margin:0 0 4px;font-size:20px;">两套状态机方案对比 · 过程式手写（sm.py） vs 声明式解释（FsmSpec）</h2>
+  <div style="color:#5F6670;font-size:13px;margin-bottom:18px;">评分为针对本项目（挂轨机器人 FMS、已投入 FsmEditor、数据驱动架构）的主观工程判断，5 分制，非绝对优劣。</div>
+
+  <!-- 两个方案定位 -->
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
+    <div style="flex:1 1 320px;min-width:300px;border:1px solid #8A8F98;border-radius:8px;padding:14px;background:#F6F7F8;box-sizing:border-box;">
+      <div style="font-weight:700;font-size:15px;margin-bottom:6px;">方案 A · 过程式手写（sm.py）</div>
+      <div style="font-size:13px;color:#5F6670;">状态/迁移/条件/动作全写在 <code>behXxx()</code> 的 <code>if st==… if sig==…</code> 里；内核 + 业务耦合在一个文件；信号入队、每 tick 轮询。<b style="color:#1A1B1C;">逻辑即代码</b>，改行为=改 Python 发版。</div>
+    </div>
+    <div style="flex:1 1 320px;min-width:300px;border:1.5px solid #4F6B9A;border-radius:8px;padding:14px;background:#F7F9FC;box-sizing:border-box;">
+      <div style="font-weight:700;font-size:15px;color:#4F6B9A;margin-bottom:6px;">方案 B · 声明式数据驱动（FsmSpec）</div>
+      <div style="font-size:13px;color:#5F6670;">状态/迁移/激活是数据（.fsm.json，可视化编辑），通用解释器读数据执行，业务动作经 handler 回调外抛，编译期校验图。<b style="color:#1A1B1C;">行为即数据</b>，很多改动=改图不发版。</div>
+    </div>
+  </div>
+
+  <!-- 评分条 -->
+  <h3 style="font-size:15px;margin:0 0 10px;">多维评分（灰=A，蓝=B）</h3>
+  <div style="border:1px solid #E4E3DD;border-radius:8px;padding:14px 16px;background:#FAFAF8;box-sizing:border-box;font-size:13px;">
+
+    <div id="rows"></div>
+    <script>
+    (function(){
+      try{
+        var el=document.getElementById('rows'); if(!el) return;
+        var dims=[
+          ["表达自由度（任意复杂决策）", 5, 3],
+          ["可读性 / 全局视图", 2, 5],
+          ["正确性保障 / 静态校验", 1, 5],
+          ["可测试性（确定性、可回放）", 2, 5],
+          ["常规加状态/加流程（越省越高）", 2, 5],
+          ["新增图元语义（越易越高）", 5, 3],
+          ["可视化 / 编辑器闭环", 1, 5],
+          ["多机复用 / 热更新", 1, 5],
+          ["上手简单度", 5, 3],
+          ["与本项目架构契合度", 1, 5],
+          ["运行性能", 4, 4]
+        ];
+        var html='';
+        dims.forEach(function(r){
+          function bar(score,color,label){
+            var w=score/5*100;
+            return '<div style="display:flex;align-items:center;gap:8px;margin:2px 0;">'+
+              '<span style="width:22px;font-size:11px;color:'+color+';font-weight:700;">'+label+'</span>'+
+              '<div style="flex:1;background:#EEEEE9;border-radius:4px;height:14px;overflow:hidden;">'+
+              '<div style="width:'+w+'%;height:100%;background:'+color+';"></div></div>'+
+              '<span style="width:26px;text-align:right;font-size:12px;">'+score+'</span></div>';
+          }
+          html+='<div style="padding:7px 0;border-bottom:1px dashed #E4E3DD;">'+
+            '<div style="font-weight:600;margin-bottom:3px;">'+r[0]+'</div>'+
+            bar(r[1],'#8A8F98','A')+bar(r[2],'#4F6B9A','B')+'</div>';
+        });
+        el.innerHTML=html;
+      }catch(e){ if(window&&window.console) console.error(e); }
+    })();
+    </script>
+  </div>
+
+  <!-- 差异表 -->
+  <h3 style="font-size:15px;margin:22px 0 8px;">关键差异</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead>
+      <tr style="background:#F2F2EF;text-align:left;">
+        <th style="border:1px solid #E4E3DD;padding:7px 10px;width:120px;">维度</th>
+        <th style="border:1px solid #E4E3DD;padding:7px 10px;">方案 A 过程式</th>
+        <th style="border:1px solid #E4E3DD;padding:7px 10px;">方案 B 声明式</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:600;">表达上限</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">图灵完备，任意条件/循环/动态决策；复杂后摊成巨大嵌套分支</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">受图元语义约束，DSL 天花板即边界；非状态机逻辑（运动规划/视觉判定）会别扭</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:600;">正确性</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;color:#A14E50;">靠人自觉；级联迁移、信号竞争、定时器泄漏已实际发生，错误多在特定时序暴露</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;color:#35705A;">编译期拦截悬空线/无归属/跨机/重复迁移；确定性内核集中测一次（已 17 例）</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:600;">改行为</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">改代码、加分支、重新发版；多机靠复制粘贴，行为漂移</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">常规改动=画图/配置，可不发版、可热更；多机共用内核、不同 spec</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:600;">可视化</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;color:#A14E50;">编辑器与运行时两张皮，图会过时沦为摆设</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;color:#35705A;">图即程序，可做激活态高亮/单步/迁移回放，兑现 FsmEditor 投入</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:600;">成本与门槛</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">零新概念，会 Python 就能写、能打断点；短期最快</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">前期要建解释器+编辑器+handler 协议；要理解激活栈/complete/LIFO；内核是单点</td></tr>
+      <tr><td style="border:1px solid #E4E3DD;padding:7px 10px;font-weight:600;">主要风险</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">流程增多后维护成本非线性上升、改一处怕动全身、依赖原作者记忆</td>
+        <td style="border:1px solid #E4E3DD;padding:7px 10px;">handler 里偷塞状态决策会重新两张皮；DSL 滥加图元会膨胀；schema 版本兼容</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 结论：分工 -->
+  <h3 style="font-size:15px;margin:22px 0 8px;">结论：不是取代，而是分工</h3>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <div style="flex:1 1 300px;min-width:280px;border-left:3px solid #4F6B9A;background:#F7F9FC;border-radius:0 6px 6px 0;padding:12px;font-size:13px;">
+      <b>用 B（FsmSpec）承载顶层编排</b><br>
+      巡检/充电/切楼层/模式切换/异常恢复等<b>可枚举、需可视化与现场调整、要复用热更</b>的行为——约占机器人顶层逻辑 80%。
+    </div>
+    <div style="flex:1 1 300px;min-width:280px;border-left:3px solid #9A6A2F;background:#FCF9F3;border-radius:0 6px 6px 0;padding:12px;font-size:13px;">
+      <b>算法类逻辑留在 DSL 之外</b><br>
+      运动规划/避障、视觉判定、信号处理等<b>难画成有限状态</b>的能力写成普通服务，由 handler 调用。状态机管"何时做、何时转"，算法管"怎么做"。
+    </div>
+  </div>
+
+  <div style="margin-top:14px;padding:12px;border:1px solid #E4E3DD;border-radius:8px;font-size:13px;background:#fff;box-sizing:border-box;">
+    <b>sm.py 的定位：</b>它是有价值的<b>需求草稿/思维工具</b>——已把充电、切楼层、巡检的状态与流程梳理清楚；这些应翻译成 spec（example_charge 即示范），之后 sm.py 可废弃。<br>
+    <b>B 成功的三个前提：</b>① DSL 保持小而稳，新需求优先用现有图元表达、确需时才审慎加图元；② handler 守纪律——只执行动作，不偷做状态迁移决策；③ 工具闭环——补齐编辑器字段（sm/timeout/on_enter）+ 运行时激活态高亮/单步，否则团队会退回写代码。
+  </div>
+
+</div>
+</html>

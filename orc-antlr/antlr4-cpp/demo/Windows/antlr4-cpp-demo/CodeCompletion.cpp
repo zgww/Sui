@@ -3,12 +3,12 @@
 #include <SymbolBuilderVisitor.h>
 #include "LspActor.h"
 
-// °üº¬Ö¸¶¨Î»ÖÃµÄ ast ½ÚµãÕ»
+// ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ãµï¿½ ast ï¿½Úµï¿½Õ»
 	bool ContainPositionNodeStackVisitor::containsPosition(OrcRuleContext *ctx) {
 		auto start = ctx->getStart();
 		auto stop = ctx->getStop();
 		if (start && stop) {
-			int startLine = start->getLine() - 1; // antlr line´Ó1¿ªÊ¼
+			int startLine = start->getLine() - 1; // antlr lineï¿½ï¿½1ï¿½ï¿½Ê¼
 			int endLine = stop->getLine() - 1;
 			int startC = start->getCharPositionInLine();
 			int endC = stop->getCharPositionInLine() + stop->getText().size();
@@ -36,7 +36,7 @@
 	std::any ContainPositionNodeStackVisitor::visitChildren(tree::ParseTree* node) {
 		auto ctx = dynamic_cast<OrcRuleContext*>(node);
 		if (ctx) {
-			//Î»ÖÃ°üº¬
+			//Î»ï¿½Ã°ï¿½ï¿½ï¿½
 			if (containsPosition(ctx)) {
 				nodeStack.push_back(ctx);
 				return OrcBaseVisitor::visitChildren(ctx);
@@ -76,7 +76,7 @@ void AstBuilder::initByCode(std::string code)
 int Position_toCharIndex(std::string code, Position pos) {
 	for (int i = 0, l = code.size(); i < l; i++) {
 		auto c = code[i];
-		if (pos.line > 0) { //ÏÈµ½ÐÐ
+		if (pos.line > 0) { //ï¿½Èµï¿½ï¿½ï¿½
 			if (c == '\n') {
 				pos.line--;
 			}
@@ -152,13 +152,13 @@ class User {
 		tree::ParseTreeTracker _tracker;
 		mk.tracker = &_tracker;
 
-		//¸ø·½·¨Ìí¼Óself²ÎÊý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½selfï¿½ï¿½ï¿½ï¿½
 		AddSelfArgumentVisitor addSelfArgumentVisitor;
 		addSelfArgumentVisitor.mk = &mk;
 		addSelfArgumentVisitor.visit(program);
 		//cost.stat("addSelfArgumentVisitor");
 
-		//se¹Òµ½×î½üµÄctxÏÂ
+		//seï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ctxï¿½ï¿½
 		se->parent = vi.nodeStack.back();
 		auto symType = ast_calcSymbolTypeOfExpressionResult(se, symBuilder.space);
 		auto typePointer = std::dynamic_pointer_cast<SymbolTypePointer>(symType->type);
@@ -188,7 +188,7 @@ void main(){
 	printf("tmp:[%s]\n", tmp.c_str());
 }
 
-//idxÇ°ÒÆ£¬È¥µô'.'ºÍ' '
+//idxÇ°ï¿½Æ£ï¿½È¥ï¿½ï¿½'.'ï¿½ï¿½' '
 int CodeCompletion_moveBack_skipSpaceAndDot(std::string code, int idx) {
 	while (idx > 0) {
 		char c = code[idx-1];
@@ -207,19 +207,19 @@ void CodeCompletion::initByCode(std::string code)
 	this->code = code;
 }
 
-//´úÂëÌáÊ¾
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 /*
-Ô­Àí£º
+Ô­ï¿½ï¿½ï¿½ï¿½
 
-´ÓÎ»ÖÃÍùÇ°,Öð×Ö·û³¢ÊÔÆ¥ÅäSingleExpression,
-Èç¹ûÃ»ÓÐ´íÎó£¬¾Í¼ÌÐøÍùÇ°¡£
-½áÊøÌõ¼þ£º
-1. Ò»Ö±µ½Æ¥ÅäÁËsingleExpression,µ«ÊÇ¸ÃSingleExpression²»º¬positionµÄtoken,
-È»ºó·µ»ØÖ®Ç°Æ¥ÅäµÄSingleExpression,
-2. µ½ÎÄ±¾¿ªÍ·ÁË£¬·µ»ØÖ®Ç°Æ¥ÅäµÄSingleExpression
+ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ç°,ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½SingleExpression,
+ï¿½ï¿½ï¿½Ã»ï¿½Ð´ï¿½ï¿½ó£¬¾Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+1. Ò»Ö±ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½singleExpression,ï¿½ï¿½ï¿½Ç¸ï¿½SingleExpressionï¿½ï¿½ï¿½ï¿½positionï¿½ï¿½token,
+È»ï¿½ó·µ»ï¿½Ö®Ç°Æ¥ï¿½ï¿½ï¿½SingleExpression,
+2. ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Í·ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°Æ¥ï¿½ï¿½ï¿½SingleExpression
 
-ËùÒÔ£¬×ÜÊÇÐèÒªÄÜÆ¥Åä³É¹¦SingleExpression.
-ÄÇ¶ÔÓÚ 'self.a.' ÕâÀàÎÄ±¾£¬  Òª°üº¬µÄpositionµÄToken,Ó¦¸ÃÊÇ'a',ËùÒÔÒªÏÈÇ°ÒÆch,»òÕßÈ¥µô×îºóµÄ'.'
+ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Æ¥ï¿½ï¿½É¹ï¿½SingleExpression.
+ï¿½Ç¶ï¿½ï¿½ï¿½ 'self.a.' ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½  Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½positionï¿½ï¿½Token,Ó¦ï¿½ï¿½ï¿½ï¿½'a',ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ç°ï¿½ï¿½ch,ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'.'
 */
 OrcParser::SingleExpressionContext*  CodeCompletion::codeCompleteAtPosition_forDot(Position pos, AstBuilder &b) {
 	if (0) {
@@ -229,10 +229,27 @@ OrcParser::SingleExpressionContext*  CodeCompletion::codeCompleteAtPosition_forD
 	}
 
 	auto lines = StrUtil::split_by_re(this->code, "\r");
-	//Ç°ºóÈ¡¸ö¼¸ÐÐ¾ÍÐÐ¡£
+	//È¡ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
 	auto idx0 = Position_toCharIndex(this->code, pos);
-	auto idx = CodeCompletion_moveBack_skipSpaceAndDot(this->code, idx0);
-	//Æ¥ÅäSingleExpression
+	//ï¿½ï¿½ï¿½ obj.say| ï¿½ï¿½ obj.| ï¿½ï¿½ï¿½Î£ï¿½ï¿½òµ¥µÄµï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Î»ï¿½Ã£ï¿½Ê¹ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Úµï¿½Ö®Ç°ï¿½ï¿½
+	//ï¿½ï¿½Ö¤ se ï¿½ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÊµÄ³ï¿½Ô±ï¿½ï¿½Ç°×ºï¿½ï¿½
+	int idx;
+	int dotIdx = idx0;
+	bool hasDot = false;
+	while (dotIdx > 0) {
+		char c = this->code[dotIdx - 1];
+		if (c == ' ') { dotIdx--; continue; }
+		if (isalnum((unsigned char)c) || c == '_') { dotIdx--; continue; }
+		if (c == '.') { dotIdx--; hasDot = true; break; }
+		break;
+	}
+	if (hasDot) {
+		idx = dotIdx;
+	}
+	else {
+		idx = CodeCompletion_moveBack_skipSpaceAndDot(this->code, idx0);
+	}
+	//Æ¥ï¿½ï¿½SingleExpression
 	int start = idx - 1;
 	OrcParser::SingleExpressionContext* se = NULL;
 	std::string seCode;
@@ -242,7 +259,7 @@ OrcParser::SingleExpressionContext*  CodeCompletion::codeCompleteAtPosition_forD
 		b.parser->removeErrorListeners();
 		b.parser->removeParseListeners();
 		auto tree = b.parser->singleExpression();
-		//ÓÐ´í
+		//ï¿½Ð´ï¿½
 		if (b.parser->getNumberOfSyntaxErrors() > 0) {
 			start--;
 			continue;
@@ -253,20 +270,25 @@ OrcParser::SingleExpressionContext*  CodeCompletion::codeCompleteAtPosition_forD
 		}
 		auto seText = tree->getText();
 		log(std::format("tmpcode:{}||| seText:{}\n", tmpcode.c_str(), seText.c_str()));
-		//³É¹¦
-		//ÅÐ¶ÏtreeÊÇ·ñ°üº¬ÁËidx
+		//ï¿½É¹ï¿½
+		//ï¿½Ð¶ï¿½treeï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idx
 		auto stop = tree->getStop();
-		//°üº¬
+		//ï¿½ï¿½ï¿½ï¿½
 		if (stop && stop->getStopIndex() >= tmpcode.size() - 1) {
 			start--;
 			seCode = tmpcode;
 			se = tree;
 		}
 		else {
-			//²»°üº¬£¬ËµÃ÷´Ë´ÎÊ¶±ðµ½µÄse¸úindexËùÔÚµÄ±í´ïÊ½Ã»ÓÐ¹ØÏµ
-			b.initByCode(seCode);
-			auto tree = b.parser->singleExpression();
-			return tree;
+			//ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ expression Ã»ï¿½ï¿½ï¿½Çµï¿½ tmpcode Ä©Î²ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ë²¹È«ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½
+			//ï¿½ï¿½ï¿½Ö®Ç°ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Çµï¿½Ä©Î²ï¿½Ä±ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ò·µ»ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½
+			if (seCode != "") {
+				b.initByCode(seCode);
+				auto tree = b.parser->singleExpression();
+				return tree;
+			}
+			start--;
+			continue;
 		}
 	}
 	return NULL;

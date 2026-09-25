@@ -1,0 +1,1134 @@
+C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+INFO:     Will watch for changes in these directories: ['D:\\git_ai\\straitbot-fms\\backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [11048] using WatchFiles
+C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+INFO:     Started server process [27608]
+INFO:     Waiting for application startup.
+INFO:apscheduler.scheduler:Scheduler started
+INFO:apscheduler.scheduler:Added job "CronTimer.on_active.<locals>.fire" to job store "default"
+INFO:simulation.bridge:[sim] TCP 监听 0.0.0.0:50000
+INFO:rail.client:[rail] open 127.0.0.1:50000
+INFO:rail.client:[rail] 连接状态 -> connecting (127.0.0.1:50000)
+INFO:simulation.bridge:[sim] 下位机(WS)不在线，拒绝上位机接入 ('127.0.0.1', 52127)
+INFO:rail.client:[rail] 连接状态 -> connected (127.0.0.1:50000)
+INFO:rail.boardsrv:[boardsrv] BoardSrv 已启动 (127.0.0.1:50000)
+INFO:rail.robot:[robot] 1号挂轨机器人(R001) 已启动，目标控制板 127.0.0.1:50000
+INFO:rail.runtime:[rail] Robot 1号挂轨机器人(R001) 已启动，目标控制板 127.0.0.1:50000
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "tick_plans" to job store "default"
+INFO:apscheduler.scheduler:Added job "tick_execution_status" to job store "default"
+INFO:apscheduler.scheduler:Added job "_tick_status" to job store "default"
+INFO:apscheduler.scheduler:Added job "_tick_meta" to job store "default"
+INFO:apscheduler.scheduler:Added job "cleanup_once" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+INFO:     Application startup complete.
+WARNING:rail.client:[rail] 连接断开：对端关闭连接
+INFO:rail.client:[rail] 连接状态 -> reconnecting (127.0.0.1:50000)
+INFO:rail.client:[rail] 第 1 次重连，1.0s 后尝试（127.0.0.1:50000）
+INFO:rail.client:[rail] 连接状态 -> connecting (127.0.0.1:50000)
+INFO:simulation.bridge:[sim] 下位机(WS)不在线，拒绝上位机接入 ('127.0.0.1', 52132)
+INFO:rail.client:[rail] 连接状态 -> connected (127.0.0.1:50000)
+WARNING:rail.client:[rail] 连接断开：对端关闭连接
+INFO:rail.client:[rail] 连接状态 -> reconnecting (127.0.0.1:50000)
+INFO:rail.client:[rail] 第 1 次重连，1.0s 后尝试（127.0.0.1:50000）
+INFO:     ('127.0.0.1', 52135) - "WebSocket /ws/simulation" [accepted]
+INFO:simulation.bridge:[sim] 前端 WS 已接入
+INFO:     connection open
+INFO:rail.client:[rail] 连接状态 -> connecting (127.0.0.1:50000)
+INFO:simulation.bridge:[sim] TCP 客户端接入: ('127.0.0.1', 52140)
+INFO:rail.client:[rail] 连接状态 -> connected (127.0.0.1:50000)
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:16 UTC)" (scheduled at 2026-09-18 10:43:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:43:21 UTC)" (scheduled at 2026-09-18 10:43:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:43:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:36 UTC)" (scheduled at 2026-09-18 10:43:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:rail.robot:[robot] R001 已接收巡检 79b11cccfde80c36cea7db09e376903b（楼层[1, 2]，航点34，动作122），记录 D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b.json
+INFO:watchfiles.main:2 changes detected
+INFO:rail.robot:[robot] R001 巡检航点 1/34：楼层1 航点cecbb62d6473a8c273918b10a829d54f 目标X=0.814m
+INFO:watchfiles.main:2 changes detected
+INFO:rail.robot:[robot] R001 移动到航点 cecbb62d6473a8c273918b10a829d54f：目标X=0.814m（当前 0.845m）
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点cecbb62d6473a8c273918b10a829d54f 动作efaad4558cb02a32fa1696f810b86e17 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 efaad4558cb02a32fa1696f810b86e17）：pan=312.8 tilt=11.7 zoom=1.60
+INFO:rail.hkptz:[hkptz] HCNetSDK 已初始化，库目录 D:\git_ai\straitbot-fms\docs\HCNetSDKV6.1.11.30_build20260805_Win64_ZH\库文件
+INFO:rail.hkptz:[hkptz] 已登录相机 192.168.6.170:8000 通道1 userId=0
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=312.84°(3128) tilt=11.67°(117) zoom=1.600(16)
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp001_a01_efaad455_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp001_a01_efaad455_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点cecbb62d6473a8c273918b10a829d54f 动作9c53f686901012792f34d5ec5b9b179c type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 9c53f686901012792f34d5ec5b9b179c）：pan=305.0 tilt=25.4 zoom=1.60
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=305.00°(3050) tilt=25.36°(254) zoom=1.600(16)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:43:51 UTC)" (scheduled at 2026-09-18 10:43:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:44:06 UTC)" (scheduled at 2026-09-18 10:43:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:46 UTC)" (scheduled at 2026-09-18 10:43:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:43:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:44:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp001_a02_9c53f686_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp001_a02_9c53f686_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点cecbb62d6473a8c273918b10a829d54f 动作240eb67c1ccb7c827f3f71cce5baf717 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 240eb67c1ccb7c827f3f71cce5baf717）：pan=307.8 tilt=16.3 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=307.76°(3078) tilt=16.32°(163) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检航点 2/34：楼层1 航点077341c1618dcf0cab68f33194f51e71 目标X=2.096m
+INFO:watchfiles.main:2 changes detected
+INFO:rail.robot:[robot] R001 移动到航点 077341c1618dcf0cab68f33194f51e71：目标X=2.096m（当前 0.814m）
+INFO:rail.robot:[robot] R001 巡检动作 1/4：航点077341c1618dcf0cab68f33194f51e71 动作d069e75fff30f74551ddabf216b7dd3d type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 d069e75fff30f74551ddabf216b7dd3d）：pan=11.1 tilt=14.9 zoom=1.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=11.14°(111) tilt=14.88°(149) zoom=1.200(12)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:56 UTC)" (scheduled at 2026-09-18 10:43:46.402051+00:00)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp002_a01_d069e75f_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp002_a01_d069e75f_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/4：航点077341c1618dcf0cab68f33194f51e71 动作aa1de262c5d0f5e1bfc16140f74a5980 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 aa1de262c5d0f5e1bfc16140f74a5980）：pan=32.2 tilt=14.9 zoom=1.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=32.21°(322) tilt=14.88°(149) zoom=1.200(12)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:06 UTC)" (scheduled at 2026-09-18 10:43:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:06 UTC)" executed successfully
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:43:56 UTC)" executed successfully
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp002_a02_aa1de262_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp002_a02_aa1de262_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/4：航点077341c1618dcf0cab68f33194f51e71 动作e29aa4282411c73897d8971f0804a8c3 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 e29aa4282411c73897d8971f0804a8c3）：pan=19.7 tilt=16.4 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=19.66°(197) tilt=16.35°(164) zoom=1.000(10)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 e29aa4282411c73897d8971f0804a8c3）
+INFO:rail.robot:[robot] R001 巡检动作 4/4：航点077341c1618dcf0cab68f33194f51e71 动作61fec08cf050635b1ef9fd92cfc23acd type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 61fec08cf050635b1ef9fd92cfc23acd）：pan=19.7 tilt=16.4 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=19.66°(197) tilt=16.35°(164) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:06 UTC)" (scheduled at 2026-09-18 10:43:56.402051+00:00)
+INFO:rail.robot:[robot] R001 巡检航点 3/34：楼层1 航点5f6359b92f4f910378058cbe95ee1c7c 目标X=3.174m
+INFO:watchfiles.main:1 change detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:rail.robot:[robot] R001 移动到航点 5f6359b92f4f910378058cbe95ee1c7c：目标X=3.174m（当前 2.096m）
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点5f6359b92f4f910378058cbe95ee1c7c 动作5fbd87bad49578101757bc1cef844645 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 5fbd87bad49578101757bc1cef844645）：pan=299.3 tilt=7.4 zoom=2.50
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=299.33°(2993) tilt=7.43°(74) zoom=2.500(25)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp003_a01_5fbd87ba_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp003_a01_5fbd87ba_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点5f6359b92f4f910378058cbe95ee1c7c 动作757b6e9ea837f151c68c821b1982bcd0 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 757b6e9ea837f151c68c821b1982bcd0）：pan=293.3 tilt=14.4 zoom=2.50
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=293.34°(2933) tilt=14.38°(144) zoom=2.500(25)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:21 UTC)" (scheduled at 2026-09-18 10:44:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:44:36 UTC)" (scheduled at 2026-09-18 10:44:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:45:06 UTC)" (scheduled at 2026-09-18 10:44:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:16 UTC)" (scheduled at 2026-09-18 10:44:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:44:36 UTC)" executed successfully
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp003_a02_757b6e9e_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp003_a02_757b6e9e_visible.jpg
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:16 UTC)" executed successfully
+INFO:watchfiles.main:4 changes detected
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点5f6359b92f4f910378058cbe95ee1c7c 动作317d053ee12d8730775f303e8af8ce26 type=2 lift=0.000m
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 317d053ee12d8730775f303e8af8ce26）：pan=290.8 tilt=9.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=290.75°(2908) tilt=9.73°(97) zoom=1.000(10)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:45:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检航点 4/34：楼层1 航点e0682a9e767327b3a0a4524617951470 目标X=7.761m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 e0682a9e767327b3a0a4524617951470：目标X=7.761m（当前 3.174m）
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:26 UTC)" (scheduled at 2026-09-18 10:44:16.402051+00:00)
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点e0682a9e767327b3a0a4524617951470 动作3b587b985ee2715757e0299811173bea type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 3b587b985ee2715757e0299811173bea）：pan=288.1 tilt=13.2 zoom=2.90
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=288.11°(2881) tilt=13.25°(132) zoom=2.900(29)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp004_a01_3b587b98_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp004_a01_3b587b98_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:36 UTC)" (scheduled at 2026-09-18 10:44:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:36 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点e0682a9e767327b3a0a4524617951470 动作a30f6d36c0c8df5132f9ac974af8113b type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 a30f6d36c0c8df5132f9ac974af8113b）：pan=296.9 tilt=3.9 zoom=5.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=296.95°(2970) tilt=3.86°(39) zoom=5.200(52)
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp004_a02_a30f6d36_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp004_a02_a30f6d36_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点e0682a9e767327b3a0a4524617951470 动作7a94ce38231abc4901e5cca2303c342b type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 7a94ce38231abc4901e5cca2303c342b）：pan=290.7 tilt=9.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=290.74°(2907) tilt=9.73°(97) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:36 UTC)" (scheduled at 2026-09-18 10:44:26.402051+00:00)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 巡检航点 5/34：楼层1 航点4f5294e9ee67a514c7379fb37f9e7186 目标X=7.761m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 4f5294e9ee67a514c7379fb37f9e7186：目标X=7.761m（当前 7.761m）
+INFO:rail.robot:[robot] R001 巡检动作 1/6：航点4f5294e9ee67a514c7379fb37f9e7186 动作2b8fa8a3c2affda88b04528b9f6dfe97 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 2b8fa8a3c2affda88b04528b9f6dfe97）：pan=357.1 tilt=15.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=357.13°(3571) tilt=15.65°(156) zoom=1.000(10)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp005_a01_2b8fa8a3_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp005_a01_2b8fa8a3_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/6：航点4f5294e9ee67a514c7379fb37f9e7186 动作d2ba021bbcdb1555ea87db7b30809f90 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 d2ba021bbcdb1555ea87db7b30809f90）：pan=55.1 tilt=33.1 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=55.10°(551) tilt=33.06°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:51 UTC)" (scheduled at 2026-09-18 10:44:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:45:06 UTC)" (scheduled at 2026-09-18 10:44:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:46 UTC)" (scheduled at 2026-09-18 10:44:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:44:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:45:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:56 UTC)" (scheduled at 2026-09-18 10:44:46.402051+00:00)
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 55.1, 'tilt': 33.06, 'zoom': 1.0}），仍放行
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp005_a02_d2ba021b_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp005_a02_d2ba021b_visible.jpg
+INFO:watchfiles.main:2 changes detected
+INFO:rail.robot:[robot] R001 巡检动作 3/6：航点4f5294e9ee67a514c7379fb37f9e7186 动作df078ce5820022ae3a1f1bb3eb4258e6 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 df078ce5820022ae3a1f1bb3eb4258e6）：pan=55.2 tilt=35.6 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=55.23°(552) tilt=35.61°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:06 UTC)" (scheduled at 2026-09-18 10:44:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:44:56 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:06 UTC)" (scheduled at 2026-09-18 10:44:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 55.23, 'tilt': 35.61, 'zoom': 1.0}），仍放行
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 df078ce5820022ae3a1f1bb3eb4258e6）
+INFO:rail.robot:[robot] R001 巡检动作 4/6：航点4f5294e9ee67a514c7379fb37f9e7186 动作4da16ba614d4520e94918b948f61d4b9 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 4da16ba614d4520e94918b948f61d4b9）：pan=1.1 tilt=16.0 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=1.05°(10) tilt=15.98°(160) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:21 UTC)" (scheduled at 2026-09-18 10:45:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:45:36 UTC)" (scheduled at 2026-09-18 10:45:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:46:06 UTC)" (scheduled at 2026-09-18 10:45:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:16 UTC)" (scheduled at 2026-09-18 10:45:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:45:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 4da16ba614d4520e94918b948f61d4b9）
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:46:06 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 5/6：航点4f5294e9ee67a514c7379fb37f9e7186 动作57357fc0aac6060bf1883e37fb6ceda3 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 57357fc0aac6060bf1883e37fb6ceda3）：pan=43.3 tilt=39.8 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=43.30°(433) tilt=39.83°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:26 UTC)" (scheduled at 2026-09-18 10:45:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:36 UTC)" (scheduled at 2026-09-18 10:45:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:26 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 43.3, 'tilt': 39.83, 'zoom': 1.0}），仍放行
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 6/6：航点4f5294e9ee67a514c7379fb37f9e7186 动作62e05ad91c7682df81229d300ba14847 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 62e05ad91c7682df81229d300ba14847）：pan=4.5 tilt=13.1 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=4.51°(45) tilt=13.10°(131) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:36 UTC)" (scheduled at 2026-09-18 10:45:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:36 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 巡检航点 6/34：楼层1 航点1b979dc3b3bba901abce50c66dbf5025 目标X=12.768m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 1b979dc3b3bba901abce50c66dbf5025：目标X=12.768m（当前 7.761m）
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:51 UTC)" (scheduled at 2026-09-18 10:45:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:46:06 UTC)" (scheduled at 2026-09-18 10:45:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:46 UTC)" (scheduled at 2026-09-18 10:45:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:45:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:46:06 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 1/6：航点1b979dc3b3bba901abce50c66dbf5025 动作a809bd695af2e6400b7850ee30cdc9ed type=1 lift=0.000m
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 a809bd695af2e6400b7850ee30cdc9ed）：pan=38.4 tilt=38.2 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=38.42°(384) tilt=38.20°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:56 UTC)" (scheduled at 2026-09-18 10:45:46.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:06 UTC)" (scheduled at 2026-09-18 10:45:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:45:56 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 38.42, 'tilt': 38.2, 'zoom': 1.0}），仍放行
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp006_a01_a809bd69_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp006_a01_a809bd69_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/6：航点1b979dc3b3bba901abce50c66dbf5025 动作5fbe7529a94185302da3e5970335e867 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 5fbe7529a94185302da3e5970335e867）：pan=352.7 tilt=13.7 zoom=1.50
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=352.70°(3527) tilt=13.67°(137) zoom=1.500(15)
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp006_a02_5fbe7529_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp006_a02_5fbe7529_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/6：航点1b979dc3b3bba901abce50c66dbf5025 动作98b1cc299bb7dcf4ff1e710a08162e46 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 98b1cc299bb7dcf4ff1e710a08162e46）：pan=344.4 tilt=15.7 zoom=1.00
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:06 UTC)" (scheduled at 2026-09-18 10:45:56.402051+00:00)
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=344.45°(3444) tilt=15.66°(157) zoom=1.000(10)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 4/6：航点1b979dc3b3bba901abce50c66dbf5025 动作152b18e9f27c3a60df614aba8db7c813 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 152b18e9f27c3a60df614aba8db7c813）：pan=36.9 tilt=39.8 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=36.91°(369) tilt=39.83°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:21 UTC)" (scheduled at 2026-09-18 10:46:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:46:36 UTC)" (scheduled at 2026-09-18 10:46:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:47:06 UTC)" (scheduled at 2026-09-18 10:46:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:16 UTC)" (scheduled at 2026-09-18 10:46:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:46:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:47:06 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 36.91, 'tilt': 39.83, 'zoom': 1.0}），仍放行
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:rail.robot:[robot] R001 巡检动作 5/6：航点1b979dc3b3bba901abce50c66dbf5025 动作9d6bb37b6aca384746c35293cacbfdb8 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 9d6bb37b6aca384746c35293cacbfdb8）：pan=351.7 tilt=13.1 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=351.71°(3517) tilt=13.10°(131) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:26 UTC)" (scheduled at 2026-09-18 10:46:16.402051+00:00)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 9d6bb37b6aca384746c35293cacbfdb8）
+INFO:rail.robot:[robot] R001 巡检动作 6/6：航点1b979dc3b3bba901abce50c66dbf5025 动作a119b68808bc312412646a5cb07c5bb7 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 a119b68808bc312412646a5cb07c5bb7）：pan=43.7 tilt=35.1 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=43.70°(437) tilt=35.12°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:36 UTC)" (scheduled at 2026-09-18 10:46:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:36 UTC)" (scheduled at 2026-09-18 10:46:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 43.7, 'tilt': 35.12, 'zoom': 1.0}），仍放行
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 a119b68808bc312412646a5cb07c5bb7）
+INFO:rail.robot:[robot] R001 巡检航点 7/34：楼层1 航点e9e3c74f6902dbd1224a2afb7d02c023 目标X=12.768m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 e9e3c74f6902dbd1224a2afb7d02c023：目标X=12.768m（当前 12.768m）
+INFO:rail.robot:[robot] R001 巡检动作 1/4：航点e9e3c74f6902dbd1224a2afb7d02c023 动作0b40b2bde27a39fd2254efcc0c13c7ad type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 0b40b2bde27a39fd2254efcc0c13c7ad）：pan=249.6 tilt=13.7 zoom=1.50
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=249.58°(2496) tilt=13.65°(136) zoom=1.500(15)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:51 UTC)" (scheduled at 2026-09-18 10:46:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:47:06 UTC)" (scheduled at 2026-09-18 10:46:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:46 UTC)" (scheduled at 2026-09-18 10:46:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:46:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:47:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp007_a01_0b40b2bd_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp007_a01_0b40b2bd_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/4：航点e9e3c74f6902dbd1224a2afb7d02c023 动作5c7197893385c2f826f965562e459c6c type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 5c7197893385c2f826f965562e459c6c）：pan=238.5 tilt=12.4 zoom=5.30
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=238.46°(2385) tilt=12.44°(124) zoom=5.300(53)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:56 UTC)" (scheduled at 2026-09-18 10:46:46.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:06 UTC)" (scheduled at 2026-09-18 10:46:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:46:56 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 238.46, 'tilt': 12.44, 'zoom': 5.3}），仍放行
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:06 UTC)" (scheduled at 2026-09-18 10:46:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:06 UTC)" executed successfully
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp007_a02_5c719789_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp007_a02_5c719789_visible.jpg
+INFO:watchfiles.main:4 changes detected
+INFO:rail.robot:[robot] R001 巡检动作 3/4：航点e9e3c74f6902dbd1224a2afb7d02c023 动作16e692a1d22842a261b9c4f6ea27a473 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 16e692a1d22842a261b9c4f6ea27a473）：pan=243.6 tilt=9.2 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=243.62°(2436) tilt=9.22°(92) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 4/4：航点e9e3c74f6902dbd1224a2afb7d02c023 动作dab2349f49a47c487baedc0f5f4c5816 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 dab2349f49a47c487baedc0f5f4c5816）：pan=243.6 tilt=9.2 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=243.62°(2436) tilt=9.24°(92) zoom=1.000(10)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 dab2349f49a47c487baedc0f5f4c5816）
+INFO:rail.robot:[robot] R001 巡检航点 8/34：楼层1 航点3e3a3643383ce2883c7c191cd3da7b8e 目标X=14.505m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 3e3a3643383ce2883c7c191cd3da7b8e：目标X=14.505m（当前 12.768m）
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:21 UTC)" (scheduled at 2026-09-18 10:47:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:47:36 UTC)" (scheduled at 2026-09-18 10:47:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:48:06 UTC)" (scheduled at 2026-09-18 10:47:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:16 UTC)" (scheduled at 2026-09-18 10:47:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:47:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点3e3a3643383ce2883c7c191cd3da7b8e 动作1ae58d9124c40fff32f9487aa51a1229 type=1 lift=0.000m
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 1ae58d9124c40fff32f9487aa51a1229）：pan=299.4 tilt=6.8 zoom=2.80
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=299.41°(2994) tilt=6.85°(68) zoom=2.800(28)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:48:06 UTC)" executed successfully
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp008_a01_1ae58d91_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp008_a01_1ae58d91_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点3e3a3643383ce2883c7c191cd3da7b8e 动作fe411d995a82c07fef1364a630ab6a09 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 fe411d995a82c07fef1364a630ab6a09）：pan=291.7 tilt=15.8 zoom=2.80
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=291.66°(2917) tilt=15.75°(158) zoom=2.800(28)
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp008_a02_fe411d99_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp008_a02_fe411d99_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点3e3a3643383ce2883c7c191cd3da7b8e 动作0f0614bdab44e2ae80bd52a074c368d0 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 0f0614bdab44e2ae80bd52a074c368d0）：pan=291.1 tilt=9.2 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=291.15°(2912) tilt=9.22°(92) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检航点 9/34：楼层1 航点b9af691bc44e16010f522d59b92736ad 目标X=17.930m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 b9af691bc44e16010f522d59b92736ad：目标X=17.930m（当前 14.505m）
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:26 UTC)" (scheduled at 2026-09-18 10:47:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:36 UTC)" (scheduled at 2026-09-18 10:47:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:26 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 1/4：航点b9af691bc44e16010f522d59b92736ad 动作ac2ff5d852aa11ad3cc6392e34eedb21 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 ac2ff5d852aa11ad3cc6392e34eedb21）：pan=247.0 tilt=11.9 zoom=1.70
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=246.97°(2470) tilt=11.92°(119) zoom=1.700(17)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp009_a01_ac2ff5d8_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp009_a01_ac2ff5d8_visible.jpg
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:36 UTC)" (scheduled at 2026-09-18 10:47:26.402051+00:00)
+INFO:watchfiles.main:1 change detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:36 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 2/4：航点b9af691bc44e16010f522d59b92736ad 动作2c24c9419558e4336ab57bf381474730 type=1 lift=0.000m
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 2c24c9419558e4336ab57bf381474730）：pan=237.4 tilt=13.8 zoom=3.50
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=237.45°(2374) tilt=13.82°(138) zoom=3.500(35)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:51 UTC)" (scheduled at 2026-09-18 10:47:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:48:06 UTC)" (scheduled at 2026-09-18 10:47:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:46 UTC)" (scheduled at 2026-09-18 10:47:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:47:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:48:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 237.45, 'tilt': 13.82, 'zoom': 3.5}），仍放行
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp009_a02_2c24c941_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp009_a02_2c24c941_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/4：航点b9af691bc44e16010f522d59b92736ad 动作1f399f0a1a603d6117677fb93770f46b type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 1f399f0a1a603d6117677fb93770f46b）：pan=244.6 tilt=9.2 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=244.64°(2446) tilt=9.24°(92) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:56 UTC)" (scheduled at 2026-09-18 10:47:46.402051+00:00)
+INFO:rail.robot:[robot] R001 巡检动作 4/4：航点b9af691bc44e16010f522d59b92736ad 动作b1bdaa973c743ebc57d94d6ff806645c type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 b1bdaa973c743ebc57d94d6ff806645c）：pan=244.6 tilt=9.2 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=244.64°(2446) tilt=9.24°(92) zoom=1.000(10)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 b1bdaa973c743ebc57d94d6ff806645c）
+INFO:rail.robot:[robot] R001 巡检航点 10/34：楼层1 航点25fba40f6a4d41caf7e12c5473121609 目标X=17.930m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 25fba40f6a4d41caf7e12c5473121609：目标X=17.930m（当前 17.930m）
+INFO:rail.robot:[robot] R001 巡检动作 1/6：航点25fba40f6a4d41caf7e12c5473121609 动作d01aba171a3f66c9fcd950ddb0580d20 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 d01aba171a3f66c9fcd950ddb0580d20）：pan=345.1 tilt=13.8 zoom=1.10
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=345.08°(3451) tilt=13.83°(138) zoom=1.100(11)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:06 UTC)" (scheduled at 2026-09-18 10:47:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:47:56 UTC)" executed successfully
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp010_a01_d01aba17_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp010_a01_d01aba17_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/6：航点25fba40f6a4d41caf7e12c5473121609 动作2dd8da3974aaebba059641e6bbb0c040 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 2dd8da3974aaebba059641e6bbb0c040）：pan=25.7 tilt=40.0 zoom=1.10
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=25.66°(257) tilt=39.98°(300) zoom=1.100(11)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:06 UTC)" (scheduled at 2026-09-18 10:47:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:21 UTC)" (scheduled at 2026-09-18 10:48:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:48:36 UTC)" (scheduled at 2026-09-18 10:48:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:49:06 UTC)" (scheduled at 2026-09-18 10:48:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:16 UTC)" (scheduled at 2026-09-18 10:48:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:48:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:49:06 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 25.66, 'tilt': 39.98, 'zoom': 1.1}），仍放行
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp010_a02_2dd8da39_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp010_a02_2dd8da39_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/6：航点25fba40f6a4d41caf7e12c5473121609 动作d4d8c991e99d747eb88951ed38af6f7a type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 d4d8c991e99d747eb88951ed38af6f7a）：pan=350.7 tilt=14.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=350.74°(3507) tilt=14.71°(147) zoom=1.000(10)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 d4d8c991e99d747eb88951ed38af6f7a）
+INFO:rail.robot:[robot] R001 巡检动作 4/6：航点25fba40f6a4d41caf7e12c5473121609 动作13d846c20eadd77430b19319be232944 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 13d846c20eadd77430b19319be232944）：pan=27.9 tilt=34.6 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=27.94°(279) tilt=34.56°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:26 UTC)" (scheduled at 2026-09-18 10:48:16.402051+00:00)
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:36 UTC)" (scheduled at 2026-09-18 10:48:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:36 UTC)" (scheduled at 2026-09-18 10:48:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 27.94, 'tilt': 34.56, 'zoom': 1.0}），仍放行
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 13d846c20eadd77430b19319be232944）
+INFO:rail.robot:[robot] R001 巡检动作 5/6：航点25fba40f6a4d41caf7e12c5473121609 动作6aa18fc04e81d2902c035a75864fcf79 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 6aa18fc04e81d2902c035a75864fcf79）：pan=19.8 tilt=43.4 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=19.79°(198) tilt=43.35°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:51 UTC)" (scheduled at 2026-09-18 10:48:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:49:06 UTC)" (scheduled at 2026-09-18 10:48:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:46 UTC)" (scheduled at 2026-09-18 10:48:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:48:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:49:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 19.79, 'tilt': 43.35, 'zoom': 1.0}），仍放行
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 6/6：航点25fba40f6a4d41caf7e12c5473121609 动作fcbb237ccb6703f27d305e7ef1c57c45 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 fcbb237ccb6703f27d305e7ef1c57c45）：pan=344.4 tilt=15.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=344.42°(3444) tilt=15.66°(157) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:56 UTC)" (scheduled at 2026-09-18 10:48:46.402051+00:00)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:rail.robot:[robot] R001 巡检航点 11/34：楼层1 航点bceab46bb09be1caac3cc0202232a882 目标X=19.589m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 bceab46bb09be1caac3cc0202232a882：目标X=19.589m（当前 17.930m）
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:06 UTC)" (scheduled at 2026-09-18 10:48:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:48:56 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 1/4：航点bceab46bb09be1caac3cc0202232a882 动作c261a0ca51cc98ccdb62302a1f472bce type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 c261a0ca51cc98ccdb62302a1f472bce）：pan=296.2 tilt=6.1 zoom=2.50
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=296.20°(2962) tilt=6.07°(61) zoom=2.500(25)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp011_a01_c261a0ca_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp011_a01_c261a0ca_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/4：航点bceab46bb09be1caac3cc0202232a882 动作7323416ba208d0c1fe883dafcce419f8 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 7323416ba208d0c1fe883dafcce419f8）：pan=290.4 tilt=15.1 zoom=2.50
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=290.44°(2904) tilt=15.05°(150) zoom=2.500(25)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:06 UTC)" (scheduled at 2026-09-18 10:48:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp011_a02_7323416b_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp011_a02_7323416b_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/4：航点bceab46bb09be1caac3cc0202232a882 动作746e2f43562c94e46d51b3bca6dce3c9 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 746e2f43562c94e46d51b3bca6dce3c9）：pan=296.1 tilt=7.0 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=296.13°(2961) tilt=7.04°(70) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 4/4：航点bceab46bb09be1caac3cc0202232a882 动作9afe3f14ef29c136f8b65376178141cc type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 9afe3f14ef29c136f8b65376178141cc）：pan=291.1 tilt=8.0 zoom=1.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=291.09°(2911) tilt=7.97°(80) zoom=1.200(12)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 9afe3f14ef29c136f8b65376178141cc）
+INFO:rail.robot:[robot] R001 巡检航点 12/34：楼层1 航点0471001b225a5fc9821a0fd76fa000ba 目标X=21.393m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 0471001b225a5fc9821a0fd76fa000ba：目标X=21.393m（当前 19.589m）
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:21 UTC)" (scheduled at 2026-09-18 10:49:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:49:36 UTC)" (scheduled at 2026-09-18 10:49:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:50:06 UTC)" (scheduled at 2026-09-18 10:49:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:16 UTC)" (scheduled at 2026-09-18 10:49:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:49:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:16 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:50:06 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点0471001b225a5fc9821a0fd76fa000ba 动作a42966dd1f65aa418df9de5fede31cff type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 a42966dd1f65aa418df9de5fede31cff）：pan=250.6 tilt=11.7 zoom=2.10
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=250.55°(2506) tilt=11.73°(117) zoom=2.100(21)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp012_a01_a42966dd_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp012_a01_a42966dd_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点0471001b225a5fc9821a0fd76fa000ba 动作c22f947711d4163a334578cf3dffaddd type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 c22f947711d4163a334578cf3dffaddd）：pan=252.3 tilt=7.0 zoom=2.29
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=252.34°(2523) tilt=7.04°(70) zoom=2.290(23)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 c22f947711d4163a334578cf3dffaddd）
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点0471001b225a5fc9821a0fd76fa000ba 动作34685c800e32e58cfbca3a48702a71c5 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 34685c800e32e58cfbca3a48702a71c5）：pan=265.8 tilt=7.0 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=265.81°(2658) tilt=7.04°(70) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检航点 13/34：楼层1 航点81ab47b937c6c1942d7c5ef221e17cce 目标X=22.891m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 81ab47b937c6c1942d7c5ef221e17cce：目标X=22.891m（当前 21.393m）
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:26 UTC)" (scheduled at 2026-09-18 10:49:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:36 UTC)" (scheduled at 2026-09-18 10:49:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:26 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 1/6：航点81ab47b937c6c1942d7c5ef221e17cce 动作4e030f36270aa6601feb6c9d724f0162 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 4e030f36270aa6601feb6c9d724f0162）：pan=343.8 tilt=12.8 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=343.75°(3438) tilt=12.75°(128) zoom=1.000(10)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp013_a01_4e030f36_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp013_a01_4e030f36_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/6：航点81ab47b937c6c1942d7c5ef221e17cce 动作68370b9c96f32378dd96ea8958ba13a4 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 68370b9c96f32378dd96ea8958ba13a4）：pan=18.1 tilt=45.4 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=18.11°(181) tilt=45.38°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:36 UTC)" (scheduled at 2026-09-18 10:49:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:51 UTC)" (scheduled at 2026-09-18 10:49:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:50:06 UTC)" (scheduled at 2026-09-18 10:49:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:46 UTC)" (scheduled at 2026-09-18 10:49:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:49:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:50:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 18.11, 'tilt': 45.38, 'zoom': 1.0}），仍放行
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp013_a02_68370b9c_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp013_a02_68370b9c_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/6：航点81ab47b937c6c1942d7c5ef221e17cce 动作f880fb58ce40e1eafe7138783279c9bf type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 f880fb58ce40e1eafe7138783279c9bf）：pan=348.4 tilt=13.0 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=348.39°(3484) tilt=12.98°(130) zoom=1.000(10)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 4/6：航点81ab47b937c6c1942d7c5ef221e17cce 动作4f6029a6e2d039706bc2bc8830fc8a35 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 4f6029a6e2d039706bc2bc8830fc8a35）：pan=19.8 tilt=43.4 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=19.79°(198) tilt=43.35°(300) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:56 UTC)" (scheduled at 2026-09-18 10:49:46.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:06 UTC)" (scheduled at 2026-09-18 10:49:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:49:56 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:06 UTC)" (scheduled at 2026-09-18 10:49:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 19.79, 'tilt': 43.35, 'zoom': 1.0}），仍放行
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:rail.robot:[robot] R001 巡检动作 5/6：航点81ab47b937c6c1942d7c5ef221e17cce 动作b2e21c6819956cce9d483fec4f94e812 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 b2e21c6819956cce9d483fec4f94e812）：pan=338.3 tilt=7.9 zoom=1.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=338.29°(3383) tilt=7.92°(79) zoom=1.200(12)
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 b2e21c6819956cce9d483fec4f94e812）
+INFO:rail.robot:[robot] R001 巡检动作 6/6：航点81ab47b937c6c1942d7c5ef221e17cce 动作733aaf865dcf7f20c7defbd006d6914e type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 733aaf865dcf7f20c7defbd006d6914e）：pan=14.5 tilt=42.4 zoom=1.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=14.50°(145) tilt=42.43°(300) zoom=1.200(12)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:21 UTC)" (scheduled at 2026-09-18 10:50:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:50:36 UTC)" (scheduled at 2026-09-18 10:50:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:51:06 UTC)" (scheduled at 2026-09-18 10:50:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:16 UTC)" (scheduled at 2026-09-18 10:50:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:50:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:51:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:26 UTC)" (scheduled at 2026-09-18 10:50:16.402051+00:00)
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 14.5, 'tilt': 42.43, 'zoom': 1.2}），仍放行
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 733aaf865dcf7f20c7defbd006d6914e）
+INFO:rail.robot:[robot] R001 巡检航点 14/34：楼层1 航点d572dd3e1b2b976d4b1e922f42491baf 目标X=24.669m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 d572dd3e1b2b976d4b1e922f42491baf：目标X=24.669m（当前 1.466m）
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:36 UTC)" (scheduled at 2026-09-18 10:50:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:36 UTC)" (scheduled at 2026-09-18 10:50:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点d572dd3e1b2b976d4b1e922f42491baf 动作703e7ad2f0850af4415d5171cbe9a2e1 type=1 lift=0.000m
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 703e7ad2f0850af4415d5171cbe9a2e1）：pan=185.9 tilt=22.6 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=185.90°(1859) tilt=22.64°(226) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:51 UTC)" (scheduled at 2026-09-18 10:50:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:51:06 UTC)" (scheduled at 2026-09-18 10:50:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:46 UTC)" (scheduled at 2026-09-18 10:50:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:50:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:51:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 185.9, 'tilt': 22.64, 'zoom': 1.0}），仍放行
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp014_a01_703e7ad2_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp014_a01_703e7ad2_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点d572dd3e1b2b976d4b1e922f42491baf 动作a290ccad17e7e2adcf969705f38a33b3 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 a290ccad17e7e2adcf969705f38a33b3）：pan=207.1 tilt=22.6 zoom=2.90
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=207.13°(2071) tilt=22.64°(226) zoom=2.900(29)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:56 UTC)" (scheduled at 2026-09-18 10:50:46.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:06 UTC)" (scheduled at 2026-09-18 10:50:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:50:56 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:06 UTC)" (scheduled at 2026-09-18 10:50:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 207.13, 'tilt': 22.64, 'zoom': 2.9}），仍放行
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp014_a02_a290ccad_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp014_a02_a290ccad_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点d572dd3e1b2b976d4b1e922f42491baf 动作f9f2527a49a77df21a257f5514c7fc99 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 f9f2527a49a77df21a257f5514c7fc99）：pan=190.8 tilt=19.3 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=190.83°(1908) tilt=19.31°(193) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:21 UTC)" (scheduled at 2026-09-18 10:51:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:51:36 UTC)" (scheduled at 2026-09-18 10:51:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:52:06 UTC)" (scheduled at 2026-09-18 10:51:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:16 UTC)" (scheduled at 2026-09-18 10:51:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:51:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:52:06 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 190.83, 'tilt': 19.31, 'zoom': 1.0}），仍放行
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:26 UTC)" (scheduled at 2026-09-18 10:51:16.402051+00:00)
+INFO:rail.robot:[robot] R001 巡检航点 15/34：楼层1 航点9928741788b7465dfcada18febb5dc87 目标X=25.104m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 9928741788b7465dfcada18febb5dc87：目标X=25.104m（当前 3.244m）
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点9928741788b7465dfcada18febb5dc87 动作a93c619ca5c3757878964114b270d4f1 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 a93c619ca5c3757878964114b270d4f1）：pan=159.1 tilt=22.6 zoom=1.90
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=159.06°(1591) tilt=22.64°(226) zoom=1.900(19)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:36 UTC)" (scheduled at 2026-09-18 10:51:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:36 UTC)" (scheduled at 2026-09-18 10:51:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 159.06, 'tilt': 22.64, 'zoom': 1.9}），仍放行
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp015_a01_a93c619c_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp015_a01_a93c619c_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:51 UTC)" (scheduled at 2026-09-18 10:51:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:52:06 UTC)" (scheduled at 2026-09-18 10:51:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:46 UTC)" (scheduled at 2026-09-18 10:51:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:51:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:52:06 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点9928741788b7465dfcada18febb5dc87 动作f01d3622c1ab029a987dd0bd40e4c946 type=1 lift=0.000m
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 f01d3622c1ab029a987dd0bd40e4c946）：pan=127.3 tilt=13.5 zoom=1.10
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=127.27°(1273) tilt=13.52°(135) zoom=1.100(11)
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:56 UTC)" (scheduled at 2026-09-18 10:51:46.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:06 UTC)" (scheduled at 2026-09-18 10:51:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:51:56 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 127.27, 'tilt': 13.52, 'zoom': 1.1}），仍放行
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp015_a02_f01d3622_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f1_wp015_a02_f01d3622_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点9928741788b7465dfcada18febb5dc87 动作9a01eea5fbcae8568c817dd3174e43de type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 9a01eea5fbcae8568c817dd3174e43de）：pan=140.2 tilt=19.3 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=140.19°(1402) tilt=19.31°(193) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:06 UTC)" (scheduled at 2026-09-18 10:51:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:21 UTC)" (scheduled at 2026-09-18 10:52:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:52:36 UTC)" (scheduled at 2026-09-18 10:52:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:53:06 UTC)" (scheduled at 2026-09-18 10:52:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:16 UTC)" (scheduled at 2026-09-18 10:52:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:52:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:53:06 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 140.19, 'tilt': 19.31, 'zoom': 1.0}），仍放行
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检航点 16/34：楼层2 航点935b1673001fb251b967912c430aafc8 目标X=55.042m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 935b1673001fb251b967912c430aafc8：目标X=55.042m（当前 3.679m）
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:26 UTC)" (scheduled at 2026-09-18 10:52:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:36 UTC)" (scheduled at 2026-09-18 10:52:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:26 UTC)" executed successfully
+INFO:rail.robot:[robot] R001 巡检动作 1/4：航点935b1673001fb251b967912c430aafc8 动作a465a4c9a1680c862f72bf74957abdfa type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 a465a4c9a1680c862f72bf74957abdfa）：pan=147.5 tilt=21.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=147.47°(1475) tilt=21.73°(217) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:36 UTC)" (scheduled at 2026-09-18 10:52:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:51 UTC)" (scheduled at 2026-09-18 10:52:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:53:06 UTC)" (scheduled at 2026-09-18 10:52:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:46 UTC)" (scheduled at 2026-09-18 10:52:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:52:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:53:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 147.47, 'tilt': 21.73, 'zoom': 1.0}），仍放行
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp016_a01_a465a4c9_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp016_a01_a465a4c9_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/4：航点935b1673001fb251b967912c430aafc8 动作f08d6753bdf643f18974e9d41de98738 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 f08d6753bdf643f18974e9d41de98738）：pan=138.0 tilt=9.4 zoom=1.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=138.00°(1380) tilt=9.43°(94) zoom=1.200(12)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:56 UTC)" (scheduled at 2026-09-18 10:52:46.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:06 UTC)" (scheduled at 2026-09-18 10:52:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:52:56 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 138.0, 'tilt': 9.43, 'zoom': 1.2}），仍放行
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp016_a02_f08d6753_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp016_a02_f08d6753_visible.jpg
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:06 UTC)" (scheduled at 2026-09-18 10:52:56.402051+00:00)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/4：航点935b1673001fb251b967912c430aafc8 动作dfe8142a0a6a88051df9f5cd21e1b5be type=3 lift=0.000m
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 dfe8142a0a6a88051df9f5cd21e1b5be）：pan=144.9 tilt=12.8 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=144.94°(1449) tilt=12.85°(128) zoom=1.000(10)
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:21 UTC)" (scheduled at 2026-09-18 10:53:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:53:36 UTC)" (scheduled at 2026-09-18 10:53:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:54:06 UTC)" (scheduled at 2026-09-18 10:53:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:16 UTC)" (scheduled at 2026-09-18 10:53:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:53:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:54:06 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 144.94, 'tilt': 12.85, 'zoom': 1.0}），仍放行
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 dfe8142a0a6a88051df9f5cd21e1b5be）
+INFO:rail.robot:[robot] R001 巡检动作 4/4：航点935b1673001fb251b967912c430aafc8 动作d5e0c60711d49eb0997af9efe4f7e638 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 d5e0c60711d49eb0997af9efe4f7e638）：pan=142.4 tilt=11.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=142.37°(1424) tilt=11.67°(117) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:26 UTC)" (scheduled at 2026-09-18 10:53:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:36 UTC)" (scheduled at 2026-09-18 10:53:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:36 UTC)" (scheduled at 2026-09-18 10:53:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 142.37, 'tilt': 11.67, 'zoom': 1.0}），仍放行
+INFO:watchfiles.main:1 change detected
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:rail.robot:[robot] R001 巡检航点 17/34：楼层2 航点011ab7f7f233ae5af1952a978b7a7fe9 目标X=54.270m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 011ab7f7f233ae5af1952a978b7a7fe9：目标X=54.270m（当前 12.192m）
+INFO:rail.robot:[robot] R001 巡检动作 1/4：航点011ab7f7f233ae5af1952a978b7a7fe9 动作91f9a208ac7c758dffb124d5155200a8 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 91f9a208ac7c758dffb124d5155200a8）：pan=214.0 tilt=12.5 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=214.04°(2140) tilt=12.48°(125) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:51 UTC)" (scheduled at 2026-09-18 10:53:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:54:06 UTC)" (scheduled at 2026-09-18 10:53:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:46 UTC)" (scheduled at 2026-09-18 10:53:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:53:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:54:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:56 UTC)" (scheduled at 2026-09-18 10:53:46.402051+00:00)
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 214.04, 'tilt': 12.48, 'zoom': 1.0}），仍放行
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp017_a01_91f9a208_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp017_a01_91f9a208_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/4：航点011ab7f7f233ae5af1952a978b7a7fe9 动作1c847730bae398ce18aea5f84d561c29 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 1c847730bae398ce18aea5f84d561c29）：pan=232.3 tilt=16.3 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=232.33°(2323) tilt=16.26°(163) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:06 UTC)" (scheduled at 2026-09-18 10:53:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:53:56 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:06 UTC)" (scheduled at 2026-09-18 10:53:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 232.33, 'tilt': 16.26, 'zoom': 1.0}），仍放行
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:21 UTC)" (scheduled at 2026-09-18 10:54:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:54:36 UTC)" (scheduled at 2026-09-18 10:54:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:55:06 UTC)" (scheduled at 2026-09-18 10:54:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:16 UTC)" (scheduled at 2026-09-18 10:54:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:54:36 UTC)" executed successfully
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp017_a02_1c847730_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp017_a02_1c847730_visible.jpg
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:16 UTC)" executed successfully
+INFO:watchfiles.main:4 changes detected
+INFO:rail.robot:[robot] R001 巡检动作 3/4：航点011ab7f7f233ae5af1952a978b7a7fe9 动作441d0b87a6bb60bca86a9ff633981c27 type=3 lift=0.000m
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 441d0b87a6bb60bca86a9ff633981c27）：pan=220.3 tilt=9.8 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=220.34°(2203) tilt=9.75°(98) zoom=1.000(10)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:55:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:26 UTC)" (scheduled at 2026-09-18 10:54:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:36 UTC)" (scheduled at 2026-09-18 10:54:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:26 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 220.34, 'tilt': 9.75, 'zoom': 1.0}），仍放行
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 441d0b87a6bb60bca86a9ff633981c27）
+INFO:rail.robot:[robot] R001 巡检动作 4/4：航点011ab7f7f233ae5af1952a978b7a7fe9 动作b82b0fa977159e3a57ae235392ce22bb type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 b82b0fa977159e3a57ae235392ce22bb）：pan=219.6 tilt=11.7 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=219.58°(2196) tilt=11.67°(117) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:36 UTC)" (scheduled at 2026-09-18 10:54:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:51 UTC)" (scheduled at 2026-09-18 10:54:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:55:06 UTC)" (scheduled at 2026-09-18 10:54:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:46 UTC)" (scheduled at 2026-09-18 10:54:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:54:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:55:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 219.58, 'tilt': 11.67, 'zoom': 1.0}），仍放行
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检航点 18/34：楼层2 航点0044810dcb21c01bd311d0f4ed3cdc72 目标X=54.272m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 0044810dcb21c01bd311d0f4ed3cdc72：目标X=54.272m（当前 11.420m）
+INFO:rail.robot:[robot] R001 巡检动作 1/4：航点0044810dcb21c01bd311d0f4ed3cdc72 动作e0beeff23ea0390d7036a53be9d9add8 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 e0beeff23ea0390d7036a53be9d9add8）：pan=122.3 tilt=6.2 zoom=2.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=122.31°(1223) tilt=6.24°(62) zoom=2.200(22)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:56 UTC)" (scheduled at 2026-09-18 10:54:46.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:06 UTC)" (scheduled at 2026-09-18 10:54:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:54:56 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 122.31, 'tilt': 6.24, 'zoom': 2.2}），仍放行
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:06 UTC)" (scheduled at 2026-09-18 10:54:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp018_a01_e0beeff2_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp018_a01_e0beeff2_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/4：航点0044810dcb21c01bd311d0f4ed3cdc72 动作8ba5d1c86506e8f5f99c4d70303af918 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 8ba5d1c86506e8f5f99c4d70303af918）：pan=114.7 tilt=13.4 zoom=2.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=114.71°(1147) tilt=13.45°(134) zoom=2.200(22)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:21 UTC)" (scheduled at 2026-09-18 10:55:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:55:36 UTC)" (scheduled at 2026-09-18 10:55:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:56:06 UTC)" (scheduled at 2026-09-18 10:55:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:16 UTC)" (scheduled at 2026-09-18 10:55:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:55:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:56:06 UTC)" executed successfully
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 114.71, 'tilt': 13.45, 'zoom': 2.2}），仍放行
+INFO:watchfiles.main:1 change detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp018_a02_8ba5d1c8_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp018_a02_8ba5d1c8_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/4：航点0044810dcb21c01bd311d0f4ed3cdc72 动作f60789c4a0fbdd511202edf87f6925b6 type=3 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 f60789c4a0fbdd511202edf87f6925b6）：pan=127.0 tilt=0.0 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=127.00°(1270) tilt=0.03°(0) zoom=1.000(10)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:26 UTC)" (scheduled at 2026-09-18 10:55:16.402051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:36 UTC)" (scheduled at 2026-09-18 10:55:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:36 UTC)" (scheduled at 2026-09-18 10:55:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 127.0, 'tilt': 0.03, 'zoom': 1.0}），仍放行
+INFO:rail.robot:[robot] R001 录像动作本轮未接入，直接放行（动作 f60789c4a0fbdd511202edf87f6925b6）
+INFO:rail.robot:[robot] R001 巡检动作 4/4：航点0044810dcb21c01bd311d0f4ed3cdc72 动作20e21c70402152f5a955ccd6c095c8c6 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 20e21c70402152f5a955ccd6c095c8c6）：pan=120.5 tilt=7.8 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=120.55°(1206) tilt=7.83°(78) zoom=1.000(10)
+INFO:rail.robot:[robot] R001 已有未完成巡检 79b11cccfde80c36cea7db09e376903b，忽略新任务 79b11cccfde80c36cea7db09e376903b
+INFO:rail.robot:[robot] R001 已有未完成巡检 79b11cccfde80c36cea7db09e376903b，忽略新任务 79b11cccfde80c36cea7db09e376903b
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:51 UTC)" (scheduled at 2026-09-18 10:55:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:56:06 UTC)" (scheduled at 2026-09-18 10:55:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:46 UTC)" (scheduled at 2026-09-18 10:55:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:56:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:55:51 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 120.55, 'tilt': 7.83, 'zoom': 1.0}），仍放行
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:56 UTC)" (scheduled at 2026-09-18 10:55:46.402051+00:00)
+WARNING:rail.vision:[vision] 红外热像失败（放行巡检）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+WARNING:rail.robot:[robot] R001 视觉动作失败（放行巡检，thermometry）：抓图失败 ip=192.168.6.170 err=4(未知错误)
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检航点 19/34：楼层2 航点39648dc786ea241f86c477bad6948a84 目标X=48.491m
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 移动到航点 39648dc786ea241f86c477bad6948a84：目标X=48.491m（当前 11.422m）
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:06 UTC)" (scheduled at 2026-09-18 10:55:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:55:56 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:06 UTC)" (scheduled at 2026-09-18 10:55:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:rail.robot:[robot] R001 巡检动作 1/3：航点39648dc786ea241f86c477bad6948a84 动作08d64c503aa2aff9de4756658595ee28 type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 08d64c503aa2aff9de4756658595ee28）：pan=217.3 tilt=11.4 zoom=1.20
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=217.32°(2173) tilt=11.40°(114) zoom=1.200(12)
+INFO:rail.robot:[robot] R001 已有未完成巡检 79b11cccfde80c36cea7db09e376903b，忽略新任务 79b11cccfde80c36cea7db09e376903b
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:21 UTC)" (scheduled at 2026-09-18 10:56:06.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:56:36 UTC)" (scheduled at 2026-09-18 10:56:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:57:06 UTC)" (scheduled at 2026-09-18 10:56:06.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:16 UTC)" (scheduled at 2026-09-18 10:56:06.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:21 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:56:36 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:16 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:3 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:watchfiles.main:4 changes detected
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_meta (trigger: interval[0:01:00], next run at: 2026-09-18 10:57:06 UTC)" executed successfully
+INFO:watchfiles.main:5 changes detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 217.32, 'tilt': 11.4, 'zoom': 1.2}），仍放行
+INFO:watchfiles.main:5 changes detected
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp019_a01_08d64c50_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp019_a01_08d64c50_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 2/3：航点39648dc786ea241f86c477bad6948a84 动作e373ac3b20414bb50f40dbc8e62dfa5f type=1 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 e373ac3b20414bb50f40dbc8e62dfa5f）：pan=231.1 tilt=16.1 zoom=1.20
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:26 UTC)" (scheduled at 2026-09-18 10:56:16.402051+00:00)
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=231.08°(2311) tilt=16.05°(160) zoom=1.200(12)
+INFO:watchfiles.main:1 change detected
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:36 UTC)" (scheduled at 2026-09-18 10:56:21.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:36 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:26 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:36 UTC)" (scheduled at 2026-09-18 10:56:26.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:36 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:watchfiles.main:1 change detected
+WARNING:rail.robot:[robot] R001 云台定位 15s 未确认到位（目标 {'pan': 231.08, 'tilt': 16.05, 'zoom': 1.2}），仍放行
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:51 UTC)" (scheduled at 2026-09-18 10:56:36.401051+00:00)
+INFO:apscheduler.executors.default:Running job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:57:06 UTC)" (scheduled at 2026-09-18 10:56:36.402051+00:00)
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:46 UTC)" (scheduled at 2026-09-18 10:56:36.402051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:56:51 UTC)" executed successfully
+INFO:apscheduler.executors.default:Job "tick_execution_status (trigger: interval[0:00:30], next run at: 2026-09-18 10:57:06 UTC)" executed successfully
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:46 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:56 UTC)" (scheduled at 2026-09-18 10:56:46.402051+00:00)
+INFO:rail.vision:[vision] 可见光完成：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp019_a02_e373ac3b_visible.jpg
+INFO:rail.robot:[robot] R001 视觉动作完成（visible）：D:\git_ai\straitbot-fms\backend\data\inspection\79b11cccfde80c36cea7db09e376903b\f2_wp019_a02_e373ac3b_visible.jpg
+INFO:watchfiles.main:1 change detected
+INFO:rail.robot:[robot] R001 巡检动作 3/3：航点39648dc786ea241f86c477bad6948a84 动作02f6237e888d0253a5d1925f431be523 type=2 lift=0.000m
+INFO:rail.robot:[robot] R001 调整云台位姿（动作 02f6237e888d0253a5d1925f431be523）：pan=230.0 tilt=7.8 zoom=1.00
+INFO:rail.hkptz:[hkptz] 绝对定位 通道1 pan=230.00°(2300) tilt=7.81°(78) zoom=1.000(10)
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:56:56 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:57:06 UTC)" (scheduled at 2026-09-18 10:56:51.401051+00:00)
+INFO:apscheduler.executors.default:Job "tick_plans (trigger: interval[0:00:15], next run at: 2026-09-18 10:57:06 UTC)" executed successfully
+INFO:apscheduler.executors.default:Running job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:57:06 UTC)" (scheduled at 2026-09-18 10:56:56.402051+00:00)
+INFO:httpx:HTTP Request: POST http://192.168.62.64:6002/ "HTTP/1.1 200 OK"
+INFO:apscheduler.executors.default:Job "_tick_status (trigger: interval[0:00:10], next run at: 2026-09-18 10:57:06 UTC)" executed successfully
+INFO:watchfiles.main:3 changes detected

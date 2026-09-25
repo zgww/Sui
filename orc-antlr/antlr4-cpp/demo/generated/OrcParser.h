@@ -50,15 +50,16 @@ public:
     RuleCatchClause = 25, RuleFinallyClause = 26, RuleBlock = 27, RuleType = 28, 
     RuleClosureType = 29, RuleFunctionTypeArg = 30, RuleAttribute = 31, 
     RuleFunctionType = 32, RuleTypeQualifier = 33, RulePointer = 34, RuleRef = 35, 
-    RuleGenericTypeUsage = 36, RulePrimitiveType = 37, RuleEnumDefinition = 38, 
-    RuleEnumItem = 39, RuleExtensionDefinition = 40, RuleExtensionBlock = 41, 
-    RuleClassDefinition = 42, RuleClassDefinitionBlock = 43, RuleClassFieldDeclaration = 44, 
-    RuleMethodDeclaration = 45, RuleAssignRightPart = 46, RuleArgumentDeclaration = 47, 
-    RuleArgumentsDeclaration = 48, RuleFunctionPointerVarDeclaration = 49, 
-    RuleFunctionDefinition = 50, RuleGlobalFunctionDefinition = 51, RuleGlobalVarDeclaration = 52, 
-    RuleExternFunctionDeclaration = 53, RuleImportStatement = 54, RuleIncludeStatement = 55, 
-    RuleIncludePathCharacters = 56, RulePackageStatement = 57, RuleLiteral = 58, 
-    RuleEos = 59
+    RulePrimitiveType = 36, RuleEnumDefinition = 37, RuleEnumItem = 38, 
+    RuleExtensionDefinition = 39, RuleExtensionBlock = 40, RuleClassDefinition = 41, 
+    RuleClassDefinitionBlock = 42, RuleClassFieldDeclaration = 43, RuleMethodDeclaration = 44, 
+    RuleAssignRightPart = 45, RuleArgumentDeclaration = 46, RuleArgumentsDeclaration = 47, 
+    RuleFunctionPointerVarDeclaration = 48, RuleFunctionDefinition = 49, 
+    RuleGenericFunctionDefinition = 50, RuleGenericExternFunctionDeclaration = 51, 
+    RuleGenericParameterList = 52, RuleGenericTypeUsage = 53, RuleGlobalFunctionDefinition = 54, 
+    RuleGlobalVarDeclaration = 55, RuleExternFunctionDeclaration = 56, RuleImportStatement = 57, 
+    RuleIncludeStatement = 58, RuleIncludePathCharacters = 59, RulePackageStatement = 60, 
+    RuleLiteral = 61, RuleEos = 62
   };
 
   explicit OrcParser(antlr4::TokenStream *input);
@@ -114,7 +115,6 @@ public:
   class TypeQualifierContext;
   class PointerContext;
   class RefContext;
-  class GenericTypeUsageContext;
   class PrimitiveTypeContext;
   class EnumDefinitionContext;
   class EnumItemContext;
@@ -129,6 +129,10 @@ public:
   class ArgumentsDeclarationContext;
   class FunctionPointerVarDeclarationContext;
   class FunctionDefinitionContext;
+  class GenericFunctionDefinitionContext;
+  class GenericExternFunctionDeclarationContext;
+  class GenericParameterListContext;
+  class GenericTypeUsageContext;
   class GlobalFunctionDefinitionContext;
   class GlobalVarDeclarationContext;
   class ExternFunctionDeclarationContext;
@@ -1060,9 +1064,9 @@ public:
     ClosureTypeContext *closureType();
     PointerContext *pointer();
     RefContext *ref();
-    GenericTypeUsageContext *genericTypeUsage();
     antlr4::tree::TerminalNode *Id();
     antlr4::tree::TerminalNode *Struct();
+    GenericTypeUsageContext *genericTypeUsage();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1189,22 +1193,6 @@ public:
   };
 
   RefContext* ref();
-
-  class  GenericTypeUsageContext : public OrcRuleContext {
-  public:
-    GenericTypeUsageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<antlr4::tree::TerminalNode *> Id();
-    antlr4::tree::TerminalNode* Id(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  GenericTypeUsageContext* genericTypeUsage();
 
   class  PrimitiveTypeContext : public OrcRuleContext {
   public:
@@ -1452,6 +1440,76 @@ public:
 
   FunctionDefinitionContext* functionDefinition();
 
+  class  GenericFunctionDefinitionContext : public OrcRuleContext {
+  public:
+    GenericFunctionDefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    TypeContext *type();
+    antlr4::tree::TerminalNode *Id();
+    GenericParameterListContext *genericParameterList();
+    ArgumentsDeclarationContext *argumentsDeclaration();
+    BlockContext *block();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  GenericFunctionDefinitionContext* genericFunctionDefinition();
+
+  class  GenericExternFunctionDeclarationContext : public OrcRuleContext {
+  public:
+    GenericExternFunctionDeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *Extern();
+    TypeContext *type();
+    antlr4::tree::TerminalNode *Id();
+    GenericParameterListContext *genericParameterList();
+    ArgumentsDeclarationContext *argumentsDeclaration();
+    EosContext *eos();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  GenericExternFunctionDeclarationContext* genericExternFunctionDeclaration();
+
+  class  GenericParameterListContext : public OrcRuleContext {
+  public:
+    GenericParameterListContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *Id();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  GenericParameterListContext* genericParameterList();
+
+  class  GenericTypeUsageContext : public OrcRuleContext {
+  public:
+    GenericTypeUsageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    std::vector<antlr4::tree::TerminalNode *> Id();
+    antlr4::tree::TerminalNode* Id(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  GenericTypeUsageContext* genericTypeUsage();
+
   class  GlobalFunctionDefinitionContext : public OrcRuleContext {
   public:
     GlobalFunctionDefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -1459,6 +1517,8 @@ public:
     FunctionDefinitionContext *functionDefinition();
     antlr4::tree::TerminalNode *Static();
     ExternFunctionDeclarationContext *externFunctionDeclaration();
+    GenericFunctionDefinitionContext *genericFunctionDefinition();
+    GenericExternFunctionDeclarationContext *genericExternFunctionDeclaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

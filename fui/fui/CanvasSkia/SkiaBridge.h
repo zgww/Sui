@@ -8,6 +8,11 @@ class GrDirectContext;
 // 随后 Canvas::beginFrame/endFrame 在该目标上工作。
 void skiaCanvasBindFrame(SkSurface* surface, GrDirectContext* grContext);
 
+// 窗口释放渲染资源前调用（cleanData）：
+// 若共享 SkiaCtx 当前恰好缓存的是该窗口的 skCanvas/grContext 裸指针，
+// 将其置空，避免窗口销毁后 Canvas::endFrame/beginFrame 访问已释放内存。
+void skiaCanvasUnbindIf(SkSurface* surface, GrDirectContext* grContext);
+
 // ---- 全 GPU 视频播放支持（HwVideoPlayerView）----
 // 可选：在创建任何 fui Window 之前注入外部 D3D11 设备。
 // ANGLE 将基于该设备创建 EGL Display，FFmpeg D3D11VA 解码器与

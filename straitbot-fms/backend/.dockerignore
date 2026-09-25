@@ -1,0 +1,7 @@
+.venv
+__pycache__
+*.pyc
+data/fms.db
+data/logs
+data/packages
+.env

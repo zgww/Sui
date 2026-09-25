@@ -1,0 +1,2802 @@
+[
+    {
+        "floor": 2,
+        "id": "79b11cccfde80c36cea7db09e376903b",
+        "name": "全程TT",
+        "plan": "f1d381fc6fff4346987e6e2f988f379d",
+        "substationMapsId": "6643707fd9a2330435af754f031c93ce",
+        "waypoint": [
+            {
+                "action": [
+                    {
+                        "id": "a465a4c9a1680c862f72bf74957abdfa",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24861,
+                            "pan": 147.47,
+                            "tilt": 21.73,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "f08d6753bdf643f18974e9d41de98738",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 25890,
+                            "pan": 138.0,
+                            "tilt": 9.43,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "dfe8142a0a6a88051df9f5cd21e1b5be",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 144.94,
+                            "tilt": 12.85,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "d5e0c60711d49eb0997af9efe4f7e638",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 142.37,
+                            "tilt": 11.67,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101108107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.8537037,
+                                        "w": 0.49166667,
+                                        "x": 0.29739583,
+                                        "y": 0.06759259
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "935b1673001fb251b967912c430aafc8",
+                "index": 1,
+                "pose": {
+                    "point": {
+                        "x": 55.042,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "91f9a208ac7c758dffb124d5155200a8",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 214.04,
+                            "tilt": 12.48,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "1c847730bae398ce18aea5f84d561c29",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24885,
+                            "pan": 232.33,
+                            "tilt": 16.26,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "441d0b87a6bb60bca86a9ff633981c27",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 220.34,
+                            "tilt": 9.75,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "b82b0fa977159e3a57ae235392ce22bb",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 219.58,
+                            "tilt": 11.67,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101109106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.8388889,
+                                        "w": 0.8072917,
+                                        "x": 0.13697916,
+                                        "y": 0.09351852
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "011ab7f7f233ae5af1952a978b7a7fe9",
+                "index": 2,
+                "pose": {
+                    "point": {
+                        "x": 54.27,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "e0beeff23ea0390d7036a53be9d9add8",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 33072,
+                            "pan": 122.31,
+                            "tilt": 6.24,
+                            "zoom": 2.2
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "8ba5d1c86506e8f5f99c4d70303af918",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 33072,
+                            "pan": 114.71,
+                            "tilt": 13.45,
+                            "zoom": 2.2
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "f60789c4a0fbdd511202edf87f6925b6",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24934,
+                            "pan": 127.0,
+                            "tilt": 0.03,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "20e21c70402152f5a955ccd6c095c8c6",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24853,
+                            "pan": 120.55,
+                            "tilt": 7.83,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101107107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.6333333,
+                                        "w": 0.4671875,
+                                        "x": 0.321875,
+                                        "y": 0.1388889
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "0044810dcb21c01bd311d0f4ed3cdc72",
+                "index": 3,
+                "pose": {
+                    "point": {
+                        "x": 54.272,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "08d64c503aa2aff9de4756658595ee28",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26158,
+                            "pan": 217.32,
+                            "tilt": 11.4,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "e373ac3b20414bb50f40dbc8e62dfa5f",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26174,
+                            "pan": 231.08,
+                            "tilt": 16.05,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "02f6237e888d0253a5d1925f431be523",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24853,
+                            "pan": 230.0,
+                            "tilt": 7.81,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101108106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.72407407,
+                                        "w": 0.665625,
+                                        "x": 0.28125,
+                                        "y": 0.22037037
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "39648dc786ea241f86c477bad6948a84",
+                "index": 4,
+                "pose": {
+                    "point": {
+                        "x": 48.491,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "f1a41fb0efe81bc4fb6355bc73b52a75",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26255,
+                            "pan": 164.22,
+                            "tilt": 11.94,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "1476be151253c78bdd9403b50d3ec0ab",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26174,
+                            "pan": 175.8,
+                            "tilt": 17.13,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "2bd655714f16f65989086d1ec9a625e6",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24853,
+                            "pan": 175.75,
+                            "tilt": 7.04,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101107106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.7648148,
+                                        "w": 0.6223958,
+                                        "x": 0.30052084,
+                                        "y": 0.17962962
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "fb1ee82f0c396a22aab5b1582712e594",
+                "index": 5,
+                "pose": {
+                    "point": {
+                        "x": 39.796,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "8d2074a93312f77ff859e4b44f7409dd",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 92.57,
+                            "tilt": 10.6,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "d57915ae96531c873094f10097a59d88",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 92.57,
+                            "tilt": 24.52,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "bf4cd7de35625037f8be9b8007817d68",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 90.85,
+                            "tilt": 15.83,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101106106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.9638889,
+                                        "w": 0.47135416,
+                                        "x": 0.096354164,
+                                        "y": 0.024074074
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "d1901d56720f18218dd88a67ed930405",
+                "index": 6,
+                "pose": {
+                    "point": {
+                        "x": 33.391,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "99fc4d4cca52695209a0bc308a70c281",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 8.91,
+                            "tilt": 6.43,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "622f1f61e79cd8efa5f3d736283f6379",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 1.02,
+                            "tilt": 31.34,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "2a80c182e31cf39318389c7a19a24de8",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24894,
+                            "pan": 62.26,
+                            "tilt": 11.72,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101105106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.8101852,
+                                        "w": 0.52708334,
+                                        "x": 0.19270833,
+                                        "y": 0.072222225
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "68c49de00b55953b21a6a6412c4b66a6",
+                "index": 7,
+                "pose": {
+                    "point": {
+                        "x": 31.061,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "118b8796911443570e171d33f7324cb9",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24796,
+                            "pan": 48.22,
+                            "tilt": 6.35,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    }
+                ],
+                "id": "f531a795b62fdc4d3f343cc8f650f14c",
+                "index": 8,
+                "pose": {
+                    "point": {
+                        "x": 29.465,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "2c331109090831eac28d3d1f00b1c455",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24796,
+                            "pan": 48.22,
+                            "tilt": 26.02,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    }
+                ],
+                "id": "8ce38032de8295193ce0724751f19715",
+                "index": 9,
+                "pose": {
+                    "point": {
+                        "x": 28.973,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "1d071da7f13b03096e42f2b535e020d6",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 28046,
+                            "pan": 61.47,
+                            "tilt": 5.42,
+                            "zoom": 1.5
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "a5caf5093fb9e93ddb272d9be36d813c",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 28046,
+                            "pan": 68.67,
+                            "tilt": 12.69,
+                            "zoom": 1.5
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "6d5369ad055f92b394c94b43bd918316",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24788,
+                            "pan": 302.71,
+                            "tilt": 10.45,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "92f5cb6a04d43cde224a128ca1163814",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24788,
+                            "pan": 302.71,
+                            "tilt": 10.45,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101106107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.74351853,
+                                        "w": 0.834375,
+                                        "x": 0.084375,
+                                        "y": 0.125
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "a03a8cf9a20ae5a13db6728371032699",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24861,
+                            "pan": 70.99,
+                            "tilt": 4.54,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "0606e1ac43bee381dfc084e4e38dbe13",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24877,
+                            "pan": 72.81,
+                            "tilt": 6.35,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101104106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.6712963,
+                                        "w": 0.5296875,
+                                        "x": 0.29739583,
+                                        "y": 0.23055555
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "3a71a14285cabb2ac2c5b5876fa0d70e",
+                "index": 10,
+                "pose": {
+                    "point": {
+                        "x": 26.795,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "7155a767c7971ab5152b44d6fb32d9af",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24796,
+                            "pan": 304.9,
+                            "tilt": 9.56,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "cf83497f77d9944aa43ed6714fde4811",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24796,
+                            "pan": 297.11,
+                            "tilt": 16.12,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "62ee37833ce839a6126d58513b9ecfca",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 308.84,
+                            "tilt": 9.47,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "aaf8816d6b46886bca9730388248984b",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 308.84,
+                            "tilt": 9.47,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101105107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.7962963,
+                                        "w": 0.6671875,
+                                        "x": 0.27291667,
+                                        "y": 0.16574074
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "bc6f71b94610910f2f221a204945008f",
+                "index": 11,
+                "pose": {
+                    "point": {
+                        "x": 22.562,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "f658a05482d7896683c3f3a215fa3af6",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 28784,
+                            "pan": 62.42,
+                            "tilt": 4.63,
+                            "zoom": 1.6
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "01f2c0b1b1bdf8f61fb546057768c171",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 28784,
+                            "pan": 73.3,
+                            "tilt": 13.77,
+                            "zoom": 1.6
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "156eecb964499308d293bd2111cc136c",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 67.52,
+                            "tilt": 9.49,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101103106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.6861111,
+                                        "w": 0.41302082,
+                                        "x": 0.2609375,
+                                        "y": 0.1537037
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "9c71951be8c450592fdfcb2327f5b844",
+                "index": 12,
+                "pose": {
+                    "point": {
+                        "x": 21.373,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "1cf65840a6efe8cf4c18d98bc442db62",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 312.24,
+                            "tilt": 7.64,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "02acd1b726af49b647327d8a19d6568a",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 298.54,
+                            "tilt": 16.66,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "53bcc64d0c1a0b864bb88403df1048de",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 303.08,
+                            "tilt": 9.49,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101104107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.71018517,
+                                        "w": 0.6984375,
+                                        "x": 0.2515625,
+                                        "y": 0.13425925
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "d87d3f9ec175c6c4036ed00b4e3e5925",
+                "index": 13,
+                "pose": {
+                    "point": {
+                        "x": 16.69,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "1ae541df43bea5eb938474f0645c8361",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 34441,
+                            "pan": 205.42,
+                            "tilt": 11.47,
+                            "zoom": 2.5
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 1
+                    }
+                ],
+                "id": "abd6f229238c5fd8de42706978035c2f",
+                "index": 14,
+                "pose": {
+                    "point": {
+                        "x": 15.065,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "8f5b502cbdc4c9059fcab3990c963fed",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 25980,
+                            "pan": 57.52,
+                            "tilt": 7.68,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "b03f08ac8b1681119f003293016f59db",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 25980,
+                            "pan": 61.14,
+                            "tilt": 15.99,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "6c8bba3e936efd9f8b082eaaf578a294",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 62.79,
+                            "tilt": 9.5,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "42fedce5650537c87ac1efb376f1e063",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24845,
+                            "pan": 62.79,
+                            "tilt": 9.5,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101102106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.775,
+                                        "w": 0.50677085,
+                                        "x": 0.16822916,
+                                        "y": 0.108333334
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "a0d7e413d85371dd0ae7e806393c3916",
+                "index": 15,
+                "pose": {
+                    "point": {
+                        "x": 14.684,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "b019253e2e7714a63a437ea723287b87",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 32123,
+                            "pan": 75.73,
+                            "tilt": 3.4,
+                            "zoom": 2.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "756760b49263dbb59ad3c4ad0cccf277",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 32123,
+                            "pan": 75.75,
+                            "tilt": 8.02,
+                            "zoom": 2.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "d6f99f024af9f2f2fe8788dae395eb28",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 32480,
+                            "pan": 77.78,
+                            "tilt": 6.33,
+                            "zoom": 2.1
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101101106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.53518516,
+                                        "w": 0.353125,
+                                        "x": 0.3328125,
+                                        "y": 0.27314815
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "34a1176242d6f9f587a87a9cbe998cff",
+                "index": 16,
+                "pose": {
+                    "point": {
+                        "x": 12.184,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "9c5e647dc12b4833eb0c18b8dcf341f9",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 303.98,
+                            "tilt": 7.33,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "102d793f6e86b926591886a6fbbbb94b",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 294.14,
+                            "tilt": 13.97,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "4a3be57879e69d475be9fbcb4a75e70f",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 293.28,
+                            "tilt": 6.29,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101103107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.71018517,
+                                        "w": 0.6265625,
+                                        "x": 0.125,
+                                        "y": 0.21388888
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "432aa501d75eebf6942baaa41fafc371",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 293.3,
+                            "tilt": 6.31,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 3
+                    }
+                ],
+                "id": "1e8f223ec43dc5dd1f7476957b5db4bc",
+                "index": 17,
+                "pose": {
+                    "point": {
+                        "x": 10.823,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "e898ff5701c576f4aee539901be12f00",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24853,
+                            "pan": 311.66,
+                            "tilt": 8.0,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "79d2669b4c2ffa23b4f1678b9297fffc",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24853,
+                            "pan": 311.66,
+                            "tilt": 7.98,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "b73084355493e13a917b3a25d4145290",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 303.15,
+                            "tilt": 12.43,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101102107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.84444445,
+                                        "w": 0.72291666,
+                                        "x": 0.15885417,
+                                        "y": 0.043518517
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "31f36f0c6cd937ecc262bc60b3db24f0",
+                "index": 18,
+                "pose": {
+                    "point": {
+                        "x": 6.138,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "79dfe6ab3e5ebd633d0dcc59415a7600",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24853,
+                            "pan": 311.61,
+                            "tilt": 9.98,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "090333cebbc65bf572fb7186f88af4d8",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24853,
+                            "pan": 294.49,
+                            "tilt": 22.53,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "dcc952638e26f5488e5ed4e68d9940a1",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 310.11,
+                            "tilt": 12.43,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "572d29841d732e79c211bfd576293185",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 310.12,
+                            "tilt": 12.43,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [
+                            {
+                                "id": "100003101101107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.8851852,
+                                        "w": 0.8177083,
+                                        "x": 0.1453125,
+                                        "y": 0.074074075
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "df0ef0e9abcb38b7cd5bb635f87cd7de",
+                "index": 19,
+                "pose": {
+                    "point": {
+                        "x": 0.973,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            }
+        ]
+    },
+    {
+        "floor": 1,
+        "id": "79b11cccfde80c36cea7db09e376903b",
+        "name": "全程TT",
+        "plan": "f1d381fc6fff4346987e6e2f988f379d",
+        "substationMapsId": "48b8a9ab4a2438f92beef3554698175e",
+        "waypoint": [
+            {
+                "action": [
+                    {
+                        "id": "efaad4558cb02a32fa1696f810b86e17",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 29262,
+                            "pan": 312.84,
+                            "tilt": 11.67,
+                            "zoom": 1.6
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "9c53f686901012792f34d5ec5b9b179c",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 29295,
+                            "pan": 305.0,
+                            "tilt": 25.36,
+                            "zoom": 1.6
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "240eb67c1ccb7c827f3f71cce5baf717",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 307.76,
+                            "tilt": 16.32,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102108107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.8851852,
+                                        "w": 0.39947918,
+                                        "x": 0.35729167,
+                                        "y": 0.031481482
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "cecbb62d6473a8c273918b10a829d54f",
+                "index": 1,
+                "pose": {
+                    "point": {
+                        "x": 0.814,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "d069e75fff30f74551ddabf216b7dd3d",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26036,
+                            "pan": 11.14,
+                            "tilt": 14.88,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "aa1de262c5d0f5e1bfc16140f74a5980",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26036,
+                            "pan": 32.21,
+                            "tilt": 14.88,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "e29aa4282411c73897d8971f0804a8c3",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 19.66,
+                            "tilt": 16.35,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "61fec08cf050635b1ef9fd92cfc23acd",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 19.66,
+                            "tilt": 16.35,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-064",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102109104",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.74351853,
+                                        "w": 0.96197915,
+                                        "x": 0.0015625,
+                                        "y": 0.08611111
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "077341c1618dcf0cab68f33194f51e71",
+                "index": 2,
+                "pose": {
+                    "point": {
+                        "x": 2.096,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "5fbd87bad49578101757bc1cef844645",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 34401,
+                            "pan": 299.33,
+                            "tilt": 7.43,
+                            "zoom": 2.5
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "757b6e9ea837f151c68c821b1982bcd0",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 34417,
+                            "pan": 293.34,
+                            "tilt": 14.38,
+                            "zoom": 2.5
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "317d053ee12d8730775f303e8af8ce26",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 290.75,
+                            "tilt": 9.73,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102107106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.65925926,
+                                        "w": 0.42916667,
+                                        "x": 0.20520833,
+                                        "y": 0.21388888
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "5f6359b92f4f910378058cbe95ee1c7c",
+                "index": 3,
+                "pose": {
+                    "point": {
+                        "x": 3.174,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "3b587b985ee2715757e0299811173bea",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 36338,
+                            "pan": 288.11,
+                            "tilt": 13.25,
+                            "zoom": 2.9
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "a30f6d36c0c8df5132f9ac974af8113b",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 2352,
+                            "focus": 42417,
+                            "pan": 296.95,
+                            "tilt": 3.86,
+                            "zoom": 5.2
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "7a94ce38231abc4901e5cca2303c342b",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 290.74,
+                            "tilt": 9.73,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102106106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.712037,
+                                        "w": 0.45104167,
+                                        "x": 0.26770833,
+                                        "y": 0.17962962
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "e0682a9e767327b3a0a4524617951470",
+                "index": 4,
+                "pose": {
+                    "point": {
+                        "x": 7.761,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "2b8fa8a3c2affda88b04528b9f6dfe97",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 357.13,
+                            "tilt": 15.65,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "d2ba021bbcdb1555ea87db7b30809f90",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 55.1,
+                            "tilt": 33.06,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "df078ce5820022ae3a1f1bb3eb4258e6",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24804,
+                            "pan": 55.23,
+                            "tilt": 35.61,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "4da16ba614d4520e94918b948f61d4b9",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 1.05,
+                            "tilt": 15.98,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "57357fc0aac6060bf1883e37fb6ceda3",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24788,
+                            "pan": 43.3,
+                            "tilt": 39.83,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102108109",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.5972222,
+                                        "w": 0.5015625,
+                                        "x": 0.14270833,
+                                        "y": 0.117592596
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "id": "62e05ad91c7682df81229d300ba14847",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 4.51,
+                            "tilt": 13.1,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-063",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102108106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.7814815,
+                                        "w": 0.55572915,
+                                        "x": 0.3125,
+                                        "y": 0.15833333
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "4f5294e9ee67a514c7379fb37f9e7186",
+                "index": 5,
+                "pose": {
+                    "point": {
+                        "x": 7.761,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "a809bd695af2e6400b7850ee30cdc9ed",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 38.42,
+                            "tilt": 38.2,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "5fbe7529a94185302da3e5970335e867",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 27876,
+                            "pan": 352.7,
+                            "tilt": 13.67,
+                            "zoom": 1.5
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "98b1cc299bb7dcf4ff1e710a08162e46",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24804,
+                            "pan": 344.45,
+                            "tilt": 15.66,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102107107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.6953704,
+                                        "w": 0.478125,
+                                        "x": 0.16302083,
+                                        "y": 0.1537037
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "id": "152b18e9f27c3a60df614aba8db7c813",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24788,
+                            "pan": 36.91,
+                            "tilt": 39.83,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102107109",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.74814814,
+                                        "w": 0.66041666,
+                                        "x": 0.18333334,
+                                        "y": 0.20185184
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "9d6bb37b6aca384746c35293cacbfdb8",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24869,
+                            "pan": 351.71,
+                            "tilt": 13.1,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "a119b68808bc312412646a5cb07c5bb7",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24885,
+                            "pan": 43.7,
+                            "tilt": 35.12,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-062",
+                        "thermometry_points": [],
+                        "type": 3
+                    }
+                ],
+                "id": "1b979dc3b3bba901abce50c66dbf5025",
+                "index": 6,
+                "pose": {
+                    "point": {
+                        "x": 12.768,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "0b40b2bde27a39fd2254efcc0c13c7ad",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 27892,
+                            "pan": 249.58,
+                            "tilt": 13.65,
+                            "zoom": 1.5
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "5c7197893385c2f826f965562e459c6c",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 2352,
+                            "focus": 42522,
+                            "pan": 238.46,
+                            "tilt": 12.44,
+                            "zoom": 5.3
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "16e692a1d22842a261b9c4f6ea27a473",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 243.62,
+                            "tilt": 9.22,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102101107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.6814815,
+                                        "w": 0.51354164,
+                                        "x": 0.25833333,
+                                        "y": 0.18425927
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "dab2349f49a47c487baedc0f5f4c5816",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 243.62,
+                            "tilt": 9.24,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 3
+                    }
+                ],
+                "id": "e9e3c74f6902dbd1224a2afb7d02c023",
+                "index": 7,
+                "pose": {
+                    "point": {
+                        "x": 12.768,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "1ae58d9124c40fff32f9487aa51a1229",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 35900,
+                            "pan": 299.41,
+                            "tilt": 6.85,
+                            "zoom": 2.8
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "fe411d995a82c07fef1364a630ab6a09",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 35916,
+                            "pan": 291.66,
+                            "tilt": 15.75,
+                            "zoom": 2.8
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "0f0614bdab44e2ae80bd52a074c368d0",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 291.15,
+                            "tilt": 9.22,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102105106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.74351853,
+                                        "w": 0.5911458,
+                                        "x": 0.16302083,
+                                        "y": 0.11481482
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "3e3a3643383ce2883c7c191cd3da7b8e",
+                "index": 8,
+                "pose": {
+                    "point": {
+                        "x": 14.505,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "ac2ff5d852aa11ad3cc6392e34eedb21",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 29894,
+                            "pan": 246.97,
+                            "tilt": 11.92,
+                            "zoom": 1.7
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "2c24c9419558e4336ab57bf381474730",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 1436,
+                            "focus": 38372,
+                            "pan": 237.45,
+                            "tilt": 13.82,
+                            "zoom": 3.5
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "1f399f0a1a603d6117677fb93770f46b",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 244.64,
+                            "tilt": 9.24,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102102107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.71018517,
+                                        "w": 0.42239583,
+                                        "x": 0.34895834,
+                                        "y": 0.21574074
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "b1bdaa973c743ebc57d94d6ff806645c",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 244.64,
+                            "tilt": 9.24,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 3
+                    }
+                ],
+                "id": "b9af691bc44e16010f522d59b92736ad",
+                "index": 9,
+                "pose": {
+                    "point": {
+                        "x": 17.93,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "d01aba171a3f66c9fcd950ddb0580d20",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 25720,
+                            "pan": 345.08,
+                            "tilt": 13.83,
+                            "zoom": 1.1
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "2dd8da3974aaebba059641e6bbb0c040",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 25704,
+                            "pan": 25.66,
+                            "tilt": 39.98,
+                            "zoom": 1.1
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "d4d8c991e99d747eb88951ed38af6f7a",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 350.74,
+                            "tilt": 14.71,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "13d846c20eadd77430b19319be232944",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 27.94,
+                            "tilt": 34.56,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "6aa18fc04e81d2902c035a75864fcf79",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24804,
+                            "pan": 19.79,
+                            "tilt": 43.35,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102106109",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.76296294,
+                                        "w": 0.3546875,
+                                        "x": 0.24739583,
+                                        "y": 0.07685185
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "id": "fcbb237ccb6703f27d305e7ef1c57c45",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24804,
+                            "pan": 344.42,
+                            "tilt": 15.66,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-061",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102106107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.8009259,
+                                        "w": 0.6546875,
+                                        "x": 0.1765625,
+                                        "y": 0.10555556
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "25fba40f6a4d41caf7e12c5473121609",
+                "index": 10,
+                "pose": {
+                    "point": {
+                        "x": 17.93,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "c261a0ca51cc98ccdb62302a1f472bce",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 34231,
+                            "pan": 296.2,
+                            "tilt": 6.07,
+                            "zoom": 2.5
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "7323416ba208d0c1fe883dafcce419f8",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 34247,
+                            "pan": 290.44,
+                            "tilt": 15.05,
+                            "zoom": 2.5
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "746e2f43562c94e46d51b3bca6dce3c9",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 296.13,
+                            "tilt": 7.04,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102104104",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.72407407,
+                                        "w": 0.44270834,
+                                        "x": 0.3328125,
+                                        "y": 0.20185184
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "9afe3f14ef29c136f8b65376178141cc",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26377,
+                            "pan": 291.09,
+                            "tilt": 7.97,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-059",
+                        "thermometry_points": [],
+                        "type": 3
+                    }
+                ],
+                "id": "bceab46bb09be1caac3cc0202232a882",
+                "index": 11,
+                "pose": {
+                    "point": {
+                        "x": 19.589,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "a42966dd1f65aa418df9de5fede31cff",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 32504,
+                            "pan": 250.55,
+                            "tilt": 11.73,
+                            "zoom": 2.1
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "c22f947711d4163a334578cf3dffaddd",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 33509,
+                            "pan": 252.34,
+                            "tilt": 7.04,
+                            "zoom": 2.29
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "id": "34685c800e32e58cfbca3a48702a71c5",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 265.81,
+                            "tilt": 7.04,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-058",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102103103",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.49444443,
+                                        "w": 0.853125,
+                                        "x": 0.10208333,
+                                        "y": 0.3361111
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "0471001b225a5fc9821a0fd76fa000ba",
+                "index": 12,
+                "pose": {
+                    "point": {
+                        "x": 21.393,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "4e030f36270aa6601feb6c9d724f0162",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24804,
+                            "pan": 343.75,
+                            "tilt": 12.75,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "68370b9c96f32378dd96ea8958ba13a4",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24788,
+                            "pan": 18.11,
+                            "tilt": 45.38,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "f880fb58ce40e1eafe7138783279c9bf",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24821,
+                            "pan": 348.39,
+                            "tilt": 12.98,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102105107",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.67407405,
+                                        "w": 0.39427084,
+                                        "x": 0.45104167,
+                                        "y": 0.16296296
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "id": "4f6029a6e2d039706bc2bc8830fc8a35",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24804,
+                            "pan": 19.79,
+                            "tilt": 43.35,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102105109",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.7509259,
+                                        "w": 0.61302084,
+                                        "x": 0.2171875,
+                                        "y": 0.11296296
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "b2e21c6819956cce9d483fec4f94e812",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26377,
+                            "pan": 338.29,
+                            "tilt": 7.92,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 3
+                    },
+                    {
+                        "duration": 3000,
+                        "id": "733aaf865dcf7f20c7defbd006d6914e",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 26506,
+                            "pan": 14.5,
+                            "tilt": 42.43,
+                            "zoom": 1.2
+                        },
+                        "steer_point_name": "AO-RC-060",
+                        "thermometry_points": [],
+                        "type": 3
+                    }
+                ],
+                "id": "81ab47b937c6c1942d7c5ef221e17cce",
+                "index": 13,
+                "pose": {
+                    "point": {
+                        "x": 22.891,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "703e7ad2f0850af4415d5171cbe9a2e1",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24837,
+                            "pan": 185.9,
+                            "tilt": 22.64,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "a290ccad17e7e2adcf969705f38a33b3",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 978,
+                            "focus": 36176,
+                            "pan": 207.13,
+                            "tilt": 22.64,
+                            "zoom": 2.9
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "f9f2527a49a77df21a257f5514c7fc99",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24788,
+                            "pan": 190.83,
+                            "tilt": 19.31,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-057",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102102106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.7916667,
+                                        "w": 0.8697917,
+                                        "x": 0.039583333,
+                                        "y": 0.13425925
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "d572dd3e1b2b976d4b1e922f42491baf",
+                "index": 14,
+                "pose": {
+                    "point": {
+                        "x": 24.669,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            },
+            {
+                "action": [
+                    {
+                        "id": "a93c619ca5c3757878964114b270d4f1",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 31070,
+                            "pan": 159.06,
+                            "tilt": 22.64,
+                            "zoom": 1.9
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "f01d3622c1ab029a987dd0bd40e4c946",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 25250,
+                            "pan": 127.27,
+                            "tilt": 13.52,
+                            "zoom": 1.1
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [],
+                        "type": 1
+                    },
+                    {
+                        "id": "9a01eea5fbcae8568c817dd3174e43de",
+                        "lift_height": 0.0,
+                        "ptz_param": {
+                            "focal_len": 520,
+                            "focus": 24788,
+                            "pan": 140.19,
+                            "tilt": 19.31,
+                            "zoom": 1.0
+                        },
+                        "steer_point_name": "AO-RC-056",
+                        "thermometry_points": [
+                            {
+                                "id": "100003102101106",
+                                "thermometry_param": {
+                                    "distance": 300,
+                                    "emissivity": 0.96,
+                                    "enable_reflective": 1,
+                                    "rect": {
+                                        "h": 0.71944445,
+                                        "w": 0.95520836,
+                                        "x": 0.019270834,
+                                        "y": 0.125
+                                    },
+                                    "reflective_temperature": 0.0
+                                }
+                            }
+                        ],
+                        "type": 2
+                    }
+                ],
+                "id": "9928741788b7465dfcada18febb5dc87",
+                "index": 15,
+                "pose": {
+                    "point": {
+                        "x": 25.104,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "theta": 0.0
+                }
+            }
+        ]
+    }
+]

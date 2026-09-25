@@ -316,7 +316,7 @@ public:
 class SymbolTypePointer : public SymbolTypeWithTypeName {
 public:
 	int pointerLevel = 1; //几级指针
-	std::string genericTypeArg; //擦除型泛型实参，如 Vtable_Object<T>* 中的 T；为空表示非泛型
+	std::string genericTypeArg; //泛型实参, 如 Vtable_Object<T>* 中的 T. 空=非泛型
 	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
 
 	virtual std::string toString() { 
@@ -383,7 +383,7 @@ public:
 class SymbolTypeRef : public SymbolTypeWithTypeName {
 public:
 	bool isWeak = false; //用于closureType. 表示，不需要为此生成urgc的设置代码.一般用于临时变量暂存用的
-	std::string genericTypeArg; //擦除型泛型实参，如 Vtable_Object<T>@ 中的 T；为空表示非泛型
+	std::string genericTypeArg; //泛型实参, 如 Vtable_Object<T>@ 中的 T. 空=非泛型
 	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
 	virtual std::shared_ptr<SymbolTypePointer> toSymbolTypePointer() ;
 
@@ -411,10 +411,11 @@ public:
 		std::shared_ptr<SymbolSpace> rightSpace
 	) override;
 };
-//擦除型泛型类型用法，如 Vtable_Object<T>（不带指针/引用修饰）
+
+//泛型用法类型: Vtable_Object<T> (擦除型, 基名+类型实参, 仅用于代码提示)
 class SymbolTypeGenericUsage : public SymbolTypeWithTypeName {
 public:
-	std::string typeArg; //泛型类型实参，如 T
+	std::string typeArg; //泛型实参, 如 Vtable_Object<T> 中的 T
 	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
 
 	virtual std::string toString() {
@@ -484,9 +485,9 @@ class SymbolTypeFunction : public SymbolTypeWithTypeName {
 public:
 	std::shared_ptr<SymbolType> returnType = nullptr;
 	std::vector<std::shared_ptr<SymbolTypeArg>> args;
+	bool isGeneric = false; //擦除型泛型函数
+	std::string genericParamName; //泛型参数名, 如 mkObj<T> 中的 T
 	//std::vector<std::shared_ptr<SymbolType>> argTypes;
-	bool isGeneric = false; //擦除型泛型函数标记
-	std::string genericParamName; //泛型参数名，如 T
 	virtual antlr4::tree::ParseTree* toAstType(AstMake* mk) override;
 
 
@@ -1054,11 +1055,9 @@ std::shared_ptr<SymbolTypeFunction> ast_createSymbolTypeFunction(
 	OrcParser::TypeContext* returnType,
 	OrcParser::ArgumentsDeclarationContext* argumentsDeclaration
 );
-//识别擦除型泛型函数：签名中恰好一个未声明类型名 → 标记 isGeneric + genericParamName
-void ast_detectGenericFunction(
-	std::shared_ptr<SymbolTypeFunction> typeFn,
-	std::shared_ptr<SymbolSpace> space
-);
+
+//显式声明的擦除型泛型函数标记: T@ mkObj<T>(Vtable_Object<T> vt){...}
+void ast_detectGenericFunction(std::shared_ptr<SymbolTypeFunction> typeFn, antlr4::tree::ParseTree* fnCtx);
 VarInfo ast_findVarInfoByVarName(
 	antlr4::tree::ParseTree* tree, string varName,
 	std::shared_ptr<SymbolSpace> space //如果有传入，就会顺着找导入的其他变量

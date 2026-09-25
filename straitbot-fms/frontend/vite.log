@@ -1,0 +1,191 @@
+
+> straitbot-fms-frontend@1.0.0 dev
+> vite
+
+Re-optimizing dependencies because lockfile has changed
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m748[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://198.18.0.0:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.16.2.100:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.6.26:[1m5173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m15:53:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m15:53:58[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m15:53:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m15:53:58[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m15:53:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m15:59:07[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m15:59:07[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m15:59:07[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m15:59:07[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m15:59:07[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m15:59:13[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m15:59:14[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m15:59:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m15:59:14[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m15:59:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:40:25[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:40:26[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:40:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:40:26[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:40:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:40:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:40:36[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:40:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:40:36[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:40:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:44:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:44:09[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:44:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:44:09[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:44:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:45:19[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:45:20[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:45:20[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:45:20[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:45:20[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:45:28[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:45:29[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:45:29[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:45:29[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:45:29[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:47:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:47:36[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:47:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:47:36[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:47:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:47:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:47:43[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:47:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:47:43[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:47:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:47:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:47:58[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:47:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:47:58[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:47:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:48:25[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:48:26[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:48:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:48:26[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:48:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m16:59:23[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m16:59:24[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:59:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m16:59:24[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m16:59:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:04:49[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:04:49[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:04:49[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:04:49[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:04:49[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:04:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:04:55[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:04:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:04:55[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:04:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:04:59[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:05:00[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:05:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:05:00[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:05:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:06:02[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:06:03[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:06:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:06:03[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:06:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:07:29[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:07:30[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:07:30[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:07:30[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:07:30[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:08:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:08:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:12:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:12:17[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:12:17[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:12:17[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:12:17[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:12:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:12:25[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\git_ai\straitbot-fms\frontend\src\views\FsmEditor.tsx: JSX value should be either an expression or a quoted JSX text. (680:32)
+
+[0m [90m 678 |[31m             onNodeContextMenu[33m=[31m{onNodeContextMenu}
+ [90m 679 |[31m   [90m// 选中回调必须稳定引用（见 nodes useMemo 注释），否则 SelectionListener 反复触发形成死循环[31m
+[31m[1m>[22m[31m[90m 680 |[31m   [36mconst[31m handleSelectionChange [33m=[31m useCallback(
+ [90m     |[31m                                 [31m[1m^[22m[31m
+ [90m 681 |[31m     ({ nodes[33m:[31m ns }[33m:[31m { nodes[33m:[31m [33mArray[31m[33m<[31m{ id[33m:[31m string }[33m>[31m }) [33m=>[31m {
+ [90m 682 |[31m       setSelectedIds([36mnew[31m [33mSet[31m(ns[33m.[31mmap((n) [33m=>[31m n[33m.[31mid)))
+ [90m 683 |[31m     }[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/git_ai/straitbot-fms/frontend/src/views/FsmEditor.tsx[39m:680:32
+[33m  678|              onNodeContextMenu={onNodeContextMenu}
+  679|    // 选中回调必须稳定引用（见 nodes useMemo 注释），否则 SelectionListener 反复触发形成死循环
+  680|    const handleSelectionChange = useCallback(
+     |                                  ^
+  681|      ({ nodes: ns }: { nodes: Array<{ id: string }> }) => {
+  682|        setSelectedIds(new Set(ns.map((n) => n.id)))[39m
+      at constructor (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.jsxParseAttributeValue (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4625:20)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4665:38)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10060:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10848:21)
+      at D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:9792:18)
+      at D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10801:23)
+      at D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\git_ai\straitbot-fms\frontend\node_modules\@babel\parser\lib\index.js:13333:61)
+[2m17:12:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:12:55[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:12:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:12:55[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:12:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m
+[2m17:13:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/FsmEditor.tsx[22m
+[2m17:13:10[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/views/FsmEditor.tsx[22m Could not Fast Refresh ("OBJ_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:13:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/router/index.tsx[22m
+[2m17:13:10[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/router/index.tsx[22m Could not Fast Refresh ("menuRoutes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:13:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Sidebar.tsx[22m

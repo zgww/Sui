@@ -1,0 +1,280 @@
+/* ========== 下沉静态界面 — 页面局部样式 ========== */
+/* 仅覆盖 Semi UI 之外的展示细节：看图区 / 地图占位 / 缩略图 / 日历网格 */
+
+/* 图像查看 — 深色看图区 */
+.sink-stage {
+  position: relative;
+  border-radius: 6px;
+  border: 1px solid #1d3d68;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background:
+    radial-gradient(1200px 400px at 50% 120%, #12335e 0%, transparent 70%),
+    linear-gradient(180deg, #0d2242 0%, #0a1a33 100%);
+}
+.sink-stage-label {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 12px;
+  color: #9fc4ee;
+  background: rgba(13, 34, 66, 0.6);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.sink-detect-box {
+  position: absolute;
+  border: 1.5px solid #ff5b5b;
+  border-radius: 2px;
+  font-size: 11px;
+}
+.sink-detect-box .db-tag {
+  position: absolute;
+  top: -20px;
+  left: -1px;
+  background: #ff5b5b;
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.sink-detect-box.ok {
+  border-color: #4ade80;
+}
+.sink-detect-box.ok .db-tag {
+  background: #4ade80;
+}
+
+/* 图像查看 — 缩略图胶片带 */
+.sink-filmstrip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sink-fs-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  flex: 1;
+  padding: 2px;
+}
+.sink-thumb {
+  width: 84px;
+  height: 54px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: none;
+  border: 2px solid transparent;
+  position: relative;
+  color: #7fa8d9;
+  font-size: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+  background:
+    radial-gradient(80px 30px at 50% 110%, #1c4b80 0%, transparent 70%),
+    linear-gradient(180deg, #10305a 0%, #0b2140 100%);
+}
+.sink-thumb.active {
+  border-color: #0077fa;
+}
+.sink-thumb.abn::after {
+  content: '异常';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #f93920;
+  color: #fff;
+  font-size: 9px;
+  padding: 0 3px;
+  border-radius: 2px;
+}
+.sink-thumb.wide {
+  width: 100%;
+  height: 86px;
+}
+
+/* 视频回放占位 */
+.sink-video {
+  background: #000;
+  border-radius: 6px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #8aa8c8;
+  position: relative;
+  overflow: hidden;
+}
+.sink-video .play-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+}
+.sink-video .play-circle::after {
+  content: '';
+  display: block;
+  margin-left: 4px;
+  border-left: 16px solid #fff;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+.sink-video .v-timeline {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 14px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+}
+.sink-video .v-timeline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 38%;
+  background: #0077fa;
+  border-radius: 2px;
+}
+
+/* 测点详情 — 地图占位 */
+.sink-map {
+  border: 1px dashed #3d6db5;
+  border-radius: 6px;
+  background:
+    radial-gradient(400px 160px at 30% 20%, rgba(47, 184, 255, 0.12), transparent 70%),
+    linear-gradient(180deg, #0c2448 0%, #081b34 100%);
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.sink-map .map-tag {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 11px;
+  color: #6fb1e8;
+  background: rgba(10, 32, 54, 0.7);
+  padding: 1px 8px;
+  border-radius: 3px;
+}
+.sink-map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 日历视图 */
+.sink-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.sink-cal-week {
+  text-align: center;
+  font-size: 12px;
+  color: var(--semi-color-text-2, #6b6b6b);
+  padding: 4px 0;
+}
+.sink-cal-cell {
+  min-height: 96px;
+  border: 1px solid var(--semi-color-border, #e9e9e9);
+  border-radius: 6px;
+  padding: 6px;
+  background: #fff;
+  cursor: pointer;
+  transition: border 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sink-cal-cell:hover {
+  border-color: #0077fa;
+}
+.sink-cal-cell.dim {
+  background: var(--semi-color-fill-0, #f7f8fa);
+  color: var(--semi-color-text-2, #9a9a9a);
+}
+.sink-cal-cell.today {
+  border-color: #0077fa;
+  box-shadow: inset 0 0 0 1px #0077fa;
+}
+.sink-cal-daynum {
+  font-size: 13px;
+  color: var(--semi-color-text-2, #6b6b6b);
+  text-align: right;
+}
+.sink-pill {
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 3px;
+  padding: 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid transparent;
+}
+.sink-pill.pp-all {
+  color: #0077fa;
+  background: rgba(0, 119, 250, 0.07);
+  border-color: rgba(0, 119, 250, 0.22);
+}
+.sink-pill.pp-reg {
+  color: #26a331;
+  background: rgba(60, 187, 69, 0.08);
+  border-color: rgba(60, 187, 69, 0.25);
+}
+.sink-pill.pp-spec {
+  color: #d97a00;
+  background: rgba(255, 136, 0, 0.08);
+  border-color: rgba(255, 136, 0, 0.25);
+}
+
+/* 日历「安排任务」弹窗 — 时间流 */
+.sink-timeflow {
+  border: 1px solid var(--semi-color-border, #e9e9e9);
+  border-radius: 6px;
+  max-height: 300px;
+  overflow: auto;
+}
+.sink-timeflow .tf-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--semi-color-border, #e9e9e9);
+  font-size: 13px;
+}
+.sink-timeflow .tf-item:last-child {
+  border-bottom: none;
+}
+.sink-day-plan-item {
+  border: 1px solid var(--semi-color-border, #e9e9e9);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.sink-day-plan-item.active {
+  background: rgba(0, 119, 250, 0.07);
+  border-color: #0077fa;
+}

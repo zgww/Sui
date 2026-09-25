@@ -364,6 +364,22 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitGenericFunctionDefinition(OrcParser::GenericFunctionDefinitionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitGenericExternFunctionDeclaration(OrcParser::GenericExternFunctionDeclarationContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitGenericParameterList(OrcParser::GenericParameterListContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitGenericTypeUsage(OrcParser::GenericTypeUsageContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitGlobalFunctionDefinition(OrcParser::GlobalFunctionDefinitionContext *ctx) override {
     return visitChildren(ctx);
   }

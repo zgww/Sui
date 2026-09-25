@@ -1,0 +1,37 @@
+.inspection-plan { --plan-ink: #19344c; --plan-muted: #718397; --plan-border: #dfe7ef; --plan-blue: #266fb8; --plan-tint: #eef5fc; }
+.inspection-plan .semi-card { border-color: var(--plan-border); box-shadow: none; }
+.inspection-route-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; max-width: 320px; color: #536b81; font-size: 12px; }
+.inspection-route-summary span { padding: 3px 6px; border-radius: 4px; background: #f0f5fa; }
+.inspection-route-summary b { color: #91a3b5; font-weight: 400; }
+.inspection-plan-name { font-weight: 600; color: #19344c; }
+.inspection-plan-subline { margin-top: 4px; font-size: 12px; color: #718397; }
+.inspection-editor { --plan-border: #dfe7ef; --plan-muted: #718397; }
+.inspection-editor .semi-modal-body { max-height: calc(100vh - 190px); overflow-y: auto; }
+.inspection-editor label { display: flex; flex-direction: column; gap: 7px; color: #53677d; font-size: 13px; }
+.inspection-editor input[type=date], .inspection-editor input[type=time] { min-height: 32px; border: 1px solid #dfe7ef; border-radius: 4px; background: #f8fafc; color: #19344c; font: inherit; }
+.inspection-editor-top { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; padding: 4px 0 20px; }
+.inspection-route-editor { display: grid; grid-template-columns: 250px minmax(0, 1fr); border: 1px solid var(--plan-border); border-radius: 8px; overflow: hidden; }
+.inspection-route-sidebar { padding: 16px; background: #f7f9fc; border-right: 1px solid var(--plan-border); }
+.inspection-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; color: #19344c; font-size: 13px; }
+.inspection-section-heading > span { color: var(--plan-muted); font-weight: 400; }
+.inspection-stage-list { max-height: 330px; overflow-y: auto; margin-bottom: 12px; }
+.inspection-stage { display: flex; width: 100%; gap: 9px; align-items: center; text-align: left; border: 1px solid transparent; border-radius: 6px; background: transparent; padding: 11px 8px; margin-bottom: 5px; font: inherit; cursor: pointer; }
+.inspection-stage:hover { background: #edf2f8; }
+.inspection-stage:focus-visible { outline: 2px solid #266fb8; outline-offset: -2px; }
+.inspection-stage.is-active { border-color: #b9d2ec; background: #eef5fc; }
+.inspection-stage-number { color: #266fb8; font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+.inspection-stage-text { min-width: 0; flex: 1; }
+.inspection-stage-text strong { display: block; overflow-wrap: anywhere; font-size: 13px; color: #19344c; }
+.inspection-stage-text small { display: block; margin-top: 5px; color: #718397; }
+.inspection-stage-empty { font-size: 11px; color: #976320; }
+.inspection-route-hint { color: #718397; font-size: 12px; line-height: 1.8; margin: 14px 0 0; }
+.inspection-point-picker { padding: 16px; min-width: 0; background: #fff; }
+.inspection-point-toolbar { display: flex; align-items: center; gap: 10px; margin: 16px 0 12px; }
+.inspection-point-toolbar .semi-input-wrapper { flex: 1; }
+.inspection-picker-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 14px; color: #718397; font-size: 12px; }
+.inspection-empty { min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; text-align: center; color: #718397; padding: 24px; }
+.inspection-empty p { margin: 0; font-size: 13px; }
+.inspection-schedule-heading { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--plan-border); color: #19344c; font-weight: 600; }
+.inspection-editor-total { color: #718397; font-size: 12px; margin-right: auto; }
+.inspection-history-route { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; color: #718397; font-size: 12px; }
+@media (max-width: 760px) { .inspection-route-editor { grid-template-columns: 1fr; } .inspection-route-sidebar { border-right: 0; border-bottom: 1px solid var(--plan-border); } .inspection-stage-list { max-height: 160px; } .inspection-editor-top { grid-template-columns: 1fr; gap: 14px; } .inspection-point-toolbar { flex-wrap: wrap; } }

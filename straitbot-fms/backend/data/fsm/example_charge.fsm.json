@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "name": "example_charge",
+  "description": "合规范例：主状态机在『去充电』激活充电子状态机，子机结束(sm_close)后经 complete 回到『充电完成』。充电子机含就位优化超时重试。可被 app.rail.fsm_spec 直接编译运行。",
+  "objects": [
+    { "id": "m_main", "type": "state_machine", "name": "主机", "x": 120, "y": 200, "initial_state": "空闲", "end_signal": "sm_close" },
+    { "id": "m_charge", "type": "state_machine", "name": "充电子机", "x": 120, "y": 760, "initial_state": "移动中", "end_signal": "sm_close" },
+
+    { "id": "s_idle", "type": "state", "name": "空闲", "x": 520, "y": 80 },
+    { "id": "s_goto", "type": "state", "name": "去充电", "x": 520, "y": 240 },
+    { "id": "s_done", "type": "state", "name": "充电完成", "x": 520, "y": 400 },
+
+    { "id": "s_moving", "type": "state", "name": "移动中", "x": 520, "y": 600 },
+    { "id": "s_align", "type": "state", "name": "就位优化", "x": 520, "y": 760, "timeout_sec": 60, "timeout_event": "就位超时" },
+    { "id": "s_charging", "type": "state", "name": "充电中", "x": 520, "y": 920 },
+
+    { "id": "a_low", "type": "signal_action", "name": "电量不足", "signal": "low_battery", "x": 840, "y": 160 },
+    { "id": "a_reset", "type": "signal_action", "name": "复位", "signal": "reset", "x": 840, "y": 400 },
+    { "id": "a_act_charge", "type": "sm_activate_action", "name": "激活充电子机", "x": 880, "y": 240 },
+
+    { "id": "a_arrived", "type": "signal_action", "name": "到达充电桩", "signal": "arrived", "x": 880, "y": 600 },
+    { "id": "a_contact", "type": "signal_action", "name": "接触良好", "signal": "contact_ok", "x": 880, "y": 840 },
+    { "id": "a_retry", "type": "signal_action", "name": "就位超时重试", "signal": "就位超时", "x": 160, "y": 760 }
+  ],
+  "connections": [
+    { "id": "c1", "from": "s_idle", "fromPin": "actions", "to": "a_low", "toPin": "in" },
+    { "id": "c2", "from": "a_low", "fromPin": "out", "to": "s_goto", "toPin": "in" },
+    { "id": "c3", "from": "s_goto", "fromPin": "actions", "to": "a_act_charge", "toPin": "in" },
+    { "id": "c4", "from": "a_act_charge", "fromPin": "target_sm", "to": "m_charge", "toPin": "activator" },
+    { "id": "c5", "from": "a_act_charge", "fromPin": "complete", "to": "s_done", "toPin": "in" },
+    { "id": "c6", "from": "s_done", "fromPin": "actions", "to": "a_reset", "toPin": "in" },
+    { "id": "c7", "from": "a_reset", "fromPin": "out", "to": "s_idle", "toPin": "in" },
+
+    { "id": "c8", "from": "s_moving", "fromPin": "actions", "to": "a_arrived", "toPin": "in" },
+    { "id": "c9", "from": "a_arrived", "fromPin": "out", "to": "s_align", "toPin": "in" },
+    { "id": "c10", "from": "s_align", "fromPin": "actions", "to": "a_contact", "toPin": "in" },
+    { "id": "c11", "from": "a_contact", "fromPin": "out", "to": "s_charging", "toPin": "in" },
+    { "id": "c12", "from": "s_align", "fromPin": "actions", "to": "a_retry", "toPin": "in" },
+    { "id": "c13", "from": "a_retry", "fromPin": "out", "to": "s_moving", "toPin": "in" }
+  ]
+}

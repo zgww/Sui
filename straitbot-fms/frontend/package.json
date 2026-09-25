@@ -1,0 +1,36 @@
+{
+  "name": "straitbot-fms-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@douyinfe/semi-icons": "^2.66.0",
+    "@douyinfe/semi-ui": "^2.66.0",
+    "@monaco-editor/react": "^4.7.0",
+    "@types/three": "^0.186.0",
+    "@xterm/xterm": "^5.5.0",
+    "@xyflow/react": "^12.11.6",
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
+    "echarts": "^5.5.1",
+    "monaco-editor": "^0.56.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "three": "^0.186.0",
+    "xterm-addon-fit": "^0.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.8"
+  }
+}

@@ -28,7 +28,7 @@ MetaStruct* SuiCore$Bezier_getOrInitMetaStruct(){
 		orc_metaField_struct(&pNext, "c1", SuiCore$Vec2_getOrInitMetaStruct(), offsetof(SuiCore$Bezier, c1), false, false, 0);
 		orc_metaField_struct(&pNext, "end", SuiCore$Vec2_getOrInitMetaStruct(), offsetof(SuiCore$Bezier, end), false, false, 0);
     }
-	return meta;
+	return meta; 
 }
 SuiCore$Bezier SuiCore$mkBezier(){
 	SuiCore$Vec2 start = SuiCore$mkVec2(0.0, 0.0) ;

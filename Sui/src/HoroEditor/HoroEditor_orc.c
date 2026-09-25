@@ -2438,7 +2438,7 @@ static HoroEditor$__Closure_380_43*  __make___Closure_380_43(HoroEditor$__Closur
 }
 
 static void  __fn___Closure_onActive_381(HoroEditor$__Closure_onActive_381 *  self, SuiView$MenuNativeItem *  item){
-	printf("\n\n========================================onActive menu:%s\n", item->label->str) ;
+	printf("\n\n========================================1onActive menu:%s\n", item->label->str) ;
 	if (Orc$String$equals(item->label, "退出") ) {
 		exit(0) ;
 	}

@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  backend:
+    build: ./backend
+    image: straitbot-fms-backend:latest
+    container_name: straitbot-fms-backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./data:/app/data
+    expose:
+      - "8000"
+    networks:
+      - fms-net
+
+  frontend:
+    build: ./frontend
+    image: straitbot-fms-frontend:latest
+    container_name: straitbot-fms-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${FMS_PORT:-8900}:80"
+    networks:
+      - fms-net
+
+networks:
+  fms-net:
+    driver: bridge

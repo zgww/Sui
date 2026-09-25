@@ -239,8 +239,8 @@ type
     | closureType
     | pointer
     | ref
-    | genericTypeUsage
     | typeQualifier? Struct? Id
+    | genericTypeUsage
     ;
 
 closureType
@@ -274,14 +274,6 @@ pointer
 
 ref
     : (Struct? Id | genericTypeUsage) '@'
-    ;
-
-//Java 风格泛型类型用法（擦除型，仅用于代码提示，不做模板展开）：
-//  Vtable_Object<T> —— 只支持一个类型实参，不支持嵌套泛型；
-//  实参必须是类型参数名（Id）：基本数据类型是独立 token（非 Id），语法上即被排除；
-//  结构体名也是 Id，语法上可接受，是否合法由语义层校验（应为未声明的类型参数名）。
-genericTypeUsage
-    : Id '<' Id '>'
     ;
 
 primitiveType
@@ -359,9 +351,30 @@ functionDefinition
     : type Id argumentsDeclaration block
     ;
 
+// generic function definition: T@ mkObj<T>(Vtable_Object<T> vt){...}
+genericFunctionDefinition
+    : type Id genericParameterList argumentsDeclaration block
+    ;
+
+// generic extern function declaration: extern T@ mkObj<T>(Vtable_Object<T> vt);
+genericExternFunctionDeclaration
+    : Extern type Id genericParameterList argumentsDeclaration eos
+    ;
+
+genericParameterList
+    : '<' Id '>'
+    ;
+
+// generic type usage: Vtable_Object<T>
+genericTypeUsage
+    : Id '<' Id '>'
+    ;
+
 globalFunctionDefinition
     : Static? functionDefinition
     | Static? externFunctionDeclaration
+    | Static? genericFunctionDefinition
+    | Static? genericExternFunctionDeclaration
     ;
 
 globalVarDeclaration

@@ -1,4 +1,4 @@
-// Generated from d:/ws/Sui/orc-antlr/antlr4-cpp/demo/Orc.g4 by ANTLR 4.13.1
+// Generated from f:/ws/Sui/orc-antlr/antlr4-cpp/demo/Orc.g4 by ANTLR 4.13.1
 
     #include "OrcParserBase.h"
 
@@ -176,6 +176,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterProgram(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitProgram(this);
+		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -248,6 +256,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_rootDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterRootDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitRootDeclaration(this);
+		}
 	}
 
 	public final RootDeclarationContext rootDeclaration() throws RecognitionException {
@@ -352,6 +368,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arguments; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterArguments(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitArguments(this);
+		}
 	}
 
 	public final ArgumentsContext arguments() throws RecognitionException {
@@ -429,6 +453,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expressionSequence; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterExpressionSequence(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitExpressionSequence(this);
+		}
 	}
 
 	public final ExpressionSequenceContext expressionSequence() throws RecognitionException {
@@ -485,6 +517,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_closureExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterClosureExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitClosureExpression(this);
+		}
 	}
 
 	public final ClosureExpressionContext closureExpression() throws RecognitionException {
@@ -546,6 +586,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public TernaryExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterTernaryExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitTernaryExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class LogicalAndExpressionContext extends SingleExpressionContext {
@@ -556,6 +604,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public LogicalAndExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterLogicalAndExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitLogicalAndExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class PreIncrementExpressionContext extends SingleExpressionContext {
@@ -563,6 +619,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public PreIncrementExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterPreIncrementExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitPreIncrementExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class GetAddressExpressionContext extends SingleExpressionContext {
@@ -570,6 +634,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public GetAddressExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterGetAddressExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitGetAddressExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class LogicalOrExpressionContext extends SingleExpressionContext {
@@ -580,6 +652,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public LogicalOrExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterLogicalOrExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitLogicalOrExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class NotExpressionContext extends SingleExpressionContext {
@@ -587,6 +667,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public NotExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterNotExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitNotExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class PreDecreaseExpressionContext extends SingleExpressionContext {
@@ -594,11 +682,27 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public PreDecreaseExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterPreDecreaseExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitPreDecreaseExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ThisExpressionContext extends SingleExpressionContext {
 		public TerminalNode This() { return getToken(OrcParser.This, 0); }
 		public ThisExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterThisExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitThisExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class UnaryMinusExpressionContext extends SingleExpressionContext {
@@ -606,6 +710,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public UnaryMinusExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterUnaryMinusExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitUnaryMinusExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AssignmentExpressionContext extends SingleExpressionContext {
@@ -616,6 +728,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public AssignmentExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterAssignmentExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitAssignmentExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class PostDecreaseExpressionContext extends SingleExpressionContext {
@@ -623,6 +743,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public PostDecreaseExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterPostDecreaseExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitPostDecreaseExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class InstanceofExpressionContext extends SingleExpressionContext {
@@ -634,6 +762,14 @@ public class OrcParser extends OrcParserBase {
 		}
 		public TerminalNode Instanceof() { return getToken(OrcParser.Instanceof, 0); }
 		public InstanceofExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterInstanceofExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitInstanceofExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class UnaryPlusExpressionContext extends SingleExpressionContext {
@@ -641,6 +777,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public UnaryPlusExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterUnaryPlusExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitUnaryPlusExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class EqualityExpressionContext extends SingleExpressionContext {
@@ -651,6 +795,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public EqualityExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterEqualityExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitEqualityExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BitXOrExpressionContext extends SingleExpressionContext {
@@ -661,11 +813,27 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public BitXOrExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterBitXOrExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitBitXOrExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class SuperExpressionContext extends SingleExpressionContext {
 		public TerminalNode Super() { return getToken(OrcParser.Super, 0); }
 		public SuperExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterSuperExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitSuperExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class MultiplicativeExpressionContext extends SingleExpressionContext {
@@ -676,6 +844,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public MultiplicativeExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterMultiplicativeExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitMultiplicativeExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class CallExpressionContext extends SingleExpressionContext {
@@ -686,6 +862,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(ArgumentsContext.class,0);
 		}
 		public CallExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterCallExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitCallExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BitShiftExpressionContext extends SingleExpressionContext {
@@ -696,6 +880,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public BitShiftExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterBitShiftExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitBitShiftExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParenthesizedExpressionContext extends SingleExpressionContext {
@@ -703,6 +895,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(ExpressionSequenceContext.class,0);
 		}
 		public ParenthesizedExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterParenthesizedExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitParenthesizedExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AdditiveExpressionContext extends SingleExpressionContext {
@@ -713,6 +913,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public AdditiveExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterAdditiveExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitAdditiveExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class RelationalExpressionContext extends SingleExpressionContext {
@@ -723,6 +931,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public RelationalExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterRelationalExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitRelationalExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class PostIncrementExpressionContext extends SingleExpressionContext {
@@ -730,6 +946,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public PostIncrementExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterPostIncrementExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitPostIncrementExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BitNotExpressionContext extends SingleExpressionContext {
@@ -737,6 +961,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public BitNotExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterBitNotExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitBitNotExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class NewExpressionContext extends SingleExpressionContext {
@@ -746,6 +978,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(ArgumentsContext.class,0);
 		}
 		public NewExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterNewExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitNewExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class LiteralExpressionContext extends SingleExpressionContext {
@@ -753,6 +993,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(LiteralContext.class,0);
 		}
 		public LiteralExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterLiteralExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitLiteralExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class MemberDotExpressionContext extends SingleExpressionContext {
@@ -761,6 +1009,14 @@ public class OrcParser extends OrcParserBase {
 		}
 		public TerminalNode Id() { return getToken(OrcParser.Id, 0); }
 		public MemberDotExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterMemberDotExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitMemberDotExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class MemberIndexExpressionContext extends SingleExpressionContext {
@@ -771,6 +1027,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public MemberIndexExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterMemberIndexExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitMemberIndexExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class DerefExpressionContext extends SingleExpressionContext {
@@ -778,11 +1042,27 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public DerefExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterDerefExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitDerefExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class IdentifierExpressionContext extends SingleExpressionContext {
 		public TerminalNode Id() { return getToken(OrcParser.Id, 0); }
 		public IdentifierExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterIdentifierExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitIdentifierExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BitAndExpressionContext extends SingleExpressionContext {
@@ -793,6 +1073,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public BitAndExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterBitAndExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitBitAndExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BitOrExpressionContext extends SingleExpressionContext {
@@ -803,6 +1091,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public BitOrExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterBitOrExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitBitOrExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AssignmentOperatorExpressionContext extends SingleExpressionContext {
@@ -816,6 +1112,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(AssignmentOperatorContext.class,0);
 		}
 		public AssignmentOperatorExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterAssignmentOperatorExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitAssignmentOperatorExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class CastExpressionContext extends SingleExpressionContext {
@@ -826,6 +1130,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,0);
 		}
 		public CastExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterCastExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitCastExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class CoalesceExpressionContext extends SingleExpressionContext {
@@ -836,6 +1148,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(SingleExpressionContext.class,i);
 		}
 		public CoalesceExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterCoalesceExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitCoalesceExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class LabelClosureExpressionContext extends SingleExpressionContext {
@@ -843,6 +1163,14 @@ public class OrcParser extends OrcParserBase {
 			return getRuleContext(ClosureExpressionContext.class,0);
 		}
 		public LabelClosureExpressionContext(SingleExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterLabelClosureExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitLabelClosureExpression(this);
+		}
 	}
 
 	public final SingleExpressionContext singleExpression() throws RecognitionException {
@@ -1376,6 +1704,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_assignmentOperator; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterAssignmentOperator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitAssignmentOperator(this);
+		}
 	}
 
 	public final AssignmentOperatorContext assignmentOperator() throws RecognitionException {
@@ -1414,6 +1750,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_emptyStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterEmptyStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitEmptyStatement(this);
+		}
 	}
 
 	public final EmptyStatementContext emptyStatement() throws RecognitionException {
@@ -1452,6 +1796,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_structDefinition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterStructDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitStructDefinition(this);
+		}
 	}
 
 	public final StructDefinitionContext structDefinition() throws RecognitionException {
@@ -1515,6 +1867,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_structMember; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterStructMember(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitStructMember(this);
+		}
 	}
 
 	public final StructMemberContext structMember() throws RecognitionException {
@@ -1574,6 +1934,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arraySizeDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterArraySizeDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitArraySizeDeclaration(this);
+		}
 	}
 
 	public final ArraySizeDeclarationContext arraySizeDeclaration() throws RecognitionException {
@@ -1621,6 +1989,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_varDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterVarDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitVarDeclaration(this);
+		}
 	}
 
 	public final VarDeclarationContext varDeclaration() throws RecognitionException {
@@ -1750,6 +2126,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitStatement(this);
+		}
 	}
 
 	public final StatementContext statement() throws RecognitionException {
@@ -1879,6 +2263,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_continueStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterContinueStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitContinueStatement(this);
+		}
 	}
 
 	public final ContinueStatementContext continueStatement() throws RecognitionException {
@@ -1914,6 +2306,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_breakStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterBreakStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitBreakStatement(this);
+		}
 	}
 
 	public final BreakStatementContext breakStatement() throws RecognitionException {
@@ -1952,6 +2352,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_throwStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterThrowStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitThrowStatement(this);
+		}
 	}
 
 	public final ThrowStatementContext throwStatement() throws RecognitionException {
@@ -1992,6 +2400,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_returnStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterReturnStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitReturnStatement(this);
+		}
 	}
 
 	public final ReturnStatementContext returnStatement() throws RecognitionException {
@@ -2039,6 +2455,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_scopeStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterScopeStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitScopeStatement(this);
+		}
 	}
 
 	public final ScopeStatementContext scopeStatement() throws RecognitionException {
@@ -2092,6 +2516,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_iterationStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterIterationStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitIterationStatement(this);
+		}
 	}
 
 	public final IterationStatementContext iterationStatement() throws RecognitionException {
@@ -2166,6 +2598,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forCondition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterForCondition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitForCondition(this);
+		}
 	}
 
 	public final ForConditionContext forCondition() throws RecognitionException {
@@ -2234,6 +2674,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forInit; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterForInit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitForInit(this);
+		}
 	}
 
 	public final ForInitContext forInit() throws RecognitionException {
@@ -2285,6 +2733,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forVarDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterForVarDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitForVarDeclaration(this);
+		}
 	}
 
 	public final ForVarDeclarationContext forVarDeclaration() throws RecognitionException {
@@ -2340,6 +2796,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forVarInitDeclarator; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterForVarInitDeclarator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitForVarInitDeclarator(this);
+		}
 	}
 
 	public final ForVarInitDeclaratorContext forVarInitDeclarator() throws RecognitionException {
@@ -2406,6 +2870,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_selectionStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterSelectionStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitSelectionStatement(this);
+		}
 	}
 
 	public final SelectionStatementContext selectionStatement() throws RecognitionException {
@@ -2483,6 +2955,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_tryStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterTryStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitTryStatement(this);
+		}
 	}
 
 	public final TryStatementContext tryStatement() throws RecognitionException {
@@ -2564,6 +3044,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_catchClause; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterCatchClause(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitCatchClause(this);
+		}
 	}
 
 	public final CatchClauseContext catchClause() throws RecognitionException {
@@ -2616,6 +3104,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_finallyClause; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterFinallyClause(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitFinallyClause(this);
+		}
 	}
 
 	public final FinallyClauseContext finallyClause() throws RecognitionException {
@@ -2654,6 +3150,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_block; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitBlock(this);
+		}
 	}
 
 	public final BlockContext block() throws RecognitionException {
@@ -2720,6 +3224,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_type; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitType(this);
+		}
 	}
 
 	public final TypeContext type() throws RecognitionException {
@@ -2830,6 +3342,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_closureType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterClosureType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitClosureType(this);
+		}
 	}
 
 	public final ClosureTypeContext closureType() throws RecognitionException {
@@ -2867,6 +3387,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionTypeArg; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterFunctionTypeArg(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitFunctionTypeArg(this);
+		}
 	}
 
 	public final FunctionTypeArgContext functionTypeArg() throws RecognitionException {
@@ -2908,6 +3436,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_attribute; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterAttribute(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitAttribute(this);
+		}
 	}
 
 	public final AttributeContext attribute() throws RecognitionException {
@@ -2959,6 +3495,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterFunctionType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitFunctionType(this);
+		}
 	}
 
 	public final FunctionTypeContext functionType() throws RecognitionException {
@@ -3006,6 +3550,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeQualifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterTypeQualifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitTypeQualifier(this);
+		}
 	}
 
 	public final TypeQualifierContext typeQualifier() throws RecognitionException {
@@ -3055,6 +3607,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_pointer; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterPointer(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitPointer(this);
+		}
 	}
 
 	public final PointerContext pointer() throws RecognitionException {
@@ -3179,6 +3739,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ref; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterRef(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitRef(this);
+		}
 	}
 
 	public final RefContext ref() throws RecognitionException {
@@ -3222,6 +3790,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_primitiveType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterPrimitiveType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitPrimitiveType(this);
+		}
 	}
 
 	public final PrimitiveTypeContext primitiveType() throws RecognitionException {
@@ -3383,6 +3959,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumDefinition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterEnumDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitEnumDefinition(this);
+		}
 	}
 
 	public final EnumDefinitionContext enumDefinition() throws RecognitionException {
@@ -3454,6 +4038,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumItem; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterEnumItem(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitEnumItem(this);
+		}
 	}
 
 	public final EnumItemContext enumItem() throws RecognitionException {
@@ -3501,6 +4093,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_extensionDefinition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterExtensionDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitExtensionDefinition(this);
+		}
 	}
 
 	public final ExtensionDefinitionContext extensionDefinition() throws RecognitionException {
@@ -3541,6 +4141,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_extensionBlock; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterExtensionBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitExtensionBlock(this);
+		}
 	}
 
 	public final ExtensionBlockContext extensionBlock() throws RecognitionException {
@@ -3600,6 +4208,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classDefinition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterClassDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitClassDefinition(this);
+		}
 	}
 
 	public final ClassDefinitionContext classDefinition() throws RecognitionException {
@@ -3671,6 +4287,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classDefinitionBlock; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterClassDefinitionBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitClassDefinitionBlock(this);
+		}
 	}
 
 	public final ClassDefinitionBlockContext classDefinitionBlock() throws RecognitionException {
@@ -3745,6 +4369,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classFieldDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterClassFieldDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitClassFieldDeclaration(this);
+		}
 	}
 
 	public final ClassFieldDeclarationContext classFieldDeclaration() throws RecognitionException {
@@ -3829,6 +4461,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_methodDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterMethodDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitMethodDeclaration(this);
+		}
 	}
 
 	public final MethodDeclarationContext methodDeclaration() throws RecognitionException {
@@ -3891,6 +4531,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_assignRightPart; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterAssignRightPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitAssignRightPart(this);
+		}
 	}
 
 	public final AssignRightPartContext assignRightPart() throws RecognitionException {
@@ -3929,6 +4577,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_argumentDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterArgumentDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitArgumentDeclaration(this);
+		}
 	}
 
 	public final ArgumentDeclarationContext argumentDeclaration() throws RecognitionException {
@@ -3988,6 +4644,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_argumentsDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterArgumentsDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitArgumentsDeclaration(this);
+		}
 	}
 
 	public final ArgumentsDeclarationContext argumentsDeclaration() throws RecognitionException {
@@ -4083,6 +4747,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionPointerVarDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterFunctionPointerVarDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitFunctionPointerVarDeclaration(this);
+		}
 	}
 
 	public final FunctionPointerVarDeclarationContext functionPointerVarDeclaration() throws RecognitionException {
@@ -4170,6 +4842,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionDefinition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterFunctionDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitFunctionDefinition(this);
+		}
 	}
 
 	public final FunctionDefinitionContext functionDefinition() throws RecognitionException {
@@ -4212,6 +4892,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_globalFunctionDefinition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterGlobalFunctionDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitGlobalFunctionDefinition(this);
+		}
 	}
 
 	public final GlobalFunctionDefinitionContext globalFunctionDefinition() throws RecognitionException {
@@ -4281,6 +4969,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_globalVarDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterGlobalVarDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitGlobalVarDeclaration(this);
+		}
 	}
 
 	public final GlobalVarDeclarationContext globalVarDeclaration() throws RecognitionException {
@@ -4323,6 +5019,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_externFunctionDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterExternFunctionDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitExternFunctionDeclaration(this);
+		}
 	}
 
 	public final ExternFunctionDeclarationContext externFunctionDeclaration() throws RecognitionException {
@@ -4366,6 +5070,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_importStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterImportStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitImportStatement(this);
+		}
 	}
 
 	public final ImportStatementContext importStatement() throws RecognitionException {
@@ -4432,6 +5144,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_includeStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterIncludeStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitIncludeStatement(this);
+		}
 	}
 
 	public final IncludeStatementContext includeStatement() throws RecognitionException {
@@ -4466,6 +5186,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_includePathCharacters; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterIncludePathCharacters(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitIncludePathCharacters(this);
+		}
 	}
 
 	public final IncludePathCharactersContext includePathCharacters() throws RecognitionException {
@@ -4539,6 +5267,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_packageStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterPackageStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitPackageStatement(this);
+		}
 	}
 
 	public final PackageStatementContext packageStatement() throws RecognitionException {
@@ -4580,6 +5316,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_literal; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitLiteral(this);
+		}
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
@@ -4619,6 +5363,14 @@ public class OrcParser extends OrcParserBase {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_eos; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).enterEos(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OrcListener ) ((OrcListener)listener).exitEos(this);
+		}
 	}
 
 	public final EosContext eos() throws RecognitionException {
