@@ -5,7 +5,9 @@
 #include <filesystem>
 #include "OrcLexer.h"
 
-#include <Windows.h>
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 #include "md5.h"
 #include "Closure.h"
 #include <FsUtil.h>

@@ -8,10 +8,14 @@
 #include <unordered_map>
 #include <functional>
 #include <assert.h>
+#include <algorithm>
 
 #ifdef _WIN32
 #include <windows.h>
-#include <chrono>
+#include <chrono>
+#else
+#include <unistd.h>
+#include <limits.h>
 #endif
 
 using string = std::string;
@@ -65,16 +69,12 @@ std::string FsUtil::getcwd() {
 	//GetModuleFileName(NULL, buf, MAX_PATH);
 	GetCurrentDirectoryW(MAX_PATH, buf);
 	return Utf8Util::toutf8(buf);
-	//#else
-	//    char buf[MAX_PATH + 1];
-	//    getcwd(buf, MAX_PATH);
-	//    return buf;
 #else
-//	char buff[250];
-//	GetCurrentDir(buff, 250);
-//	std::string current_working_directory(buff);
-//	return current_working_directory;
-	return "";
+	char buf[PATH_MAX];
+	if (::getcwd(buf, sizeof(buf)) == NULL) {
+		return "";
+	}
+	return buf;//Linux下活动编码即UTF-8
 #endif
 }
 
@@ -84,16 +84,8 @@ void FsUtil::setcwd(std::string cwd)
 	//GetModuleFileName(NULL, buf, MAX_PATH);
 	auto wcwd = Utf8Util::toutf16(cwd);
 	SetCurrentDirectoryW(wcwd.c_str());
-	//#else
-	//    char buf[MAX_PATH + 1];
-	//    getcwd(buf, MAX_PATH);
-	//    return buf;
 #else
-	//	char buff[250];
-	//	GetCurrentDir(buff, 250);
-	//	std::string current_working_directory(buff);
-	//	return current_working_directory;
-	return "";
+	chdir(cwd.c_str());
 #endif
 }
 
@@ -105,16 +97,15 @@ std::string FsUtil::getExecutionPath() {
 
 	GetModuleFileNameW(nullptr, buf, sizeof(buf) - 1);
 	return Utf8Util::toutf8(buf);
-	//#else
-	//    char buf[MAX_PATH + 1];
-	//    getcwd(buf, MAX_PATH);
-	//    return buf;
 #else
-	//	char buff[250];
-	//	GetCurrentDir(buff, 250);
-	//	std::string current_working_directory(buff);
-	//	return current_working_directory;
-	return "";
+	//通过/proc/self/exe拿到当前可执行文件的绝对路径
+	char buf[PATH_MAX];
+	ssize_t len = readlink("/proc/self/exe", buf, sizeof(buf) - 1);
+	if (len <= 0) {
+		return "";
+	}
+	buf[len] = 0;
+	return buf;
 #endif
 }
 
@@ -350,6 +341,11 @@ bool Path::exists() {
 }
 
 void Path::mkdirs() {
+	//空路径(如对纯文件名取dirname的结果)不处理: MSVC的create_directories("")是空操作,
+	//而libstdc++(Linux)会抛filesystem_error, 这里统一为空操作
+	if (path().empty()) {
+		return;
+	}
 	if (exists()) {
 		return;
 	}
@@ -363,7 +359,7 @@ Path Path::relativeToBaseDir(Path basedir)
 	auto parts = StrUtil::split_by_re(np.path(), "/");
 	auto baseparts = StrUtil::split_by_re(basedir.normal().path(), "/");
 	int sameAncestorCnt = 0;
-	for (int i = 0, l = min(parts.size(), baseparts.size()); i < l; i++) {
+	for (int i = 0, l = (int)std::min(parts.size(), baseparts.size()); i < l; i++) {
 		sameAncestorCnt = i;
 		//公共的父
 		if (parts[i] != baseparts[i]) {

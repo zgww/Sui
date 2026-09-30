@@ -1,0 +1,346 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:15 (project)"
+    message: |
+      The system is: Linux - 7.0.0-30-generic - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:15 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /home/hxzh/toolchain/env/bin/g++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/3.30.5/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:15 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-TATzsR"
+      binary: "/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-TATzsR"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-TATzsR'
+        
+        Run Build Command(s): /home/hxzh/toolchain/env/bin/cmake -E env VERBOSE=1 /home/hxzh/toolchain/env/bin/make -f Makefile cmTC_b44cc/fast
+        /home/hxzh/toolchain/env/bin/make  -f CMakeFiles/cmTC_b44cc.dir/build.make CMakeFiles/cmTC_b44cc.dir/build
+        make[1]: Entering directory '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-TATzsR'
+        Building CXX object CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o
+        /home/hxzh/toolchain/env/bin/g++   -v -o CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -c /home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/specs
+        Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/conda.specs
+        COLLECT_GCC=/home/hxzh/toolchain/env/bin/g++
+        Target: x86_64-conda-linux-gnu
+        Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/share/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-languages=c,c++,fortran,objc,obj-c++ --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --disable-nls --disable-bootstrap --disable-multilib --enable-multiarch --enable-long-long --without-zstd --with-native-system-header-dir=/usr/include --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++ --with-gxx-libcxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../include/c++/v1 --with-pkgversion='conda-forge gcc 14.4.0-7' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose --enable-libsanitizer --enable-default-pie --enable-threads=posix --enable-__cxa_atexit --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_build_env/x86_64-conda-linux-gnu/sysroot --enable-plugin --enable-lto
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 14.4.0 (conda-forge gcc 14.4.0-7) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b44cc.dir/'
+         /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/ -isysroot /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot -D_GNU_SOURCE /home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_b44cc.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -isystem /home/hxzh/toolchain/env/include -o /tmp/cc4wI7eS.s
+        GNU C++17 (conda-forge gcc 14.4.0-7) version 14.4.0 (x86_64-conda-linux-gnu)
+        	compiled by GNU C version 16.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed/x86_64-linux-gnu"
+        ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/include"
+        ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++"
+        ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu"
+        ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward"
+        ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include"
+        ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include"
+        ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed/x86_64-linux-gnu"
+        ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed"
+        ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/include"
+        ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include/x86_64-linux-gnu"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/hxzh/toolchain/env/include
+         /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++
+         /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu
+         /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward
+         /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include
+         /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed
+         /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include
+        End of search list.
+        Compiler executable checksum: ab17971d3b78a69847f737409ed20a95
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b44cc.dir/'
+         /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc4wI7eS.s
+        GNU assembler version 2.46.1 (x86_64-conda-linux-gnu) using BFD version (GNU Binutils) 2.46.1
+        COMPILER_PATH=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../libexec/gcc/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/bin/
+        LIBRARY_PATH=/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../lib/gcc/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_b44cc
+        /home/hxzh/toolchain/env/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b44cc.dir/link.txt --verbose=1
+        /home/hxzh/toolchain/env/bin/g++  -v -Wl,-v CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_b44cc
+        Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/specs
+        Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/conda.specs
+        COLLECT_GCC=/home/hxzh/toolchain/env/bin/g++
+        COLLECT_LTO_WRAPPER=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/lto-wrapper
+        Target: x86_64-conda-linux-gnu
+        Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/share/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-languages=c,c++,fortran,objc,obj-c++ --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --disable-nls --disable-bootstrap --disable-multilib --enable-multiarch --enable-long-long --without-zstd --with-native-system-header-dir=/usr/include --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++ --with-gxx-libcxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../include/c++/v1 --with-pkgversion='conda-forge gcc 14.4.0-7' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose --enable-libsanitizer --enable-default-pie --enable-threads=posix --enable-__cxa_atexit --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_build_env/x86_64-conda-linux-gnu/sysroot --enable-plugin --enable-lto
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 14.4.0 (conda-forge gcc 14.4.0-7) 
+        COMPILER_PATH=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../libexec/gcc/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/bin/
+        LIBRARY_PATH=/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../lib/gcc/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b44cc' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b44cc.'
+         /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/collect2 -disable-new-dtags -plugin /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/liblto_plugin.so -plugin-opt=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKWuRuR.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_b44cc /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/Scrt1.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crti.o /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0 -L/home/hxzh/toolchain/env/bin/../lib/gcc -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../.. -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -v CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crtn.o -rpath /home/hxzh/toolchain/env/lib -rpath-link /home/hxzh/toolchain/env/lib -L /home/hxzh/toolchain/env/lib/stubs -L /home/hxzh/toolchain/env/lib
+        collect2 version 14.4.0
+        /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/ld -disable-new-dtags -plugin /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/liblto_plugin.so -plugin-opt=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKWuRuR.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_b44cc /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/Scrt1.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crti.o /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0 -L/home/hxzh/toolchain/env/bin/../lib/gcc -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../.. -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -v CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crtn.o -rpath /home/hxzh/toolchain/env/lib -rpath-link /home/hxzh/toolchain/env/lib -L /home/hxzh/toolchain/env/lib/stubs -L /home/hxzh/toolchain/env/lib
+        GNU ld (GNU Binutils) 2.46.1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b44cc' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b44cc.'
+        make[1]: Leaving directory '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-TATzsR'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:15 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/hxzh/toolchain/env/include]
+          add: [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++]
+          add: [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu]
+          add: [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward]
+          add: [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include]
+          add: [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed]
+          add: [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include]
+        end of search list found
+        collapse include dir [/home/hxzh/toolchain/env/include] ==> [/home/hxzh/toolchain/env/include]
+        collapse include dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++]
+        collapse include dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu]
+        collapse include dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward]
+        collapse include dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include]
+        collapse include dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed]
+        collapse include dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/usr/include]
+        implicit include dirs: [/home/hxzh/toolchain/env/include;/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++;/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu;/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward;/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include;/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:15 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-TATzsR']
+        ignore line: []
+        ignore line: [Run Build Command(s): /home/hxzh/toolchain/env/bin/cmake -E env VERBOSE=1 /home/hxzh/toolchain/env/bin/make -f Makefile cmTC_b44cc/fast]
+        ignore line: [/home/hxzh/toolchain/env/bin/make  -f CMakeFiles/cmTC_b44cc.dir/build.make CMakeFiles/cmTC_b44cc.dir/build]
+        ignore line: [make[1]: Entering directory '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-TATzsR']
+        ignore line: [Building CXX object CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/home/hxzh/toolchain/env/bin/g++   -v -o CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -c /home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/specs]
+        ignore line: [Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/conda.specs]
+        ignore line: [COLLECT_GCC=/home/hxzh/toolchain/env/bin/g++]
+        ignore line: [Target: x86_64-conda-linux-gnu]
+        ignore line: [Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/share/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-languages=c c++ fortran objc obj-c++ --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --disable-nls --disable-bootstrap --disable-multilib --enable-multiarch --enable-long-long --without-zstd --with-native-system-header-dir=/usr/include --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++ --with-gxx-libcxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../include/c++/v1 --with-pkgversion='conda-forge gcc 14.4.0-7' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose --enable-libsanitizer --enable-default-pie --enable-threads=posix --enable-__cxa_atexit --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_build_env/x86_64-conda-linux-gnu/sysroot --enable-plugin --enable-lto]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 14.4.0 (conda-forge gcc 14.4.0-7) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b44cc.dir/']
+        ignore line: [ /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/ -isysroot /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot -D_GNU_SOURCE /home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_b44cc.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -isystem /home/hxzh/toolchain/env/include -o /tmp/cc4wI7eS.s]
+        ignore line: [GNU C++17 (conda-forge gcc 14.4.0-7) version 14.4.0 (x86_64-conda-linux-gnu)]
+        ignore line: [	compiled by GNU C version 16.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/include"]
+        ignore line: [ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++"]
+        ignore line: [ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu"]
+        ignore line: [ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward"]
+        ignore line: [ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include"]
+        ignore line: [ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed/x86_64-linux-gnu"]
+        ignore line: [ignoring duplicate directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include/x86_64-linux-gnu"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/hxzh/toolchain/env/include]
+        ignore line: [ /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++]
+        ignore line: [ /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/x86_64-conda-linux-gnu]
+        ignore line: [ /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++/backward]
+        ignore line: [ /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include]
+        ignore line: [ /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/include-fixed]
+        ignore line: [ /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: ab17971d3b78a69847f737409ed20a95]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b44cc.dir/']
+        ignore line: [ /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc4wI7eS.s]
+        ignore line: [GNU assembler version 2.46.1 (x86_64-conda-linux-gnu) using BFD version (GNU Binutils) 2.46.1]
+        ignore line: [COMPILER_PATH=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../libexec/gcc/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/bin/]
+        ignore line: [LIBRARY_PATH=/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../lib/gcc/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_b44cc]
+        ignore line: [/home/hxzh/toolchain/env/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b44cc.dir/link.txt --verbose=1]
+        ignore line: [/home/hxzh/toolchain/env/bin/g++  -v -Wl -v CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_b44cc]
+        ignore line: [Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/specs]
+        ignore line: [Reading specs from /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/conda.specs]
+        ignore line: [COLLECT_GCC=/home/hxzh/toolchain/env/bin/g++]
+        ignore line: [COLLECT_LTO_WRAPPER=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/lto-wrapper]
+        ignore line: [Target: x86_64-conda-linux-gnu]
+        ignore line: [Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/share/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-languages=c c++ fortran objc obj-c++ --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --disable-nls --disable-bootstrap --disable-multilib --enable-multiarch --enable-long-long --without-zstd --with-native-system-header-dir=/usr/include --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/include/c++ --with-gxx-libcxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../include/c++/v1 --with-pkgversion='conda-forge gcc 14.4.0-7' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose --enable-libsanitizer --enable-default-pie --enable-threads=posix --enable-__cxa_atexit --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1790300775230/_build_env/x86_64-conda-linux-gnu/sysroot --enable-plugin --enable-lto]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 14.4.0 (conda-forge gcc 14.4.0-7) ]
+        ignore line: [COMPILER_PATH=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../libexec/gcc/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/bin/]
+        ignore line: [LIBRARY_PATH=/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/:/home/hxzh/toolchain/env/bin/../lib/gcc/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b44cc' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b44cc.']
+        link line: [ /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/collect2 -disable-new-dtags -plugin /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/liblto_plugin.so -plugin-opt=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKWuRuR.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_b44cc /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/Scrt1.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crti.o /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0 -L/home/hxzh/toolchain/env/bin/../lib/gcc -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../.. -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -v CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crtn.o -rpath /home/hxzh/toolchain/env/lib -rpath-link /home/hxzh/toolchain/env/lib -L /home/hxzh/toolchain/env/lib/stubs -L /home/hxzh/toolchain/env/lib]
+          arg [/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/collect2] ==> ignore
+          arg [-disable-new-dtags] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccKWuRuR.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--sysroot=/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_b44cc] ==> ignore
+          arg [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/Scrt1.o] ==> obj [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/Scrt1.o]
+          arg [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crti.o] ==> obj [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crti.o]
+          arg [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o] ==> obj [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o]
+          arg [-L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0] ==> dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0]
+          arg [-L/home/hxzh/toolchain/env/bin/../lib/gcc] ==> dir [/home/hxzh/toolchain/env/bin/../lib/gcc]
+          arg [-L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64] ==> dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64]
+          arg [-L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64] ==> dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64]
+          arg [-L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib] ==> dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib]
+          arg [-L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../..] ==> dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../..]
+          arg [-L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib] ==> dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib]
+          arg [-L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib] ==> dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o] ==> obj [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o]
+          arg [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crtn.o] ==> obj [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crtn.o]
+          arg [-rpath] ==> ignore
+          arg [/home/hxzh/toolchain/env/lib] ==> ignore
+          arg [-rpath-link] ==> ignore
+          arg [/home/hxzh/toolchain/env/lib] ==> ignore
+          arg [-L/home/hxzh/toolchain/env/lib/stubs] ==> dir [/home/hxzh/toolchain/env/lib/stubs]
+          arg [-L/home/hxzh/toolchain/env/lib] ==> dir [/home/hxzh/toolchain/env/lib]
+        ignore line: [collect2 version 14.4.0]
+        ignore line: [/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/ld -disable-new-dtags -plugin /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/liblto_plugin.so -plugin-opt=/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKWuRuR.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_b44cc /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/Scrt1.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crti.o /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0 -L/home/hxzh/toolchain/env/bin/../lib/gcc -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64 -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../.. -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -v CMakeFiles/cmTC_b44cc.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o /home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crtn.o -rpath /home/hxzh/toolchain/env/lib -rpath-link /home/hxzh/toolchain/env/lib -L /home/hxzh/toolchain/env/lib/stubs -L /home/hxzh/toolchain/env/lib]
+        linker tool for 'CXX': /home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/ld
+        collapse obj [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/Scrt1.o] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64/Scrt1.o]
+        collapse obj [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crti.o] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64/crti.o]
+        collapse obj [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o]
+        collapse obj [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o]
+        collapse obj [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64/crtn.o] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64/crtn.o]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0] ==> [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../lib/gcc] ==> [/home/hxzh/toolchain/env/lib/gcc]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib64] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/usr/lib64]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../../../x86_64-conda-linux-gnu/lib] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/lib]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../lib/gcc/x86_64-conda-linux-gnu/14.4.0/../../..] ==> [/home/hxzh/toolchain/env/lib]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/lib] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib]
+        collapse library dir [/home/hxzh/toolchain/env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib] ==> [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/usr/lib]
+        collapse library dir [/home/hxzh/toolchain/env/lib/stubs] ==> [/home/hxzh/toolchain/env/lib/stubs]
+        collapse library dir [/home/hxzh/toolchain/env/lib] ==> [/home/hxzh/toolchain/env/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64/Scrt1.o;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64/crti.o;/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtbeginS.o;/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0/crtendS.o;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64/crtn.o]
+        implicit dirs: [/home/hxzh/toolchain/env/lib/gcc/x86_64-conda-linux-gnu/14.4.0;/home/hxzh/toolchain/env/lib/gcc;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib64;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/usr/lib64;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/lib;/home/hxzh/toolchain/env/lib;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/lib;/home/hxzh/toolchain/env/x86_64-conda-linux-gnu/sysroot/usr/lib;/home/hxzh/toolchain/env/lib/stubs]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:15 (project)"
+    message: |
+      Running the CXX compiler's linker: "/home/hxzh/toolchain/env/bin/../libexec/gcc/x86_64-conda-linux-gnu/14.4.0/ld" "-v"
+      GNU ld (GNU Binutils) 2.46.1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/FindThreads.cmake:99 (CHECK_CXX_SOURCE_COMPILES)"
+      - "/home/hxzh/toolchain/env/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "CMakeLists.txt:74 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-jvCIxW"
+      binary: "/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-jvCIxW"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-jvCIxW'
+        
+        Run Build Command(s): /home/hxzh/toolchain/env/bin/cmake -E env VERBOSE=1 /home/hxzh/toolchain/env/bin/make -f Makefile cmTC_26b33/fast
+        /home/hxzh/toolchain/env/bin/make  -f CMakeFiles/cmTC_26b33.dir/build.make CMakeFiles/cmTC_26b33.dir/build
+        make[1]: Entering directory '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-jvCIxW'
+        Building CXX object CMakeFiles/cmTC_26b33.dir/src.cxx.o
+        /home/hxzh/toolchain/env/bin/g++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu++20 -o CMakeFiles/cmTC_26b33.dir/src.cxx.o -c /home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-jvCIxW/src.cxx
+        Linking CXX executable cmTC_26b33
+        /home/hxzh/toolchain/env/bin/cmake -E cmake_link_script CMakeFiles/cmTC_26b33.dir/link.txt --verbose=1
+        /home/hxzh/toolchain/env/bin/g++ CMakeFiles/cmTC_26b33.dir/src.cxx.o -o cmTC_26b33
+        make[1]: Leaving directory '/home/hxzh/ws/Sui/orc-antlr/antlr4-cpp/build-linux/CMakeFiles/CMakeScratch/TryCompile-jvCIxW'
+        
+      exitCode: 0
+...

@@ -9,17 +9,22 @@
 #include "OrcParser.h"
 #include "OrcBaseVisitor.h"
 #include "Symbol.h"
+#ifdef _WIN32
 #include <windows.h>
 #include "resource.h"
+#endif
 #include <ReturnStringVisitor.h>
 #include "Utf8Util.h"
 
+#ifdef _MSC_VER
 #pragma execution_character_set("utf-8")
+#endif
 
 using namespace antlrcpptest;
 using namespace antlr4;
 
 // tray icon data
+#ifdef _WIN32
 NOTIFYICONDATA m_NID;
 
 BOOL CreateTrayIcon()
@@ -65,6 +70,20 @@ BOOL ShowTrayIconBalloon(LPCTSTR pszTitle, LPCTSTR pszText, UINT unTimeout, DWOR
 
 	return Shell_NotifyIcon(NIM_MODIFY, &m_NID);
 }
+#else
+//非Windows平台没有托盘气泡, 改为控制台输出
+static bool CreateTrayIcon()
+{
+	return true;
+}
+
+static bool ShowTrayIconBalloon(const wchar_t* pszTitle, const wchar_t* pszText, unsigned int unTimeout, unsigned int dwInfoFlags)
+{
+	printf("[%ls] %ls\n", pszTitle, pszText);
+	return true;
+}
+#endif
+
 void Project::watch(std::string dir)
 {
 	std::thread t([&]() {
@@ -157,7 +176,7 @@ void Project::onWatchEvent(std::shared_ptr<FsWatchEvent> ev)
 			pushPathQueue("build", fullpath);
 		}
 		else if (act == "rename") {
-			auto oldFullpath = fsWatch->watchDir + ev->oldPath;
+			auto oldFullpath = Path(fsWatch->watchDir).append(ev->oldPath).normal().path();
 		/*	symbolSpaceLoader->unload(oldFullpath);
 			symbolSpaceLoader->load(fullpath);*/
 

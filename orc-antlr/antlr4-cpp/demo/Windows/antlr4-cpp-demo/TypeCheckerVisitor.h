@@ -3,7 +3,9 @@
 #include <filesystem>
 #include "OrcLexer.h"
 
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 #include "md5.h"
 #include "Closure.h"
 #include <FsUtil.h>
@@ -66,8 +68,6 @@ public:
 	//�����Ƿ��ж���
 	bool isTypeNameDefined(std::string typeName);
 	//判断 typeName 是否为所在函数(擦除型泛型函数)的泛型参数
-	bool isEnclosingGenericFunctionParam(antlr4::tree::ParseTree* tree, std::string typeName);
-
 	//判断类型名是否是所在函数(擦除型泛型函数)的泛型参数, 如 T@ 中的 T
 	bool isEnclosingGenericFunctionParam(antlr4::tree::ParseTree* tree, std::string typeName);
 

@@ -112,7 +112,9 @@ std::string parseJsonRpc(std::string s) {
 		newline = 2;
 	}
 	//Content-Length:
-	int rn = newline * 2;
+	//idx指向header行尾的'\n'. 之后还要跳过: LF帧为1个字符(空行的'\n'), CRLF帧为3个字符('\n'后的"\r\n")
+	//即 body起始 = idx + (newline == 2 ? 3 : 2)
+	int rn = newline + 1;
 	int length = 0;
 	sscanf(s.c_str() + 16, "%d", &length);
 	if (s.size() >= idx + rn && length <= s.size() - idx - rn) {

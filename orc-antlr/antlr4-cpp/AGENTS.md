@@ -102,8 +102,37 @@ ANTLR4 C++ runtime 主体源码。
 实际维护优先级应判断为：
 
 1. `demo/Windows/antlr4cpp-vs2022.sln`
-2. 根 `runtime` CMake
-3. 其余 demo 平台目录
+2. `demo/Linux/CMakeLists.txt`（Linux 构建 orcc）
+3. 根 `runtime` CMake
+4. 其余 demo 平台目录
+
+## Linux 构建入口
+
+自 2026-09 起，Orc 工具链支持 Linux。构建入口是：
+
+- `demo/Linux/CMakeLists.txt`，产物名同为 `orcc`
+- 与 Windows 主项目共用同一份源码（`demo/Windows/antlr4-cpp-demo/`），平台差异全部用 `#ifdef _WIN32` 隔离
+
+构建方式：
+
+```bash
+cmake -S demo/Linux -B build-linux -DCMAKE_BUILD_TYPE=Release
+cmake --build build-linux -j
+# 产物: build-linux/orcc
+```
+
+要求：GCC 13+ / Clang 16+（代码使用了 `std::format`，即 C++20）。
+
+Linux 移植的对应关系：
+
+- 文件监听：`FsWatcher.cpp` 中 `FsWatchWin32`（ReadDirectoryChangesW）之外新增 `FsWatchLinux`（inotify，递归监听，事件语义与 Win32 版一致：add/remove/modify/rename，路径相对于 watchDir）
+- 托盘气泡：`Project.cpp` 中非 Windows 平台退化为控制台输出
+- 编码转换：`Utf8Util`/`Utf8Util$*` 在非 Windows 平台"活动代码页即 UTF-8"，`toutf16`/`toutf8` 为手工 UTF-8 ↔ wchar_t 转换（Linux 下 wchar_t 为 UTF-32）
+- 路径：`FsUtil::getcwd/setcwd/getExecutionPath` 用 POSIX（`getcwd`/`chdir`/`/proc/self/exe`）实现
+- 运行时依赖：处理 `#include`（如 `stdio.h`）时 orcc 会调用系统 `clang` 生成 ast json，因此 Linux 上需要 clang 在 PATH 中（Windows 上同理）
+
+注意：`demo/CMakeLists.txt`（根 CMake 的 `WITH_DEMO` 路径）构建的是老的 TLexer/TParser 示例，与 Orc 主线无关，不要与 `demo/Linux/CMakeLists.txt` 混淆。
+
 
 ## Orc 语法与生成物
 
@@ -482,16 +511,9 @@ ANTLR 自动生成目录。
 
 后续改动时不要把两者混为一谈。
 
-### 2. 主维护平台明显偏 Windows
+### 2. 主维护平台原为 Windows，现已支持 Linux
 
-虽然仓库保留 Linux/macOS 目录和根 CMake，但 Orc 主线实现大量依赖：
-
-- `Windows.h`
-- 托盘气泡
-- Win32 路径与编码处理
-- Visual Studio 工程
-
-因此当前真实的“一等公民平台”是 Windows。
+Orc 主线历史上只支持 Windows（`Windows.h`、托盘气泡、Win32 路径与编码处理、Visual Studio 工程）。2026-09 起 Linux 已打通：所有 Win32 依赖均以 `#ifdef _WIN32` 隔离，Linux 走 inotify / POSIX / UTF-8 等价实现（见"Linux 构建入口"一节）。macOS 尚未验证。
 
 ### 3. CMake 与真实主流程并不完全同步
 

@@ -16,12 +16,15 @@
 #include <filesystem>
 #include "OrcLexer.h"
 
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 #include "md5.h"
 #include "Closure.h"
 #include <FsUtil.h>
 #include <StrUtil.h>
 #include "ReturnStringVisitor.h"
+#include "Utf8Util.h"
 #include <GenOrcCodeVisitor.h>
 #include "./TypeCheckerVisitor.h"
 #include <cstdint>
@@ -35,7 +38,9 @@ using namespace std;
 using namespace nlohmann;
 
 
+#ifdef _MSC_VER
 #pragma execution_character_set("utf-8")
+#endif
 
 using namespace antlrcpptest;
 using namespace antlr4;
@@ -51,6 +56,10 @@ static std::shared_ptr<SymbolDefinitionClass> gocSymbolDefinitionClass_Object(
 std::wstring Utf8Util$acpToUtf16(char* str0)
 {
 	std::string str(str0);
+#ifndef _WIN32
+	//非Windows平台活动代码页即UTF-8
+	return Utf8Util::toutf16(str);
+#else
 	if (str == "") return (L"");
 
 	// 计算缓冲区需要的大小, 如果函数成功, 则返回 UTF-8 字符数量, 所以无法确定具体字节数
@@ -65,10 +74,13 @@ std::wstring Utf8Util$acpToUtf16(char* str0)
 	std::wstring ret = buf;
 	delete[] buf;
 	return ret;
+#endif
 }
 
 std::string Utf8Util$toUtf8(const wchar_t* str) {
-#ifdef _WIN32
+#ifndef _WIN32
+	return Utf8Util::toutf8(str);
+#else
 	if (str == L"") return "";
 	// 计算缓冲区需要的大小, 如果函数成功, 则返回具体字节数, 所以 cBuf 至少是 1 (UTF-8以0x00结尾)
 	int cBuf = WideCharToMultiByte(CP_UTF8, 0, str, -1, NULL, 0, NULL, NULL);
@@ -81,8 +93,6 @@ std::string Utf8Util$toUtf8(const wchar_t* str) {
 	std::string ret = buf;
 	delete[] buf;
 	return ret;
-#else
-	return "";
 #endif
 }
 std::string Utf8Util$acpToUtf8(char* str0)
@@ -108,11 +118,14 @@ std::wstring Utf8Util$toUtf16(const char* str) {
 	delete [] buf;
 	return ret;
 #else//其他平台统一走utf8
-	return _strdup_wstring(L"");
+	return Utf8Util::toutf16(str);
 #endif
 }
 std::string Utf8Util$utf16ToAcp(const wchar_t* str) {
-#ifdef _WIN32
+#ifndef _WIN32
+	//非Windows平台活动代码页即UTF-8
+	return Utf8Util::toutf8(str);
+#else
 	if (str == L"") return ("");
 	// 计算缓冲区需要的大小, 如果函数成功, 则返回具体字节数, 所以 cBuf 至少是 1 (UTF-8以0x00结尾)
 	int cBuf = WideCharToMultiByte(CP_ACP, 0, str, -1, NULL, 0, NULL, NULL);
@@ -126,8 +139,6 @@ std::string Utf8Util$utf16ToAcp(const wchar_t* str) {
 	std::string ret = buf;
 	delete[] buf;
 	return ret;
-#else
-	return "";
 #endif
 }
 std::string Utf8Util$utf8ToAcp(const char* str) {

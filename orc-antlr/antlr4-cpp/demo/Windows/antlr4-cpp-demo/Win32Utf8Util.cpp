@@ -1,3 +1,4 @@
+#ifdef _WIN32
 #include "Win32Utf8Util.h"
 #include <Windows.h>
 
@@ -22,3 +23,5 @@ std::string Win32Utf8Util::acp_to_utf8(std::string str)
 	auto wstr = acp_to_utf16(str);
 	return Utf8Util::toutf8(wstr);
 }
+
+#endif // _WIN32

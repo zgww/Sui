@@ -1,0 +1,822 @@
+{
+  "id": "0x60c948405c78",
+  "kind": "TranslationUnitDecl",
+  "loc": {},
+  "range": {
+    "begin": {},
+    "end": {}
+  },
+  "inner": [
+    {
+      "id": "0x60c948406850",
+      "kind": "TypedefDecl",
+      "loc": {},
+      "range": {
+        "begin": {},
+        "end": {}
+      },
+      "isImplicit": true,
+      "name": "__int128_t",
+      "type": {
+        "qualType": "__int128"
+      },
+      "inner": [
+        {
+          "id": "0x60c948406240",
+          "kind": "BuiltinType",
+          "type": {
+            "qualType": "__int128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0x60c9484068c0",
+      "kind": "TypedefDecl",
+      "loc": {},
+      "range": {
+        "begin": {},
+        "end": {}
+      },
+      "isImplicit": true,
+      "name": "__uint128_t",
+      "type": {
+        "qualType": "unsigned __int128"
+      },
+      "inner": [
+        {
+          "id": "0x60c948406260",
+          "kind": "BuiltinType",
+          "type": {
+            "qualType": "unsigned __int128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0x60c948406bd0",
+      "kind": "TypedefDecl",
+      "loc": {},
+      "range": {
+        "begin": {},
+        "end": {}
+      },
+      "isImplicit": true,
+      "name": "__NSConstantString",
+      "type": {
+        "qualType": "struct __NSConstantString_tag"
+      },
+      "inner": [
+        {
+          "id": "0x60c9484069a0",
+          "kind": "RecordType",
+          "type": {
+            "qualType": "struct __NSConstantString_tag"
+          },
+          "decl": {
+            "id": "0x60c948406918",
+            "kind": "RecordDecl",
+            "name": "__NSConstantString_tag"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0x60c9484064f8",
+      "kind": "TypedefDecl",
+      "loc": {},
+      "range": {
+        "begin": {},
+        "end": {}
+      },
+      "isImplicit": true,
+      "name": "__builtin_ms_va_list",
+      "type": {
+        "qualType": "char *"
+      },
+      "inner": [
+        {
+          "id": "0x60c9484064b0",
+          "kind": "PointerType",
+          "type": {
+            "qualType": "char *"
+          },
+          "inner": [
+            {
+              "id": "0x60c948405d20",
+              "kind": "BuiltinType",
+              "type": {
+                "qualType": "char"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0x60c9484067e0",
+      "kind": "TypedefDecl",
+      "loc": {},
+      "range": {
+        "begin": {},
+        "end": {}
+      },
+      "isImplicit": true,
+      "name": "__builtin_va_list",
+      "type": {
+        "qualType": "struct __va_list_tag[1]"
+      },
+      "inner": [
+        {
+          "id": "0x60c948406790",
+          "kind": "ConstantArrayType",
+          "type": {
+            "qualType": "struct __va_list_tag[1]"
+          },
+          "size": 1,
+          "inner": [
+            {
+              "id": "0x60c9484065d0",
+              "kind": "RecordType",
+              "type": {
+                "qualType": "struct __va_list_tag"
+              },
+              "decl": {
+                "id": "0x60c948406550",
+                "kind": "RecordDecl",
+                "name": "__va_list_tag"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0x60c94846fb60",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 59,
+        "file": "././UrgcDll/./GcObj.h",
+        "line": 5,
+        "col": 21,
+        "tokLen": 5,
+        "includedFrom": {
+          "file": "././UrgcDll/Urgc.h"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 39,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "././UrgcDll/Urgc.h"
+          }
+        },
+        "end": {
+          "offset": 59,
+          "col": 21,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "././UrgcDll/Urgc.h"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "GcObj",
+      "mangledName": "GcObj",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c94846fbe0",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 305,
+        "file": "././UrgcDll/Urgc.h",
+        "line": 21,
+        "col": 7,
+        "tokLen": 3,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 299,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 305,
+          "col": 7,
+          "tokLen": 3,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "std",
+      "mangledName": "std",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c94846fc60",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 324,
+        "line": 22,
+        "col": 7,
+        "tokLen": 3,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 318,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 324,
+          "col": 7,
+          "tokLen": 3,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "std",
+      "mangledName": "std",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c94846fce0",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 343,
+        "line": 23,
+        "col": 7,
+        "tokLen": 3,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 337,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 343,
+          "col": 7,
+          "tokLen": 3,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "std",
+      "mangledName": "std",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c94846fd60",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 361,
+        "line": 24,
+        "col": 7,
+        "tokLen": 3,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 355,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 361,
+          "col": 7,
+          "tokLen": 3,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "std",
+      "mangledName": "std",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c94846fde0",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 1808,
+        "line": 50,
+        "col": 21,
+        "tokLen": 10,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 1788,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 1808,
+          "col": 21,
+          "tokLen": 10,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "__SpinLock",
+      "mangledName": "__SpinLock",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c94846fe60",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 2097,
+        "line": 70,
+        "col": 21,
+        "tokLen": 6,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 2077,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 2097,
+          "col": 21,
+          "tokLen": 6,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "RefMgr",
+      "mangledName": "RefMgr",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c94846ffe0",
+      "kind": "FunctionDecl",
+      "loc": {
+        "offset": 3214,
+        "line": 107,
+        "col": 18,
+        "tokLen": 21,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 3209,
+          "col": 13,
+          "tokLen": 4,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 3249,
+          "col": 53,
+          "tokLen": 1,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "Ref_set_global_source",
+      "mangledName": "Ref_set_global_source",
+      "type": {
+        "qualType": "void (int *)"
+      },
+      "inner": [
+        {
+          "id": "0x60c94846ff18",
+          "kind": "ParmVarDecl",
+          "loc": {
+            "offset": 3243,
+            "col": 47,
+            "tokLen": 6,
+            "includedFrom": {
+              "file": "Urgc-tmp.c"
+            }
+          },
+          "range": {
+            "begin": {
+              "offset": 3236,
+              "col": 40,
+              "tokLen": 5,
+              "includedFrom": {
+                "file": "Urgc-tmp.c"
+              }
+            },
+            "end": {
+              "offset": 3243,
+              "col": 47,
+              "tokLen": 6,
+              "includedFrom": {
+                "file": "Urgc-tmp.c"
+              }
+            }
+          },
+          "isInvalid": true,
+          "name": "source",
+          "type": {
+            "qualType": "int *"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0x60c9484700e8",
+      "kind": "FunctionDecl",
+      "loc": {
+        "offset": 3272,
+        "line": 109,
+        "col": 20,
+        "tokLen": 21,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 3265,
+          "col": 13,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 3294,
+          "col": 42,
+          "tokLen": 1,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "Ref_get_global_source",
+      "mangledName": "Ref_get_global_source",
+      "type": {
+        "qualType": "int *()"
+      }
+    },
+    {
+      "id": "0x60c9484701a8",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 3369,
+        "line": 115,
+        "col": 20,
+        "tokLen": 12,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 3350,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 3369,
+          "col": 20,
+          "tokLen": 12,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "RefEventItem",
+      "mangledName": "RefEventItem",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c948470228",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 4444,
+        "line": 134,
+        "col": 20,
+        "tokLen": 16,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 4425,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 4444,
+          "col": 20,
+          "tokLen": 16,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "RefEventItemList",
+      "mangledName": "RefEventItemList",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c9484702a8",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 4799,
+        "line": 154,
+        "col": 7,
+        "tokLen": 9,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 4793,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 4799,
+          "col": 7,
+          "tokLen": 9,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "RefRecord",
+      "mangledName": "RefRecord",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c948470328",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 4875,
+        "line": 160,
+        "col": 7,
+        "tokLen": 16,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 4869,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 4875,
+          "col": 7,
+          "tokLen": 16,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "TargetRefRecords",
+      "mangledName": "TargetRefRecords",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c9484703a8",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 4996,
+        "line": 167,
+        "col": 20,
+        "tokLen": 4,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 4977,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 4996,
+          "col": 20,
+          "tokLen": 4,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "Urgc",
+      "mangledName": "Urgc",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c948470428",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 11005,
+        "line": 307,
+        "col": 19,
+        "tokLen": 9,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 10987,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 11005,
+          "col": 19,
+          "tokLen": 9,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "CtorGuard",
+      "mangledName": "CtorGuard",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c9484704d0",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 21432,
+        "line": 671,
+        "col": 20,
+        "tokLen": 18,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 21413,
+          "col": 1,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 21432,
+          "col": 20,
+          "tokLen": 18,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "CalleeVoidCallback",
+      "mangledName": "CalleeVoidCallback",
+      "type": {
+        "qualType": "int"
+      }
+    },
+    {
+      "id": "0x60c948470550",
+      "kind": "VarDecl",
+      "loc": {
+        "offset": 21459,
+        "col": 47,
+        "tokLen": 5,
+        "includedFrom": {
+          "file": "Urgc-tmp.c"
+        }
+      },
+      "range": {
+        "begin": {
+          "offset": 21452,
+          "col": 40,
+          "tokLen": 6,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        },
+        "end": {
+          "offset": 21459,
+          "col": 47,
+          "tokLen": 5,
+          "includedFrom": {
+            "file": "Urgc-tmp.c"
+          }
+        }
+      },
+      "isInvalid": true,
+      "name": "GcObj",
+      "mangledName": "GcObj",
+      "type": {
+        "qualType": "int"
+      }
+    }
+  ]
+}

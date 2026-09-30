@@ -1,6 +1,7 @@
 
 
 #include <string> 
+#include <cstdint>
 #include "Utf8Util.h"
 
 
@@ -109,6 +110,42 @@ std::string Utf8Util::delete_rune(std::string str, int at, int cnt) {
 	auto post = substr(str, at+cnt);
 	return pre + post;
 }
+//非Windows平台: 手工在UTF-8与wchar_t之间转换.
+//Linux/macOS下wchar_t为UTF-32; 若wchar_t为16位则编码为UTF-16代理对(与Windows行为一致)
+static std::wstring utf8_to_wstring_portable(const std::string& str) {
+	std::wstring ret;
+	ret.reserve(str.size());
+	size_t i = 0;
+	while (i < str.size()) {
+		unsigned char c = (unsigned char)str[i];
+		uint32_t cp = 0xFFFD;
+		int extra = 0;
+		if (c < 0x80) cp = c;
+		else if ((c & 0xE0) == 0xC0) { cp = c & 0x1F; extra = 1; }
+		else if ((c & 0xF0) == 0xE0) { cp = c & 0x0F; extra = 2; }
+		else if ((c & 0xF8) == 0xF0) { cp = c & 0x07; extra = 3; }
+		bool bad = extra == 0 && c >= 0x80;
+		for (int k = 0; k < extra && i + 1 < str.size(); k++) {
+			i++;
+			unsigned char cc = (unsigned char)str[i];
+			if ((cc & 0xC0) != 0x80) { bad = true; break; }
+			cp = (cp << 6) | (cc & 0x3F);
+		}
+		i++;
+		if (bad) cp = 0xFFFD;
+		if (sizeof(wchar_t) == 2 && cp > 0xFFFF) {
+			//wchar_t为16位, 编码为UTF-16代理对
+			uint32_t sc = cp - 0x10000;
+			ret.push_back((wchar_t)(0xD800 + (sc >> 10)));
+			ret.push_back((wchar_t)(0xDC00 + (sc & 0x3FF)));
+		}
+		else {
+			ret.push_back((wchar_t)cp);
+		}
+	}
+	return ret;
+}
+
 std::wstring Utf8Util::toutf16(std::string str) {
 #ifdef _WIN32
 	if (str == "") return L"";
@@ -125,14 +162,19 @@ std::wstring Utf8Util::toutf16(std::string str) {
 	delete [] buf;
 	return ret;
 #else//其他平台统一走utf8
-	return L"";
+	return utf8_to_wstring_portable(str);
 #endif
 }
 
 std::string Utf8Util::utf8_to_active_code_page(std::string str) {
+#ifdef _WIN32
 	auto utf16 = toutf16(str);
 	auto ret = utf16_to_active_code_page(utf16);
 	return ret;
+#else
+	//非Windows平台活动代码页即UTF-8, 原样返回
+	return str;
+#endif
 }
 std::string Utf8Util::utf16_to_active_code_page(std::wstring str) {
 #ifdef _WIN32
@@ -149,7 +191,8 @@ std::string Utf8Util::utf16_to_active_code_page(std::wstring str) {
 	delete[] buf;
 	return ret;
 #else
-	return "";
+	//非Windows平台活动代码页即UTF-8
+	return toutf8(str);
 #endif
 }
 std::string Utf8Util::toutf8(std::wstring str) {
@@ -167,7 +210,25 @@ std::string Utf8Util::toutf8(std::wstring str) {
 	delete[] buf;
 	return ret;
 #else
-	return "";
+	if (str == L"") return "";
+	std::string ret;
+	ret.reserve(str.size());
+	size_t i = 0;
+	while (i < str.size()) {
+		uint32_t cp = (uint32_t)str[i];
+		if (sizeof(wchar_t) == 2 && cp >= 0xD800 && cp <= 0xDBFF
+			&& i + 1 < str.size()) {
+			//高代理项, 与后续低代理项组合成一个码点
+			uint32_t lo = (uint32_t)str[i + 1];
+			if (lo >= 0xDC00 && lo <= 0xDFFF) {
+				cp = 0x10000 + ((cp - 0xD800) << 10) + (lo - 0xDC00);
+				i++;
+			}
+		}
+		ret += utf32_to_utf8(cp);
+		i++;
+	}
+	return ret;
 #endif
 }
 

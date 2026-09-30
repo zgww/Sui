@@ -1,0 +1,9 @@
+# Xmake cache
+.xmake/
+build/
+_orc/
+
+# MacOS Cache
+.DS_Store
+
+

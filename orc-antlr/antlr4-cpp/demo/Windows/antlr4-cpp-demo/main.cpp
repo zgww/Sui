@@ -11,6 +11,7 @@
  //
 
 #include <iostream>
+#include <thread>
 
 #include "antlr4-runtime.h"
 #include "OrcLexer.h"
@@ -18,13 +19,15 @@
 #include "OrcBaseVisitor.h"
 #include "ActorByThread.h"
 
+#ifdef _WIN32
 #include <Windows.h>
+#include <conio.h>
+#endif
 #include "Symbol.h"
 #include <Project.h>
 #include "FsUtil.h"
 #include "md5.h"
 #include <setjmp.h>
-#include <conio.h>
 #include <OrcLsp.h>
 #include "./CodeCompletionCore.hpp"
 #include "./CodeCompletion.h"
@@ -32,7 +35,9 @@
 using namespace nlohmann;
 
 
+#ifdef _MSC_VER
 #pragma execution_character_set("utf-8")
+#endif
 
 using namespace antlrcpptest;
 using namespace antlr4;
@@ -144,15 +149,19 @@ std::shared_ptr<Test> mkTest(const char* str) {
 	return ret;
 }
 int main2(int argc, const char* argv[]) {
+#ifdef _WIN32
 	SetConsoleOutputCP(65001);
+#endif
 	printf("你好\n");
 
 	Symbol$registerMetas();
 
 
+#ifdef _WIN32
 	char buf[1024];
 	GetCurrentDirectoryA(sizeof(buf), buf);
 	printf("cwd:%s\n", buf);
+#endif
 	//ANTLRInputStream input("a = b + \"c\";(((x * d))) * e + f; a + (x * (y ? 0 : 1) + z);");
 	auto str = "char *data";
 	str = "package SuiCore";
@@ -1038,16 +1047,22 @@ void testCompletion2() {
 
 }
 
+#ifdef _WIN32
 long WINAPI onUnhandledException(EXCEPTION_POINTERS *exceptionInfo) {
 	MessageBoxW(NULL, L"崩溃了", L"提示", MB_ICONERROR|MB_DEFBUTTON1);
 	return EXCEPTION_EXECUTE_HANDLER;
 }
+#endif
 int main(int argc, const char* argv[]) {
+#ifdef _WIN32
 	SetConsoleOutputCP(65001);
+#endif
 	// main2(argc, argv);
 	//std::this_thread::sleep_for(std::chrono::seconds(5));
 
+#ifdef _WIN32
 	SetUnhandledExceptionFilter(onUnhandledException);
+#endif
 	//int* a = NULL;
 	//*a = 1;
 	//printf("a:%d\n", a);

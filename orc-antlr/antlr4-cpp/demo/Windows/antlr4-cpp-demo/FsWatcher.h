@@ -2,8 +2,11 @@
 
 #include <string>
 #include <memory>
-#include <windows.h>
 #include <functional>
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 class FsWatchEvent {
 public:

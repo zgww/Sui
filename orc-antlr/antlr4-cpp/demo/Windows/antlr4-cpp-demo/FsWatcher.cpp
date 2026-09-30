@@ -1,5 +1,7 @@
 #include "FsWatcher.h"
 
+#ifdef _WIN32
+
 
 
 class FsWatchWin32 : public FsWatch {
@@ -166,3 +168,179 @@ public:
 std::shared_ptr<FsWatch> FsWatch::createInstance() {
 	return std::make_shared<FsWatchWin32>();
 }
+#else // !_WIN32 : Linux下基于inotify实现递归监听
+
+#include <sys/inotify.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <errno.h>
+#include <string.h>
+#include <stdint.h>
+#include <map>
+
+class FsWatchLinux : public FsWatch {
+public:
+	int fd = -1;
+	//watch descriptor -> 被监听目录的绝对路径
+	std::map<int, std::string> wd2dir;
+	//cookie -> 旧的相对路径. 用于把IN_MOVED_FROM/IN_MOVED_TO配对成rename事件
+	std::map<uint32_t, std::string> moveFroms;
+
+	~FsWatchLinux() {
+		if (fd >= 0) {
+			close(fd);
+		}
+	}
+
+	static bool isDir(const std::string& path) {
+		struct stat st;
+		if (stat(path.c_str(), &st) != 0) {
+			return false;
+		}
+		return S_ISDIR(st.st_mode);
+	}
+
+	std::string relativeToWatchDir(const std::string& dirAbs, const std::string& name) {
+		//事件路径与Win32版本保持一致: 相对于watchDir
+		std::string rel;
+		if (dirAbs.size() > watchDir.size()) {
+			rel = dirAbs.substr(watchDir.size());
+			//去掉开头的分隔符
+			if (!rel.empty() && rel[0] == '/') {
+				rel = rel.substr(1);
+			}
+			if (!rel.empty()) {
+				rel += "/";
+			}
+		}
+		return rel + name;
+	}
+
+	void addWatchTree(const std::string& dirAbs) {
+		//递归为目录及其子目录添加监听(Win32的ReadDirectoryChangesW是递归的)
+		int wd = inotify_add_watch(fd, dirAbs.c_str(),
+			IN_CREATE | IN_DELETE | IN_MODIFY | IN_MOVED_FROM | IN_MOVED_TO);
+		if (wd >= 0) {
+			wd2dir[wd] = dirAbs;
+		}
+
+		DIR* d = opendir(dirAbs.c_str());
+		if (d == NULL) {
+			return;
+		}
+		struct dirent* ent;
+		while ((ent = readdir(d)) != NULL) {
+			if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0) {
+				continue;
+			}
+			std::string kid = dirAbs + "/" + ent->d_name;
+			if (isDir(kid)) {
+				addWatchTree(kid);
+			}
+		}
+		closedir(d);
+	}
+
+	void emit(std::string action, std::string relPath, std::string oldPath = "") {
+		auto ev = std::make_shared<FsWatchEvent>();
+		ev->action = action;
+		ev->path = relPath;
+		ev->oldPath = oldPath;
+		onEvent(ev);
+	}
+
+	virtual int start() {
+		char cwdbuf[4096];
+		if (getcwd(cwdbuf, sizeof(cwdbuf)) == NULL) {
+			cwdbuf[0] = 0;
+		}
+		printf("监听文件变化:%s; cwd:%s\n", watchDir.c_str(), cwdbuf);
+
+		fd = inotify_init();
+		if (fd < 0) {
+			printf("watch failed. inotify_init errno:%d\n", errno);
+			return -1;
+		}
+
+		addWatchTree(watchDir);
+
+		char buf[64 * 1024] __attribute__((aligned(__alignof__(struct inotify_event))));
+		while (true) {
+			ssize_t n = read(fd, buf, sizeof(buf));
+			if (n <= 0) {
+				if (n < 0 && errno == EINTR) {
+					continue;
+				}
+				return 0;
+			}
+
+			for (char* p = buf; p < buf + n; ) {
+				struct inotify_event* e = (struct inotify_event*)p;
+				p += sizeof(struct inotify_event) + e->len;
+
+				auto it = wd2dir.find(e->wd);
+				if (it == wd2dir.end()) {
+					continue;
+				}
+				std::string dirAbs = it->second;
+				std::string name = e->len > 0 ? e->name : "";
+				if (name.empty()) {
+					continue;
+				}
+				std::string kidAbs = dirAbs + "/" + name;
+				std::string rel = relativeToWatchDir(dirAbs, name);
+
+				if (e->mask & IN_CREATE) {
+					if (e->mask & IN_ISDIR) {
+						//新目录要递归加监听
+						addWatchTree(kidAbs);
+					}
+					emit("add", rel);
+					printf("added:%s\n", rel.c_str());
+				}
+				if (e->mask & IN_MOVED_FROM) {
+					//先记下, 等配对的IN_MOVED_TO
+					moveFroms[e->cookie] = rel;
+					printf("move old name:%s\n", rel.c_str());
+				}
+				if (e->mask & IN_MOVED_TO) {
+					if (e->mask & IN_ISDIR) {
+						addWatchTree(kidAbs);
+					}
+					auto mf = moveFroms.find(e->cookie);
+					if (mf != moveFroms.end()) {
+						//监听树内部的移动/改名
+						auto oldRel = mf->second;
+						moveFroms.erase(mf);
+						emit("rename", rel, oldRel);
+						printf("move new name:%s\n", rel.c_str());
+					}
+					else {
+						//从监听树外部移入, 等价于新增
+						emit("add", rel);
+						printf("added:%s\n", rel.c_str());
+					}
+				}
+				if (e->mask & IN_DELETE) {
+					emit("remove", rel);
+					printf("removed:%s\n", rel.c_str());
+				}
+				if (e->mask & IN_MODIFY) {
+					if (e->mask & IN_ISDIR) {
+						continue;//目录自身元数据变化, 忽略
+					}
+					emit("modify", rel);
+				}
+			}
+		}
+	}
+};
+
+
+
+std::shared_ptr<FsWatch> FsWatch::createInstance() {
+	return std::make_shared<FsWatchLinux>();
+}
+
+#endif
