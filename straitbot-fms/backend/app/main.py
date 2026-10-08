@@ -32,6 +32,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+import logging
 
 from .config import settings, APP_VERSION, FMS_MODE, CALIB_DIR, DEFAULTS_DIR, DATA_DIR, PREFAB_DIR, DEFAULT_PREFAB_DIR, WAYPOINT_PREFAB_DIR
 from .database import init_db, SessionLocal
@@ -43,6 +44,7 @@ from .routers import (auth, robots, monitor, robot_cmd, config_robot, logs, ota,
                       robot_report, prefab, simulation, fsm, rail_robot, rail_ptz, point_archive, inspection_plans, waypoint_prefab,
                       plan_prefab, detect_prefab, enum_prefab, alarm)
 
+logger = logging.getLogger("main")
 
 def _ensure_default_data():
     """data 卷缺失的默认 JSON 从镜像内置 defaults/ 补全(物模型/prompts)。"""
@@ -168,6 +170,7 @@ if __name__ == "__main__":
     # reload=False 不 fork 重载子进程，保证 IDE 断点与单进程日志正常；
     # 需要热重载做前端联调时仍可改用 uvicorn CLI --reload。
     import uvicorn
+    logger.info(f'启动uvicorn服务:{settings.host}:{settings.port}')
 
     uvicorn.run(
         "app.main:app",
